@@ -232,7 +232,8 @@ semantic_tags: [test]
         report = self.write_report("transcript_path: reports/transcripts/fixture.transcript.txt")
         def git_paths(command):
             return {source} if "--diff-filter=ACDMRTUXB" in command else set()
-        with mock.patch.object(audit_reports, "_git_paths", side_effect=git_paths):
+        with mock.patch.object(audit_reports, "_git_paths", side_effect=git_paths), \
+                mock.patch.object(audit_reports, "new_report_paths", return_value=set()):
             for select in (audit_reports.changed_reports, audit_reports.staged_reports):
                 reports, new = select()
                 self.assertEqual(reports, [report])

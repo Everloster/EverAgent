@@ -47,7 +47,7 @@ reports/.quality/topic.review.json
 
 `kind: local` 的来源使用仓库相对路径，并且必须指向仓内普通文件；绝对路径、越界路径和符号链接会被拒绝。
 
-`check --finalize` 会把当时的 `policy_id`、策略 SHA-256、报告 SHA-256 与证据账本 SHA-256 写入最终判定。已完成报告后续从不可变策略归档加载该版本复验，策略调阈值不会追溯击穿旧报告；正文或证据在判定后变化则必须开启新 revision。
+`check --finalize` 会把当时的 `policy_id`、策略 SHA-256、报告 SHA-256 与证据账本 SHA-256 写入最终判定。已完成报告后续从不可变策略归档加载该版本复验，策略调阈值不会追溯击穿旧报告；正文或证据发生实质变化须开启新 revision，纯编辑变化走下文的轻量处理。
 调整策略时必须生成新的 `policy_id` 和归档文件；提交门禁止修改或删除已存在的策略归档。
 
 `status: in_progress` 或 `planned` 的草稿只留在本地工作区。新增报告提交前必须完成两个质量文件，通过独立复核，并用 `check --finalize` 切换为 `completed` 或 `archived`；提交门禁会以 `META009` 阻断未完成草稿。
@@ -102,13 +102,24 @@ python3 scripts/report_quality.py check path/to/report.md --finalize
 - `revise`：分数或内容检查未过，生成者按问题清单修订；
 - `escalate`：超过常规修订轮次，按机器策略中的升级顺序选择 Reviewer。
 
-修订正文后开启新一轮，旧 Reviewer 记录会进入 `history`，不会与新版分数混算：
+实质修订正文或证据后开启新一轮，旧 Reviewer 记录会进入 `history`，不会与新版分数混算。复核范围限于变化及其影响；验证其余部分未变后可明确继承，不要求重读无关材料：
 
 ```bash
 python3 scripts/report_quality.py new-revision path/to/report.md
 ```
 
-`scripts/audit_reports.py` 会自动调用这套检查。`scripts/ecommit.sh` 在 commit 前检查精确 staged snapshot，GitHub Actions 在 push 与 PR 后复跑仓库级检查，因此不同 Harness 共享相同下限。
+**纯编辑修订不重开整轮审稿。** 已提交且通过的报告保留完成状态，先运行：
+
+```bash
+python3 scripts/report_quality.py refresh-editorial path/to/report.md --dry-run
+python3 scripts/report_quality.py refresh-editorial path/to/report.md
+```
+
+- 空行、行尾空格、加粗及标题层级等受支持的排版变化，由脚本对比 Git 基线；原复核、分数和审阅快照不改，只更新最终正文绑定并留一条编辑记录。
+- 标题换词不被自动认定为等义。独立 Reviewer 只读本次差异，提供短 JSON，再加 `--review-file <文件>`。JSON 包含 dry-run 的 `base_report_sha256/report_sha256/evidence_sha256`、真实 `reviewer`（model/harness/run_id/independent_context）、`assessment: pass` 和具体 `notes`。不重打五维分，不重复登记来源地图。
+- 正文措辞、数字、代码、引用目标、证据或评分发生变化时，脚本拒绝继承；仍走实质修订。标题不能借此引入未经核实的新结论，来源链接变化也不是排版。
+
+`scripts/ecommit.sh` 与 CI 使用同一受影响范围选择：普通报告只审本次报告、质量文件及被修改／删除来源影响的报告，不重复执行同一份 quality 检查。全量报告审计仅在门禁、Schema 或质量策略变更时自动运行，亦可手动使用 `audit_reports.py --all`。全局 Context 检查只随指令、Skill、评估或相关脚本变更运行；普通报告仍保留原有跨模型抽样检查。隐私检查始终执行，证据、转写、来源覆盖和未完成稿约束不放宽。
 
 ## 5. 五维评分
 
@@ -135,7 +146,7 @@ Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missin
 该策略控制默认资源分配，不阻止用户在具体任务中直接指定模型。
 `standard` 是否改为仅确定性审计，要等 `preference_source.review_after_completed_reports` 达到样本量后，根据真实失败率、返工率和成本再决定；样本不足时不提前取消独立复核。
 
-`important` 报告默认仍可由 GLM 5.3 新会话复核。系统按 evidence `created_on`（缺失时取首次判定日）和 report path 排序，每 5 篇形成一个固定抽样窗口；每个完整窗口至少一篇经过强模型跨模型复核，窗口不足 5 篇时暂不追债。默认交给 Sol；Sol 与该篇生成器相同时再使用 Kimi K3。这样估计同模型盲区，同时避免滚动计数把“每 5 篇抽 1 篇”错误放大成几乎每篇都复核。完整窗口缺少样本时，context 门禁会阻断提交，直到该窗口完成一次符合条件的跨模型复核。查看当前进度：
+`important` 报告默认仍可由 GLM 5.3 新会话复核。系统按 evidence `created_on`（缺失时取首次判定日）和 report path 排序，每 5 篇形成一个固定抽样窗口；每个完整窗口至少一篇经过强模型跨模型复核，窗口不足 5 篇时暂不追债。默认交给 Sol；Sol 与该篇生成器相同时再使用 Kimi K3。这样估计同模型盲区，同时避免滚动计数把“每 5 篇抽 1 篇”错误放大成几乎每篇都复核。完整窗口缺少样本时，报告抽样检查会阻断提交，直到该窗口完成一次符合条件的跨模型复核。查看当前进度：
 
 抽样统计同时承认当前 revision 与紧邻上一 revision 的强模型复核。后者用于“强模型发现问题 → 生成者修订 → 常规模型复验”的闭环，避免修订后把刚完成的强审抹掉并重复消耗稀缺额度；更早的历史 revision 不计入当前抽样状态。
 

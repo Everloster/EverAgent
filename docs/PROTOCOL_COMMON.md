@@ -102,17 +102,17 @@ git push origin main
 
 ## §D 报告质量门
 
-新增或实质修改报告后，从仓库根目录运行：
+新增或实质修改报告后，先按报告质量流程完成复核与最终判定。新增报告或目录元数据改变时更新索引：
 
 ```bash
 python3 scripts/reindex.py
-python3 scripts/report_quality.py check <报告路径>  # report-v2
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
 ```
+
+提交时复用 `scripts/ecommit.sh` 的受影响检查，不提前手工重复执行整套命令。尚不提交时运行 `python3 scripts/audit_reports.py --changed`；需要定位单篇质量错误才用 `python3 scripts/report_quality.py check <报告路径>`。
 
 - 新报告使用 `quality_schema: report-v2`，并通过证据账本、独立复核和评分门；`report-v1` 保留为过渡格式。
 - `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁，并校验门禁前后的 index tree 未变化。
+- 普通报告提交只审受影响报告与依赖；质量文件由报告审计统一检查一次。全库报告审计和全局 Context 评估按变更范围触发，不是每次报告提交的固定行程。纯编辑修订见 [轻量处理](./REPORT_QUALITY_GATE.md#判定)，不为改标题重做全文审稿。
 - 历史报告只进入 WARN 清单，不因一次任务批量重写。
 - 同一领域内正文完全不变的报告改名沿用原合同；复制、新建、跨领域移动或从其他目录迁入仍按新报告检查。提交前与 CI 共用该判定，原有版本合同和来源检查继续执行。
 - 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。

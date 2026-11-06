@@ -37,16 +37,37 @@ class QualityWiringTests(unittest.TestCase):
         paths = {"podcast-learning/reports/transcripts/deleted.txt",
                  "podcast-learning/reports/space and\nnewline.md"}
         command = precommit_quality.report_audit_command(paths)
-        self.assertEqual(command[:4], [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only"])
+        self.assertEqual(command[:4], [sys.executable, "scripts/audit_reports.py", "--affected", "--summary-only"])
         self.assertEqual(command[4:], [f"--changed-path={path}" for path in sorted(paths)])
 
     def test_ci_uses_shared_new_report_selection_and_audit_command(self):
         text = (ROOT / ".github/workflows/quality.yml").read_text()
         self.assertIn('new_report_paths(os.environ["AUDIT_BASE"], "HEAD")', text)
         self.assertIn('subprocess.run(report_audit_command(', text)
-        self.assertIn("audit_reports.py --all", eval_report_context.missing_ci_checks(
+        self.assertIn("report audit", eval_report_context.missing_ci_checks(
             text.replace("subprocess.run(report_audit_command(", "unused_command(")
         ))
+
+    def test_report_only_change_does_not_run_context_or_full_audit(self):
+        paths = {"ai-learning/reports/topic.md", "ai-learning/reports/.quality/topic.review.json",
+                 "README.md", "docs/REPORT_INDEX.md"}
+        self.assertFalse(precommit_quality.full_report_audit_required(paths))
+        self.assertFalse(precommit_quality.context_evaluation_required(paths))
+        self.assertTrue(precommit_quality.review_sampling_required(paths))
+
+    def test_sampling_uses_catalog_including_experiments_and_deleted_artifacts(self):
+        for path in ("ai-practice/experiments/exp_fixture.md",
+                     "ai-practice/experiments/.quality/exp_fixture.review.json",
+                     "podcast-learning/reports/.quality/deleted.review.json"):
+            self.assertTrue(precommit_quality.review_sampling_required({path}))
+        self.assertFalse(precommit_quality.review_sampling_required({"README.md", "docs/REPORT_INDEX.md"}))
+
+    def test_gate_schema_and_context_changes_still_expand_checks(self):
+        for path in ("scripts/audit_reports.py", "scripts/report_quality.py", "schemas/report-review-v1.schema.json"):
+            self.assertTrue(precommit_quality.full_report_audit_required({path}))
+            self.assertIn("--all", precommit_quality.report_audit_command({path}))
+        for path in ("AGENTS.md", "ai-learning/skills/paper_analysis/SKILL.md", "docs/REPORT_WORKFLOW.md"):
+            self.assertTrue(precommit_quality.context_evaluation_required({path}))
 
 
 class ReportRenameTests(unittest.TestCase):

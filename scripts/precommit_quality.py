@@ -9,12 +9,41 @@ import tempfile
 from pathlib import Path
 
 try:
-    from .report_catalog import new_report_paths
+    from .report_catalog import COLLECTIONS, new_report_paths
 except ImportError:
-    from report_catalog import new_report_paths
+    from report_catalog import COLLECTIONS, new_report_paths
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+REPORT_GATE_FILES = {
+    "scripts/audit_reports.py", "scripts/report_quality.py", "scripts/report_catalog.py",
+    "scripts/lint_evidence.py", "scripts/precommit_quality.py",
+    "podcast-learning/scripts/audit_transcript.py", ".github/workflows/quality.yml",
+}
+
+
+def full_report_audit_required(paths: set[str]) -> bool:
+    return bool(paths & REPORT_GATE_FILES) or any(
+        path.startswith(("schemas/report-", "config/report-quality-")) for path in paths
+    )
+
+
+def context_evaluation_required(paths: set[str]) -> bool:
+    """Report prose is not a Context architecture change."""
+    return full_report_audit_required(paths) or any(
+        Path(path).name in {"AGENTS.md", "CLAUDE.md", "METHODOLOGY.md", "SKILL.md"}
+        or "/skills/" in path or path.startswith((".agents/", "evals/", "config/instruction-"))
+        or (path != "docs/REPORT_INDEX.md" and path.startswith(
+            ("docs/REPORT_", "docs/CONTEXT_", "docs/AGENT_", "docs/PROTOCOL_", "docs/HARNESS_")
+        ))
+        or path in {"scripts/eval_report_context.py", "scripts/run_ace_context_ab.py"}
+        for path in paths
+    )
+
+
+def review_sampling_required(paths: set[str]) -> bool:
+    return any(Path(path).is_relative_to(collection.root) for path in paths for collection in COLLECTIONS)
 
 
 def run(label: str, command: list[str], cwd: Path) -> bool:
@@ -51,7 +80,8 @@ def report_for_sidecar(path: str) -> str | None:
 
 
 def report_audit_command(changed_paths: set[str], new_paths: set[str] | None = None) -> list[str]:
-    return [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only",
+    scope = "--all" if full_report_audit_required(changed_paths) else "--affected"
+    return [sys.executable, "scripts/audit_reports.py", scope, "--summary-only",
             *(f"--changed-path={path}" for path in sorted(changed_paths)),
             *(f"--new-path={path}" for path in sorted(new_paths or ()))]
 
@@ -87,11 +117,7 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-    sidecar_reports = sorted({
-        report
-        for path in staged
-        if (report := report_for_sidecar(path)) is not None
-    })
+    changed_paths = staged | modified_or_removed
 
     # This gate needs Git's old blobs as well as index blobs, not checkout files.
     if not run("incremental public content", [sys.executable, "scripts/audit_public_context.py", "--staged"], ROOT):
@@ -112,8 +138,8 @@ def main() -> int:
             # Always check: a staged target deletion can break an unchanged README.
             ("root README links", [sys.executable, "scripts/check_readme_links.py"]),
             (
-                "versioned report audit",
-                report_audit_command(staged | modified_or_removed, added_reports),
+                "report audit (full)" if full_report_audit_required(changed_paths) else "report audit (affected)",
+                report_audit_command(changed_paths, added_reports),
             ),
         ]
         if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",
@@ -130,19 +156,15 @@ def main() -> int:
                  "scripts.test_git_identity", "scripts.test_git_commit", "scripts.test_core_contracts",
                  "scripts.test_model_observations", "-q"],
             ))
-        for report in sidecar_reports:
-            checks.append(
-                (
-                    f"quality sidecar: {report}",
-                    [sys.executable, "scripts/report_quality.py", "check", report],
-                )
-            )
-        checks.extend(
-            [
-                ("report index consistency", [sys.executable, "scripts/reindex.py", "--check"]),
-                ("context evaluation", [sys.executable, "scripts/eval_report_context.py"]),
-            ]
-        )
+        # audit_reports resolves all three sidecar kinds and validates their
+        # owning report once; a second quality check only repeats the same work.
+        checks.append(("report index consistency", [sys.executable, "scripts/reindex.py", "--check"]))
+        if context_evaluation_required(changed_paths):
+            checks.append(("context evaluation", [sys.executable, "scripts/eval_report_context.py"]))
+        elif review_sampling_required(changed_paths):
+            # Preserve the existing cross-model sample rule without running
+            # unrelated Context budgets, routing probes, and replay cases.
+            checks.append(("review sampling", [sys.executable, "scripts/report_quality.py", "sampling-status", "--check"]))
         for label, command in checks:
             if not run(label, command, snapshot):
                 return 1

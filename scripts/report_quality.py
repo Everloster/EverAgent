@@ -13,6 +13,7 @@ import datetime as dt
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import uuid
 from dataclasses import asdict, dataclass
@@ -85,7 +86,7 @@ def quality_artifact_paths(report: Path) -> tuple[Path, Path]:
 def report_for_quality_artifact(path: Path) -> Path | None:
     if path.parent.name != ".quality":
         return None
-    for suffix in (".evidence.json", ".review.json"):
+    for suffix in (".evidence.json", ".review.json", ".transcription-review.json"):
         if path.name.endswith(suffix):
             report = path.parent.parent / f"{path.name[:-len(suffix)]}.md"
             return report if report.exists() else None
@@ -399,7 +400,194 @@ def _finalized_binding_findings(
         findings.append(QualityFinding("error", "QG014", "报告内容在最终判定后发生变化"))
     if decision.get("evidence_sha256") != evidence_digest:
         findings.append(QualityFinding("error", "QG015", "证据账本在最终判定后发生变化"))
+    editorial = review.get("editorial_update")
+    if editorial is not None:
+        if not isinstance(editorial, dict) or (
+            editorial.get("report_sha256") != report_digest
+            or editorial.get("evidence_sha256") != evidence_digest
+            or editorial.get("review_content_sha256") != _review_content_digest(review)
+        ):
+            findings.append(QualityFinding("error", "QG017", "编辑修订记录与正文、证据或原复核不一致"))
     return findings
+
+
+def _review_content_digest(review: dict[str, Any]) -> str:
+    unchanged = {key: value for key, value in review.items() if key not in {"decision", "editorial_update"}}
+    return hashlib.sha256(_canonical_json_bytes(unchanged)).hexdigest()
+
+
+def _editorial_projection(text: str, *, headings: bool = False) -> tuple:
+    """Conservative Markdown comparison, not a claim of semantic equivalence.
+
+    Code, math, HTML, inline code, prose wording, numbers, and link targets stay
+    literal. Only blank lines, trailing spaces, bold markup and heading levels
+    are normalized. Heading *wording* needs a separate, small delta review.
+    """
+    if not text.startswith("---\n") or "\n---\n" not in text[4:]:
+        raise ValueError("编辑修订要求完整 frontmatter")
+    header, body = text[4:].split("\n---\n", 1)
+    editable_fields = "updated_on|title" if headings else "updated_on"
+    # Keep unfamiliar/multiline metadata literal; the small frontmatter parser
+    # intentionally does not understand all YAML and must not erase changes.
+    metadata = re.sub(rf"(?m)^({editable_fields}):[^\n]*$", r"\1:<editable>", header)
+    parts = []
+    fence = None
+    math = False
+    indented = False
+    html_stack: list[str] = []
+    comment = False
+    void_tags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+    for line in body.splitlines():
+        html_scan = re.sub(r"(\x60+).*?\1", "", line)
+        html_tags = list(re.finditer(r"<(/?)([A-Za-z][\w-]*)(?=[\s/>])[^>]*>", html_scan))
+        if fence is None and not math and (html_stack or comment or html_tags or "<!--" in line):
+            parts.append(("literal", line))
+            if "<!--" in line:
+                comment = True
+            if "-->" in line:
+                comment = False
+            if not comment and "<!--" not in line:
+                for tag in html_tags:
+                    name = tag[2].lower()
+                    if tag[1]:
+                        if not html_stack or html_stack.pop() != name:
+                            raise ValueError("HTML 标签未配对，不能作为纯编辑修订")
+                    elif name not in void_tags and not tag[0].endswith("/>"):
+                        html_stack.append(name)
+            continue
+        marker = re.match(r"^ {0,3}(`{3,}|~{3,})(.*)$", line)
+        if fence is not None:
+            parts.append(("literal", line))
+            if marker and marker[1][0] == fence[0] and len(marker[1]) >= fence[1] and not marker[2].strip():
+                fence = None
+            continue
+        if marker:
+            fence = (marker[1][0], len(marker[1]))
+            parts.append(("literal", line))
+            continue
+        if line.strip() == "$$":
+            math = not math
+            parts.append(("literal", line))
+            continue
+        if math or line.startswith(("    ", "\t")) or (indented and not line.strip()):
+            indented = indented or line.startswith(("    ", "\t"))
+            parts.append(("literal", line))
+            continue
+        indented = False
+        if not line.strip():
+            continue
+        heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*$", line)
+        delimiter = None
+        for run in re.findall(r"\x60+", line):
+            if delimiter is None:
+                delimiter = run
+            elif run == delimiter:
+                delimiter = None
+        if delimiter is not None:
+            raise ValueError("多行或未闭合的行内代码不能自动归为纯编辑修订")
+        if "`" in line or "<" in line or "$" in line:
+            parts.append(("literal", line))
+            continue
+        if heading and headings:
+            parts.append(("heading", ""))
+            continue
+        value = heading[1] if heading else line.rstrip()
+        value = re.sub(r"(?<!\\)\*\*([^*\n]+)\*\*", r"\1", value)
+        parts.append(("heading" if heading else "text", value))
+    if fence or math or html_stack or comment:
+        raise ValueError("代码、数学或 HTML 块未闭合，不能作为纯编辑修订")
+    # Even a renamed heading may not silently change a citation destination.
+    links = re.findall(r"\]\(([^)\n]+)\)|(?:href|src)=[\"']([^\"']+)", body)
+    references = re.findall(r"\[[^\]\n]+\](?!\()", body)
+    return metadata, tuple(parts), tuple(links), tuple(references)
+
+
+def refresh_editorial(
+    report: Path, *, base: str = "HEAD", review_file: Path | None = None, dry_run: bool = False
+) -> dict[str, Any]:
+    """Carry a committed passing review across a proven, limited editing delta."""
+    report = report.resolve()
+    if collection_for_path(report) is None or not report.is_file():
+        raise ValueError("报告必须是仓内已登记的普通文件")
+    evidence_path, review_path = quality_artifact_paths(report)
+    if evidence_path.is_symlink() or review_path.is_symlink():
+        raise ValueError("质量文件不可为符号链接")
+    commit = subprocess.check_output(
+        ["git", "rev-parse", "--verify", "--end-of-options", base + "^{commit}"],
+        cwd=ROOT, stderr=subprocess.PIPE,
+    ).decode().strip()
+
+    def blob(path: Path) -> bytes:
+        return subprocess.check_output(
+            ["git", "show", f"{commit}:{path.relative_to(ROOT).as_posix()}"],
+            cwd=ROOT, stderr=subprocess.PIPE,
+        )
+
+    previous_report, previous_evidence = blob(report), blob(evidence_path)
+    previous = json.loads(blob(review_path))
+    current = _load_json(review_path)
+    evidence_bytes, current_report = evidence_path.read_bytes(), report.read_bytes()
+    decision = previous.get("decision", {})
+    sha = lambda data: hashlib.sha256(data).hexdigest()
+    if (decision.get("status") != "pass" or decision.get("report_sha256") != sha(previous_report)
+            or decision.get("evidence_sha256") != sha(previous_evidence)):
+        raise ValueError("基线不是已绑定原文与证据的通过版本")
+    stable_decision = lambda record: {key: value for key, value in record.get("decision", {}).items() if key != "report_sha256"}
+    if (evidence_bytes != previous_evidence or _review_content_digest(current) != _review_content_digest(previous)
+            or stable_decision(current) != stable_decision(previous)):
+        raise ValueError("证据或原复核已改变，必须使用 new-revision；不能借编辑修订改评分")
+    old, new = previous_report.decode("utf-8"), current_report.decode("utf-8")
+    if parse_frontmatter(new).get("status") not in {"completed", "archived"}:
+        raise ValueError("编辑修订只适用于已完成报告；不要先运行 new-revision")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(parse_frontmatter(new).get("updated_on") or "")):
+        raise ValueError("updated_on 必须是 YYYY-MM-DD")
+    if _editorial_projection(old) == _editorial_projection(new):
+        kind = "format_only"
+    elif _editorial_projection(old, headings=True) == _editorial_projection(new, headings=True):
+        kind = "headings_only"
+    else:
+        raise ValueError("正文、数字、代码、引用或其他元数据改变；请 new-revision 并复核受影响内容")
+    result = {
+        "kind": kind, "base_commit": commit, "base_report_sha256": sha(previous_report),
+        "report_sha256": sha(current_report), "evidence_sha256": sha(evidence_bytes),
+    }
+    if dry_run:
+        return {**result, "requires_delta_review": kind == "headings_only", "written": False}
+    delta_review = None
+    if kind == "headings_only":
+        if review_file is None:
+            raise ValueError("标题换词需要一次差异复核（--review-file）；无需新一轮全文审稿或重打分。先用 --dry-run 获取快照")
+        delta_review = _load_json(review_file)
+        reviewer = delta_review.get("reviewer") or {}
+        if (any(delta_review.get(key) != result[key] for key in ("base_report_sha256", "report_sha256", "evidence_sha256"))
+                or delta_review.get("assessment") != "pass"
+                or not isinstance(delta_review.get("notes"), str) or not delta_review["notes"].strip()
+                or not isinstance(reviewer, dict) or reviewer.get("independent_context") is not True
+                or any(not isinstance(reviewer.get(key), str) or not reviewer[key].strip()
+                       for key in ("model", "harness", "run_id"))):
+            raise ValueError("标题差异复核缺少真实独立身份、快照、通过结论或说明")
+        generator = json.loads(evidence_bytes).get("generator", {})
+        if reviewer["run_id"] == generator.get("run_id"):
+            raise ValueError("生成者不能用同一 run 冒充独立差异复核")
+        findings = _model_findings(reviewer["model"], role="primary_review",
+                                   explicit_override=reviewer.get("explicit_model_override") is True,
+                                   override_reason=str(reviewer.get("override_reason") or ""), policy=load_policy())
+        if any(item.severity == "error" for item in findings):
+            raise ValueError("差异 Reviewer 不符合现行模型策略")
+    candidate = json.loads(json.dumps(previous))
+    candidate["decision"]["report_sha256"] = result["report_sha256"]
+    candidate["editorial_update"] = {**result, "review_content_sha256": _review_content_digest(candidate)}
+    if delta_review is not None:
+        candidate["editorial_update"]["delta_review"] = delta_review
+    # Validate the candidate in memory first. Original reviews/scores/snapshots
+    # remain untouched; failures never leave a partially rewritten sidecar.
+    outcome = evaluate_report(report, review_override=candidate)
+    if outcome["decision"] != "pass":
+        raise ValueError("编辑修订仍有质量错误：" + "; ".join(item["message"] for item in outcome["errors"]))
+    if report.read_bytes() != current_report or evidence_path.read_bytes() != evidence_bytes or _load_json(review_path) != current:
+        raise ValueError("文件在编辑核对期间变化，请检查并重试")
+    _write_json(review_path, candidate)
+    return {**result, "written": True}
 
 
 def _set_frontmatter_fields(report: Path, fields: dict[str, str]) -> None:
@@ -1054,7 +1242,7 @@ def validate_review_record(
     }
 
 
-def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[str, Any]:
+def evaluate_report(report: Path, policy: dict[str, Any] | None = None, *, review_override: dict[str, Any] | None = None) -> dict[str, Any]:
     report = report.resolve()
     current_policy = policy or load_policy()
     metadata = parse_frontmatter(report.read_text(encoding="utf-8", errors="replace"))
@@ -1074,7 +1262,9 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
             findings.append(QualityFinding("error", "QG004", f"证据账本无法读取：{exc}"))
     else:
         findings.append(QualityFinding("error", "QG003", f"缺少证据账本：{evidence_path.relative_to(ROOT)}"))
-    if review_path.exists():
+    if review_override is not None:
+        review = review_override
+    elif review_path.exists():
         try:
             review = _load_json(review_path)
         except (OSError, json.JSONDecodeError, ValueError) as exc:
@@ -1343,6 +1533,8 @@ def start_new_revision(report: Path) -> Path:
             "decision": review.get("decision", {}),
         }
     )
+    if "editorial_update" in review:
+        history[-1]["editorial_update"] = review.pop("editorial_update")
     review["revision_round"] = int(review.get("revision_round", 1)) + 1
     review["reviews"] = []
     review["decision"] = {}
@@ -1586,6 +1778,7 @@ def main() -> int:
         "sampling-status", help="show whether a sampled cross-model audit is due"
     )
     sampling_parser.add_argument("--json", action="store_true")
+    sampling_parser.add_argument("--check", action="store_true", help="fail if an existing cross-model sampling window is uncovered")
 
     init_parser = subparsers.add_parser("init", help="initialize report-v2 evidence and review artifacts")
     init_parser.add_argument("report", type=Path)
@@ -1609,6 +1802,12 @@ def main() -> int:
 
     revision_parser = subparsers.add_parser("new-revision", help="archive current reviews and start a new round")
     revision_parser.add_argument("report", type=Path)
+
+    editorial_parser = subparsers.add_parser("refresh-editorial", help="reuse a passing committed review for formatting or independently checked heading edits")
+    editorial_parser.add_argument("report", type=Path)
+    editorial_parser.add_argument("--base", default="HEAD")
+    editorial_parser.add_argument("--review-file", type=Path)
+    editorial_parser.add_argument("--dry-run", action="store_true")
 
     prompt_parser = subparsers.add_parser("review-prompt", help="print the model-independent reviewer prompt")
     prompt_parser.add_argument("report", type=Path)
@@ -1650,7 +1849,7 @@ def main() -> int:
                 print("  建议抽样：" + str(result["recommended_report"]))
             if result["recommended_reviewers"]:
                 print("  Reviewer 顺序：" + " → ".join(result["recommended_reviewers"]))
-        return 0
+        return 1 if args.check and result["sample_due"] else 0
 
     if args.command == "init":
         tier = args.tier or policy["default_quality_tier"]
@@ -1709,6 +1908,15 @@ def main() -> int:
             print(f"[report-quality] {exc}", file=sys.stderr)
             return 1
         print(review_path.relative_to(ROOT))
+        return 0
+
+    if args.command == "refresh-editorial":
+        try:
+            result = refresh_editorial(args.report, base=args.base, review_file=args.review_file, dry_run=args.dry_run)
+        except (OSError, ValueError, KeyError, TypeError, subprocess.CalledProcessError) as exc:
+            print(f"[report-quality] {exc}", file=sys.stderr)
+            return 1
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
     try:

@@ -54,7 +54,7 @@ jobs:
         run: python3 scripts/check_readme_links.py
       - name: Check script catalog and generated index
         run: python3 scripts/script_catalog.py check
-      - name: Audit all reports
+      - name: Audit affected reports (full when the report gate changes)
         run: |
           python3 - <<'PY'
           import os
@@ -72,5 +72,20 @@ jobs:
           PY
       - name: Verify generated indexes
         run: python3 scripts/reindex.py --check
-      - name: Evaluate context and real report replays
-        run: python3 scripts/eval_report_context.py
+      - name: Evaluate changed Context or report review sampling
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          sys.path.insert(0, "scripts")
+          from precommit_quality import context_evaluation_required, review_sampling_required
+          paths = set(subprocess.check_output([
+              "git", "diff", "--no-renames", "--name-only", "-z",
+              os.environ["AUDIT_BASE"], "HEAD", "--",
+          ]).decode().split("\0")) - {""}
+          if context_evaluation_required(paths):
+              subprocess.run([sys.executable, "scripts/eval_report_context.py"], check=True)
+          elif review_sampling_required(paths):
+              subprocess.run([sys.executable, "scripts/report_quality.py", "sampling-status", "--check"], check=True)
+          PY

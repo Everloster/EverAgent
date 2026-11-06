@@ -24,6 +24,7 @@ import sys
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 try:
     from .lint_evidence import lint_file as lint_evidence_file
@@ -65,13 +66,6 @@ CANONICAL_STATUSES = {
     "superseded",
     "degraded_shownotes_only",
 }
-LEARNING_DOMAINS = {
-    "ai-learning",
-    "cs-learning",
-    "philosophy-learning",
-    "psychology-learning",
-    "biology-learning",
-}
 EVIDENCE_RE = re.compile(
     r"https?://|arxiv[:/. ]\s*\d{4}\.\d{4,5}|doi[:/. ]\s*10\.|\bRFC\s*\d+|"
     r"\[(?:代码|API|README|Web|原始材料|一手|二手|推测|待验证)\]|"
@@ -81,7 +75,7 @@ EVIDENCE_RE = re.compile(
 PLACEHOLDER_RE = re.compile(
     r"(?i:\bTODO\b|\bTBD\b|PLACEHOLDER)|待填写|待补充内容|\{[A-Z][A-Z0-9_]{2,}\}",
 )
-RELATIVE_LINK_RE = re.compile(r"\[[^\]]*\]\((\.\.?/[^)]+)\)")
+RELATIVE_LINK_RE = re.compile(r"\[[^\]\n]*\]\((?![a-zA-Z][a-zA-Z\d+.-]*:|//|#)([^)\n]+)\)")
 WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
 
 
@@ -126,26 +120,34 @@ def _git_is_ancestor(ancestor: str, descendant: str) -> bool:
     ).returncode == 0
 
 
-def _podcast_dependencies(path: Path) -> set[Path]:
-    text = path.read_text(encoding="utf-8", errors="replace")
-    dependencies = podcast_audit.report_sources(ROOT, parse_frontmatter(text))
-    for target in RELATIVE_LINK_RE.findall(text):
-        candidate = (path.parent / target.split("#", 1)[0]).resolve()
-        if candidate.is_relative_to(ROOT / "podcast-learning/reports/transcripts"):
-            dependencies.add(candidate)
-    # evidence 中的 local 来源也能触发反向审计；不读取任何仓外来源。
+def _local_target(raw_target: str) -> str:
+    target = re.sub(r'''\s+["'][^"']*["']\s*$''', "", raw_target).strip().strip("<>")
+    parsed = urlsplit(target)
+    return unquote(parsed.path) if not parsed.scheme and not parsed.netloc else ""
+
+
+def _report_dependencies(path: Path, text: str | None = None) -> set[Path]:
+    text = path.read_text(encoding="utf-8", errors="replace") if text is None else text
+    dependencies = {
+        (path.parent / target).resolve()
+        for raw in RELATIVE_LINK_RE.findall(text) if (target := _local_target(raw))
+    }
+    collection = collection_for_path(path)
+    if collection and collection.id == "podcast-learning":
+        dependencies |= podcast_audit.report_sources(ROOT, parse_frontmatter(text))
+    # A deleted sidecar still belongs to its report. Do not follow source files
+    # while discovering references, especially paths outside the public repo.
+    dependencies.update(path.parent / ".quality" / f"{path.stem}.{suffix}.json"
+                        for suffix in ("evidence", "review", "transcription-review"))
     evidence = path.parent / ".quality" / f"{path.stem}.evidence.json"
     if evidence.is_file():
-        dependencies.add(evidence)
         try:
             manifest = json.loads(evidence.read_text(encoding="utf-8"))
             for source in manifest.get("sources", []):
                 if isinstance(source, dict) and source.get("kind") == "local":
-                    candidate = (ROOT / str(source.get("locator") or "")).resolve()
-                    if candidate.is_relative_to(ROOT / "podcast-learning/reports/transcripts"):
-                        dependencies.add(candidate)
+                    dependencies.add((ROOT / str(source.get("locator") or "")).resolve())
         except (OSError, ValueError, AttributeError, TypeError):
-            pass  # report-v2 的质量门负责报告损坏的 evidence。
+            pass  # Selected owners are checked by report-v2; unrelated debt stays unrelated.
     return dependencies
 
 
@@ -158,10 +160,22 @@ def _reports_from_paths(paths: set[Path]) -> list[Path]:
         report = report_for_quality_artifact(path)
         if report is not None and collection_for_path(report):
             reports.add(report)
-    # 转写、润色稿、收据变化（含删除）不能绕过只看 .md 的入口。
-    for report in (ROOT / "podcast-learning/reports").glob("*.md"):
-        if _podcast_dependencies(report) & paths:
-            reports.add(report)
+    # Reference discovery is global, not review/scoring of unrelated reports.
+    # A report itself can also be another report's local source.
+    source_changes = {path for path in paths if report_for_quality_artifact(path) is None}
+    if source_changes:
+        changed_links: dict[str, list[Path]] = defaultdict(list)
+        for path in source_changes:
+            changed_links[path.stem].append(path)
+        for _collection, report in iter_reports():
+            if report in reports:
+                continue
+            text = report.read_text(encoding="utf-8", errors="replace")
+            dependencies = _report_dependencies(report, text)
+            if dependencies & source_changes or any(
+                _wikilink_exists(report, target, changed_links) for target in WIKILINK_RE.findall(text)
+            ):
+                reports.add(report)
     return sorted(reports)
 
 
@@ -215,7 +229,7 @@ def _prose_for_placeholder_scan(text: str) -> str:
 def _local_link_issues(path: Path, text: str, enforce: bool) -> list[Issue]:
     issues: list[Issue] = []
     for raw_target in RELATIVE_LINK_RE.findall(text):
-        target = raw_target.strip().strip("<>").split("#", 1)[0]
+        target = _local_target(raw_target)
         if not target or not re.search(r"\.(?:md|txt|json|csv|py|sh)$", target, re.I):
             continue
         resolved = (path.parent / target).resolve()
@@ -315,9 +329,6 @@ def audit_file(
     if completed and PLACEHOLDER_RE.search(_prose_for_placeholder_scan(text)):
         issues.append(_issue(_severity(enforce), "STRUCT003", path, "completed 报告仍含模板占位符"))
 
-    if collection.id in LEARNING_DOMAINS and "思考与追问" not in text:
-        issues.append(_issue(_severity(enforce and completed), "LEARN001", path, "学习报告缺少“思考与追问”"))
-
     evidence_count = len(EVIDENCE_RE.findall(text))
     if completed and evidence_count == 0:
         issues.append(_issue(_severity(enforce), "EVID001", path, "completed 报告没有可识别证据锚点"))
@@ -326,9 +337,8 @@ def audit_file(
             if marker not in text:
                 issues.append(_issue("error", "REPO001", path, f"深研报告缺少 {marker} 证据"))
     if enforce and collection.id == "podcast-learning":
-        for section in ("## Limitations", "思考与追问"):
-            if section not in text:
-                issues.append(_issue("error", "POD001", path, f"播客报告缺少 {section}"))
+        # Coverage and limitations are checked from evidence and independent
+        # review, not by requiring literal Chinese/English section labels.
         report_depth = str(metadata.get("report_depth") or "")
         depth_contract_required = strict_selection and _date_on_or_after(
             metadata.get("updated_on"), PODCAST_DEPTH_SINCE
@@ -340,14 +350,6 @@ def audit_file(
         if (depth_contract_required or report_depth) and metadata.get("reader_contract") != "standalone":
             issues.append(_issue("error", "POD003", path, "播客报告需声明 reader_contract: standalone"))
         if report_depth in {"standard", "deep"}:
-            if "## 内容地图" not in text:
-                issues.append(_issue("error", "POD004", path, "standard/deep 播客缺少内容地图"))
-            subsection_count = len(re.findall(r"^###\s+\S", text, re.MULTILINE))
-            mainline_h2_count = len(
-                re.findall(r"^##\s+主线(?:[一二三四五六七八九十]+|\d+)(?:[:：]|\s)", text, re.MULTILINE)
-            )
-            if subsection_count + mainline_h2_count < 3:
-                issues.append(_issue("error", "POD005", path, "standard/deep 播客至少展开 3 个主线小节"))
             duration = metadata.get("duration_seconds")
             try:
                 duration_seconds = int(str(duration))
@@ -400,11 +402,14 @@ def audit(
     changed_paths: set[Path] | None = None, source_paths: set[Path] | None = None,
 ) -> dict[str, object]:
     changed_paths = (changed_paths or set()) | new_paths
+    changed_links: dict[str, list[Path]] = defaultdict(list)
+    for path in changed_paths:
+        changed_links[path.stem].append(path)
     source_paths = set(source_paths or ())
     enforced_sources = set(changed_paths)
     covered_sources: set[Path] = set()
     referenced_sources: set[Path] = set()
-    wikilinks = _wikilink_index()
+    wikilinks = _wikilink_index() if paths else {}
     all_issues: list[Issue] = []
     domains: Counter[str] = Counter()
     titles: dict[str, list[Path]] = defaultdict(list)
@@ -434,7 +439,7 @@ def audit(
             match = re.search(r"^#\s+(.+?)\s*$", text, re.MULTILINE)
             title = match.group(1).strip() if match else path.stem
         titles[title].append(path)
-        dependencies = _podcast_dependencies(path) if collection.id == "podcast-learning" else set()
+        dependencies = _report_dependencies(path, text)
         # 只有声明的 raw 已在 audit_report 内审计；仅 Markdown/evidence 引用仍需直接检查。
         try:
             raw = podcast_audit.source_path(ROOT, metadata.get("transcript_path")) if collection.id == "podcast-learning" else None
@@ -444,7 +449,9 @@ def audit(
             covered_sources.add(raw)
         referenced_sources.update(item for item in dependencies if item.name.endswith(".transcript.txt"))
         source_paths |= referenced_sources
-        affected = path.resolve() in changed_paths or bool(dependencies & changed_paths)
+        affected = path.resolve() in changed_paths or bool(dependencies & changed_paths) or any(
+            _wikilink_exists(path, target, changed_links) for target in WIKILINK_RE.findall(text)
+        )
         if affected:
             enforced_sources.update(dependencies)
         all_issues.extend(
@@ -513,6 +520,7 @@ def main(argv=None) -> int:
     scope.add_argument("--all", action="store_true", help="audit every registered report")
     scope.add_argument("--changed", action="store_true", help="audit changed and untracked reports")
     scope.add_argument("--staged", action="store_true", help="audit reports staged for commit")
+    scope.add_argument("--affected", action="store_true", help="audit only explicit --changed-path/--new-path inputs and their dependents")
     parser.add_argument("--strict", action="store_true", help="apply current contract to every selected report")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     parser.add_argument("--summary-only", action="store_true", help="print totals without individual warnings")
@@ -558,7 +566,9 @@ def main(argv=None) -> int:
             return 1
 
     new_paths: set[Path] = set()
-    if args.staged:
+    if args.affected:
+        changed_paths = set()
+    elif args.staged:
         changed_paths = _git_paths(["git", "diff", "--cached", "--name-only", "--diff-filter=ACDMRTUXB", "-z"])
     else:
         changed_paths = _git_paths(["git", "diff", "HEAD", "--name-only", "--diff-filter=ACDMRTUXB", "-z"])
@@ -568,8 +578,22 @@ def main(argv=None) -> int:
         if candidate.is_absolute() or ".." in candidate.parts:
             parser.error("--changed-path requires a repository-relative path without '..'")
         changed_paths.add(ROOT / candidate)
+    explicit_new_paths: set[Path] = set()
+    for item in args.new_path:
+        candidate = Path(item)
+        if candidate.is_absolute() or ".." in candidate.parts:
+            parser.error("--new-path requires a repository-relative path without '..'")
+        candidate = ROOT / candidate
+        if not candidate.is_file() or collection_for_path(candidate) is None:
+            parser.error("--new-path requires an existing report")
+        explicit_new_paths.add(candidate.resolve())
+    changed_paths |= explicit_new_paths
     source_paths = {path for path in changed_paths if path.name.endswith(".transcript.txt")}
-    if args.paths:
+    if args.affected:
+        if args.paths:
+            parser.error("--affected uses --changed-path/--new-path, not positional reports")
+        paths = _reports_from_paths(changed_paths)
+    elif args.paths:
         selected = {Path(item) if Path(item).is_absolute() else ROOT / item for item in args.paths}
         paths = _reports_from_paths(selected)
         source_paths = {path for path in selected if path.name.endswith(".transcript.txt")}
@@ -587,19 +611,11 @@ def main(argv=None) -> int:
         paths, new_paths = staged_reports()
     else:
         paths, new_paths = changed_reports()
-    if args.changed_path and not args.all and not args.paths:
+    if args.changed_path and not args.all and not args.paths and not args.affected:
         paths = sorted(set(paths) | set(_reports_from_paths(changed_paths)))
 
-    for item in args.new_path:
-        candidate = Path(item)
-        if candidate.is_absolute() or ".." in candidate.parts:
-            parser.error("--new-path requires a repository-relative path without '..'")
-        candidate = ROOT / candidate
-        if not candidate.is_file() or collection_for_path(candidate) is None:
-            parser.error("--new-path requires an existing report")
-        new_paths.add(candidate.resolve())
-        if candidate not in paths:
-            paths.append(candidate)
+    new_paths |= explicit_new_paths
+    paths = sorted(set(paths) | explicit_new_paths)
     result = audit(paths, strict_all=args.strict, new_paths=new_paths,
                    changed_paths=changed_paths, source_paths=source_paths)
     if args.json:

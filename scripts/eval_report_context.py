@@ -87,7 +87,7 @@ def missing_ci_checks(workflow_text: str) -> list[str]:
     checks = {
         "report tests": ("tests.test_report_tooling", "unittest discover -s tests -p test_*.py"),
         "script tests": ("scripts.test_git_commit", "unittest discover -s scripts -p test_*.py"),
-        "audit_reports.py --all": ("audit_reports.py --all", "subprocess.run(report_audit_command("),
+        "report audit": ("audit_reports.py --all", "subprocess.run(report_audit_command("),
         "reindex.py --check": ("reindex.py --check",),
         "eval_report_context.py": ("eval_report_context.py",),
     }

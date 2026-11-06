@@ -118,7 +118,7 @@ class ReportSidecarTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertIsNone(precommit_quality.report_for_sidecar(path))
 
-    def test_transcription_review_change_still_runs_report_quality_check(self):
+    def test_transcription_review_is_audited_once_without_global_context(self):
         artifact = "ai-learning/reports/.quality/topic.transcription-review.json"
         with mock.patch.object(precommit_quality, "git_paths", side_effect=[{artifact}, set()]), \
                 mock.patch.object(precommit_quality, "new_report_paths", return_value=[]), \
@@ -127,7 +127,12 @@ class ReportSidecarTests(unittest.TestCase):
                 mock.patch("sys.stdout", new=io.StringIO()):
             self.assertEqual(precommit_quality.main(), 0)
         commands = [call.args[1] for call in run.call_args_list]
-        self.assertIn([sys.executable, "scripts/report_quality.py", "check", self.report], commands)
+        audits = [command for command in commands if "scripts/audit_reports.py" in command]
+        self.assertEqual(len(audits), 1)
+        self.assertIn("--changed-path=" + artifact, audits[0])
+        self.assertIn("--affected", audits[0])
+        self.assertNotIn([sys.executable, "scripts/report_quality.py", "check", self.report], commands)
+        self.assertNotIn([sys.executable, "scripts/eval_report_context.py"], commands)
 
 
 class ReportToolingTests(unittest.TestCase):
@@ -584,8 +589,9 @@ semantic_tags: ["quality"]
         with mock.patch.object(
             audit_reports,
             "_git_paths",
-            side_effect=[{report}, {report}, set()],
-        ):
+            side_effect=[{report}, set()],
+        ), mock.patch.object(audit_reports, "new_report_paths", return_value={report}), \
+                mock.patch.object(audit_reports, "iter_reports", return_value=[]):
             reports, new_paths = audit_reports.changed_reports()
 
         self.assertEqual(reports, [report])
