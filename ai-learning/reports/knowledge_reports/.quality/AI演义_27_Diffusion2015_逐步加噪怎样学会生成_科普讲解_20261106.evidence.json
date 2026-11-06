@@ -6,17 +6,17 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-diffusion15-r1-20261106",
+    "run_id": "ai-yanyi-diffusion15-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current精确会话，confirmed=true；不将父身份用于子审稿。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
     "summary": "第27节2015扩散模型：沿花照解释前向破坏、可学逆过程、概率与计算边界，并回到v8实验和历史路线。",
     "requirements": [
       {
         "id": "R1",
-        "text": "读取固定v8、讲义p45、shownotes和185段目标ASR；标明未听校、0.04秒重叠和首版/修订版日期。"
+        "text": "读取固定v8、讲义p45、shownotes和185段目标ASR；未听校和时间结构边界由既有摘要回链，首版/修订版日期分开。"
       },
       {
         "id": "R2",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿27实质改写且标题后首块为展开链接；返回原27、前26 GAN、后28 DDPM和研究入口有效。"
+        "text": "保留主稿27入口；返回原27、前26 GAN、后28 DDPM及研究入口有效，前后深读直达分章。"
       },
       {
         "id": "R6",
-        "text": "正文中文、两位编号标题、人类独立可读，脚注、三问完整；只做正文与内容独立复核，不要求工作台页面验收。"
+        "text": "正文中文、两位编号标题、人类独立可读，脚注、局限与有价值追问完整；仅做本报告必要检查，不扩成工作台功能验收。"
       }
     ],
     "source_coverage_scope": "仅主稿27及相应节目片段，不是整集转写或所有章节重新验收。"
@@ -145,14 +145,14 @@
     },
     {
       "id": "C5",
-      "claim": "2015学习反向均值/协方差，训练目标是似然变分下界；训练见x0不等于生成偷看x0；高斯前向第二至末步强度也优化，第一步固定",
+      "claim": "2015学习反向均值/协方差并优化似然变分下界；训练见x0不等于生成偷看；高斯前向第二至末步强度可优化、第一步固定，但作者同页脚注提示固定日程亦有效",
       "report_anchor": "what-is-learned",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§2.4式10–15；TableApp.1；图像对角协方差见D.2.1。不将DDPM噪声预测统一配方倒填。 §2.4.1明确优化β₂…T并固定β₁。"
+      "evidence": "§2.4式10–15、TableApp.1；D.2.1的图像对角协方差；§2.4.1及p6脚注2。区分具体训练选择与必要条件，不倒填DDPM配方。"
     },
     {
       "id": "C6",
@@ -168,7 +168,7 @@
     },
     {
       "id": "C7",
-      "claim": "网络参数化与扩散过程分层；图像多尺度卷积/密集路径及时间读出，不是千套独立U-Net",
+      "claim": "扩散过程、目标与网络分层；CIFAR10多尺度卷积和全连接路径并行，MNIST仅全连接；共享主干结合时间读出，不是千套独立U-Net",
       "report_anchor": "physics-and-architecture",
       "support": "direct",
       "source_ids": [
@@ -212,14 +212,14 @@
     },
     {
       "id": "C11",
-      "claim": "dead leaves是遮挡圆片数据；同数据对比中Diffusion1.489为对数似然下界K、MCGSM1.244为对数似然，单位bits/pixel",
+      "claim": "dead leaves是遮挡圆片数据；同数据Diffusion1.489为下界K、MCGSM1.244为对数似然，bits/pixel；Table1除二值外先缩放至方差1，密度可大于1，同尺度同协议下对数似然越大越好",
       "report_anchor": "experiments-and-limits",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.2.1、Tables1–2；扩散值在Table1明确为K，非精确似然、真实落叶照片或画质评分。"
+      "evidence": "§3.2.1、Tables1–2及图注。扩散值明确为K；连续密度与离散点概率区分是概率定义解释，不是画质分或负对数似然。"
     },
     {
       "id": "C12",
@@ -307,7 +307,7 @@
     },
     {
       "id": "U5",
-      "title": "2015学习反向均值/协方差，训练目标是似然变分下界；训练见x0不等于生成偷看x0",
+      "title": "2015学习反向均值/协方差并优化似然变分下界；训练见x0不等于生成偷看；高斯前向第二至末步强度可优化、第一步固定，但作者同页脚注提示固定日程亦有效",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -328,7 +328,7 @@
     },
     {
       "id": "U7",
-      "title": "网络参数化与扩散过程分层；图像多尺度卷积/密集路径及时间读出，不是千套独立U-Net",
+      "title": "扩散过程、目标与网络分层；CIFAR10多尺度卷积和全连接路径并行，MNIST仅全连接；共享主干结合时间读出，不是千套独立U-Net",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -368,7 +368,7 @@
     },
     {
       "id": "U11",
-      "title": "dead leaves是遮挡圆片数据；同数据对比Diffusion1.489与MCGSM1.244 bits/pixel是对数似然",
+      "title": "dead leaves是遮挡圆片数据；同数据Diffusion1.489为下界K、MCGSM1.244为对数似然，bits/pixel；Table1除二值外先缩放至方差1，密度可大于1，同尺度同协议下对数似然越大越好",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -465,5 +465,18 @@
       "direct_visual_check": true,
       "not_workbench_acceptance": true
     }
-  ]
+  ],
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "原报告288行全文含所有脚注；固定v8文字pp1–9、12–18，包含所用公式、表格与图注，不是新视觉检查。",
+      "185段目标ASR全文、讲义p45文字、全部claims与coverage；shownotes身份及其它未变段落沿用已读缓存。"
+    ],
+    "substantive_changes": [
+      "补充p6脚注2的固定日程提示，区分训练选择与方法必要条件。",
+      "补CIFAR10并行网络与MNIST全连接的差异；解释连续密度可大于1、数据缩放和表格方向。",
+      "统一标题及28章直达，转写检查回链；保留生成/恢复、有限链概率、条件采样与实验局限。"
+    ],
+    "inherited_checks": "v8其余已读文字、版本身份与网络收据、讲义p45和论文p8原图核对及转写机器检查明确继承；未新联网、看图、听校或训练。"
+  }
 }

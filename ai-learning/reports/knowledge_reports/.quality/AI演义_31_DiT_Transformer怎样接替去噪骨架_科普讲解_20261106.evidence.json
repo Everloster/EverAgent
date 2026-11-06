@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-dit-r1-20261106",
+    "run_id": "ai-yanyi-dit-reread-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current，session-bound confirmed"
   },
   "task": {
-    "summary": "按Brook方式完成第31节DiT，沿图像生成路线讲透骨架替换、patch条件块、规模/采样计算和有限范围实验。",
+    "summary": "沿原讲义DiT节点全文精修第31章，复核去噪骨架、条件块、规模/采样计算与有限范围实验，让全系列的技术线索在此清楚收束。",
     "requirements": [
       {
         "id": "R1",
@@ -24,19 +24,19 @@
       },
       {
         "id": "R3",
-        "text": "消融与扩展有原表证据，参数/token/前向/训练/采样计算分开，反例与变量混杂不隐去。"
+        "text": "消融与扩展回读原表；参数/token/前向/训练/采样计算分开，核adaLN参数差别、共同总计算预算的结果，不遗漏作者已有支持证据。"
       },
       {
         "id": "R4",
-        "text": "核256/512结果、CFG/decoder/通道/样本数/训练长度；不夸大原文SOTA、文生图/视频、硬件实测或人物后续。"
+        "text": "核256/512结果、CFG/decoder兼容条件/通道/样本数/训练长度；不夸大原文SOTA、文生图/视频、硬件实测或人物后续。"
       },
       {
         "id": "R5",
-        "text": "原31节实改、节首展开链接，两位编号、独立可读、前节/后续视角导航、三问和跨章收尾。"
+        "text": "全文逐段校读、两位编号及直接前后导航，保持独立人类可读、跨章引用、追问和路线收尾。"
       },
       {
         "id": "R6",
-        "text": "如实记录转写结构与未听音/WER/训练运行；只检查内容、引用和导航，不做工作台页面验收。"
+        "text": "正文保留影响理解的来源边界；转写细节回链已有记录，不冒称听音/WER/训练运行，不扩成工作台功能验收。"
       }
     ],
     "source_coverage_scope": "原DiT v2类别条件ImageNet和对应节目段；自由文本/视频/现职和未审附录样本不作已验证结论。"
@@ -149,7 +149,7 @@
         "PAPER"
       ],
       "critical": true,
-      "evidence": "Table4 XL2、400k、50k样本、无额外CFG/ftMSE：incontext35.24/cross26.14/adaLN25.21/Zero19.47；params/Gflops不同，不能把收益全归单个初始化值。"
+      "evidence": "Table4 XL2、400k、50k样本、无额外CFG/ftMSE：incontext35.24/cross26.14/adaLN25.21/Zero19.47；params/Gflops不同，不能把收益全归单个初始化值。其中adaLN 600M/118.56G，adaLN-Zero 675M/118.64G；附录A调制输出4×d与6×d，增加残差缩放。"
     },
     {
       "id": "C6",
@@ -186,14 +186,14 @@
     },
     {
       "id": "C9",
-      "claim": "扩展规律的训练计算与数据范围",
+      "claim": "扩展规律包含共同总训练预算比较，不能无限外推到任意数据与任务",
       "report_anchor": "scaling",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "Figures6–9：sameiterations不等成本，总G×batch×steps×3估计，固定ImageNet不能声称实证任意数据规模规律；相关性与无限外推分开。"
+      "evidence": "Figures6–9：sameiterations不等成本，总G×batch×steps×3估计，固定ImageNet不能声称实证任意数据规模规律；相关性与无限外推分开。Figure9同总计算预算下，小模型多步会逐渐比大模型效率低，固定XL时较大预算下XL/2优于XL/4；不只同迭代数结果，也不无限外推。"
     },
     {
       "id": "C10",
@@ -230,14 +230,14 @@
     },
     {
       "id": "C13",
-      "claim": "图像解码器与引导通道的实验口径",
+      "claim": "解码器相同潜表示兼容条件、版本与引导通道共同决定实验口径",
       "report_anchor": "benchmark-results",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "AppendixA/D、Table5：原decoder2.46/ftMSE2.30/ftEMA2.27；扫描ftMSE、最终ftEMA，非DiTEMA同一概念；CFG原前三潜通道，四通道另一强度结果不替换主表。"
+      "evidence": "AppendixA/D、Table5：原decoder2.46/ftMSE2.30/ftEMA2.27；扫描ftMSE、最终ftEMA，非DiTEMA同一概念；CFG原前三潜通道，四通道另一强度结果不替换主表。附录D三种VAE编码器相同、只微调decoder，因此可不重训DiT替换；不外推任意VAE解码器兼容。"
     },
     {
       "id": "C14",
@@ -389,7 +389,7 @@
     },
     {
       "id": "U9",
-      "title": "扩展规律的训练计算与数据范围",
+      "title": "扩展规律包含共同总训练预算比较，不能无限外推到任意数据与任务",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -429,7 +429,7 @@
     },
     {
       "id": "U13",
-      "title": "图像解码器与引导通道的实验口径",
+      "title": "解码器相同潜表示兼容条件、版本与引导通道共同决定实验口径",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -514,5 +514,18 @@
     "已读指定主文/附录，未逐式重证推导或逐张审核所有样本图。",
     "转写90段时间结构无误不证明逐字正确，未听音/WER；用户可听原节目，公开仓不复制私有全文。",
     "人物仅核原论文署名与脚注，生态/技术史综合为跨章节解释，不以未来故事证明原论文结果。"
-  ]
+  ],
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "原报告全文含全部脚注；原DiT v2 pp1–9、12–13的文字、公式、表格与图注全文回读。",
+      "講义p50文字、90段ASR全文与shownotes全部回读；原图与元数据版本核查继承可信前轮。"
+    ],
+    "substantive_changes": [
+      "明确adaLN/adaLN-Zero的600M/675M参数差别与残差调制，避免把完整配方对照当纯零初始化实验。",
+      "补清Figure9共同训练计算预算的估算与实证含义，区分增加预算和分配预算；保留范围边界。",
+      "补明附录D能换decoder的前提是相同encoder与潜表示；统一标题和ResNet直达，把ASR过程回链既有记录。"
+    ],
+    "inherited_checks": "固定PDF、元数据读取收据、Figure3/讲义图像核对与ASR单调性/百分秒检查均沿用可信未变记录；未新联网、看图、听音或跑模型。"
+  }
 }

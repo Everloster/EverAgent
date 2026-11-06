@@ -6,10 +6,10 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-ldm-r1-20261106",
+    "run_id": "ai-yanyi-ldm-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current，session-bound confirmed"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
     "summary": "按Brook方式展开第29节LDM，讲透高分辨率成本、感知压缩、潜空间生成与条件控制，以原论文核实验和边界。",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原29节实改且节首展开链接，报告独立可读、两位编号、原节前后导航、思考三问与研究入口。"
+        "text": "保留原29节及展开入口，两位编号标题；本章独立可读、前后28/30分章直达，来源、边界和追问完整。"
       },
       {
         "id": "R6",
-        "text": "转写真实审计与人物原署名，不冒称听校/复现；只验内容与导航，不绑定工作台页面。"
+        "text": "转写审计边界回链既有摘要；人物据原署名，不冒称听校/复现，只做与正文和导航相称的必要检查。"
       }
     ],
     "source_coverage_scope": "仅LDM方法和对应节目片段；具体SDv1.4模型留下一章，引用模型卡只为区分文本编码器。"
@@ -141,7 +141,7 @@
     },
     {
       "id": "C4",
-      "claim": "感知与局部对抗目标、KL/VQ压缩器",
+      "claim": "感知与局部对抗目标、轻KL/VQ压缩器；轻KL不是严格强制潜表示为标准正态",
       "report_anchor": "learning-compression",
       "support": "direct",
       "source_ids": [
@@ -174,7 +174,7 @@
     },
     {
       "id": "C7",
-      "claim": "适当压缩取舍不等于压缩产生智能",
+      "claim": "适当压缩取舍不等于压缩产生智能；除了同训练步数，另有固定35V100日的趋势对照，A100/V100换算采用2.2倍假设",
       "report_anchor": "compression-tradeoff",
       "support": "direct",
       "source_ids": [
@@ -182,7 +182,7 @@
         "PODCAST"
       ],
       "critical": true,
-      "evidence": "§4.1、Figures6/7、Tables8/14–15/§E.3.5：f4/8较优，f32损质；A100同迭代近规模但batch/LR有差别，图指标5k与最终50k分开；VQ重建稍差不必生成更差。"
+      "evidence": "§4.1、Figures6/7、Tables8/14–15/§E.3.5：f4/8较优、f32损质；A100同迭代近规模但batch/LR不同，5k/50k样本分开；§D.5 Figure17文字给出固定35V100日趋势相似，§F说明A100/V100按2.2换算；VQ重建稍差不必生成更差。"
     },
     {
       "id": "C8",
@@ -244,14 +244,14 @@
     },
     {
       "id": "C13",
-      "claim": "修补的效率配对实验而非本机或纯文本基准",
+      "claim": "修补效率是具体配对实验；Table6的VQ w/attn指第一阶段压缩器注意力，不是整套去噪网络有无注意力",
       "report_anchor": "experiments",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "Table6 VQw/attn行：train0.11/0.33samples/s，sampling256 0.26/0.97，hours/epoch20.66/7.04，FID@2kepoch6 24.74/14.99；Table15修补训练8×V100、表注GPU/batch影响。"
+      "evidence": "Table6 VQw/attn行：train0.11/0.33samples/s，sampling256 0.26/0.97，hours/epoch20.66/7.04，FID@2kepoch6 24.74/14.99；Table15修补训练8×V100、表注GPU/batch影响。 §4.5原文明确without any attention in the first stage。"
     },
     {
       "id": "C14",
@@ -262,7 +262,7 @@
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§4.3.2–4.5、Tables4/5/7：布局/超分/修补分别训练；SR3 IS更佳、回归PSNR/SSIM更高；高分辨率泛化依赖条件/信噪比与部分微调。 Table4 Task2超分/修补偏好70.6%/68.1%，§E.3.6观看3秒后回答；是与基准的偏好而非满意度或胜真图比例。"
+      "evidence": "§4.3.2–4.5、Tables4/5/7：布局/超分/修补分别训练；SR3 IS更佳、回归PSNR/SSIM更高；高分辨率泛化依赖条件/信噪比与部分微调。 Table4 Task2超分/修补偏好70.6%/68.1%，§E.3.6观看3秒后回答；是与基准的偏好而非满意度或胜真图比例。 Table4 Task2超分对照Pixel-DM(f1)、修补对照LaMa；Task1另对真实图，不能混用。"
     },
     {
       "id": "C15",
@@ -337,7 +337,7 @@
     },
     {
       "id": "U4",
-      "title": "感知与局部对抗目标、KL/VQ压缩器",
+      "title": "感知与局部对抗目标、轻KL/VQ压缩器；轻KL不是严格强制潜表示为标准正态",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -367,7 +367,7 @@
     },
     {
       "id": "U7",
-      "title": "适当压缩取舍不等于压缩产生智能",
+      "title": "适当压缩取舍不等于压缩产生智能；除了同训练步数，另有固定35V100日的趋势对照，A100/V100换算采用2.2倍假设",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -431,7 +431,7 @@
     },
     {
       "id": "U13",
-      "title": "修补的效率配对实验而非本机或纯文本基准",
+      "title": "修补效率是具体配对实验；Table6的VQ w/attn指第一阶段压缩器注意力，不是整套去噪网络有无注意力",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -501,5 +501,18 @@
     "ASR时间起止分别单调但存在三处相邻重叠与重复，未听音/测WER。",
     "花照、512→128为解释例子；压缩尺寸比不等于端到端加速，感知补全不等于真实细节恢复。",
     "模型卡是已获取版本，只用于固定CLIP对比，不声称是2022原稿；后续人物、市场、控制方法不在本章核验。"
-  ]
+  ],
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "原报告311行全文含所有脚注；LDM v2 pp1–9、21–22、25–29文字、公式、表格和图注回读，未新逐格查看原图。",
+      "讲义p49文字与191段目标ASR全文；所用模型卡在本轮25章已全文回读，元信息和shownotes沿用可信缓存。"
+    ],
+    "substantive_changes": [
+      "补齐同训练步数之外的固定计算资源对照及A100/V100换算假设，避免只留保留意见而漏掉作者已有证据。",
+      "明确Table6注意力开关属于第一阶段，Table4用户比较的具体对手与Task1/2边界。",
+      "澄清轻KL并不强制严格标准正态；统一标题、30章直达和既有转写核查回链。"
+    ],
+    "inherited_checks": "未变原图核对、元数据和网页读取收据、转写百分秒检查沿用此前可信记录；未新联网、看图、听校或运行模型。"
+  }
 }

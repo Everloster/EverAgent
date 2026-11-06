@@ -1,5 +1,5 @@
 ---
-title: "《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？"
+title: "AI演义·30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
@@ -11,9 +11,9 @@ reader_contract: "standalone"
 semantic_tags: ["ai_history", "stable_diffusion", "text_to_image", "classifier_free_guidance", "latent_diffusion"]
 ---
 
-# 《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？
+# AI演义·30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？
 
-[返回原报告第 30 节](../AI演义_笔记分析与项目整合报告.md#paper-sd14) · [上一节：LDM](AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) · [下一节：DiT](../AI演义_笔记分析与项目整合报告.md#paper-dit)
+[返回原报告第 30 节](../AI演义_笔记分析与项目整合报告.md#paper-sd14) · [上一节：LDM](AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) · [下一节：DiT](AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)
 
 你输入一句话：**“窗边花瓶里的一朵红花。”**
 
@@ -40,6 +40,12 @@ semantic_tags: ["ai_history", "stable_diffusion", "text_to_image", "classifier_f
 **Checkpoint 可以理解为训练到某个阶段保存下来的模型参数。** 它不是一份提示词，也不是一个聊天界面。推理程序加载这些参数，才把已经学到的能力用于新输入。
 
 原 LDM v2 的文本实验使用 BERT tokenizer 与联合训练的 Transformer 条件编码器；v1.4 则使用**固定的预训练 CLIP 文本编码器**。因此，“论文提出潜空间扩散”与“v1.4 具体用冻结 CLIP”需要分别查论文和模型卡，不能互相代替。[^ldm] [^card]
+
+### 同一个模型名，也要核对权重怎样装载
+
+模型卡将供 Diffusers 使用的权重与供原 CompVis 代码使用的权重入口分开。选择“v1.4”还不够，参数文件的组织方式也要与加载程序配套。
+
+官方 README 还提醒了一个容易误读的开关：v1 推理配置中的 `use_ema: false`，**不等于这些权重从未做过 EMA**。EMA 是训练中对参数做指数移动平均，减小短期更新的波动；参考配置面向只保存 EMA 权重的 checkpoint，因此不再从另一套参数切换到 EMA。若换成同时含两套参数的完整 checkpoint，同一个 `false` 才会加载非 EMA 权重。这个例子说明，脱离文件和调用方式，孤立地读一个配置名会得出相反的结论。[^readme]
 
 <a id="text-encoder"></a>
 
@@ -131,6 +137,8 @@ v1.4 的自编码器让图像的高、宽各缩小 **8 倍**。以一张 **512×
 > 引导后的预测 ＝ 无条件预测 ＋ 引导强度 ×（有条件预测 − 无条件预测）
 
 直观上，它突出“因为这句话而发生的变化”。这里没有再训练一个独立的图像分类器来打分，所以叫“无分类器”。也不是养了两套互不相关的模型：两种预测共用参数；代码可以把两组输入拼成一个加倍的 batch，再调用同一个网络。[^plms]
+
+**共用参数不等于只做一组计算。** 引导仍要取得两种去噪预测；合并 batch 是组织计算的办法，不是把其中一半工作消掉。因此，CFG 省去的是额外分类器这一组件，不能据此宣称采样没有额外开销。
 
 ### 引导强度不是质量旋钮
 
@@ -226,7 +234,7 @@ LAION-5B 的数据构建论文使用图像与文字编码之间的相似度，�
 
 ### 训练成本与运行门槛，是两回事
 
-模型卡记录的训练配置为 **32×8 张 A100**，使用梯度累积，整体 batch 为 **2048**。这是模型训练设置，不是“个人生成一张花照也需要这么多卡”。[^card-training]
+模型卡记录的训练配置为 **32×8 张 A100**，也就是 256 张卡。其整体 batch **2048** 来自“256 张卡 × 每卡每次 4 张图 × 累积 2 轮梯度”：先累积这些样本的梯度，再完成一次参数更新。这是训练更新的样本口径，不是单张卡一次要装下 2048 张图，更不是“个人生成一张花照也需要这么多卡”。[^card-training]
 
 官方 README 列出约 **8.6 亿参数的 U-Net** 和 **1.23 亿参数的文本编码器**，并写出参考实现至少 10GB 显存的运行条件。模型卡同时给出半精度和 attention slicing 等低显存建议。
 
@@ -304,7 +312,7 @@ v1.4 模型卡对局限写得很直接：文字渲染不好，复杂组合关系
 
 节目 shownotes 把相关内容放在 Stable Diffusion 一项。对应口述为 **03:45:52–03:52:54**，与上一章共享同一段，不是节目另外安排了“v1.4 专章”。讲义采用第 49 页。本章用模型卡和代码拆清方法与实现，未把口述里的类比直接当成配置事实。[^podcast]
 
-这段转写共 191 段，起始、结束时间各自单调，但存在三处很短的相邻重叠及重复短句。已核对文本与时间结构，**未重新听音、未测字错误率**。本章也没有训练、生成、测速或验证全部许可证条款；只解释实际读到的机制、记录和局限。
+转写核查细节见[既有记录](.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.transcription-review.json)。已核对文本与时间结构，**未重新听音、未测字错误率**。本章也没有训练、生成、测速或验证全部许可证条款；只解释实际读到的机制、记录和局限。
 
 [^card]: [Stable Diffusion v1.4 官方模型卡，固定版本](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md)，Model Details、Training、Examples。其模型类型、开发者与固定 CLIP 等记录，不能替代 LDM 论文的具体实验配置。
 [^ldm]: [LDM 原论文 v2](https://arxiv.org/pdf/2112.10752v2)，§§3.1–3.3、§4.3.1；更完整的压缩与条件机制见[上一章](AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md)。
@@ -312,7 +320,7 @@ v1.4 模型卡对局限写得很直接：文字渲染不好，复杂组合关系
 [^config]: [官方 v1 推理配置](https://github.com/CompVis/stable-diffusion/blob/master/configs/stable-diffusion/v1-inference.yaml)，核对 `timesteps: 1000`、四潜通道、冻结条件编码器、`crossattn`、AutoencoderKL 与 U-Net 配置。
 [^cfg]: Ho、Salimans，[Classifier-Free Diffusion Guidance](https://arxiv.org/abs/2207.12598v1)，§3.2、Algorithms 1–2、§4.1；短版在 NeurIPS 2021 workshop 展示，本 arXiv 版本于 2022 年 7 月提交。论文用“有条件预测＋w×差值”，代码用“无条件预测＋s×差值”，两者的无额外引导点分别为 w＝0、s＝1。
 [^plms]: [官方 `PLMSSampler` 源码](https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py)，`make_schedule`、`p_sample_plms` 与其内部 `get_model_output`：CFG 共用网络、成对 batch、首步额外估计及 eta 限制。
-[^readme]: [CompVis Stable Diffusion 官方 README](https://github.com/CompVis/stable-diffusion/blob/master/README.md)，Stable Diffusion v1、Reference Sampling Script、Diffusers Integration、开头组件规模与合作说明。参考命令参数不等于所有客户端的默认值。
+[^readme]: [CompVis Stable Diffusion 官方 README](https://github.com/CompVis/stable-diffusion/blob/master/README.md)，Stable Diffusion v1、Reference Sampling Script、Diffusers Integration、EMA-only 与完整 checkpoint 的装载说明、开头组件规模与合作说明。参考命令参数不等于所有客户端的默认值。
 [^card-training]: 固定版本[模型卡 Training](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md#training)，包括四个 checkpoint 的来历、分辨率、数据筛选及训练配置。v1.3、v1.4 都从 v1.2 继续。
 [^laion]: [LAION-5B 原论文](https://arxiv.org/abs/2210.08402)，§3.1 的图文相似度过滤与 §3.2 的安全限制；本章对应[仓内 PDF](../../papers/29_laion5b_2022.pdf)第 4–6 页，只核与这两种 CLIP 用途有关的内容，未重做数据集审计。
 [^card-eval]: 固定版本[模型卡 Evaluation Results](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md#evaluation-results)。本章核评价协议，不转录未经逐点核验的曲线数值。

@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "generator-d7ff99e5ce48",
+    "run_id": "ai-yanyi-gan-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮eacli session current核实当前codex-turn-context、调用方与main工作区；图像能力仅辅助读取来源，不作为独立复核。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "《AI演义》第26节GAN独立科普展开：以生成花卉图片解释来源监督、交替更新、经D传给G的梯度、非饱和目标、理想分析与模式崩塌，核读原始实验和评价限制。",
+    "summary": "《AI演义》32篇全量精修中的第26篇：全文回读GAN，把最优判别器的密度比、分布匹配目标与现实训练检查分开讲透。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主报告第26节实质重写，标题后第一块为展开链接；展开保留返回原节、前后章节导航，研究入口同步。"
+        "text": "保留第26篇路径和编号，与总览及25/27分章往返；总览于全系列收束时统一核对。"
       },
       {
         "id": "R6",
-        "text": "使用统一的两位编号标题，正文独立可读，脚注、链接和三问完整；完成独立内容复核，不要求工作台页面验收。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -260,14 +260,14 @@
     },
     {
       "id": "C8",
-      "claim": "理想分布匹配时，等权两来源下最优D输出1/2；收敛分析需要足够容量、最优D和足够小的分布更新，有限参数优化无此普遍保证。",
+      "claim": "理想分布匹配时，等权两来源下最优D输出1/2；收敛分析需要足够容量、最优D和足够小的分布更新，有限参数优化无此普遍保证。 最优D为p_data/(p_data+p_g)，原始目标在最优D下为−log4+2JSD；非现实损失直接测量分布差异。",
       "report_anchor": "ideal-equilibrium",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "Figures1、Propositions1–2、Theorem1和p5参数空间限制。"
+      "evidence": "Figures1、Propositions1–2、Theorem1和p5参数空间限制。 Eq2与Eq6；密度比用同一x位置、等权来源解释，不把密度当单张画质评分。"
     },
     {
       "id": "C9",
@@ -471,7 +471,7 @@
     },
     {
       "id": "U7",
-      "title": "Figure1与理论收敛前提；1/2不是任意真实训练验收规则。",
+      "title": "Figure1、最优D的密度比与JSD目标、理论收敛前提；1/2或现实损失都不是任意真实训练的验收规则。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -695,5 +695,18 @@
       ],
       "paper_scope": "GAN全9页；参考文献条目已读但引用文献本身未逐篇读取。"
     }
-  ]
+  ],
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "322行原报告全文含脚注；GAN v1共9页文字全文，含全部公式、表格和图注（不是新视觉检查）。",
+      "GAN主段95段与扩散比较24段ASR全文、讲义p44文字；CLIP方法继承紧邻第25篇原文回读，shownotes继承本轮全文阅读。"
+    ],
+    "substantive_changes": [
+      "用同位置密度比解释最优判别器为什么是1/2，保留来源等权及分布覆盖范围。",
+      "补足原始目标在最优D下与2JSD的关系，不把实际损失当精确分布距离。",
+      "标题和27章直达统一，转写过程数量回到既有摘要；保留非饱和目标、稳定性与原实验的深度。"
+    ],
+    "inherited_checks": "未变的原图检查、原始来源身份及元信息、书籍署名和蒸馏方法依据继承已读可信材料；未新联网、看图、听校或训练。"
+  }
 }

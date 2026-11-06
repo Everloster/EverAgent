@@ -2,417 +2,33 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "unconfirmed",
-        "harness": "codex",
-        "run_id": "gan_primary_review",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "identity_basis": "native-independent-subagent; runtime model was not independently exposed; shared eacli parent identity was not used",
-        "model_runtime_confirmation": "session-bound-unverified",
-        "dispatch_note": "策略默认glm-5.3未出现在当前可用子agent型号目录；按协调者授权使用原生独立上下文兜底，不声称已满足某一已确认强模型身份。"
-      },
-      "scores": {
-        "evidence_fidelity": 97,
-        "request_coverage": 96,
-        "reasoning_quality": 97,
-        "readability": 93,
-        "limitations": 98
-      },
-      "score_reasons": {
-        "evidence_fidelity": "以固定v1的9页正文/图表文字、讲义p44、两段119条ASR、官方元数据和书籍页逐项核验C1–C19；四方法两数据集数值、k=1、1/2条件、替代目标及日期作者均吻合。PDF与文本缓存重新提取字节相同；未把转写错词、作者抽样自述或历史市场叙述升级成本文实证。图页未在本次独立复核重新视觉检查，相关陈述仅核至原文与图注。",
-        "request_coverage": "R1–R6对应的原论文/讲义/口述读取、单一花卉例子、梯度机制、理论与实际边界、原始实验、采样和研究入口均有实际落点；主稿§26已实质改写且首块为展开链接，回链与前后章有效。独立来源地图覆盖GAN核心，不把下一章VAE/扩散旁支列为本章缺失。轻微台账精度建议：U16的原shownotes顺序是定位元数据而非正文逐字解释，可写明用途。",
-        "reasoning_quality": "从来源标签到D更新、经D传梯度再更新G的链条完整；固定权重不等于断梯度、同固定点不等于同目标、D=1/2不是成功充分证据、模式崩塌不同于记忆等关键区分成立。采样/密度/逆推断与条件展望边界清楚，花卉反例不冒充实验。",
-        "readability": "正文能独立阅读，贯穿例子统一，少量公式逐符号解释；14个脚注均有定义，局部链接/锚点、三问、训练/使用示意与两位编号已查。§9第198行连续列出整流线性、sigmoid、maxout、dropout却未解释其作用，非专业读者会短暂失去主线；可移到脚注或增加一句这些只是当时网络部件设置，不影响核心结论。未进行或要求工作台页面验收。",
-        "limitations": "正文就近限定理想收敛、非饱和目标、Parzen估计、最近邻展示和历史叙事；明确未训练复现、花卉例子未运行、两段不连续ASR未听校/WER，局部比较不冒充全篇重审或全书阅读。非核心相关工作与未来工作省略有范围说明。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES",
-        "BOOK",
-        "DISTILLATION",
-        "CLIP"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "source_content_map": [
-        {
-          "id": "P01",
-          "title": "判别任务如何给生成建模提供可学习的反馈",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U18"
-          ],
-          "notes": "先从原论文§§1–3、讲义p44与花卉判别口述识别动机，再核正文§1：已有生成路线、概率计算困难与可学习反馈均进入主线；生成/理解难度没有被当成普遍定律。U18所列逐篇核完相关工作的扩展不属本章核心，省略理由合理。"
-        },
-        {
-          "id": "P02",
-          "title": "随机输入、生成样本、真假来源标签与无逐图标准答案",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U3"
-          ],
-          "notes": "正文§§2–3明确区分随机z、图像、真假来源标签与人工画质评分；交代没有逐个z的配对答案、同z在当前无中间噪声设置下的确定性，并不把随机输入当成多样性保证或文本提示。"
-        },
-        {
-          "id": "P03",
-          "title": "交替更新、暂时固定参数与梯度通过判别器",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4"
-          ],
-          "notes": "Algorithm1的k步D/1步G、实验k=1、G更新前重新抽样均吻合；§§4–5讲清固定D权重但让梯度穿过D，更新的是G参数而非只修当前图片。"
-        },
-        {
-          "id": "P04",
-          "title": "理想分布相等与D输出1/2的前提",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U7"
-          ],
-          "notes": "§7把等权来源下最优D=1/2、分布匹配、非参数/容量前提、最优D与足够小更新分开；用不看输入的常数D反例阻断反向推断，未将理想定理外推为实际神经网络收敛保证。"
-        },
-        {
-          "id": "P05",
-          "title": "原始饱和目标、非饱和替代目标与训练失衡",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U6"
-          ],
-          "notes": "§6正确对应原文p3的饱和问题和max log D(G(z))替代目标，解释同固定点不等于同梯度或严格同一零和目标。扩散转场仅引入GAN的训练失衡，不扩大为VAE永远模糊或所有GAN训练困难的普遍定律。"
-        },
-        {
-          "id": "P06",
-          "title": "模式坍塌与多样性是生成分布目标的一部分",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8"
-          ],
-          "notes": "§8对齐Helvetica scenario；花色收缩为明示构造的贯穿例子。少数逼真输出、覆盖不足与记忆训练样本区分清楚，且不把D未同步当作坍塌的完整成因或万能处方。"
-        },
-        {
-          "id": "P07",
-          "title": "早期实验、间接似然估计与证据边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U10",
-            "U11"
-          ],
-          "notes": "逐项对照§5、Table1与Figures2–3图注：四行两列数值均吻合；实值MNIST、跨样本/跨折标准误、验证集选择带宽和高维局限均保留。随机样本及最近邻只被当作作者展示，未扩写为普遍不记忆证明或全面优于既有方法。"
-        },
-        {
-          "id": "P08",
-          "title": "前向采样、隐式密度、潜空间与未来扩展边界",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U12",
-            "U13",
-            "U19"
-          ],
-          "notes": "§§9–10以Figure3与§§6–7为据，区分潜空间插值和普遍语义可控，直接前向采样和精确密度/反向推断，条件c展望和已完成文生图。U19的其余半监督等展望已标为非核心省略；不要求当前GAN章节再展开这些旁支。"
-        },
-        {
-          "id": "P09",
-          "title": "两个模型的三种分工：蒸馏、GAN、CLIP",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "DISTILLATION",
-            "CLIP"
-          ],
-          "matched_coverage_unit_ids": [
-            "U17"
-          ],
-          "notes": "独立读蒸馏§§1–2及CLIP§2.3/Figure3后核对§11：既有教师软目标、不断变化的对抗判别器、共同配对目标三者没有被混同，也没有从网络数目推出直接技术谱系。"
-        },
-        {
-          "id": "P10",
-          "title": "作者、日期、花书与播客历史叙述的证据等级",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "METADATA",
-            "BOOK",
-            "PODCAST",
-            "LECTURE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14",
-            "U15"
-          ],
-          "notes": "2014-06-10、8位作者、访问学生注明及2016年三位花书作者均可回溯；没有补写私人分工和当前履历。口述的随后几年影响未变成市场份额事实。"
-        },
-        {
-          "id": "P11",
-          "title": "shownotes中GAN章节及GAN—Diffusion比较段的真实范围",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U15",
-            "U16"
-          ],
-          "notes": "已读完整shownotes；GAN在Part4的具体条目单独留痕，03:08:08未被当作GAN起点。主ASR95段与比较ASR24段是两个不连续范围；自核片段和文本哈希、开始/结束时间单调性、无逆序/重叠，未听音或测WER。正文说明本系列CLIP→GAN是问题顺序而非年份顺序。U16中“双流→GAN→Diffusion”用于来源定位，正文没有逐字复述；此不影响本章核心覆盖，但其included标记可更精确注明为定位用途。"
-        }
-      ],
-      "unsupported_claims": [],
-      "missing_requirements": [],
-      "hard_failures": [],
-      "notes": "本次内容复核未发现核心事实、数字或明确要求的阻断项。上述术语呈现和U16台账措辞为非阻断建议，不要求增加下一章内容。顺序为先核快照，再读原始材料并在独立上下文列出11个核心/支持单元，随后才读review-prompt、正文与evidence并映射。没有打开任何旧review条目或意见，也未读取其五维评分；只为主稿继承读取已发布基线review的顶层revision_round/decision绑定与条数。评审分数不是原生最终判定；按本任务只写两份review-entry的权限边界，不向仓库review写入，协调者合并后运行report_quality.py check/finalize。",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
-        "report_sha256": "73d8eb1e6700457990829946ba9d81639f37aed23d8fd17aa2cd29c74ae483b8",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.evidence.json",
-        "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8",
-        "verified_before_source_reading": true,
-        "verified_before_output": true
-      },
-      "read_scopes": {
-        "source_first": true,
-        "paper": "固定v1全部9页文字、公式、表格和图注；独立用pdftotext -layout重新提取后与paper-v1-layout.txt字节相同。未重新视觉检查图像像素。",
-        "lecture": "讲义物理p44的文本；完整PDF文本重新提取与缓存相同，内容阅读限于p44。",
-        "podcast": "完整读取95条GAN主段和24条GAN训练比较段；未读成一个连续区间，未重读全节目。",
-        "shownotes": "全文读取shownotes；本次内容地图只要求当前GAN章节与所用比较补充段，不重新评全节目其他章节。",
-        "metadata_and_book": "arXiv固定v1元数据页及Deep Learning官网首页/引用条目；缓存SHA与evidence一致。",
-        "cross_method_comparison": "蒸馏原论文§§1–2与CLIP§2.3/Figure3；两份缓存均重新从仓内PDF提取校验相同，未重审其余实验。",
-        "report": "GAN展开篇全文、证据账本全部要求/claim/coverage；主稿§26及三条GAN脚注、导航，以及研究README中的第26条。",
-        "presentation": "Markdown正文、14条脚注、代码块闭合、无替换字符、相对链接和显式锚点。无浏览器/工作台/页面渲染验收。",
-        "transcript_receipt_verification": {
-          "core": {
-            "segments": 95,
-            "start_seconds": 11874.72,
-            "end_seconds": 12123.22,
-            "elapsed_seconds": 248.5,
-            "slice_sha256": "b77d3115a9c923bb47be12eb66936874b3c6057b9879fd8ab819d831e9733004",
-            "text_sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
-            "start_backwards": 0,
-            "end_backwards": 0,
-            "end_before_start": 0,
-            "overlaps": 0,
-            "max_gap_seconds": 0.77
-          },
-          "comparison": {
-            "segments": 24,
-            "start_seconds": 12243.4,
-            "end_seconds": 12281.5,
-            "elapsed_seconds": 38.1,
-            "slice_sha256": "921b51a3624611ad5caa58f792bfdd0573387a475e642819a811512b94a871b6",
-            "text_sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
-            "start_backwards": 0,
-            "end_backwards": 0,
-            "end_before_start": 0,
-            "overlaps": 0,
-            "max_gap_seconds": 0
-          },
-          "cached_slices_and_native_receipts_hashes_match": true,
-          "raw_full_episode_owner_independently_rechecked": false,
-          "audio_listened": false,
-          "wer_measured": false,
-          "native_duration_field_interpretation": "native audit中的duration_seconds对应绝对结束时刻，片段实际时长另据百分秒segments计算；没有把12123或12281秒当成GAN片段时长。"
-        },
-        "review_history_access": "不读取既有review条目；主稿基线仅提取顶层轮次、pass、绑定哈希与条数，未输出基线score。主稿evidence自带的生成历史元数据未用于内容判断或评分。"
-      },
-      "directly_reviewed_critical_claim_ids": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19"
-      ],
-      "inherited_critical_claim_ids": [],
-      "directly_reviewed_source_ids": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES",
-        "BOOK",
-        "DISTILLATION",
-        "CLIP"
-      ],
-      "inherited_source_ids": [],
-      "directly_reviewed_coverage_unit_ids": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "inherited_coverage_unit_ids": [],
-      "directly_reviewed_requirement_ids": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "inherited_requirement_ids": [],
-      "verification_limits": [
-        "模型运行型号未独立确认，未用共享eacli命令返回的父会话型号证明本reviewer身份。",
-        "原始来源内容通过本机已有缓存读取并校验；未重复联网取证，不对在线页面之后的变化作保证。",
-        "原论文图像只核图注/文字与表值，本reviewer没有亲自重新视觉检查Figures1–3或讲义图页；提取命令的closepath告警仍保留为文档解析限制。",
-        "转写收据与所供切片相互吻合；没有独立访问全节目原始segments owner或重新听音，机器时间结构通过不等于语义零误差。",
-        "不复现模型、不重新抽样、不审计原始数据或所有参考文献；不以文本导航检查宣称页面验收。",
-        "最终质量判定由协调者合并本entry后交原生脚本完成。"
-      ]
-    },
-    {
-      "role": "flagship_final_review",
-      "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "gan_strong_review",
+        "run_id": "gan-r2-gpt56sol-20261106",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity_basis": "orchestrator-configured",
-        "model_runtime_confirmation": "session-bound-unverified"
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略记录为gpt-5.6-sol/codex；子环境未提供可确认自身型号的独立运行时证明，故只采用调度依据，不把父会话或宿主默认型号冒充Reviewer核实。"
       },
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本文件实际revision_round为2，本轮按冻结快照全文复核。",
       "scores": {
-        "evidence_fidelity": 97,
-        "request_coverage": 97,
-        "reasoning_quality": 98,
-        "readability": 97,
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
         "limitations": 99
       },
       "score_reasons": {
-        "evidence_fidelity": "逐项核对固定v1全文、讲义p44、两段ASR、shownotes、arXiv元数据、书籍官网及蒸馏/CLIP指定范围；机制、k=1、非饱和目标、理想条件、Table 1数值和评价口径均与原文相符，且花卉例子、播客历史叙事与论文实验明确分层。未听音与未复现实验不会被冒充为已完成。",
-        "request_coverage": "花卉例子贯穿随机输入、来源标签、交替更新、经D反传、饱和、理想均衡、模式崩塌、实验评价和采样边界；标题后有返回/前后导航，shownotes的Part 4 GAN节点也有明确留痕。原文非核心参考文献与部分展望省略均合理说明。",
-        "reasoning_quality": "不仅复述“生成器骗判别器”，还区分冻结参数与梯度流、原始minimax与非饱和动力学、充分条件与错误逆推、质量/多样性/记忆三类问题，并对蒸馏和CLIP只做有边界的训练分工比较。",
-        "readability": "少量必要符号配合单一花卉例子，训练顺序、反向传播和失败方式可独立阅读；表格、ASCII心智模型、脚注和三问完整。篇幅较长但与deep体裁及机制讲透的要求相称。",
-        "limitations": "清楚声明未训练花卉GAN、未听校/测WER、未审计完整数据与生成样本、理想定理不保证有限网络收敛、视觉展示不能证明无记忆，也不把节目影响叙事量化成市场事实。"
+        "evidence_fidelity": "来源优先复读GAN固定v1全部9页、讲义p44、95段主ASR、24段非连续补充ASR、shownotes、arXiv元数据、Deep Learning官网及蒸馏/CLIP指定比较范围。19项claim中的G/D分工、k=1、梯度路径、非饱和目标、最优D/JSD、Helvetica scenario、Table 1数值和采样取舍均与原文相符。",
+        "request_coverage": "花卉单例贯穿随机输入、来源监督、交替更新、经D反传、饱和、理想均衡、模式崩塌、实验评价与采样边界；作者/书籍、市场叙事和跨方法比较均有限定。27项来源地图含shownotes八章节，19 claims、19 coverage units与6项要求全部核对。",
+        "reasoning_quality": "不仅复述“生成器骗判别器”，还区分D的来源分类与花卉类别、冻结参数与梯度流、原始minimax与非饱和动力学、充分条件与错误逆推、质量/多样性/记忆、采样与显式密度/逆推。理论和现实训练之间有反例与前提。",
+        "readability": "全文独立可读，花卉例子、分步训练、ASCII心智模型和Table 1帮助建立机制。14个脚注定义与引用匹配，7个仓内链接均存在，Pandoc转HTML通过，无私有路径。篇幅较长但与deep机制讲解相称；未启动已取消前置的工作台功能验收。",
+        "limitations": "明确未训练花卉GAN、未听音/测WER、未审计完整数据和生成样本、未逐篇复读31项参考文献；视觉最近邻不证明无记忆，有限网络不继承分布空间收敛保证，节目影响叙事不冒充市场统计。两项支持性展望省略被明确登记。"
       },
       "critical_claim_ids_checked": [
         "C1",
@@ -474,91 +90,25 @@
         "R5",
         "R6"
       ],
-      "directly_reviewed_critical_claim_ids": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19"
-      ],
-      "directly_reviewed_coverage_unit_ids": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "directly_reviewed_source_ids": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES",
-        "BOOK",
-        "DISTILLATION",
-        "CLIP"
-      ],
-      "directly_reviewed_requirement_ids": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "inherited_critical_claim_ids": [],
-      "inherited_coverage_unit_ids": [],
-      "inherited_source_ids": [],
-      "inherited_requirement_ids": [],
       "source_content_map": [
         {
-          "id": "SRC-GAN-01",
-          "title": "节目与讲义的历史直觉：用较成熟的判别任务帮助生成，并在Part 4从双流过渡到GAN再到Diffusion",
+          "id": "GAN-S01",
+          "title": "判别任务帮助生成的历史动机与适用边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
+            "PAPER",
             "LECTURE",
-            "PODCAST",
-            "SHOWNOTES"
+            "PODCAST"
           ],
           "matched_coverage_unit_ids": [
-            "U1",
-            "U15",
-            "U16"
+            "U1"
           ],
-          "notes": "正文把“生成更难”限定为节目直觉而非普遍定律，并准确标注两段不连续ASR与shownotes章节位置。"
+          "notes": "报告把“生成更难”限定为节目直觉，原论文的真正贡献落在可反传的对抗训练框架，不抹去RBM、GSN、VAE等前驱。"
         },
         {
-          "id": "SRC-GAN-02",
-          "title": "G把随机z映射到样本并隐式定义生成分布；输入变化不保证输出多样性",
+          "id": "GAN-S02",
+          "title": "随机z、G映射与隐式生成分布",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -567,11 +117,11 @@
           "matched_coverage_unit_ids": [
             "U3"
           ],
-          "notes": "花卉例子准确区分训练数据提供分布知识与z提供单次变化起点。"
+          "notes": "训练数据提供分布知识，z提供单次变化起点；输入变化不被误写为必然输出多样。"
         },
         {
-          "id": "SRC-GAN-03",
-          "title": "D判别真实来源与当前G来源，而非花/非花；来源标签由训练程序构造",
+          "id": "GAN-S03",
+          "title": "D判别样本来源而不是花卉类别",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -582,11 +132,11 @@
           "matched_coverage_unit_ids": [
             "U2"
           ],
-          "notes": "正文纠正了开场例子可能造成的类别分类误解，并保留数据选择仍依赖人的边界。"
+          "notes": "真假标签由真实数据与当前G输出的来源构造；D不是预训练花卉分类器，也不是固定完美教师。"
         },
         {
-          "id": "SRC-GAN-04",
-          "title": "Algorithm 1的交替更新、k=1实验设置，以及冻结D参数但梯度继续穿过D到G",
+          "id": "GAN-S04",
+          "title": "Algorithm 1交替更新、k=1与梯度穿过冻结的D",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -597,11 +147,11 @@
           "matched_coverage_unit_ids": [
             "U4"
           ],
-          "notes": "逐步训练叙述与算法一致；没有把k=1外推为所有GAN的最佳比例。"
+          "notes": "先更D再更G、实验k=1、更新G时固定D参数但保留经D求导均准确；没有把k=1当所有GAN黄金比例。"
         },
         {
-          "id": "SRC-GAN-05",
-          "title": "原始生成目标的早期饱和与最大化log D(G(z))的非饱和替代目标",
+          "id": "GAN-S05",
+          "title": "原始极小极大目标饱和与非饱和替代目标",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -612,11 +162,11 @@
             "U5",
             "U6"
           ],
-          "notes": "正文准确区分相同理想固定点与不同梯度/训练动力学，也未把替代目标说成稳定性总解。"
+          "notes": "min log(1-D(G(z)))与max log D(G(z))的目标方向、早期梯度和相同理想固定点分开；没有把替代损失写成稳定性总解。"
         },
         {
-          "id": "SRC-GAN-06",
-          "title": "最优D、p_g=p_data、D=1/2与JSD目标的理想分析及其容量/最优D/小步更新前提",
+          "id": "GAN-S06",
+          "title": "最优判别器密度比、D=1/2、JSD与收敛前提",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -625,11 +175,11 @@
           "matched_coverage_unit_ids": [
             "U7"
           ],
-          "notes": "正文以少数学方式讲清目标所对准的分布，并给出常数1/2弱判别器反例，避免把50%当现实验收充分条件。"
+          "notes": "p_g=p_data、-log4与2JSD关系及容量、最优D、小步更新前提准确；常数1/2弱判别器反例阻止把50%误作现实充分验收。"
         },
         {
-          "id": "SRC-GAN-07",
-          "title": "Helvetica scenario、G/D同步与模式崩塌；质量、多样性、记忆不可混为一谈",
+          "id": "GAN-S07",
+          "title": "Helvetica scenario、同步与模式崩塌",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -639,25 +189,24 @@
           "matched_coverage_unit_ids": [
             "U8"
           ],
-          "notes": "红花收缩是明示的教学构造，正文没有把论文的同步提醒扩大为所有崩塌的完整成因。"
+          "notes": "不同z收缩到少量输出、多样性不足、记忆训练数据和单样本质量被明确区分；同步提醒未扩大成全部崩塌成因。"
         },
         {
-          "id": "SRC-GAN-08",
-          "title": "MNIST/TFD/CIFAR-10实验、网络设置、随机样本/最近邻/z插值与作者克制的质量结论",
+          "id": "GAN-S08",
+          "title": "MNIST、TFD、CIFAR-10及原始网络设置",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U9",
-            "U11"
+            "U9"
           ],
-          "notes": "明确不是花卉或现代文生图实验，也没有用有限可视化证明普遍无记忆或语义可控。"
+          "notes": "生成器激活、判别器maxout/dropout，以及全连接与卷积/反卷积CIFAR结果口径正确；花卉例子明确非原论文实验。"
         },
         {
-          "id": "SRC-GAN-09",
-          "title": "Table 1四方法数值、实值MNIST、不同标准误口径、Parzen带宽与高维评价局限",
+          "id": "GAN-S09",
+          "title": "Parzen窗口定量评价与Table 1数值",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -666,26 +215,50 @@
           "matched_coverage_unit_ids": [
             "U10"
           ],
-          "notes": "225±2与2057±26转录正确，未误写为准确率、显式GAN似然或跨数据集画质总分。"
+          "notes": "四方法两数据集表值、实值MNIST、验证集选带宽和不同标准误口径准确；225±2没有被写成准确率或GAN显式似然。"
         },
         {
-          "id": "SRC-GAN-10",
-          "title": "无需MCMC的直接采样、隐式密度代价、无自带逆映射，以及条件生成/辅助推断等展望",
+          "id": "GAN-S10",
+          "title": "随机样本、最近训练邻居与z插值的证据边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U12",
-            "U13",
-            "U19"
+            "U11"
           ],
-          "notes": "已实现能力与未来扩展清楚分开；非核心展望细节的省略有说明。"
+          "notes": "作者的随机抽样声明和最近邻展示没有被升级为独立无记忆证明；插值只支持连续变化，不保证坐标具名语义或全空间质量。"
         },
         {
-          "id": "SRC-GAN-11",
-          "title": "作者、版本与花书线索，以及节目“主导多年”说法的证据边界",
+          "id": "GAN-S11",
+          "title": "无需MCMC的直接采样与隐式密度代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "训练与采样分开，使用时只需G前向；无显式p_g(x)、无自带逆映射和训练同步成本均保留。"
+        },
+        {
+          "id": "GAN-S12",
+          "title": "条件生成与辅助推断属于未来展望",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "把c同时输入G/D及训练辅助逆网络仅作为§7方向，没有冒充基本实验已实现自然语言文生图或现成反演。"
+        },
+        {
+          "id": "GAN-S13",
+          "title": "作者、版本、书籍与软件支持",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -696,14 +269,29 @@
             "PODCAST"
           ],
           "matched_coverage_unit_ids": [
-            "U14",
-            "U15"
+            "U14"
           ],
-          "notes": "核对8位作者、2014-06-10与书籍三位作者/2016年；不补私人分工、当前职位或市场份额。"
+          "notes": "八位作者、2014-06-10、Deep Learning三位作者与2016年准确；共同署名和致谢没有被外推为私人分工。"
         },
         {
-          "id": "SRC-GAN-12",
-          "title": "与知识蒸馏、CLIP的训练角色比较，不建立未经来源支持的直接谱系",
+          "id": "GAN-S14",
+          "title": "节目“主导多年”叙事与市场证据边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "LECTURE",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U16"
+          ],
+          "notes": "影响叙事没有量化成市场份额或成熟文生图事实；报告问题路线与节目时间顺序分开。"
+        },
+        {
+          "id": "GAN-S15",
+          "title": "与知识蒸馏和CLIP的训练角色比较",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -714,56 +302,981 @@
           "matched_coverage_unit_ids": [
             "U17"
           ],
-          "notes": "蒸馏的既有教师软目标、CLIP的双编码器共同配对目标、GAN的来源对抗三者分工比较准确。"
+          "notes": "既有教师软目标、双编码器共同配对与G/D来源对抗三者分工清楚，不建立未被原文支持的直接技术谱系。"
         },
         {
-          "id": "SRC-GAN-13",
-          "title": "相关工作与参考文献的范围边界",
+          "id": "GAN-S16",
+          "title": "相关工作与31项参考文献的范围",
           "importance": "supporting",
-          "assessment": "covered",
+          "assessment": "partial",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
             "U18"
           ],
-          "notes": "正文只概述论文直接讨论的前驱路线，明确未逐篇重读31项参考文献，不外推到现代全部变体。"
+          "notes": "报告概述原文直接讨论的主要前驱，但未逐篇复读31项引用；这一限制明示且不影响GAN机制主线。"
+        },
+        {
+          "id": "GAN-S17",
+          "title": "共享参数条件族、半监督与采样改进等其余展望",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "完整来源中这些未来方向未逐项扩写；正文已保留条件生成、辅助推断和协调问题，省略与本章核心范围一致。"
+        },
+        {
+          "id": "GAN-S18",
+          "title": "两段非连续转录的结构完整性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U5",
+            "U15",
+            "U16"
+          ],
+          "notes": "重跑机器审计：主段95条、补充段24条，均timestamp_errors=0、malformed_lines=0、max_consecutive_identical=1；没有把中间间隔冒充连续GAN片段。"
+        },
+        {
+          "id": "GAN-S19",
+          "title": "固定v1题名、Figure/Table与阅读范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U9",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "notes": "PDF题名Nets与摘要页Networks被识别为同一固定v1；9页正文、公式、图注和表值已核，未冒称逐篇审完参考文献或复现实验。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes Part 2 Infra与数据变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes Part 3语言模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes Part 4多模态模型的发展，含GAN",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U15",
+            "U16"
+          ],
+          "notes": "GAN条目位于双流之后、Diffusion之前；主段与转入扩散的补充段均有独立范围和哈希。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
         }
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
+      "notes": "冻结快照双SHA核对一致。全文与evidence直接复核，未继承旧轮评分；未发现需要退回修订的实质缺陷。最终状态由native checker判定。",
       "snapshot": {
         "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
-        "report_sha256": "73d8eb1e6700457990829946ba9d81639f37aed23d8fd17aa2cd29c74ae483b8",
-        "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8",
-        "snapshot_match": true
+        "report_sha256": "56fa9a6c2f5f0a3e732827ebfe69f62ea4b39b2b7e5543588118e9638e9acbf7",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.evidence.json",
+        "evidence_sha256": "f0161be1223fb51f038d8321ab011a04b1f0dcad99451e5900f8d3d186c935f0"
       },
-      "read_scopes": {
-        "PAPER": "固定v1全9页",
-        "LECTURE": "p44",
-        "PODCAST": "95段主片段与24段扩散比较片段，并核对等价时间结构收据",
-        "SHOWNOTES": "全文，重点Part 4",
-        "METADATA": "arXiv题名/作者/提交日期/摘要",
-        "BOOK": "首页作者与引用年份",
-        "DISTILLATION": "pp1–2",
-        "CLIP": "§2.3与Figure 3"
+      "actual_read_scopes": [
+        "GAN v1全部9页文字、公式、Algorithm 1、Figures 1–3、Tables 1–2与图注",
+        "讲义p44、95段GAN主ASR、24段扩散转场比较ASR、完整shownotes八个结构章节",
+        "arXiv v1元数据、Deep Learning官网作者/引用条目、蒸馏pp1–2与CLIP §2.3/Figure 3比较范围",
+        "当前报告与evidence全文、transcription-review、脚注、本地导航和隐私路径",
+        "分别重跑两段audit_transcript.py并核对时间戳机器收据"
+      ],
+      "inheritance_verification": {
+        "used": false,
+        "notes": "本轮为revision_round 2当前冻结快照的来源优先全文复核，不沿用历史review判断或分数。"
       },
       "verification_limits": [
-        "未听音、未测WER；只核对机器时间结构收据。",
-        "未训练或复现GAN，未重新审计数据集、生成样本与最近邻。",
-        "未逐篇读取GAN参考文献，蒸馏与CLIP只读指定比较范围。"
-      ],
-      "notes": "来源优先独立复核；未读取任何旧review意见或生成思路。未发现具体事实、机制、覆盖或引用缺陷。按权重加权分为97.6；最终状态应由原生质量脚本判定。"
+        "未重新听音，未声称WER",
+        "未运行模型训练、采样或复现实验",
+        "原论文图像依据文字提取和图注，本轮未重新逐像素视觉检查Figures 1–3",
+        "未审计原始数据、生成样本或全部参考文献；蒸馏与CLIP仅核指定比较范围",
+        "不以Markdown检查冒充浏览器或工作台页面验收"
+      ]
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 96.3,
+    "score": 98.85,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "0cbe288b7de49ec82cc3ca924a643fe6554e55bd54648346a3acf749f7ad4c16",
-    "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8"
-  }
+    "report_sha256": "2b3aef35b0bf0fd798361372f8802048c3c87446bfe2194ae4f0350d4d58a334",
+    "evidence_sha256": "f0161be1223fb51f038d8321ab011a04b1f0dcad99451e5900f8d3d186c935f0"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "gan_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "native-independent-subagent; runtime model was not independently exposed; shared eacli parent identity was not used",
+            "model_runtime_confirmation": "session-bound-unverified",
+            "dispatch_note": "策略默认glm-5.3未出现在当前可用子agent型号目录；按协调者授权使用原生独立上下文兜底，不声称已满足某一已确认强模型身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 96,
+            "reasoning_quality": 97,
+            "readability": 93,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "以固定v1的9页正文/图表文字、讲义p44、两段119条ASR、官方元数据和书籍页逐项核验C1–C19；四方法两数据集数值、k=1、1/2条件、替代目标及日期作者均吻合。PDF与文本缓存重新提取字节相同；未把转写错词、作者抽样自述或历史市场叙述升级成本文实证。图页未在本次独立复核重新视觉检查，相关陈述仅核至原文与图注。",
+            "request_coverage": "R1–R6对应的原论文/讲义/口述读取、单一花卉例子、梯度机制、理论与实际边界、原始实验、采样和研究入口均有实际落点；主稿§26已实质改写且首块为展开链接，回链与前后章有效。独立来源地图覆盖GAN核心，不把下一章VAE/扩散旁支列为本章缺失。轻微台账精度建议：U16的原shownotes顺序是定位元数据而非正文逐字解释，可写明用途。",
+            "reasoning_quality": "从来源标签到D更新、经D传梯度再更新G的链条完整；固定权重不等于断梯度、同固定点不等于同目标、D=1/2不是成功充分证据、模式崩塌不同于记忆等关键区分成立。采样/密度/逆推断与条件展望边界清楚，花卉反例不冒充实验。",
+            "readability": "正文能独立阅读，贯穿例子统一，少量公式逐符号解释；14个脚注均有定义，局部链接/锚点、三问、训练/使用示意与两位编号已查。§9第198行连续列出整流线性、sigmoid、maxout、dropout却未解释其作用，非专业读者会短暂失去主线；可移到脚注或增加一句这些只是当时网络部件设置，不影响核心结论。未进行或要求工作台页面验收。",
+            "limitations": "正文就近限定理想收敛、非饱和目标、Parzen估计、最近邻展示和历史叙事；明确未训练复现、花卉例子未运行、两段不连续ASR未听校/WER，局部比较不冒充全篇重审或全书阅读。非核心相关工作与未来工作省略有范围说明。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "BOOK",
+            "DISTILLATION",
+            "CLIP"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "P01",
+              "title": "判别任务如何给生成建模提供可学习的反馈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U18"
+              ],
+              "notes": "先从原论文§§1–3、讲义p44与花卉判别口述识别动机，再核正文§1：已有生成路线、概率计算困难与可学习反馈均进入主线；生成/理解难度没有被当成普遍定律。U18所列逐篇核完相关工作的扩展不属本章核心，省略理由合理。"
+            },
+            {
+              "id": "P02",
+              "title": "随机输入、生成样本、真假来源标签与无逐图标准答案",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "正文§§2–3明确区分随机z、图像、真假来源标签与人工画质评分；交代没有逐个z的配对答案、同z在当前无中间噪声设置下的确定性，并不把随机输入当成多样性保证或文本提示。"
+            },
+            {
+              "id": "P03",
+              "title": "交替更新、暂时固定参数与梯度通过判别器",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "Algorithm1的k步D/1步G、实验k=1、G更新前重新抽样均吻合；§§4–5讲清固定D权重但让梯度穿过D，更新的是G参数而非只修当前图片。"
+            },
+            {
+              "id": "P04",
+              "title": "理想分布相等与D输出1/2的前提",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "§7把等权来源下最优D=1/2、分布匹配、非参数/容量前提、最优D与足够小更新分开；用不看输入的常数D反例阻断反向推断，未将理想定理外推为实际神经网络收敛保证。"
+            },
+            {
+              "id": "P05",
+              "title": "原始饱和目标、非饱和替代目标与训练失衡",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U6"
+              ],
+              "notes": "§6正确对应原文p3的饱和问题和max log D(G(z))替代目标，解释同固定点不等于同梯度或严格同一零和目标。扩散转场仅引入GAN的训练失衡，不扩大为VAE永远模糊或所有GAN训练困难的普遍定律。"
+            },
+            {
+              "id": "P06",
+              "title": "模式坍塌与多样性是生成分布目标的一部分",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "§8对齐Helvetica scenario；花色收缩为明示构造的贯穿例子。少数逼真输出、覆盖不足与记忆训练样本区分清楚，且不把D未同步当作坍塌的完整成因或万能处方。"
+            },
+            {
+              "id": "P07",
+              "title": "早期实验、间接似然估计与证据边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U10",
+                "U11"
+              ],
+              "notes": "逐项对照§5、Table1与Figures2–3图注：四行两列数值均吻合；实值MNIST、跨样本/跨折标准误、验证集选择带宽和高维局限均保留。随机样本及最近邻只被当作作者展示，未扩写为普遍不记忆证明或全面优于既有方法。"
+            },
+            {
+              "id": "P08",
+              "title": "前向采样、隐式密度、潜空间与未来扩展边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U12",
+                "U13",
+                "U19"
+              ],
+              "notes": "§§9–10以Figure3与§§6–7为据，区分潜空间插值和普遍语义可控，直接前向采样和精确密度/反向推断，条件c展望和已完成文生图。U19的其余半监督等展望已标为非核心省略；不要求当前GAN章节再展开这些旁支。"
+            },
+            {
+              "id": "P09",
+              "title": "两个模型的三种分工：蒸馏、GAN、CLIP",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "DISTILLATION",
+                "CLIP"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "独立读蒸馏§§1–2及CLIP§2.3/Figure3后核对§11：既有教师软目标、不断变化的对抗判别器、共同配对目标三者没有被混同，也没有从网络数目推出直接技术谱系。"
+            },
+            {
+              "id": "P10",
+              "title": "作者、日期、花书与播客历史叙述的证据等级",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "BOOK",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U15"
+              ],
+              "notes": "2014-06-10、8位作者、访问学生注明及2016年三位花书作者均可回溯；没有补写私人分工和当前履历。口述的随后几年影响未变成市场份额事实。"
+            },
+            {
+              "id": "P11",
+              "title": "shownotes中GAN章节及GAN—Diffusion比较段的真实范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U15",
+                "U16"
+              ],
+              "notes": "已读完整shownotes；GAN在Part4的具体条目单独留痕，03:08:08未被当作GAN起点。主ASR95段与比较ASR24段是两个不连续范围；自核片段和文本哈希、开始/结束时间单调性、无逆序/重叠，未听音或测WER。正文说明本系列CLIP→GAN是问题顺序而非年份顺序。U16中“双流→GAN→Diffusion”用于来源定位，正文没有逐字复述；此不影响本章核心覆盖，但其included标记可更精确注明为定位用途。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "本次内容复核未发现核心事实、数字或明确要求的阻断项。上述术语呈现和U16台账措辞为非阻断建议，不要求增加下一章内容。顺序为先核快照，再读原始材料并在独立上下文列出11个核心/支持单元，随后才读review-prompt、正文与evidence并映射。没有打开任何旧review条目或意见，也未读取其五维评分；只为主稿继承读取已发布基线review的顶层revision_round/decision绑定与条数。评审分数不是原生最终判定；按本任务只写两份review-entry的权限边界，不向仓库review写入，协调者合并后运行report_quality.py check/finalize。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
+            "report_sha256": "73d8eb1e6700457990829946ba9d81639f37aed23d8fd17aa2cd29c74ae483b8",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.evidence.json",
+            "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8",
+            "verified_before_source_reading": true,
+            "verified_before_output": true
+          },
+          "read_scopes": {
+            "source_first": true,
+            "paper": "固定v1全部9页文字、公式、表格和图注；独立用pdftotext -layout重新提取后与paper-v1-layout.txt字节相同。未重新视觉检查图像像素。",
+            "lecture": "讲义物理p44的文本；完整PDF文本重新提取与缓存相同，内容阅读限于p44。",
+            "podcast": "完整读取95条GAN主段和24条GAN训练比较段；未读成一个连续区间，未重读全节目。",
+            "shownotes": "全文读取shownotes；本次内容地图只要求当前GAN章节与所用比较补充段，不重新评全节目其他章节。",
+            "metadata_and_book": "arXiv固定v1元数据页及Deep Learning官网首页/引用条目；缓存SHA与evidence一致。",
+            "cross_method_comparison": "蒸馏原论文§§1–2与CLIP§2.3/Figure3；两份缓存均重新从仓内PDF提取校验相同，未重审其余实验。",
+            "report": "GAN展开篇全文、证据账本全部要求/claim/coverage；主稿§26及三条GAN脚注、导航，以及研究README中的第26条。",
+            "presentation": "Markdown正文、14条脚注、代码块闭合、无替换字符、相对链接和显式锚点。无浏览器/工作台/页面渲染验收。",
+            "transcript_receipt_verification": {
+              "core": {
+                "segments": 95,
+                "start_seconds": 11874.72,
+                "end_seconds": 12123.22,
+                "elapsed_seconds": 248.5,
+                "slice_sha256": "b77d3115a9c923bb47be12eb66936874b3c6057b9879fd8ab819d831e9733004",
+                "text_sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+                "start_backwards": 0,
+                "end_backwards": 0,
+                "end_before_start": 0,
+                "overlaps": 0,
+                "max_gap_seconds": 0.77
+              },
+              "comparison": {
+                "segments": 24,
+                "start_seconds": 12243.4,
+                "end_seconds": 12281.5,
+                "elapsed_seconds": 38.1,
+                "slice_sha256": "921b51a3624611ad5caa58f792bfdd0573387a475e642819a811512b94a871b6",
+                "text_sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+                "start_backwards": 0,
+                "end_backwards": 0,
+                "end_before_start": 0,
+                "overlaps": 0,
+                "max_gap_seconds": 0
+              },
+              "cached_slices_and_native_receipts_hashes_match": true,
+              "raw_full_episode_owner_independently_rechecked": false,
+              "audio_listened": false,
+              "wer_measured": false,
+              "native_duration_field_interpretation": "native audit中的duration_seconds对应绝对结束时刻，片段实际时长另据百分秒segments计算；没有把12123或12281秒当成GAN片段时长。"
+            },
+            "review_history_access": "不读取既有review条目；主稿基线仅提取顶层轮次、pass、绑定哈希与条数，未输出基线score。主稿evidence自带的生成历史元数据未用于内容判断或评分。"
+          },
+          "directly_reviewed_critical_claim_ids": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "inherited_critical_claim_ids": [],
+          "directly_reviewed_source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "BOOK",
+            "DISTILLATION",
+            "CLIP"
+          ],
+          "inherited_source_ids": [],
+          "directly_reviewed_coverage_unit_ids": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "inherited_coverage_unit_ids": [],
+          "directly_reviewed_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "inherited_requirement_ids": [],
+          "verification_limits": [
+            "模型运行型号未独立确认，未用共享eacli命令返回的父会话型号证明本reviewer身份。",
+            "原始来源内容通过本机已有缓存读取并校验；未重复联网取证，不对在线页面之后的变化作保证。",
+            "原论文图像只核图注/文字与表值，本reviewer没有亲自重新视觉检查Figures1–3或讲义图页；提取命令的closepath告警仍保留为文档解析限制。",
+            "转写收据与所供切片相互吻合；没有独立访问全节目原始segments owner或重新听音，机器时间结构通过不等于语义零误差。",
+            "不复现模型、不重新抽样、不审计原始数据或所有参考文献；不以文本导航检查宣称页面验收。",
+            "最终质量判定由协调者合并本entry后交原生脚本完成。"
+          ]
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "gan_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 97,
+            "reasoning_quality": 98,
+            "readability": 97,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对固定v1全文、讲义p44、两段ASR、shownotes、arXiv元数据、书籍官网及蒸馏/CLIP指定范围；机制、k=1、非饱和目标、理想条件、Table 1数值和评价口径均与原文相符，且花卉例子、播客历史叙事与论文实验明确分层。未听音与未复现实验不会被冒充为已完成。",
+            "request_coverage": "花卉例子贯穿随机输入、来源标签、交替更新、经D反传、饱和、理想均衡、模式崩塌、实验评价和采样边界；标题后有返回/前后导航，shownotes的Part 4 GAN节点也有明确留痕。原文非核心参考文献与部分展望省略均合理说明。",
+            "reasoning_quality": "不仅复述“生成器骗判别器”，还区分冻结参数与梯度流、原始minimax与非饱和动力学、充分条件与错误逆推、质量/多样性/记忆三类问题，并对蒸馏和CLIP只做有边界的训练分工比较。",
+            "readability": "少量必要符号配合单一花卉例子，训练顺序、反向传播和失败方式可独立阅读；表格、ASCII心智模型、脚注和三问完整。篇幅较长但与deep体裁及机制讲透的要求相称。",
+            "limitations": "清楚声明未训练花卉GAN、未听校/测WER、未审计完整数据与生成样本、理想定理不保证有限网络收敛、视觉展示不能证明无记忆，也不把节目影响叙事量化成市场事实。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "BOOK",
+            "DISTILLATION",
+            "CLIP"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "directly_reviewed_critical_claim_ids": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "directly_reviewed_source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "BOOK",
+            "DISTILLATION",
+            "CLIP"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "inherited_critical_claim_ids": [],
+          "inherited_coverage_unit_ids": [],
+          "inherited_source_ids": [],
+          "inherited_requirement_ids": [],
+          "source_content_map": [
+            {
+              "id": "SRC-GAN-01",
+              "title": "节目与讲义的历史直觉：用较成熟的判别任务帮助生成，并在Part 4从双流过渡到GAN再到Diffusion",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U15",
+                "U16"
+              ],
+              "notes": "正文把“生成更难”限定为节目直觉而非普遍定律，并准确标注两段不连续ASR与shownotes章节位置。"
+            },
+            {
+              "id": "SRC-GAN-02",
+              "title": "G把随机z映射到样本并隐式定义生成分布；输入变化不保证输出多样性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "花卉例子准确区分训练数据提供分布知识与z提供单次变化起点。"
+            },
+            {
+              "id": "SRC-GAN-03",
+              "title": "D判别真实来源与当前G来源，而非花/非花；来源标签由训练程序构造",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "正文纠正了开场例子可能造成的类别分类误解，并保留数据选择仍依赖人的边界。"
+            },
+            {
+              "id": "SRC-GAN-04",
+              "title": "Algorithm 1的交替更新、k=1实验设置，以及冻结D参数但梯度继续穿过D到G",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "逐步训练叙述与算法一致；没有把k=1外推为所有GAN的最佳比例。"
+            },
+            {
+              "id": "SRC-GAN-05",
+              "title": "原始生成目标的早期饱和与最大化log D(G(z))的非饱和替代目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U6"
+              ],
+              "notes": "正文准确区分相同理想固定点与不同梯度/训练动力学，也未把替代目标说成稳定性总解。"
+            },
+            {
+              "id": "SRC-GAN-06",
+              "title": "最优D、p_g=p_data、D=1/2与JSD目标的理想分析及其容量/最优D/小步更新前提",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "正文以少数学方式讲清目标所对准的分布，并给出常数1/2弱判别器反例，避免把50%当现实验收充分条件。"
+            },
+            {
+              "id": "SRC-GAN-07",
+              "title": "Helvetica scenario、G/D同步与模式崩塌；质量、多样性、记忆不可混为一谈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "红花收缩是明示的教学构造，正文没有把论文的同步提醒扩大为所有崩塌的完整成因。"
+            },
+            {
+              "id": "SRC-GAN-08",
+              "title": "MNIST/TFD/CIFAR-10实验、网络设置、随机样本/最近邻/z插值与作者克制的质量结论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U11"
+              ],
+              "notes": "明确不是花卉或现代文生图实验，也没有用有限可视化证明普遍无记忆或语义可控。"
+            },
+            {
+              "id": "SRC-GAN-09",
+              "title": "Table 1四方法数值、实值MNIST、不同标准误口径、Parzen带宽与高维评价局限",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "225±2与2057±26转录正确，未误写为准确率、显式GAN似然或跨数据集画质总分。"
+            },
+            {
+              "id": "SRC-GAN-10",
+              "title": "无需MCMC的直接采样、隐式密度代价、无自带逆映射，以及条件生成/辅助推断等展望",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13",
+                "U19"
+              ],
+              "notes": "已实现能力与未来扩展清楚分开；非核心展望细节的省略有说明。"
+            },
+            {
+              "id": "SRC-GAN-11",
+              "title": "作者、版本与花书线索，以及节目“主导多年”说法的证据边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "BOOK",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U15"
+              ],
+              "notes": "核对8位作者、2014-06-10与书籍三位作者/2016年；不补私人分工、当前职位或市场份额。"
+            },
+            {
+              "id": "SRC-GAN-12",
+              "title": "与知识蒸馏、CLIP的训练角色比较，不建立未经来源支持的直接谱系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "DISTILLATION",
+                "CLIP"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "蒸馏的既有教师软目标、CLIP的双编码器共同配对目标、GAN的来源对抗三者分工比较准确。"
+            },
+            {
+              "id": "SRC-GAN-13",
+              "title": "相关工作与参考文献的范围边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "正文只概述论文直接讨论的前驱路线，明确未逐篇重读31项参考文献，不外推到现代全部变体。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
+            "report_sha256": "73d8eb1e6700457990829946ba9d81639f37aed23d8fd17aa2cd29c74ae483b8",
+            "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8",
+            "snapshot_match": true
+          },
+          "read_scopes": {
+            "PAPER": "固定v1全9页",
+            "LECTURE": "p44",
+            "PODCAST": "95段主片段与24段扩散比较片段，并核对等价时间结构收据",
+            "SHOWNOTES": "全文，重点Part 4",
+            "METADATA": "arXiv题名/作者/提交日期/摘要",
+            "BOOK": "首页作者与引用年份",
+            "DISTILLATION": "pp1–2",
+            "CLIP": "§2.3与Figure 3"
+          },
+          "verification_limits": [
+            "未听音、未测WER；只核对机器时间结构收据。",
+            "未训练或复现GAN，未重新审计数据集、生成样本与最近邻。",
+            "未逐篇读取GAN参考文献，蒸馏与CLIP只读指定比较范围。"
+          ],
+          "notes": "来源优先独立复核；未读取任何旧review意见或生成思路。未发现具体事实、机制、覆盖或引用缺陷。按权重加权分为97.6；最终状态应由原生质量脚本判定。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.3,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "0cbe288b7de49ec82cc3ca924a643fe6554e55bd54648346a3acf749f7ad4c16",
+        "evidence_sha256": "fe360276e9d5c63fd780c058b4f15186fc0333697cf2cf1ff5ca23b4e8f5d1f8"
+      }
+    }
+  ]
 }

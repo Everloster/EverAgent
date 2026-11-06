@@ -2,31 +2,33 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "unconfirmed",
+        "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "diffusion15_primary_review",
+        "run_id": "diffusion15-r2-gpt56sol-20261106",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity_basis": "没有可绑定本子会话的精确模型证据；宿主诊断为未确认配置，未借用宿主或父会话模型身份。"
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略记录为gpt-5.6-sol/codex；子环境未提供可确认自身型号的独立运行时证明，故只采用调度依据，不把父会话或宿主默认型号冒充Reviewer核实。"
       },
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本文件实际revision_round为2，本轮按冻结快照全文复核。",
       "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 97,
-        "reasoning_quality": 96,
-        "readability": 92,
-        "limitations": 97
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
       },
       "score_reasons": {
-        "evidence_fidelity": "固定v8的作者/日期、机制、步数、100×100修补、Table2数值和去量化更正均可回源；修订已明确高斯前向β₂…T也优化、β₁固定及1.489为下界K。仅余evidence C1局部ASR定位可精化的非阻塞问题，未见关键数字错配。",
-        "request_coverage": "先读来源独立列出的13个单元均有实质落点；花照贯穿问题、前向、训练与生成，并回到真实实验、GAN/DDPM路线、三问及前后导航。原27已实质改写且首块为展开链接。",
-        "reasoning_quality": "有效拆开训练时已知原图与生成时新噪声、局部可算与边缘积分、精确模型采样与真实分布匹配；反例和外推边界完整，未把热力学或历史顺序当因果证明。",
-        "readability": "全文及脚注已读；问题式标题、花照例子、短步骤/表格与术语解释使其可独立阅读。少量边界提醒重复，仍可略压缩；源码检查无缺失脚注、乱码或受影响本地死链。不涉及页面验收。",
-        "limitations": "清楚区分节目类比与论文实验，记录转写未听校和重叠、不复现训练、不逐式证明、不逐图视觉检查、不确认现职及完整历史；限制紧邻相应结论。"
+        "evidence_fidelity": "来源优先复读固定v8正文核心机制、Tables 1–2、Table App.1、附录D/Figure D.1，讲义p45、185段ASR、shownotes与arXiv元数据。14项claim中的信号缩放、逆步条件、β日程、似然下界、100×100修补、步数、dead leaves/MNIST数值和v8去量化更正均与原文相符。",
+        "request_coverage": "花照单例贯穿前向破坏、小步逆过程、训练目标、新噪声采样、概率边界、架构/步数、条件修补、原始实验及GAN→Diffusion→DDPM定位。23项来源地图含shownotes八章节，14 claims、15 coverage units和6项要求全部核对；仅数学逐式证明与二手履历为支持性省略。",
+        "reasoning_quality": "清楚区分恢复结构与恢复唯一原件、无条件生成与条件去噪、单步/路径/边缘概率、精确模型采样与真实分布匹配、下界K与精确似然、2015均值协方差参数化与2020噪声预测；还用量化伪影说明指标改进不等于语义画质改进。",
+        "readability": "正文独立可读，花照例子、三层概率拆分、层次表、实验数表和ASCII图帮助建立心智模型。12个脚注定义与引用匹配，7个仓内链接均存在，Pandoc转HTML通过，无私有路径。边界提醒较多但服务于纠正高频误解；未启动已取消前置的工作台功能验收。",
+        "limitations": "明确未训练/复现实验、未逐式重推全部证明、未逐图复核所有样本、未听音/测WER、未核二手人物现职；本地转录0.04秒浮点重叠被保留，原生整数秒审计不被冒充为无误。历史叙事和现代扩散能力没有越界。"
       },
       "critical_claim_ids_checked": [
         "C1",
@@ -78,311 +80,23 @@
       ],
       "source_content_map": [
         {
-          "id": "SRC01",
-          "title": "原论文身份与2015起点",
+          "id": "DIFF15-S01",
+          "title": "固定v8、四位作者与节目花照例子的证据边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
-            "METADATA"
+            "METADATA",
+            "LECTURE",
+            "PODCAST"
           ],
           "matched_coverage_unit_ids": [
             "U1"
           ],
-          "notes": "开篇与来源段正确列出四位作者、v1/v8日期和固定版本；教学花照没有冒充论文实验。"
+          "notes": "v1 2015-03-12与v8 2015-11-18分开；花照是口述讲解构造而非原论文实验，无监督被限定为无需类别标签而非无需数据/目标。"
         },
         {
-          "id": "SRC02",
-          "title": "复杂分布的表达能力与计算可行性之间的矛盾",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "§1先解释表达复杂结构与训练、采样、概率计算之间的矛盾，傅里叶只作节目类比，没有误称算法。"
-        },
-        {
-          "id": "SRC03",
-          "title": "前向逐步破坏结构且保留可计算的路径",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U8"
-          ],
-          "notes": "§2写明信号缩放、规定强度的噪声和马尔可夫交接；§6另将二值合成序列与高斯图像设置区分。"
-        },
-        {
-          "id": "SRC04",
-          "title": "为什么逆向的小步预测比一次生成容易",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4"
-          ],
-          "notes": "§3保留小步条件并解释状态/时刻相关参数为何可以组成非高斯的复杂总体；没有声称大步反向总是精确高斯。"
-        },
-        {
-          "id": "SRC05",
-          "title": "训练目标来自已知前向过程与对数似然下界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5"
-          ],
-          "notes": "§4的四步训练叙述与§2.4及Table App.1一致；原图用于训练依据而非生成输入，2015参数化未被DDPM噪声目标替代。增量依据§2.4.1明确高斯前向β₂…T也优化、β₁固定，区分已知可计算规则与参数是否参与学习。"
-        },
-        {
-          "id": "SRC06",
-          "title": "有限逆链定义生成模型；生成、单步计算、边际似然须分开",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U9"
-          ],
-          "notes": "§§5、7分清新噪声采样、指定路径概率、边缘路径积分和训练下界，并将精确模型采样与真实分布匹配分开。"
-        },
-        {
-          "id": "SRC07",
-          "title": "条件推断不仅是无条件生成",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U10"
-          ],
-          "notes": "§5区分Figure3条件去噪与自由生成；§8忠实解释Figure5的100×100树皮补全及多解边界，没有推成任意文字控图。"
-        },
-        {
-          "id": "SRC08",
-          "title": "2015实验覆盖与数值口径",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U11",
-            "U12"
-          ],
-          "notes": "§9覆盖六类实验、dead leaves定义及Table2数值；MNIST317±2.7、325±2.9、349±3.3 bits与Parzen口径均准确。增量现已明确1.489的计算口径为Table1下界K，Table2复用该值，消除了精确边缘似然歧义。"
-        },
-        {
-          "id": "SRC09",
-          "title": "CIFAR去量化修订与图像步数边界",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U13"
-          ],
-          "notes": "§6的40/2000/1000/500步和二值序列20位、每5位一脉冲与附录D一致；§9正确讲清v8的CIFAR去量化更正，未引入旧版高分，也没有必要罗列全部CIFAR数值。"
-        },
-        {
-          "id": "SRC10",
-          "title": "时间依赖的共享网络与实际图像架构",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U7"
-          ],
-          "notes": "§6与脚注明确多尺度卷积/全连接、时间读出和共享计算；不是千套独立网络，未把现代U-Net倒填给原文。"
-        },
-        {
-          "id": "SRC11",
-          "title": "物理灵感的解释边界",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U7",
-            "U15"
-          ],
-          "notes": "§6解释物理灵感进入随机过程与目标，但不是花朵真实运动或物理倒流。U15声明不展开数学逐式证明及未经独立核验的人物履历，属合理支持性省略。"
-        },
-        {
-          "id": "SRC12",
-          "title": "讲义、口述与shownotes的叙事路线及证据等级",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LECTURE",
-            "PODCAST",
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14"
-          ],
-          "notes": "§10及下一节入口保留shownotes中Part4的GAN→2015 Diffusion→DDPM顺序；‘阴影下’和‘沉寂五年’保留为节目叙事，不当作完整研究史统计。"
-        },
-        {
-          "id": "SRC13",
-          "title": "转写范围、错词和结构审计边界",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U14"
-          ],
-          "notes": "来源段明确185段、约03:22:03–03:27:55、0.04秒重叠与未听校；本轮独立复算原始浮点段时间，与两份机器收据一致。"
-        }
-      ],
-      "unsupported_claims": [],
-      "missing_requirements": [],
-      "hard_failures": [],
-      "notes": "先核原快照，再读来源独立列13个内容单元，之后才读正文和evidence；未查看任何旧review正文或五维分数。随后实际比对before-refinement快照与当前四文件，仅对指定小增量复核：§2.4.1支持高斯β₂…T优化、β₁固定；Tables1–2支持1.489为下界K，正文及对应evidence已准确补明，现绑定新SHA。未发现阻断性内容问题。余一项非阻塞定位建议：evidence C1写ASR12123–12243秒，该段不含花照口述；花照实际出现在12310.18秒等处。正文完整片段脚注仍能回溯，建议以后精化局部定位。最终状态由native checker计算。",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md",
-        "report_sha256": "0a68edf1178ff0f3c60dc5dc087bd868c6bb6e0fd139a9504956455c8d6bf14f",
-        "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a",
-        "verified": true
-      },
-      "read_scopes": {
-        "PAPER": "实际读固定v8文字pp1–9、Table App.1 p15、附录D及FigureD.1图注pp17–18；核对本地PDF与文字提取hash。未逐式复证附录A–C，也未本轮视读样本图。",
-        "METADATA": "本地官方arXiv页面缓存的题名、四位作者和v1/v8日期，hash与evidence一致。",
-        "LECTURE": "p45文字层；存在抽取缺字，主要科学陈述交叉核原论文。本轮未自行视读该页。",
-        "PODCAST": "完整读取185段目标ASR及浮点segments；核对native与precision收据，并独立检查起止单调、负时长、重叠及最大间隙。",
-        "SHOWNOTES": "读取给定节目缓存，定位Part4 Diffusion及GAN/DDPM前后路线。",
-        "report": "展开全文、主稿27及三条脚注、受影响章节导航和研究入口的Markdown源码。"
-      },
-      "transcript_verification": {
-        "segments": 185,
-        "start_seconds": 12123.22,
-        "end_seconds": 12475.27,
-        "start_backwards": 0,
-        "end_backwards": 0,
-        "end_before_start": 0,
-        "overlaps": [
-          {
-            "previous_global_index": 6021,
-            "global_index": 6022,
-            "overlap_seconds": 0.04
-          }
-        ],
-        "max_gap_seconds": 0.55,
-        "receipts_match": true,
-        "audio_listened": false
-      },
-      "verification_limits": [
-        "仅本地材料与文本/锚点检查；不将URL对应或本地链接有效说成全网实时可达性验证。",
-        "无浏览器、工作台、截图或页面验收；未重新听音、测WER、训练复现或重做基准。",
-        "eacli无法给出本子会话精确模型身份，因此model保留unconfirmed。"
-      ]
-    },
-    {
-      "role": "flagship_final_review",
-      "reviewer": {
-        "model": "gpt-5.6-sol",
-        "harness": "codex",
-        "run_id": "diffusion15_strong_review",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "override_reason": "report-quality-policy premium reviewer，由调度策略指定，非用户显式点名模型。",
-        "identity_basis": "orchestrator-configured",
-        "model_runtime_confirmation": "session-bound-unverified",
-        "identity_confirmation": "unconfirmed"
-      },
-      "scores": {
-        "evidence_fidelity": 99,
-        "request_coverage": 98,
-        "reasoning_quality": 98,
-        "readability": 96,
-        "limitations": 98
-      },
-      "score_reasons": {
-        "evidence_fidelity": "固定v8的机制、版本日期、作者、步数、Figure 5尺寸、Tables 1–2数字与口径、Parzen估计及CIFAR去量化更正均与原文相符；讲义与转写只作为叙事线索且明确降权。修订已明确高斯实验优化β₂…T、固定β₁，并把dead leaves的1.489准确标为Table 1下界K在Table 2中的复用值。",
-        "request_coverage": "贯穿花照单例，完整回答背景、问题、前向机制、小步逆过程、训练目标、新噪声采样、概率边界、条件修补、实验和路线位置；标题后首块导航齐全。前向日程学习也已补入；只省略每层熵界等非核心技术支线。",
-        "reasoning_quality": "清楚区分恢复结构与恢复唯一原件、单步/路径/边缘概率、精确似然与下界K、2015均值协方差参数化与2020 DDPM噪声预测，并避免把GAN与扩散写成简单取代或因果链。",
-        "readability": "中文科普可独立阅读，花照例子贯穿且少数学；新增两处限定简短、位置自然。章节较长、若干边界提醒略有重复，但没有妨碍主线。",
-        "limitations": "明确未复现训练、未逐式重推、未听校或测WER、未核作者现职与完整优先权，并准确记录转写0.04秒重叠和视觉检查边界。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15"
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "source_content_map": [
-        {
-          "id": "SCM-1",
+          "id": "DIFF15-S02",
           "title": "灵活性与可处理性的生成建模矛盾",
           "importance": "core",
           "assessment": "covered",
@@ -394,11 +108,11 @@
           "matched_coverage_unit_ids": [
             "U2"
           ],
-          "notes": "原论文把学习、采样、推断和评价的可处理性与模型灵活性并列为核心问题；正文没有把目标缩成“画质胜GAN”。"
+          "notes": "学习、采样、推断和评价的可处理性与表达复杂分布并列为核心问题，没有把论文缩成画质胜GAN。"
         },
         {
-          "id": "SCM-2",
-          "title": "前向马尔可夫扩散把数据逐步推向可处理分布",
+          "id": "DIFF15-S03",
+          "title": "前向高斯扩散的信号缩放、加噪与马尔可夫依赖",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -408,39 +122,37 @@
           "matched_coverage_unit_ids": [
             "U3"
           ],
-          "notes": "正文准确写出高斯步的信号缩放与加噪，解释了马尔可夫依赖和无需人工类别标签但仍需真实训练数据。"
+          "notes": "正文没有把过程写成无界累加噪声；每步只依赖上一步，训练程序可由真实数据构造受扰状态。"
         },
         {
-          "id": "SCM-3",
-          "title": "小步极限下逆转移保持简单族并学习状态/时间相关参数",
+          "id": "DIFF15-S04",
+          "title": "小步极限下简单逆转移与复杂总体分布",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U4",
+            "U4"
+          ],
+          "notes": "高斯/二值扩散在小步条件下的逆过程形式、状态与时间相关均值/协方差解释正确，没有声称任意大步反向仍是精确单峰高斯。"
+        },
+        {
+          "id": "DIFF15-S05",
+          "title": "2015反向参数、似然下界与前向日程学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
             "U5"
           ],
-          "notes": "正文保留小β条件，准确说明高斯逆步的均值与协方差由当前状态和时间决定；并补充高斯实验优化β₂…T、固定β₁，没有把“前向规则已知”误写成所有强度参数固定。"
+          "notes": "学习均值/对角协方差并优化对数似然下界；高斯β₂…T可学习、β₁固定及固定日程脚注均保留，未倒填2020 DDPM噪声预测配方。"
         },
         {
-          "id": "SCM-4",
-          "title": "似然下界、逐步KL与可回归的训练问题",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U9"
-          ],
-          "notes": "正文少公式但正确说明对数似然下界、前向轨迹提供的可计算目标及边缘概率仍涉及路径积分。"
-        },
-        {
-          "id": "SCM-5",
-          "title": "从新噪声采样不等于恢复某张原图",
+          "id": "DIFF15-S06",
+          "title": "从新噪声采样、条件去噪与唯一原件恢复的区别",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -448,14 +160,52 @@
             "PODCAST"
           ],
           "matched_coverage_unit_ids": [
-            "U6",
-            "U9"
+            "U6"
           ],
-          "notes": "自由生成、条件去噪和唯一历史恢复三者区分清楚，也解释了“精确采样”只相对于已定义模型。"
+          "notes": "无条件生成从新噪声开始；Figure 3条件去噪另有受污染输入，均未被写成找回信息丢失前的唯一历史。"
         },
         {
-          "id": "SCM-6",
-          "title": "与观测分布相乘支持去噪和树皮补图",
+          "id": "DIFF15-S07",
+          "title": "物理启发、网络结构与时间相关共享计算",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "扩散过程/学习目标/网络结构分层，CIFAR并行多尺度卷积和全连接、MNIST仅全连接及时间读出准确；不是现代U-Net或千套独立网络。"
+        },
+        {
+          "id": "DIFF15-S08",
+          "title": "40/500/1000/2000步与二值心跳任务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "图像通常1000步、树皮500、Swiss roll 40、二值序列2000；长度20每5位一脉冲及位翻转扩散均正确，且步数未被写成定义本身。"
+        },
+        {
+          "id": "DIFF15-S09",
+          "title": "一步、路径、边缘概率与精确模型采样",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "单步和指定路径概率可算、最终边缘仍需路径积分、训练用下界；精确采样只相对于已定义模型，不等于精确匹配真实分布。"
+        },
+        {
+          "id": "DIFF15-S10",
+          "title": "树皮100×100条件修补",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -464,99 +214,783 @@
           "matched_coverage_unit_ids": [
             "U10"
           ],
-          "notes": "Figure 5中央100×100像素修补、已知区域条件和非唯一答案均准确；没有外推成任意文字控制。"
+          "notes": "Figure 5的已知区域条件、长程纹理及多解边界准确；未外推为恢复真实缺块或任意文字控图。"
         },
         {
-          "id": "SCM-7",
-          "title": "实验配置、架构与计算代价",
+          "id": "DIFF15-S11",
+          "title": "实验集合、dead leaves定义与密度口径",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U7",
-            "U8"
+            "U11"
           ],
-          "notes": "40/500/1000/2000步、二值心跳定义、多尺度卷积与时间读出、成本随时间步增加均被覆盖。"
+          "notes": "六类实验范围清楚；dead leaves是遮挡圆片数据，Diffusion 1.489为Table 1下界K在Table 2复用，MCGSM 1.244为对数似然，且解释连续密度与同尺度比较。"
         },
         {
-          "id": "SCM-8",
-          "title": "Table 1/2结果、Parzen估计和v8去量化修订",
+          "id": "DIFF15-S12",
+          "title": "MNIST Parzen比较与Perfect model命名陷阱",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U11",
-            "U12",
+            "U12"
+          ],
+          "notes": "317±2.7、GAN 325±2.9、训练样本Parzen 349±3.3 bits准确；最后一项按操作解释，不冒充已知真实分布或精确模型似然。"
+        },
+        {
+          "id": "DIFF15-S13",
+          "title": "v8 CIFAR去量化修订",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
             "U13"
           ],
-          "notes": "dead leaves的扩散值准确标为Table 1对数似然下界K并由Table 2复用，MCGSM值标为对数似然；MNIST数值、单位和Parzen估计方法也准确，且避免跨口径排名。"
+          "notes": "早期高分包含8位像素量化影响，v8加入均匀噪声去量化；正文没有拼接旧版最好结果，并指出指标可能奖励表示伪影。"
         },
         {
-          "id": "SCM-9",
-          "title": "讲义/节目中的GAN阴影叙事与GAN→Diffusion→DDPM路线",
+          "id": "DIFF15-S14",
+          "title": "GAN、2015 Diffusion与DDPM的历史及机制边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
+            "PAPER",
             "LECTURE",
             "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "GAN判别梯度与扩散已知前向过程被区分；共享Parzen代码不证明机制继承，“阴影/沉寂五年”只作为节目叙事。"
+        },
+        {
+          "id": "DIFF15-S15",
+          "title": "逐式证明、全部样本视觉判读与二手作者履历",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "报告只展开理解机制所需的推导与图表，未逐式复证附录A–C或采用未核当前任职；范围透明且不影响核心结论。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes Part 2 Infra与数据变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes Part 3语言模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes Part 4多模态模型的发展，含2015 Diffusion",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
             "SHOWNOTES",
-            "PAPER"
+            "PODCAST"
           ],
           "matched_coverage_unit_ids": [
             "U1",
             "U14"
           ],
-          "notes": "shownotes Part 4的Diffusion条目及前后GAN、DDPM位置均有落点；正文把“阴影/沉寂”保留为叙事而非完备历史事实。"
+          "notes": "Diffusion条目位于GAN之后、DDPM之前；185段目标转录含转向2020的短桥段，报告问题路线与节目顺序一致。"
         },
         {
-          "id": "SCM-10",
-          "title": "前向日程学习与熵界等论文支线",
+          "id": "SN8",
+          "title": "Shownotes 最后的聊天",
           "importance": "supporting",
-          "assessment": "partial",
+          "assessment": "covered",
           "source_ids": [
-            "PAPER"
+            "SHOWNOTES"
           ],
           "matched_coverage_unit_ids": [
-            "U7",
-            "U9",
-            "U15"
+            "U14"
           ],
-          "notes": "高斯实验优化β₂…T并固定β₁的日程细节已经补入；每层熵界仍未展开，属于用户科普目标之外的支持性支线。"
+          "notes": "作为整期结构留痕，不用于扩写本章实验结论。"
         }
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
+      "notes": "冻结快照双SHA核对一致。全文与evidence直接复核，未继承旧轮评分；未发现需要退回修订的实质缺陷。最终状态由native checker判定。",
       "snapshot": {
-        "report_sha256": "0a68edf1178ff0f3c60dc5dc087bd868c6bb6e0fd139a9504956455c8d6bf14f",
-        "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a",
-        "verified": true
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md",
+        "report_sha256": "2f509609aca538711d2ffff3c149fb587da2ef540e59119b8138a2b5e2c16d60",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json",
+        "evidence_sha256": "fa7cd73e8c84e16b64a4e0114253b8469ee47f6f03ba59ce1bba02b9b7b7db27"
       },
-      "read_scopes": {
-        "paper": "固定18页v8；直接读取§§1–3、Tables 1/2、Table App.1、附录D与Figure 5原页；未逐式复算全部推导。",
-        "metadata": "arXiv官方题名、四位作者、v1/v8日期。",
-        "lecture": "讲义p45文字层与原页图像。",
-        "podcast": "185段12123.22–12475.27秒转写与shownotes Part 4；独立运行机器结构审计，未听音或测WER。"
+      "actual_read_scopes": [
+        "固定v8：摘要/引言、§§1–3、Tables 1–2、Table App.1、附录D与Figure D.1图注及相关条件推断段落",
+        "讲义p45文字、185段目标ASR、完整shownotes八个结构章节",
+        "arXiv官方题名、四位作者及v1/v8日期",
+        "当前报告与evidence全文、transcription-review、脚注、本地导航和隐私路径",
+        "重跑audit_transcript.py，并核对浮点precision收据中的0.04秒重叠"
+      ],
+      "inheritance_verification": {
+        "used": false,
+        "notes": "本轮为revision_round 2当前冻结快照的来源优先全文复核，不沿用历史review判断或分数。"
       },
       "verification_limits": [
-        "未训练或运行模型。",
-        "未逐篇重读论文参考文献。",
-        "转写仅做文本和时间结构核查，不冒称听校。"
-      ],
-      "notes": "小增量复核确认两项修订均与§2.4.1及Tables 1–2一致，原审核其余结论继续成立；无硬失败或必改项。仅未展开每层熵界等非核心支线。"
+        "未重新听音，未声称WER",
+        "未训练、采样或重做基准",
+        "未逐式复证附录A–C，也未逐篇重读参考文献",
+        "本轮未重新视觉检查所有样本图；主要依据固定PDF文字、图注与已登记原页范围",
+        "作者二手履历和当前任职未核，不纳入事实结论"
+      ]
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.7,
+    "score": 98.85,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "d975fb43300135c8d8df2faef30f3bb645ffcdc77842ca31cfcaea8e1ecaeec8",
-    "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a"
-  }
+    "report_sha256": "95f992ca0efbf2687de3ed98cb349dc256775b027d3d0c4f27552f6828321cd6",
+    "evidence_sha256": "fa7cd73e8c84e16b64a4e0114253b8469ee47f6f03ba59ce1bba02b9b7b7db27"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "diffusion15_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "没有可绑定本子会话的精确模型证据；宿主诊断为未确认配置，未借用宿主或父会话模型身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 92,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "固定v8的作者/日期、机制、步数、100×100修补、Table2数值和去量化更正均可回源；修订已明确高斯前向β₂…T也优化、β₁固定及1.489为下界K。仅余evidence C1局部ASR定位可精化的非阻塞问题，未见关键数字错配。",
+            "request_coverage": "先读来源独立列出的13个单元均有实质落点；花照贯穿问题、前向、训练与生成，并回到真实实验、GAN/DDPM路线、三问及前后导航。原27已实质改写且首块为展开链接。",
+            "reasoning_quality": "有效拆开训练时已知原图与生成时新噪声、局部可算与边缘积分、精确模型采样与真实分布匹配；反例和外推边界完整，未把热力学或历史顺序当因果证明。",
+            "readability": "全文及脚注已读；问题式标题、花照例子、短步骤/表格与术语解释使其可独立阅读。少量边界提醒重复，仍可略压缩；源码检查无缺失脚注、乱码或受影响本地死链。不涉及页面验收。",
+            "limitations": "清楚区分节目类比与论文实验，记录转写未听校和重叠、不复现训练、不逐式证明、不逐图视觉检查、不确认现职及完整历史；限制紧邻相应结论。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "SRC01",
+              "title": "原论文身份与2015起点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "开篇与来源段正确列出四位作者、v1/v8日期和固定版本；教学花照没有冒充论文实验。"
+            },
+            {
+              "id": "SRC02",
+              "title": "复杂分布的表达能力与计算可行性之间的矛盾",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§1先解释表达复杂结构与训练、采样、概率计算之间的矛盾，傅里叶只作节目类比，没有误称算法。"
+            },
+            {
+              "id": "SRC03",
+              "title": "前向逐步破坏结构且保留可计算的路径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U8"
+              ],
+              "notes": "§2写明信号缩放、规定强度的噪声和马尔可夫交接；§6另将二值合成序列与高斯图像设置区分。"
+            },
+            {
+              "id": "SRC04",
+              "title": "为什么逆向的小步预测比一次生成容易",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "§3保留小步条件并解释状态/时刻相关参数为何可以组成非高斯的复杂总体；没有声称大步反向总是精确高斯。"
+            },
+            {
+              "id": "SRC05",
+              "title": "训练目标来自已知前向过程与对数似然下界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "§4的四步训练叙述与§2.4及Table App.1一致；原图用于训练依据而非生成输入，2015参数化未被DDPM噪声目标替代。增量依据§2.4.1明确高斯前向β₂…T也优化、β₁固定，区分已知可计算规则与参数是否参与学习。"
+            },
+            {
+              "id": "SRC06",
+              "title": "有限逆链定义生成模型；生成、单步计算、边际似然须分开",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U9"
+              ],
+              "notes": "§§5、7分清新噪声采样、指定路径概率、边缘路径积分和训练下界，并将精确模型采样与真实分布匹配分开。"
+            },
+            {
+              "id": "SRC07",
+              "title": "条件推断不仅是无条件生成",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U10"
+              ],
+              "notes": "§5区分Figure3条件去噪与自由生成；§8忠实解释Figure5的100×100树皮补全及多解边界，没有推成任意文字控图。"
+            },
+            {
+              "id": "SRC08",
+              "title": "2015实验覆盖与数值口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U11",
+                "U12"
+              ],
+              "notes": "§9覆盖六类实验、dead leaves定义及Table2数值；MNIST317±2.7、325±2.9、349±3.3 bits与Parzen口径均准确。增量现已明确1.489的计算口径为Table1下界K，Table2复用该值，消除了精确边缘似然歧义。"
+            },
+            {
+              "id": "SRC09",
+              "title": "CIFAR去量化修订与图像步数边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U13"
+              ],
+              "notes": "§6的40/2000/1000/500步和二值序列20位、每5位一脉冲与附录D一致；§9正确讲清v8的CIFAR去量化更正，未引入旧版高分，也没有必要罗列全部CIFAR数值。"
+            },
+            {
+              "id": "SRC10",
+              "title": "时间依赖的共享网络与实际图像架构",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "§6与脚注明确多尺度卷积/全连接、时间读出和共享计算；不是千套独立网络，未把现代U-Net倒填给原文。"
+            },
+            {
+              "id": "SRC11",
+              "title": "物理灵感的解释边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U7",
+                "U15"
+              ],
+              "notes": "§6解释物理灵感进入随机过程与目标，但不是花朵真实运动或物理倒流。U15声明不展开数学逐式证明及未经独立核验的人物履历，属合理支持性省略。"
+            },
+            {
+              "id": "SRC12",
+              "title": "讲义、口述与shownotes的叙事路线及证据等级",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "§10及下一节入口保留shownotes中Part4的GAN→2015 Diffusion→DDPM顺序；‘阴影下’和‘沉寂五年’保留为节目叙事，不当作完整研究史统计。"
+            },
+            {
+              "id": "SRC13",
+              "title": "转写范围、错词和结构审计边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U14"
+              ],
+              "notes": "来源段明确185段、约03:22:03–03:27:55、0.04秒重叠与未听校；本轮独立复算原始浮点段时间，与两份机器收据一致。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "先核原快照，再读来源独立列13个内容单元，之后才读正文和evidence；未查看任何旧review正文或五维分数。随后实际比对before-refinement快照与当前四文件，仅对指定小增量复核：§2.4.1支持高斯β₂…T优化、β₁固定；Tables1–2支持1.489为下界K，正文及对应evidence已准确补明，现绑定新SHA。未发现阻断性内容问题。余一项非阻塞定位建议：evidence C1写ASR12123–12243秒，该段不含花照口述；花照实际出现在12310.18秒等处。正文完整片段脚注仍能回溯，建议以后精化局部定位。最终状态由native checker计算。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md",
+            "report_sha256": "0a68edf1178ff0f3c60dc5dc087bd868c6bb6e0fd139a9504956455c8d6bf14f",
+            "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a",
+            "verified": true
+          },
+          "read_scopes": {
+            "PAPER": "实际读固定v8文字pp1–9、Table App.1 p15、附录D及FigureD.1图注pp17–18；核对本地PDF与文字提取hash。未逐式复证附录A–C，也未本轮视读样本图。",
+            "METADATA": "本地官方arXiv页面缓存的题名、四位作者和v1/v8日期，hash与evidence一致。",
+            "LECTURE": "p45文字层；存在抽取缺字，主要科学陈述交叉核原论文。本轮未自行视读该页。",
+            "PODCAST": "完整读取185段目标ASR及浮点segments；核对native与precision收据，并独立检查起止单调、负时长、重叠及最大间隙。",
+            "SHOWNOTES": "读取给定节目缓存，定位Part4 Diffusion及GAN/DDPM前后路线。",
+            "report": "展开全文、主稿27及三条脚注、受影响章节导航和研究入口的Markdown源码。"
+          },
+          "transcript_verification": {
+            "segments": 185,
+            "start_seconds": 12123.22,
+            "end_seconds": 12475.27,
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlaps": [
+              {
+                "previous_global_index": 6021,
+                "global_index": 6022,
+                "overlap_seconds": 0.04
+              }
+            ],
+            "max_gap_seconds": 0.55,
+            "receipts_match": true,
+            "audio_listened": false
+          },
+          "verification_limits": [
+            "仅本地材料与文本/锚点检查；不将URL对应或本地链接有效说成全网实时可达性验证。",
+            "无浏览器、工作台、截图或页面验收；未重新听音、测WER、训练复现或重做基准。",
+            "eacli无法给出本子会话精确模型身份，因此model保留unconfirmed。"
+          ]
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "diffusion15_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "report-quality-policy premium reviewer，由调度策略指定，非用户显式点名模型。",
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified",
+            "identity_confirmation": "unconfirmed"
+          },
+          "scores": {
+            "evidence_fidelity": 99,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "固定v8的机制、版本日期、作者、步数、Figure 5尺寸、Tables 1–2数字与口径、Parzen估计及CIFAR去量化更正均与原文相符；讲义与转写只作为叙事线索且明确降权。修订已明确高斯实验优化β₂…T、固定β₁，并把dead leaves的1.489准确标为Table 1下界K在Table 2中的复用值。",
+            "request_coverage": "贯穿花照单例，完整回答背景、问题、前向机制、小步逆过程、训练目标、新噪声采样、概率边界、条件修补、实验和路线位置；标题后首块导航齐全。前向日程学习也已补入；只省略每层熵界等非核心技术支线。",
+            "reasoning_quality": "清楚区分恢复结构与恢复唯一原件、单步/路径/边缘概率、精确似然与下界K、2015均值协方差参数化与2020 DDPM噪声预测，并避免把GAN与扩散写成简单取代或因果链。",
+            "readability": "中文科普可独立阅读，花照例子贯穿且少数学；新增两处限定简短、位置自然。章节较长、若干边界提醒略有重复，但没有妨碍主线。",
+            "limitations": "明确未复现训练、未逐式重推、未听校或测WER、未核作者现职与完整优先权，并准确记录转写0.04秒重叠和视觉检查边界。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM-1",
+              "title": "灵活性与可处理性的生成建模矛盾",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "原论文把学习、采样、推断和评价的可处理性与模型灵活性并列为核心问题；正文没有把目标缩成“画质胜GAN”。"
+            },
+            {
+              "id": "SCM-2",
+              "title": "前向马尔可夫扩散把数据逐步推向可处理分布",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "正文准确写出高斯步的信号缩放与加噪，解释了马尔可夫依赖和无需人工类别标签但仍需真实训练数据。"
+            },
+            {
+              "id": "SCM-3",
+              "title": "小步极限下逆转移保持简单族并学习状态/时间相关参数",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "正文保留小β条件，准确说明高斯逆步的均值与协方差由当前状态和时间决定；并补充高斯实验优化β₂…T、固定β₁，没有把“前向规则已知”误写成所有强度参数固定。"
+            },
+            {
+              "id": "SCM-4",
+              "title": "似然下界、逐步KL与可回归的训练问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U9"
+              ],
+              "notes": "正文少公式但正确说明对数似然下界、前向轨迹提供的可计算目标及边缘概率仍涉及路径积分。"
+            },
+            {
+              "id": "SCM-5",
+              "title": "从新噪声采样不等于恢复某张原图",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U9"
+              ],
+              "notes": "自由生成、条件去噪和唯一历史恢复三者区分清楚，也解释了“精确采样”只相对于已定义模型。"
+            },
+            {
+              "id": "SCM-6",
+              "title": "与观测分布相乘支持去噪和树皮补图",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Figure 5中央100×100像素修补、已知区域条件和非唯一答案均准确；没有外推成任意文字控制。"
+            },
+            {
+              "id": "SCM-7",
+              "title": "实验配置、架构与计算代价",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U8"
+              ],
+              "notes": "40/500/1000/2000步、二值心跳定义、多尺度卷积与时间读出、成本随时间步增加均被覆盖。"
+            },
+            {
+              "id": "SCM-8",
+              "title": "Table 1/2结果、Parzen估计和v8去量化修订",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U12",
+                "U13"
+              ],
+              "notes": "dead leaves的扩散值准确标为Table 1对数似然下界K并由Table 2复用，MCGSM值标为对数似然；MNIST数值、单位和Parzen估计方法也准确，且避免跨口径排名。"
+            },
+            {
+              "id": "SCM-9",
+              "title": "讲义/节目中的GAN阴影叙事与GAN→Diffusion→DDPM路线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U14"
+              ],
+              "notes": "shownotes Part 4的Diffusion条目及前后GAN、DDPM位置均有落点；正文把“阴影/沉寂”保留为叙事而非完备历史事实。"
+            },
+            {
+              "id": "SCM-10",
+              "title": "前向日程学习与熵界等论文支线",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U9",
+                "U15"
+              ],
+              "notes": "高斯实验优化β₂…T并固定β₁的日程细节已经补入；每层熵界仍未展开，属于用户科普目标之外的支持性支线。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "snapshot": {
+            "report_sha256": "0a68edf1178ff0f3c60dc5dc087bd868c6bb6e0fd139a9504956455c8d6bf14f",
+            "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a",
+            "verified": true
+          },
+          "read_scopes": {
+            "paper": "固定18页v8；直接读取§§1–3、Tables 1/2、Table App.1、附录D与Figure 5原页；未逐式复算全部推导。",
+            "metadata": "arXiv官方题名、四位作者、v1/v8日期。",
+            "lecture": "讲义p45文字层与原页图像。",
+            "podcast": "185段12123.22–12475.27秒转写与shownotes Part 4；独立运行机器结构审计，未听音或测WER。"
+          },
+          "verification_limits": [
+            "未训练或运行模型。",
+            "未逐篇重读论文参考文献。",
+            "转写仅做文本和时间结构核查，不冒称听校。"
+          ],
+          "notes": "小增量复核确认两项修订均与§2.4.1及Tables 1–2一致，原审核其余结论继续成立；无硬失败或必改项。仅未展开每层熵界等非核心支线。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.7,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "d975fb43300135c8d8df2faef30f3bb645ffcdc77842ca31cfcaea8e1ecaeec8",
+        "evidence_sha256": "12cdcbc981cbdd98f33c413bb2bf69cf9aa7c9186cf07618614f7364cacf047a"
+      }
+    }
+  ]
 }

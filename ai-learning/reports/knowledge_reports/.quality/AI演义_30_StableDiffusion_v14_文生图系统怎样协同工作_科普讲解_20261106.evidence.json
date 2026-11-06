@@ -6,17 +6,17 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-sd14-r1-20261106",
+    "run_id": "ai-yanyi-sd14-reread-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current，session-bound confirmed"
   },
   "task": {
-    "summary": "按Brook方式展开第30节StableDiffusionv1.4，沿一朵花的提示词讲清文本编码、潜空间去噪、CFG、采样、数据与公开模型边界。",
+    "summary": "沿原讲义Stable Diffusion节点全文精修第30章：区分方法、checkpoint与推理程序，核对整套文生图的信息流、训练与推理口径，并改善连续阅读。",
     "requirements": [
       {
         "id": "R1",
-        "text": "原LDM方法、v1.4checkpoint、推理程序分层，模型卡固定版本，结合讲义/节目/原始论文和源码。"
+        "text": "保留原LDM方法、v1.4 checkpoint、推理程序分层，核权重格式、EMA-only装载条件与固定版本边界，结合讲义/节目/原始论文和源码。"
       },
       {
         "id": "R2",
@@ -28,15 +28,15 @@
       },
       {
         "id": "R4",
-        "text": "核训练沿革/数据筛选/CLIP双角色、评价协议和成本，不夸大效果、设备能力或安全。"
+        "text": "核训练沿革/数据筛选/CLIP双角色、评价协议与批量/梯度累积成本口径，不夸大效果、设备能力或安全。"
       },
       {
         "id": "R5",
-        "text": "原30节实质改写、标题后首块展开链接，两位编号与前后导航，三问检验；报告独立人类可读。"
+        "text": "本章全文复读和实质精修，保持31章与总览的编号和直达链接，沿花照例子讲清机制并保留有用追问。"
       },
       {
         "id": "R6",
-        "text": "如实说明转写结构缺陷、未听音/实测/完整法律审查，按实际署名区分合作主体；只核正文引用导航，不做工作台验收。"
+        "text": "正文保留必要阅读边界，转写详细核查回链既有记录；不冒称听音、模型实测或完整法律审查，不扩成工作台功能验收。"
       }
     ],
     "source_coverage_scope": "原节目StableDiffusion同段拆为29方法/30具体模型，扩展模型卡与相关代码；后续SD版本/全部采样器/视频谱系不在本章。"
@@ -59,7 +59,7 @@
       "title": "CompVis Stable Diffusion官方README",
       "locator": "https://github.com/CompVis/stable-diffusion/blob/master/README.md",
       "accessed_on": "2026-11-06",
-      "read_scope": "eacli repo.public.read，全文核组件、参考采样、图生图、训练沿革、规模/显存/机构合作、安全与用途限制；实际分支master。GitHub元数据读取失败，未声称固定commit。",
+      "read_scope": "eacli repo.public.read，全文核组件、参考采样、图生图、训练沿革、规模/显存/机构合作、安全与用途限制；实际分支master。GitHub元数据读取失败，未声称固定commit。本轮再次全文回读，增核EMA-only/完整checkpoint说明。",
       "branch": "master",
       "commit_pinned": false,
       "response_text_sha256": "cd14f7760b5e023ecf5e27fb59130a5148c90d8d1a0818c47f1c13a45b55bdc3"
@@ -171,7 +171,7 @@
   "claims": [
     {
       "id": "C1",
-      "claim": "方法论文、checkpoint与推理程序分层",
+      "claim": "方法论文、checkpoint与推理程序分层，权重组织及EMA开关必须结合装载方式解释",
       "report_anchor": "method-model-program",
       "support": "direct",
       "source_ids": [
@@ -180,7 +180,7 @@
         "LDM"
       ],
       "critical": true,
-      "evidence": "LDM§§3–4与模型卡fixedCLIP/v1.4；不套原LDM与具体SD配置。"
+      "evidence": "LDM§§3–4与模型卡fixedCLIP/v1.4；不套原LDM与具体SD配置。模型卡分Diffusers/原CompVis权重入口；README说明v1推理配置面向EMA-only checkpoint，use_ema=False避免另行切换；完整checkpoint下该值选择非EMA权重。"
     },
     {
       "id": "C2",
@@ -245,7 +245,7 @@
         "PLMS"
       ],
       "critical": true,
-      "evidence": "v1.4 10%丢文本；CFG论文§3.2同网络，PLMS无条件+s(条件-无条件)、s1为条件；论文w0对应s1；非分类器且不是双模型。"
+      "evidence": "v1.4 10%丢文本；CFG论文§3.2同网络，PLMS无条件+s(条件-无条件)、s1为条件；论文w0对应s1；非分类器且不是双模型。成对batch仍计算两组噪声预测，参数共享非消除CFG计算开销。"
     },
     {
       "id": "C7",
@@ -343,7 +343,7 @@
         "REPO"
       ],
       "critical": true,
-      "evidence": "模型卡32×8A100、batch2048；README860M/123M、参考10GB，模型卡float16/attention slicing建议；非当代通用最低要求或本机测试。"
+      "evidence": "模型卡Training：32×8=256张A100、梯度累积2、每卡microbatch4，256×2×4=2048有效batch；不把有效batch当单卡瞬时载入或推理需求。README860M/123M与参考10GB；模型卡半精度/attention slicing建议不是当代通用设备门槛。"
     },
     {
       "id": "C15",
@@ -401,7 +401,7 @@
   "source_coverage": [
     {
       "id": "U1",
-      "title": "方法论文、checkpoint与推理程序分层",
+      "title": "方法论文、checkpoint与推理程序分层，权重组织及EMA开关必须结合装载方式解释",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -627,5 +627,19 @@
     "只核评价设置、不读取精确曲线分数；CFG抽取公式乱码用官方PLMS清楚代码交叉核。",
     "转写与29共享191段，三处短重叠/重复，未听音或测WER。",
     "许可证只核模型卡与README边界，不作全文法律审查；附加安全工具非可靠性保证。"
-  ]
+  ],
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "原报告321行全文与全部脚注；固定版本模型卡、README、官方推理配置和PLMS全文，FrozenCLIPEmbedder及相邻编码类回读。",
+      "CFG原文Introduction、§§3.1–3.2、Algorithms1/2、§4.1及讨论结论；LAION v1 pp4–6回读。CFG公式抽取乱码仍以官方PLMS明确算式交叉核，不转录乱码。",
+      "共享LDM关键章节、讲义p49、191段ASR已在本轮29章全文回读，CLIP关键章节和shownotes已在本轮此前核对，按同一来源继承。"
+    ],
+    "substantive_changes": [
+      "用EMA-only与完整checkpoint示例说明模型名/参数文件/程序不能脱离彼此解释；不把use_ema=False当未使用EMA。",
+      "明确CFG共用参数仍需两组计算；拆解256卡×4图×2次累积=2048的训练样本口径。",
+      "统一AI演义·30标题、31章直达导航，将ASR过程细节回链既有记录。"
+    ],
+    "inherited_checks": "未变的来源元信息、读取收据、既有原图核对与转写结构检查明确继承；未新联网、听音、视觉判图或运行模型。"
+  }
 }

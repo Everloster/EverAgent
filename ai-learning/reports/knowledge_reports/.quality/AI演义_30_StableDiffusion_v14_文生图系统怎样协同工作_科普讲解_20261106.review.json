@@ -2,455 +2,32 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
   "quality_tier": "important",
-  "revision_round": 2,
+  "revision_round": 3,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "unconfirmed",
-        "harness": "codex",
-        "run_id": "sd14_primary_review",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "identity_status": "unconfirmed",
-        "identity_basis": "未取得本子Agent模型与会话绑定的独立证据；未把共享宿主eacli返回的config-default模型认作本Reviewer身份。"
-      },
-      "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 96,
-        "reasoning_quality": 95,
-        "readability": 93,
-        "limitations": 96
-      },
-      "score_reasons": {
-        "evidence_fidelity": "模型卡、配置、编码器与PLMS支持关键机制和数字，训练谱系、CFG记法、token上限、评价协议一致。窄增量已修正CLIP/EOS至§2.4（PDF第5页）及1000时间步的参考配置措辞；独立比对确认仅这两项及对应evidence定位变化，原来源复核保持有效。",
-        "request_coverage": "花照贯穿方法—模型—程序，覆盖来源核心机制、数据、评价与限制；原第30节确实实质改写且首块为展开链接，前后导航和三问齐备。后续版本、全量采样器和部署实验明确不在本轮。",
-        "reasoning_quality": "清楚拆开空间倍率/速度、训练更新/采样迭代/网络调用、CFG/strength、非检索/无记忆风险；类比带边界，不把条件强化推成必然正确。",
-        "readability": "可以独立阅读，花照与文字流程有助理解，多数术语首次解释；少数采样名词与段落仍较密。核全文表格、公式文字、脚注、乱码及本地链接/锚点，无断链或缺脚注；未验收页面。",
-        "limitations": "明确中文例子不是实测，未训练/测速/听音/WER/曲线逐点核验；固定模型卡与master内容快照的区别，以及安全、许可、记忆边界均诚实保留。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "REPO",
-        "CONFIG",
-        "ENCODER",
-        "PLMS",
-        "CFG",
-        "LDM",
-        "CLIP",
-        "LAION",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "source_content_map": [
-        {
-          "id": "SC-SD14-01",
-          "title": "方法论文、具体checkpoint与程序分层",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LDM",
-            "PAPER",
-            "REPO"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U17"
-          ],
-          "notes": "§1和§10区分原LDM的BERT tokenizer/联合训练条件与v1.4冻结CLIP；开发者、论文作者和合作主体未混同。"
-        },
-        {
-          "id": "SC-SD14-02",
-          "title": "感知压缩、潜变量形状与编码解码分工",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LDM",
-            "PAPER",
-            "CONFIG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U5"
-          ],
-          "notes": "§3–4的f=8、512×512×3→64×64×4准确；区分空间1/64与端到端速度，并说明已知加噪监督和新噪声生成。"
-        },
-        {
-          "id": "SC-SD14-03",
-          "title": "CLIP对比表示与冻结文本序列职责",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "CLIP",
-            "PAPER",
-            "CONFIG",
-            "ENCODER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "§2的FrozenCLIPEmbedder、last_hidden_state、77 token、截断填充和冻结含义与源码一致；不把CLIP当像素生成器。CLIP/EOS具体段落的正文与evidence定位现已修正为§2.4（PDF第5页），前次非阻断问题解决。"
-        },
-        {
-          "id": "SC-SD14-04",
-          "title": "U-Net噪声估计与cross-attention条件注入",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LDM",
-            "PAPER",
-            "CONFIG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5"
-          ],
-          "notes": "§3–4的潜状态、t、文本三类输入及图像Q/文本K,V方向正确；区分骨架与扩散，不承诺词与空间位置一一绑定。"
-        },
-        {
-          "id": "SC-SD14-05",
-          "title": "CFG条件丢弃、共享网络和质量多样性取舍",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "CFG",
-            "PAPER",
-            "PLMS"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7"
-          ],
-          "notes": "§5正确解释10%丢条件非删图、同一参数网络成对预测、无条件+s×差值、s=1与论文w=0。未把ImageNet实验当SD实验或称强引导必然更好。"
-        },
-        {
-          "id": "SC-SD14-06",
-          "title": "推理程序、采样迭代、随机起点与图像修改",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "REPO",
-            "PAPER",
-            "CONFIG",
-            "PLMS"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U9",
-            "U15"
-          ],
-          "notes": "§6准确区分PLMS参考命令和模型卡PNDM，50步/7.5/512、首步额外估计、成对batch及eta=0可追溯；§9分清strength、CFG、seed与步数。1000时间步现已称为v1参考配置中的扩散时间步，与v1-inference.yaml来源范围一致。"
-        },
-        {
-          "id": "SC-SD14-07",
-          "title": "训练谱系、图文子集与CLIP的两种用途",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "REPO",
-            "LAION"
-          ],
-          "matched_coverage_unit_ids": [
-            "U10",
-            "U11",
-            "U12"
-          ],
-          "notes": "§7的237k/194k、515k、195k/225k、分辨率、170M与筛选阈值吻合；v1.3/v1.4同出v1.2。保留子集命名差异；LAION英语ViT-B/32筛选与生成ViT-L/14文本编码不混同。"
-        },
-        {
-          "id": "SC-SD14-08",
-          "title": "评价协议及训练资源与推理门槛口径",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "REPO"
-          ],
-          "matched_coverage_unit_ids": [
-            "U13",
-            "U14"
-          ],
-          "notes": "§8保留COCO2017随机10,000提示、512×512、50PLMS与多CFG设置，不抄未核曲线。32×8 A100/batch2048为训练配置；860M/123M与10GB明确是README参考条件。"
-        },
-        {
-          "id": "SC-SD14-09",
-          "title": "公开权重、许可证和安全后处理边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "REPO",
-            "LAION"
-          ],
-          "matched_coverage_unit_ids": [
-            "U16"
-          ],
-          "notes": "§10保留用途限制、额外产品安全需求、安全检查与水印仅为附加防护；不声称不可移除或完整法律结论。U19的全部后续模型/采样器/法律审查为合理范围外内容。"
-        },
-        {
-          "id": "SC-SD14-10",
-          "title": "组合、文字、人物、语言、有损与重复记忆限制",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LAION"
-          ],
-          "matched_coverage_unit_ids": [
-            "U16"
-          ],
-          "notes": "§4和§10保留代表性能力局限与重复记忆，红方块/蓝球反例适当；从噪声采样未被说成绝无记忆。未逐项重述全部偏见/误用清单，但不把图像当事实或安全产品。"
-        },
-        {
-          "id": "SC-SD14-11",
-          "title": "节目同条目的效能/控制主线与来源边界",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "LECTURE",
-            "PODCAST",
-            "SHOWNOTES",
-            "LDM",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U18"
-          ],
-          "notes": "先读来源确认仅一个Stable Diffusion条目及共享片段；正文不把口述压缩类比或速度当配置证据。191段、起止各自单调、三处短重叠均与独立重算一致。"
-        }
-      ],
-      "unsupported_claims": [],
-      "missing_requirements": [],
-      "hard_failures": [],
-      "notes": "原复核先读来源、独立列核心单元，后读正文与evidence；无阻断性错误或核心遗漏。本次仅核保留快照到现稿的两项准确性修订及对应evidence定位，确认无其他差异，两项非阻断问题均已解决。保留原来源审读与导航检查记录，未重新扩大来源阅读、未修改仓库/提交或进行页面验收。 随后r2仅将第11节标题改为“思考与追问：三个问题，把整套系统串起来”；已独立核准状态/标题差分，三问、锚点与证据未变。标题增量无新增问题，原内容评分和实审记录继续有效。",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
-        "report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
-        "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
-        "verified_at_start_and_completion": true,
-        "revision_round": 2
-      },
-      "verification_limits": [
-        "仅用提供的缓存来源；外链核URL与来源对应关系，未重复联网测试实时可达性。",
-        "未运行训练、生成、性能或跨设备复现实验；评价曲线未逐点图像读取。",
-        "讲义仅核文字提取；ASR结构检查不证明逐字正确或听音核查。",
-        "仅核文本、引用、脚注和导航；未做工作台、浏览器、服务或截图验收。"
-      ],
-      "read_scopes": [
-        {
-          "source_ids": [
-            "PAPER"
-          ],
-          "scope": "model-card-fixed.txt全文；hf-metadata.txt核固定commit与版本日期。未读取评价图的精确曲线点。"
-        },
-        {
-          "source_ids": [
-            "REPO",
-            "CONFIG",
-            "ENCODER",
-            "PLMS"
-          ],
-          "scope": "official-readme/config/encoder/plms.txt全文：参考采样、训练谱系、冻结与序列输出、PLMS和CFG代码。仅静态阅读master快照，未运行模型。"
-        },
-        {
-          "source_ids": [
-            "CFG"
-          ],
-          "scope": "cfg-paper.txt §3.1、§3.2、Algorithms 1–2、§4.1；cfg-metadata.txt标题、作者与提交历史。抽取公式不完整处与PLMS显式公式对照。"
-        },
-        {
-          "source_ids": [
-            "LDM"
-          ],
-          "scope": "ldm-v2-layout.txt标题版本及§3至§4.3.1。核对应仓内PDF哈希；未重读全部附录。"
-        },
-        {
-          "source_ids": [
-            "CLIP"
-          ],
-          "scope": "clip-v1-layout.txt §2.3对比目标；回查§2.4文本编码器、SOS/EOS与整体表示段（PDF第5页）。核对应仓内PDF哈希。"
-        },
-        {
-          "source_ids": [
-            "LAION"
-          ],
-          "scope": "laion-layout.txt §3.1–3.2，PDF第4–6页：ViT-B/32相似度过滤与安全限制。核对应仓内PDF哈希。"
-        },
-        {
-          "source_ids": [
-            "LECTURE"
-          ],
-          "scope": "handout-p49.txt文字提取；有缺字，仅核标题与可辨识的效能/控制主线。本轮未直接视读PNG，不承接他人图像审阅声明。"
-        },
-        {
-          "source_ids": [
-            "PODCAST",
-            "SHOWNOTES"
-          ],
-          "scope": "sd14-asr.txt全文191段及shownotes.txt全文；核两份ASR收据并独立重算起止单调性、负时长与重叠。文本/片段哈希均匹配。未听音、未测WER。"
-        },
-        {
-          "source_ids": [],
-          "scope": "准确性增量：独立核before-accuracy快照与现稿的差分；仅两项定位/措辞及对应evidence改变。未重读其他来源或重复UI检查。"
-        },
-        {
-          "source_ids": [],
-          "scope": "r2纯标题增量：核git index→现稿仅status与第11节标题改变；还原标题后的报告哈希等于前次实审快照，证据哈希未变。未重读来源、未运行quality check或UI检查。"
-        }
-      ],
-      "non_blocking_findings": [],
-      "resolved_findings": [
-        {
-          "id": "N1",
-          "affected_claim_ids": [
-            "C2"
-          ],
-          "location": "evidence.sources[CLIP].read_scope及脚注encoder",
-          "finding": "§2.3支持对比目标，文本编码器最高层EOS整体表示的具体说明在§2.4（PDF第5页）。",
-          "suggestion": "相应定位补为§§2.3–2.4。",
-          "status": "resolved",
-          "resolution": "已改为§2.4（PDF第5页），正文/对应evidence定位一致，符合前次实际核过的原文段落。"
-        },
-        {
-          "id": "N2",
-          "affected_claim_ids": [
-            "C8"
-          ],
-          "location": "正文§6三个数字表",
-          "finding": "1000时间步与源码一致，但所引为v1-inference.yaml，称训练配置易让读者以为核过原始训练配置。",
-          "suggestion": "改为“v1参考配置中的1000个扩散时间步”。",
-          "status": "resolved",
-          "resolution": "已改为“v1参考配置中的1000个扩散时间步”，与v1-inference.yaml来源范围一致。"
-        }
-      ],
-      "delta_review": {
-        "scope": "仅两项准确性修订的定向差分复核",
-        "prior_snapshot": {
-          "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
-          "report_sha256": "6256a60076342bc4fbe7c90e7bba9d48614b15e06629d1c74147c23b68013a3b",
-          "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
-          "evidence_sha256": "72a5b1b05b169091163e44c4171091a9005290cf7ff275e853e989d49a82069d",
-          "verified_at_start_and_completion": true
-        },
-        "changes_checked": [
-          "正文§6：1000个时间步改称v1参考配置中的扩散时间步",
-          "正文encoder脚注：CLIP文本编码器定位改为§2.4（PDF第5页）",
-          "evidence：CLIP.read_scope及C2.evidence仅修正相应段落定位"
-        ],
-        "independent_diff_matches_allowlist": true,
-        "prior_source_review_retained": true,
-        "sources_reread": false,
-        "unrelated_checks_repeated": false,
-        "score_change": {
-          "evidence_fidelity": {
-            "from": 94,
-            "to": 96,
-            "reason": "原引用定位/来源范围措辞问题已确认解决；其余维度保持。"
-          }
-        }
-      },
-      "title_delta_review": {
-        "revision_round": 2,
-        "assessment": "accepted_title_only_delta",
-        "prior_review_snapshot": {
-          "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
-          "report_sha256": "27cc4097b02c7fcd581a18dea6e8276b540e0e5c433000efa3d931cb9398793c",
-          "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
-          "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
-          "verified_at_start_and_completion": true
-        },
-        "git_index_report_sha256": "cfeea1f6f192a708629d5edcece5fdde79f9a5c465619a1701afb670515a48f9",
-        "old_heading": "## 11. 读完后，用三个问题检查自己有没有串起来",
-        "new_heading": "## 11. 思考与追问：三个问题，把整套系统串起来",
-        "allowed_status_change": "completed → in_progress（开启未发布r2）",
-        "independent_git_index_diff_verified": true,
-        "only_status_and_heading_changed": true,
-        "heading_reverted_report_matches_prior_review_hash": true,
-        "questions_anchors_and_evidence_unchanged": true,
-        "source_reread": false,
-        "quality_check_run": false,
-        "ui_check_run": false,
-        "scores_changed": false,
-        "notes": "已直接核git index与现稿差分，并将现稿标题还原后校验哈希等于前次实审快照；除状态切换和标题文字外完全一致。标题准确概括原有三问，不引入新的科学主张或内容问题。"
-      }
-    },
-    {
-      "role": "flagship_final_review",
-      "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "sd14_strong_review",
+        "run_id": "sd14-reread-review-20261106",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity": "unconfirmed",
         "identity_basis": "orchestrator-configured",
         "model_runtime_confirmation": "session-bound-unverified"
       },
       "scores": {
         "evidence_fidelity": 98,
-        "request_coverage": 97,
-        "reasoning_quality": 96,
-        "readability": 95,
-        "limitations": 97
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 97,
+        "limitations": 98
       },
       "score_reasons": {
-        "evidence_fidelity": "关键数字、组件、权重约定和数据路径均能回到模型卡、配置、源码或原论文；本轮已将CLIP文本编码器精确定位到§2.4（PDF第5页），并把1000步收窄为v1参考配置中的扩散时间步。",
-        "request_coverage": "单例贯穿并覆盖背景、问题、机制、采样、训练、数据、评价和边界；r2纯标题修订已将第11节显式命名为“思考与追问”，满足确定性学习报告契约。唯一轻微可改进处是未直写v1.4的2022年发布日期。",
-        "reasoning_quality": "方法—模型—程序、数据筛选—生成条件、训练步—采样步—前向调用等易混概念被逐层拆开，反例与不可外推边界充分。",
-        "readability": "花照例子稳定贯穿，表格、流程图和三问回顾有效；篇幅较长但导航清楚，没有乱码、公式负担或模板残留。",
-        "limitations": "未生成、未测速、未听音、未测WER、未做法律全文审查与GitHub未固定commit均明确披露，安全组件也未被写成保证。"
+        "evidence_fidelity": "来源优先读取固定模型卡、README、v1推理配置、FrozenCLIPEmbedder、PLMS、CFG论文相关章节、LAION过滤段及LDM/CLIP关键材料，并核191段转写收据。组件尺寸、训练继承、CFG公式约定、PLMS额外估计、有效batch、评价协议和安全边界均吻合；本轮EMA-only与完整checkpoint解释有README直接支持。",
+        "request_coverage": "沿单一花照提示完整走过方法/checkpoint/程序、文本编码、latent/U-Net、训练、CFG、采样、checkpoint与数据、评价和成本、图生图、局限与历史；29/31直达、三问、脚注和来源范围齐全。",
+        "reasoning_quality": "持续区分CLIP条件与生成、CLIP筛数据与编码prompt、训练资源与推理门槛、采样步与前向次数、共享参数与计算量、CFG与img2img strength、附加安全工具与模型能力；v1.3/v1.4分支及EMA开关例子有效揭示配置语境。",
+        "readability": "“窗边花瓶红花”贯穿文本条件、CFG、随机seed和图生图；流程图和三数字表清楚，专业词首次解释，代码细节被翻译为读者问题而非堆砌。全文较长但可独立阅读，前后导航与脚注可定位，无明显乱码。",
+        "limitations": "明确中文提示未实测、无训练/生成/测速、未逐点读评价曲线、GitHub未固定commit、模型卡版本晚于初发、ASR未听音/WER、许可非法律审查；后续版本/应用和设备能力不外推。"
       },
       "critical_claim_ids_checked": [
         "C1",
@@ -493,114 +70,50 @@
         "U18",
         "U19"
       ],
-      "source_ids_checked": [
-        "PAPER",
-        "REPO",
-        "CONFIG",
-        "ENCODER",
-        "PLMS",
-        "CFG",
-        "LDM",
-        "CLIP",
-        "LAION",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
       "source_content_map": [
         {
           "id": "SC1",
-          "title": "方法、checkpoint 与推理程序必须分层",
+          "title": "v1.4具体组件：f8 AutoencoderKL、四通道latent、冻结CLIP ViT-L/14与cross-attention U-Net",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
-            "REPO",
-            "LDM"
+            "CONFIG",
+            "ENCODER",
+            "REPO"
           ],
           "matched_coverage_unit_ids": [
-            "U1"
+            "U1",
+            "U2",
+            "U3",
+            "U4"
           ],
-          "notes": "原始模型卡、仓库与LDM论文分别给出具体权重/程序和方法；正文没有把三者混成同一对象。"
+          "notes": "报告准确给出512²→64²×4、77 token序列、context 768、冻结条件编码器及组件分工，并将方法、checkpoint和程序分层。"
         },
         {
           "id": "SC2",
-          "title": "CLIP原始对比表示与v1.4文本序列条件不是同一种用法",
+          "title": "完整信息流：提示词编码、latent多步去噪、采样器更新与末次解码",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "CLIP",
-            "ENCODER",
+            "PAPER",
             "CONFIG",
-            "PAPER"
+            "ENCODER",
+            "PLMS",
+            "LDM"
           ],
           "matched_coverage_unit_ids": [
             "U2",
-            "U12"
+            "U3",
+            "U4",
+            "U5",
+            "U8"
           ],
-          "notes": "§2.4（PDF第5页）的文本Transformer/EOS整体表示、FrozenCLIPEmbedder的last_hidden_state、冻结和77 token边界均被准确拆开。"
+          "notes": "CLIP不被误写成画图模型；U-Net、扩散、采样器、VAE和训练/推理职责均清楚。"
         },
         {
           "id": "SC3",
-          "title": "f=8潜表示、U-Net噪声预测和交叉注意力的信息流",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LDM",
-            "CONFIG",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U4",
-            "U5"
-          ],
-          "notes": "512×512×3到64×64×4、空间位置1/64而非全程序64倍，以及训练加已知噪声/采样从新噪声出发均表述准确。"
-        },
-        {
-          "id": "SC4",
-          "title": "CFG通过丢弃条件联合训练，并在采样时组合有/无条件预测",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "CFG",
-            "PLMS",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7"
-          ],
-          "notes": "正文正确区分论文w与代码scale约定，明确共用网络、scale=1回到条件预测及质量/多样性取舍。"
-        },
-        {
-          "id": "SC5",
-          "title": "采样器、训练时间步、采样步和网络调用次数必须分开",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "REPO",
-            "PLMS",
-            "CONFIG",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U9"
-          ],
-          "notes": "PLMS 50步、首步额外模型估计、CFG成对batch、eta=0及v1参考配置的1000个扩散时间步均未被误写成模型固有或用户必跑的调用数。"
-        },
-        {
-          "id": "SC6",
-          "title": "v1.1至v1.4训练分支与更新步数口径",
+          "title": "checkpoint训练继承链及v1.3/v1.4分支关系",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -611,54 +124,86 @@
             "U10",
             "U11"
           ],
-          "notes": "v1.3和v1.4都续自v1.2，225k是更新步而非图片数；筛选条件及模型卡/README命名差异均被保留。"
+          "notes": "v1.1/v1.2阶段、v1.3与v1.4均从v1.2继续、225k/195k及10%条件丢弃准确；训练步不冒充图片数。"
         },
         {
-          "id": "SC7",
-          "title": "LAION数据筛选CLIP与生成时文本CLIP分工不同",
+          "id": "SC4",
+          "title": "CLIP的数据筛选角色与生成条件角色分开",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "LAION",
-            "CLIP",
-            "PAPER"
+            "PAPER",
+            "CLIP"
           ],
           "matched_coverage_unit_ids": [
             "U12"
           ],
-          "notes": "ViT-B/32图文相似度筛选与ViT-L/14文本条件被清楚区分，同时保留自动过滤和偏差边界。"
+          "notes": "LAION英语筛选ViT-B/32与v1.4冻结ViT-L/14文本编码器分开，自动筛选局限和偏差均保留。"
+        },
+        {
+          "id": "SC5",
+          "title": "CFG训练/采样机制、软件权重约定与计算开销",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "CFG",
+            "PLMS"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "10%丢条件、同网络两种预测、代码s=1普通条件、论文w=0对应无额外引导、质量/多样性取舍和成对batch计算均准确。"
+        },
+        {
+          "id": "SC6",
+          "title": "PLMS步数、模型前向次数、eta与可替换采样器",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "REPO",
+            "CONFIG",
+            "PLMS",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ],
+          "notes": "1000建模时间步、50 PLMS迭代、首步额外估计、eta=0、PNDM示例和seed边界全部分开。"
+        },
+        {
+          "id": "SC7",
+          "title": "官方评价协议而非普适SOTA结论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "COCO2017随机10k prompts、512²、50 PLMS、CFG 1.5–8、not optimized for FID均保留；未抄未逐点核验曲线值。"
         },
         {
           "id": "SC8",
-          "title": "评价协议和训练成本必须带口径",
-          "importance": "core",
+          "title": "训练资源、有效batch与推理门槛不能混用",
+          "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
             "REPO"
           ],
           "matched_coverage_unit_ids": [
-            "U13",
             "U14"
           ],
-          "notes": "10,000条COCO2017提示、512²、50 PLMS、多CFG强度及32×8 A100/batch 2048均未外推为全局优越性或个人推理门槛。"
+          "notes": "256张A100×microbatch4×累积2=2048解释正确；860M/123M和参考10GB被限制在来源实现语境，不当作现代通用最低要求。"
         },
         {
           "id": "SC9",
-          "title": "图生图strength、CFG、步数与seed位于不同控制位置",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "REPO"
-          ],
-          "matched_coverage_unit_ids": [
-            "U15"
-          ],
-          "notes": "README的strength语义被准确转述，且没有冒称精读SDEdit全文。"
-        },
-        {
-          "id": "SC10",
-          "title": "模型局限、记忆、安全组件与许可边界",
+          "title": "局限、安全附加层和许可边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -668,44 +213,42 @@
           "matched_coverage_unit_ids": [
             "U16"
           ],
-          "notes": "文字、组合、人脸、非英文、有损压缩、未额外去重及附加安全检查/水印的边界均完整进入正文。"
+          "notes": "组合关系、文字、人脸、非英语、有损AE、未去重/记忆、偏差成人数据、安全检查、水印与许可均区分，未宣称安全保证或法律结论。"
         },
         {
-          "id": "SC11",
-          "title": "讲义与节目只覆盖Stable Diffusion/LDM共享段，不是v1.4独立专章",
+          "id": "SC10",
+          "title": "图生图strength、CFG、步数与seed控制分工",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
-            "LECTURE",
+            "REPO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "现有图片编码/加噪与纯文生图区分，strength越高变化越大及语义保持下降的边界准确。"
+        },
+        {
+          "id": "SC11",
+          "title": "节目/讲义将LDM方法与v1.4实现混讲的纠偏",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
             "PODCAST",
-            "SHOWNOTES"
+            "SHOWNOTES",
+            "LECTURE",
+            "LDM",
+            "PAPER"
           ],
           "matched_coverage_unit_ids": [
             "U17",
             "U18"
           ],
-          "notes": "正文如实写出191段、三处短重叠、未听音/WER，并以模型卡和源码补足具体实现。"
+          "notes": "报告按方法/模型/程序拆开；191段共享转写有3处微重叠和重复，未听音/WER并回链记录。"
         },
         {
           "id": "SC12",
-          "title": "2021年LDM方法与2022年v1.4 checkpoint的年代边界",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U17",
-            "U18"
-          ],
-          "notes": "正文已明确“方法/具体模型”分层并说明固定模型卡晚于首发，但没有直接写出HF仓库createdAt为2022-08-20；对AI史读者可再补一句，当前不构成事实错误。"
-        },
-        {
-          "id": "SC13",
-          "title": "未覆盖的后续模型、全部采样器、法律全文和部署基准应明确收束",
+          "title": "模型卡可修订、代码master及项目合作记录边界",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
@@ -713,83 +256,49 @@
             "REPO"
           ],
           "matched_coverage_unit_ids": [
-            "U19"
+            "U1",
+            "U17",
+            "U18"
           ],
-          "notes": "正文与证据均明确这些内容不在本章范围，不把未运行结果写成实测。"
+          "notes": "固定HF commit被注明晚于初发，GitHub master未冒称固定commit；模型开发者、LDM作者与合作支持未合并成同一组织。"
         }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "REPO",
+        "CONFIG",
+        "ENCODER",
+        "PLMS",
+        "CFG",
+        "LDM",
+        "CLIP",
+        "LAION",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "r2纯标题delta复核通过：相对git index中的已完成版本，除status回到in_progress及第11节标题改为“思考与追问：三个问题，把整套系统串起来”外全文相同；锚点、三问内容和evidence均未变化。原独立实审结论继续成立。非阻断建议仍为补明LDM 2021-12与v1.4 2022的时间边界。",
-      "snapshot": {
-        "report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
-        "expected_report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
-        "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
-        "expected_evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
-        "hash_match": true
-      },
-      "read_scopes": {
-        "directly_reviewed_source_ids": [
-          "PAPER",
-          "REPO",
-          "CONFIG",
-          "ENCODER",
-          "PLMS",
-          "CFG",
-          "LDM",
-          "CLIP",
-          "LAION",
-          "LECTURE",
-          "PODCAST",
-          "SHOWNOTES"
-        ],
-        "inherited_source_ids": [],
-        "transcript_check": "读取191段文本并核对既有结构收据；未听音、未测WER。"
-      },
-      "verification_limits": [
-        "未运行权重、生成图片、测速或训练复现。",
-        "GitHub来源为master内容快照，未固定commit。",
-        "未做工作台、浏览器页面或渲染验收。",
-        "未读取任何旧review意见。"
-      ],
-      "accuracy_delta_verification": {
-        "before_snapshot_files": [
-          "before-accuracy-chapter.md",
-          "before-accuracy-chapter-evidence.json"
-        ],
-        "verified_changes": [
-          "CLIP文本编码器定位由§2.3改为§2.4（PDF第5页）",
-          "“训练配置的1000个时间步”收窄为“v1参考配置中的1000个扩散时间步”",
-          "chapter evidence仅同步CLIP.read_scope与C2.evidence"
-        ],
-        "unexpected_changes": [],
-        "source_confirmation": [
-          "clip-v1-layout.txt显示文本Transformer扩展说明位于§2.4及PDF第5页",
-          "v1-inference.yaml明确写有timesteps: 1000"
-        ]
-      },
-      "title_delta_verification": {
-        "revision_round": 2,
-        "index_baseline_status": "completed",
-        "working_status": "in_progress",
-        "index_heading": "## 11. 读完后，用三个问题检查自己有没有串起来",
-        "working_heading": "## 11. 思考与追问：三个问题，把整套系统串起来",
-        "normalized_equal_after_excluding_status_and_heading": true,
-        "content_anchor_unchanged": "three-questions",
-        "evidence_unchanged": true,
-        "purpose": "满足LEARN001对“思考与追问”标题的确定性命名要求，不改变三问内容或科学结论。"
-      }
+      "notes": "快照双SHA匹配。相对HEAD修订新增EMA-only/完整checkpoint语境、CFG两组计算、有效batch拆解、31章导航和转写回链，均有官方README/代码/模型卡支持；未发现新缺陷。实际读取为缓存文本和既有机器收据，未冒称新联网、听音、视觉判图、模型运行或工作台验收。"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.35,
+    "score": 97.85,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "d9858f082e240ee94df939551b7bde1cbbcad52b498b16f5e1fd75f3b232d23a",
-    "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92"
+    "report_sha256": "97bebd08392b117b83dd49717f63495b18f1523de76a0296bc53fd1c822cef9f",
+    "evidence_sha256": "8253bc2462783c8ae728f6dc5eb7ce2a80972d1a631d0acaf26e7b834c9aabc0"
   },
   "history": [
     {
@@ -1540,6 +1049,797 @@
         "policy_id": "report-quality-2026-10-18-r2",
         "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
         "report_sha256": "cfeea1f6f192a708629d5edcece5fdde79f9a5c465619a1701afb670515a48f9",
+        "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "sd14_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_status": "unconfirmed",
+            "identity_basis": "未取得本子Agent模型与会话绑定的独立证据；未把共享宿主eacli返回的config-default模型认作本Reviewer身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 96,
+            "reasoning_quality": 95,
+            "readability": 93,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "模型卡、配置、编码器与PLMS支持关键机制和数字，训练谱系、CFG记法、token上限、评价协议一致。窄增量已修正CLIP/EOS至§2.4（PDF第5页）及1000时间步的参考配置措辞；独立比对确认仅这两项及对应evidence定位变化，原来源复核保持有效。",
+            "request_coverage": "花照贯穿方法—模型—程序，覆盖来源核心机制、数据、评价与限制；原第30节确实实质改写且首块为展开链接，前后导航和三问齐备。后续版本、全量采样器和部署实验明确不在本轮。",
+            "reasoning_quality": "清楚拆开空间倍率/速度、训练更新/采样迭代/网络调用、CFG/strength、非检索/无记忆风险；类比带边界，不把条件强化推成必然正确。",
+            "readability": "可以独立阅读，花照与文字流程有助理解，多数术语首次解释；少数采样名词与段落仍较密。核全文表格、公式文字、脚注、乱码及本地链接/锚点，无断链或缺脚注；未验收页面。",
+            "limitations": "明确中文例子不是实测，未训练/测速/听音/WER/曲线逐点核验；固定模型卡与master内容快照的区别，以及安全、许可、记忆边界均诚实保留。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "REPO",
+            "CONFIG",
+            "ENCODER",
+            "PLMS",
+            "CFG",
+            "LDM",
+            "CLIP",
+            "LAION",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-SD14-01",
+              "title": "方法论文、具体checkpoint与程序分层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LDM",
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U17"
+              ],
+              "notes": "§1和§10区分原LDM的BERT tokenizer/联合训练条件与v1.4冻结CLIP；开发者、论文作者和合作主体未混同。"
+            },
+            {
+              "id": "SC-SD14-02",
+              "title": "感知压缩、潜变量形状与编码解码分工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LDM",
+                "PAPER",
+                "CONFIG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U5"
+              ],
+              "notes": "§3–4的f=8、512×512×3→64×64×4准确；区分空间1/64与端到端速度，并说明已知加噪监督和新噪声生成。"
+            },
+            {
+              "id": "SC-SD14-03",
+              "title": "CLIP对比表示与冻结文本序列职责",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "CLIP",
+                "PAPER",
+                "CONFIG",
+                "ENCODER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§2的FrozenCLIPEmbedder、last_hidden_state、77 token、截断填充和冻结含义与源码一致；不把CLIP当像素生成器。CLIP/EOS具体段落的正文与evidence定位现已修正为§2.4（PDF第5页），前次非阻断问题解决。"
+            },
+            {
+              "id": "SC-SD14-04",
+              "title": "U-Net噪声估计与cross-attention条件注入",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LDM",
+                "PAPER",
+                "CONFIG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "§3–4的潜状态、t、文本三类输入及图像Q/文本K,V方向正确；区分骨架与扩散，不承诺词与空间位置一一绑定。"
+            },
+            {
+              "id": "SC-SD14-05",
+              "title": "CFG条件丢弃、共享网络和质量多样性取舍",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "CFG",
+                "PAPER",
+                "PLMS"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "§5正确解释10%丢条件非删图、同一参数网络成对预测、无条件+s×差值、s=1与论文w=0。未把ImageNet实验当SD实验或称强引导必然更好。"
+            },
+            {
+              "id": "SC-SD14-06",
+              "title": "推理程序、采样迭代、随机起点与图像修改",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "REPO",
+                "PAPER",
+                "CONFIG",
+                "PLMS"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U9",
+                "U15"
+              ],
+              "notes": "§6准确区分PLMS参考命令和模型卡PNDM，50步/7.5/512、首步额外估计、成对batch及eta=0可追溯；§9分清strength、CFG、seed与步数。1000时间步现已称为v1参考配置中的扩散时间步，与v1-inference.yaml来源范围一致。"
+            },
+            {
+              "id": "SC-SD14-07",
+              "title": "训练谱系、图文子集与CLIP的两种用途",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO",
+                "LAION"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11",
+                "U12"
+              ],
+              "notes": "§7的237k/194k、515k、195k/225k、分辨率、170M与筛选阈值吻合；v1.3/v1.4同出v1.2。保留子集命名差异；LAION英语ViT-B/32筛选与生成ViT-L/14文本编码不混同。"
+            },
+            {
+              "id": "SC-SD14-08",
+              "title": "评价协议及训练资源与推理门槛口径",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "§8保留COCO2017随机10,000提示、512×512、50PLMS与多CFG设置，不抄未核曲线。32×8 A100/batch2048为训练配置；860M/123M与10GB明确是README参考条件。"
+            },
+            {
+              "id": "SC-SD14-09",
+              "title": "公开权重、许可证和安全后处理边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO",
+                "LAION"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "§10保留用途限制、额外产品安全需求、安全检查与水印仅为附加防护；不声称不可移除或完整法律结论。U19的全部后续模型/采样器/法律审查为合理范围外内容。"
+            },
+            {
+              "id": "SC-SD14-10",
+              "title": "组合、文字、人物、语言、有损与重复记忆限制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LAION"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "§4和§10保留代表性能力局限与重复记忆，红方块/蓝球反例适当；从噪声采样未被说成绝无记忆。未逐项重述全部偏见/误用清单，但不把图像当事实或安全产品。"
+            },
+            {
+              "id": "SC-SD14-11",
+              "title": "节目同条目的效能/控制主线与来源边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES",
+                "LDM",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "先读来源确认仅一个Stable Diffusion条目及共享片段；正文不把口述压缩类比或速度当配置证据。191段、起止各自单调、三处短重叠均与独立重算一致。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "原复核先读来源、独立列核心单元，后读正文与evidence；无阻断性错误或核心遗漏。本次仅核保留快照到现稿的两项准确性修订及对应evidence定位，确认无其他差异，两项非阻断问题均已解决。保留原来源审读与导航检查记录，未重新扩大来源阅读、未修改仓库/提交或进行页面验收。 随后r2仅将第11节标题改为“思考与追问：三个问题，把整套系统串起来”；已独立核准状态/标题差分，三问、锚点与证据未变。标题增量无新增问题，原内容评分和实审记录继续有效。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
+            "report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
+            "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
+            "verified_at_start_and_completion": true,
+            "revision_round": 2
+          },
+          "verification_limits": [
+            "仅用提供的缓存来源；外链核URL与来源对应关系，未重复联网测试实时可达性。",
+            "未运行训练、生成、性能或跨设备复现实验；评价曲线未逐点图像读取。",
+            "讲义仅核文字提取；ASR结构检查不证明逐字正确或听音核查。",
+            "仅核文本、引用、脚注和导航；未做工作台、浏览器、服务或截图验收。"
+          ],
+          "read_scopes": [
+            {
+              "source_ids": [
+                "PAPER"
+              ],
+              "scope": "model-card-fixed.txt全文；hf-metadata.txt核固定commit与版本日期。未读取评价图的精确曲线点。"
+            },
+            {
+              "source_ids": [
+                "REPO",
+                "CONFIG",
+                "ENCODER",
+                "PLMS"
+              ],
+              "scope": "official-readme/config/encoder/plms.txt全文：参考采样、训练谱系、冻结与序列输出、PLMS和CFG代码。仅静态阅读master快照，未运行模型。"
+            },
+            {
+              "source_ids": [
+                "CFG"
+              ],
+              "scope": "cfg-paper.txt §3.1、§3.2、Algorithms 1–2、§4.1；cfg-metadata.txt标题、作者与提交历史。抽取公式不完整处与PLMS显式公式对照。"
+            },
+            {
+              "source_ids": [
+                "LDM"
+              ],
+              "scope": "ldm-v2-layout.txt标题版本及§3至§4.3.1。核对应仓内PDF哈希；未重读全部附录。"
+            },
+            {
+              "source_ids": [
+                "CLIP"
+              ],
+              "scope": "clip-v1-layout.txt §2.3对比目标；回查§2.4文本编码器、SOS/EOS与整体表示段（PDF第5页）。核对应仓内PDF哈希。"
+            },
+            {
+              "source_ids": [
+                "LAION"
+              ],
+              "scope": "laion-layout.txt §3.1–3.2，PDF第4–6页：ViT-B/32相似度过滤与安全限制。核对应仓内PDF哈希。"
+            },
+            {
+              "source_ids": [
+                "LECTURE"
+              ],
+              "scope": "handout-p49.txt文字提取；有缺字，仅核标题与可辨识的效能/控制主线。本轮未直接视读PNG，不承接他人图像审阅声明。"
+            },
+            {
+              "source_ids": [
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "scope": "sd14-asr.txt全文191段及shownotes.txt全文；核两份ASR收据并独立重算起止单调性、负时长与重叠。文本/片段哈希均匹配。未听音、未测WER。"
+            },
+            {
+              "source_ids": [],
+              "scope": "准确性增量：独立核before-accuracy快照与现稿的差分；仅两项定位/措辞及对应evidence改变。未重读其他来源或重复UI检查。"
+            },
+            {
+              "source_ids": [],
+              "scope": "r2纯标题增量：核git index→现稿仅status与第11节标题改变；还原标题后的报告哈希等于前次实审快照，证据哈希未变。未重读来源、未运行quality check或UI检查。"
+            }
+          ],
+          "non_blocking_findings": [],
+          "resolved_findings": [
+            {
+              "id": "N1",
+              "affected_claim_ids": [
+                "C2"
+              ],
+              "location": "evidence.sources[CLIP].read_scope及脚注encoder",
+              "finding": "§2.3支持对比目标，文本编码器最高层EOS整体表示的具体说明在§2.4（PDF第5页）。",
+              "suggestion": "相应定位补为§§2.3–2.4。",
+              "status": "resolved",
+              "resolution": "已改为§2.4（PDF第5页），正文/对应evidence定位一致，符合前次实际核过的原文段落。"
+            },
+            {
+              "id": "N2",
+              "affected_claim_ids": [
+                "C8"
+              ],
+              "location": "正文§6三个数字表",
+              "finding": "1000时间步与源码一致，但所引为v1-inference.yaml，称训练配置易让读者以为核过原始训练配置。",
+              "suggestion": "改为“v1参考配置中的1000个扩散时间步”。",
+              "status": "resolved",
+              "resolution": "已改为“v1参考配置中的1000个扩散时间步”，与v1-inference.yaml来源范围一致。"
+            }
+          ],
+          "delta_review": {
+            "scope": "仅两项准确性修订的定向差分复核",
+            "prior_snapshot": {
+              "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
+              "report_sha256": "6256a60076342bc4fbe7c90e7bba9d48614b15e06629d1c74147c23b68013a3b",
+              "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
+              "evidence_sha256": "72a5b1b05b169091163e44c4171091a9005290cf7ff275e853e989d49a82069d",
+              "verified_at_start_and_completion": true
+            },
+            "changes_checked": [
+              "正文§6：1000个时间步改称v1参考配置中的扩散时间步",
+              "正文encoder脚注：CLIP文本编码器定位改为§2.4（PDF第5页）",
+              "evidence：CLIP.read_scope及C2.evidence仅修正相应段落定位"
+            ],
+            "independent_diff_matches_allowlist": true,
+            "prior_source_review_retained": true,
+            "sources_reread": false,
+            "unrelated_checks_repeated": false,
+            "score_change": {
+              "evidence_fidelity": {
+                "from": 94,
+                "to": 96,
+                "reason": "原引用定位/来源范围措辞问题已确认解决；其余维度保持。"
+              }
+            }
+          },
+          "title_delta_review": {
+            "revision_round": 2,
+            "assessment": "accepted_title_only_delta",
+            "prior_review_snapshot": {
+              "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
+              "report_sha256": "27cc4097b02c7fcd581a18dea6e8276b540e0e5c433000efa3d931cb9398793c",
+              "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json",
+              "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
+              "verified_at_start_and_completion": true
+            },
+            "git_index_report_sha256": "cfeea1f6f192a708629d5edcece5fdde79f9a5c465619a1701afb670515a48f9",
+            "old_heading": "## 11. 读完后，用三个问题检查自己有没有串起来",
+            "new_heading": "## 11. 思考与追问：三个问题，把整套系统串起来",
+            "allowed_status_change": "completed → in_progress（开启未发布r2）",
+            "independent_git_index_diff_verified": true,
+            "only_status_and_heading_changed": true,
+            "heading_reverted_report_matches_prior_review_hash": true,
+            "questions_anchors_and_evidence_unchanged": true,
+            "source_reread": false,
+            "quality_check_run": false,
+            "ui_check_run": false,
+            "scores_changed": false,
+            "notes": "已直接核git index与现稿差分，并将现稿标题还原后校验哈希等于前次实审快照；除状态切换和标题文字外完全一致。标题准确概括原有三问，不引入新的科学主张或内容问题。"
+          }
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "sd14_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity": "unconfirmed",
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 95,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "关键数字、组件、权重约定和数据路径均能回到模型卡、配置、源码或原论文；本轮已将CLIP文本编码器精确定位到§2.4（PDF第5页），并把1000步收窄为v1参考配置中的扩散时间步。",
+            "request_coverage": "单例贯穿并覆盖背景、问题、机制、采样、训练、数据、评价和边界；r2纯标题修订已将第11节显式命名为“思考与追问”，满足确定性学习报告契约。唯一轻微可改进处是未直写v1.4的2022年发布日期。",
+            "reasoning_quality": "方法—模型—程序、数据筛选—生成条件、训练步—采样步—前向调用等易混概念被逐层拆开，反例与不可外推边界充分。",
+            "readability": "花照例子稳定贯穿，表格、流程图和三问回顾有效；篇幅较长但导航清楚，没有乱码、公式负担或模板残留。",
+            "limitations": "未生成、未测速、未听音、未测WER、未做法律全文审查与GitHub未固定commit均明确披露，安全组件也未被写成保证。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "REPO",
+            "CONFIG",
+            "ENCODER",
+            "PLMS",
+            "CFG",
+            "LDM",
+            "CLIP",
+            "LAION",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC1",
+              "title": "方法、checkpoint 与推理程序必须分层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO",
+                "LDM"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "原始模型卡、仓库与LDM论文分别给出具体权重/程序和方法；正文没有把三者混成同一对象。"
+            },
+            {
+              "id": "SC2",
+              "title": "CLIP原始对比表示与v1.4文本序列条件不是同一种用法",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "CLIP",
+                "ENCODER",
+                "CONFIG",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U12"
+              ],
+              "notes": "§2.4（PDF第5页）的文本Transformer/EOS整体表示、FrozenCLIPEmbedder的last_hidden_state、冻结和77 token边界均被准确拆开。"
+            },
+            {
+              "id": "SC3",
+              "title": "f=8潜表示、U-Net噪声预测和交叉注意力的信息流",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LDM",
+                "CONFIG",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U5"
+              ],
+              "notes": "512×512×3到64×64×4、空间位置1/64而非全程序64倍，以及训练加已知噪声/采样从新噪声出发均表述准确。"
+            },
+            {
+              "id": "SC4",
+              "title": "CFG通过丢弃条件联合训练，并在采样时组合有/无条件预测",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "CFG",
+                "PLMS",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "正文正确区分论文w与代码scale约定，明确共用网络、scale=1回到条件预测及质量/多样性取舍。"
+            },
+            {
+              "id": "SC5",
+              "title": "采样器、训练时间步、采样步和网络调用次数必须分开",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "REPO",
+                "PLMS",
+                "CONFIG",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U9"
+              ],
+              "notes": "PLMS 50步、首步额外模型估计、CFG成对batch、eta=0及v1参考配置的1000个扩散时间步均未被误写成模型固有或用户必跑的调用数。"
+            },
+            {
+              "id": "SC6",
+              "title": "v1.1至v1.4训练分支与更新步数口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11"
+              ],
+              "notes": "v1.3和v1.4都续自v1.2，225k是更新步而非图片数；筛选条件及模型卡/README命名差异均被保留。"
+            },
+            {
+              "id": "SC7",
+              "title": "LAION数据筛选CLIP与生成时文本CLIP分工不同",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LAION",
+                "CLIP",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "ViT-B/32图文相似度筛选与ViT-L/14文本条件被清楚区分，同时保留自动过滤和偏差边界。"
+            },
+            {
+              "id": "SC8",
+              "title": "评价协议和训练成本必须带口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "10,000条COCO2017提示、512²、50 PLMS、多CFG强度及32×8 A100/batch 2048均未外推为全局优越性或个人推理门槛。"
+            },
+            {
+              "id": "SC9",
+              "title": "图生图strength、CFG、步数与seed位于不同控制位置",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "README的strength语义被准确转述，且没有冒称精读SDEdit全文。"
+            },
+            {
+              "id": "SC10",
+              "title": "模型局限、记忆、安全组件与许可边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "文字、组合、人脸、非英文、有损压缩、未额外去重及附加安全检查/水印的边界均完整进入正文。"
+            },
+            {
+              "id": "SC11",
+              "title": "讲义与节目只覆盖Stable Diffusion/LDM共享段，不是v1.4独立专章",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18"
+              ],
+              "notes": "正文如实写出191段、三处短重叠、未听音/WER，并以模型卡和源码补足具体实现。"
+            },
+            {
+              "id": "SC12",
+              "title": "2021年LDM方法与2022年v1.4 checkpoint的年代边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U17",
+                "U18"
+              ],
+              "notes": "正文已明确“方法/具体模型”分层并说明固定模型卡晚于首发，但没有直接写出HF仓库createdAt为2022-08-20；对AI史读者可再补一句，当前不构成事实错误。"
+            },
+            {
+              "id": "SC13",
+              "title": "未覆盖的后续模型、全部采样器、法律全文和部署基准应明确收束",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "REPO"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "正文与证据均明确这些内容不在本章范围，不把未运行结果写成实测。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "r2纯标题delta复核通过：相对git index中的已完成版本，除status回到in_progress及第11节标题改为“思考与追问：三个问题，把整套系统串起来”外全文相同；锚点、三问内容和evidence均未变化。原独立实审结论继续成立。非阻断建议仍为补明LDM 2021-12与v1.4 2022的时间边界。",
+          "snapshot": {
+            "report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
+            "expected_report_sha256": "ceb83f7058c4eee84bf962b3b3c18ab4e9c2f0076761f7814b5232bab54666d9",
+            "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
+            "expected_evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92",
+            "hash_match": true
+          },
+          "read_scopes": {
+            "directly_reviewed_source_ids": [
+              "PAPER",
+              "REPO",
+              "CONFIG",
+              "ENCODER",
+              "PLMS",
+              "CFG",
+              "LDM",
+              "CLIP",
+              "LAION",
+              "LECTURE",
+              "PODCAST",
+              "SHOWNOTES"
+            ],
+            "inherited_source_ids": [],
+            "transcript_check": "读取191段文本并核对既有结构收据；未听音、未测WER。"
+          },
+          "verification_limits": [
+            "未运行权重、生成图片、测速或训练复现。",
+            "GitHub来源为master内容快照，未固定commit。",
+            "未做工作台、浏览器页面或渲染验收。",
+            "未读取任何旧review意见。"
+          ],
+          "accuracy_delta_verification": {
+            "before_snapshot_files": [
+              "before-accuracy-chapter.md",
+              "before-accuracy-chapter-evidence.json"
+            ],
+            "verified_changes": [
+              "CLIP文本编码器定位由§2.3改为§2.4（PDF第5页）",
+              "“训练配置的1000个时间步”收窄为“v1参考配置中的1000个扩散时间步”",
+              "chapter evidence仅同步CLIP.read_scope与C2.evidence"
+            ],
+            "unexpected_changes": [],
+            "source_confirmation": [
+              "clip-v1-layout.txt显示文本Transformer扩展说明位于§2.4及PDF第5页",
+              "v1-inference.yaml明确写有timesteps: 1000"
+            ]
+          },
+          "title_delta_verification": {
+            "revision_round": 2,
+            "index_baseline_status": "completed",
+            "working_status": "in_progress",
+            "index_heading": "## 11. 读完后，用三个问题检查自己有没有串起来",
+            "working_heading": "## 11. 思考与追问：三个问题，把整套系统串起来",
+            "normalized_equal_after_excluding_status_and_heading": true,
+            "content_anchor_unchanged": "three-questions",
+            "evidence_unchanged": true,
+            "purpose": "满足LEARN001对“思考与追问”标题的确定性命名要求，不改变三问内容或科学结论。"
+          }
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.35,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "d9858f082e240ee94df939551b7bde1cbbcad52b498b16f5e1fd75f3b232d23a",
         "evidence_sha256": "67cce0ac449798875bea30744acbea91f8ff2133ba03845d619f843827568c92"
       }
     }

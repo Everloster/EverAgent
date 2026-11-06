@@ -2,364 +2,32 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "unconfirmed",
-        "harness": "codex",
-        "run_id": "ldm_primary_review",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "identity_status": "session-bound-unverified",
-        "identity_note": "本复核子会话未取得独立绑定的模型身份；共享宿主config-default不作为本子会话模型证据，未借用父会话身份。"
-      },
-      "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 97,
-        "reasoning_quality": 96,
-        "readability": 94,
-        "limitations": 98
-      },
-      "score_reasons": {
-        "evidence_fidelity": "指定版本、机制、署名及所引主要表格均可回到直接读取的来源；尤其核清冻结CLIP并非本篇v2、Table6的VQ行与8×V100口径，未发现关键数值错配。未独立重算原论文统计量。",
-        "request_coverage": "来源先行形成的核心单元均有正文位置：花照单例贯穿问题、表示、两阶段训练、条件、实验与路线；主稿第29节实改且标题后第一块为展开链接，导航和三问齐全。未把外围延伸的有意省略当作遗漏主线。",
-        "reasoning_quality": "能够解释为什么损失权重不直接减掉空间计算、为什么一次解码不是一步采样，以及压缩/生成和感知补全/真实恢复的差别；反例与实验混杂条件紧随结论，类比没有承担证明。",
-        "readability": "叙述顺序与单例清楚，术语多数有上下文，一页流程图可独立复述机制；本轮检查文字、表格、脚注和本地导航，无缺链或乱码。增量补充的代表向量解释和IS全称/用途降低了术语门槛；保守保持首次评分。",
-        "limitations": "明确未复现、未听音/测WER、未逐式或逐图重审全部材料；转写重复和0.02/0.10/0.10秒重叠如实披露，模型卡时间与后续市场叙事边界也清楚。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18"
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES",
-        "SD14"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "source_content_map": [
-        {
-          "id": "LDM-01",
-          "title": "像素空间反复计算的训练与采样成本",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "§1明确区分少步采样与每步更便宜，150–1000 V100日及A100生成50k约5天正确作为前作引述，不采纳口述的一图一天。"
-        },
-        {
-          "id": "LDM-02",
-          "title": "可复用的两阶段模型与保留空间结构的感知表示",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U4",
-            "U5"
-          ],
-          "notes": "§§2–3覆盖二维潜网格、通道、感知/局部对抗目标、轻KL和VQ、固定编码器/解码器后训练扩散；与pp2–4、Appendix G相符。"
-        },
-        {
-          "id": "LDM-03",
-          "title": "训练监督、潜空间采样与最终单次解码",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6"
-          ],
-          "notes": "§4区分训练时编码真实图片并加入已知噪声、生成时从新潜噪声开始；single pass仅指解码器，不误读为一步扩散。"
-        },
-        {
-          "id": "LDM-04",
-          "title": "温和压缩的质量与效率取舍",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U7"
-          ],
-          "notes": "§5说明f4/8与f32的差异，区分重建和生成质量，并公开同GPU/近参数量之外的batch/LR差异与5k/50k统计口径；512→128只是尺寸例子。"
-        },
-        {
-          "id": "LDM-05",
-          "title": "条件接口及LDM原文与SDv1.4的文本编码差别",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "SD14",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U9"
-          ],
-          "notes": "§6准确说明图像特征Q与条件K/V，文本/类别/布局与空间拼接；BERT tokenizer+联合训练Transformer与后续固定CLIP严格分开。"
-        },
-        {
-          "id": "LDM-06",
-          "title": "生成实验的任务口径、反例和引导的质量/覆盖取舍",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U10",
-            "U11",
-            "U12"
-          ],
-          "notes": "§7与Tables1–3/10及E.3一致：CelebA-HQ5.11、FFHQ4.98对3.08；COCO文本23.31→12.63且非表内最佳；ImageNet的10.56→3.60伴随Recall0.62→0.48。实验分开，没有跨任务拼榜。"
-        },
-        {
-          "id": "LDM-07",
-          "title": "多条件任务与实测效率，不把补全当作恢复真值",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U13",
-            "U14"
-          ],
-          "notes": "§§7–8核Table6 VQ w/attn的0.11/0.33、0.26/0.97、20.66/7.04和24.74/14.99，明确修补训练8×V100；布局/超分/修补分别训练，Table4偏好70.6%/68.1%与3秒观看口径正确。"
-        },
-        {
-          "id": "LDM-08",
-          "title": "序列采样、有损精度和社会风险边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14",
-            "U16"
-          ],
-          "notes": "§§8–9保留原§5的速度、精度、误导内容、偏差/隐私边界，并指出预训练和新任务数据不是免费；没有把合理细节误写成真实细节恢复。"
-        },
-        {
-          "id": "LDM-09",
-          "title": "方法、具体模型与作者署名的历史定位",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "METADATA",
-            "LECTURE",
-            "SD14"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U9",
-            "U15"
-          ],
-          "notes": "2021-12-20首版和2022-04-13 v2匹配官方记录；五作者/共同一作/LMU-IWR与Runway署名由原论文文本支持，不沿用讲义机构泛化，不倒填后续组件。"
-        },
-        {
-          "id": "LDM-10",
-          "title": "节目效率/控制主线与压缩类比的可用边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST",
-            "LECTURE",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U7",
-            "U17"
-          ],
-          "notes": "191段直接阅读后核对：花照/玫瑰和厚书读薄保留直觉，但压缩产生智能、统一百倍加速、当前市场排名未升格为已证实事实。独立精度检查复现3处重叠。"
-        },
-        {
-          "id": "LDM-11",
-          "title": "shownotes路线与29/30报告拆分",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U17"
-          ],
-          "notes": "shownotes只有Stable Diffusion一项；正文明确29讲方法、30讲具体模型而不是伪造独立节目段。回原节/前后章链接文件与锚点有效。"
-        },
-        {
-          "id": "LDM-12",
-          "title": "公式重证、全部附录样图与外围技术/商业延伸",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER",
-            "PODCAST",
-            "LECTURE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U18"
-          ],
-          "notes": "正文明确这些内容未全部展开或独立核验；符合本轮少数学的机制科普范围，不构成主线遗漏。"
-        }
-      ],
-      "unsupported_claims": [],
-      "missing_requirements": [],
-      "hard_failures": [],
-      "notes": "未发现需阻断交付的内容错误或核心遗漏。后续仅增量复核两处：代码簿补“有限个学到的代表向量”准确；IS补全称及基于分类器输出的解释，并注明不等于人类审美，解除了此前可选建议。反向撤销这两处后文件SHA精确回到首次审阅快照，evidence未变化，无附带正文修改。保持原评分，不重复已完成的来源阅读或基线检查。只检查内容/数字/乱码/引用/导航，不进行工作台或网页页面验收；最终状态由native checker计算。",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md",
-        "report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
-        "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388",
-        "matched_requested_snapshot_at_start_and_finish": true
-      },
-      "read_scopes": {
-        "PAPER": "直接读取固定v2缓存版面文本pp1–9、pp21–22、pp25–29及相应表格/图注；核仓内PDF SHA。未逐式重证，也未在本轮重新视读原页图片。",
-        "METADATA": "直接读取官方版本记录缓存全文并核缓存SHA。",
-        "LECTURE": "直接读取p49缓存抽取文本，可见标题、贡献、CLIP与机构表述；抽取有缺字，本轮未重新视读原页，关键科学判断回原论文。",
-        "PODCAST": "直接读取零基6521–6711共191段文字与JSON切片；独立按小数精度检查起止单调性、重叠与间隔。",
-        "SHOWNOTES": "直接读取节目页缓存并核SHA，重点Part4及Stable Diffusion前后条目。",
-        "SD14": "直接读取已缓存官方模型卡，判断仅限固定预训练CLIP与LDM原v2的版本差别；未声称是2022原稿或固定commit。",
-        "report": "展开稿全文与证据账本；同时核主稿第29节和四条相关脚注以检查R5。",
-        "review_order": "先原始来源并独立列出11个内容单元，再读报告及evidence映射；未读取任何旧Reviewer意见或五维分数。"
-      },
-      "transcription_verification": {
-        "segment_count": 191,
-        "start_seconds": 13552.68,
-        "end_seconds": 13974.88,
-        "start_backwards": 0,
-        "end_backwards": 0,
-        "end_before_start": 0,
-        "overlaps": [
-          {
-            "previous_zero_based_index": 6587,
-            "current_zero_based_index": 6588,
-            "seconds": 0.02
-          },
-          {
-            "previous_zero_based_index": 6588,
-            "current_zero_based_index": 6589,
-            "seconds": 0.1
-          },
-          {
-            "previous_zero_based_index": 6589,
-            "current_zero_based_index": 6590,
-            "seconds": 0.1
-          }
-        ],
-        "max_gap_seconds": 1.51,
-        "slice_sha256": "a04a34d715193d10765f62fc38a54847e1a252984429d58643805453be608b27",
-        "text_sha256": "e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
-        "matches_provided_receipt_fields": true,
-        "listened": false,
-        "wer_measured": false
-      },
-      "verification_limits": [
-        "本轮复核原论文和讲义使用缓存抽取文字，未把生成者的图像检查算作本Reviewer亲自视读。",
-        "外链来源使用已给缓存，未进行新一轮联网存活性检查。",
-        "schema校验不等于复现论文或用户学习效果验收。"
-      ],
-      "delta_revalidation": {
-        "previous_reviewed_report_sha256": "99835ed9c0fb574a2808788ba706ab8c2d9ffbcf9c3c8991891a734b5b923dc1",
-        "current_report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
-        "changes_reviewed": [
-          "VQ代码簿的代表向量解释",
-          "IS全称与非审美指标说明"
-        ],
-        "reversing_only_listed_changes_restores_previous_hash": true,
-        "evidence_unchanged": true,
-        "sources_and_baseline_reused_without_repeating_passed_checks": true,
-        "scores_unchanged": true
-      }
-    },
-    {
-      "role": "flagship_final_review",
-      "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "ldm_strong_review",
+        "run_id": "ldm-r2-reread-review-20261106",
         "independent_context": true,
         "explicit_model_override": false,
         "identity_basis": "orchestrator-configured",
         "model_runtime_confirmation": "session-bound-unverified"
       },
       "scores": {
-        "evidence_fidelity": 97,
+        "evidence_fidelity": 98,
         "request_coverage": 98,
-        "reasoning_quality": 97,
-        "readability": 96,
-        "limitations": 97
+        "reasoning_quality": 98,
+        "readability": 97,
+        "limitations": 98
       },
       "score_reasons": {
-        "evidence_fidelity": "关键机制、版本、人物和数字均能回到所读原始材料；尤其纠正“一图一天”、CLIP倒填和空间比例即速度比例。未发现关键数字错配或来源冒称。",
-        "request_coverage": "按Brook式问题线，以花照单例贯穿背景、问题、机制、实验、路线与代价；标题后首块导航、前后节、三问和来源范围齐全。",
-        "reasoning_quality": "把表示学习、潜空间生成和条件控制拆成不同职责，并用压缩不足/过度、重建质量/生成质量、FID/精确恢复等反例约束推论。",
-        "readability": "机制由具体问题进入，术语首次解释，表格只承载数字对照；无乱码、悬空脚注或本地导航缺失。标题的反直觉措辞在开头立即受到“并非越压越聪明”的约束。",
-        "limitations": "明确未复现、未听校、未逐式重证、模型卡快照边界及任务外叙事；序列采样、压缩精度、数据风险和训练成本均未省略。"
+        "evidence_fidelity": "来源优先回读LDM v2主文pp1–9及补充pp21–22、25–29，另读版本页、讲义、191段转写、shownotes与SD v1.4模型卡相关段。两阶段训练、轻KL/VQ、条件编码、f权衡、Tables 1/2/3/4/6/10/18数字和用户研究口径均吻合；冻结修订新增固定资源对照、注意力开关和Task边界准确。",
+        "request_coverage": "完整覆盖像素成本、潜表示、感知压缩、两阶段训练、多步生成、压缩率取舍、cross-attention与版本差别、无条件/文本/类别实验、修补效率、多任务、人物、风险、三问和28/30导航。",
+        "reasoning_quality": "持续区分空间位置减少与端到端加速、重建好与生成好、感知自然与证据恢复、方法论文与Stable Diffusion v1.4、固定步数与固定资源、文本模型与类别模型；用FFHQ反例和压缩过强结果约束普遍化。",
+        "readability": "花照单例贯穿压缩、生成、文本条件和精确恢复；少数学但尺寸、样本数、步数、硬件与单位充足。流程图、对照表和问题式章节可独立阅读，脚注和前后分章链接清楚，无明显乱码或模板残留。",
+        "limitations": "明确未运行/测本机、未逐式或全图审计、ASR有重叠且未听音/WER；保留序列采样、压缩精度、隐私偏差和滥用风险，区分模型卡缓存与2022原稿，并排除后续市场/人物叙事。"
       },
       "critical_claim_ids_checked": [
         "C1",
@@ -403,7 +71,7 @@
       "source_content_map": [
         {
           "id": "SC1",
-          "title": "像素扩散的成本问题与两类降本方向",
+          "title": "像素空间扩散的高分辨率训练与采样成本",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -413,11 +81,26 @@
           "matched_coverage_unit_ids": [
             "U2"
           ],
-          "notes": "正文用原论文的150–1000 V100 GPU日和单A100生成50k样本约5天校正口述“一图一天”，并区分少步采样与缩小表示空间。"
+          "notes": "正文保留150–1000 V100日、单A100生成50k约5天的前作引述，并拒绝采用节目“一张图一天”的夸张口述。"
         },
         {
           "id": "SC2",
-          "title": "两阶段感知压缩与潜空间扩散",
+          "title": "两阶段方法：感知自编码器后固定E/D，再训练latent diffusion",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U6"
+          ],
+          "notes": "编码、latent多步扩散与最后一次解码职责分明；没有误写为端到端同步训练或一步生成。"
+        },
+        {
+          "id": "SC3",
+          "title": "潜表示仍是二维多通道网格，不是低清像素图或语义标签",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -425,15 +108,13 @@
           ],
           "matched_coverage_unit_ids": [
             "U3",
-            "U4",
-            "U5",
-            "U6"
+            "U4"
           ],
-          "notes": "编码/解码、固定压缩器、潜变量加噪训练、从新潜噪声多步生成并最终一次解码均讲清；没有把single pass误写成一步去噪。"
+          "notes": "f按高宽定义、位置数与真实系统速度分开，花照尺寸仅作为解释例。"
         },
         {
-          "id": "SC3",
-          "title": "压缩强度的质量—效率取舍",
+          "id": "SC4",
+          "title": "压缩率权衡：f过小仍贵、f过大限制重建，f4/8在论文扫描中平衡较好",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -443,45 +124,83 @@
           "matched_coverage_unit_ids": [
             "U7"
           ],
-          "notes": "明确f是高宽各自下采样倍数，位置数比例不等于端到端加速；说明f=4/8较优、f=32损质及5k/50k样本口径差别。"
-        },
-        {
-          "id": "SC4",
-          "title": "交叉注意力、条件接口与版本分离",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST",
-            "SD14"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U8",
-            "U9"
-          ],
-          "notes": "独立核对原LDM的BERT tokenizer、联合训练Transformer条件编码器与SD v1.4固定CLIP文本编码器不是同一配置；文本、类别、布局与空间拼接的接口分工清楚。"
+          "notes": "正文同时写明同训练步与固定35 V100日证据、5k/50k样本差异、batch/LR混杂和2.2倍换算假设，未把压缩写成普遍智能定律。"
         },
         {
           "id": "SC5",
-          "title": "关键实验数字及其任务条件",
+          "title": "真实效率口径：空间缩减不等于端到端同倍率加速",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U10",
-            "U11",
-            "U12",
+            "U3",
             "U13"
           ],
-          "notes": "CelebA-HQ/FFHQ、文本CFG、ImageNet类别引导及修补吞吐/FID均保留分辨率、步数、样本数、硬件或任务限制，并给出反例，未写成全局排名。"
+          "notes": "Table6修补数据0.11→0.33、0.26→0.97、20.66→7.04、24.74→14.99准确，并说明注意力开关属于第一阶段。"
         },
         {
           "id": "SC6",
-          "title": "条件任务、感知质量与精确恢复边界",
+          "title": "条件接口：域专用编码器与cross-attention/concat分工，原LDM文本模型并非冻结CLIP",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SD14",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ],
+          "notes": "BERT tokenizer、联合训练Transformer条件编码器与SD v1.4固定CLIP被明确分版本。"
+        },
+        {
+          "id": "SC7",
+          "title": "完整生成链：latent噪声多步去噪后只在末尾单次解码",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U16"
+          ],
+          "notes": "训练监督、纯生成不需先编码输入图、编辑任务例外及序列采样限制均讲清。"
+        },
+        {
+          "id": "SC8",
+          "title": "无条件生成结果保留数据集、采样步数、样本数和反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "CelebA-HQ 5.11/500步、FFHQ 4.98/200步、ProjectedGAN 3.08反例与50k统计口径准确。"
+        },
+        {
+          "id": "SC9",
+          "title": "文本与类别条件实验、classifier-free guidance及覆盖取舍",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12"
+          ],
+          "notes": "LAION-400M、COCO30k、250步、23.31→12.63以及ImageNet FID/Recall取舍均分开呈现。"
+        },
+        {
+          "id": "SC10",
+          "title": "多任务、精确恢复边界与社会影响",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -491,51 +210,41 @@
             "U14",
             "U16"
           ],
-          "notes": "布局、超分、修补分别说明需要相应训练；区分FID/主观自然程度与PSNR/SSIM、真实细节恢复，保留序列采样、压缩瓶颈及风险。"
+          "notes": "布局/超分/修补需相应训练；用户研究对手与Task边界准确；仍慢于GAN、AE精度瓶颈、偏差/隐私/伪造风险完整。"
         },
         {
-          "id": "SC7",
-          "title": "署名、研究部件会合与路线作用",
+          "id": "SC11",
+          "title": "节目/讲义将LDM与Stable Diffusion混讲的版本边界",
           "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U15"
-          ],
-          "notes": "五位作者、共同一作与首页机构关系按原页纠正；历史叙事服务机制，不扩写未核后续任职。"
-        },
-        {
-          "id": "SC8",
-          "title": "节目路线、转写结构缺陷与章节导航",
-          "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PODCAST",
             "SHOWNOTES",
-            "LECTURE"
+            "LECTURE",
+            "SD14"
           ],
           "matched_coverage_unit_ids": [
+            "U1",
+            "U9",
             "U17"
           ],
-          "notes": "191段转写独立复算得三处0.02/0.10/0.10秒重叠、最大间隔1.51秒，起止各自单调；正文未冒称听音或WER，并保留原节、前后节导航。"
+          "notes": "报告按方法论文与v1.4具体实现拆章；191段时间结构的三处微重叠、重复和未听音/WER如实回链。"
         },
         {
-          "id": "SC9",
-          "title": "超出本章的完整数学、后续产品与市场叙事",
+          "id": "SC12",
+          "title": "版本、作者与机构",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
-            "PODCAST",
+            "METADATA",
             "LECTURE"
           ],
           "matched_coverage_unit_ids": [
-            "U18"
+            "U1",
+            "U15"
           ],
-          "notes": "以明确范围和局限处理：未逐式重证、未展开ControlNet/当代市场及未核商业史；该取舍符合少数学、单例贯穿的讲解目标。"
+          "notes": "v1/v2日期、五位作者、共同一作和LMU/IWR/Runway ML署名关系准确，不采纳未核后续任职。"
         }
       ],
       "source_ids_checked": [
@@ -557,51 +266,622 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "来源优先独立复核。未读旧review意见；未发现需修订的核心遗漏或数字错误。ASR结构由segments独立复算，不冒称听音。最终状态由native checker计算。 增量复核：VQ代码簿补为有限个学到的代表向量；IS首次展开为Inception Score并说明分类器输出所反映的清晰可辨与整体多样性、非人类审美。两处均提升可读性且不改变原结论、证据或评分。",
-      "snapshot": {
-        "report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
-        "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388"
-      },
-      "read_scopes": {
-        "sources": [
-          "PAPER pp1–9、pp21–22、pp25–29及指定表格",
-          "METADATA版本记录",
-          "LECTURE p49",
-          "PODCAST 191段ASR及segments结构",
-          "SHOWNOTES Part4路线",
-          "SD14模型卡的固定CLIP差别"
-        ],
-        "report": [
-          "全文、脚注、原始材料范围、章节导航"
-        ],
-        "excluded": [
-          "旧review意见",
-          "浏览器/工作台页面",
-          "音频听校与WER",
-          "未列入范围的论文页面"
-        ]
-      },
-      "verification_limits": [
-        "reviewer模型值来自调度配置，未独立确认provider运行身份",
-        "未运行模型或复现实验；数字按固定论文材料核对",
-        "未听音，转写只做文本与机器结构复核"
-      ],
-      "incremental_verification": [
-        {
-          "scope": "仅本轮三处可读性补充",
-          "assessment": "accepted",
-          "notes": "增量复核：VQ代码簿补为有限个学到的代表向量；IS首次展开为Inception Score并说明分类器输出所反映的清晰可辨与整体多样性、非人类审美。两处均提升可读性且不改变原结论、证据或评分。"
-        }
-      ]
+      "notes": "快照双SHA匹配。相对HEAD修订补齐固定35 V100日证据及2.2换算假设，澄清轻KL、Table6第一阶段注意力和Table4 Task2对手，更新导航/转写回链；均为证据支持的改进。实际读取为缓存文本与既有机器收据，未冒称重新联网、看图、听音、运行或页面验收。"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 96.1,
+    "score": 97.85,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "9293e1363e2050210c3226f85ae2d4359c31d15b2916b32cb06d88fe9ae2ff19",
-    "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388"
-  }
+    "report_sha256": "f3e443ab966403870547ef4aea30986fd29a62df2f51b090f96b06b3a94c4618",
+    "evidence_sha256": "7c4b59ac50986f59a8a0fe39029d5c9f289f49202083c44d72c41d819bc3df11"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "ldm_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_status": "session-bound-unverified",
+            "identity_note": "本复核子会话未取得独立绑定的模型身份；共享宿主config-default不作为本子会话模型证据，未借用父会话身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 94,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "指定版本、机制、署名及所引主要表格均可回到直接读取的来源；尤其核清冻结CLIP并非本篇v2、Table6的VQ行与8×V100口径，未发现关键数值错配。未独立重算原论文统计量。",
+            "request_coverage": "来源先行形成的核心单元均有正文位置：花照单例贯穿问题、表示、两阶段训练、条件、实验与路线；主稿第29节实改且标题后第一块为展开链接，导航和三问齐全。未把外围延伸的有意省略当作遗漏主线。",
+            "reasoning_quality": "能够解释为什么损失权重不直接减掉空间计算、为什么一次解码不是一步采样，以及压缩/生成和感知补全/真实恢复的差别；反例与实验混杂条件紧随结论，类比没有承担证明。",
+            "readability": "叙述顺序与单例清楚，术语多数有上下文，一页流程图可独立复述机制；本轮检查文字、表格、脚注和本地导航，无缺链或乱码。增量补充的代表向量解释和IS全称/用途降低了术语门槛；保守保持首次评分。",
+            "limitations": "明确未复现、未听音/测WER、未逐式或逐图重审全部材料；转写重复和0.02/0.10/0.10秒重叠如实披露，模型卡时间与后续市场叙事边界也清楚。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "SD14"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "LDM-01",
+              "title": "像素空间反复计算的训练与采样成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§1明确区分少步采样与每步更便宜，150–1000 V100日及A100生成50k约5天正确作为前作引述，不采纳口述的一图一天。"
+            },
+            {
+              "id": "LDM-02",
+              "title": "可复用的两阶段模型与保留空间结构的感知表示",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U5"
+              ],
+              "notes": "§§2–3覆盖二维潜网格、通道、感知/局部对抗目标、轻KL和VQ、固定编码器/解码器后训练扩散；与pp2–4、Appendix G相符。"
+            },
+            {
+              "id": "LDM-03",
+              "title": "训练监督、潜空间采样与最终单次解码",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "§4区分训练时编码真实图片并加入已知噪声、生成时从新潜噪声开始；single pass仅指解码器，不误读为一步扩散。"
+            },
+            {
+              "id": "LDM-04",
+              "title": "温和压缩的质量与效率取舍",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U7"
+              ],
+              "notes": "§5说明f4/8与f32的差异，区分重建和生成质量，并公开同GPU/近参数量之外的batch/LR差异与5k/50k统计口径；512→128只是尺寸例子。"
+            },
+            {
+              "id": "LDM-05",
+              "title": "条件接口及LDM原文与SDv1.4的文本编码差别",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SD14",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U9"
+              ],
+              "notes": "§6准确说明图像特征Q与条件K/V，文本/类别/布局与空间拼接；BERT tokenizer+联合训练Transformer与后续固定CLIP严格分开。"
+            },
+            {
+              "id": "LDM-06",
+              "title": "生成实验的任务口径、反例和引导的质量/覆盖取舍",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11",
+                "U12"
+              ],
+              "notes": "§7与Tables1–3/10及E.3一致：CelebA-HQ5.11、FFHQ4.98对3.08；COCO文本23.31→12.63且非表内最佳；ImageNet的10.56→3.60伴随Recall0.62→0.48。实验分开，没有跨任务拼榜。"
+            },
+            {
+              "id": "LDM-07",
+              "title": "多条件任务与实测效率，不把补全当作恢复真值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "§§7–8核Table6 VQ w/attn的0.11/0.33、0.26/0.97、20.66/7.04和24.74/14.99，明确修补训练8×V100；布局/超分/修补分别训练，Table4偏好70.6%/68.1%与3秒观看口径正确。"
+            },
+            {
+              "id": "LDM-08",
+              "title": "序列采样、有损精度和社会风险边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U16"
+              ],
+              "notes": "§§8–9保留原§5的速度、精度、误导内容、偏差/隐私边界，并指出预训练和新任务数据不是免费；没有把合理细节误写成真实细节恢复。"
+            },
+            {
+              "id": "LDM-09",
+              "title": "方法、具体模型与作者署名的历史定位",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "LECTURE",
+                "SD14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U9",
+                "U15"
+              ],
+              "notes": "2021-12-20首版和2022-04-13 v2匹配官方记录；五作者/共同一作/LMU-IWR与Runway署名由原论文文本支持，不沿用讲义机构泛化，不倒填后续组件。"
+            },
+            {
+              "id": "LDM-10",
+              "title": "节目效率/控制主线与压缩类比的可用边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "LECTURE",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U7",
+                "U17"
+              ],
+              "notes": "191段直接阅读后核对：花照/玫瑰和厚书读薄保留直觉，但压缩产生智能、统一百倍加速、当前市场排名未升格为已证实事实。独立精度检查复现3处重叠。"
+            },
+            {
+              "id": "LDM-11",
+              "title": "shownotes路线与29/30报告拆分",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "shownotes只有Stable Diffusion一项；正文明确29讲方法、30讲具体模型而不是伪造独立节目段。回原节/前后章链接文件与锚点有效。"
+            },
+            {
+              "id": "LDM-12",
+              "title": "公式重证、全部附录样图与外围技术/商业延伸",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "正文明确这些内容未全部展开或独立核验；符合本轮少数学的机制科普范围，不构成主线遗漏。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "未发现需阻断交付的内容错误或核心遗漏。后续仅增量复核两处：代码簿补“有限个学到的代表向量”准确；IS补全称及基于分类器输出的解释，并注明不等于人类审美，解除了此前可选建议。反向撤销这两处后文件SHA精确回到首次审阅快照，evidence未变化，无附带正文修改。保持原评分，不重复已完成的来源阅读或基线检查。只检查内容/数字/乱码/引用/导航，不进行工作台或网页页面验收；最终状态由native checker计算。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md",
+            "report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
+            "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388",
+            "matched_requested_snapshot_at_start_and_finish": true
+          },
+          "read_scopes": {
+            "PAPER": "直接读取固定v2缓存版面文本pp1–9、pp21–22、pp25–29及相应表格/图注；核仓内PDF SHA。未逐式重证，也未在本轮重新视读原页图片。",
+            "METADATA": "直接读取官方版本记录缓存全文并核缓存SHA。",
+            "LECTURE": "直接读取p49缓存抽取文本，可见标题、贡献、CLIP与机构表述；抽取有缺字，本轮未重新视读原页，关键科学判断回原论文。",
+            "PODCAST": "直接读取零基6521–6711共191段文字与JSON切片；独立按小数精度检查起止单调性、重叠与间隔。",
+            "SHOWNOTES": "直接读取节目页缓存并核SHA，重点Part4及Stable Diffusion前后条目。",
+            "SD14": "直接读取已缓存官方模型卡，判断仅限固定预训练CLIP与LDM原v2的版本差别；未声称是2022原稿或固定commit。",
+            "report": "展开稿全文与证据账本；同时核主稿第29节和四条相关脚注以检查R5。",
+            "review_order": "先原始来源并独立列出11个内容单元，再读报告及evidence映射；未读取任何旧Reviewer意见或五维分数。"
+          },
+          "transcription_verification": {
+            "segment_count": 191,
+            "start_seconds": 13552.68,
+            "end_seconds": 13974.88,
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlaps": [
+              {
+                "previous_zero_based_index": 6587,
+                "current_zero_based_index": 6588,
+                "seconds": 0.02
+              },
+              {
+                "previous_zero_based_index": 6588,
+                "current_zero_based_index": 6589,
+                "seconds": 0.1
+              },
+              {
+                "previous_zero_based_index": 6589,
+                "current_zero_based_index": 6590,
+                "seconds": 0.1
+              }
+            ],
+            "max_gap_seconds": 1.51,
+            "slice_sha256": "a04a34d715193d10765f62fc38a54847e1a252984429d58643805453be608b27",
+            "text_sha256": "e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+            "matches_provided_receipt_fields": true,
+            "listened": false,
+            "wer_measured": false
+          },
+          "verification_limits": [
+            "本轮复核原论文和讲义使用缓存抽取文字，未把生成者的图像检查算作本Reviewer亲自视读。",
+            "外链来源使用已给缓存，未进行新一轮联网存活性检查。",
+            "schema校验不等于复现论文或用户学习效果验收。"
+          ],
+          "delta_revalidation": {
+            "previous_reviewed_report_sha256": "99835ed9c0fb574a2808788ba706ab8c2d9ffbcf9c3c8991891a734b5b923dc1",
+            "current_report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
+            "changes_reviewed": [
+              "VQ代码簿的代表向量解释",
+              "IS全称与非审美指标说明"
+            ],
+            "reversing_only_listed_changes_restores_previous_hash": true,
+            "evidence_unchanged": true,
+            "sources_and_baseline_reused_without_repeating_passed_checks": true,
+            "scores_unchanged": true
+          }
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "ldm_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 96,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "关键机制、版本、人物和数字均能回到所读原始材料；尤其纠正“一图一天”、CLIP倒填和空间比例即速度比例。未发现关键数字错配或来源冒称。",
+            "request_coverage": "按Brook式问题线，以花照单例贯穿背景、问题、机制、实验、路线与代价；标题后首块导航、前后节、三问和来源范围齐全。",
+            "reasoning_quality": "把表示学习、潜空间生成和条件控制拆成不同职责，并用压缩不足/过度、重建质量/生成质量、FID/精确恢复等反例约束推论。",
+            "readability": "机制由具体问题进入，术语首次解释，表格只承载数字对照；无乱码、悬空脚注或本地导航缺失。标题的反直觉措辞在开头立即受到“并非越压越聪明”的约束。",
+            "limitations": "明确未复现、未听校、未逐式重证、模型卡快照边界及任务外叙事；序列采样、压缩精度、数据风险和训练成本均未省略。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC1",
+              "title": "像素扩散的成本问题与两类降本方向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "正文用原论文的150–1000 V100 GPU日和单A100生成50k样本约5天校正口述“一图一天”，并区分少步采样与缩小表示空间。"
+            },
+            {
+              "id": "SC2",
+              "title": "两阶段感知压缩与潜空间扩散",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U5",
+                "U6"
+              ],
+              "notes": "编码/解码、固定压缩器、潜变量加噪训练、从新潜噪声多步生成并最终一次解码均讲清；没有把single pass误写成一步去噪。"
+            },
+            {
+              "id": "SC3",
+              "title": "压缩强度的质量—效率取舍",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "明确f是高宽各自下采样倍数，位置数比例不等于端到端加速；说明f=4/8较优、f=32损质及5k/50k样本口径差别。"
+            },
+            {
+              "id": "SC4",
+              "title": "交叉注意力、条件接口与版本分离",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST",
+                "SD14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U8",
+                "U9"
+              ],
+              "notes": "独立核对原LDM的BERT tokenizer、联合训练Transformer条件编码器与SD v1.4固定CLIP文本编码器不是同一配置；文本、类别、布局与空间拼接的接口分工清楚。"
+            },
+            {
+              "id": "SC5",
+              "title": "关键实验数字及其任务条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11",
+                "U12",
+                "U13"
+              ],
+              "notes": "CelebA-HQ/FFHQ、文本CFG、ImageNet类别引导及修补吞吐/FID均保留分辨率、步数、样本数、硬件或任务限制，并给出反例，未写成全局排名。"
+            },
+            {
+              "id": "SC6",
+              "title": "条件任务、感知质量与精确恢复边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U16"
+              ],
+              "notes": "布局、超分、修补分别说明需要相应训练；区分FID/主观自然程度与PSNR/SSIM、真实细节恢复，保留序列采样、压缩瓶颈及风险。"
+            },
+            {
+              "id": "SC7",
+              "title": "署名、研究部件会合与路线作用",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "五位作者、共同一作与首页机构关系按原页纠正；历史叙事服务机制，不扩写未核后续任职。"
+            },
+            {
+              "id": "SC8",
+              "title": "节目路线、转写结构缺陷与章节导航",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "SHOWNOTES",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "191段转写独立复算得三处0.02/0.10/0.10秒重叠、最大间隔1.51秒，起止各自单调；正文未冒称听音或WER，并保留原节、前后节导航。"
+            },
+            {
+              "id": "SC9",
+              "title": "超出本章的完整数学、后续产品与市场叙事",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "以明确范围和局限处理：未逐式重证、未展开ControlNet/当代市场及未核商业史；该取舍符合少数学、单例贯穿的讲解目标。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "SD14"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先独立复核。未读旧review意见；未发现需修订的核心遗漏或数字错误。ASR结构由segments独立复算，不冒称听音。最终状态由native checker计算。 增量复核：VQ代码簿补为有限个学到的代表向量；IS首次展开为Inception Score并说明分类器输出所反映的清晰可辨与整体多样性、非人类审美。两处均提升可读性且不改变原结论、证据或评分。",
+          "snapshot": {
+            "report_sha256": "61689ebf878b812f6d3e9ad649f352e2678aa07bde95b587579fd1fd57cbb91f",
+            "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388"
+          },
+          "read_scopes": {
+            "sources": [
+              "PAPER pp1–9、pp21–22、pp25–29及指定表格",
+              "METADATA版本记录",
+              "LECTURE p49",
+              "PODCAST 191段ASR及segments结构",
+              "SHOWNOTES Part4路线",
+              "SD14模型卡的固定CLIP差别"
+            ],
+            "report": [
+              "全文、脚注、原始材料范围、章节导航"
+            ],
+            "excluded": [
+              "旧review意见",
+              "浏览器/工作台页面",
+              "音频听校与WER",
+              "未列入范围的论文页面"
+            ]
+          },
+          "verification_limits": [
+            "reviewer模型值来自调度配置，未独立确认provider运行身份",
+            "未运行模型或复现实验；数字按固定论文材料核对",
+            "未听音，转写只做文本与机器结构复核"
+          ],
+          "incremental_verification": [
+            {
+              "scope": "仅本轮三处可读性补充",
+              "assessment": "accepted",
+              "notes": "增量复核：VQ代码簿补为有限个学到的代表向量；IS首次展开为Inception Score并说明分类器输出所反映的清晰可辨与整体多样性、非人类审美。两处均提升可读性且不改变原结论、证据或评分。"
+            }
+          ]
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.1,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "9293e1363e2050210c3226f85ae2d4359c31d15b2916b32cb06d88fe9ae2ff19",
+        "evidence_sha256": "ddd1f311e10e3d5113ffc124c9bdd7b4876291b1d1b83f9b50db97c28bcf8388"
+      }
+    }
+  ]
 }
