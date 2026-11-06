@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-megascale-20261105",
+    "run_id": "ai-yanyi-reread-ch14-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-thread-state，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+    "identity_basis": "eacli session current核实当前生成者gpt-6-astra/codex，confirmed、session-bound、codex-thread-state；本轮全文复读并精修，历史来源检查按未变范围继承。"
   },
   "task": {
-    "summary": "按用户认可的Brook方式完成《AI演义》第14节：原节实质改写且节首可展开，详解结合讲义、节目shownotes、本章转录与原论文，少数学、适合人类连续阅读。",
+    "summary": "全32篇逐段精修中的第14篇：保持讲义的训练效率与稳定性主线，核对MegaScale机制、性能口径及生产排障，补清microbatch与流水线气泡的关系、吞吐单位换算，改善脚注与分章导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第14节实改并有节首展开链接；详解返回原节、前13节LAION和后15节稀疏MoE；保留主稿其余部分。"
+        "text": "保留文件与编号；展开能返回主稿第14节并直达上下分章，主稿在系列收束统一校订。"
       },
       {
         "id": "R6",
-        "text": "报告可独立阅读，少公式、表格口径清楚、引用可点击；实际桌面和窄屏阅读入口验收，独立来源优先复核，公开私有资料边界清楚。"
+        "text": "逐段检查正文、算式、表格、脚注、乱码和本地导航；正文无原始ASR、私有设备与执行日志；实际富文本呈现按系列收束检查，不捆绑工作台功能验收。"
       }
     ],
     "reader_feedback": [
@@ -55,7 +55,7 @@
       "version": "arXiv:2402.15627v1 [cs.LG], 23 Feb 2024",
       "local_copy": "ai-learning/papers/31_megascale_2024.pdf",
       "sha256": "4a04bff09d7cd937271662e8ca9a97f0d41eac9be1d35c9c8b2f18f2dc59ad20",
-      "read_scope": "16页本地PDF；主文physical pp1–13 Abstract与§§1–8全文，含Tables1–3及Figures1–12相关正文/图注。直接视觉复核p4 Figure3、p6 Figure5、p10 Table2/Figure9、p11 Table3/Figures10–11、p12 Figure12。pp14–16参考文献未通读；未复现训练。",
+      "read_scope": "2026-11-06复读物理p1引言/MFU，p3–12并行组合、算法/通信优化、数据与初始化、故障恢复、观测诊断和实验正文/表格文字；按表2与seq长度核吞吐算术。原图、p2背景与其它未变内容继承历史核查，未重做图像/集群实测。此前范围：16页本地PDF；主文physical pp1–13 Abstract与§§1–8全文，含Tables1–3及Figures1–12相关正文/图注。直接视觉复核p4 Figure3、p6 Figure5、p10 Table2/Figure9、p11 Table3/Figures10–11、p12 Figure12。pp14–16参考文献未通读；未复现训练。",
       "metadata_receipt": {
         "artifact": "arxiv-metadata.json",
         "sha256": "7a2697c7e1539f05684c4b46d952fdf0646a21fbcea68548f3e9986aa919f0aa"
@@ -74,7 +74,7 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "physical p31文字与原图；单个job、效率/稳定性、Algorithm-System Co-design、深度可观测性。对“首个”表述不作无条件历史事实采用。"
+      "read_scope": "2026-11-06完整复读p31文字；原图继承。此前范围：physical p31文字与原图；单个job、效率/稳定性、Algorithm-System Co-design、深度可观测性。对“首个”表述不作无条件历史事实采用。"
     },
     {
       "id": "EPISODE",
@@ -83,7 +83,7 @@
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-05",
       "published_on": "2025-10-28",
-      "read_scope": "已核正确节目身份与shownotes；Part2 01:52:58、Part3 02:21:29。读恢复转录236段02:13:37.79–02:21:28.53，包含MegaScale及联合设计追问。没有逐论文官方时间表，未听校。",
+      "read_scope": "2026-11-06完整复读本章236段；节目身份、shownotes及结构收据继承未变快照，未听音。此前范围：已核正确节目身份与shownotes；Part2 01:52:58、Part3 02:21:29。读恢复转录236段02:13:37.79–02:21:28.53，包含MegaScale及联合设计追问。没有逐论文官方时间表，未听校。",
       "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
       "transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.transcription-review.json",
       "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
@@ -131,14 +131,14 @@
     },
     {
       "id": "C3",
-      "claim": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。",
+      "claim": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。 增batch摊薄流水线气泡取决于每条流水线有更多microbatch，而非仅增DP副本。",
       "report_anchor": "algorithm-and-system",
       "support": "direct",
       "source_ids": [
         "MEGASCALE"
       ],
       "critical": true,
-      "evidence": "§3.1式1/2与窗口注意力、LAMB；§6.2另做收敛实验。"
+      "evidence": "§3.1式1/2与窗口注意力、LAMB；§6.2另做收敛实验。 以固定PP/DP与microbatch大小解释§3.1的调度关系，不另声称实测气泡比例。"
     },
     {
       "id": "C4",
@@ -171,7 +171,7 @@
         "MEGASCALE"
       ],
       "critical": true,
-      "evidence": "§1 MFU定义，§6.1 Tables1/2；Megatron-LM 285068c8基线，NVIDIA Ampere集群背景。MFU不是闲置卡数占比，算法改动需结合收敛看。"
+      "evidence": "§1 MFU定义，§6.1 Tables1/2；Megatron-LM 285068c8基线，NVIDIA Ampere集群背景。MFU不是闲置卡数占比，算法改动需结合收敛看。 单位核对6144×2048=12582912 token，除6.34约1984686 token/s；与原表1984000的舍入粒度区分，非新测量。"
     },
     {
       "id": "C7",
@@ -335,7 +335,7 @@
     },
     {
       "id": "U3",
-      "title": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。",
+      "title": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。 增batch摊薄流水线气泡取决于每条流水线有更多microbatch，而非仅增DP副本。",
       "importance": "core",
       "status": "included",
       "source_ids": [

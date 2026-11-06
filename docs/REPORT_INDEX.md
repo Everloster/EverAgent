@@ -16,6 +16,11 @@
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | ai-learning |
@@ -27,11 +32,6 @@
 | 2026-11-06 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | ai-learning |
 | 2026-11-06 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | ai-learning |
 | 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | ai-learning |
-| 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
-| 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
-| 2026-11-05 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | ai-learning |
-| 2026-11-05 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | ai-learning |
-| 2026-11-05 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | ai-learning |
 
 ## 🤖 AI Learning（185 篇）
 
@@ -46,6 +46,11 @@
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | `ai_history`, `gan`, `generative_models`, `adversarial_training` |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | `ai_history`, `clip`, `contrastive_learning`, `multimodal`, `zero_shot` |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |
+| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | `ai_history`, `mixture_of_experts`, `conditional_computation`, `sparse_routing`, `load_balancing`, `language_modeling` |
+| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | `ai_history`, `megascale`, `distributed_training`, `parallelism`, `observability`, `fault_tolerance` |
+| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | `ai_history`, `laion`, `clip`, `multimodal`, `training_data`, `data_curation` |
+| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | `AI演义`, `RefinedWeb`, `Falcon`, `训练数据`, `数据去重`, `科普讲解` |
+| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | `AI演义`, `ZeRO`, `DeepSpeed`, `分布式训练`, `显存`, `科普讲解` |
 | 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | `AI演义`, `Scaling Laws`, `Chinchilla`, `语言模型`, `训练预算`, `科普讲解` |
 | 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | `AI演义`, `GPT-2`, `GPT-3`, `上下文学习`, `语言模型`, `科普讲解` |
 | 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | `ai_history`, `gpt`, `bert`, `pretraining`, `transfer_learning`, `language_model` |
@@ -64,11 +69,6 @@
 | 2026-11-05 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | `ai_history`, `instructgpt`, `rlhf`, `instruction_following`, `reward_model`, `alignment` |
 | 2026-11-05 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) | `ai_history`, `alphago_zero`, `reinforcement_learning`, `self_play`, `mcts`, `test_time_compute` |
 | 2026-11-05 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) | `ai_history`, `lora`, `parameter_efficient_finetuning`, `low_rank_adaptation`, `transfer_learning` |
-| 2026-11-05 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | `ai_history`, `mixture_of_experts`, `conditional_computation`, `sparse_routing`, `load_balancing`, `language_modeling` |
-| 2026-11-05 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | `ai_history`, `megascale`, `distributed_training`, `parallelism`, `observability`, `fault_tolerance` |
-| 2026-11-05 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | `ai_history`, `laion`, `clip`, `multimodal`, `training_data`, `data_curation` |
-| 2026-11-05 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | `AI演义`, `RefinedWeb`, `Falcon`, `训练数据`, `数据去重`, `科普讲解` |
-| 2026-11-05 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | `AI演义`, `ZeRO`, `DeepSpeed`, `分布式训练`, `显存`, `科普讲解` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |

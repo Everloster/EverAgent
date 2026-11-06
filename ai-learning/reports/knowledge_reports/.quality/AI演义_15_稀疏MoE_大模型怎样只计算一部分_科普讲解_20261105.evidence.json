@@ -12,7 +12,7 @@
     "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
   },
   "task": {
-    "summary": "按用户认可的Brook方式完成《AI演义》第15节：原节实质改写且节首可展开，详解结合讲义、节目shownotes、本章转录与2017 MoE原论文，少数学、面向人类连续阅读。",
+    "summary": "全32篇逐段精修中的第15篇：保持讲义的稀疏条件计算主线，复核2017 MoE机制与实验，补清专家稀疏不等于全模型稀疏、K>1门控训练与预算对照边界，改善人类阅读与分章导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿第15节实质改写且节首可展开，详解可返回原节、上一节MegaScale与下一节LoRA，保持主稿前14节和其余正文。"
+        "text": "保留文件与编号，可返回主稿第15节并直达上下分章；主稿在系列收束时统一校订。"
       },
       {
         "id": "R6",
-        "text": "独立可读、少数学，关键数字与引用清楚；真实桌面/窄屏导航和表格/脚注验收，来源优先独立复核，私有原始资料不进入公开仓。"
+        "text": "完整逐段检查正文、算式、表格、脚注、乱码和本地导航；私有转录与执行日志不进正文。实际富文本呈现在系列收束时检查，不捆绑工作台功能验收。"
       }
     ],
     "reader_feedback": [
@@ -65,7 +65,8 @@
       "venue_receipt": {
         "artifact": "openreview-page.json",
         "sha256": "d1ca9c339434833a490193e2d6a56058483b0f1e39a3f1068a0c3822be3f031f"
-      }
+      },
+      "revision_read_20261106": "本轮完整复读报告后定向重读物理p1、p3–9、p13–19排版原文；涵盖门控/梯度、通信与批量、均衡、Table1/2–9、架构和训练附录。未重新视觉核图，原轮已读图表与元数据在未变范围继承。"
     },
     {
       "id": "LECTURE",
@@ -74,7 +75,8 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "physical p17文本与原图；2017.01、容量/成本、脑分区类比、算法与工程配合。直接确认把容量1000倍换算成本千分之一的句子，本报告予以纠正。"
+      "read_scope": "physical p17文本与原图；2017.01、容量/成本、脑分区类比、算法与工程配合。直接确认把容量1000倍换算成本千分之一的句子，本报告予以纠正。",
+      "revision_read_20261106": "本轮复读p17排版文字；原图核对沿用旧轮未变材料。"
     },
     {
       "id": "EPISODE",
@@ -92,7 +94,8 @@
         "artifact": "apple-episode-read.json",
         "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
       },
-      "alternate_text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a"
+      "alternate_text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a",
+      "revision_read_20261106": "本轮完整复读本章206段01:15:34.53–01:22:27.03；复用既有shownotes和同一期Apple身份资料，不冒称重新联网或听音。"
     },
     {
       "id": "TRANSCRIPT_REVIEW",
@@ -101,7 +104,8 @@
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
       "sha256": "6384584d3fa617870c11041551a9e7a8ec426f031760b8af3effc5f08de3dbdd",
-      "read_scope": "206段精确边界、3处正间隔、最长连续重复2、无倒序/负时长/重叠、正式audit_transcript机器收据；语义回查不替代WER或逐字听校。"
+      "read_scope": "206段精确边界、3处正间隔、最长连续重复2、无倒序/负时长/重叠、正式audit_transcript机器收据；语义回查不替代WER或逐字听校。",
+      "revision_read_20261106": "本轮完整读取公开转录核查JSON；继承原机器时间审计，不把结构通过称为逐字准确。"
     }
   ],
   "claims": [
@@ -118,25 +122,25 @@
     },
     {
       "id": "C2",
-      "claim": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。",
+      "claim": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。未选专家不执行前馈，但前后层和门控仍需计算，8选2不表示整次词预测只剩四分之一计算。",
       "report_anchor": "one-input-through-moe",
       "support": "direct",
       "source_ids": [
         "MOE"
       ],
       "critical": true,
-      "evidence": "§2、Figure1、§5.1、AppendixC；普通LM k=4、层次LM每级k=2合计4叶专家。"
+      "evidence": "§2、Figure1、§5.1、AppendixC；普通LM k=4、层次LM每级k=2合计4叶专家。§2/附录C；稀疏仅免去门控权重为0的专家输出。"
     },
     {
       "id": "C3",
-      "claim": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。",
+      "claim": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。仅对本文先截断再归一化形式，K=1时已选权重恒1，主预测损失不能在选择固定时通过该权重的变化训练门控。",
       "report_anchor": "learning-to-route",
       "support": "direct",
       "source_ids": [
         "MOE"
       ],
       "critical": true,
-      "evidence": "§2.1 p4；AppendixA pp13–14。"
+      "evidence": "§2.1 p4；AppendixA pp13–14。由式(3)直接展开，不推广到所有top1路由，也不否认辅助负载损失信号。"
     },
     {
       "id": "C4",
@@ -158,11 +162,11 @@
         "MOE"
       ],
       "critical": true,
-      "evidence": "§4、AppendixA Table6，MoE-256各10epochs、对若干batch平均负载指标。"
+      "evidence": "§4、AppendixA Table6，MoE-256各10epochs、对若干batch平均负载指标。10×0.1与2×0.5的importance示例为教学假设，不是论文实测。"
     },
     {
       "id": "C6",
-      "claim": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。",
+      "claim": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。路由层级和各模型调节的dropout也不同，不能当成纯单因素质量归因。",
       "report_anchor": "capacity-and-cost",
       "support": "direct",
       "source_ids": [
@@ -171,7 +175,7 @@
         "EPISODE"
       ],
       "critical": true,
-      "evidence": "§5.1、Table7；完整MoE-4096-h约5.1B；讲义p17和ASR成本推导与原文不等价。"
+      "evidence": "§5.1、Table7；完整MoE-4096-h约5.1B；讲义p17和ASR成本推导与原文不等价。AppendixC.1及Table7：DropProb 0.1/0.1/0.1/0.2。"
     },
     {
       "id": "C7",
@@ -278,7 +282,7 @@
     },
     {
       "id": "U2",
-      "title": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。",
+      "title": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。未选专家不执行前馈，但前后层和门控仍需计算，8选2不表示整次词预测只剩四分之一计算。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -288,7 +292,7 @@
     },
     {
       "id": "U3",
-      "title": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。",
+      "title": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。仅对本文先截断再归一化形式，K=1时已选权重恒1，主预测损失不能在选择固定时通过该权重的变化训练门控。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -318,7 +322,7 @@
     },
     {
       "id": "U6",
-      "title": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。",
+      "title": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。路由层级和各模型调节的dropout也不同，不能当成纯单因素质量归因。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -484,6 +488,19 @@
         "sha256": "0b833d14c6142d3938aa6b8fefe7769105ab52103a5d342ca808ac8ab6044f59"
       }
     ],
-    "vision_interpretation": "eacli vision作辅助，原图与原文为裁决依据；讲义视觉回答一处将成本误识成成就，直接看图确认成本后按原文理解。"
+    "vision_interpretation": "eacli vision作辅助，原图与原文为裁决依据；讲义视觉回答一处将成本误识成成就，直接看图确认成本后按原文理解。",
+    "full_series_revision_20261106": {
+      "report_read": "完整逐段复读，保留有效原解释与反例；实质修改后再核对差异。",
+      "source_text_sha256": "8c762e7d3abc623293e4533908e97feab64cfbdb1dee50f331863c319336fcc2",
+      "transcript_text_sha256": "0378bf5d313297e7f63acd9177ff8faf108319b7f916dd8c955b520e3724c79a",
+      "changes": [
+        "补清未激活专家与共享层/门控计算的区别",
+        "按原公式解释K>1条件及K=1恒1边界，梯度术语统一",
+        "用标明教学性质的例子区分importance与输入负载",
+        "保留近似同预算对照但补充路由与dropout混杂",
+        "规范标题、脚注原文链接与直达上下篇，移出正文执行段数"
+      ],
+      "not_repeated": "未重新转写、逐字听校、训练复现或重做原图视觉；未变来源与机器收据明确继承。"
+    }
   }
 }

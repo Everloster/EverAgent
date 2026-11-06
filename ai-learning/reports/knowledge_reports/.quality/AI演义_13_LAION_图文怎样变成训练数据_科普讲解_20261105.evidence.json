@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-laion-20261105",
+    "run_id": "ai-yanyi-reread-ch13-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+    "identity_basis": "eacli session current核实当前生成者gpt-6-astra/codex，confirmed、session-bound、codex-thread-state；本轮全文复读并精修，历史来源检查按未变范围继承。"
   },
   "task": {
-    "summary": "逐节完成AI演义第13节LAION，结合原论文、讲义、shownotes和相关转录，用人类可读的展开篇说明图文数据建设，并实质优化主稿原章节和展开入口。",
+    "summary": "全32篇逐段精修中的第13篇：保持讲义的开放图文数据主线，核对采集、模型筛选、OpenCLIP训练及安全边界，补清主实验训练预算差异与筛选/训练区分，改善阅读导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "实质改写主稿原第13节并将展开入口置于节首；展开可返回原节、上一节与下一节，保留前12节。"
+        "text": "保留文件与编号；展开能返回主稿第13节并直达上下分章，主稿在系列收束统一校订。"
       },
       {
         "id": "R6",
-        "text": "独立可读、引用可点击，工作台桌面/窄屏实际点验目录、脚注与跨报告导航；公开文件不含原始ASR或私有信息。"
+        "text": "逐段检查正文、表格、脚注、乱码和本地导航；正文无原始ASR、私有设备与执行日志；实际富文本呈现按系列收束检查，不捆绑工作台功能验收。"
       }
     ]
   },
@@ -47,7 +47,7 @@
       "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
       "locator": "https://arxiv.org/pdf/2210.08402v1",
       "accessed_on": "2026-11-05",
-      "read_scope": "本轮实际读主文物理pp1–13；datasheet p24及p26–31，p22–23/p25相关字段片段；附录E p40–44，F.1/F.2 p41–42/p46、G.1/G.2 p46–48、作者贡献与致谢p49–50。直接核图2/p5、表2/p11、表6/p42原图，另有eacli图像收据。未穷尽全部附录，未从未核曲线读精确数字，未复现采集或训练。",
+      "read_scope": "2026-11-06定向复读物理p4–6采集/组成，p8–12实验/限制/安全，p36–38训练设置与任务，p40–42结构任务/表6/GLIDE，p46–50生成模型/偏差/贡献；补核表4B32训练遍数与全局batch。原图与未变其余章节继承历史读取，未重做图像或训练验证。此前范围：本轮实际读主文物理pp1–13；datasheet p24及p26–31，p22–23/p25相关字段片段；附录E p40–44，F.1/F.2 p41–42/p46、G.1/G.2 p46–48、作者贡献与致谢p49–50。直接核图2/p5、表2/p11、表6/p42原图，另有eacli图像收据。未穷尽全部附录，未从未核曲线读精确数字，未复现采集或训练。",
       "version": "arXiv:2210.08402v1，2022-10-16，50页",
       "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163"
     },
@@ -75,7 +75,7 @@
       "title": "LAION-5B官方原发布说明",
       "locator": "https://laion.ai/blog/laion-5b/",
       "accessed_on": "2026-11-05",
-      "read_scope": "eacli web.read获取正文；读引言/用途限制、License、Dataset columns、采集/准备流程、Watermark and safety inference/Safety、BLIP段与Credit Assignment。统计图及生成样例未逐图核，不把宣传性保证或未来工作当成实证。",
+      "read_scope": "2026-11-06复读Watermark and safety inference及Safety正文；其它正文/身份沿用未变快照。此前范围：eacli web.read获取正文；读引言/用途限制、License、Dataset columns、采集/准备流程、Watermark and safety inference/Safety、BLIP段与Credit Assignment。统计图及生成样例未逐图核，不把宣传性保证或未来工作当成实证。",
       "snapshot_sha256": "fb28326d16a2a7fc09d3d2e318b4d445b0961564a22775620b35242a1b3f70bf"
     },
     {
@@ -84,7 +84,7 @@
       "title": "Releasing Re-LAION-5B: transparent iteration on LAION-5B with additional safety fixes",
       "locator": "https://laion.ai/blog/relaion-5b/",
       "accessed_on": "2026-11-05",
-      "read_scope": "eacli web.read取得正文；核Highlights/Background、Safety Revision、两种发布版本、Summary/Usage及已知清单截至2024-07的边界。仅引项目方承认遗漏、下架、哈希过滤与修订版；不采用其疑似链接占比或总量争议推断，不独立复验安全结果，不核当前下载可用性。",
+      "read_scope": "2026-11-06复读已知清单、2023下架、Safety Revision两阶段、2024修订/用途边界相关正文；不访问所述敏感样本，也未复验过滤结果。此前范围：eacli web.read取得正文；核Highlights/Background、Safety Revision、两种发布版本、Summary/Usage及已知清单截至2024-07的边界。仅引项目方承认遗漏、下架、哈希过滤与修订版；不采用其疑似链接占比或总量争议推断，不独立复验安全结果，不核当前下载可用性。",
       "version": "2024年发布说明",
       "snapshot_sha256": "1a845d1cd86059a052bd039c8d4c4920703c2365f7611ddabdc2f69291684e54"
     },
@@ -94,7 +94,7 @@
       "title": "AI演义讲义LAION页",
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
-      "read_scope": "物理p29文字与原图经eacli并直接查看；p26文本仅定位路线。教师叙事按讲义归因，贡献及资源回原论文，强影响力排名不直接采纳。",
+      "read_scope": "2026-11-06完整复读p29文字；原图继承。此前范围：物理p29文字与原图经eacli并直接查看；p26文本仅定位路线。教师叙事按讲义归因，贡献及资源回原论文，强影响力排名不直接采纳。",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
     },
     {
@@ -103,7 +103,7 @@
       "title": "张小珺Jùn商业访谈录第117期：AI演义shownotes与LAION段",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-05",
-      "read_scope": "复用已eacli核验的节目身份与shownotes；2025-10-28发布。按原转录零基3420–3647共228段，7449.67–7869.10秒定位；本轮读全部片段并校关键术语/强概括。未重新转写、听校或测WER。",
+      "read_scope": "2026-11-06完整复读本章228段；节目身份、shownotes、Apple备用页与结构收据继承未变快照，未听音。此前范围：复用已eacli核验的节目身份与shownotes；2025-10-28发布。按原转录零基3420–3647共228段，7449.67–7869.10秒定位；本轮读全部片段并校关键术语/强概括。未重新转写、听校或测WER。",
       "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
       "chapter_segments_sha256": "affcbde5791d337a2ea545b0165a2c87c578823da7d06ee6fc1e360741e3986a",
       "chapter_text_sha256": "71399b20d6cf0254a7dcdb36260f0ca8c725fb503cccc34cca7f4a4562af6edc",
@@ -119,7 +119,7 @@
       "title": "第13节转录时间结构与术语范围核查",
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
-      "read_scope": "公开最小范围及结构收据；正式脚本时间审计和小数秒检查均通过，不作为语义准确率证明。",
+      "read_scope": "2026-11-06完整读取既有公开收据；原转写结构检查未重跑，不冒称新一轮准确率检验。公开最小范围及结构收据；正式脚本时间审计和小数秒检查均通过，不作为语义准确率证明。",
       "sha256": "14b31718d7e42fb1592298e39b1ebed3b9963eb22dedf8d7eb383f25d5a5344d"
     }
   ],
@@ -150,7 +150,7 @@
     },
     {
       "id": "C3",
-      "claim": "CLIP双编码器对比学习；LAION用已训练模型的余弦相似度筛选，英语0.28、其他及未明确语言0.26，不是正确概率。",
+      "claim": "CLIP双编码器对比学习；LAION用已训练模型的余弦相似度筛选，英语0.28、其他及未明确语言0.26，不是正确概率。 筛选时用已有模型推断；后续OpenCLIP用选中的图文对做InfoNCE对比训练，而非逐个拟合筛选器分数。",
       "report_anchor": "clip-filter",
       "source_ids": [
         "CLIP",
@@ -159,7 +159,7 @@
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "CLIP§2.3；LAION§3.1和datasheet，门槛绑定指定模型。"
+      "evidence": "CLIP§2.3；LAION§3.1和datasheet，门槛绑定指定模型。 LAION§5.2与E.1–E.2。"
     },
     {
       "id": "C4",
@@ -299,6 +299,17 @@
       "support": "inference",
       "critical": false,
       "evidence": "从相关性筛选局限类比到Personal Context，不是论文实测。"
+    },
+    {
+      "id": "C16",
+      "claim": "表2并非固定训练预算仅换数据：E.1表4的B/32在400M/2B上分别训练32/16遍，全局批32768/46592，LR与预热也不同；需与表6按相同累计次数的额外实验分开。",
+      "report_anchor": "training-results",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "物理p36–37 E.1/Table4与p42 Table6；不把遍数少等同于累计样本少，也不将主表全部差异因果归给数据规模。"
     }
   ],
   "source_coverage": [
@@ -329,7 +340,7 @@
     },
     {
       "id": "U3",
-      "title": "已有CLIP双编码器相似度筛选、两种门槛、误删与偏差；不是生成新标签或真实概率。",
+      "title": "已有CLIP双编码器相似度筛选、两种门槛、误删与偏差；不是生成新标签或真实概率。 筛选推断和后续对比训练为两步，不是同一模型在线自我更新。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -460,6 +471,16 @@
         "TRANSCRIPT_REVIEW"
       ],
       "report_anchor": "sources"
+    },
+    {
+      "id": "U15",
+      "title": "主表B/32训练预算/批大小不同；区别方案效果与数据规模独立贡献、表6等累计次数对照。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION"
+      ],
+      "report_anchor": "training-results"
     }
   ],
   "limitations": [

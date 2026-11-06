@@ -6,21 +6,21 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter11-zero-20261105",
+    "run_id": "ai-yanyi-reread-ch11-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "agent_identity.py diagnose：gpt-6-astra，codex-turn-context，session-bound，current_model_confirmed=true；只证明生成者，不用于证明Reviewer模型。"
+    "identity_basis": "eacli session current核实当前生成者gpt-6-astra/codex，confirmed、session-bound、codex-thread-state；本轮全文复读并实质精修，历史来源检查按未变范围继承。"
   },
   "task": {
-    "summary": "逐节展开AI演义第11节ZeRO，讲清模型状态与三阶段协作，原章节同步实质改写与阅读入口。",
+    "summary": "全32篇逐段精修中的第11篇：保持讲义的显存与多卡主线，核对三阶段及历史实现，补齐分片为何保留梯度更新语义的四卡算例，改善阅读导航。",
     "requirements": [
       {
         "id": "R1",
-        "text": "结合讲义p27、shownotes、本章86段转录、原论文v3及两篇官方历史介绍，实际阅读与ASR边界可追溯。"
+        "text": "结合讲义p27、shownotes、本章86段转录、原论文v3及两篇官方历史介绍；明确本轮重读、历史继承与ASR边界。"
       },
       {
         "id": "R2",
-        "text": "用同一个四卡例子讲清模型状态、三阶段分片、各卡实际计算及通信；少数学，数字注明条件与推算性质。"
+        "text": "用同一四卡例子讲清模型状态、三阶段、各卡计算与通信，以及分片保留更新语义的条件；少数学，推算不冒充实测。"
       },
       {
         "id": "R3",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿原第11节实质改写且入口在节首；展开能返回原第11节、上一节和继续第12节，保留前十节。"
+        "text": "保留文件与编号；展开能返回主稿第11节并直达上下分章，主稿在系列收束统一校订。"
       },
       {
         "id": "R6",
-        "text": "学习工作台实际检查桌面/窄屏阅读、目录、脚注与跨报告往返；公开正文不含原始ASR、私有环境或执行日志。"
+        "text": "逐段检查正文、算式、脚注、乱码和本地导航；正文无原始ASR、私有设备与执行日志；实际富文本呈现按系列收束检查，不捆绑工作台功能验收。"
       }
     ]
   },
@@ -49,7 +49,7 @@
       "accessed_on": "2026-11-05",
       "version": "arXiv 1910.02054v3，2020-05-13；最早提交2019-10-04",
       "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
-      "read_scope": "24页文本主文、参考文献和末尾配置附录已读；p3 Figure1经eacli图像能力及根直接视读。实验数字取作者正文与附录，不从未逐图视读的Figure2–8自行估取；未复现训练。"
+      "read_scope": "2026-11-06复读§2.1、§3模型状态/激活、§5三阶段、§6 ZeRO-R、§7通信、§10实现/实验及末尾配置附录相关表与说明；原图、首页/版本及未变其它主文继承历史读取，不称本轮重做图像核验。此前范围：24页文本主文、参考文献和末尾配置附录已读；p3 Figure1经eacli图像能力及根直接视读。实验数字取作者正文与附录，不从未逐图视读的Figure2–8自行估取；未复现训练。"
     },
     {
       "id": "META",
@@ -57,7 +57,7 @@
       "title": "arXiv ZeRO v3元数据及提交历史",
       "locator": "https://arxiv.org/abs/1910.02054v3",
       "accessed_on": "2026-11-05",
-      "read_scope": "通过eacli web.read读取作者、摘要、提交历史。最早v1条目标withdrawn，v2为2019-10-07；本文技术与实验均按v3，不使用已撤回v1内容。"
+      "read_scope": "版本与提交历史沿用未变的先前核验，不称重新联网。此前范围：通过eacli web.read读取作者、摘要、提交历史。最早v1条目标withdrawn，v2为2019-10-07；本文技术与实验均按v3，不使用已撤回v1内容。"
     },
     {
       "id": "LAUNCH",
@@ -66,7 +66,7 @@
       "locator": "https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/",
       "accessed_on": "2026-11-05",
       "version": "2020年2月官方发布说明",
-      "read_scope": "经eacli读取正文，核已实现stage1、stage2/3计划、PyTorch接口、团队与Turing使用；正文动态插入的后期推广内容排除。未把博客早期3–5倍吞吐混入v3实验。"
+      "read_scope": "2026-11-06全文重读已有正文缓存，动态推广不作为历史资料；未重新抓取。此前范围：经eacli读取正文，核已实现stage1、stage2/3计划、PyTorch接口、团队与Turing使用；正文动态插入的后期推广内容排除。未把博客早期3–5倍吞吐混入v3实验。"
     },
     {
       "id": "TURING",
@@ -74,7 +74,7 @@
       "title": "Turing-NLG: A 17-billion-parameter language model by Microsoft",
       "locator": "https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/",
       "accessed_on": "2026-11-05",
-      "read_scope": "经eacli读取正文训练方法、模型结构、语言任务与问答/摘要应用；图片成绩表未逐图视读，所以未采用图片分数。只作为真实训练应用，未把模型质量改善归因于ZeRO单因素。"
+      "read_scope": "2026-11-06全文重读已有正文缓存，仍不采用未视读图片表格成绩；未重新抓取。此前范围：经eacli读取正文训练方法、模型结构、语言任务与问答/摘要应用；图片成绩表未逐图视读，所以未采用图片分数。只作为真实训练应用，未把模型质量改善归因于ZeRO单因素。"
     },
     {
       "id": "LECTURE",
@@ -83,7 +83,7 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "本轮物理p27，原图经eacli与根直接核验。只有文字要点，无图表；文本层乱序不当作原图乱码。规模跨期压缩叙述不倒填2019，理论无限扩展按论文限定。"
+      "read_scope": "2026-11-06复读p27文字层；未变的原图及图像回执继承。此前范围：本轮物理p27，原图经eacli与根直接核验。只有文字要点，无图表；文本层乱序不当作原图乱码。规模跨期压缩叙述不倒填2019，理论无限扩展按论文限定。"
     },
     {
       "id": "EPISODE",
@@ -91,7 +91,7 @@
       "title": "《张小珺Jùn｜商业访谈录》第117期：开源一段论文探索之旅，公开shownotes与ZeRO段转录",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-05",
-      "read_scope": "已重新经eacli读取原页title/description，核节目归属为张小珺Jùn｜商业访谈录，第117期，页面发布时间2025-10-28；shownotes正文与原冻结文本一致。Part2起点01:52:58；本轮转录原索引3102–3187共86段，6776.8–6976.77秒，含Part2开场。全文7553段恢复版SHA另登记；未重新转写、未人工听校，未测WER。",
+      "read_scope": "2026-11-06完整复读本章86段转录；原页面身份、shownotes定位和时间戳结构沿用既有核验，未重转录或听校。此前范围：已重新经eacli读取原页title/description，核节目归属为张小珺Jùn｜商业访谈录，第117期，页面发布时间2025-10-28；shownotes正文与原冻结文本一致。Part2起点01:52:58；本轮转录原索引3102–3187共86段，6776.8–6976.77秒，含Part2开场。全文7553段恢复版SHA另登记；未重新转写、未人工听校，未测WER。",
       "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
       "chapter_segments_sha256": "db735dc8f522ea47be061fddc71477de5f48375d86ff20fd23e6cf22f53494fe",
       "chapter_text_sha256": "fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43"
@@ -102,7 +102,7 @@
       "title": "第11节转录结构及术语范围核查",
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
-      "read_scope": "公开最小核查记录，不含逐字转录或私有文件路径；精确时间段与审计脚本绝对结束时间分开。"
+      "read_scope": "2026-11-06实际读取本章公开transcription-review并确认未变；继承结构审计收据。此前范围：公开最小核查记录，不含逐字转录或私有文件路径；精确时间段与审计脚本绝对结束时间分开。"
     }
   ],
   "claims": [
@@ -334,6 +334,17 @@
       "support": "inference",
       "critical": false,
       "evidence": "正文明确[推测]，依据§3–9瓶颈拆分，未作硬件实测承诺。"
+    },
+    {
+      "id": "C21",
+      "claim": "四卡等大小batch的梯度1/3/5/7平均为4；在相同参数、样本、归一化和优化器规则下，由owner用归并梯度更新对应状态保留数学上的同步更新语义，不丢其他卡样本贡献，不承诺逐比特一致。",
+      "report_anchor": "one-step",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§2.1/§5.1–5.2/§7.1–7.2：平均梯度与分片owner更新；数值为教学算例，未做等价性实验。"
     }
   ],
   "source_coverage": [
@@ -576,6 +587,16 @@
         "EPISODE"
       ],
       "omission_reason": "本轮任务只展开第11节；其他单元由已完成前十节、主报告及后续各轮承接，不声称本轮重做整期。"
+    },
+    {
+      "id": "U24",
+      "title": "同一训练更新如何由分片owner完成；不丢梯度贡献及数值等价边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "one-step"
     }
   ],
   "limitations": [
@@ -586,5 +607,6 @@
     "参考文献标题已读不等于重读其引用文献；未从未视读性能曲线或Turing图表取数。",
     "转录未人工听校/测WER；本章检查不代表全期逐字完整性已验证。",
     "未核合作、团队迁移与更宽泛谱系；只保留公开最小来源摘要，不公开原始ASR。"
-  ]
+  ],
+  "revision_note": "2026-11-06全文逐段精修：更明确梯度/Adam统计的含义，以同一四卡场景补充梯度平均和owner更新，区分数学语义与逐比特复现，统一系列标题和直达分章链接，移出正文转录执行计数。历史可信图像/版本/结构检查按未变范围继承。"
 }

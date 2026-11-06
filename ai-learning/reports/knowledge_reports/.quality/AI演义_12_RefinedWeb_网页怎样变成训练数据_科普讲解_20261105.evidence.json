@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter12-refinedweb-20261105",
+    "run_id": "ai-yanyi-reread-ch12-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+    "identity_basis": "eacli session current核实当前生成者gpt-6-astra/codex，confirmed、session-bound、codex-thread-state；本轮全文复读并精修，历史来源检查按未变范围继承。"
   },
   "task": {
-    "summary": "逐节完成AI演义第12节RefinedWeb，以讲义、shownotes、相关转录及论文深入浅出讲清数据加工与验证，同时实质优化主稿原章节和阅读入口。",
+    "summary": "全32篇逐段精修中的第12篇：保持讲义的数据工程主线，核对RefinedWeb的清洗、去重、训练对照及适用边界，讲清网页内部噪声与跨网页重复的区别，改善六项评测与阅读导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "实质改写主稿原第12节并把展开入口置于节首；展开可返回原节、上一节与下一节，保留前11节。"
+        "text": "保留文件与编号；展开能返回主稿第12节并直达上下分章，主稿在系列收束统一校订。"
       },
       {
         "id": "R6",
-        "text": "报告可独立阅读；工作台桌面与窄屏实际检查目录、脚注、跨报告往返；公开文件不含原始ASR、私有路径或设备信息。"
+        "text": "逐段检查正文、表格、脚注、乱码和本地导航；正文无原始ASR、私有设备与执行日志；实际富文本呈现按系列收束检查，不捆绑工作台功能验收。"
       }
     ]
   },
@@ -49,7 +49,7 @@
       "accessed_on": "2026-11-05",
       "version": "arXiv:2306.01116v1，2023-06-01，32页",
       "sha256": "b084921cc327f1f2bca232ca5339f0378324e2ff941bded327f136752a983d10",
-      "read_scope": "32页文字层已读，包括方法、主实验、参考文献、数据与模型卡、E/G/H附录；表4/p7、表5/p9原图直接核对并调用eacli图像能力。未从其他未逐图核验曲线读精确数据，未复现语料制作或训练。方法解释按§3.1 WARC；附录A WET记载与其冲突；MinHash主文与附录桶数写法不一致，本文不按此提供可复现配置；具体阈值的>50/至少50不作为结论。"
+      "read_scope": "2026-11-06定向复读§3方法、§4.1–4.2、表3–4、E.1消融、E.3重复训练限制、F.1任务组及G.2/G.3方法说明；本轮明确small六项任务而非core组，MinHash比较字面片段重合而非语义。原图和未变其它原文章节继承历史读取，未重做图像或训练验证。此前范围：32页文字层已读，包括方法、主实验、参考文献、数据与模型卡、E/G/H附录；表4/p7、表5/p9原图直接核对并调用eacli图像能力。未从其他未逐图核验曲线读精确数据，未复现语料制作或训练。方法解释按§3.1 WARC；附录A WET记载与其冲突；MinHash主文与附录桶数写法不一致，本文不按此提供可复现配置；具体阈值的>50/至少50不作为结论。"
     },
     {
       "id": "META",
@@ -83,7 +83,7 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "物理p30文字与原图经eacli并直接查看；p7/p26文本用于定位。p30提出数据量/精选语料/数据墙论点；不把讲义强概括直接当一手结论。"
+      "read_scope": "2026-11-06完整复读p30文字；原图与其它定位继承。此前范围：物理p30文字与原图经eacli并直接查看；p7/p26文本用于定位。p30提出数据量/精选语料/数据墙论点；不把讲义强概括直接当一手结论。"
     },
     {
       "id": "EPISODE",
@@ -91,7 +91,7 @@
       "title": "张小珺Jùn｜商业访谈录第117期：开源一段论文探索之旅，shownotes与RefinedWeb段",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-05",
-      "read_scope": "复用已经eacli核对的节目身份和shownotes快照；节目发布2025-10-28。按相关原转录零基索引3648–3739，共92段、7869.10–8017.79秒定位，约02:11:09—02:13:38；前后章节只用于划界，不作为本轮内容覆盖。未重新转写或听校，未测WER。",
+      "read_scope": "2026-11-06完整复读本章92段；节目身份、shownotes和结构收据继承未变快照，未听音。此前范围：复用已经eacli核对的节目身份和shownotes快照；节目发布2025-10-28。按相关原转录零基索引3648–3739，共92段、7869.10–8017.79秒定位，约02:11:09—02:13:38；前后章节只用于划界，不作为本轮内容覆盖。未重新转写或听校，未测WER。",
       "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
       "chapter_segments_sha256": "768362e73660c9a68eb5e5c01527ccd8e426d3424c44c78c7b002935e6078975",
       "chapter_text_sha256": "bbe75feec2c494f1d18dfa6a05804ac25facfbccb9bd7253c4d06702a3f4a5a9",
@@ -104,7 +104,7 @@
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
       "sha256": "fc57e46d704b1f686dd6e0b082868f125cea09e155bcb874f6a3b661b82582e5",
-      "read_scope": "公开最小范围及结构收据；无原始转录或私有路径；片段跨度与审计器绝对结束时间分开登记。"
+      "read_scope": "2026-11-06完整读取既有公开收据；原转写结构检查未重跑，不冒称新一轮准确率检验。公开最小范围及结构收据；无原始转录或私有路径；片段跨度与审计器绝对结束时间分开登记。"
     }
   ],
   "claims": [
@@ -134,7 +134,7 @@
     },
     {
       "id": "C3",
-      "claim": "MinHash近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
+      "claim": "MinHash按字面n-gram重合检测而非语义判断，近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
       "report_anchor": "deduplication",
       "source_ids": [
         "REFINEDWEB"
@@ -156,14 +156,14 @@
     },
     {
       "id": "C5",
-      "claim": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。",
+      "claim": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。 small任务组为HellaSwag、Winogrande、PIQA、ARC、BoolQ、SciQ；与core/main/ext及开发版聚合不同。",
       "report_anchor": "controlled-experiments",
       "source_ids": [
         "REFINEDWEB"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§4.1–4.2/Table4；1B差2.8与0.5百分点、3B对C4差0.2；非聊天能力总分，完整研究模型没有多次训练随机性测量。"
+      "evidence": "§4.1–4.2/Table4；1B差2.8与0.5百分点、3B对C4差0.2；非聊天能力总分，完整研究模型没有多次训练随机性测量。 表3与附录F.1。"
     },
     {
       "id": "C6",
@@ -286,7 +286,7 @@
     },
     {
       "id": "U3",
-      "title": "MinHash近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
+      "title": "MinHash按字面n-gram重合检测而非语义判断，近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -306,7 +306,7 @@
     },
     {
       "id": "U5",
-      "title": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。",
+      "title": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。 small任务组为HellaSwag、Winogrande、PIQA、ARC、BoolQ、SciQ；与core/main/ext及开发版聚合不同。",
       "importance": "core",
       "status": "included",
       "source_ids": [
