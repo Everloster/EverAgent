@@ -220,6 +220,9 @@ type kimiControl struct {
 
 func (i *Inspector) kimiRoot() string {
 	root := i.Getenv("KIMI_SHARE_DIR")
+	if root == "" {
+		root = i.Rules["kimi-desktop"].Root
+	}
 	if root == "" && i.Home != "" {
 		if os.PathSeparator == '\\' {
 			app := i.Getenv("APPDATA")

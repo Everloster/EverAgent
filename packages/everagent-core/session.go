@@ -7,6 +7,37 @@ import (
 	"time"
 )
 
+// BoundSession returns the current native session only when an existing
+// automatic reader has verified the caller. It does not use declarations or
+// configured model hints and does not grant permission. The raw session ID is
+// private metadata: callers should hash it locally rather than print it.
+// Empty values mean unknown, not that the caller has no session.
+func (i *Inspector) BoundSession() (harness, session string) {
+	if i == nil || i.Getenv("AGENT_ID") != "" {
+		return "", ""
+	}
+	h, _ := i.detectHarness()
+	scope := i.scope(h)
+	native := i.nativeID(h)
+	found, _ := i.observe(h, scope)
+	if found == nil {
+		return "", ""
+	}
+	id := text(found["session"])
+	if id == "" {
+		// These readers bind the native ID. Other readers (notably ZCode)
+		// can bind an execution token instead, which is NOT a session ID.
+		if !contains([]string{"codex", "claude-code", "pi", "opencode", "dsh"}, h) {
+			return "", ""
+		}
+		id = native
+	}
+	if !nativePattern.MatchString(id) {
+		return "", ""
+	}
+	return h, id
+}
+
 // Checkout reports only repository metadata, never its absolute path. The path
 // is returned separately so the private adapter can compare a native host.
 func Checkout(cwd string) (Object, string) {
