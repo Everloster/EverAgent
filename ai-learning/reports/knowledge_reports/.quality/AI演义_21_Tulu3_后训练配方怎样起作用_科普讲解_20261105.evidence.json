@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-tulu3-r1-20261105",
+    "run_id": "ai-yanyi-tulu3-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮 eacli session current 的 codex-turn-context / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，不借根身份补证。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "第21节Tülu3展开与原节同步改写，以少数学讲清开放后训练配方、反馈差别、真实实验和奖励失效；保持系列命名与阅读入口一致。",
+    "summary": "《AI演义》32篇全量精修中的第21篇：保留讲义主线，完整回读并核对Tülu3反馈机制、结果与人类阅读表达。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第21节实质改写且标题后首块为展开链接；展开可返回原21节、上一节ReAct、下一节DeepVideo；其余主文严格继承。"
+        "text": "保留第21篇路径和编号，与总览及20/22分章往返；总览于全系列收束时统一核对，不逐篇重复改写其他已验收章节。"
       },
       {
         "id": "R6",
-        "text": "标题遵循《AI演义》两位序号｜主题；正文独立可读；工作台桌面与窄屏实点导航/目录/脚注/表格，来源优先独立复核。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -174,14 +174,14 @@
     },
     {
       "id": "C6",
-      "claim": "DPO合成偏好包含多模型和自身SFT回答，主要由GPT4o四方面打分；偏好不是人类投票或事实保证。",
+      "claim": "DPO合成偏好包含多模型和自身SFT回答，GPT4o分四方面评分，取均分最高为chosen、随机取较低为rejected；AI偏好不是人类投票或事实保证。",
       "report_anchor": "dpo-preferences",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§5.1–5.2/Figure7，模型评审与最终偏好混合分开。"
+      "evidence": "§5.1–5.2/Figure7，p22明确四方面平均后选择最高与随机较低；不把模型偏好当人类一致意见。"
     },
     {
       "id": "C7",
@@ -219,7 +219,7 @@
     },
     {
       "id": "C10",
-      "claim": "RLVR任务奖励通过为10否则0，完整目标还有KL等；不用通用RM打任务奖励，但value model可由RM初始化。",
+      "claim": "RLVR通过奖励10否则0，完整目标还有KL等；策略和价值模型更新、参考模型固定；任务奖励不由通用RM给出，但价值模型从RM初始化。",
       "report_anchor": "rlvr-verification",
       "support": "direct",
       "source_ids": [
@@ -227,7 +227,7 @@
         "BLOG"
       ],
       "critical": true,
-      "evidence": "Eqs7–8/§6.2–6.4，非EOS惩罚与RM/value角色；不将博客without RM扩展成整系统没有RM成果。"
+      "evidence": "Eqs7–8/§6.2–6.4，p34明确policy/value训练、reference仅推理；非EOS惩罚与RM/value作用不混同。"
     },
     {
       "id": "C11",
@@ -276,14 +276,14 @@
     },
     {
       "id": "C15",
-      "claim": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench9.5→7.4的分化；Table33最终8B均值34.2低于Llama36.4。",
+      "claim": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench-Hard9.5→7.4的分化；后者148道hard子集、instruct题面、calibrated口径、pass@10；Table33最终8B均值34.2低于Llama36.4。",
       "report_anchor": "unseen-evaluation",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "Tables31/33；编码为pass@10，不当单次成功率，未用不同套件均值直接作差；原文泛化结论按表值收紧。"
+      "evidence": "Tables31/33与p42 §7.3：hard subset148/1140、instruct/calibrated；pass@10不等于单次成功率，不跨任务换算分数。"
     },
     {
       "id": "C16",
@@ -400,7 +400,7 @@
     },
     {
       "id": "U6",
-      "title": "DPO合成偏好包含多模型和自身SFT回答，主要由GPT4o四方面打分；偏好不是人类投票或事实保证。",
+      "title": "DPO合成偏好包含多模型和自身SFT回答，GPT4o分四方面评分，取均分最高为chosen、随机取较低为rejected；AI偏好不是人类投票或事实保证。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -441,7 +441,7 @@
     },
     {
       "id": "U10",
-      "title": "RLVR任务奖励通过为10否则0，完整目标还有KL等；不用通用RM打任务奖励，但value model可由RM初始化。",
+      "title": "RLVR通过奖励10否则0，完整目标还有KL等；策略和价值模型更新、参考模型固定；任务奖励不由通用RM给出，但价值模型从RM初始化。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -493,7 +493,7 @@
     },
     {
       "id": "U15",
-      "title": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench9.5→7.4的分化；Table33最终8B均值34.2低于Llama36.4。",
+      "title": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench-Hard9.5→7.4的分化；后者148道hard子集、instruct题面、calibrated口径、pass@10；Table33最终8B均值34.2低于Llama36.4。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -582,5 +582,20 @@
       "artifact": "session-current.json",
       "sha256": "fa451531af7d6aecda9c3dbce44f5ffae8afa31fe2b0353e2c5701e0d2b64be2"
     }
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文、完整85段转写、讲义p40文字、公开转写核查摘要及shownotes全文。",
+      "Tülu3 v5文字pp1、4、7–10、13–17、20–24、27–38、41–46、48–49、67–68；含核心表格与奖励失效案例。",
+      "Ai2发布文、arXiv版本记录、Open Instruct README缓存全文；未新联网。"
+    ],
+    "substantive_changes": [
+      "明确偏好标签由四方面均分与最高/随机较低候选形成。",
+      "补RLVR策略/价值/固定参考模型的更新职责。",
+      "补BigCodeBench-Hard的148/1140子集与instruct/calibrated口径，解释pass@10不等于单次成功率。",
+      "统一系列标题、日期与第22章直达；转录机器细节移至既有摘要回链。"
+    ],
+    "inherited_checks": "前轮已核的原图、来源身份、联网收据及未变未重读页的核验明确继承；未新看原图、逐字听校、重训模型、复跑评测或做工作台功能验收。"
   }
 }

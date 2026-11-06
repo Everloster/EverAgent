@@ -1,9 +1,9 @@
 ---
-title: "《AI演义》22｜DeepVideo：多看几帧，为什么还不够？"
+title: "AI演义·22｜DeepVideo：多看几帧，为什么还不够？"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-05"
+updated_on: "2026-11-06"
 quality_schema: "report-v2"
 quality_tier: "important"
 report_depth: "deep"
@@ -11,9 +11,9 @@ reader_contract: "standalone"
 semantic_tags: ["ai_history", "deepvideo", "video_classification", "temporal_fusion", "sports1m", "transfer_learning"]
 ---
 
-# 《AI演义》22｜DeepVideo：多看几帧，为什么还不够？
+# AI演义·22｜DeepVideo：多看几帧，为什么还不够？
 
-[返回原报告第 22 节](../AI演义_笔记分析与项目整合报告.md#paper-deepvideo) · [上一节：Tülu 3](AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) · [下一节：双流网络](../AI演义_笔记分析与项目整合报告.md#paper-two-stream)
+[返回原报告第 22 节](../AI演义_笔记分析与项目整合报告.md#paper-deepvideo) · [上一节：Tülu 3](AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) · [下一节：双流网络](AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md)
 
 一段跳绳视频，定格之后可能就能认出绳子、人物和运动场。可如果要判断绳子有没有转起来、双脚有没有配合着离地，就得比较前后画面。
 
@@ -38,6 +38,8 @@ AlexNet 的成功让人看到：可以直接从像素出发，让网络学出有
 **第三是计算。** 多帧意味着更多像素需要处理。相邻画面又可能高度相似，计算量增加并不等于有效信息同比增加。每次试一个结构都要训练很久，就难以比较哪种做法真正有用。
 
 当时常见的视频识别方法，会先由人设计局部外观和运动特征，把这些特征汇成一段视频的统计描述，再训练分类器。DeepVideo 尝试让卷积网络直接从视频像素学到分类所需的表示。论文也讨论了此前已有的视频 CNN 工作；不能把它写成“第一篇用深度学习处理视频的论文”。[^paper]
+
+这不等于人工设计从此消失。**设计工作的重心变了：从预先规定提取哪些特征，转向决定网络怎样连接、怎样取样和怎样训练。** 本文后面比较的几种时间融合方式，正是这些选择的一部分。
 
 正式论文题为 *Large-scale Video Classification with Convolutional Neural Networks*，发表于 CVPR 2014，署名来自 Google Research 与 Stanford。数据建设、时间结构比较和训练成本在同一项研究里相遇，比只记一个模型名称更能解释这项工作的研究条件。[^metadata]
 
@@ -172,6 +174,8 @@ Late Fusion 比较相隔 15 帧的两张图。Slow Fusion 的前三个时间卷�
 
 Table 2 列出变化较大的类别。Slow Fusion 相对单帧，抛接棒杂耍（Juggling Club）提高 **0.12 AP**，爬杆（Pole Climbing）提高 **0.10 AP**，跳绳（Skipping Rope）提高 **0.06 AP**；短道赛车、道路赛车和截拳道则各下降 **0.07 AP**。这是一组选出的较大差异，不是所有类别的完整分布。
 
+这里的 AP 按 0 到 1 计分，0.12 是分数的绝对差，不是“相对提升 12%”。它也不等于多了 12% 的视频被正确分类。
+
 Figure 5 给出了真实预测案例：一个标为 **Juggling Club** 的片段，单帧模型把 **acrobatics（杂技）**排在最前，Slow Fusion 则把正确的 Juggling Club 排到了第一。连续画面在这个例子里帮助模型区分了相近活动。
 
 同图还有相反的例子：标为 **Short Track Motor Racing** 的片段，单帧模型首选正确，Slow Fusion 却把 **dirt track racing（土路赛车）**排到第一。多帧并不只会修正错误，也可能引入错误。这里依据的是图上的标签和预测排序，不能从一张静态展示图声称看到了整段运动轨迹。[^motion]
@@ -199,9 +203,9 @@ DeepVideo 还做了一件在讲义里不太显眼的事：减少计算时，尽�
 
 放到跳绳示意里，全景路能保留人物所在场地，中心路可能看清绳子和姿态。两个小输入的像素总量约为一个原始大输入的一半，但这不等于整个网络的计算或时间一定严格减半。
 
-在论文的具体实现中，作者测到了以下训练吞吐：
+论文按单个模型副本描述训练吞吐，随后给出以下具体提速对照；不要把它读成全集群的总处理速度：
 
-| 模型 | 原实现 | 多分辨率实现 | 提速 |
+| 模型 | 原实现 | 多分辨率实现 | 吞吐变为原来的 |
 |---|---:|---:|---:|
 | 单帧 CNN | 6 clip／秒 | 21 clip／秒 | 3.5 倍 |
 | Slow Fusion | 5 clip／秒 | 10 clip／秒 | 2 倍 |
@@ -222,7 +226,7 @@ Figure 3 的第一层滤波器也呈现出分工：全景路较多学习低频�
 
 如果模型只记住体育场地，换一批动作就可能失效。论文因此做了迁移学习实验：**先在 Sports-1M 上训练，再把学到的 Slow Fusion 用到 UCF-101。**[^transfer]
 
-UCF-101 包含 **13,320 个视频、101 类动作**，不仅有体育，还有人和物体的交互、人与人的交互、身体动作以及演奏乐器。作者每段视频抽取 50 个 clip，按数据集建议的三个划分进行三折评测。
+UCF-101 包含 **13,320 个视频、101 类动作**，不仅有体育，还有人和物体的交互、人与人的交互、身体动作以及演奏乐器。作者每段视频抽取 50 个 clip，按数据集建议的三个训练／测试划分进行评测，报告汇总成绩；原表将其标为“3-fold Accuracy”。
 
 迁移时，可以保留底层已经学到的视觉表示，只调整顶部；也可以把全网都继续训练。Table 3 的结果如下：
 
@@ -271,7 +275,7 @@ UCF-101 包含 **13,320 个视频、101 类动作**，不仅有体育，还有�
 
 1. **真正理解了什么？** “用了视频”不是一个足够精确的描述。需要说明抽了哪些时刻、一次输入几帧、帧在哪里比较、最后怎样聚合，再谈成绩代表了什么。
 2. **还没解决什么？** Slow Fusion 增益小，究竟更多来自类别依赖外观、相机干扰，还是短片段与平均聚合的限制？本论文没有把这些原因逐个隔离。
-3. **下一步怎样验证？** [待验证] 可以设计外观相近但动作不同的成对视频，并分别比较原视频、片段顺序打乱和片段内部帧序打乱的结果；再单独控制相机运动。这样能区分网络依赖的时间范围。本篇只提出实验思路，没有执行或报告结果。下一篇先读[双流网络](../AI演义_笔记分析与项目整合报告.md#paper-two-stream)。
+3. **下一步怎样验证？** [待验证] 可以设计外观相近但动作不同的成对视频，并分别比较原视频、片段顺序打乱和片段内部帧序打乱的结果；再单独控制相机运动。这样能区分网络依赖的时间范围。本篇只提出实验思路，没有执行或报告结果。下一篇先读[双流网络](AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md)。
 
 <a id="sources-and-scope"></a>
 
@@ -279,7 +283,7 @@ UCF-101 包含 **13,320 个视频、101 类动作**，不仅有体育，还有�
 
 本篇结合《AI演义》讲义第 42 页、节目 shownotes、多模态部分约 **03:08:08–03:15:12** 的完整对应转写，以及 CVPR 正式论文全文、关键图表与作者项目页。正文的模型机制和实验结论以原论文为准。
 
-转写共核对 **248 段，约 7 分 4 秒**；文本时间戳检查通过，但没有逐字听校或测量语音识别错误率。ImageNet、CNN、人名等识别问题按论文规范化。播客关于人物后续履历、跨模态融合与自动驾驶的旁论，没有被当作本论文的已证实结果。
+转写的时间顺序已检查，但没有逐字听校或测量语音识别错误率；具体范围见[转写核查摘要](.quality/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.transcription-review.json)。ImageNet、CNN、人名等识别问题按论文规范化。播客关于人物后续履历、跨模态融合与自动驾驶的旁论，没有被当作本论文的已证实结果。
 
 讲义的“ImageNet 预训练”与原文未说明部分，已在迁移一节区分；播客的“视频至少 24 帧／秒”不是普遍下限，“相邻帧重复”也不能直接等同于通用的信噪比结论。本文保留计算成本与信息冗余的直觉，不沿用这些过宽表述。
 
@@ -296,7 +300,7 @@ UCF-101 包含 **13,320 个视频、101 类动作**，不仅有体育，还有�
 [^motion]: 原论文 [Table 2、Figure 5](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=6) 及 Contributions of motion：每类 AP 差值、杂耍与赛车预测案例、相机平移／缩放假说。核对原图标签与排序，没有观看该图背后的完整视频。
 [^qualitative]: 原论文 [Figure 4](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=5)、§4.1 Qualitative analysis：场地自行车示例与细分类混淆。所引混淆对来自正文，未另行读取补充材料的完整混淆矩阵。
 [^multires]: 原论文 [§3.2、Figure 2](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=3)、Figure 3、Table 1 与 §4.1：全景／中心双分辨率、训练提速、单路消融、第一层滤波器与中心拍摄偏置。2–4 倍是作者实现的观察范围。
-[^transfer]: 原论文 [§4.2、Tables 3–4](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=7)：Sports-1M → UCF-101、每视频 50 个 clip、三折准确率、分组 mAP、重叠风险。摘要的 63.3% 与 Table 3 的 65.4% 不一致，本文不合并口径。
+[^transfer]: 原论文 [§4.2、Tables 3–4](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=7)：Sports-1M → UCF-101、每视频 50 个 clip、三个训练／测试划分的准确率、分组 mAP、重叠风险。摘要的 63.3% 与 Table 3 的 65.4% 不一致，本文不合并口径。
 [^future]: 原论文 [§5 Conclusions](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf#page=8)：时间建模的替代解释、更宽类别、相机运动与循环网络聚合的后续方向。
 
 讲义与节目入口：[《AI演义》讲义第 42 页](../../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=42) · [张小珺商业访谈录第 117 期](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)。shownotes 沿用此前取得的官方页面缓存；本次重新核对目标章节，没有把缓存读取记为新抓取。

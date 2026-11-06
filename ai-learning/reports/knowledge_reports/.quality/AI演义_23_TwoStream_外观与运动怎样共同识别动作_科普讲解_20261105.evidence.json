@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-two-stream-20261105",
+    "run_id": "ai-yanyi-two-stream-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "当前协调者 eacli session current：codex-turn-context，session-bound，confirmed=true。子Reviewer身份单独记录，不借父终端配置作子身份。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "第23节双流网络展开：用跳绳场景讲清RGB/光流、训练与数据、消融、融合、实际错误及代价，并同步原报告。",
+    "summary": "《AI演义》32篇全量精修中的第23篇：完整回读双流网络，解释显式运动表示、数据与融合的实际作用，保留实验边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原报告第23节实质更新、标题下首块为展开链接；展开返回原23、上22、下24，原节目顺序另说清。"
+        "text": "保留第23篇路径和编号，与总览及22/24分章往返；原节目下一主题为GAN的顺序差异保留说明，总览于全系列收束时核对。"
       },
       {
         "id": "R6",
-        "text": "列表沿用《AI演义》两位编号｜题名；正文普通Markdown、独立可读，检查正文排版、引用和上下篇链接。写报告不要求工作台页面验收。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -120,14 +120,14 @@
     },
     {
       "id": "C2",
-      "claim": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。",
+      "claim": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。 光流是预计算输入，分类训练不更新光流算法，因此全流程非全部端到端学习。",
       "report_anchor": "two-streams",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§2/Figure1、§5。跳绳为自建教学场景，未称实测神经元或真实视频演示。"
+      "evidence": "§2/Figure1、§5。跳绳为自建教学场景，未称实测神经元或真实视频演示。 §5 Optical flow明确预计算，训练边界据此推导。"
     },
     {
       "id": "C3",
@@ -231,7 +231,7 @@
     },
     {
       "id": "C12",
-      "claim": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。",
+      "claim": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。 L2按整组分数同倍缩放到单位长度，不改变该路类别排序；SVM学习融合而非固定均分。",
       "report_anchor": "prediction-and-fusion",
       "support": "direct",
       "source_ids": [
@@ -288,7 +288,7 @@
     },
     {
       "id": "C17",
-      "claim": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43，45段162.82s ASR完整读且结构通过，但未听校/测WER。",
+      "claim": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43与完整目标转写对照，结构检查通过但未听校/测WER，具体范围回链既有摘要。",
       "report_anchor": "sources-and-scope",
       "support": "direct",
       "source_ids": [
@@ -340,7 +340,7 @@
     },
     {
       "id": "U2",
-      "title": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。",
+      "title": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。 光流是预计算输入，分类训练不更新光流算法，因此全流程非全部端到端学习。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -441,7 +441,7 @@
     },
     {
       "id": "U12",
-      "title": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。",
+      "title": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。 L2按整组分数同倍缩放到单位长度，不改变该路类别排序；SVM学习融合而非固定均分。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -493,7 +493,7 @@
     },
     {
       "id": "U17",
-      "title": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43，45段162.82s ASR完整读且结构通过，但未听校/测WER。",
+      "title": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43与完整目标转写对照，结构检查通过但未听校/测WER，具体范围回链既有摘要。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -549,5 +549,18 @@
       "path": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
       "sha256": "5627db91204af36b119e07b42244fb153fed068c3c6cf6b30881e60d67d1d72a"
     }
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文及脚注；11页原论文v2提取文字全文，包括全部表格、图注与参考文献条目。",
+      "45段目标ASR全文、讲义p43文字、公开转写核查摘要、arXiv元数据缓存全文；shownotes沿用紧邻章节的全文回读。"
+    ],
+    "substantive_changes": [
+      "明确前置光流算法不随分类误差更新，区分学习表示和全流程端到端。",
+      "补L2归一化和学习式融合的白话解释，开篇81.0%注明减均值条件。",
+      "统一系列标题、日期及24章直达链接；转录检查细节转为既有摘要回链。"
+    ],
+    "inherited_checks": "原图、来源身份及前轮联网收据明确继承；本轮未新联网、视觉判读、听校、训练或测速度，未做工作台功能验收。"
   }
 }

@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-deepvideo-r1-20261105",
+    "run_id": "ai-yanyi-deepvideo-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮 eacli session current 的 codex-thread-state / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，未借根身份补证。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "第22节DeepVideo展开与原节同步，少数学讲清单帧评测、时间融合、弱标数据、真实收益与失败、计算和迁移；规范列表标题和阅读往返。",
+    "summary": "《AI演义》32篇全量精修中的第22篇：完整回读DeepVideo，保持讲义主线，讲清时间建模、数据与计算代价及结论边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿原22节实质改写且标题后首块为展开链接；展开能返回22、上21 Tülu3、下23双流；其余主稿严格继承。"
+        "text": "保留第22篇路径和编号，与总览及21/23分章往返；总览于全系列收束时统一核对，不逐篇重复改写其他已验收章节。"
       },
       {
         "id": "R6",
-        "text": "统一《AI演义》两位序号｜主题；独立可读，工作台1440/390实际点击目录/脚注/表格/展开往返，按来源优先独立复核。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -107,7 +107,7 @@
   "claims": [
     {
       "id": "C1",
-      "claim": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，将数据、时间连接和成本共同实验；已有前驱，不称首次视频深度学习。",
+      "claim": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，联合研究数据、时间连接和成本；已有前驱，不称首次视频深度学习；端到端将设计重心由手工特征移向网络、采样和训练。",
       "report_anchor": "why-video-is-different",
       "support": "direct",
       "source_ids": [
@@ -116,7 +116,7 @@
         "LECTURE"
       ],
       "critical": true,
-      "evidence": "正式首页/§§1–2、CVF pp1725–1732；不扩展后续职业或工业谱系。"
+      "evidence": "正式首页/§§1–2（含p2设计重心说明）、CVF pp1725–1732；不扩展后续职业或工业谱系。"
     },
     {
       "id": "C2",
@@ -222,7 +222,7 @@
     },
     {
       "id": "C11",
-      "claim": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；Figure5展示杂耍纠错与赛车退步。",
+      "claim": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；AP为0–1分数绝对差，不是相对提升或分类正确比例；Figure5展示杂耍纠错与赛车退步。",
       "report_anchor": "when-motion-helps",
       "support": "direct",
       "source_ids": [
@@ -255,18 +255,18 @@
     },
     {
       "id": "C14",
-      "claim": "具体实现Single6→21clip/s即3.5倍、Slow5→10即2倍，受分区/实现影响；Downpour10–50副本、4–32分区、约一月，不把分区称GPU。",
+      "claim": "单个模型副本的训练吞吐Single6→21clip/s即3.5倍、Slow5→10即2倍；受分区/实现影响，非全集群总吞吐；Downpour10–50副本、4–32分区、约一月，分区非GPU。",
       "report_anchor": "multiresolution-and-cost",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.3/§4.1训练与吞吐；50M采样/500M累计为作者估计，非不同视频数。"
+      "evidence": "§3.3/§4.1训练与吞吐；p4明确single model replica，p6列具体对照；50M采样/500M累计为作者估计，非不同视频数。"
     },
     {
       "id": "C15",
-      "claim": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频3fold；41.3从头、64.1顶层、65.4顶3、62.2全层。",
+      "claim": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频，按三个建议训练/测试划分汇总，表称3-fold Accuracy；41.3从头、64.1顶层、65.4顶3、62.2全层。",
       "report_anchor": "sports-to-other-actions",
       "support": "direct",
       "source_ids": [
@@ -314,7 +314,7 @@
     },
     {
       "id": "C19",
-      "claim": "ASR完整248段423.91秒、结构检查通过但未听校/测WER；跨模态/履历旁论及24fps过宽说法有边界说明。",
+      "claim": "完整目标转写及结构核查用于对应讲义，未听校或测WER；正文回链核查摘要，区分跨模态/履历旁论及24fps过宽表述。",
       "report_anchor": "sources-and-scope",
       "support": "direct",
       "source_ids": [
@@ -324,7 +324,7 @@
         "SHOWNOTES"
       ],
       "critical": true,
-      "evidence": "目标切片/精确和原生审计；shownotes起点03:08:08；全转写不发布。"
+      "evidence": "目标248段/423.91秒；shownotes起点03:08:08；审计摘要公开，完整转写不发布。"
     },
     {
       "id": "C20",
@@ -341,7 +341,7 @@
   "source_coverage": [
     {
       "id": "U1",
-      "title": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，将数据、时间连接和成本共同实验；已有前驱，不称首次视频深度学习。",
+      "title": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，联合研究数据、时间连接和成本；已有前驱，不称首次视频深度学习；端到端将设计重心由手工特征移向网络、采样和训练。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -446,7 +446,7 @@
     },
     {
       "id": "U11",
-      "title": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；Figure5展示杂耍纠错与赛车退步。",
+      "title": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；AP为0–1分数绝对差，不是相对提升或分类正确比例；Figure5展示杂耍纠错与赛车退步。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -476,7 +476,7 @@
     },
     {
       "id": "U14",
-      "title": "具体实现Single6→21clip/s即3.5倍、Slow5→10即2倍，受分区/实现影响；Downpour10–50副本、4–32分区、约一月，不把分区称GPU。",
+      "title": "单个模型副本的训练吞吐Single6→21clip/s即3.5倍、Slow5→10即2倍；受分区/实现影响，非全集群总吞吐；Downpour10–50副本、4–32分区、约一月，分区非GPU。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -486,7 +486,7 @@
     },
     {
       "id": "U15",
-      "title": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频3fold；41.3从头、64.1顶层、65.4顶3、62.2全层。",
+      "title": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频，按三个建议训练/测试划分汇总，表称3-fold Accuracy；41.3从头、64.1顶层、65.4顶3、62.2全层。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -530,7 +530,7 @@
     },
     {
       "id": "U19",
-      "title": "ASR完整248段423.91秒、结构检查通过但未听校/测WER；跨模态/履历旁论及24fps过宽说法有边界说明。",
+      "title": "完整目标转写及结构核查用于对应讲义，未听校或测WER；正文回链核查摘要，区分跨模态/履历旁论及24fps过宽表述。",
       "importance": "supporting",
       "status": "included",
       "source_ids": [
@@ -578,5 +578,19 @@
       "artifact": "session-current.json",
       "sha256": "88db0e28f8ec3f9e1d607c54f106a12c2ffd5bad37e051b8bff5f89cf342fd2e"
     }
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文及脚注；CVPR正式8页论文文字全文、全部图注与表格。",
+      "完整248段目标ASR、讲义p42文字及公开转写核查摘要；shownotes全文已在紧邻第21篇修订时回读。",
+      "作者项目页和CVF元数据缓存全文；未新联网。"
+    ],
+    "substantive_changes": [
+      "补端到端不取消人工设计，而是改变设计对象。",
+      "澄清AP绝对差、单副本训练吞吐，以及UCF三个训练/测试划分口径。",
+      "统一系列标题和日期、直达23章导航；转录机器细节移至既有摘要回链。"
+    ],
+    "inherited_checks": "前轮原图、来源身份、联网收据及p41路线页核验明确继承；未新看原图、原视频，未听校、重训或复测，未做工作台功能验收。"
   }
 }

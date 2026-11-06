@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-vit-r1-20261105",
+    "run_id": "ai-yanyi-vit-r2-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "第24节ViT展开：以猫照片讲清图块、位置、自注意力、分类学习，解释数据规模与计算成本的条件，并实质改写原报告对应章节。",
+    "summary": "《AI演义》32篇全量精修中的第24篇：完整回读ViT，核图块表示、学习目标与规模/成本条件，并改善来源定位。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第24节实质改写，标题后首块为展开链接；展开返回原24、上23双流、下25CLIP，保留人类阅读友好的主线和三问。"
+        "text": "保留第24篇路径和编号，与总览及23/25分章往返；总览于全系列收束时统一核对。"
       },
       {
         "id": "R6",
-        "text": "标题沿用《AI演义》两位编号｜题名；正文普通Markdown、独立可读，检查正文排版、引用和上下篇链接，不要求工作台页面验收。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -137,7 +137,7 @@
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.1公式1、Figure1、Table1；196/768/197为给定尺寸算术，Large宽1024。 逐像素50176位置与patch196位置对照按§2–3和给定尺寸推算。"
+      "evidence": "§3.1公式1、Figure1、Table1；196/768/197为给定尺寸算术，Large宽1024。 逐像素50176位置与patch196位置对照按§2–3和给定尺寸推算。 公式1的位置嵌入为(N+1)×D，包括分类标记。"
     },
     {
       "id": "C3",
@@ -284,14 +284,14 @@
     },
     {
       "id": "C16",
-      "claim": "主结果是监督分类；自监督初探选50%图块嵌入扰动，最终预测512色量化均色，B16后续ImageNet79.9%。",
+      "claim": "主结果为监督分类；自监督在JFT上选50%图块作预测目标，被选部分80%换mask、10%随机图块、10%不变，预测512色均色；B16后续ImageNet79.9%，作者观察100k步后收益递减且ImageNet预训练也有类似改善。",
       "report_anchor": "supervision-and-next-step",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§4.6及B.1.2 p14；原文约高于从零2pp、低于监督4pp；不是完整像素重建或后继MAE。"
+      "evidence": "§4.6及B.1.2 p14；约高于从零2pp、低于监督4pp。选中不等于全部删除，无标签目标不等于没有上游数据；不混为完整像素重建或后继MAE。"
     },
     {
       "id": "C17",
@@ -322,7 +322,7 @@
     },
     {
       "id": "C19",
-      "claim": "目标236段538.06秒结构通过，无逆序或重叠；未听校或测WER；读v2版本修订，不冒称重新下载PDF。",
+      "claim": "完整目标转写用于还原讲述顺序，时间结构检查通过，未听校或测WER；具体范围回链摘要，使用v2修订记录，不冒称本轮重新下载PDF。",
       "report_anchor": "sources-and-scope",
       "support": "direct",
       "source_ids": [
@@ -502,7 +502,7 @@
     },
     {
       "id": "U16",
-      "title": "主结果是监督分类；自监督初探选50%图块嵌入扰动，最终预测512色量化均色，B16后续ImageNet79.9%。",
+      "title": "主结果为监督分类；自监督在JFT上选50%图块作预测目标，被选部分80%换mask、10%随机图块、10%不变，预测512色均色；B16后续ImageNet79.9%，作者观察100k步后收益递减且ImageNet预训练也有类似改善。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -537,7 +537,7 @@
     },
     {
       "id": "U19",
-      "title": "目标236段538.06秒结构通过，无逆序或重叠；未听校或测WER；读v2版本修订，不冒称重新下载PDF。",
+      "title": "完整目标转写用于还原讲述顺序，时间结构检查通过，未听校或测WER；具体范围回链摘要，使用v2修订记录，不冒称本轮重新下载PDF。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -586,5 +586,18 @@
       "note": "保留此前未操作成功的事实；用户已明确取消报告页面验收，此项不再阻断正文交付。"
     }
   },
-  "revision_note": "r2：根据独立内容复核修正不存在的附录B.3定位；明确轴向注意力的算子、整网与实测速度三种口径。其余科学正文和来源不变。"
+  "revision_note": "r2：根据独立内容复核修正不存在的附录B.3定位；明确轴向注意力的算子、整网与实测速度三种口径。其余科学正文和来源不变。",
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文及脚注；ViT v2文字pp1–9、13–22，含表格、公式与图注，未新逐格看图。",
+      "236段目标ASR全文、讲义p47文字、公开转写核查摘要及arXiv版本缓存全文；shownotes继承紧邻章节回读。"
+    ],
+    "substantive_changes": [
+      "输入步骤按公式澄清分类标记也有位置表示。",
+      "展开自监督50%目标的80/10/10处理、JFT无标签目标、步数收益递减及较小数据也有效的边界。",
+      "为13条脚注补直达原材料页码链接，统一标题及25章直达，转写过程回链既有摘要。"
+    ],
+    "inherited_checks": "未变的原图核验、Transformer首页署名、来源身份与联网收据继承；未新联网、看图、听校、训练或实测，未做工作台功能验收。"
+  }
 }

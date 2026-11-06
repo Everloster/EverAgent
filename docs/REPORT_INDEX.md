@@ -16,6 +16,9 @@
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | ai-learning |
@@ -29,9 +32,6 @@
 | 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) | ai-learning |
 
 ## 🤖 AI Learning（185 篇）
 
@@ -46,6 +46,9 @@
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | `ai_history`, `gan`, `generative_models`, `adversarial_training` |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | `ai_history`, `clip`, `contrastive_learning`, `multimodal`, `zero_shot` |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |
+| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
+| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
+| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
 | 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | `ai_history`, `react`, `agents`, `tool_use`, `reasoning`, `evaluation` |
 | 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | `ai_history`, `chain_of_thought`, `prompting`, `in_context_learning`, `reasoning`, `evaluation` |
 | 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | `ai_history`, `instructgpt`, `rlhf`, `instruction_following`, `reward_model`, `alignment` |
@@ -66,9 +69,6 @@
 | 2026-11-06 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
 | 2026-11-06 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
 | 2026-11-06 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
-| 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
-| 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
-| 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |

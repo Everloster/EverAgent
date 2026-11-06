@@ -2,748 +2,94 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
-      "identity": {
-        "harness": "codex",
-        "model_runtime_confirmation": "unconfirmed",
-        "model_source": "unconfirmed",
-        "basis": "本子Agent的精确模型/会话绑定没有独立runtime证据。共享工作区eacli宿主的配置身份不作为本子会话身份；不虚构用户模型覆盖。"
-      },
-      "source_first_review": {
-        "frozen_map_artifact": "primary-source-map.json",
-        "frozen_map_sha256": "412e9c71d1628fd2a07051fb147a22568b04e3b00a9bf5b3c2e971d17d124afa",
-        "created_before_report_read": true,
-        "source_units": 32,
-        "visual_supplement_artifact": "primary-source-visual-supplement.json",
-        "visual_supplement_sha256": "5f9f04f3af2d64f3e5e10badf6f3f6aec9c522c0d3d1fc1e4fbdf61f66aa7458",
-        "all_titles_and_importance_preserved": true
-      },
-      "original_materials_read": {
-        "paper": "arXiv1406.2199v2完整11页排版文字、Tables1–4、Figures1–6图注与关联正文；p8原图直接核表2–4。",
-        "paper_pdf_sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47",
-        "paper_layout_sha256": "bf36fac1eb6669ece25225562f6799adfae79354ad1d91cb0e6d1a68242fc697",
-        "metadata": "官方arXiv题名、署名和v1/v2时间，缓存已核读。",
-        "lecture": "讲义p43抽取文本和同页原图；未重读全部讲义。",
-        "lecture_pdf_sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-        "podcast": "目标45段ASR完整读，11711.90–11874.72秒；并独立重算小数时间戳连续/顺序，核对原生机器收据。",
-        "asr_slice_sha256": "fe7d5311359e808bf7e0824b6e59af346417561fc7cb1665714f77eb8c8e9cb9",
-        "asr_text_sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
-        "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
-        "shownotes_scope": "节目页全文重读，本章Part4条目与DeepVideo/双流/GAN顺序；未把Part4时间戳当本章起点。"
-      },
-      "verification_receipts": [
-        {
-          "artifact": "primary-verification-receipt.json",
-          "sha256": "ccfcb8b3f504180610e72fbec6d874ca2fd2e983efb0cd8957deee70ba6e5b0b"
-        },
-        {
-          "artifact": "source-manifest.json",
-          "sha256": "0c792abfc4c2561d294d10d3af568440096a63df47b9e31f0c7db3347d548e3b"
-        },
-        {
-          "artifact": "calculation-check.json",
-          "sha256": "6041d76699828d4d0e786897775c9d8447893baf46f62717985d9bb284b09502"
-        }
-      ],
-      "ui_scope": {
-        "status": "not_completed",
-        "scope_checked_by_reviewer": "正文源码的阅读、路径/明确锚点、脚注定义与编号、无details/summary折叠；未操作工作台页面。",
-        "coordinator_report": "协调者报告本轮Chrome Browser live API的快照、DOM、截图、导航不可用，没有可用UI收据；这是协调者反馈，不冒称本Reviewer亲自复现故障。",
-        "desktop_checked": false,
-        "narrow_screen_checked": false,
-        "toc_click_checked": false,
-        "footnote_roundtrip_checked": false,
-        "report_navigation_click_checked": false,
-        "screenshots_received": false,
-        "static_checks_do_not_establish_ui_pass": true
-      },
-      "review_limits": [
-        "没有听音或测量WER；结构审计不等于识别文本完全准确。",
-        "没有重训、推理或测量光流精度/速度；差值仅从论文表值计算。",
-        "未逐格查看混淆矩阵或直接查看其他论文图像；数字与图像解释限于实际读取范围。",
-        "未核查所有前驱/后继论文和作者后续履历。",
-        "尚未完成实际工作台桌面/窄屏、目录、脚注与导航点击检查。"
-      ],
-      "unsupported_claims": [],
-      "hard_failures": [],
-      "frozen_at": "2026-11-05T08:34:16.754656+00:00",
       "reviewer": {
-        "model": "unconfirmed",
+        "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "two-stream-primary-expanded-r1-20261105",
+        "run_id": "twostream-r2-gpt56sol-20261106",
         "independent_context": true,
-        "explicit_model_override": false
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略记录为gpt-5.6-sol/codex；子环境未提供可确认自身型号的独立运行时证明，故只采用调度依据，不把父会话或宿主型号冒充Reviewer核实。"
       },
-      "snapshot_binding": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
-        "report_sha256": "43766207b611ea1bcae6b8e85b551dcde6f75d44af453de6c322c8bc83888a04",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.evidence.json",
-        "evidence_sha256": "7ba3c07f22955194d4e5ab8b86258b34cf53851d2c9c21ecc5769dd89bc35807",
-        "quality_tier": "important",
-        "revision_round": 1,
-        "prompt": {
-          "artifact": "expanded-review-prompt.md",
-          "sha256": "f5ab9be6c00b2b61f5c8a90af3e912aa846b2133f1a2f4dbb1f09d5187f5a955"
-        }
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本篇为第23篇。",
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
       },
+      "score_reasons": {
+        "evidence_fidelity": "来源优先完整复读双流论文v2的11页正文、表格与图注，核讲义p43、45段完整转录、arXiv元数据和shownotes。19项claim中的光流定义、10组/20通道、空间预训练、时间多任务、全部消融、两级聚合、Table4跨方法对照及成本数字均成立，未发现关键数字或实验口径错误。",
+        "request_coverage": "完整覆盖为何显式运动、空间/时间两流分工、光流与帧差区别、堆叠/轨迹/双向输入、有限数据训练、多任务、输入消融、分数融合、三划分结果、真实混淆、预处理成本及长程限制。27项来源地图含shownotes八章节，19 claims、19 coverage units和6项要求全部核对。",
+        "reasoning_quality": "严格区分光流预计算与分类网络学习、显式运动表示与仅增加RGB帧、局部窗口与视频级平均、split1消融与三split正式比较、单路略强与融合系统更强、UCF上的0.1pp领先与HMDB上的落后。讲义/播客的“首次全面超过”和人物谱系被来源边界有效约束。",
+        "readability": "完整逐段阅读278行正文。跳绳例贯穿位移场、堆叠和双流互补，四张表集中呈现训练、消融、融合和正式对照；15个脚注定义与18处引用匹配，6个本地导航/仓内链接均存在，Pandoc转HTML通过，无私有路径或执行日志。信息密集但能独立阅读；未启动工作台功能验收。",
+        "limitations": "明确未重训、推理、复测光流/吞吐或听校转录；原图表的未变视觉核验仅继承历史收据。小差值无置信区间，光流受假设和额外计算约束，混淆解释非因果隔离，短窗口/平均不等于长视频理解；人物后续履历与现代视频谱系未作全面核验。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19"
+      ],
       "source_content_map": [
         {
-          "id": "P00",
-          "title": "论文身份与版本",
-          "importance": "supporting",
+          "id": "TS-S01",
+          "title": "双流以显式运动回应RGB多帧难学运动的问题",
+          "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
             "METADATA"
           ],
           "matched_coverage_unit_ids": [
-            "U17"
-          ],
-          "notes": "开篇署名、机构及§10/metadata脚注明确v1/v2，未用ASR错名。"
-        },
-        {
-          "id": "P01",
-          "title": "问题：有多帧不等于学会运动",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U9"
-          ],
-          "notes": "§1与§6将早期RGB多帧不足、手工表示与显式运动输入连起来，限定为当时设置。"
-        },
-        {
-          "id": "P02",
-          "title": "双流全流程与互补信息",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U12"
-          ],
-          "notes": "§2两列表和两条流程链完整说明两流及末端类别分数融合；生物视觉仅为启发。"
-        },
-        {
-          "id": "P03",
-          "title": "空间流与图像预训练",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7"
-          ],
-          "notes": "§5解释ImageNet初始化与最后采用只训练分类层；没有给时间流虚构图像预训练。"
-        },
-        {
-          "id": "P04",
-          "title": "光流是什么",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3"
-          ],
-          "notes": "§3从鞋尖位移解释两数值图、帧差与估计假设，说明相机运动及未实测噪声风险。"
-        },
-        {
-          "id": "P05",
-          "title": "固定位置的光流堆叠",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4"
-          ],
-          "notes": "§4说明相邻帧对、10×2通道、11张原始帧和固定位置按时间读取；以文字完成少数学要求。未列224像素裁剪，不影响该输入组织机制的主结论。"
-        },
-        {
-          "id": "P06",
-          "title": "轨迹堆叠备选",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U16"
-          ],
-          "notes": "§4明确随运动移动取样位置与固定坐标取值的区别，§9明确输入轨迹不等于沿轨迹池化；未展开递推符号符合少数学约定。"
-        },
-        {
-          "id": "P07",
-          "title": "双向光流备选",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U10",
-            "U12"
-          ],
-          "notes": "§4写前后各半而总通道不变，§6/§7分别给单路81.2与融合85.6的反例。"
-        },
-        {
-          "id": "P08",
-          "title": "均值光流消减",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U16"
-          ],
-          "notes": "§4解释逐光流场减平均位移向量及粗略相机补偿；§6给79.9→81.0，未许诺消除全部相机运动。"
-        },
-        {
-          "id": "P09",
-          "title": "为何能连接手工表示",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U16"
-          ],
-          "notes": "正文交代由手工描述运动转向学习空间/时间变化特征，亦解释轨迹池化缺失；未逐项展开HOF/MBH、divergence/curl/shear与网络层运算的关系。"
-        },
-        {
-          "id": "P10",
-          "title": "第一层滤波器的可视化",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4"
-          ],
-          "notes": "§4正确转述Figure4的空间/时间导数解释；未展示96个7×7×20滤波器或解释可视化矩阵的每行每列。"
-        },
-        {
-          "id": "P11",
-          "title": "多任务学习的机制",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8"
-          ],
-          "notes": "§5写出标签交集动机、共享特征与分别产生本数据集误差的两个头，解释两类信号共同更新；无需损失公式仍能说明训练机制。"
-        },
-        {
-          "id": "P12",
-          "title": "网络与训练口径",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U7",
-            "U8"
-          ],
-          "notes": "正文说明空间/时间不同初始化、dropout与实验条件，脚注标CNN-M-2048；SGD、batch、归一化层、完整层配置未展开。"
-        },
-        {
-          "id": "P13",
-          "title": "测试阶段的视频分数",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U11"
-          ],
-          "notes": "§7分开视频内25×10视图平均与两流融合，并将排列不变限定于固定输入的最终平均。"
-        },
-        {
-          "id": "P14",
-          "title": "光流工程代价",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U15"
-          ],
-          "notes": "§9完整保留0.06秒/帧对、预计算、浮点1.5TB→JPEG27GB、4Titan一天/3.2倍及各自口径。"
-        },
-        {
-          "id": "P15",
-          "title": "数据集和评估协议",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U9",
-            "U13"
-          ],
-          "notes": "§5数据集规模与训练量、§6单拆分和§8三拆分协议解释清楚。平均180帧未列，属于非必要描述性细节。"
-        },
-        {
-          "id": "P16",
-          "title": "空间流消融",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U7"
-          ],
-          "notes": "§5列52.3/72.8/72.7及dropout条件，另给72.7→59.9过度正则化；未列Table1a的42.5/70.8两行。关键结论和失败例已覆盖。"
-        },
-        {
-          "id": "P17",
-          "title": "时间流输入消融",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U10"
-          ],
-          "notes": "§6保留L1/L5/L10、普通均值79.9→81.0、轨迹80.2和双向81.2；未列轨迹堆叠关闭均值时79.6一行，因此不称完整抄录Table1b。"
-        },
-        {
-          "id": "P18",
-          "title": "与原始 RGB 帧堆叠的控制比较",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U13"
-          ],
-          "notes": "§6将56.4界定为本论文11帧从头训练单拆分实验；§8另列前作65.4为三拆分历史表值，没有混用。"
-        },
-        {
-          "id": "P19",
-          "title": "多任务实验",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U12"
-          ],
-          "notes": "§5完整列HMDB四种训练方式与结果、78类手选和完整辅助集条件，§7补出UCF多任务时间流81.5。"
-        },
-        {
-          "id": "P20",
-          "title": "融合方法与失败尝试",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U12"
-          ],
-          "notes": "§7讲平均或归一化分数拼接后SVM、Table3各配置值，以及联合FC过拟合与双向融合无益。85.6原图值正确。"
-        },
-        {
-          "id": "P21",
-          "title": "正式成绩与手工表示的边界",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U13"
-          ],
-          "notes": "§8保留三个split、双流/单流/IDT/高维与stacked Fisher/Slow Fusion的主要表行，结论不全面胜出；未抄HMAX的22.8支持性基线。"
-        },
-        {
-          "id": "P22",
-          "title": "真实失败类别",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14"
-          ],
-          "notes": "§8解释召回率、Hammering最差及两路不同混淆，明确成因来自作者观察，脚注绑定87.0的split1模型。"
-        },
-        {
-          "id": "P23",
-          "title": "论文明确未完成的工作",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U16",
-            "U19"
-          ],
-          "notes": "§9写轨迹池化、相机处理、大数据未来计划和长程顺序限制；§11将资源控制与镜头实验保留为待验证。"
-        },
-        {
-          "id": "P24",
-          "title": "历史定位的准确范围",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U18"
-          ],
-          "notes": "§10收窄后续影响及作者履历、不称第一次发明光流或全部双通路；没有专门介绍HMAX前驱，历史细支线未穷尽。"
-        },
-        {
-          "id": "SN01",
-          "title": "shownotes 本章定位及上下章",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U17",
-            "U18"
-          ],
-          "notes": "§10明确Part4 03:08:08与双流ASR03:15左右不同，说明节目接GAN、报告接ViT，导航按报告顺序。"
-        },
-        {
-          "id": "ASR01",
-          "title": "从前作弱点引入双流",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U17"
-          ],
-          "notes": "开篇/§1保留前作问题、牛津作者并按论文核名；§10说明本段读取范围与识别边界。"
-        },
-        {
-          "id": "ASR02",
-          "title": "时间流与光流的口头比喻",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U3"
-          ],
-          "notes": "§2/§3直接化解光流与时间流混淆，以及“相减影子”口头类比，未当作精确算法。"
-        },
-        {
-          "id": "ASR03",
-          "title": "给模型显式运动信息的解释",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U4"
-          ],
-          "notes": "§1/§4解释给网络更可利用的运动表示、由网络学习描述子的主线；未把不明ASR词升格为原文典故。"
-        },
-        {
-          "id": "ASR04",
-          "title": "里程碑与影响范围的夸张口径",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PODCAST",
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U13",
-            "U18"
-          ],
-          "notes": "§8将“AlexNet时刻”等归为讲者评价，并用Table4明确全面胜出的边界；§10不把后续广泛影响当全面文献验证。"
-        },
-        {
-          "id": "ASR05",
-          "title": "作者跨领域工作的尾声",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "PODCAST",
-            "LECTURE"
-          ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文明确不展开人物后续履历，未复述AlphaGo Zero同等一作或任职断言。该支持性旁论按已声明范围省略，不标为事实已核。"
-        },
-        {
-          "id": "H01",
-          "title": "讲义的章节梗概",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "LECTURE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U13",
-            "U18"
-          ],
-          "notes": "§10给讲义p43入口，正文体现其历史问题与相当的性能定位；广泛影响与人物旁论有明确边界。"
-        }
-      ],
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "METADATA",
-        "LECTURE",
-        "PODCAST",
-        "SHOWNOTES"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "missing_requirements": [],
-      "scores": {
-        "evidence_fidelity": 97,
-        "request_coverage": 92,
-        "reasoning_quality": 96,
-        "readability": 92,
-        "limitations": 97
-      },
-      "score_reasons": {
-        "evidence_fidelity": "17条critical claim逐项对照论文全文、表格原图、讲义、ASR和shownotes；所有主要数字与版本/数据口径一致，Table3首行采用正确85.6。来源收据及转写哈希吻合，8个算术差值独立复算。没有借全文引用声称逐格看过未看的图或重读所有前驱。",
-        "request_coverage": "贯穿跳绳例子解释两路、光流/帧差、堆叠、预训练、多任务、评价、融合、错误与代价，主稿入口和上下节静态导航符合R5。32单元实记24 covered/7 partial/1 missing，省略项为部分表行、HOF/MBH细化、网络实现和非核心作者履历，未构成已授权科普主线的实质缺失。R6明确要求的实际工作台阅读检查尚未完成。",
-        "reasoning_quality": "从输入表示到训练资源再到预测的链路完整。固定输入后平均的排列不变没有偷换为原始帧重排不变；额外数据与结构、估计假设与真运动、作者观察与因果实验区分得当。Table4不夸成全面超过手工表示，小差值也没有统计显著性的虚构。",
-        "readability": "正文用具体位移和跳绳解释概念，表格集中呈现实验，11节顺序自然且无HTML折叠。L2归一化仍未给普通读者一句直觉解释，是轻微门槛；尚无实际工作台桌面/窄屏与脚注/目录点击结果，所以评分不代表UI已通过。",
-        "limitations": "写明光流预计算与有损存储、辅助完整数据、局部窗口、相机/轨迹池化和大规模训练未完成；不外推现代普及度，也明确ASR未听校/WER未测、实验未复现。源表历史方法的资源差异和错误解释的观察性质有交代。"
-      },
-      "candidate_read_scope": "展开篇全文、全部19个claim及19个source_coverage、6项requirements和5个来源记录；与主稿23节和导航目标静态互核。",
-      "open_findings": [
-        {
-          "id": "EXPANDED-UI-01",
-          "severity": "verification_incomplete",
-          "requirement_ids": [
-            "R6"
-          ],
-          "description": "R6中的实际工作台桌面/窄屏、目录、表格、脚注及阅读往返检查未完成，本轮没有可用视觉或点击收据。",
-          "requested_change": "工具可用后对同快照执行阅读验收；本轮不可声明R6全部满足或报告完成。"
-        },
-        {
-          "id": "EXPANDED-STYLE-01",
-          "severity": "minor_optional",
-          "requirement_ids": [
-            "R2"
-          ],
-          "description": "§7首次出现L2归一化时缺少普通读者可理解的半句释义。分类器用途已解释，因此不影响主要机制理解。",
-          "requested_change": "可用一句话解释为把各路分数向量缩放至单位长度，再拼接；不必补公式。"
-        }
-      ],
-      "notes": "当前r1全文独立审稿。核心技术、结果、反例与资料边界可靠，未发现必须改动的关键事实错误。冻结地图中的支持性人物尾声按明示范围省略，部分实现和完整表行未覆盖均如实保留，不以此冒称穷尽全文细节。R6的实际页面检查尚未完成，故missing_requirements保留R6，当前不能宣称完成；这不是已证实的页面缺陷或科学内容硬失败。最终判定须由原生门禁计算。",
-      "weighted_score": 95.05,
-      "coordinator_scope_disposition": {
-        "date": "2026-11-06",
-        "requirement_id": "R6",
-        "original_missing_requirements": [
-          "R6"
-        ],
-        "resolution": "user_cancelled_ui_prerequisite",
-        "reviewer_verified_ui": false,
-        "content_review_reused_without_score_changes": true,
-        "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
-      }
-    },
-    {
-      "role": "flagship_final_review",
-      "reviewer": {
-        "model": "gpt-5.6-sol",
-        "harness": "codex",
-        "run_id": "two-stream-strong-expanded-r1-20261105",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "identity_basis": "orchestrator-configured: parent reports collab2.spawn_agent(model=\"gpt-5.6-sol\", fork_turns=\"none\") succeeded; no child-session-bound runtime verification was available.",
-        "model_runtime_confirmation": "session-bound-unverified",
-        "host_terminal_configuration_used_as_child_identity": false
-      },
-      "snapshot_binding": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
-        "report_sha256": "43766207b611ea1bcae6b8e85b551dcde6f75d44af453de6c322c8bc83888a04",
-        "evidence_sha256": "7ba3c07f22955194d4e5ab8b86258b34cf53851d2c9c21ecc5769dd89bc35807",
-        "review_prompt_artifact": "/tmp/everagent-two-stream-20261105/expanded-review-prompt.md",
-        "review_prompt_sha256": "f5ab9be6c00b2b61f5c8a90af3e912aa846b2133f1a2f4dbb1f09d5187f5a955",
-        "verified": true
-      },
-      "source_first_binding": {
-        "source_map_artifact": "/tmp/everagent-two-stream-20261105/strong-source-map.json",
-        "source_map_sha256": "21784b61f0cdcd094fb0f3415ef0fae1908e39096d0391faa84fc54a33c5f950",
-        "source_content_map_sha256": "f35a18f5efee58f48a8593fc93c599612615f2420611b7459f1956d3449e238f",
-        "identity_and_vision_note_artifact": "/tmp/everagent-two-stream-20261105/strong-review-independent-note.json",
-        "identity_and_vision_note_sha256": "60f9eea4ef163781b8076e2acf6045a8127c4c2b660eb80dd5c570b35e2e73ee",
-        "importance_normalization": "Frozen map label major is represented as core because report-review-v1 permits only core/supporting; frozen artifact itself remains unchanged."
-      },
-      "scores": {
-        "evidence_fidelity": 98,
-        "request_coverage": 98,
-        "reasoning_quality": 98,
-        "readability": 97,
-        "limitations": 98
-      },
-      "score_reasons": {
-        "evidence_fidelity": "逐项核对原论文定义、公式、Tables1–4、Table3原图、实现成本、错误分析、讲义p43、shownotes与45段ASR收据。所有关键数字、split口径和“相当而非全面胜出”的结论准确；[推测]失败模式与平均运算推导均明确标注边界。",
-        "request_coverage": "冻结地图14单元全部实质覆盖；贯穿跳绳示意讲清两路、光流、堆叠、训练资源、消融、融合、真实错误、成本与限制。来源章节明确节目下一主题GAN而报告下一节ViT，私有ASR只概述不公开复制。",
-        "reasoning_quality": "报告用52.3→56.4→73.9→80.4→81.0和单路→融合两条证据链区分“帧多了”“运动表示变了”“两路互补”，并指出额外算法/数据/算力使比较并非等成本。小差值、辅助数据与混淆原因均避免过度因果化。",
-        "readability": "独立阅读合同兑现：跳绳例子从输入贯穿到盲点，术语先直觉后定义，表格和小节组织清楚，返回/上一节/下一节静态目标全部存在。尚未收到本轮工作台桌面/窄屏实查收据，因此不声称本人完成视觉交互。",
-        "limitations": "完整保留未复现、未听音/测WER、光流假设、跨方法基线未逐篇审计、无置信区间、混淆解释非因果、现代谱系与作者履历未全面核查等限制。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19"
-      ],
-      "source_content_map": [
-        {
-          "id": "TS01",
-          "title": "为什么视频分类不能只照搬图像分类",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PODCAST"
-          ],
-          "matched_coverage_unit_ids": [
             "U1"
           ],
-          "notes": "从DeepVideo的多帧瓶颈、传统光流/轨迹方法和小数据学习难度重建问题，且不把架构效果当因果定论。"
+          "notes": "牛津作者、v2论文和对DeepVideo/先前HMAX工作的承接准确；双通路人脑假说只作工程启发，不写成首创或神经科学复现。"
         },
         {
-          "id": "TS02",
-          "title": "双流架构的基本分工与融合",
+          "id": "TS-S02",
+          "title": "空间流看单帧RGB，时间流看预计算多帧光流",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -752,25 +98,11 @@
           "matched_coverage_unit_ids": [
             "U2"
           ],
-          "notes": "单帧RGB空间流、多帧光流时间流、类别分数晚融合及动作分类任务边界均清楚。"
+          "notes": "两路各自输出动作分数再融合，光流算法不由分类误差更新；与DeepVideo全景/中心双分辨率明确区分。"
         },
         {
-          "id": "TS03",
-          "title": "空间流为什么能借用ImageNet",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7"
-          ],
-          "notes": "给出ImageNet迁移理由、52.3/72.8/72.7/59.9及Dropout条件，避免夸大0.1个百分点。"
-        },
-        {
-          "id": "TS04",
-          "title": "光流是位移场而非帧差",
+          "id": "TS-S03",
+          "title": "稠密光流是水平/垂直位移场而非图片相减",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -778,71 +110,117 @@
             "PODCAST"
           ],
           "matched_coverage_unit_ids": [
-            "U3",
+            "U3"
+          ],
+          "notes": "亮度/梯度恒常、平滑假设和相机运动进入光流的边界清楚；照明/遮挡风险标为推测，不使用播客“影子”类比代替定义。"
+        },
+        {
+          "id": "TS-S04",
+          "title": "10组相邻光流形成20通道并需11张原始帧",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
             "U4"
           ],
-          "notes": "以跳绳箭头场解释dx/dy和20通道，明确帧差只表示同位置亮度变化，并标注推断性失败模式。"
+          "notes": "水平/垂直分量、第一层滤波器及减平均位移的粗略全局运动补偿准确；没有把光流当物体真实运动真值。"
         },
         {
-          "id": "TS05",
-          "title": "时间流输入变体与消融",
+          "id": "TS-S05",
+          "title": "固定位置堆叠、轨迹堆叠和双向光流是不同输入组织",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U5",
-            "U9",
-            "U10"
-          ],
-          "notes": "完整覆盖固定位置/轨迹、单向/双向、均值扣除及L=1/5/10消融，小差值不声称显著。"
-        },
-        {
-          "id": "TS06",
-          "title": "可学习表示如何承接手工运动描述子",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
             "U5"
           ],
-          "notes": "解释光流先验、手工轨迹描述子到卷积滤波器的转变以及空间/时间导数；没有把它写成纯端到端。"
+          "notes": "公式(1)/(2)及双向前后各L/2、总通道不增加的定义准确，复杂设计不预设一定更优。"
         },
         {
-          "id": "TS07",
-          "title": "小数据下的多任务训练",
+          "id": "TS-S06",
+          "title": "空间流可借ImageNet，时间流面对UCF/HMDB小数据",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U6",
-            "U8"
+            "U6"
           ],
-          "notes": "共享表示、双分类头、辅助全集口径和HMDB四组结果全部进入正文，并指出数据量与组织方式未隔离。"
+          "notes": "UCF约13K/101类、split训练9.5K，HMDB6.8K/51类、split训练3.7K准确；总视频数未混成单split训练量。"
         },
         {
-          "id": "TS08",
-          "title": "训练、测试与系统成本",
-          "importance": "supporting",
+          "id": "TS-S07",
+          "title": "空间流预训练显著优于从头训练但超参数不完全相同",
+          "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U11",
-            "U15"
+            "U7"
           ],
-          "notes": "测试25位置×10视角、最终平均、0.06秒/帧对、1.5TB→27GB及4 Titan实现成本均有条件地解释。"
+          "notes": "split1的52.3(d=.9)、72.8(.9)、72.7(.5)及末层高dropout59.9准确；0.1pp未被外推为全调必然无用。"
         },
         {
-          "id": "TS09",
-          "title": "两路是否真的互补",
+          "id": "TS-S08",
+          "title": "多任务时间流共享表示并保留两个数据集分类头",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "HMDB split1的46.6/49.0/52.8/55.4与78个不重合类方案准确；额外数据和训练组织贡献未被强行拆成单一因果。"
+        },
+        {
+          "id": "TS-S09",
+          "title": "显式光流远强于同条件下仅堆RGB帧",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "UCF split1从头RGB52.3、11帧Slow56.4、L1/5/10光流73.9/80.4/81.0及4.1/24.6/6.5/0.6pp差值准确，同时注明非等总成本。"
+        },
+        {
+          "id": "TS-S10",
+          "title": "均值减除有益但轨迹与双向只带来小差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "L10 79.9→81.0、trajectory80.2、bidirectional81.2逐项正确；无多种子/置信区间，未写成稳定普遍规律。"
+        },
+        {
+          "id": "TS-S11",
+          "title": "测试先平均25位置×10视角，再做两流融合",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "固定局部输入最后平均的重排不变性只用于视频级聚合，不外推原始帧序或光流窗口内部不重要。"
+        },
+        {
+          "id": "TS-S12",
+          "title": "分数平均与L2归一化后线性SVM是两种后期融合",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -851,11 +229,11 @@
           "matched_coverage_unit_ids": [
             "U12"
           ],
-          "notes": "列出单路、平均和SVM融合数字，澄清先视频内聚合、再两路融合，并用双向局部更强但融合更弱作反例。"
+          "notes": "split1平均85.9、多任务平均86.2、SVM87.0、双向平均85.6及单路72.7/81.5准确；联合FC过拟合和局部模块略强却融合不强的反例保留。"
         },
         {
-          "id": "TS10",
-          "title": "性能是追平、局部略超还是全面胜出",
+          "id": "TS-S13",
+          "title": "三split正式对照只在UCF略过强手工法，HMDB仍落后",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -866,12 +244,12 @@
           "matched_coverage_unit_ids": [
             "U13"
           ],
-          "notes": "Table4两数据集全部关键行进入正文，UCF0.1pp略超与HMDB落后并列，纠正播客宽泛评价。"
+          "notes": "Table4双流88.0/59.4、IDT87.9/61.1、stacked Fisher66.8及空间/时间/平均融合各行准确；“全面取代手工”被明确否定。"
         },
         {
-          "id": "TS11",
-          "title": "Hammering错误案例",
-          "importance": "supporting",
+          "id": "TS-S14",
+          "title": "Hammering错误揭示两流各自共享线索的盲点",
+          "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
@@ -879,11 +257,24 @@
           "matched_coverage_unit_ids": [
             "U14"
           ],
-          "notes": "真实混淆、召回口径和作者解释完整，明确不是隔离因果实验。"
+          "notes": "87.0% split1模型中敲锤最差召回、空间混HeadMassage、时间混BrushingTeeth以及人脸/往复运动解释均准确，未冒充隔离因果实验。"
         },
         {
-          "id": "TS12",
-          "title": "论文明确承认的边界",
+          "id": "TS-S15",
+          "title": "光流预计算和存储把成本移到网络之前",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "每帧对0.06秒、预计算、1.5TB浮点到27GB JPEG、4 Titan一天和3.2倍加速准确；未误写模型大小、无损压缩或端到端FPS。"
+        },
+        {
+          "id": "TS-S16",
+          "title": "局部光流窗口、平均聚合、粗相机补偿和小数据限制长程理解",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -892,29 +283,44 @@
           "matched_coverage_unit_ids": [
             "U16"
           ],
-          "notes": "覆盖外部光流、局部窗口、最终平均、轨迹池化、相机运动和大规模训练尚未完成。"
+          "notes": "轨迹输入不等于沿轨迹池化，Sports-1M规模训练仍列未来；动作分类提升未被外推成任意长视频理解。"
         },
         {
-          "id": "TS13",
-          "title": "讲义、shownotes与ASR应如何使用",
+          "id": "TS-S17",
+          "title": "版本、短转录与技术术语边界均可追溯",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
+            "PAPER",
             "METADATA",
             "LECTURE",
             "PODCAST",
             "SHOWNOTES"
           ],
           "matched_coverage_unit_ids": [
-            "U17",
-            "U18"
+            "U17"
           ],
-          "notes": "来源章节分别说明；45段162.82秒、未听音/未测WER、节目下一主题GAN与报告下一节ViT均明确，私有转写未公开复制。"
+          "notes": "v1 2014-06-09、v2 2014-11-12，45段162.82秒的结构审计及未听校/WER边界准确；完整机制来自论文而非短口述。"
         },
         {
-          "id": "TS14",
-          "title": "展开入口、独立阅读与上下节导航",
-          "importance": "core",
+          "id": "TS-S18",
+          "title": "节目顺序和人物/历史影响旁论不属于核心实验事实",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "SHOWNOTES",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "报告下一节ViT与节目下一主题GAN的编辑顺序差异已说明；作者履历与“影响几乎所有视频研究”未冒充全面核验。"
+        },
+        {
+          "id": "TS-S19",
+          "title": "下一步应固定资源比较输入表示并单独控制相机条件",
+          "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
@@ -922,7 +328,116 @@
           "matched_coverage_unit_ids": [
             "U19"
           ],
-          "notes": "展开稿可独立阅读，跳绳贯穿机制、实验与边界；静态核实返回/上/下链接与目标存在。工作台桌面/窄屏实查收据尚未提供给本Reviewer。"
+          "notes": "RGB/光流、光流算法、预计算与相机条件的实验建议标待验证，没有写成本篇已执行结果。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 01:30：探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "作为整期结构留痕，不扩写与双流机制无关的个人叙事。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "用于确认节目学习背景，技术结论仍回原论文。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 10:20：辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "只作节目范围留痕，不扩大为工作台功能验收。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes 19:35：Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "仅作整期前序结构留痕。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes 01:52:58：Part 2 Infra与数据变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "仅作整期结构留痕。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes 02:21:29：Part 3语言模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "仅作音频章节边界留痕。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes 03:08:08：Part 4多模态模型的发展，含双流网络",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U13",
+            "U17",
+            "U18"
+          ],
+          "notes": "本章实际定位约03:15:12–03:17:55，随后原节目转GAN；shownotes只有Part起点和论文顺序。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 03:56:38：最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "结尾讨论未用于支撑双流机制或成绩。"
         }
       ],
       "source_ids_checked": [
@@ -943,40 +458,19 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "transcript_audit_check": {
-        "artifact": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
-        "sha256": "5627db91204af36b119e07b42244fb153fed068c3c6cf6b30881e60d67d1d72a",
-        "segments": 45,
-        "timestamp_errors": 0,
-        "fractional_overlap_count": 0,
-        "audio_listened": false,
-        "wer_measured": false
-      },
-      "presentation_check": {
-        "static_links_verified": true,
-        "workbench_receipt_received": false,
-        "reviewer_clicked_ui": false
-      },
-      "notes": "展开稿按冻结来源地图14/14覆盖，无unsupported claim、missing requirement或hard failure；重要级各单项均高于门槛。R6中的工作台桌面/窄屏实查收据尚未提供，本entry只记录静态链接与文本审阅，不预先声称实测通过。模型字段按受控orchestrator配置记录，child session-bound runtime未验证；最终状态由安装entry后的report_quality.py check决定。",
-      "coordinator_scope_disposition": {
-        "date": "2026-11-06",
-        "requirement_id": "R6",
-        "original_missing_requirements": [],
-        "resolution": "user_cancelled_ui_prerequisite",
-        "reviewer_verified_ui": false,
-        "content_review_reused_without_score_changes": true,
-        "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
-      }
+      "notes": "revision2快照绑定：report SHA-256 65f4bbe8492d4b9cb3f52b00522c22aac958427dbfaeda8986af8d6beea6f017；evidence SHA-256 78361bc304d2f1c0a11865adc6ad2289bc368b5ea909291f1660076fd728b1e8。开始审阅与落盘前均核对一致。\n独立顺序为先读论文v2 11页全文、讲义p43、45段完整转录、arXiv元数据及shownotes，形成27项内容地图，再完整读正文、evidence、历史review及相对HEAD diff；未采用生成者推理或旧评分作为本轮判断。\n实际重跑audit_transcript.py：45段、timestamp_errors=0、malformed_lines=0、max_consecutive_identical=1；公开百分秒结构收据另核0重叠、0间隔、无负时长或倒序，实际跨度162.82秒。未重转录、未听音、未测WER；原图和来源身份只按未变历史收据继承，未冒称本轮新视觉或联网。\n重点复验：光流非帧差；10组/20通道；空间预训练与多任务时间流；RGB/光流消融；25×10测试聚合；L2/SVM融合；Table4 UCF/HMDB相对手工法；Hammering混淆；0.06秒、1.5TB→27GB和4Titan成本。均有来源支持。\nMarkdown检查限于报告本身：4张表、15个脚注定义与18处引用、6个本地导航/仓内文件链接；Pandoc解析通过，隐私路径扫描无命中，未启动无关工作台功能验收。\n当前未发现需要修订的事实、数字、推理、覆盖、引用或呈现缺陷；最终判定由report_quality.py check计算，本Reviewer不finalize、不提交。",
+      "reviewed_report_sha256": "65f4bbe8492d4b9cb3f52b00522c22aac958427dbfaeda8986af8d6beea6f017",
+      "reviewed_evidence_sha256": "78361bc304d2f1c0a11865adc6ad2289bc368b5ea909291f1660076fd728b1e8"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.05,
+    "score": 98.85,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "8d5bdd442619934fba86f9f86bd777bc41cd6d620f586c3ac2b314af8cbb6a22",
-    "evidence_sha256": "cc74a44256692ed14a08536b5d8e367cc2295100442c34e90b5dd8e0a2f93d73"
+    "report_sha256": "da0a7627922c6ff07402b0e9a650ecf3268b227490432745640947407f913ac1",
+    "evidence_sha256": "78361bc304d2f1c0a11865adc6ad2289bc368b5ea909291f1660076fd728b1e8"
   },
   "scope_adjustments": [
     {
@@ -993,6 +487,986 @@
       "after_evidence_sha256": "cc74a44256692ed14a08536b5d8e367cc2295100442c34e90b5dd8e0a2f93d73",
       "original_review_file_sha256": "2bf66b27db08cb05380f2e1ea89b9ec8328cc03ffc2e53ccdbab6d88dac7d765",
       "preserved": "原Reviewer身份、评分、理由、来源地图、快照和未做UI的事实不变；仅将取消的UI部分从交付阻断项移除。未重审、未伪称UI通过。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "identity": {
+            "harness": "codex",
+            "model_runtime_confirmation": "unconfirmed",
+            "model_source": "unconfirmed",
+            "basis": "本子Agent的精确模型/会话绑定没有独立runtime证据。共享工作区eacli宿主的配置身份不作为本子会话身份；不虚构用户模型覆盖。"
+          },
+          "source_first_review": {
+            "frozen_map_artifact": "primary-source-map.json",
+            "frozen_map_sha256": "412e9c71d1628fd2a07051fb147a22568b04e3b00a9bf5b3c2e971d17d124afa",
+            "created_before_report_read": true,
+            "source_units": 32,
+            "visual_supplement_artifact": "primary-source-visual-supplement.json",
+            "visual_supplement_sha256": "5f9f04f3af2d64f3e5e10badf6f3f6aec9c522c0d3d1fc1e4fbdf61f66aa7458",
+            "all_titles_and_importance_preserved": true
+          },
+          "original_materials_read": {
+            "paper": "arXiv1406.2199v2完整11页排版文字、Tables1–4、Figures1–6图注与关联正文；p8原图直接核表2–4。",
+            "paper_pdf_sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47",
+            "paper_layout_sha256": "bf36fac1eb6669ece25225562f6799adfae79354ad1d91cb0e6d1a68242fc697",
+            "metadata": "官方arXiv题名、署名和v1/v2时间，缓存已核读。",
+            "lecture": "讲义p43抽取文本和同页原图；未重读全部讲义。",
+            "lecture_pdf_sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+            "podcast": "目标45段ASR完整读，11711.90–11874.72秒；并独立重算小数时间戳连续/顺序，核对原生机器收据。",
+            "asr_slice_sha256": "fe7d5311359e808bf7e0824b6e59af346417561fc7cb1665714f77eb8c8e9cb9",
+            "asr_text_sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+            "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+            "shownotes_scope": "节目页全文重读，本章Part4条目与DeepVideo/双流/GAN顺序；未把Part4时间戳当本章起点。"
+          },
+          "verification_receipts": [
+            {
+              "artifact": "primary-verification-receipt.json",
+              "sha256": "ccfcb8b3f504180610e72fbec6d874ca2fd2e983efb0cd8957deee70ba6e5b0b"
+            },
+            {
+              "artifact": "source-manifest.json",
+              "sha256": "0c792abfc4c2561d294d10d3af568440096a63df47b9e31f0c7db3347d548e3b"
+            },
+            {
+              "artifact": "calculation-check.json",
+              "sha256": "6041d76699828d4d0e786897775c9d8447893baf46f62717985d9bb284b09502"
+            }
+          ],
+          "ui_scope": {
+            "status": "not_completed",
+            "scope_checked_by_reviewer": "正文源码的阅读、路径/明确锚点、脚注定义与编号、无details/summary折叠；未操作工作台页面。",
+            "coordinator_report": "协调者报告本轮Chrome Browser live API的快照、DOM、截图、导航不可用，没有可用UI收据；这是协调者反馈，不冒称本Reviewer亲自复现故障。",
+            "desktop_checked": false,
+            "narrow_screen_checked": false,
+            "toc_click_checked": false,
+            "footnote_roundtrip_checked": false,
+            "report_navigation_click_checked": false,
+            "screenshots_received": false,
+            "static_checks_do_not_establish_ui_pass": true
+          },
+          "review_limits": [
+            "没有听音或测量WER；结构审计不等于识别文本完全准确。",
+            "没有重训、推理或测量光流精度/速度；差值仅从论文表值计算。",
+            "未逐格查看混淆矩阵或直接查看其他论文图像；数字与图像解释限于实际读取范围。",
+            "未核查所有前驱/后继论文和作者后续履历。",
+            "尚未完成实际工作台桌面/窄屏、目录、脚注与导航点击检查。"
+          ],
+          "unsupported_claims": [],
+          "hard_failures": [],
+          "frozen_at": "2026-11-05T08:34:16.754656+00:00",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "two-stream-primary-expanded-r1-20261105",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
+            "report_sha256": "43766207b611ea1bcae6b8e85b551dcde6f75d44af453de6c322c8bc83888a04",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.evidence.json",
+            "evidence_sha256": "7ba3c07f22955194d4e5ab8b86258b34cf53851d2c9c21ecc5769dd89bc35807",
+            "quality_tier": "important",
+            "revision_round": 1,
+            "prompt": {
+              "artifact": "expanded-review-prompt.md",
+              "sha256": "f5ab9be6c00b2b61f5c8a90af3e912aa846b2133f1a2f4dbb1f09d5187f5a955"
+            }
+          },
+          "source_content_map": [
+            {
+              "id": "P00",
+              "title": "论文身份与版本",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "开篇署名、机构及§10/metadata脚注明确v1/v2，未用ASR错名。"
+            },
+            {
+              "id": "P01",
+              "title": "问题：有多帧不等于学会运动",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U9"
+              ],
+              "notes": "§1与§6将早期RGB多帧不足、手工表示与显式运动输入连起来，限定为当时设置。"
+            },
+            {
+              "id": "P02",
+              "title": "双流全流程与互补信息",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U12"
+              ],
+              "notes": "§2两列表和两条流程链完整说明两流及末端类别分数融合；生物视觉仅为启发。"
+            },
+            {
+              "id": "P03",
+              "title": "空间流与图像预训练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "§5解释ImageNet初始化与最后采用只训练分类层；没有给时间流虚构图像预训练。"
+            },
+            {
+              "id": "P04",
+              "title": "光流是什么",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "§3从鞋尖位移解释两数值图、帧差与估计假设，说明相机运动及未实测噪声风险。"
+            },
+            {
+              "id": "P05",
+              "title": "固定位置的光流堆叠",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "§4说明相邻帧对、10×2通道、11张原始帧和固定位置按时间读取；以文字完成少数学要求。未列224像素裁剪，不影响该输入组织机制的主结论。"
+            },
+            {
+              "id": "P06",
+              "title": "轨迹堆叠备选",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U16"
+              ],
+              "notes": "§4明确随运动移动取样位置与固定坐标取值的区别，§9明确输入轨迹不等于沿轨迹池化；未展开递推符号符合少数学约定。"
+            },
+            {
+              "id": "P07",
+              "title": "双向光流备选",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U10",
+                "U12"
+              ],
+              "notes": "§4写前后各半而总通道不变，§6/§7分别给单路81.2与融合85.6的反例。"
+            },
+            {
+              "id": "P08",
+              "title": "均值光流消减",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U16"
+              ],
+              "notes": "§4解释逐光流场减平均位移向量及粗略相机补偿；§6给79.9→81.0，未许诺消除全部相机运动。"
+            },
+            {
+              "id": "P09",
+              "title": "为何能连接手工表示",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U16"
+              ],
+              "notes": "正文交代由手工描述运动转向学习空间/时间变化特征，亦解释轨迹池化缺失；未逐项展开HOF/MBH、divergence/curl/shear与网络层运算的关系。"
+            },
+            {
+              "id": "P10",
+              "title": "第一层滤波器的可视化",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "§4正确转述Figure4的空间/时间导数解释；未展示96个7×7×20滤波器或解释可视化矩阵的每行每列。"
+            },
+            {
+              "id": "P11",
+              "title": "多任务学习的机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "§5写出标签交集动机、共享特征与分别产生本数据集误差的两个头，解释两类信号共同更新；无需损失公式仍能说明训练机制。"
+            },
+            {
+              "id": "P12",
+              "title": "网络与训练口径",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U8"
+              ],
+              "notes": "正文说明空间/时间不同初始化、dropout与实验条件，脚注标CNN-M-2048；SGD、batch、归一化层、完整层配置未展开。"
+            },
+            {
+              "id": "P13",
+              "title": "测试阶段的视频分数",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "§7分开视频内25×10视图平均与两流融合，并将排列不变限定于固定输入的最终平均。"
+            },
+            {
+              "id": "P14",
+              "title": "光流工程代价",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "§9完整保留0.06秒/帧对、预计算、浮点1.5TB→JPEG27GB、4Titan一天/3.2倍及各自口径。"
+            },
+            {
+              "id": "P15",
+              "title": "数据集和评估协议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U9",
+                "U13"
+              ],
+              "notes": "§5数据集规模与训练量、§6单拆分和§8三拆分协议解释清楚。平均180帧未列，属于非必要描述性细节。"
+            },
+            {
+              "id": "P16",
+              "title": "空间流消融",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "§5列52.3/72.8/72.7及dropout条件，另给72.7→59.9过度正则化；未列Table1a的42.5/70.8两行。关键结论和失败例已覆盖。"
+            },
+            {
+              "id": "P17",
+              "title": "时间流输入消融",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U10"
+              ],
+              "notes": "§6保留L1/L5/L10、普通均值79.9→81.0、轨迹80.2和双向81.2；未列轨迹堆叠关闭均值时79.6一行，因此不称完整抄录Table1b。"
+            },
+            {
+              "id": "P18",
+              "title": "与原始 RGB 帧堆叠的控制比较",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U13"
+              ],
+              "notes": "§6将56.4界定为本论文11帧从头训练单拆分实验；§8另列前作65.4为三拆分历史表值，没有混用。"
+            },
+            {
+              "id": "P19",
+              "title": "多任务实验",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U12"
+              ],
+              "notes": "§5完整列HMDB四种训练方式与结果、78类手选和完整辅助集条件，§7补出UCF多任务时间流81.5。"
+            },
+            {
+              "id": "P20",
+              "title": "融合方法与失败尝试",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "§7讲平均或归一化分数拼接后SVM、Table3各配置值，以及联合FC过拟合与双向融合无益。85.6原图值正确。"
+            },
+            {
+              "id": "P21",
+              "title": "正式成绩与手工表示的边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "§8保留三个split、双流/单流/IDT/高维与stacked Fisher/Slow Fusion的主要表行，结论不全面胜出；未抄HMAX的22.8支持性基线。"
+            },
+            {
+              "id": "P22",
+              "title": "真实失败类别",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "§8解释召回率、Hammering最差及两路不同混淆，明确成因来自作者观察，脚注绑定87.0的split1模型。"
+            },
+            {
+              "id": "P23",
+              "title": "论文明确未完成的工作",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16",
+                "U19"
+              ],
+              "notes": "§9写轨迹池化、相机处理、大数据未来计划和长程顺序限制；§11将资源控制与镜头实验保留为待验证。"
+            },
+            {
+              "id": "P24",
+              "title": "历史定位的准确范围",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U18"
+              ],
+              "notes": "§10收窄后续影响及作者履历、不称第一次发明光流或全部双通路；没有专门介绍HMAX前驱，历史细支线未穷尽。"
+            },
+            {
+              "id": "SN01",
+              "title": "shownotes 本章定位及上下章",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18"
+              ],
+              "notes": "§10明确Part4 03:08:08与双流ASR03:15左右不同，说明节目接GAN、报告接ViT，导航按报告顺序。"
+            },
+            {
+              "id": "ASR01",
+              "title": "从前作弱点引入双流",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U17"
+              ],
+              "notes": "开篇/§1保留前作问题、牛津作者并按论文核名；§10说明本段读取范围与识别边界。"
+            },
+            {
+              "id": "ASR02",
+              "title": "时间流与光流的口头比喻",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "§2/§3直接化解光流与时间流混淆，以及“相减影子”口头类比，未当作精确算法。"
+            },
+            {
+              "id": "ASR03",
+              "title": "给模型显式运动信息的解释",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U4"
+              ],
+              "notes": "§1/§4解释给网络更可利用的运动表示、由网络学习描述子的主线；未把不明ASR词升格为原文典故。"
+            },
+            {
+              "id": "ASR04",
+              "title": "里程碑与影响范围的夸张口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U18"
+              ],
+              "notes": "§8将“AlexNet时刻”等归为讲者评价，并用Table4明确全面胜出的边界；§10不把后续广泛影响当全面文献验证。"
+            },
+            {
+              "id": "ASR05",
+              "title": "作者跨领域工作的尾声",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文明确不展开人物后续履历，未复述AlphaGo Zero同等一作或任职断言。该支持性旁论按已声明范围省略，不标为事实已核。"
+            },
+            {
+              "id": "H01",
+              "title": "讲义的章节梗概",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U13",
+                "U18"
+              ],
+              "notes": "§10给讲义p43入口，正文体现其历史问题与相当的性能定位；广泛影响与人物旁论有明确边界。"
+            }
+          ],
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "missing_requirements": [],
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 92,
+            "reasoning_quality": 96,
+            "readability": 92,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "17条critical claim逐项对照论文全文、表格原图、讲义、ASR和shownotes；所有主要数字与版本/数据口径一致，Table3首行采用正确85.6。来源收据及转写哈希吻合，8个算术差值独立复算。没有借全文引用声称逐格看过未看的图或重读所有前驱。",
+            "request_coverage": "贯穿跳绳例子解释两路、光流/帧差、堆叠、预训练、多任务、评价、融合、错误与代价，主稿入口和上下节静态导航符合R5。32单元实记24 covered/7 partial/1 missing，省略项为部分表行、HOF/MBH细化、网络实现和非核心作者履历，未构成已授权科普主线的实质缺失。R6明确要求的实际工作台阅读检查尚未完成。",
+            "reasoning_quality": "从输入表示到训练资源再到预测的链路完整。固定输入后平均的排列不变没有偷换为原始帧重排不变；额外数据与结构、估计假设与真运动、作者观察与因果实验区分得当。Table4不夸成全面超过手工表示，小差值也没有统计显著性的虚构。",
+            "readability": "正文用具体位移和跳绳解释概念，表格集中呈现实验，11节顺序自然且无HTML折叠。L2归一化仍未给普通读者一句直觉解释，是轻微门槛；尚无实际工作台桌面/窄屏与脚注/目录点击结果，所以评分不代表UI已通过。",
+            "limitations": "写明光流预计算与有损存储、辅助完整数据、局部窗口、相机/轨迹池化和大规模训练未完成；不外推现代普及度，也明确ASR未听校/WER未测、实验未复现。源表历史方法的资源差异和错误解释的观察性质有交代。"
+          },
+          "candidate_read_scope": "展开篇全文、全部19个claim及19个source_coverage、6项requirements和5个来源记录；与主稿23节和导航目标静态互核。",
+          "open_findings": [
+            {
+              "id": "EXPANDED-UI-01",
+              "severity": "verification_incomplete",
+              "requirement_ids": [
+                "R6"
+              ],
+              "description": "R6中的实际工作台桌面/窄屏、目录、表格、脚注及阅读往返检查未完成，本轮没有可用视觉或点击收据。",
+              "requested_change": "工具可用后对同快照执行阅读验收；本轮不可声明R6全部满足或报告完成。"
+            },
+            {
+              "id": "EXPANDED-STYLE-01",
+              "severity": "minor_optional",
+              "requirement_ids": [
+                "R2"
+              ],
+              "description": "§7首次出现L2归一化时缺少普通读者可理解的半句释义。分类器用途已解释，因此不影响主要机制理解。",
+              "requested_change": "可用一句话解释为把各路分数向量缩放至单位长度，再拼接；不必补公式。"
+            }
+          ],
+          "notes": "当前r1全文独立审稿。核心技术、结果、反例与资料边界可靠，未发现必须改动的关键事实错误。冻结地图中的支持性人物尾声按明示范围省略，部分实现和完整表行未覆盖均如实保留，不以此冒称穷尽全文细节。R6的实际页面检查尚未完成，故missing_requirements保留R6，当前不能宣称完成；这不是已证实的页面缺陷或科学内容硬失败。最终判定须由原生门禁计算。",
+          "weighted_score": 95.05,
+          "coordinator_scope_disposition": {
+            "date": "2026-11-06",
+            "requirement_id": "R6",
+            "original_missing_requirements": [
+              "R6"
+            ],
+            "resolution": "user_cancelled_ui_prerequisite",
+            "reviewer_verified_ui": false,
+            "content_review_reused_without_score_changes": true,
+            "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
+          }
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "two-stream-strong-expanded-r1-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured: parent reports collab2.spawn_agent(model=\"gpt-5.6-sol\", fork_turns=\"none\") succeeded; no child-session-bound runtime verification was available.",
+            "model_runtime_confirmation": "session-bound-unverified",
+            "host_terminal_configuration_used_as_child_identity": false
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
+            "report_sha256": "43766207b611ea1bcae6b8e85b551dcde6f75d44af453de6c322c8bc83888a04",
+            "evidence_sha256": "7ba3c07f22955194d4e5ab8b86258b34cf53851d2c9c21ecc5769dd89bc35807",
+            "review_prompt_artifact": "/tmp/everagent-two-stream-20261105/expanded-review-prompt.md",
+            "review_prompt_sha256": "f5ab9be6c00b2b61f5c8a90af3e912aa846b2133f1a2f4dbb1f09d5187f5a955",
+            "verified": true
+          },
+          "source_first_binding": {
+            "source_map_artifact": "/tmp/everagent-two-stream-20261105/strong-source-map.json",
+            "source_map_sha256": "21784b61f0cdcd094fb0f3415ef0fae1908e39096d0391faa84fc54a33c5f950",
+            "source_content_map_sha256": "f35a18f5efee58f48a8593fc93c599612615f2420611b7459f1956d3449e238f",
+            "identity_and_vision_note_artifact": "/tmp/everagent-two-stream-20261105/strong-review-independent-note.json",
+            "identity_and_vision_note_sha256": "60f9eea4ef163781b8076e2acf6045a8127c4c2b660eb80dd5c570b35e2e73ee",
+            "importance_normalization": "Frozen map label major is represented as core because report-review-v1 permits only core/supporting; frozen artifact itself remains unchanged."
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 97,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对原论文定义、公式、Tables1–4、Table3原图、实现成本、错误分析、讲义p43、shownotes与45段ASR收据。所有关键数字、split口径和“相当而非全面胜出”的结论准确；[推测]失败模式与平均运算推导均明确标注边界。",
+            "request_coverage": "冻结地图14单元全部实质覆盖；贯穿跳绳示意讲清两路、光流、堆叠、训练资源、消融、融合、真实错误、成本与限制。来源章节明确节目下一主题GAN而报告下一节ViT，私有ASR只概述不公开复制。",
+            "reasoning_quality": "报告用52.3→56.4→73.9→80.4→81.0和单路→融合两条证据链区分“帧多了”“运动表示变了”“两路互补”，并指出额外算法/数据/算力使比较并非等成本。小差值、辅助数据与混淆原因均避免过度因果化。",
+            "readability": "独立阅读合同兑现：跳绳例子从输入贯穿到盲点，术语先直觉后定义，表格和小节组织清楚，返回/上一节/下一节静态目标全部存在。尚未收到本轮工作台桌面/窄屏实查收据，因此不声称本人完成视觉交互。",
+            "limitations": "完整保留未复现、未听音/测WER、光流假设、跨方法基线未逐篇审计、无置信区间、混淆解释非因果、现代谱系与作者履历未全面核查等限制。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_content_map": [
+            {
+              "id": "TS01",
+              "title": "为什么视频分类不能只照搬图像分类",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "从DeepVideo的多帧瓶颈、传统光流/轨迹方法和小数据学习难度重建问题，且不把架构效果当因果定论。"
+            },
+            {
+              "id": "TS02",
+              "title": "双流架构的基本分工与融合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "单帧RGB空间流、多帧光流时间流、类别分数晚融合及动作分类任务边界均清楚。"
+            },
+            {
+              "id": "TS03",
+              "title": "空间流为什么能借用ImageNet",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "给出ImageNet迁移理由、52.3/72.8/72.7/59.9及Dropout条件，避免夸大0.1个百分点。"
+            },
+            {
+              "id": "TS04",
+              "title": "光流是位移场而非帧差",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4"
+              ],
+              "notes": "以跳绳箭头场解释dx/dy和20通道，明确帧差只表示同位置亮度变化，并标注推断性失败模式。"
+            },
+            {
+              "id": "TS05",
+              "title": "时间流输入变体与消融",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U9",
+                "U10"
+              ],
+              "notes": "完整覆盖固定位置/轨迹、单向/双向、均值扣除及L=1/5/10消融，小差值不声称显著。"
+            },
+            {
+              "id": "TS06",
+              "title": "可学习表示如何承接手工运动描述子",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "解释光流先验、手工轨迹描述子到卷积滤波器的转变以及空间/时间导数；没有把它写成纯端到端。"
+            },
+            {
+              "id": "TS07",
+              "title": "小数据下的多任务训练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U8"
+              ],
+              "notes": "共享表示、双分类头、辅助全集口径和HMDB四组结果全部进入正文，并指出数据量与组织方式未隔离。"
+            },
+            {
+              "id": "TS08",
+              "title": "训练、测试与系统成本",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U15"
+              ],
+              "notes": "测试25位置×10视角、最终平均、0.06秒/帧对、1.5TB→27GB及4 Titan实现成本均有条件地解释。"
+            },
+            {
+              "id": "TS09",
+              "title": "两路是否真的互补",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "列出单路、平均和SVM融合数字，澄清先视频内聚合、再两路融合，并用双向局部更强但融合更弱作反例。"
+            },
+            {
+              "id": "TS10",
+              "title": "性能是追平、局部略超还是全面胜出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "Table4两数据集全部关键行进入正文，UCF0.1pp略超与HMDB落后并列，纠正播客宽泛评价。"
+            },
+            {
+              "id": "TS11",
+              "title": "Hammering错误案例",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "真实混淆、召回口径和作者解释完整，明确不是隔离因果实验。"
+            },
+            {
+              "id": "TS12",
+              "title": "论文明确承认的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "覆盖外部光流、局部窗口、最终平均、轨迹池化、相机运动和大规模训练尚未完成。"
+            },
+            {
+              "id": "TS13",
+              "title": "讲义、shownotes与ASR应如何使用",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "METADATA",
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18"
+              ],
+              "notes": "来源章节分别说明；45段162.82秒、未听音/未测WER、节目下一主题GAN与报告下一节ViT均明确，私有转写未公开复制。"
+            },
+            {
+              "id": "TS14",
+              "title": "展开入口、独立阅读与上下节导航",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "展开稿可独立阅读，跳绳贯穿机制、实验与边界；静态核实返回/上/下链接与目标存在。工作台桌面/窄屏实查收据尚未提供给本Reviewer。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "transcript_audit_check": {
+            "artifact": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
+            "sha256": "5627db91204af36b119e07b42244fb153fed068c3c6cf6b30881e60d67d1d72a",
+            "segments": 45,
+            "timestamp_errors": 0,
+            "fractional_overlap_count": 0,
+            "audio_listened": false,
+            "wer_measured": false
+          },
+          "presentation_check": {
+            "static_links_verified": true,
+            "workbench_receipt_received": false,
+            "reviewer_clicked_ui": false
+          },
+          "notes": "展开稿按冻结来源地图14/14覆盖，无unsupported claim、missing requirement或hard failure；重要级各单项均高于门槛。R6中的工作台桌面/窄屏实查收据尚未提供，本entry只记录静态链接与文本审阅，不预先声称实测通过。模型字段按受控orchestrator配置记录，child session-bound runtime未验证；最终状态由安装entry后的report_quality.py check决定。",
+          "coordinator_scope_disposition": {
+            "date": "2026-11-06",
+            "requirement_id": "R6",
+            "original_missing_requirements": [],
+            "resolution": "user_cancelled_ui_prerequisite",
+            "reviewer_verified_ui": false,
+            "content_review_reused_without_score_changes": true,
+            "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
+          }
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.05,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "8d5bdd442619934fba86f9f86bd777bc41cd6d620f586c3ac2b314af8cbb6a22",
+        "evidence_sha256": "cc74a44256692ed14a08536b5d8e367cc2295100442c34e90b5dd8e0a2f93d73"
+      }
     }
   ]
 }

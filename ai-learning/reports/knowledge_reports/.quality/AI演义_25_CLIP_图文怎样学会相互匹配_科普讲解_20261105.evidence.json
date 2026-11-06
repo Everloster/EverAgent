@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-clip-precision-chapter-r2-20261106",
+    "run_id": "ai-yanyi-clip-r3-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮eacli session current核实codex-turn-context及当前调用方；只记录本会话生成模型。"
+    "identity_basis": "本轮根会话eacli session current：gpt-6-astra/codex，codex-thread-state/session-bound confirmed。仅证明生成者，不代替Reviewer独立运行时证据。"
   },
   "task": {
-    "summary": "第25节CLIP科普展开：沿夕阳和飞鸟讲清图文监督、双编码器、对比目标、零样本与迁移评价，核对讲义/口述宽泛说法及生成组件关系。",
+    "summary": "《AI演义》32篇全量精修中的第25篇：全文回读CLIP，澄清图文训练的表示、温度缩放与数据条件，保留评价和生成组件边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主报告第25节实质重写，标题后第一块为展开链接；展开保留返回原节、前后章节导航，研究入口同步。"
+        "text": "保留第25篇路径和编号，与总览及24/26分章往返，生成组件延伸直达第30篇；总览于全系列收束时统一核对。"
       },
       {
         "id": "R6",
-        "text": "使用统一的两位编号标题，正文独立可读，脚注、链接和三问完整；完成独立内容复核，不要求工作台页面验收。"
+        "text": "正文独立可读，核术语、实验口径、表格、脚注、导航及隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。全系列富文本呈现按用户要求有限检查。"
       }
     ],
     "reader_feedback": [
@@ -44,7 +44,7 @@
       "按Brook方式一轮一章，后续参考前轮，独立可读。",
       "列表命名开头规范一下。"
     ],
-    "source_coverage_scope": "仅《AI演义》报告第25节及节目对应CLIP片段，不是整集转写质量或全部31节的再次验收。",
+    "source_coverage_scope": "本篇承接全32篇精修，具体内容以CLIP章节、讲义p48和123段目标ASR为主，不把分章复核当整期听校或全系列完成。",
     "scope_adjustment": {
       "date": "2026-11-06",
       "authority": "用户明确取消报告的工作台页面验收前置",
@@ -126,7 +126,7 @@
   "claims": [
     {
       "id": "C1",
-      "claim": "CLIP以自然语言图文配对提供监督，并用文字表达目标分类任务；WIT有4亿对、约50万个采集查询项，每项最多2万对，查询项不是固定分类标签。",
+      "claim": "CLIP以自然语言图文配对提供监督，并用文字表达目标分类任务；WIT有4亿对、约50万个采集查询项，每项最多2万对，查询项不是固定分类标签。 原论文的YFCC100M过滤英语自然语言标题/描述后约剩1500万图，数量和文字字段不等于有效语义监督。",
       "report_anchor": "data-supervision",
       "support": "direct",
       "source_ids": [
@@ -135,29 +135,29 @@
         "LECTURE"
       ],
       "critical": true,
-      "evidence": "§§1–2.2、p26：查询条件与实际完整文本配对分开；社交平台仅是节目例子，未作为数据来源清单。"
+      "evidence": "§§1–2.2、p26：查询条件与实际完整文本配对分开；社交平台仅是节目例子，未作为数据来源清单。 p3 §2.2给出自动文件名/曝光设置及1500万过滤结果。"
     },
     {
       "id": "C2",
-      "claim": "ResNet或ViT图像编码器、Transformer文本编码器与线性投影从零联合训练；归一化表示按余弦相似度比较，不是拼接现成GPT/ViT权重。",
+      "claim": "ResNet或ViT图像编码器、Transformer文本编码器与线性投影从零联合训练；归一化表示按余弦相似度比较，不是拼接现成GPT/ViT权重。 文本整体特征取EOS最高层输出，不是原始词向量平均或保证逐词/区域对齐。",
       "report_anchor": "shared-space",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§§2.3–2.5、Figures1/3；CLIP相互作用在最终点积，非联合注意力（p27）。"
+      "evidence": "§§2.3–2.5、Figures1/3；CLIP相互作用在最终点积，非联合注意力（p27）。 p5 §2.4明确EOS表示。"
     },
     {
       "id": "C3",
-      "claim": "N对图文形成N×N配对，对角的N对是正例，N²−N个为批内负例，两个方向交叉熵取平均；三对九项为算术示意而非实验。",
+      "claim": "N对图文形成N×N配对，对角的N对是正例，N²−N个为批内负例，两个方向交叉熵取平均；三对九项为算术示意而非实验。 余弦相似度乘可学习正数再softmax，固定候选排序不变，但概率与梯度改变。",
       "report_anchor": "contrastive-training",
       "support": "derived",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§2.3、Figure3。正文按两个匹配方向解释，不照搬图像回执对axis0/1方向的混淆。"
+      "evidence": "§2.3、Figure3。正文按两个匹配方向解释，不照搬图像回执对axis0/1方向的混淆。 Figure3中exp(t)正数缩放，§2.3/2.5说明可学习温度；排序与梯度关系为按公式解释，不是额外实验。"
     },
     {
       "id": "C4",
@@ -379,7 +379,7 @@
     },
     {
       "id": "U2",
-      "title": "夕阳晚霞飞鸟贯穿例子、自然图文监督与WIT采集；澄清无监督和来源平台推断。",
+      "title": "夕阳飞鸟、自然图文监督与WIT采集；YFCC过滤实例说明有效配文的条件，澄清无监督和来源平台推断。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -391,7 +391,7 @@
     },
     {
       "id": "U3",
-      "title": "图文各自编码、投影归一化、共同空间与从零联合训练；区别GPT/ViT权重拼接。",
+      "title": "图文各自编码、EOS整段表示、投影归一化、共同空间与从零联合训练；不是现成权重拼接或逐词对齐。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -402,7 +402,7 @@
     },
     {
       "id": "U4",
-      "title": "批内双向匹配学习、原始配对与语义真值差异；数字例子只作结构解释。",
+      "title": "批内双向匹配与可学习温度缩放、原始配对与语义真值差异；数字例子只作结构解释。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -643,5 +643,18 @@
       "Table15零样本CLIP的UCF101=80.3，K700=69.6；回执错放80.3到HT100M S3D且错列I3D的70.2，均按原图/正文纠正。"
     ],
     "cli_contract_note": "安装态tokenplan catalog不接受--capability，已改用正式全目录后按ID读取；agent list已退役，session peers只读可用。本轮无绕过typed capability的供应商直接调用。"
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文含所有脚注；本轮续接已回读CLIP v1文字pp1–22、26–27、44–48，含所用表格/图注，未新逐格看原图。",
+      "123段目标ASR、讲义p48文字、公开转写摘要、arXiv元信息缓存与shownotes全文；官方博客开头/背景/方法/关键结论及SD1.4模型卡全文。"
+    ],
+    "substantive_changes": [
+      "用YFCC自然语言配文过滤的真实例子具体说明数据质量条件。",
+      "解释EOS整体表示及温度正数缩放对排序、概率、训练梯度的不同作用。",
+      "统一标题，26/30分章直达，转写核查回链；保留已经准确的迁移、鲁棒性和任务边界。"
+    ],
+    "inherited_checks": "未变的原图、其余已读论文段落和网页来源身份/网络收据按历史记录继承；未新联网、看图、听校或执行模型。未以文字转换替代页面呈现检查。"
   }
 }
