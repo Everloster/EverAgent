@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-alphagozero-r1-20261105",
+    "run_id": "ai-yanyi-alphagozero-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current actor.model.id=gpt-6-astra；source=codex-thread-state、confidence=session-bound、confirmed=true，harness=codex。仅证明生成者，不替代子Reviewer的运行身份。"
   },
   "task": {
-    "summary": "《AI演义》第17节AlphaGo Zero深入展开，实质优化原章节与阅读入口；沿用Brook等前16轮经验，面向人讲清背景、机制与发展路线。",
+    "summary": "《AI演义》全32篇地毯式精修之第17篇：保留PDF主线，全文复读并校订机制、实验口径、来源边界与人类阅读体验。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第17节实质重写，标题下有展开入口；展开返回原节、上一节LoRA及下一节InstructGPT，前16节及其余主文保持。"
+        "text": "保留第17篇编号与文件，返回总览并直达LoRA/InstructGPT；总览在全系列收束时统一校订，不混入其他Agent改动。"
       },
       {
         "id": "R6",
-        "text": "面向人独立可读，检查实际工作台1440/390宽度、导航/目录/脚注/表格；两位来源优先独立复核，原ASR和私有运行信息不公开。"
+        "text": "面向人独立可读；检查报告本身的术语、表格、公式、脚注和导航，独立来源优先复核；不扩成工作台功能验收，不公开原ASR或私有运行信息。"
       }
     ],
     "reader_feedback": [
@@ -168,14 +168,14 @@
     },
     {
       "id": "C3",
-      "claim": "MCTS选择/扩展评估/回传/落子；1600次simulation不是1600盘或深度，Zero不用rollout而仍用搜索。",
+      "claim": "MCTS选择/扩展评估/回传/落子；一次搜索用固定网络更新树统计，非逐次梯度训练；1600模拟不是1600盘或深度，去rollout不去搜索。",
       "report_anchor": "mcts-one-move",
       "support": "direct",
       "source_ids": [
         "AGZ_PAPER"
       ],
       "critical": true,
-      "evidence": "Figure2、Methods Search algorithm；非终局叶节点用网络评价，终局用规则计分。"
+      "evidence": "Figure2、Methods p8 Search algorithm：N/W/Q/P边统计与网络评估分开；模型梯度更新由独立Optimization进行。"
     },
     {
       "id": "C4",
@@ -190,7 +190,7 @@
     },
     {
       "id": "C5",
-      "claim": "训练样本(s,pi,z)让策略学搜索分布、价值学终局；按当前执棋方换符号，不把胜棋每步当最优。",
+      "claim": "训练样本(s,pi,z)让策略学搜索分布、价值学棋局结果（含认输结束）；按当前执棋方换符号，不把胜棋每步当最优。",
       "report_anchor": "self-play-learning",
       "support": "direct",
       "source_ids": [
@@ -329,7 +329,7 @@
     },
     {
       "id": "C17",
-      "claim": "208段423.05秒结构核查无倒序/负时长/重叠，100处正间隔最大1.22秒；shownotes无单篇时间，未听校/WER。",
+      "claim": "播客约01:08:31–01:15:35，术语与声明按论文交叉核验；时间结构连贯不证明逐字准确，shownotes无单篇时间且未听校/WER。",
       "report_anchor": "source-notes",
       "support": "direct",
       "source_ids": [
@@ -338,7 +338,18 @@
         "LECTURE"
       ],
       "critical": true,
-      "evidence": "实际audit/public_receipt/validate_receipt与Decimal检查；英文/姓名错词不直接归因讲者。"
+      "evidence": "完整208段已读；原审计423.05秒，无倒序/负时长/重叠，100处正间隔最大1.22秒，细节留转写核查摘要而非正文。"
+    },
+    {
+      "id": "C18",
+      "claim": "自弈可提前认输以省计算；10%棋局关闭认输、下至终局来估计误认输，并自动校准阈值，目标低于5%，非零错误保证。",
+      "report_anchor": "self-play-learning",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Methods p8 Self-play/Play：false positives定义为本来可获胜却认输；阈值由继续下到终局的样本校准，认输结合根及最佳子节点价值。"
     }
   ],
   "source_coverage": [
@@ -367,7 +378,7 @@
     },
     {
       "id": "U3",
-      "title": "MCTS选择/扩展评估/回传/落子；1600次simulation不是1600盘或深度，Zero不用rollout而仍用搜索。",
+      "title": "MCTS选择/扩展评估/回传/落子；一次搜索用固定网络更新树统计，非逐次梯度训练；1600模拟不是1600盘或深度，去rollout不去搜索。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -387,7 +398,7 @@
     },
     {
       "id": "U5",
-      "title": "训练样本(s,pi,z)让策略学搜索分布、价值学终局；按当前执棋方换符号，不把胜棋每步当最优。",
+      "title": "训练样本(s,pi,z)让策略学搜索分布、价值学棋局结果（含认输结束）；按当前执棋方换符号，不把胜棋每步当最优。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -514,7 +525,7 @@
     },
     {
       "id": "U17",
-      "title": "208段423.05秒结构核查无倒序/负时长/重叠，100处正间隔最大1.22秒；shownotes无单篇时间，未听校/WER。",
+      "title": "播客约01:08:31–01:15:35，术语与声明按论文交叉核验；时间结构连贯不证明逐字准确，shownotes无单篇时间且未听校/WER。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -526,7 +537,7 @@
     },
     {
       "id": "U18",
-      "title": "原节实质改写与节首链接、展开返回/前后节，沿共同问题串联预训练、LoRA、ResNet与InstructGPT。",
+      "title": "本章保留编号、文件与总览返回入口，并直达LoRA/InstructGPT；按问题串联预训练、ResNet与后训练，非伪造单线历史。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -568,6 +579,16 @@
         "AGZ_PAPER"
       ],
       "report_anchor": "transfer-limits"
+    },
+    {
+      "id": "U22",
+      "title": "认输节省计算但须校验：10%下完的自弈估计误认输，阈值目标低于5%。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "self-play-learning"
     }
   ],
   "limitations": [
@@ -607,5 +628,19 @@
       "eacli无原始PDF下载/渲染能力，在正式网页识别之后最小降级下载公开镜像并本地提取/渲染；详细原因见paper-retrieval.json。",
       "vision.technical-diagram与vision.chart-analysis两项typed调用均结束为provider BackendTimeout，后以native view_image最小只读降级检查本地页图，不重放生成任务。"
     ]
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文及208段转录全文、讲义p16文字、公开转写核查摘要全文。",
+      "AlphaGo Zero Methods pp7–9；p8排版首次输出不完整后以raw全文补读。p16–17图注重读，未声称重新查看嵌图数值。",
+      "DeepMind博客正文全文；OpenAI开篇与Chain of Thought；Noam访谈Conviction in o1、What is reasoning?、Lessons from gameplay、The trough of disillusionment及邻近段落。"
+    ],
+    "substantive_changes": [
+      "分清MCTS树统计回传与梯度训练。",
+      "补充认输、10%无认输自弈和低于5%误认输阈值的校准机制。",
+      "开局温度例子限定、正文去执行计数、下一章直达与标题统一。"
+    ],
+    "inherited_checks": "旧版已核原图、来源身份、联网收据与未变化正文证据明确继承；没有重听音、测WER、重训、复跑或浏览器页面验收。"
   }
 }

@@ -1,9 +1,9 @@
 ---
-title: "《AI演义》18｜InstructGPT：模型怎样学会按要求回答？"
+title: "AI演义·18｜InstructGPT：模型怎样学会按要求回答？"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-05"
+updated_on: "2026-11-06"
 quality_schema: "report-v2"
 quality_tier: "important"
 report_depth: "deep"
@@ -11,9 +11,9 @@ reader_contract: "standalone"
 semantic_tags: ["ai_history", "instructgpt", "rlhf", "instruction_following", "reward_model", "alignment", "evaluation"]
 ---
 
-# 《AI演义》18｜InstructGPT：模型怎样学会按要求回答？
+# AI演义·18｜InstructGPT：模型怎样学会按要求回答？
 
-[返回原报告第 18 节](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt) · [上一节：AlphaGo Zero](AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) · [下一节：CoT](../AI演义_笔记分析与项目整合报告.md#paper-cot)
+[返回原报告第 18 节](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt) · [上一节：AlphaGo Zero](AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) · [下一节：CoT](AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md)
 
 假设你交给模型一段通知：
 
@@ -120,6 +120,8 @@ InstructGPT 也不是 RLHF 的起点。论文明确沿用了此前从人类反�
 
 PPO 内部对一次更新的控制，与 KL 对固定参考模型的约束，也是两个层次。前者帮助稳定优化过程，后者约束整段训练偏离起点的程度。把这些都简称为“别学过头”，虽然容易记，却会掩盖它们分别在控制什么。
 
+这一阶段也不是所有模型一起变。回答模型在学习；给它打分的 RM 和用作 KL 参照的监督模型保持固定。PPO 还会训练一个辅助的**价值模型**，估计当前生成状态能获得的奖励，帮助判断反馈比预期好还是差。它由 RM 初始化，但不是一边训练一边改写评分标准的同一个模型。论文描述的下一轮迭代，则是再收集人的比较、更新 RM，再开始新的策略优化。[^ppo]
+
 这里描述的是训练。模型完成训练后，用户发来一次普通请求，并不意味着标注者在幕后即时评分，也不意味着这次对话立刻更新模型参数。
 
 <a id="data-and-people"></a>
@@ -136,6 +138,8 @@ PPO 内部对一次更新的控制，与 KL 对固定参考模型的约束，也
 
 SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源提示。它还会从同一指令组合不同的 few-shot 示例来构造训练点。因此，这不是 12,725 个完全独立的新任务；RM 的提示数也不能直接当成比较对数。
 
+PPO 的 31,144 则是不同训练提示的数量，不是生成回答的总次数。附录说明，主实验的 PPO 模型各训练 **256,000 个回合**；这里一个回合是给定一个请求、生成一次回答并获得反馈，同一提示可以再次使用。它不是与用户连续聊了 256,000 轮。[^implementation]
+
 用户来源主要是早期 InstructGPT 的 **Playground** 请求。论文明确说明，这项研究没有使用生产 API 客户的数据；训练提示经过个人信息过滤，训练、验证和测试按用户 ID 划分。这些措施让评价更有说服力，也限定了它研究的人群和任务。
 
 这也是为什么现成题库不能自然代表用户需要。研究者把 GPT-3 分别在 FLAN、T0 的公共 NLP 任务数据上微调，作为另外两组对照；在本研究的用户提示分布上，它们不如 InstructGPT 受偏好。这说明所选题库与这些使用场景之间有差距，不能据此断言 RLHF 在所有任务上都胜过指令微调。这也是论文自己训练的对照，不是把外部发布的两个成品模型直接拿来比赛。[^task-distribution]
@@ -143,6 +147,8 @@ SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源�
 从零训练一个语言模型，需要先获得大量语言与知识模式。这里的人工数据，是在已有 GPT-3 能力上改变回答行为，不能用这几万条提示推断“从零只要这么多数据就能造出同样的模型”。
 
 具体训练配置还要分清两个 SFT：用来直接比较的 SFT 基线训练了 16 个 epoch，也就是遍历示范数据 16 轮；作为 PPO 起点的监督模型则训练 2 轮，并混入 10% 预训练数据。两者都是监督训练，但不是同一个最终检查点。[^implementation]
+
+为什么 SFT 基线会训练这么多轮？作者观察到，验证集上的文字预测损失在一轮后已经开始变差，但继续训练仍能改善 RM 分数与人工偏好；他们最后依据验证提示上的 RM 分数选择 SFT 模型。这说明“更准确地预测示范文字”与“生成更受偏好的回答”不是完全相同的指标，不意味着过拟合可以忽略。[^method]
 
 <a id="preference-results"></a>
 
@@ -199,6 +205,8 @@ SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源�
 
 这项研究雇用了约 **40 名标注者**，主要通过 Upwork 和 Scale AI 招募，并经过筛选、培训。语言识别程序把约 **96%** 的数据判为英语，作者还认为实际英语比例可能更高。这些反馈提供了有效训练信号，同时带有明确的群体和语言边界。[^people]
 
+40 人并不是每道题都由 40 人共同投票。受成本限制，大多数比较只由**一名标注者**完成。论文因此把重复标注列为改进方向：先看清哪些地方存在分歧，才能判断它来自识别错误，还是不同的人确实想要不同的回答。[^people]
+
 至少有三层选择在影响最终行为：
 
 - **谁提交请求。** 用户拿模型做什么，决定哪些任务被反复训练。
@@ -239,7 +247,7 @@ SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源�
 
 **反馈决定能力朝哪里改善。** 上一节的 AlphaGo Zero 可以根据围棋规则得到胜负。开放式语言任务缺少这样统一、便宜的裁判，于是这里先用人的比较训练一个近似裁判，再用它提供反馈。两者都形成了“产生行为—获得评价—更新模型”的过程，评价来源和可靠性却很不同。
 
-**任务执行仍需要进一步研究。** 让模型愿意、倾向于按照要求回答之后，下一节 [CoT](../AI演义_笔记分析与项目整合报告.md#paper-cot)将讨论用中间步骤帮助作答。它与 InstructGPT 所改变的层面不同；本系列把它们相邻讲解，是按问题衔接，不是说 CoT 在时间上晚于 InstructGPT、或从这篇论文直接派生。
+**任务执行仍需要进一步研究。** 让模型倾向于按照要求回答之后，下一节 [CoT](AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md)将讨论用中间步骤帮助作答。它与 InstructGPT 所改变的层面不同；本系列把它们相邻讲解，是按问题衔接，不是说 CoT 在时间上晚于 InstructGPT、或从这篇论文直接派生。
 
 人的角色也随之变多了。论文作者需要算法与系统，标注者提供示范和细致判断，评估者还要发现打分器的盲点。论文在致谢中列出了标注者姓名，这些劳动是方法的一部分。播客提到的作者亲属关系与创业动因，本章没有独立证实，不据此补写技术发展的因果故事。
 
@@ -262,15 +270,15 @@ SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源�
 - **《AI演义》讲义**：[PDF 第 39 页](../../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=39)，用于本节问题线索；缺字的文字提取以原页校正。讲义中的“提出 RLHF”在此改为应用并扩展既有路线；作者栏也不据标点推断每个人都是 PPO 作者。
 - **播客与 shownotes**：[张小珺 117 期，小宇宙](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)／[Apple Podcasts](https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180)。shownotes 将 InstructGPT 列在 Part 3；按既有 ASR 定位，本章约在 **02:59:57–03:06:09**，不是 shownotes 给出的逐篇时间。
 
-这次阅读了本章 194 段转写，检查发现一处短时重叠和局部重复，保留原始记录；没有逐字听校，也没有测量字词准确率。InstructGPT、PPO、人名和年份有识别错误，机制与数字以论文核对。播客关于 GPT-3、代码训练到 ChatGPT 的简略串联，只作为学习线索，不当成已核定的完整训练谱系。
+本章转录存在一处短时重叠和局部重复；术语、人名、年份及技术说法以论文交叉核对。没有逐字听校，也没有测量字词准确率；详细范围与方法见[转写核查摘要](.quality/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.transcription-review.json)。播客关于 GPT-3、代码训练到 ChatGPT 的简略串联，只作为学习线索，不当成已核定的完整训练谱系。
 
 [^paper]: Ouyang et al.，[原论文](https://arxiv.org/pdf/2203.02155v1#page=1)，摘要、§1–3。B 表示十亿参数，1.3B 为 13 亿，175B 为 1,750 亿。
 [^blog]: Lowe、Leike，[作者文章](https://openai.com/research/instruction-following)，开篇登月对照示例、Methods、Limitations。展示例不等于系统统计。
 [^history]: 原论文 [§2–3.1，pp.4–6](https://arxiv.org/pdf/2203.02155v1#page=4)；OpenAI，[Learning from human preferences](https://openai.com/index/learning-from-human-preferences/)，2017，正文与 Challenges。机器人反例仅依据文章文字，没有复跑或观看媒体。
-[^method]: 原论文 [§3.1、§3.5，pp.6–9](https://arxiv.org/pdf/2203.02155v1#page=6)，Figure 2 说明三阶段；监督训练与模型选择细节见 Appendix C。
+[^method]: 原论文 [§3.1、§3.5，pp.6–9](https://arxiv.org/pdf/2203.02155v1#page=6)，Figure 2 说明三阶段；p.8 说明 SFT 的验证损失、RM 分数与人工偏好并非同向变化。监督训练与模型选择细节见 Appendix C.1。
 [^comparisons]: 原论文 [§3.5，p.9](https://arxiv.org/pdf/2203.02155v1#page=9)及 [Appendix C.2，pp.41–42](https://arxiv.org/pdf/2203.02155v1#page=41)：同提示 4–9 个候选、成对训练、同提示成组处理与平局剔除。四选六对是组合数演算，不是新增实验。
-[^implementation]: 原论文 [Appendix C.1–C.4，pp.40–42](https://arxiv.org/pdf/2203.02155v1#page=40)，区分最终 6B RM 初始化、16 轮 SFT 基线与 2 轮加 10% 预训练数据的 PPO 初始化。
-[^ppo]: 原论文 [§3.5，pp.9–10](https://arxiv.org/pdf/2203.02155v1#page=9)，奖励、KL 与 PPO-ptx；[Appendix C.4，p.42](https://arxiv.org/pdf/2203.02155v1#page=42)说明 PPO 与预训练梯度。
+[^implementation]: 原论文 [Appendix C.1–C.4，pp.40–42](https://arxiv.org/pdf/2203.02155v1#page=40)，区分最终 6B RM 初始化、16 轮 SFT 基线与 2 轮加 10% 预训练数据的 PPO 初始化。C.4 给出各 PPO 模型的 256k episodes，与 Table 6 的约 31k 不同提示不是同一计数；§3.5 将一次请求和回答定义为一个回合。
+[^ppo]: 原论文 [§3.5，pp.9–10](https://arxiv.org/pdf/2203.02155v1#page=9)，奖励、KL 与 PPO-ptx；[Appendix C.4，p.42](https://arxiv.org/pdf/2203.02155v1#page=42)说明 PPO 与预训练梯度，RM 和价值函数均为 6B，后者从前者初始化、随后以自己的学习率训练。重新收集比较并更新 RM、再优化策略的迭代方式见 §3.1，p.6；不能混成每次 PPO 更新都重训 RM。
 [^data]: 原论文 [§3.2–3.4，pp.6–8](https://arxiv.org/pdf/2203.02155v1#page=6)与 [Table 6，p.33](https://arxiv.org/pdf/2203.02155v1#page=33)。12,725＝11,295＋1,430；33,207＝6,623＋26,584；PPO 训练提示 31,144。只列训练部分。
 [^task-distribution]: 原论文 [§4.1，pp.12–13](https://arxiv.org/pdf/2203.02155v1#page=12)及 [Appendix C.5，pp.42–43](https://arxiv.org/pdf/2203.02155v1#page=42)，描述使用 FLAN、T0++ 数据训练的 GPT-3 对照及评价分布。
 [^preference]: 原论文 [Figure 1，p.2](https://arxiv.org/pdf/2203.02155v1#page=2)、p.3、[§4.1，p.11](https://arxiv.org/pdf/2203.02155v1#page=11)。175÷1.3≈134.6 是参数比例演算；85%±3、71%±4 属于 175B 对 175B 的直接偏好比较。全文误差条为 95% 置信区间。
@@ -278,8 +286,8 @@ SFT 的 12,725 来自 11,295 条标注者来源提示与 1,430 条用户来源�
 [^generalization]: 原论文 [Figure 8 与 §4.3，pp.15–16](https://arxiv.org/pdf/2203.02155v1#page=15)，展示代码与非英语指令；作者明确说明未进行定量跟踪，图注也指出代码回答并不完全正确。
 [^benchmarks]: 原论文 [Table 14，p.56](https://arxiv.org/pdf/2203.02155v1#page=56)，只取 175B、zero-shot 三行；[Appendix D.2，pp.46–48](https://arxiv.org/pdf/2203.02155v1#page=46)给出任务、样本数和指标。
 [^ablation]: 原论文 [§4.2，pp.14–15](https://arxiv.org/pdf/2203.02155v1#page=14)、[Appendix E.6，p.53](https://arxiv.org/pdf/2203.02155v1#page=53)及 Figures 33–34，p.55。消融使用 1.3B；不把它说成所有规模的独立单变量复现。
-[^people]: 原论文 [§5.2–5.3，pp.18–19](https://arxiv.org/pdf/2203.02155v1#page=18)，[Appendix A.4／B.1–B.2，pp.35–36](https://arxiv.org/pdf/2203.02155v1#page=35)，以及 §4.1 的 held-out labeler 评价。
+[^people]: 原论文 [§5.2–5.3，pp.18–19](https://arxiv.org/pdf/2203.02155v1#page=18)，[Appendix A.4／B.1–B.2，pp.35–36](https://arxiv.org/pdf/2203.02155v1#page=35)，以及 §4.1 的 held-out labeler 评价。§5.3 明确大多数比较只由一名标注者完成，并讨论多次标注与偏好分歧。
 [^failures]: 原论文 [Figure 9 与 §4.3，pp.16–17](https://arxiv.org/pdf/2203.02155v1#page=16)。提示为作者挑选的行为展示，回答没有为展示而再次挑选；过度回避与“奖励谦逊”的联系是作者假说。
 [^safety]: 原论文 [§4.2，pp.13–14](https://arxiv.org/pdf/2203.02155v1#page=13)、[§5.3–5.4，p.19](https://arxiv.org/pdf/2203.02155v1#page=19)。区别 respectful、无指令和 biased 三种提示条件，不将毒性变化外推成全部安全问题已经解决。
 
-[返回原报告第 18 节](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt) · [上一节：AlphaGo Zero](AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) · [下一节：CoT](../AI演义_笔记分析与项目整合报告.md#paper-cot)
+[返回原报告第 18 节](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt) · [上一节：AlphaGo Zero](AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) · [下一节：CoT](AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md)

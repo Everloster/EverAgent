@@ -2,347 +2,206 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "gpt-6-astra",
+        "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "instructgpt-primary-review-20261105",
+        "run_id": "instructgpt-r2-gpt56sol-20261106",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity_basis": "configured_default_only",
-        "configured_model": "gpt-6-astra",
-        "configured_model_source": "eacli session current: config-default / configured / confirmed=false",
-        "runtime_model": "unconfirmed",
-        "runtime_model_confirmed": false,
-        "reasoning_effort": "unconfirmed",
-        "identity_note": "model字段记录可见配置名，不是独立子会话的运行时认证。恢复后仍观察到confirmed=false；未借用协调者、共享主会话或其他Reviewer身份背书。",
-        "scheduling_note": "阶段1委派说明当前协作面缺少策略默认glm-5.3，沿用可用默认配置；这是调度记录，不是模型实测。",
-        "independent_reviewer_count": 1,
-        "paired_entries_same_reviewer": true
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略记录为gpt-5.6-sol/codex；子环境未提供可确认自身型号的独立运行时证明，故只采用调度依据，不把父会话或宿主型号冒充Reviewer核实。"
       },
-      "reviewed_on": "2026-11-05",
-      "source_first": {
-        "completed_before_candidate_and_evidence_read": true,
-        "frozen_source_map": {
-          "artifact": "primary-source-map.json",
-          "sha256": "b7434a03ebc0716cc031a1e8d627b2429e00008e523210b9a331ccf959192e4d"
-        },
-        "frozen_source_units": 19,
-        "frozen_podcast_units": 11,
-        "source_map_unit_count": 30,
-        "map_mutated_after_candidate_read": false,
-        "other_current_reviewer_outputs_read": false,
-        "r20_baseline_review_read_only_for_inheritance": true,
-        "phase_two_source_followup": "另核Appendix D.2 physical pp46–48的测试样本数、登记回执哈希、转写摘要与前节实际依赖切片，未改变冻结地图。"
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本篇为第18篇。",
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
       },
-      "verification_scope": {
-        "paper": "独立读v1正文及冻结地图所列重要附录、图表和失败案例。Table6/14经eacli图像读取交叉核验；p55负号和讲义缺字在typed超时后直接查看同一原件渲染图。未逐篇追读参考文献或复跑训练。",
-        "author_articles": "实际读2022作者文章legacy URL完整正文和2017偏好学习文章正文/Challenges。最初只有页脚的抓取没有算成正文阅读，未观看媒体。",
-        "lecture": "仅physical p39完整原页；更正RLHF首创和作者栏歧义。",
-        "podcast": "原始segments指定194段切片逐项一致，已读全部本章转写和shownotes；时间来自ASR定位，shownotes只有Part级边界。未听原音或测字词准确率。",
-        "previous_chapter": "只读AlphaGo Zero既有展开稿中规则裁判、训练闭环及相邻导航切片并核SHA，不称本轮重审该论文。",
-        "pair_boundary": "两份entry属于同一独立主审；未读当前另一Reviewer地图或entry。"
+      "score_reasons": {
+        "evidence_fidelity": "来源优先复读InstructGPT v1正文、数据/训练附录C、关键评估附录与原表，核两篇OpenAI作者文章、讲义p39、shownotes和194段转录。17项claim中的RM/价值/参考模型职责、提示与回合计数、16/1/2轮训练、偏好/幻觉/能力回退及标注边界均成立，未发现关键错配。",
+        "request_coverage": "完整覆盖续写目标差异、SFT示范、排序比较、RM、PPO/KL/ptx、数据与训练配置、偏好结果、真实性泛化、alignment tax、标注者群体、失败和安全反例。27项来源地图含shownotes八章节，17 claims和23 coverage units全部核对，三个支持性省略单元边界也已确认。",
+        "reasoning_quality": "严格区分RM与策略/价值/参考模型、31k提示与256k回合、16轮SFT基线与2轮PPO起点、偏好与正确率、人工与自动TruthfulQA、KL约束与预训练能力保持。单看总体偏好或奖励分的宣传冲动，被幻觉率边界、能力回退、单人标注、毒性反例和评价欺骗案例有效约束。",
+        "readability": "完整逐段阅读293行正文。图书馆通知贯穿三阶段和评价风险，四张表把数据、偏好和能力回退落到具体口径；17个脚注定义齐全，12个本地链接均存在，Pandoc转HTML通过，无乱码、私有路径或执行日志。未启动工作台功能验收。",
+        "limitations": "明确未训练、复跑基准、听校或观看网页媒体；论文只精读任务所需范围。博客不同汇总数字不混用，组织谱系/亲属创业故事不采，自动评价不替代人工，标注群体不代表全人类，端到端成本未推算，原图与旧联网收据只按未变范围继承。"
       },
-      "transcript_verification": {
-        "independent_original_slice_binding": true,
-        "exact_slice_equal": true,
-        "segments": 194,
-        "source_indices_zero_based_inclusive": [
-          5183,
-          5376
-        ],
-        "start_seconds": 10796.78,
-        "end_seconds": 11169.02,
-        "span_seconds": 372.24,
-        "negative_duration_count": 0,
-        "backward_start_count": 0,
-        "backward_end_count": 0,
-        "overlap_count": 1,
-        "overlaps": [
-          {
-            "previous_source_index": 5220,
-            "current_source_index": 5221,
-            "previous_end": 10871.47,
-            "current_start": 10871.37,
-            "overlap_seconds": 0.1
-          }
-        ],
-        "positive_gap_count": 2,
-        "max_gap_seconds": 0.61,
-        "positive_gap_total_seconds": 1.16,
-        "native_audit": {
-          "ok": true,
-          "segments": 194,
-          "lines": 194,
-          "timestamp_errors": 0,
-          "malformed_lines": 0,
-          "max_consecutive_identical": 2,
-          "tail_gap_seconds": 0,
-          "duration_seconds": 11169
-        },
-        "native_audit_script": {
-          "path": "podcast-learning/scripts/audit_transcript.py",
-          "sha256": "c4329c84d5d05e57773490b75cd51080f4eb59823af2f95f1e895a8da0e43eb5",
-          "read_lines": "1–80"
-        },
-        "native_limit": "STAMP_RE只接受整数秒；检查段内end>=start与start单调，不检查前段end>后段start，也不检查end单调；duration_seconds是末段绝对end。本章准确长度应单独相减。",
-        "transcription_precision": "native文本秒级截断会隐藏0.10秒重叠；原segments保留百分之一秒，用于独立复核。",
-        "repeated_content": "有相邻近似重复句与ASR错词；时间审计通过不证明语音识别内容正确。",
-        "audio_listened": false,
-        "word_accuracy_measured": false,
-        "public_reporting_boundary": "只公布必要的来源ref、摘要、时间范围和审计指标；不复制私有完整路径、音频或大段转写。"
-      },
-      "source_visual_verification": [
-        {
-          "source": "paper-p33.png",
-          "image_sha256": "af9b0cb168cb73c528a78b63f43e45c27ba832bab7677725cef7764cf6ee32bd",
-          "capability": "vision.chart-analysis",
-          "selection_request_id": "req_f845741d1af6668d52f38d9aabc58ac0",
-          "request_id": "req_38ab07b966d345be88903c23bf715683",
-          "provider": "zhipu",
-          "result": "succeeded",
-          "independent_crosscheck": "Table6全部数值、单位及K对组合说明与PDF文本一致。"
-        },
-        {
-          "source": "paper-p56.png",
-          "image_sha256": "c6594220510d4447430234ae52bf010d457f6d9199858ee6dcbd8daec50587da",
-          "capability": "vision.chart-analysis",
-          "request_id": "req_c8fe0c594b5541cbb5f169816368775b",
-          "provider": "zhipu",
-          "result": "succeeded",
-          "independent_crosscheck": "已核指定9行175B各列；不采信提取工具对加粗格式的额外评论。"
-        },
-        {
-          "source": "paper-p55.png",
-          "image_sha256": "3b308af70407bb6dcb3ff8a5e39b7d6ced9e1cc4badc0918dad8001da93155f3",
-          "capability": "vision.chart-analysis",
-          "request_id": "req_0f68ffb2f0354070a8d1bfc0ee6e3dc7",
-          "provider": "zhipu",
-          "result": "BackendTimeout",
-          "fallback": "tools.view_image查看同一公开PDF渲染页；限制为读取已存在本地图片，不增加联网供应商绕行。"
-        },
-        {
-          "source": "lecture-p39.png",
-          "image_sha256": "31b597bab1d8501d8f73cb2a36c7e9b516bf4d906746270c690a77864ed4a326",
-          "capability": "vision.ocr",
-          "selection_request_id": "req_b3db7fb9936e47045310b162cb2c96f6",
-          "request_id": "req_5a686448b4e54b888df5665e6b54465b",
-          "provider": "zhipu",
-          "result": "BackendTimeout",
-          "fallback": "tools.view_image查看同一讲义PDF渲染页；读全页文字。"
-        }
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
       ],
-      "navigation_verification": {
-        "method": "本主审独立查仓内链接、显式锚点及脚注定义；另读取并核哈希的协调者工作台真实点击及视觉收据。",
-        "coordinator_navigation_receipt": {
-          "artifact": "navigation-receipt.json",
-          "sha256": "c6a2ac949cb5b3f4fec95b56baaec404b4698b5a8c70d946bc0b76f8bc553ff7"
-        },
-        "coordinator_visual_receipt": {
-          "artifact": "workbench-visual-review.json",
-          "sha256": "7e01a96eb193068161bc9397459f3aa0dd07a120cd020474b70e224149313907"
-        },
-        "widths": [
-          1440,
-          390
-        ],
-        "snapshot_matches_current_pair": true,
-        "recorded_clicks": "前18节入口均在标题下；原18节至展开再返回、上一节AlphaGo Zero、下一节CoT、目录及脚注往返有实际点击。",
-        "recorded_rendering": "主稿41脚注、展开17脚注；两个视口broken/duplicates/pageErrors为空，无整页横溢、裸锚点、裸脚注或替换字符。4表在390宽度下clientWidth358、scrollWidth440、scrollLeft由0到82。",
-        "recorded_visual": "协调者经eacli后直接看桌面原节及390拼图：入口可见，无乱码叠字，四列表左右端可读；局部百分号换行不阻断阅读。",
-        "local_link_checks": {
-          "main_changed_section_unique_local_targets": 1,
-          "expanded_unique_local_targets": 7,
-          "missing_targets": 0,
-          "missing_explicit_anchors": 0,
-          "missing_footnote_definitions": 0
-        },
-        "independent_browser_clicks_by_this_reviewer": false,
-        "independent_workbench_screenshot_view_by_this_reviewer": false,
-        "scope_boundary": "原常驻学习工作台的headless Chromium实渲染；本主审未操控用户浏览器、未停启服务，未将协调者操作说成自身操作。"
-      },
-      "unsupported_claims": [],
-      "missing_requirements": [],
-      "hard_failures": [],
-      "recommendation": "未发现需要退回修改的实质内容问题；交协调者集成独立复核并运行质量门。本entry不是最终通过或finalize判定。",
-      "validation_before_integration": "标准库核JSON、必需字段、30单元原ID、完整checked集合及引用ID有效性；协调者按约定统一调用仓库原生验证和最终质量门。",
-      "snapshot_binding": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.evidence.json",
-        "report_sha256": "f50fc8d224c21eb0650a90a0fe55cd87c3f79d850cf0c92079d985edb6bee5d2",
-        "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e",
-        "revision_round": 1,
-        "quality_tier": "important"
-      },
-      "source_id_crosswalk": {
-        "S-PAPER": {
-          "main": "S-instruct",
-          "expanded": "PAPER"
-        },
-        "S-LECTURE": {
-          "main": "S-lecture",
-          "expanded": "LECTURE"
-        },
-        "S-PODCAST": {
-          "main": "S-ai-yanyi-episode",
-          "expanded": "EPISODE"
-        },
-        "S-OPENAI2022": {
-          "main": null,
-          "expanded": "AUTHOR_BLOG"
-        },
-        "S-OPENAI2017": {
-          "main": null,
-          "expanded": "PREFERENCE_2017"
-        },
-        "S-ARXIV": {
-          "main": "S-instruct",
-          "expanded": "PAPER"
-        }
-      },
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23"
+      ],
       "source_content_map": [
         {
-          "id": "SM01",
-          "title": "从续写目标到帮助用户：研究问题",
+          "id": "IGPT-S01",
+          "title": "预训练的续写目标与帮助、真实、无害地完成用户意图并不相同",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
-            "LECTURE",
-            "EPISODE",
-            "AUTHOR_BLOG"
+            "AUTHOR_BLOG",
+            "PREFERENCE_2017"
           ],
           "matched_coverage_unit_ids": [
             "U1"
           ],
-          "notes": "§1区分真实登月展示与自拟通知，具体解释续写和执行任务，并保留GPT-3提示引导能力。 独立来源定位：paper §1 p1–4、§3.6 p9–10；lecture p39 历史背景；podcast 10796.78–10890.97。"
+          "notes": "第1节用作者登月示例建立问题，明确GPT-3并非完全不能做任务，InstructGPT应用并扩展既有RLHF路线而非首创人类反馈学习。"
         },
         {
-          "id": "SM02",
-          "title": "SFT：人给示范，模型学习如何响应",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "EPISODE",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "§2给完整三句示范，说明参数更新、提示示例及LoRA问题的区别，也说明合格答案不唯一。 独立来源定位：paper §3.1 p6、§3.5 p8、Appendix C.1 p40–41；podcast 10952.81–10979.30。"
-        },
-        {
-          "id": "SM03",
-          "title": "RM：比较回答比给所有任务写标准奖励更可行",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "EPISODE",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3",
-            "U4"
-          ],
-          "notes": "§3–4把A/C/B/D排序接到RM；4–9输出、6–36相关对、平局剔除和同提示成组均与原文一致。 独立来源定位：paper §3.5 p8–9 Eq.1、Table6 p33、Appendix C.2 p41–42；podcast 10979.30–11045.33。"
-        },
-        {
-          "id": "SM04",
-          "title": "PPO：通过学到的奖励改变生成策略",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5"
-          ],
-          "notes": "生成、评分、参数更新与价值估计角色清楚；训练和普通推理分开。 独立来源定位：paper §3.1 p6、§3.5 p9 Eq.2、Appendix C.4 p42；podcast 11030.11–11078.49。"
-        },
-        {
-          "id": "SM05",
-          "title": "KL 与 PPO 的稳定更新：不要无限优化代理奖励",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "PREFERENCE_2017"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U15"
-          ],
-          "notes": "区分PPO单次更新和固定监督参考KL；2017案例与标推测的通知说明代理分数漏洞，未将KL当事实核验。 独立来源定位：paper §3.5 p9 Eq.2、Appendix C.4 p42、E.7/Figure36 p56–57；2017 article Challenges。"
-        },
-        {
-          "id": "SM06",
-          "title": "PPO-ptx：保留预训练能力的额外训练信号",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5",
-            "U11"
-          ],
-          "notes": "PPO-ptx是PPO期间保留预训练语言建模信号，与KL不同；只缓解所测能力回退。 独立来源定位：paper §3.5 p9 Eq.2、§4.2 p14–15、Appendix E.6 p53/Figure33–34 p55。"
-        },
-        {
-          "id": "SM07",
-          "title": "数据规模、数据来源及其范围",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U12"
-          ],
-          "notes": "12,725/33,207/31,144单位为训练提示；SFT拆分、few-shot构造、Playground与生产API、人群及约96%英语边界齐全。user ID依据主文，未冒称验证附录organization ID层级。 独立来源定位：paper §3.2–3.4 p6–8、Table1 p6、Table6 p33、Table9 p34、A.4 p35。"
-        },
-        {
-          "id": "SM08",
-          "title": "实验如何测量偏好：基线、留出与指标",
+          "id": "IGPT-S02",
+          "title": "SFT用标注者示范把期望回答行为写入参数",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER"
           ],
           "matched_coverage_unit_ids": [
-            "U8",
-            "U12"
+            "U2",
+            "U7"
           ],
-          "notes": "Figure1共同参照175B SFT、85±3/71±4为175B直接对比、95%CI均明确；不可相减图点制造胜率。 独立来源定位：paper Figure1 p2、§3.6 p10、Figure3 p11、Figure4 p12。"
+          "notes": "图书馆通知为自拟教学例；示范训练与提示中临时给例子清楚区分，也说明一种示范不穷尽所有合格回答。"
         },
         {
-          "id": "SM09",
-          "title": "小模型受到更多偏好：关键结果与边界",
+          "id": "IGPT-S03",
+          "title": "同一提示下的4–9个回答排序产生6–36个相关比较，不是等量独立人工判断",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "平局剔除、同提示比较成组处理及重复使用回答导致过拟合的原因均准确；A>C>B>D仅为教学排序。"
+        },
+        {
+          "id": "IGPT-S04",
+          "title": "奖励模型预测特定标注群体的相对偏好，而非事实概率或普遍价值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U12"
+          ],
+          "notes": "最终6B RM的职责、标量分数含义及公共NLP微调GPT-3初始化细节正确，概念流程图与附录最终配置没有混为一谈。"
+        },
+        {
+          "id": "IGPT-S05",
+          "title": "PPO训练策略，固定RM提供奖励，固定监督模型提供KL参照，价值模型辅助估计回报",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "价值模型由RM初始化后独立训练，内层PPO不重训评分标准；重新收集比较、更新RM再优化策略被正确限定为外层迭代。"
+        },
+        {
+          "id": "IGPT-S06",
+          "title": "KL惩罚与预训练数据混合控制不同问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U11"
+          ],
+          "notes": "KL限制当前策略偏离SFT参照，PPO-ptx继续学习预训练分布以缓解旧能力回退；没有都压缩成同一个“别学过头”机制。"
+        },
+        {
+          "id": "IGPT-S07",
+          "title": "SFT、RM和PPO使用不同数据与监督形式，提示数不等于训练回合数",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "12725/33207/31144训练提示数准确；PPO主实验256000 episodes与约31k独立提示分开，用户源限早期Playground并按用户拆分、清PII。"
+        },
+        {
+          "id": "IGPT-S08",
+          "title": "16轮SFT评测基线、1轮RM和2轮加10%预训练混合的PPO起点是不同检查点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "验证文字损失一轮后变差而RM分/人工偏好继续改善、按验证RM分选SFT模型准确；没有把过拟合风险写成无害。"
+        },
+        {
+          "id": "IGPT-S09",
+          "title": "1.3B胜175B只指限定提示分布与人工偏好，不是压缩或全能力超越",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
             "LECTURE",
-            "EPISODE",
-            "AUTHOR_BLOG"
+            "EPISODE"
           ],
           "matched_coverage_unit_ids": [
             "U8"
           ],
-          "notes": "1.3B/175B及约135倍绑定偏好分布；不是压缩实验或全能力超越。 独立来源定位：paper abstract p1、§1 p3、§4.1 p11、Figure1 p2；podcast 11078.49–11100.60。"
+          "notes": "参数比约134.6倍，175B对175B的85±3%和71±4%直接比较及95%置信区间均准确；Figure1共同参照为175B SFT。"
         },
         {
-          "id": "SM10",
-          "title": "真实性：幻觉下降仍远未可靠",
+          "id": "IGPT-S10",
+          "title": "真实性与幻觉改善需要区分人工评价、自动指标和任务范围",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -350,83 +209,13 @@
             "AUTHOR_BLOG"
           ],
           "matched_coverage_unit_ids": [
-            "U9",
-            "U13"
+            "U9"
           ],
-          "notes": "§7的41%→21%为跨规模封闭域结果，说明自动TruthfulQA曾高估增益；§10以南瓜区分谨慎和有用回答。未混报TruthfulQA真实率与真实且有信息率。 独立来源定位：paper §1 p3、Figure4 p12、§4.2/Figure6 p13、Appendix D.2 p46、Table14 p56、Acknowledgements p21。"
+          "notes": "封闭域41%→21%为跨规模合并幻觉率，不外推全部问题；自动TruthfulQA曾高估PPO收益与Figure6人工评估分开。"
         },
         {
-          "id": "SM11",
-          "title": "无害性与偏见：是否给 respectful 指令会改变结论",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14"
-          ],
-          "notes": "三种提示条件分别处理，保留偏见无普遍改善与恶意指令反例，不外推全面安全。 独立来源定位：paper Figure7 p14、§4.2 p14、§5.3–5.4 p19、Appendix E.10 p58/Figure39 p59、Table14 p56。"
-        },
-        {
-          "id": "SM12",
-          "title": "Alignment tax 的真实数字与消融",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U10",
-            "U11"
-          ],
-          "notes": "Table14三行均为175B zero-shot；百分比和F1分开，样本10,042/11,873/9,536核D.2。能力回退、部分恢复和DROP残损与1.3B消融共同限制结论。 独立来源定位：paper §4.2 p14–15、Appendix E.1 p51–52、E.6 p53、Figures33–34 p55、Table14 p56。"
-        },
-        {
-          "id": "SM13",
-          "title": "数据与用户用途的匹配：FLAN/T0 对照",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U20"
-          ],
-          "notes": "明确FLAN/T0是作者在GPT-3上自训对照，区分用户需求和公共题库分布，未推RLHF处处优越。 独立来源定位：paper Table1 p6、Figure5 p12、§4.1 p12–13、Appendix C.5 p42–43。"
-        },
-        {
-          "id": "SM14",
-          "title": "究竟与谁对齐：人类信号的选择与分歧",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U12"
-          ],
-          "notes": "§9包含请求者、指南制定者、标注者及受影响者；同渠道留出和训练/最终评价价值排序均有边界。 独立来源定位：paper §3.4 p7–8、§5.2–5.3 p18–19、Appendix B.1–B.3 p36–40。"
-        },
-        {
-          "id": "SM15",
-          "title": "真实失败：错误前提、过度保留与复杂约束",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U13"
-          ],
-          "notes": "袜子与南瓜有原图出处；谦逊奖励成因是作者假说，提示挑选不提供发生率，多约束失败保留。 独立来源定位：paper Figure9 p16、§4.3 p16–17、Figure49 p67。"
-        },
-        {
-          "id": "SM16",
-          "title": "新任务泛化的积极证据及其局限",
+          "id": "IGPT-S11",
+          "title": "代码与非英语指令只提供定性泛化迹象，不是全面能力结论",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
@@ -435,577 +224,11 @@
           "matched_coverage_unit_ids": [
             "U22"
           ],
-          "notes": "代码与非英语属未量化的定性观察，保留语言错配和代码解释不全对。 独立来源定位：paper Figure8 p15、§4.3 p15–16、Appendix F/Figures42–45 p61–64。"
+          "notes": "论文没有系统量化这些能力，外语偶尔回英语、代码示例并不完全正确的限制进入正文。"
         },
         {
-          "id": "SM17",
-          "title": "历史位置：继承 RLHF 并扩展到广泛语言任务",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "EPISODE",
-            "PREFERENCE_2017"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U16"
-          ],
-          "notes": "2017及语言摘要前驱有一手文字；AlphaGo Zero/CoT是问题衔接，不宣称时间或直接派生。亲属、创业因果未核范围明确。 独立来源定位：paper §2 p4–5、References中Christiano2017/Ziegler2019/Stiennon2020/PPO2017；2017 article June13；arXiv v1 2022-03-04。"
-        },
-        {
-          "id": "SM18",
-          "title": "概念流程与论文最终配方的差别",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U7"
-          ],
-          "notes": "分清6B公共NLP微调RM起点、16epochs SFT基线与2epochs加10%预训练的PPO起点，概念图不冒充完整配置。 独立来源定位：paper §3.5 p8–9、Appendix C.1–C.4 p40–42、E.8 p56–57。"
-        },
-        {
-          "id": "SM19",
-          "title": "成本与样本效率的量纲",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U23"
-          ],
-          "notes": "成本为明确省略的支持性范围；不做资源复算或由参数比推成本，符合本章教学重点。 独立来源定位：paper §5.1 p17、Appendix E.11 p58；2022 article Methods。"
-        },
-        {
-          "id": "PC01",
-          "title": "模型强大但不好用：GPT-3与用户意图的落差",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U18"
-          ],
-          "notes": "§1完整讲核心问题；代码训练谱系由U18登记省略并标范围。 ASR原索引5183–5230，10796.78–10890.97秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC02",
-          "title": "作者、约40名标注者与人工劳动",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U12",
-            "U16",
-            "U19"
-          ],
-          "notes": "人数、正式致谢及劳动进入正文；亲属/创业在U19和正文标未核。 ASR原索引5231–5263，10890.97–10952.81秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC03",
-          "title": "先SFT，人工写示范",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U6"
-          ],
-          "notes": "完整示范与三类训练提示数替代口述约数。 ASR原索引5264–5274，10952.81–10979.3秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC04",
-          "title": "排序得到优劣对，放大比较信号",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3"
-          ],
-          "notes": "4选6对和4–9/6–36具体呈现，未声称增加独立意见。 ASR原索引5275–5298，10979.3–11030.11秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC05",
-          "title": "奖励模型连接人类偏好与RL",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5"
-          ],
-          "notes": "RM、生成策略与之后参数变化连续解释。 ASR原索引5299–5305，11030.11–11045.33秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC06",
-          "title": "开放式语言任务难写明确奖励",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5",
-            "U16"
-          ],
-          "notes": "语言近似奖励与围棋规则对照，未把所有数学/代码当无误可评。 ASR原索引5306–5313，11045.33–11064.05秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC07",
-          "title": "SFT教响应，RM+RL调偏好",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2",
-            "U3",
-            "U4",
-            "U5"
-          ],
-          "notes": "贯穿三步及KL/ptx，训练与普通推理不混同。 ASR原索引5314–5318，11064.05–11078.49秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC08",
-          "title": "1.3B与175B及口述自纠",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U17"
-          ],
-          "notes": "参数、约135倍和偏好口径已核，ASR错词修正不冒称听出原话。 ASR原索引5319–5327，11078.49–11100.6秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC09",
-          "title": "优化训练方法与目标，理解后训练",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U5",
-            "U16"
-          ],
-          "notes": "§11连接预训练能力、反馈与任务执行，不抹去预训练前提。 ASR原索引5328–5343，11100.6–11122.66秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC10",
-          "title": "行业判断与Dario创业逸闻",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U19"
-          ],
-          "notes": "支持性行业/创业旁支缺少独立因果证据，正文明确省略。 ASR原索引5344–5355，11122.66–11139.66秒；不是shownotes独立章戳。"
-        },
-        {
-          "id": "PC11",
-          "title": "离助手更近的历史直觉",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "EPISODE"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8",
-            "U13",
-            "U14",
-            "U16",
-            "U21"
-          ],
-          "notes": "进步与失败、安全条件、前后节及评估追问相连，展开独立可读。 ASR原索引5356–5376，11139.66–11169.02秒；不是shownotes独立章戳。"
-        }
-      ],
-      "source_ids_checked": [
-        "PAPER",
-        "AUTHOR_BLOG",
-        "PREFERENCE_2017",
-        "LECTURE",
-        "EPISODE",
-        "TRANSCRIPT_REVIEW",
-        "PREVIOUS_CHAPTER"
-      ],
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19",
-        "U20",
-        "U21",
-        "U22",
-        "U23"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "scores": {
-        "evidence_fidelity": 98,
-        "request_coverage": 98,
-        "reasoning_quality": 98,
-        "readability": 97,
-        "limitations": 99
-      },
-      "score_reasons": {
-        "evidence_fidelity": "17个关键claim逐项核原文与指定来源。Table6提示与比较对、Table14三项175B zero-shot及D.2样本数、175B直接偏好与95%CI、41%→21%跨规模口径一致。最终配置与概念图、博客与论文数字、自动与人工TruthfulQA分清；登记来源/研究回执哈希已核。",
-        "request_coverage": "19个独立来源单元和11个播客单元均映射；核心问题、机制、正向实验、回退、反例和对齐对象完整。成本/创业等支持性旁支合理省略，未伪称已讲；原节实质改写及往返入口也核实。",
-        "reasoning_quality": "通知贯穿SFT、排序、RM、PPO和代理分数漏洞，角色与参数更新清楚；KL/ptx有对照。以真实回退与失败限制总体偏好，区分作者假说、自拟例和实测，路线连接不编造历史因果。",
-        "readability": "少公式，4个表用于短项和数据对照，术语有解释，可独立阅读。链接/脚注独立查验；核协调者1440/390点击和视觉收据，窄屏可横滚。配置及核验说明略密但不阻断主线。",
-        "limitations": "未复训、未听音/测WER、ASR重叠重复、未精读全部附加案例、博客差异、定性泛化、群体渠道及未核历史均明确；没有把结构审计pass或视觉工具ok冒充事实可靠性。"
-      },
-      "source_map_scope": "完整30个冻结单元保留原ID。SM19成本及PC10创业旁支标missing，绑定登记的合理省略；U18/U19/U23的checked表示省略理由经过核验，非宣称已写入正文。",
-      "coverage_status_summary": {
-        "included_unit_count": 20,
-        "omitted_supporting_unit_ids": [
-          "U18",
-          "U19",
-          "U23"
-        ],
-        "missing_supporting_map_ids": [
-          "SM19",
-          "PC10"
-        ],
-        "core_content_gap_found": false
-      },
-      "direct_verification": {
-        "source_ids": [
-          "PAPER",
-          "AUTHOR_BLOG",
-          "PREFERENCE_2017",
-          "LECTURE",
-          "EPISODE",
-          "TRANSCRIPT_REVIEW",
-          "PREVIOUS_CHAPTER"
-        ],
-        "critical_claim_ids": [
-          "C1",
-          "C2",
-          "C3",
-          "C4",
-          "C5",
-          "C6",
-          "C7",
-          "C8",
-          "C9",
-          "C10",
-          "C11",
-          "C12",
-          "C13",
-          "C14",
-          "C15",
-          "C16",
-          "C17"
-        ],
-        "coverage_unit_ids": [
-          "U1",
-          "U2",
-          "U3",
-          "U4",
-          "U5",
-          "U6",
-          "U7",
-          "U8",
-          "U9",
-          "U10",
-          "U11",
-          "U12",
-          "U13",
-          "U14",
-          "U15",
-          "U16",
-          "U17",
-          "U18",
-          "U19",
-          "U20",
-          "U21",
-          "U22",
-          "U23"
-        ],
-        "requirement_ids": [
-          "R1",
-          "R2",
-          "R3",
-          "R4",
-          "R5",
-          "R6"
-        ],
-        "report_scope": "展开全文1–285行、17脚注、第18节diff及工作台收据。",
-        "source_scope_boundary": "PREVIOUS_CHAPTER只核所依赖规则/训练切片及导航；EPISODE只核本章194段与shownotes，不称听完整期。"
-      },
-      "nonblocking_source_precision_note": "主文§3.2用user ID，Appendix A.2另用organization ID；候选采用有主文支持的表述，并未宣称复现划分管线。后续深入实现应保留两处层级差异。TruthfulQA两类具体分数未在本文展开，也未被混报。",
-      "notes": "来源优先独立主审，审指定r1快照，未读当前另一Reviewer地图或entry。17关键claim、23覆盖记录、6要求已核，通知与排序为明示教学例。工作台点击与视觉由协调者执行，本主审核收据，不冒称亲自看图或点击。R6的两位复核流程由此entry贡献一位，另一位完成及集成由协调者验收。runtime_model未确认，两稿entry只计同一主审；未改公开文件或finalize。"
-    },
-    {
-      "role": "primary_review",
-      "reviewer": {
-        "model": "gpt-5.6-sol",
-        "harness": "codex",
-        "run_id": "instructgpt-s18-strong-expanded-r1-20261105",
-        "independent_context": true,
-        "explicit_model_override": false,
-        "dispatch_model_override": true,
-        "dispatch_configuration_source": "flagship policy selected gpt-5.6-sol through collaboration dispatch",
-        "runtime_model": "unconfirmed",
-        "runtime_model_confirmed": false,
-        "runtime_identity_note": "调度配置为gpt-5.6-sol，但本会话原生回执只显示未确认的配置模型；不借协调者、生成者或共享会话身份确认runtime。"
-      },
-      "snapshot_binding": {
-        "report_sha256": "f50fc8d224c21eb0650a90a0fe55cd87c3f79d850cf0c92079d985edb6bee5d2",
-        "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e",
-        "revision_round": 1,
-        "status": "matched",
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md"
-      },
-      "source_first_artifacts": [
-        {
-          "artifact": "strong-source-map.json",
-          "sha256": "61d815ab2a122150caefa5220e82472356542750dd3cb1764d51c930e945cdfa"
-        },
-        {
-          "artifact": "strong-source-addendum.json",
-          "sha256": "793ee5bc5e20db309630507a80306cfc47914145581d4e2547c41e12bc5bd12e"
-        }
-      ],
-      "navigation_receipt": {
-        "artifact": "navigation-receipt.json",
-        "sha256": "c6a2ac949cb5b3f4fec95b56baaec404b4698b5a8c70d946bc0b76f8bc553ff7",
-        "reviewer_action": "读取并核对绑定SHA、1440/390 DOM与实际点击收据；未亲自启动浏览器或操作用户浏览器。"
-      },
-      "scores": {
-        "evidence_fidelity": 98,
-        "request_coverage": 98,
-        "reasoning_quality": 98,
-        "readability": 98,
-        "limitations": 99
-      },
-      "score_reasons": {
-        "evidence_fidelity": "17项critical claim逐项与v1论文、Appendix C/D/E、Figure 1/2/9/33/34/39、Table 6/14、两篇作者文章及独立转写审计相符。偏好胜率、6B RM初始化、16轮SFT与2轮PPO起点、训练提示数、基准样本数和能力回退口径均准确。",
-        "request_coverage": "R1-R6全部覆盖：论文/讲义/shownotes/194段ASR、贯穿通知、三阶段和真实实现、偏好/真实性/传统能力指标、真实反例/人群/ASR边界、主节实质改写及双向导航都可定位。支持性成本计算和未核人物轶事有理由省略。",
-        "reasoning_quality": "报告不只摘要流程，而是解释为什么比较反馈可用、pair为何相关、RM为何只是近似、PPO/KL/ptx分别控制什么，并用传统能力回退、reward gaming与毒性条件构成反例链。",
-        "readability": "一份图书馆通知贯穿SFT→排序→RM→PPO，再用四张短表承载数据和实验；术语首次出现即解释，数学负担低。协调者绑定正式SHA的1440/390收据实际点击往返、17脚注、目录和4表横滚，零整页溢出或页面错误；本Reviewer只核收据。",
-        "limitations": "清楚标出教学例、作者挑选例、作者假说、未复跑、未听校、未测WER、未核ChatGPT谱系/亲属创业因果，并区分博客与论文数字。对“honesty不可直接测量、truthfulness只是代理”的论文原话只通过幻觉/评估器边界间接表达，是轻微可补强点，不影响结论。"
-      },
-      "critical_claim_ids_checked": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "coverage_unit_ids_checked": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19",
-        "U20",
-        "U21",
-        "U22",
-        "U23"
-      ],
-      "source_content_map": [
-        {
-          "id": "E18-01",
-          "title": "预训练目标与用户意图、truthfulness代理边界",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "PAPER",
-            "AUTHOR_BLOG"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U9"
-          ],
-          "notes": "续写目标、幻觉率和评估器误差讲清；未显式复述论文“honesty不可直接测量、truthfulness只覆盖一小部分”的概念区分，属非阻断补强点。"
-        },
-        {
-          "id": "E18-02",
-          "title": "SFT示范如何改变参数而非只影响当前提示",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "通知示范、参数更新和prompt示例差异完整。"
-        },
-        {
-          "id": "E18-03",
-          "title": "4–9候选排序、6–36相关pair与成组训练",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3"
-          ],
-          "notes": "明确组合比较不是独立人工判断，平局剔除和过拟合动机均覆盖。"
-        },
-        {
-          "id": "E18-04",
-          "title": "RM相对偏好分与最终6B初始化配置",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4"
-          ],
-          "notes": "区分概念图SFT初始化和最终公共NLP微调GPT-3初始化。"
-        },
-        {
-          "id": "E18-05",
-          "title": "PPO、价值估计、KL参考与PPO-ptx预训练梯度",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U5"
-          ],
-          "notes": "说明训练更新、两个控制层次和推理时不即时学习。"
-        },
-        {
-          "id": "E18-06",
-          "title": "训练数据规模、来源、划分与两个SFT检查点",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7",
-            "U20"
-          ],
-          "notes": "12,725/33,207/31,144、Playground/PII、FLAN/T0分布与16轮/2轮+10%均准确。"
-        },
-        {
-          "id": "E18-07",
-          "title": "1.3B对175B偏好结论、175B直接比较与Figure1读法",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U8"
-          ],
-          "notes": "135倍只作算术，85±3/71±4和95%CI不套到1.3B；共同参照不能点值相减。"
-        },
-        {
-          "id": "E18-08",
-          "title": "封闭域幻觉与TruthfulQA评估器边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "PAPER"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9"
-          ],
-          "notes": "41%→21%限定封闭域且合并规模，并记录自动TruthfulQA高估PPO增益。"
-        },
-        {
-          "id": "E18-09",
-          "title": "公开NLP基准回退及pretraining mix/KL消融",
+          "id": "IGPT-S12",
+          "title": "alignment tax显示更受偏好的模型仍可能损伤既有任务能力",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -1015,11 +238,11 @@
             "U10",
             "U11"
           ],
-          "notes": "Table14三项175B zero-shot与样本数准确；Figures33/34的能力—奖励权衡解释成立。"
+          "notes": "175B zero-shot HellaSwag、SQuADv2、DROP三行数字及样本数准确；PPO-ptx缓解但未消除回退，1.3B增KL消融不能充分修复的边界保留。"
         },
         {
-          "id": "E18-10",
-          "title": "约40名标注者、英语分布、训练/评测优先级与held-out边界",
+          "id": "IGPT-S13",
+          "title": "人类反馈来自特定标注者、规则制定者、请求分布与受影响群体",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -1029,11 +252,11 @@
           "matched_coverage_unit_ids": [
             "U12"
           ],
-          "notes": "没有把同供应链held-out结果外推为全人类价值。"
+          "notes": "约40名标注者不等于每题40票，大多数比较仅一人标；约96%英语、held-out同类供应渠道及训练/最终评估优先级差异均准确。"
         },
         {
-          "id": "E18-11",
-          "title": "错误前提、过度回避与多约束失败",
+          "id": "IGPT-S14",
+          "title": "袜子错误前提和南瓜过度回避揭示礼貌、谨慎与事实判断可分离",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -1042,24 +265,25 @@
           "matched_coverage_unit_ids": [
             "U13"
           ],
-          "notes": "袜子与南瓜例、cherry-picked提示和作者关于谦逊奖励的假说边界都保留。"
+          "notes": "提示为作者挑选的行为展示而非频率统计，奖励谦逊造成回避只是作者假说，不冒充已完成因果消融。"
         },
         {
-          "id": "E18-12",
-          "title": "毒性改善依赖respectful prompt且偏见未普遍改善",
+          "id": "IGPT-S15",
+          "title": "毒性改善依赖提示条件，偏见和拒绝有害请求并未普遍解决",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "PAPER"
+            "PAPER",
+            "AUTHOR_BLOG"
           ],
           "matched_coverage_unit_ids": [
             "U14"
           ],
-          "notes": "respectful/no prompt/biased三条件分开，未写成无条件安全。"
+          "notes": "respectful时较低、无指令优势消失、明确要求偏见/毒性时可能更糟及偏见无显著改善均准确，没有用总体偏好替代安全评价。"
         },
         {
-          "id": "E18-13",
-          "title": "2017 evaluator gaming前驱反例",
+          "id": "IGPT-S16",
+          "title": "奖励模型可被评价盲点利用，更多优化同一分数未必修复目标偏差",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -1069,79 +293,162 @@
           "matched_coverage_unit_ids": [
             "U15"
           ],
-          "notes": "机械臂遮挡镜头明确归于2017文章，不冒充InstructGPT实验。"
+          "notes": "机器人遮挡摄像头故事准确归于2017作者文章而非InstructGPT实验；通知中漂亮但编造原因的例子明确标为推测。"
         },
         {
-          "id": "E18-14",
-          "title": "AlphaGo规则奖励、语言近似奖励与CoT问题衔接",
+          "id": "IGPT-S17",
+          "title": "实际用户提示分布与公共NLP题库不同，不能据此断言RLHF普遍胜过指令微调",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "FLAN/T0++是作者自行训练的GPT-3对照，用户分布上不如InstructGPT只说明分布匹配问题，不外推所有任务。"
+        },
+        {
+          "id": "IGPT-S18",
+          "title": "AlphaGo规则奖励、语言偏好奖励与CoT任务执行属于相邻但不同问题",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "PAPER",
-            "PREVIOUS_CHAPTER"
+            "PREVIOUS_CHAPTER",
+            "LECTURE"
           ],
           "matched_coverage_unit_ids": [
-            "U16"
+            "U16",
+            "U21"
           ],
-          "notes": "机制类比保留差异，不虚构时间或直接派生关系。"
+          "notes": "章节按反馈来源与任务执行串联，未伪造CoT由InstructGPT直接派生或时间上更晚；导航直达前后分章。"
         },
         {
-          "id": "E18-15",
-          "title": "播客/讲义/转写范围与未核口述谱系",
+          "id": "IGPT-S19",
+          "title": "转录缺陷、口述谱系与人物创业故事必须留在技术证据之外",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "EPISODE",
-            "LECTURE",
-            "TRANSCRIPT_REVIEW"
+            "TRANSCRIPT_REVIEW",
+            "LECTURE"
           ],
           "matched_coverage_unit_ids": [
             "U17",
             "U18",
-            "U19"
+            "U19",
+            "U23"
           ],
-          "notes": "194段时间结构、1处重叠、重复与未听校边界公开；代码谱系、亲属/创业轶事有理由省略。"
+          "notes": "194段存在0.10秒重叠和重复，术语/年份按论文核；代码训练到ChatGPT谱系、亲属关系、离职创业及端到端成本均明确省略而非猜测。"
         },
         {
-          "id": "E18-16",
-          "title": "代码和非英语指令的定性泛化",
+          "id": "SN1",
+          "title": "Shownotes 01:30：探索的缘起",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
-            "PAPER"
+            "EPISODE"
           ],
           "matched_coverage_unit_ids": [
-            "U22"
+            "U17"
           ],
-          "notes": "说明未量化、外语可能回英文、代码回答不完全正确。"
+          "notes": "作为整期结构留痕，不扩写与InstructGPT无关的个人叙事。"
         },
         {
-          "id": "E18-17",
-          "title": "训练计算成本与成本效益数字",
+          "id": "SN2",
+          "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
           "importance": "supporting",
-          "assessment": "missing",
+          "assessment": "covered",
           "source_ids": [
-            "PAPER"
+            "EPISODE"
           ],
           "matched_coverage_unit_ids": [
-            "U23"
+            "U17"
           ],
-          "notes": "证据账本明确有理由省略，章节重点是行为目标、反馈与评价；不构成用户核心需求遗漏。"
+          "notes": "用于确认节目方法背景，技术结论仍回到原论文。"
         },
         {
-          "id": "E18-18",
-          "title": "原节实质改写与原节/前后节往返",
+          "id": "SN3",
+          "title": "Shownotes 10:20：辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "只作节目范围留痕，不扩大为工具或工作台功能验收。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes 19:35：Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "作为前序路线留痕，本章不重复Part 1。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes 01:52:58：Part 2 Infra与数据变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "仅作全期结构留痕。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes 02:21:29：Part 3语言模型的发展，含InstructGPT",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "PAPER",
-            "LECTURE",
-            "PREVIOUS_CHAPTER"
+            "EPISODE",
+            "LECTURE"
           ],
           "matched_coverage_unit_ids": [
+            "U1",
+            "U16",
+            "U17",
             "U21"
           ],
-          "notes": "入口紧贴标题，顶部/底部往返、前节与CoT均经正式SHA绑定的真实点击收据验证。"
+          "notes": "本章实际定位约02:59:57–03:06:09；shownotes只给Part起点和论文清单，不提供单篇时间。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes 03:08:08：Part 4多模态模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "仅作整期章节留痕，与本章证据不混用。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 03:56:38：最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "结尾讨论未被用于支撑RLHF机制或组织因果。"
         }
       ],
       "source_ids_checked": [
@@ -1164,168 +471,19 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "结论：未发现需退回的内容缺陷、关键数字错误、伪造来源或核心要求遗漏。唯一可选增强是显式写出honesty与truthfulness代理的概念区分；当前幻觉、TruthfulQA评估器、毒性和人群边界已足以防止误读。工作台点击由协调者执行，本Reviewer仅核验绑定收据。两份entry来自同一强审会话，不得计作两名独立Reviewer。未修改公开文件、未finalize。",
-      "visual_review_receipt": {
-        "artifact": "workbench-visual-review.json",
-        "sha256": "7e01a96eb193068161bc9397459f3aa0dd07a120cd020474b70e224149313907",
-        "reviewer_action": "核对候选SHA、桌面/390截图观察和视觉收据边界；截图与点击由协调者生成，本Reviewer未操作用户浏览器。",
-        "assessment": "标题下入口清晰，无乱码或重叠；窄屏表格通过局部横滚与百分号换行保持可读。视觉仅辅助阅读呈现，不替代来源事实核验。"
-      },
-      "frozen_source_map_crosswalk": [
-        {
-          "frozen_id": "SC01",
-          "entry_map_ids": [
-            "E18-01"
-          ],
-          "treatment": "covered",
-          "notes": "预训练续写与用户任务差距完整。"
-        },
-        {
-          "frozen_id": "SC02",
-          "entry_map_ids": [
-            "E18-01",
-            "E18-08",
-            "E18-12"
-          ],
-          "treatment": "partial_nonblocking",
-          "notes": "代理指标和评估器边界充分；未显式复述honesty不可直接测量的术语区分。"
-        },
-        {
-          "frozen_id": "SC03",
-          "entry_map_ids": [
-            "E18-02",
-            "E18-03",
-            "E18-04",
-            "E18-05"
-          ],
-          "treatment": "covered",
-          "notes": "示范、比较、RM、PPO逐步覆盖。"
-        },
-        {
-          "frozen_id": "SC04",
-          "entry_map_ids": [
-            "E18-06"
-          ],
-          "treatment": "covered",
-          "notes": "三阶段训练提示数及统计口径。"
-        },
-        {
-          "frozen_id": "SC05",
-          "entry_map_ids": [
-            "E18-03"
-          ],
-          "treatment": "covered",
-          "notes": "相关pair、平局剔除与成组训练。"
-        },
-        {
-          "frozen_id": "SC06",
-          "entry_map_ids": [
-            "E18-05"
-          ],
-          "treatment": "covered",
-          "notes": "PPO、KL、ptx及推理时不更新。"
-        },
-        {
-          "frozen_id": "SC07",
-          "entry_map_ids": [
-            "E18-07"
-          ],
-          "treatment": "covered",
-          "notes": "1.3B/175B、直接175B比较与Figure1口径。"
-        },
-        {
-          "frozen_id": "SC08",
-          "entry_map_ids": [
-            "E18-10"
-          ],
-          "treatment": "covered",
-          "notes": "held-out仍同类供应链；未用作全人类外推。"
-        },
-        {
-          "frozen_id": "SC09",
-          "entry_map_ids": [
-            "E18-08"
-          ],
-          "treatment": "covered",
-          "notes": "41%/21%与TruthfulQA评估器问题。"
-        },
-        {
-          "frozen_id": "SC10",
-          "entry_map_ids": [
-            "E18-12"
-          ],
-          "treatment": "covered",
-          "notes": "三种提示条件和偏见无普遍改善。"
-        },
-        {
-          "frozen_id": "SC11",
-          "entry_map_ids": [
-            "E18-09"
-          ],
-          "treatment": "covered",
-          "notes": "Table14残余回退与Figures33/34。"
-        },
-        {
-          "frozen_id": "SC12",
-          "entry_map_ids": [
-            "E18-11",
-            "E18-16"
-          ],
-          "treatment": "covered",
-          "notes": "错误前提、hedging、多约束及定性泛化。"
-        },
-        {
-          "frozen_id": "SC13",
-          "entry_map_ids": [
-            "E18-10"
-          ],
-          "treatment": "covered",
-          "notes": "对齐参考群体与多方利益。"
-        },
-        {
-          "frozen_id": "SC14",
-          "entry_map_ids": [
-            "E18-10",
-            "E18-12"
-          ],
-          "treatment": "covered",
-          "notes": "训练/评测优先级与有害服从。"
-        },
-        {
-          "frozen_id": "SC15",
-          "entry_map_ids": [
-            "E18-17"
-          ],
-          "treatment": "reasoned_omission",
-          "notes": "成本数字为支持项，evidence U23明示省略理由，不构成核心遗漏。"
-        },
-        {
-          "frozen_id": "SC16",
-          "entry_map_ids": [
-            "E18-13"
-          ],
-          "treatment": "covered",
-          "notes": "2017 evaluator-gaming反例归属清楚。"
-        },
-        {
-          "frozen_id": "SC17",
-          "entry_map_ids": [
-            "E18-15"
-          ],
-          "treatment": "covered",
-          "notes": "讲义/播客主线、ASR缺陷与口误纠正完整。"
-        }
-      ]
+      "notes": "revision2快照绑定：report SHA-256 d3d9dd575e47d34dfde45f7def528e01bd8f857d6ceacf618cbc3a7e4615543a；evidence SHA-256 89d0936747e2edbe2d5efda6ceb39a6e76822c186cb5f15d7852f712434b6c16。开始审阅与落盘前均核对一致。\n独立顺序为先读InstructGPT v1正文与相关附录、两篇OpenAI作者文章、讲义p39、shownotes和本章194段转录，形成27项内容地图，再完整读正文、evidence及相对HEAD diff；未采用作者推理或旧评分作为本轮判断。\n对chapter-transcript-native.txt实际重跑audit_transcript.py：194段、timestamp_errors=0、malformed_lines=0、max_consecutive_identical=2；公开小数结构收据另核1处0.10秒重叠、无负时长/倒序，实际跨度372.24秒。未重转录、未听音、未测WER。原图与旧联网/页面收据只按未变范围继承，未冒称本轮重跑。\n重点复验：SFT/RM/PPO三阶段；4–9回答与相关比较；最终6B RM；固定RM/参考模型和可训练价值模型；12725/33207/31144提示与256k回合；16轮SFT、1轮RM、2轮PPO起点；1.3B/175B偏好；41→21幻觉；Table14三任务回退；单人标注、toxicity/bias和奖励盲点。均有来源支持。\nMarkdown检查限于报告本身：4张表、17个脚注、12个本地导航/仓内文件链接；Pandoc解析通过，隐私路径扫描无命中，未启动无关工作台功能验收。\n当前未发现需要修订的事实、数字、推理、覆盖、引用或呈现缺陷；最终判定由report_quality.py check计算，本Reviewer不finalize、不提交。",
+      "reviewed_report_sha256": "d3d9dd575e47d34dfde45f7def528e01bd8f857d6ceacf618cbc3a7e4615543a",
+      "reviewed_evidence_sha256": "89d0936747e2edbe2d5efda6ceb39a6e76822c186cb5f15d7852f712434b6c16"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 97.95,
-    "evaluated_on": "2026-11-05",
+    "score": 98.85,
+    "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "fe46b75b7f0da88720437225f6e98d554fe15c075dbb33d9fca45191ff97e0b2",
-    "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e"
+    "report_sha256": "910e4c30a936ec28f8aa9ce45fdd63371cf8d2d21d892609bb650f87fb5f1952",
+    "evidence_sha256": "89d0936747e2edbe2d5efda6ceb39a6e76822c186cb5f15d7852f712434b6c16"
   },
   "review_receipts": [
     {
@@ -1341,6 +499,1335 @@
       "role": "primary_review",
       "revision_round": 1,
       "raw_review_content_preserved": true
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6-astra",
+            "harness": "codex",
+            "run_id": "instructgpt-primary-review-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "configured_default_only",
+            "configured_model": "gpt-6-astra",
+            "configured_model_source": "eacli session current: config-default / configured / confirmed=false",
+            "runtime_model": "unconfirmed",
+            "runtime_model_confirmed": false,
+            "reasoning_effort": "unconfirmed",
+            "identity_note": "model字段记录可见配置名，不是独立子会话的运行时认证。恢复后仍观察到confirmed=false；未借用协调者、共享主会话或其他Reviewer身份背书。",
+            "scheduling_note": "阶段1委派说明当前协作面缺少策略默认glm-5.3，沿用可用默认配置；这是调度记录，不是模型实测。",
+            "independent_reviewer_count": 1,
+            "paired_entries_same_reviewer": true
+          },
+          "reviewed_on": "2026-11-05",
+          "source_first": {
+            "completed_before_candidate_and_evidence_read": true,
+            "frozen_source_map": {
+              "artifact": "primary-source-map.json",
+              "sha256": "b7434a03ebc0716cc031a1e8d627b2429e00008e523210b9a331ccf959192e4d"
+            },
+            "frozen_source_units": 19,
+            "frozen_podcast_units": 11,
+            "source_map_unit_count": 30,
+            "map_mutated_after_candidate_read": false,
+            "other_current_reviewer_outputs_read": false,
+            "r20_baseline_review_read_only_for_inheritance": true,
+            "phase_two_source_followup": "另核Appendix D.2 physical pp46–48的测试样本数、登记回执哈希、转写摘要与前节实际依赖切片，未改变冻结地图。"
+          },
+          "verification_scope": {
+            "paper": "独立读v1正文及冻结地图所列重要附录、图表和失败案例。Table6/14经eacli图像读取交叉核验；p55负号和讲义缺字在typed超时后直接查看同一原件渲染图。未逐篇追读参考文献或复跑训练。",
+            "author_articles": "实际读2022作者文章legacy URL完整正文和2017偏好学习文章正文/Challenges。最初只有页脚的抓取没有算成正文阅读，未观看媒体。",
+            "lecture": "仅physical p39完整原页；更正RLHF首创和作者栏歧义。",
+            "podcast": "原始segments指定194段切片逐项一致，已读全部本章转写和shownotes；时间来自ASR定位，shownotes只有Part级边界。未听原音或测字词准确率。",
+            "previous_chapter": "只读AlphaGo Zero既有展开稿中规则裁判、训练闭环及相邻导航切片并核SHA，不称本轮重审该论文。",
+            "pair_boundary": "两份entry属于同一独立主审；未读当前另一Reviewer地图或entry。"
+          },
+          "transcript_verification": {
+            "independent_original_slice_binding": true,
+            "exact_slice_equal": true,
+            "segments": 194,
+            "source_indices_zero_based_inclusive": [
+              5183,
+              5376
+            ],
+            "start_seconds": 10796.78,
+            "end_seconds": 11169.02,
+            "span_seconds": 372.24,
+            "negative_duration_count": 0,
+            "backward_start_count": 0,
+            "backward_end_count": 0,
+            "overlap_count": 1,
+            "overlaps": [
+              {
+                "previous_source_index": 5220,
+                "current_source_index": 5221,
+                "previous_end": 10871.47,
+                "current_start": 10871.37,
+                "overlap_seconds": 0.1
+              }
+            ],
+            "positive_gap_count": 2,
+            "max_gap_seconds": 0.61,
+            "positive_gap_total_seconds": 1.16,
+            "native_audit": {
+              "ok": true,
+              "segments": 194,
+              "lines": 194,
+              "timestamp_errors": 0,
+              "malformed_lines": 0,
+              "max_consecutive_identical": 2,
+              "tail_gap_seconds": 0,
+              "duration_seconds": 11169
+            },
+            "native_audit_script": {
+              "path": "podcast-learning/scripts/audit_transcript.py",
+              "sha256": "c4329c84d5d05e57773490b75cd51080f4eb59823af2f95f1e895a8da0e43eb5",
+              "read_lines": "1–80"
+            },
+            "native_limit": "STAMP_RE只接受整数秒；检查段内end>=start与start单调，不检查前段end>后段start，也不检查end单调；duration_seconds是末段绝对end。本章准确长度应单独相减。",
+            "transcription_precision": "native文本秒级截断会隐藏0.10秒重叠；原segments保留百分之一秒，用于独立复核。",
+            "repeated_content": "有相邻近似重复句与ASR错词；时间审计通过不证明语音识别内容正确。",
+            "audio_listened": false,
+            "word_accuracy_measured": false,
+            "public_reporting_boundary": "只公布必要的来源ref、摘要、时间范围和审计指标；不复制私有完整路径、音频或大段转写。"
+          },
+          "source_visual_verification": [
+            {
+              "source": "paper-p33.png",
+              "image_sha256": "af9b0cb168cb73c528a78b63f43e45c27ba832bab7677725cef7764cf6ee32bd",
+              "capability": "vision.chart-analysis",
+              "selection_request_id": "req_f845741d1af6668d52f38d9aabc58ac0",
+              "request_id": "req_38ab07b966d345be88903c23bf715683",
+              "provider": "zhipu",
+              "result": "succeeded",
+              "independent_crosscheck": "Table6全部数值、单位及K对组合说明与PDF文本一致。"
+            },
+            {
+              "source": "paper-p56.png",
+              "image_sha256": "c6594220510d4447430234ae52bf010d457f6d9199858ee6dcbd8daec50587da",
+              "capability": "vision.chart-analysis",
+              "request_id": "req_c8fe0c594b5541cbb5f169816368775b",
+              "provider": "zhipu",
+              "result": "succeeded",
+              "independent_crosscheck": "已核指定9行175B各列；不采信提取工具对加粗格式的额外评论。"
+            },
+            {
+              "source": "paper-p55.png",
+              "image_sha256": "3b308af70407bb6dcb3ff8a5e39b7d6ced9e1cc4badc0918dad8001da93155f3",
+              "capability": "vision.chart-analysis",
+              "request_id": "req_0f68ffb2f0354070a8d1bfc0ee6e3dc7",
+              "provider": "zhipu",
+              "result": "BackendTimeout",
+              "fallback": "tools.view_image查看同一公开PDF渲染页；限制为读取已存在本地图片，不增加联网供应商绕行。"
+            },
+            {
+              "source": "lecture-p39.png",
+              "image_sha256": "31b597bab1d8501d8f73cb2a36c7e9b516bf4d906746270c690a77864ed4a326",
+              "capability": "vision.ocr",
+              "selection_request_id": "req_b3db7fb9936e47045310b162cb2c96f6",
+              "request_id": "req_5a686448b4e54b888df5665e6b54465b",
+              "provider": "zhipu",
+              "result": "BackendTimeout",
+              "fallback": "tools.view_image查看同一讲义PDF渲染页；读全页文字。"
+            }
+          ],
+          "navigation_verification": {
+            "method": "本主审独立查仓内链接、显式锚点及脚注定义；另读取并核哈希的协调者工作台真实点击及视觉收据。",
+            "coordinator_navigation_receipt": {
+              "artifact": "navigation-receipt.json",
+              "sha256": "c6a2ac949cb5b3f4fec95b56baaec404b4698b5a8c70d946bc0b76f8bc553ff7"
+            },
+            "coordinator_visual_receipt": {
+              "artifact": "workbench-visual-review.json",
+              "sha256": "7e01a96eb193068161bc9397459f3aa0dd07a120cd020474b70e224149313907"
+            },
+            "widths": [
+              1440,
+              390
+            ],
+            "snapshot_matches_current_pair": true,
+            "recorded_clicks": "前18节入口均在标题下；原18节至展开再返回、上一节AlphaGo Zero、下一节CoT、目录及脚注往返有实际点击。",
+            "recorded_rendering": "主稿41脚注、展开17脚注；两个视口broken/duplicates/pageErrors为空，无整页横溢、裸锚点、裸脚注或替换字符。4表在390宽度下clientWidth358、scrollWidth440、scrollLeft由0到82。",
+            "recorded_visual": "协调者经eacli后直接看桌面原节及390拼图：入口可见，无乱码叠字，四列表左右端可读；局部百分号换行不阻断阅读。",
+            "local_link_checks": {
+              "main_changed_section_unique_local_targets": 1,
+              "expanded_unique_local_targets": 7,
+              "missing_targets": 0,
+              "missing_explicit_anchors": 0,
+              "missing_footnote_definitions": 0
+            },
+            "independent_browser_clicks_by_this_reviewer": false,
+            "independent_workbench_screenshot_view_by_this_reviewer": false,
+            "scope_boundary": "原常驻学习工作台的headless Chromium实渲染；本主审未操控用户浏览器、未停启服务，未将协调者操作说成自身操作。"
+          },
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "recommendation": "未发现需要退回修改的实质内容问题；交协调者集成独立复核并运行质量门。本entry不是最终通过或finalize判定。",
+          "validation_before_integration": "标准库核JSON、必需字段、30单元原ID、完整checked集合及引用ID有效性；协调者按约定统一调用仓库原生验证和最终质量门。",
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.evidence.json",
+            "report_sha256": "f50fc8d224c21eb0650a90a0fe55cd87c3f79d850cf0c92079d985edb6bee5d2",
+            "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e",
+            "revision_round": 1,
+            "quality_tier": "important"
+          },
+          "source_id_crosswalk": {
+            "S-PAPER": {
+              "main": "S-instruct",
+              "expanded": "PAPER"
+            },
+            "S-LECTURE": {
+              "main": "S-lecture",
+              "expanded": "LECTURE"
+            },
+            "S-PODCAST": {
+              "main": "S-ai-yanyi-episode",
+              "expanded": "EPISODE"
+            },
+            "S-OPENAI2022": {
+              "main": null,
+              "expanded": "AUTHOR_BLOG"
+            },
+            "S-OPENAI2017": {
+              "main": null,
+              "expanded": "PREFERENCE_2017"
+            },
+            "S-ARXIV": {
+              "main": "S-instruct",
+              "expanded": "PAPER"
+            }
+          },
+          "source_content_map": [
+            {
+              "id": "SM01",
+              "title": "从续写目标到帮助用户：研究问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "EPISODE",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "§1区分真实登月展示与自拟通知，具体解释续写和执行任务，并保留GPT-3提示引导能力。 独立来源定位：paper §1 p1–4、§3.6 p9–10；lecture p39 历史背景；podcast 10796.78–10890.97。"
+            },
+            {
+              "id": "SM02",
+              "title": "SFT：人给示范，模型学习如何响应",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "EPISODE",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§2给完整三句示范，说明参数更新、提示示例及LoRA问题的区别，也说明合格答案不唯一。 独立来源定位：paper §3.1 p6、§3.5 p8、Appendix C.1 p40–41；podcast 10952.81–10979.30。"
+            },
+            {
+              "id": "SM03",
+              "title": "RM：比较回答比给所有任务写标准奖励更可行",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "EPISODE",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4"
+              ],
+              "notes": "§3–4把A/C/B/D排序接到RM；4–9输出、6–36相关对、平局剔除和同提示成组均与原文一致。 独立来源定位：paper §3.5 p8–9 Eq.1、Table6 p33、Appendix C.2 p41–42；podcast 10979.30–11045.33。"
+            },
+            {
+              "id": "SM04",
+              "title": "PPO：通过学到的奖励改变生成策略",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "生成、评分、参数更新与价值估计角色清楚；训练和普通推理分开。 独立来源定位：paper §3.1 p6、§3.5 p9 Eq.2、Appendix C.4 p42；podcast 11030.11–11078.49。"
+            },
+            {
+              "id": "SM05",
+              "title": "KL 与 PPO 的稳定更新：不要无限优化代理奖励",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PREFERENCE_2017"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U15"
+              ],
+              "notes": "区分PPO单次更新和固定监督参考KL；2017案例与标推测的通知说明代理分数漏洞，未将KL当事实核验。 独立来源定位：paper §3.5 p9 Eq.2、Appendix C.4 p42、E.7/Figure36 p56–57；2017 article Challenges。"
+            },
+            {
+              "id": "SM06",
+              "title": "PPO-ptx：保留预训练能力的额外训练信号",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U11"
+              ],
+              "notes": "PPO-ptx是PPO期间保留预训练语言建模信号，与KL不同；只缓解所测能力回退。 独立来源定位：paper §3.5 p9 Eq.2、§4.2 p14–15、Appendix E.6 p53/Figure33–34 p55。"
+            },
+            {
+              "id": "SM07",
+              "title": "数据规模、数据来源及其范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U12"
+              ],
+              "notes": "12,725/33,207/31,144单位为训练提示；SFT拆分、few-shot构造、Playground与生产API、人群及约96%英语边界齐全。user ID依据主文，未冒称验证附录organization ID层级。 独立来源定位：paper §3.2–3.4 p6–8、Table1 p6、Table6 p33、Table9 p34、A.4 p35。"
+            },
+            {
+              "id": "SM08",
+              "title": "实验如何测量偏好：基线、留出与指标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U12"
+              ],
+              "notes": "Figure1共同参照175B SFT、85±3/71±4为175B直接对比、95%CI均明确；不可相减图点制造胜率。 独立来源定位：paper Figure1 p2、§3.6 p10、Figure3 p11、Figure4 p12。"
+            },
+            {
+              "id": "SM09",
+              "title": "小模型受到更多偏好：关键结果与边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "EPISODE",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "1.3B/175B及约135倍绑定偏好分布；不是压缩实验或全能力超越。 独立来源定位：paper abstract p1、§1 p3、§4.1 p11、Figure1 p2；podcast 11078.49–11100.60。"
+            },
+            {
+              "id": "SM10",
+              "title": "真实性：幻觉下降仍远未可靠",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U13"
+              ],
+              "notes": "§7的41%→21%为跨规模封闭域结果，说明自动TruthfulQA曾高估增益；§10以南瓜区分谨慎和有用回答。未混报TruthfulQA真实率与真实且有信息率。 独立来源定位：paper §1 p3、Figure4 p12、§4.2/Figure6 p13、Appendix D.2 p46、Table14 p56、Acknowledgements p21。"
+            },
+            {
+              "id": "SM11",
+              "title": "无害性与偏见：是否给 respectful 指令会改变结论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "三种提示条件分别处理，保留偏见无普遍改善与恶意指令反例，不外推全面安全。 独立来源定位：paper Figure7 p14、§4.2 p14、§5.3–5.4 p19、Appendix E.10 p58/Figure39 p59、Table14 p56。"
+            },
+            {
+              "id": "SM12",
+              "title": "Alignment tax 的真实数字与消融",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11"
+              ],
+              "notes": "Table14三行均为175B zero-shot；百分比和F1分开，样本10,042/11,873/9,536核D.2。能力回退、部分恢复和DROP残损与1.3B消融共同限制结论。 独立来源定位：paper §4.2 p14–15、Appendix E.1 p51–52、E.6 p53、Figures33–34 p55、Table14 p56。"
+            },
+            {
+              "id": "SM13",
+              "title": "数据与用户用途的匹配：FLAN/T0 对照",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "明确FLAN/T0是作者在GPT-3上自训对照，区分用户需求和公共题库分布，未推RLHF处处优越。 独立来源定位：paper Table1 p6、Figure5 p12、§4.1 p12–13、Appendix C.5 p42–43。"
+            },
+            {
+              "id": "SM14",
+              "title": "究竟与谁对齐：人类信号的选择与分歧",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "§9包含请求者、指南制定者、标注者及受影响者；同渠道留出和训练/最终评价价值排序均有边界。 独立来源定位：paper §3.4 p7–8、§5.2–5.3 p18–19、Appendix B.1–B.3 p36–40。"
+            },
+            {
+              "id": "SM15",
+              "title": "真实失败：错误前提、过度保留与复杂约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "袜子与南瓜有原图出处；谦逊奖励成因是作者假说，提示挑选不提供发生率，多约束失败保留。 独立来源定位：paper Figure9 p16、§4.3 p16–17、Figure49 p67。"
+            },
+            {
+              "id": "SM16",
+              "title": "新任务泛化的积极证据及其局限",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "代码与非英语属未量化的定性观察，保留语言错配和代码解释不全对。 独立来源定位：paper Figure8 p15、§4.3 p15–16、Appendix F/Figures42–45 p61–64。"
+            },
+            {
+              "id": "SM17",
+              "title": "历史位置：继承 RLHF 并扩展到广泛语言任务",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "EPISODE",
+                "PREFERENCE_2017"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U16"
+              ],
+              "notes": "2017及语言摘要前驱有一手文字；AlphaGo Zero/CoT是问题衔接，不宣称时间或直接派生。亲属、创业因果未核范围明确。 独立来源定位：paper §2 p4–5、References中Christiano2017/Ziegler2019/Stiennon2020/PPO2017；2017 article June13；arXiv v1 2022-03-04。"
+            },
+            {
+              "id": "SM18",
+              "title": "概念流程与论文最终配方的差别",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U7"
+              ],
+              "notes": "分清6B公共NLP微调RM起点、16epochs SFT基线与2epochs加10%预训练的PPO起点，概念图不冒充完整配置。 独立来源定位：paper §3.5 p8–9、Appendix C.1–C.4 p40–42、E.8 p56–57。"
+            },
+            {
+              "id": "SM19",
+              "title": "成本与样本效率的量纲",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "成本为明确省略的支持性范围；不做资源复算或由参数比推成本，符合本章教学重点。 独立来源定位：paper §5.1 p17、Appendix E.11 p58；2022 article Methods。"
+            },
+            {
+              "id": "PC01",
+              "title": "模型强大但不好用：GPT-3与用户意图的落差",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U18"
+              ],
+              "notes": "§1完整讲核心问题；代码训练谱系由U18登记省略并标范围。 ASR原索引5183–5230，10796.78–10890.97秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC02",
+              "title": "作者、约40名标注者与人工劳动",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U16",
+                "U19"
+              ],
+              "notes": "人数、正式致谢及劳动进入正文；亲属/创业在U19和正文标未核。 ASR原索引5231–5263，10890.97–10952.81秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC03",
+              "title": "先SFT，人工写示范",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U6"
+              ],
+              "notes": "完整示范与三类训练提示数替代口述约数。 ASR原索引5264–5274，10952.81–10979.3秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC04",
+              "title": "排序得到优劣对，放大比较信号",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "4选6对和4–9/6–36具体呈现，未声称增加独立意见。 ASR原索引5275–5298，10979.3–11030.11秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC05",
+              "title": "奖励模型连接人类偏好与RL",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "RM、生成策略与之后参数变化连续解释。 ASR原索引5299–5305，11030.11–11045.33秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC06",
+              "title": "开放式语言任务难写明确奖励",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5",
+                "U16"
+              ],
+              "notes": "语言近似奖励与围棋规则对照，未把所有数学/代码当无误可评。 ASR原索引5306–5313，11045.33–11064.05秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC07",
+              "title": "SFT教响应，RM+RL调偏好",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3",
+                "U4",
+                "U5"
+              ],
+              "notes": "贯穿三步及KL/ptx，训练与普通推理不混同。 ASR原索引5314–5318，11064.05–11078.49秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC08",
+              "title": "1.3B与175B及口述自纠",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U17"
+              ],
+              "notes": "参数、约135倍和偏好口径已核，ASR错词修正不冒称听出原话。 ASR原索引5319–5327，11078.49–11100.6秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC09",
+              "title": "优化训练方法与目标，理解后训练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U5",
+                "U16"
+              ],
+              "notes": "§11连接预训练能力、反馈与任务执行，不抹去预训练前提。 ASR原索引5328–5343，11100.6–11122.66秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC10",
+              "title": "行业判断与Dario创业逸闻",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "支持性行业/创业旁支缺少独立因果证据，正文明确省略。 ASR原索引5344–5355，11122.66–11139.66秒；不是shownotes独立章戳。"
+            },
+            {
+              "id": "PC11",
+              "title": "离助手更近的历史直觉",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U13",
+                "U14",
+                "U16",
+                "U21"
+              ],
+              "notes": "进步与失败、安全条件、前后节及评估追问相连，展开独立可读。 ASR原索引5356–5376，11139.66–11169.02秒；不是shownotes独立章戳。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "AUTHOR_BLOG",
+            "PREFERENCE_2017",
+            "LECTURE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW",
+            "PREVIOUS_CHAPTER"
+          ],
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 97,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "17个关键claim逐项核原文与指定来源。Table6提示与比较对、Table14三项175B zero-shot及D.2样本数、175B直接偏好与95%CI、41%→21%跨规模口径一致。最终配置与概念图、博客与论文数字、自动与人工TruthfulQA分清；登记来源/研究回执哈希已核。",
+            "request_coverage": "19个独立来源单元和11个播客单元均映射；核心问题、机制、正向实验、回退、反例和对齐对象完整。成本/创业等支持性旁支合理省略，未伪称已讲；原节实质改写及往返入口也核实。",
+            "reasoning_quality": "通知贯穿SFT、排序、RM、PPO和代理分数漏洞，角色与参数更新清楚；KL/ptx有对照。以真实回退与失败限制总体偏好，区分作者假说、自拟例和实测，路线连接不编造历史因果。",
+            "readability": "少公式，4个表用于短项和数据对照，术语有解释，可独立阅读。链接/脚注独立查验；核协调者1440/390点击和视觉收据，窄屏可横滚。配置及核验说明略密但不阻断主线。",
+            "limitations": "未复训、未听音/测WER、ASR重叠重复、未精读全部附加案例、博客差异、定性泛化、群体渠道及未核历史均明确；没有把结构审计pass或视觉工具ok冒充事实可靠性。"
+          },
+          "source_map_scope": "完整30个冻结单元保留原ID。SM19成本及PC10创业旁支标missing，绑定登记的合理省略；U18/U19/U23的checked表示省略理由经过核验，非宣称已写入正文。",
+          "coverage_status_summary": {
+            "included_unit_count": 20,
+            "omitted_supporting_unit_ids": [
+              "U18",
+              "U19",
+              "U23"
+            ],
+            "missing_supporting_map_ids": [
+              "SM19",
+              "PC10"
+            ],
+            "core_content_gap_found": false
+          },
+          "direct_verification": {
+            "source_ids": [
+              "PAPER",
+              "AUTHOR_BLOG",
+              "PREFERENCE_2017",
+              "LECTURE",
+              "EPISODE",
+              "TRANSCRIPT_REVIEW",
+              "PREVIOUS_CHAPTER"
+            ],
+            "critical_claim_ids": [
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5",
+              "C6",
+              "C7",
+              "C8",
+              "C9",
+              "C10",
+              "C11",
+              "C12",
+              "C13",
+              "C14",
+              "C15",
+              "C16",
+              "C17"
+            ],
+            "coverage_unit_ids": [
+              "U1",
+              "U2",
+              "U3",
+              "U4",
+              "U5",
+              "U6",
+              "U7",
+              "U8",
+              "U9",
+              "U10",
+              "U11",
+              "U12",
+              "U13",
+              "U14",
+              "U15",
+              "U16",
+              "U17",
+              "U18",
+              "U19",
+              "U20",
+              "U21",
+              "U22",
+              "U23"
+            ],
+            "requirement_ids": [
+              "R1",
+              "R2",
+              "R3",
+              "R4",
+              "R5",
+              "R6"
+            ],
+            "report_scope": "展开全文1–285行、17脚注、第18节diff及工作台收据。",
+            "source_scope_boundary": "PREVIOUS_CHAPTER只核所依赖规则/训练切片及导航；EPISODE只核本章194段与shownotes，不称听完整期。"
+          },
+          "nonblocking_source_precision_note": "主文§3.2用user ID，Appendix A.2另用organization ID；候选采用有主文支持的表述，并未宣称复现划分管线。后续深入实现应保留两处层级差异。TruthfulQA两类具体分数未在本文展开，也未被混报。",
+          "notes": "来源优先独立主审，审指定r1快照，未读当前另一Reviewer地图或entry。17关键claim、23覆盖记录、6要求已核，通知与排序为明示教学例。工作台点击与视觉由协调者执行，本主审核收据，不冒称亲自看图或点击。R6的两位复核流程由此entry贡献一位，另一位完成及集成由协调者验收。runtime_model未确认，两稿entry只计同一主审；未改公开文件或finalize。"
+        },
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "instructgpt-s18-strong-expanded-r1-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "dispatch_model_override": true,
+            "dispatch_configuration_source": "flagship policy selected gpt-5.6-sol through collaboration dispatch",
+            "runtime_model": "unconfirmed",
+            "runtime_model_confirmed": false,
+            "runtime_identity_note": "调度配置为gpt-5.6-sol，但本会话原生回执只显示未确认的配置模型；不借协调者、生成者或共享会话身份确认runtime。"
+          },
+          "snapshot_binding": {
+            "report_sha256": "f50fc8d224c21eb0650a90a0fe55cd87c3f79d850cf0c92079d985edb6bee5d2",
+            "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e",
+            "revision_round": 1,
+            "status": "matched",
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md"
+          },
+          "source_first_artifacts": [
+            {
+              "artifact": "strong-source-map.json",
+              "sha256": "61d815ab2a122150caefa5220e82472356542750dd3cb1764d51c930e945cdfa"
+            },
+            {
+              "artifact": "strong-source-addendum.json",
+              "sha256": "793ee5bc5e20db309630507a80306cfc47914145581d4e2547c41e12bc5bd12e"
+            }
+          ],
+          "navigation_receipt": {
+            "artifact": "navigation-receipt.json",
+            "sha256": "c6a2ac949cb5b3f4fec95b56baaec404b4698b5a8c70d946bc0b76f8bc553ff7",
+            "reviewer_action": "读取并核对绑定SHA、1440/390 DOM与实际点击收据；未亲自启动浏览器或操作用户浏览器。"
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 98,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "17项critical claim逐项与v1论文、Appendix C/D/E、Figure 1/2/9/33/34/39、Table 6/14、两篇作者文章及独立转写审计相符。偏好胜率、6B RM初始化、16轮SFT与2轮PPO起点、训练提示数、基准样本数和能力回退口径均准确。",
+            "request_coverage": "R1-R6全部覆盖：论文/讲义/shownotes/194段ASR、贯穿通知、三阶段和真实实现、偏好/真实性/传统能力指标、真实反例/人群/ASR边界、主节实质改写及双向导航都可定位。支持性成本计算和未核人物轶事有理由省略。",
+            "reasoning_quality": "报告不只摘要流程，而是解释为什么比较反馈可用、pair为何相关、RM为何只是近似、PPO/KL/ptx分别控制什么，并用传统能力回退、reward gaming与毒性条件构成反例链。",
+            "readability": "一份图书馆通知贯穿SFT→排序→RM→PPO，再用四张短表承载数据和实验；术语首次出现即解释，数学负担低。协调者绑定正式SHA的1440/390收据实际点击往返、17脚注、目录和4表横滚，零整页溢出或页面错误；本Reviewer只核收据。",
+            "limitations": "清楚标出教学例、作者挑选例、作者假说、未复跑、未听校、未测WER、未核ChatGPT谱系/亲属创业因果，并区分博客与论文数字。对“honesty不可直接测量、truthfulness只是代理”的论文原话只通过幻觉/评估器边界间接表达，是轻微可补强点，不影响结论。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23"
+          ],
+          "source_content_map": [
+            {
+              "id": "E18-01",
+              "title": "预训练目标与用户意图、truthfulness代理边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U9"
+              ],
+              "notes": "续写目标、幻觉率和评估器误差讲清；未显式复述论文“honesty不可直接测量、truthfulness只覆盖一小部分”的概念区分，属非阻断补强点。"
+            },
+            {
+              "id": "E18-02",
+              "title": "SFT示范如何改变参数而非只影响当前提示",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "通知示范、参数更新和prompt示例差异完整。"
+            },
+            {
+              "id": "E18-03",
+              "title": "4–9候选排序、6–36相关pair与成组训练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "明确组合比较不是独立人工判断，平局剔除和过拟合动机均覆盖。"
+            },
+            {
+              "id": "E18-04",
+              "title": "RM相对偏好分与最终6B初始化配置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "区分概念图SFT初始化和最终公共NLP微调GPT-3初始化。"
+            },
+            {
+              "id": "E18-05",
+              "title": "PPO、价值估计、KL参考与PPO-ptx预训练梯度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "说明训练更新、两个控制层次和推理时不即时学习。"
+            },
+            {
+              "id": "E18-06",
+              "title": "训练数据规模、来源、划分与两个SFT检查点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7",
+                "U20"
+              ],
+              "notes": "12,725/33,207/31,144、Playground/PII、FLAN/T0分布与16轮/2轮+10%均准确。"
+            },
+            {
+              "id": "E18-07",
+              "title": "1.3B对175B偏好结论、175B直接比较与Figure1读法",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "135倍只作算术，85±3/71±4和95%CI不套到1.3B；共同参照不能点值相减。"
+            },
+            {
+              "id": "E18-08",
+              "title": "封闭域幻觉与TruthfulQA评估器边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9"
+              ],
+              "notes": "41%→21%限定封闭域且合并规模，并记录自动TruthfulQA高估PPO增益。"
+            },
+            {
+              "id": "E18-09",
+              "title": "公开NLP基准回退及pretraining mix/KL消融",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11"
+              ],
+              "notes": "Table14三项175B zero-shot与样本数准确；Figures33/34的能力—奖励权衡解释成立。"
+            },
+            {
+              "id": "E18-10",
+              "title": "约40名标注者、英语分布、训练/评测优先级与held-out边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "AUTHOR_BLOG"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "没有把同供应链held-out结果外推为全人类价值。"
+            },
+            {
+              "id": "E18-11",
+              "title": "错误前提、过度回避与多约束失败",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "袜子与南瓜例、cherry-picked提示和作者关于谦逊奖励的假说边界都保留。"
+            },
+            {
+              "id": "E18-12",
+              "title": "毒性改善依赖respectful prompt且偏见未普遍改善",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "respectful/no prompt/biased三条件分开，未写成无条件安全。"
+            },
+            {
+              "id": "E18-13",
+              "title": "2017 evaluator gaming前驱反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PREFERENCE_2017",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "机械臂遮挡镜头明确归于2017文章，不冒充InstructGPT实验。"
+            },
+            {
+              "id": "E18-14",
+              "title": "AlphaGo规则奖励、语言近似奖励与CoT问题衔接",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PREVIOUS_CHAPTER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "机制类比保留差异，不虚构时间或直接派生关系。"
+            },
+            {
+              "id": "E18-15",
+              "title": "播客/讲义/转写范围与未核口述谱系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "EPISODE",
+                "LECTURE",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18",
+                "U19"
+              ],
+              "notes": "194段时间结构、1处重叠、重复与未听校边界公开；代码谱系、亲属/创业轶事有理由省略。"
+            },
+            {
+              "id": "E18-16",
+              "title": "代码和非英语指令的定性泛化",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "说明未量化、外语可能回英文、代码回答不完全正确。"
+            },
+            {
+              "id": "E18-17",
+              "title": "训练计算成本与成本效益数字",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "证据账本明确有理由省略，章节重点是行为目标、反馈与评价；不构成用户核心需求遗漏。"
+            },
+            {
+              "id": "E18-18",
+              "title": "原节实质改写与原节/前后节往返",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PREVIOUS_CHAPTER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "notes": "入口紧贴标题，顶部/底部往返、前节与CoT均经正式SHA绑定的真实点击收据验证。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "AUTHOR_BLOG",
+            "PREFERENCE_2017",
+            "LECTURE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW",
+            "PREVIOUS_CHAPTER"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "结论：未发现需退回的内容缺陷、关键数字错误、伪造来源或核心要求遗漏。唯一可选增强是显式写出honesty与truthfulness代理的概念区分；当前幻觉、TruthfulQA评估器、毒性和人群边界已足以防止误读。工作台点击由协调者执行，本Reviewer仅核验绑定收据。两份entry来自同一强审会话，不得计作两名独立Reviewer。未修改公开文件、未finalize。",
+          "visual_review_receipt": {
+            "artifact": "workbench-visual-review.json",
+            "sha256": "7e01a96eb193068161bc9397459f3aa0dd07a120cd020474b70e224149313907",
+            "reviewer_action": "核对候选SHA、桌面/390截图观察和视觉收据边界；截图与点击由协调者生成，本Reviewer未操作用户浏览器。",
+            "assessment": "标题下入口清晰，无乱码或重叠；窄屏表格通过局部横滚与百分号换行保持可读。视觉仅辅助阅读呈现，不替代来源事实核验。"
+          },
+          "frozen_source_map_crosswalk": [
+            {
+              "frozen_id": "SC01",
+              "entry_map_ids": [
+                "E18-01"
+              ],
+              "treatment": "covered",
+              "notes": "预训练续写与用户任务差距完整。"
+            },
+            {
+              "frozen_id": "SC02",
+              "entry_map_ids": [
+                "E18-01",
+                "E18-08",
+                "E18-12"
+              ],
+              "treatment": "partial_nonblocking",
+              "notes": "代理指标和评估器边界充分；未显式复述honesty不可直接测量的术语区分。"
+            },
+            {
+              "frozen_id": "SC03",
+              "entry_map_ids": [
+                "E18-02",
+                "E18-03",
+                "E18-04",
+                "E18-05"
+              ],
+              "treatment": "covered",
+              "notes": "示范、比较、RM、PPO逐步覆盖。"
+            },
+            {
+              "frozen_id": "SC04",
+              "entry_map_ids": [
+                "E18-06"
+              ],
+              "treatment": "covered",
+              "notes": "三阶段训练提示数及统计口径。"
+            },
+            {
+              "frozen_id": "SC05",
+              "entry_map_ids": [
+                "E18-03"
+              ],
+              "treatment": "covered",
+              "notes": "相关pair、平局剔除与成组训练。"
+            },
+            {
+              "frozen_id": "SC06",
+              "entry_map_ids": [
+                "E18-05"
+              ],
+              "treatment": "covered",
+              "notes": "PPO、KL、ptx及推理时不更新。"
+            },
+            {
+              "frozen_id": "SC07",
+              "entry_map_ids": [
+                "E18-07"
+              ],
+              "treatment": "covered",
+              "notes": "1.3B/175B、直接175B比较与Figure1口径。"
+            },
+            {
+              "frozen_id": "SC08",
+              "entry_map_ids": [
+                "E18-10"
+              ],
+              "treatment": "covered",
+              "notes": "held-out仍同类供应链；未用作全人类外推。"
+            },
+            {
+              "frozen_id": "SC09",
+              "entry_map_ids": [
+                "E18-08"
+              ],
+              "treatment": "covered",
+              "notes": "41%/21%与TruthfulQA评估器问题。"
+            },
+            {
+              "frozen_id": "SC10",
+              "entry_map_ids": [
+                "E18-12"
+              ],
+              "treatment": "covered",
+              "notes": "三种提示条件和偏见无普遍改善。"
+            },
+            {
+              "frozen_id": "SC11",
+              "entry_map_ids": [
+                "E18-09"
+              ],
+              "treatment": "covered",
+              "notes": "Table14残余回退与Figures33/34。"
+            },
+            {
+              "frozen_id": "SC12",
+              "entry_map_ids": [
+                "E18-11",
+                "E18-16"
+              ],
+              "treatment": "covered",
+              "notes": "错误前提、hedging、多约束及定性泛化。"
+            },
+            {
+              "frozen_id": "SC13",
+              "entry_map_ids": [
+                "E18-10"
+              ],
+              "treatment": "covered",
+              "notes": "对齐参考群体与多方利益。"
+            },
+            {
+              "frozen_id": "SC14",
+              "entry_map_ids": [
+                "E18-10",
+                "E18-12"
+              ],
+              "treatment": "covered",
+              "notes": "训练/评测优先级与有害服从。"
+            },
+            {
+              "frozen_id": "SC15",
+              "entry_map_ids": [
+                "E18-17"
+              ],
+              "treatment": "reasoned_omission",
+              "notes": "成本数字为支持项，evidence U23明示省略理由，不构成核心遗漏。"
+            },
+            {
+              "frozen_id": "SC16",
+              "entry_map_ids": [
+                "E18-13"
+              ],
+              "treatment": "covered",
+              "notes": "2017 evaluator-gaming反例归属清楚。"
+            },
+            {
+              "frozen_id": "SC17",
+              "entry_map_ids": [
+                "E18-15"
+              ],
+              "treatment": "covered",
+              "notes": "讲义/播客主线、ASR缺陷与口误纠正完整。"
+            }
+          ]
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 97.95,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "fe46b75b7f0da88720437225f6e98d554fe15c075dbb33d9fca45191ff97e0b2",
+        "evidence_sha256": "05855270b7cdb197e5e168f3b0ed0bc17d9e52e6b8431393b04af424a9b50f4e"
+      }
     }
   ]
 }

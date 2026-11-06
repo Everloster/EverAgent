@@ -12,7 +12,7 @@
     "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
   },
   "task": {
-    "summary": "《AI演义》第16节LoRA逐节深入展开，同时实质优化原章节及阅读入口；按Brook等前15轮经验面向人类写作。",
+    "summary": "全32篇逐段精修中的第16篇：保持LoRA适配与资源主线，补清初始化的学习路径、延迟表配置变化和参数倍率，保留摘要例子及个人记忆边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第16节实质改写、标题下直接展开；详解返回原16节、上一节MoE及下一节AlphaGoZero；前15节与其余正文保持。"
+        "text": "保留文件及编号，可返回主稿第16节并直达上下分章；总览最后统一收束。"
       },
       {
         "id": "R6",
-        "text": "正文人类独立可读、脚注清晰；实际1440/390宽度入口、返回、目录、脚注和表格检查；独立来源优先复核，私有材料不公开。"
+        "text": "完整逐段核对正文、算式、表格、脚注、乱码和上下篇链接；独立来源优先复核，私有原始资料不公开；实际富文本呈现按系列检查，不扩大工作台功能验收。"
       }
     ],
     "reader_feedback": [
@@ -65,7 +65,8 @@
       "venue_receipt": {
         "artifact": "openreview-page.json",
         "sha256": "12ed4a5120b794fcae94621dab260dd4fec21854ff442b896ada57a21c004eca"
-      }
+      },
+      "revision_read_20261106": "本轮定向复读p3–5、8、10–12、17–23、26原文文本；p15–16参考条目仅浏览，未追读引用。复核Table1/4–7/15/16/18与初始化/冻结/合并/预算条件。原轮其他内容与原图核查在未变范围继承。"
     },
     {
       "id": "LECTURE",
@@ -74,7 +75,8 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "physical p19文字与原图；微调/副本成本、低秩/合并、Diffusion应用、ResNet类比、作者与视频推荐。未核行业采用率/完整履历/视频内容。"
+      "read_scope": "physical p19文字与原图；微调/副本成本、低秩/合并、Diffusion应用、ResNet类比、作者与视频推荐。未核行业采用率/完整履历/视频内容。",
+      "revision_read_20261106": "本轮复读讲义p19排版文字，原图核对沿用未变材料。"
     },
     {
       "id": "EPISODE",
@@ -90,7 +92,8 @@
         "artifact": "apple-episode-read.json",
         "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
       },
-      "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json"
+      "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json",
+      "revision_read_20261106": "本轮完整复读153段5407.70–5688.37秒，涵盖记忆/ResNet/行业应用旁支；节目身份与shownotes沿用既有收据，未新联网或听音。"
     },
     {
       "id": "TRANSCRIPT_REVIEW",
@@ -99,7 +102,8 @@
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
       "sha256": "09adc167b51a7e579bd79144f6f90ecd69b8543c9f05b68d6418846e35423bf4",
-      "read_scope": "完整153段文本阅读，audit_transcript实际执行及Decimal时间检查，按论文校术语与声明边界；不证明听校或字错率。"
+      "read_scope": "完整153段文本阅读，audit_transcript实际执行及Decimal时间检查，按论文校术语与声明边界；不证明听校或字错率。",
+      "revision_read_20261106": "本轮完整读公开转录核查JSON，核对覆盖边界；机器审计沿用未变收据，未测字错率。"
     }
   ],
   "claims": [
@@ -127,7 +131,7 @@
     },
     {
       "id": "C3",
-      "claim": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新少256倍。",
+      "claim": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新参数为原来的1/256。",
       "report_anchor": "low-rank-intuition",
       "support": "direct",
       "source_ids": [
@@ -138,25 +142,25 @@
     },
     {
       "id": "C4",
-      "claim": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。",
+      "claim": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。两者都为零时该BA路径对A/B的梯度均为零；随机A使B可以先学，继而A获得信号。",
       "report_anchor": "low-rank-intuition",
       "support": "direct",
       "source_ids": [
         "LORA"
       ],
       "critical": true,
-      "evidence": "Figure1、§4.1；秩至多r及低秩更新定义。"
+      "evidence": "Figure1、§4.1；秩至多r及低秩更新定义。由式(3)乘积求导直接展开，未声称新增实验。"
     },
     {
       "id": "C5",
-      "claim": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。",
+      "claim": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。Table1两组的Adapter参数预算也不同，不能把延迟比例变化单独归因batch。",
       "report_anchor": "merge-and-latency",
       "support": "direct",
       "source_ids": [
         "LORA"
       ],
       "critical": true,
-      "evidence": "§§3–4、Table1、AppB：batch1/128为19.8/23.9/25.8ms，batch32/512增幅2.2/3.0%。"
+      "evidence": "§§3–4、Table1、AppB：batch1/128为19.8/23.9/25.8ms，batch32/512增幅2.2/3.0%。Table1的|Theta|为11M与0.5M；AppB p17 Figure5分维度比较，未逐格重新视觉或测时。"
     },
     {
       "id": "C6",
@@ -285,7 +289,7 @@
     },
     {
       "id": "U3",
-      "title": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新少256倍。",
+      "title": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新参数为原来的1/256。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -295,7 +299,7 @@
     },
     {
       "id": "U4",
-      "title": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。",
+      "title": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。两者都为零时该BA路径对A/B的梯度均为零；随机A使B可以先学，继而A获得信号。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -305,7 +309,7 @@
     },
     {
       "id": "U5",
-      "title": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。",
+      "title": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。Table1两组的Adapter参数预算也不同，不能把延迟比例变化单独归因batch。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -477,6 +481,18 @@
       "artifact": "calculation-check.json",
       "sha256": "fe8e31f7e2ad9741d0e1696617dfa500c091b10abb2c99d3750554c1a06fedbd"
     },
-    "vision_interpretation": "eacli视觉辅助后直接检查原图。p8响应错误地把MNLI 91.6称为最高，不采用；p10响应对各rank优劣有过度概括且脚注6省略跨语言思想实验条件，不采用。p26提示tuned on r=4不应擅自加强为只在r4调优，正文已用原文较弱措辞。数值以PDF原页为准。"
+    "vision_interpretation": "eacli视觉辅助后直接检查原图。p8响应错误地把MNLI 91.6称为最高，不采用；p10响应对各rank优劣有过度概括且脚注6省略跨语言思想实验条件，不采用。p26提示tuned on r=4不应擅自加强为只在r4调优，正文已用原文较弱措辞。数值以PDF原页为准。",
+    "full_series_revision_20261106": {
+      "report_read": "完整逐段复读并检查改后差异；有效技术细节与反例保留。",
+      "source_text_sha256": "606208775b099d757b1d21f4af980ebf67d9185abaef014b7c7724f4f366cd4e",
+      "transcript_text_sha256": "eecbbfeb6c4cd89939057aacc0f96fe03a7f747ee9d5e0879ea0cd540af655b7",
+      "changes": [
+        "把少256倍改为明确的1/256",
+        "展开A随机/B零初始化为什么能学习",
+        "补齐Table1不同工作负载对应不同Adapter预算",
+        "规范标题、下一章直达链接；正文移除执行计数和ASR错词清单"
+      ],
+      "not_repeated": "未重新转写、听校、训练、测速或重做原图视觉；未变材料与原核查明确继承。"
+    }
   }
 }

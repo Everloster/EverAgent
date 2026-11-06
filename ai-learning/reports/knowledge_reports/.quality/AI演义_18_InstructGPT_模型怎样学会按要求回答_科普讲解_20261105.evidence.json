@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-instructgpt-r1-20261105",
+    "run_id": "ai-yanyi-instructgpt-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮agent_identity.py inspect：model=gpt-6-astra，model_source=codex-turn-context，current_model_confirmed=true。仅证明协调生成者，子Reviewer运行身份独立记录。"
+    "identity_basis": "eacli session current核实gpt-6-astra/codex，model_source=codex-thread-state、session-bound、confirmed；仅生成者身份，不冒充独立Reviewer运行时证明。"
   },
   "task": {
-    "summary": "《AI演义》第18节InstructGPT深入展开，同时实质改原章节与阅读入口；用通知例子解释目标、三阶段训练、实验、失效与路线。",
+    "summary": "《AI演义》全32篇地毯式精修之第18篇：全文复读、按原论文和讲义核机制与实验，保留通知例子与真实反例，改善阅读与来源边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第18节实质改写，展开入口紧贴标题，展开可返回原节与前后节；前17节和其余主文保持。"
+        "text": "保留第18篇文件、编号与总览入口，直达前后分章；总览在系列收束时统一校订，只改本任务文件。"
       },
       {
         "id": "R6",
-        "text": "人类可独立阅读；实际工作台1440/390宽度、目录/脚注/链接/表格验证，两位来源优先独立复核；私有材料不公开。"
+        "text": "检查报告本身术语、表格、脚注、链接与人类可读性，完成来源优先独立复核；不扩成工作台功能验收，不公开原ASR或私有运行信息。"
       }
     ],
     "reader_feedback": [
@@ -118,9 +118,9 @@
       "kind": "local",
       "title": "《AI演义》17 AlphaGo Zero已完成展开稿",
       "locator": "ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md",
-      "accessed_on": "2026-11-05",
-      "sha256": "5d7a6665b1bb5c9aa9cdfd33f02b393e49c243ecce406a37516fc51ed11a61c0",
-      "read_scope": "本系列紧邻已验收前章的规则裁判、搜索训练闭环及往返导航；继承已完成研究，不声称本轮重读其全部一手来源。"
+      "accessed_on": "2026-11-06",
+      "sha256": "867afac5805d3bd62be50fa6b33780e58f8f00f22d496e4eb12fd6f8a146a543",
+      "read_scope": "本轮已全文精修并独审的第17篇，核规则裁判、搜索/训练分离、认输校准及前后阅读连接；来源核验详见该篇当前quality。"
     }
   ],
   "claims": [
@@ -172,36 +172,36 @@
     },
     {
       "id": "C5",
-      "claim": "PPO使用奖励与价值估计更新策略，KL参考固定监督起点；PPO-ptx混预训练梯度，训练不等于即时聊天更新。",
+      "claim": "PPO更新策略并训练辅助价值模型；RM与KL参考监督模型固定，价值模型从RM初始化但独立训练；PPO-ptx混预训练梯度，不是即时聊天更新。",
       "report_anchor": "ppo-learning",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.5、AppendixC.3–C.4；通知优化为机制示意。"
+      "evidence": "§3.1、§3.5及Appendix C.4：奖励rθ、策略πφRL、参考πSFT职责分开；value从6B RM初始化并有独立学习率。新比较训练新RM再优化新策略是外层迭代。"
     },
     {
       "id": "C6",
-      "claim": "训练提示SFT12,725、RM33,207、PPO31,144；各阶段监督不同，SFT含few-shot构造，用户源限Playground，按用户划分并清PII。",
+      "claim": "SFT/RM/PPO训练提示数12,725/33,207/31,144，最后者非总回合数；主PPO实验各256,000 episodes，一个请求及回答为一回合。数据来源、构造与PII/按用户拆分保留。",
       "report_anchor": "data-and-people",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.2–3.4、Table6/9；不能相加当不重复用户或新任务。"
+      "evidence": "Table6、§3.2–3.5和Appendix C.4：PPO约31k独立提示，256k回合；后续延长训练消融不混作主设置。"
     },
     {
       "id": "C7",
-      "claim": "SFT评测基线16epochs；PPO起点监督训练2epochs加10%预训练数据，不是直接复制该基线。",
+      "claim": "SFT评测基线16epochs，验证文字损失一轮后变差但RM分与人工偏好继续改善，按验证RM分选模；PPO起点2epochs加10%预训练数据，非同一检查点。",
       "report_anchor": "data-and-people",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "AppendixC.1/C.3及E.8。"
+      "evidence": "§3.5 SFT与Appendix C.1/C.3；验证损失与偏好指标不同，不推成过拟合无害。"
     },
     {
       "id": "C8",
@@ -249,7 +249,7 @@
     },
     {
       "id": "C12",
-      "claim": "约40标注者、约96%被分类为英语；训练优先helpfulness而最终评估优先真实无害，held-out仍同类供应链，不代表全人类。",
+      "claim": "约40标注者不等于每题40人投票，大多数比较仅1人标；约96%英语、训练与最终评估优先级差异、held-out仍同类来源，不代表全人类偏好。",
       "report_anchor": "whose-preferences",
       "support": "direct",
       "source_ids": [
@@ -257,7 +257,7 @@
         "AUTHOR_BLOG"
       ],
       "critical": true,
-      "evidence": "§5.2–5.3、A.4、B.1–B.2、§4.1及博客footnoteE。"
+      "evidence": "§3.3–3.4、§5.2–5.3、AppendixA.4/B.1–B.2；§5.3提出重复标注可识别偏好分歧，并不证明均值是合适价值标准。"
     },
     {
       "id": "C13",
@@ -307,7 +307,7 @@
     },
     {
       "id": "C17",
-      "claim": "194段ASR不听校；0负时长/起终点倒序但1处0.10秒重叠，最大相邻重复2；native通过不证明原音准确。",
+      "claim": "本章约02:59:57–03:06:09；转录存在短时重叠与重复，术语/年份按论文核验，未逐字听校或测WER；节目训练谱系只作线索。",
       "report_anchor": "source-notes",
       "support": "direct",
       "source_ids": [
@@ -316,7 +316,7 @@
         "LECTURE"
       ],
       "critical": true,
-      "evidence": "实际切片、原生脚本与Decimal检查；shownotes未给单篇时间。"
+      "evidence": "完整194段读取与公开核查摘要；0负时长/倒序、1处0.10秒重叠、最大相邻重复2，结构检查不证明原音准确，计数细节不塞正文。"
     }
   ],
   "source_coverage": [
@@ -364,7 +364,7 @@
     },
     {
       "id": "U5",
-      "title": "PPO使用奖励与价值估计更新策略，KL参考固定监督起点；PPO-ptx混预训练梯度，训练不等于即时聊天更新。",
+      "title": "PPO更新策略并训练辅助价值模型；RM与KL参考监督模型固定，价值模型从RM初始化但独立训练；PPO-ptx混预训练梯度，不是即时聊天更新。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -374,7 +374,7 @@
     },
     {
       "id": "U6",
-      "title": "训练提示SFT12,725、RM33,207、PPO31,144；各阶段监督不同，SFT含few-shot构造，用户源限Playground，按用户划分并清PII。",
+      "title": "SFT/RM/PPO训练提示数12,725/33,207/31,144，最后者非总回合数；主PPO实验各256,000 episodes，一个请求及回答为一回合。数据来源、构造与PII/按用户拆分保留。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -384,7 +384,7 @@
     },
     {
       "id": "U7",
-      "title": "SFT评测基线16epochs；PPO起点监督训练2epochs加10%预训练数据，不是直接复制该基线。",
+      "title": "SFT评测基线16epochs，验证文字损失一轮后变差但RM分与人工偏好继续改善，按验证RM分选模；PPO起点2epochs加10%预训练数据，非同一检查点。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -434,7 +434,7 @@
     },
     {
       "id": "U12",
-      "title": "约40标注者、约96%被分类为英语；训练优先helpfulness而最终评估优先真实无害，held-out仍同类供应链，不代表全人类。",
+      "title": "约40标注者不等于每题40人投票，大多数比较仅1人标；约96%英语、训练与最终评估优先级差异、held-out仍同类来源，不代表全人类偏好。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -487,7 +487,7 @@
     },
     {
       "id": "U17",
-      "title": "194段ASR不听校；0负时长/起终点倒序但1处0.10秒重叠，最大相邻重复2；native通过不证明原音准确。",
+      "title": "本章约02:59:57–03:06:09；转录存在短时重叠与重复，术语/年份按论文核验，未逐字听校或测WER；节目训练谱系只作线索。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -532,7 +532,7 @@
     },
     {
       "id": "U21",
-      "title": "原节实质改写、标题下展开入口、展开原节/前后节往返与评估追问",
+      "title": "保留总览与前后分章入口；思考题检查偏好分歧、领域迁移与能力回退，不冒称新实验。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -601,5 +601,20 @@
       "网页与视觉均先eacli typed调用；已有公开PDF的本地文本提取/渲染不在typed远程读取范围内。",
       "首次博客URL缺正文，换同作者legacy URL后实际取得正文；没有将工具ok当内容完整。"
     ]
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文、完整194段转录、讲义p39文字与公开转写核查摘要全文。",
+      "InstructGPT v1 pp3、6–19、40–42；p21致谢，p33数据表，pp46–48评估任务与p56自动评估表/附录说明。p14–15输出截断后完整补读。",
+      "作者博客正文/footnotes和2017偏好学习博客正文/Challenges；媒体未观看。"
+    ],
+    "substantive_changes": [
+      "补清固定RM/参考模型与可训练价值模型的角色，区分外层RM更新与内层PPO。",
+      "补清31,144不同提示和256,000主实验回合。",
+      "解释SFT预测损失与偏好不同向、16轮基线的选择；补多数比较仅一人标注的边界。",
+      "标题/日期/下一章直达与正文去执行计数；前章来源哈希绑定到本轮已验收版本。"
+    ],
+    "inherited_checks": "未变原图/来源身份/线上收据沿用原轮已核记录；没有重听、重训、复跑基准或新页面验收。"
   }
 }

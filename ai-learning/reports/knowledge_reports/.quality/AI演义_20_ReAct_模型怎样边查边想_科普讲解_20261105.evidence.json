@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-react-r1-20261105",
+    "run_id": "ai-yanyi-react-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮 eacli session current：gpt-6-astra，codex-turn-context，session-bound confirmed。只证明协调生成者，子 Reviewer 的配置与实际 runtime 分开记录。"
+    "identity_basis": "本轮eacli session current返回gpt-6-astra/codex，confirmed=true，source=codex-thread-state，confidence=session-bound；仅证明生成者身份。"
   },
   "task": {
-    "summary": "《AI演义》第20节ReAct深入展开并同步改写原节；以Apple Remote查询解释推理/动作/观察，保留真实实验、反例和边界。",
+    "summary": "《AI演义》32篇全量精修中的第20篇：以原PDF的问题线为骨架，逐段核对ReAct机制、实验、案例与学习表达。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第20节实质改写且标题后第一块为展开链接；展开返回原20节、上一节CoT、下一节Tülu3；前19节和其余主文严格继承。"
+        "text": "保留第20篇路径和编号，与总览及19/21分章往返；总览在系列收束时统一核对，不要求重改其他已验收分章。"
       },
       {
         "id": "R6",
-        "text": "正文独立可读，列表规范命名；工作台桌面1440与窄屏390实点目录、脚注、表格和导航，来源优先独立复核。"
+        "text": "正文独立可读，核对术语、表格、脚注、导航与隐私；来源优先独立复核，执行记录留已有质量文件，不捆绑工作台功能验收。系列富文本呈现另按用户要求作有限检查。"
       }
     ],
     "reader_feedback": [
@@ -129,14 +129,14 @@
     },
     {
       "id": "C2",
-      "claim": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。",
+      "claim": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。 Finish只表示提交并结束，不证明答案正确。",
       "report_anchor": "apple-remote-walkthrough",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "物理p2原图及图注；本轮eacli视觉/直接看图。图示而非本轮运行，Obs3有省略。"
+      "evidence": "物理p2原图及图注；原图核验沿用未变前轮记录，本轮回读示例/§2–3文本。图示而非本轮运行，Obs3有省略；Act-only的Finish[yes]展示停止不等于答对。"
     },
     {
       "id": "C3",
@@ -247,7 +247,7 @@
         "CODE"
       ],
       "critical": true,
-      "evidence": "§4/Table4/Ethics；Table10口味与16包/100包展示；README将论文40列在PaLM540B行。"
+      "evidence": "§4/Table4/Ethics；Table10要求口味、16包与<50美元，Act选另一口味100包85美元，ReAct核选项；README将论文40列在PaLM540B行。"
     },
     {
       "id": "C13",
@@ -308,6 +308,28 @@
       ],
       "critical": true,
       "evidence": "§2/§3.3/§4/§6；正文标[推测／实践建议]，未冒称本项目实测收益或现成跨设备记忆能力。"
+    },
+    {
+      "id": "C18",
+      "claim": "[推测] 最终答案正确不能保证所有过程正确，因此按末答过滤的生成训练轨迹仍可能保留错误过程，需另核关键步骤；未测其污染率。",
+      "report_anchor": "training-and-human-correction",
+      "support": "inference",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2正确末答筛选、Table2成功组false positive与E.1桌游反例共同推出的筛选局限；不称已审计3000训练样本。"
+    },
+    {
+      "id": "C19",
+      "claim": "ReAct作者警告开放环境的隐私与有害动作风险；原实验禁止编辑Wikipedia和真实购买，这些是环境限制而非通用安全能力。",
+      "report_anchor": "practical-implications",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "原论文v3 p10 Ethics Statement；环境限制与模型自行安全判断分开。"
     }
   ],
   "source_coverage": [
@@ -324,7 +346,7 @@
     },
     {
       "id": "U2",
-      "title": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。",
+      "title": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。 Finish只表示提交并结束，不证明答案正确。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -521,6 +543,26 @@
         "PODCAST"
       ],
       "report_anchor": "history-and-reading"
+    },
+    {
+      "id": "U21",
+      "title": "[推测] 最终答案正确不能保证所有过程正确，因此按末答过滤的生成训练轨迹仍可能保留错误过程，需另核关键步骤；未测其污染率。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "training-and-human-correction"
+    },
+    {
+      "id": "U22",
+      "title": "开放环境的隐私与有害动作风险，以及受限实验不能证明部署安全。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "practical-implications"
     }
   ],
   "limitations": [
@@ -548,5 +590,20 @@
       "artifact": "session-current.json",
       "sha256": "ed275c01731b39f6cff6197822e8590e12ff012894b61a7d9b154005e6d7b443"
     }
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文、本章293段转写全文、讲义p20文字和公开转写核查摘要全文。",
+      "ReAct v3正文pp1–10文字；附录A.1–A.3/B.1–B.2、C.4的Act提示、D.2.3/D.3、E.1的成功与假阳性示例；原图缺字位置沿用旧直接视觉核验。",
+      "作者项目页与官方README缓存正文；未新联网。"
+    ],
+    "substantive_changes": [
+      "用同一Figure1的两种Finish解释结束动作与答案验证的区别。",
+      "补WebShop商品例的价格约束和实际超预算，保留模拟购买边界。",
+      "将末答筛选训练数据的过程质量风险明确列为推断；标题/日期/分章直达与转写摘要回链。",
+      "独审指出Ethics只被间接覆盖后，回读p10补明确隐私/动作风险与实验环境保护的边界。"
+    ],
+    "inherited_checks": "未变原图、原始来源身份、版本/联网收据及未变附录核验沿用前轮；未听音、复训、跑基准或工作台功能验收。"
   }
 }

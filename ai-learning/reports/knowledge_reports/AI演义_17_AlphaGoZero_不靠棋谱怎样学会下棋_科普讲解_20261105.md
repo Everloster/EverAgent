@@ -1,9 +1,9 @@
 ---
-title: "《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？"
+title: "AI演义·17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-05"
+updated_on: "2026-11-06"
 quality_schema: "report-v2"
 quality_tier: "important"
 report_depth: "deep"
@@ -11,9 +11,9 @@ reader_contract: "standalone"
 semantic_tags: ["ai_history", "alphago_zero", "reinforcement_learning", "self_play", "mcts", "test_time_compute"]
 ---
 
-# 《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？
+# AI演义·17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？
 
-[返回原报告第 17 节](../AI演义_笔记分析与项目整合报告.md#paper-alphago-zero) · [上一节：LoRA](AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) · [下一节：InstructGPT](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt)
+[返回原报告第 17 节](../AI演义_笔记分析与项目整合报告.md#paper-alphago-zero) · [上一节：LoRA](AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) · [下一节：InstructGPT](AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md)
 
 教一个程序下围棋，最自然的起点是给它看高手棋谱：这个局面，高手下在哪里？看过足够多的例子，再让它练习，似乎就能越来越像高手。
 
@@ -75,6 +75,8 @@ AlphaGo Zero 使用 **MCTS，蒙特卡洛树搜索**。把“我下 A，对方�
 3. **把结果传回来。** 沿着刚才经过的路径，更新访问次数和平均评价。双方轮流落子，因此评价必须按相应执棋方理解，不能把对手有利误记成自己有利。
 4. **重复后作出选择。** 搜索预算用完，再根据根节点各个落子的访问次数，形成最终建议。
 
+这里的“回传”是在**更新搜索树的统计，不是在训练网络权重**。当前一步搜索反复调用同一个网络，改变的是各分支的访问次数与平均评价；把经验用来更新网络，是后面的训练环节。两者都能改善决策，却发生在不同层次。
+
 在上面的演算中，如果按访问次数直接归一化，A、B、其他的比例就变成 **30%、60%、10%**。这个搜索后的分布叫 π。网络原先的 p 与搜索后的 π，是两个不同的东西。
 
 实际系统还会控制随机性：自弈开局前 30 手，按这样的访问次数分布采样；之后温度参数趋近于零，基本选择访问次数最高的落子。因此，不能把 30%／60%／10% 当成整盘棋始终采用的落子概率。
@@ -89,7 +91,7 @@ AlphaGo Zero 使用 **MCTS，蒙特卡洛树搜索**。把“我下 A，对方�
 
 对当前这一步，系统保存三样东西：**局面 s、搜索后的落子分布 π、这盘棋最后的输赢 z**。
 
-沿用例子，训练时会让策略头更接近搜索产生的 30%／60%／10%，而不是重新确认自己最初的 55%／35%／10%。价值头则学习这盘棋的实际结果：如果最后黑方赢了，轮到黑方的局面记 +1，轮到白方的局面记 −1。
+沿用前面开局时的例子，训练时会让策略头更接近搜索产生的 30%／60%／10%，而不是重新确认自己最初的 55%／35%／10%。价值头则学习这盘棋的结果：如果最后黑方赢了，轮到黑方的局面记 +1，轮到白方的局面记 −1。
 
 这并不意味着“赢了，所以每一步都完美”。终局信号很粗，一盘赢棋也可能含有坏棋。系统需要从大量局面中学习：哪些特征、哪些行动倾向与最终结果有关。策略与价值的误差共同参与训练，另有正则项约束参数。[^training]
 
@@ -100,7 +102,7 @@ AlphaGo Zero 使用 **MCTS，蒙特卡洛树搜索**。把“我下 A，对方�
         ↓
 搜索比较后续可能
         ↓
-按搜索结果落子，继续下完整盘
+按搜索结果落子，直至终局或认输
         ↓
 保存局面、搜索建议、最终输赢
         ↓
@@ -108,6 +110,8 @@ AlphaGo Zero 使用 **MCTS，蒙特卡洛树搜索**。把“我下 A，对方�
 ```
 
 起初网络接近随机，比赛也很弱。但规则已经能产生输赢，搜索也可以逐渐积累有用评价。网络从这些经验中改进，下一轮搜索又获得更好的起点。论文把它理解为一种近似的策略迭代：不断改善做法，再把改善后的做法学回网络。
+
+并不是每盘自弈都下到最后计分。为节省计算，系统允许在明显败局时提前认输；但它也可能看错，把本来还能赢的棋判成输。论文因此让 **10% 的自弈棋局关闭认输、下到终局**，用这些棋局检查误认输，并自动调整阈值，目标把误认输比例控制在 **5% 以下**。这不是每次都判断正确的保证，而是用继续下完的样本，校准省计算所依赖的判断。[^training]
 
 为了增加尝试，系统会在搜索根节点的建议中加入 Dirichlet 噪声，让自弈不总沿同一路线展开。它还将数据生成、参数训练和模型评估异步运行，而不是每训练一次就无条件换成新模型。
 
@@ -240,21 +244,21 @@ DeepMind 当年的博客将蛋白质、材料与能源等列为未来应用愿�
 
 本节实读的是 **2017 年围棋专用的 AlphaGo Zero 论文**，含正文、Methods 和 Extended Data 的图表说明；不是后来同时研究国际象棋、将棋与围棋的 AlphaZero 论文。正式 Nature 页面用于核对题名、作者、卷页和 DOI；全文来自身份对应的公开 PDF 镜像，不宣称它与出版社文件经过逐字节认证。
 
-本轮直接核对了 PDF 第 2、3、5、16、17 页的机制图、实验图和数值表，以及《AI演义》讲义第 16 页。其余棋谱主要依据正文与图注阅读，没有逐手复盘。DeepMind 博客读取正文；OpenAI 官方文与 Noam Brown 团队访谈，用于补查推理时计算的联系，访谈阅读限相关段落，没有观看整场视频。
+机制图、实验图和数值表已核对 PDF 第 2、3、5、16、17 页；本次精修重点回读 Methods 的搜索、自弈、训练与架构说明，并对照《AI演义》讲义第 16 页。其余棋谱主要依据正文与图注阅读，没有逐手复盘。DeepMind 博客读取正文；OpenAI 官方文与 Noam Brown 团队访谈，用于补查推理时计算的联系，访谈阅读限相关段落，没有观看整场视频。
 
-播客对应约 **01:08:31–01:15:35**，含进入本章的过渡，共 208 个原始分段，精确跨度 **423.05 秒**。分段没有负时长、时间倒序或重叠；有 100 处正间隔，最大 1.22 秒。它证明的是时间结构可用，不是逐字识别准确。英文术语和人名的明显错词，以论文为准理解，原转写未被静默改写。**本轮没有听校，也没有测量字错率。**
+播客对应约 **01:08:31–01:15:35**，含进入本章的过渡，讨论棋谱监督、自弈、算力与推理时计算。时间戳检查未发现倒序、负时长或重叠，但结构连贯不等于逐字识别准确。英文术语和人名以论文为准核对；**没有逐字听校，也没有测量字错率。**
 
 shownotes 只有 Part 1 的大段起点和论文清单，没有逐篇论文的精确时间。本节时间范围来自转写定位。节目中约一分多钟的公司、研究圈与人物后续故事，未开展完整的组织史核验，因而没有用于支撑算法结论。
 
-原始 ASR 和运行材料留在私有研究缓存。公开的[转写核查摘要](.quality/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.transcription-review.json)与[证据记录](.quality/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.evidence.json)，列明本节实际使用的范围。本轮没有重训 AlphaGo Zero，也没有复跑原论文基准。
+原始转录不随报告公开；详细范围与核查方法见[转写核查摘要](.quality/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.transcription-review.json)。没有重训 AlphaGo Zero，也没有复跑原论文基准。
 
-[返回原报告第 17 节](../AI演义_笔记分析与项目整合报告.md#paper-alphago-zero) · [继续读：InstructGPT](../AI演义_笔记分析与项目整合报告.md#paper-instructgpt)
+[返回原报告第 17 节](../AI演义_笔记分析与项目整合报告.md#paper-alphago-zero) · [继续读：InstructGPT](AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md)
 
 [^paper]: Silver et al.，[Mastering the game of Go without human knowledge](https://www.nature.com/articles/nature24270)，Nature 550, 354–359，2017-10-19，DOI 10.1038/nature24270。[本次实读的公开 PDF 镜像](https://augmentingcognition.com/assets/Silver2017a.pdf)，18 页，包含 Methods 与 Extended Data；正文首次介绍见 p. 1。
 [^history]: 同论文 p. 1、[p. 7，Methods：AlphaGo versions、Domain knowledge](https://augmentingcognition.com/assets/Silver2017a.pdf#page=7)。另读 David Silver、Demis Hassabis 于 2017-10-18 发布的 [AlphaGo Zero: Starting from scratch](https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/)。讲义及节目：[讲义第 16 页](../../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=16)，[张小珺 Jùn 第 117 期小宇宙页面与 shownotes](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)，[Apple Podcasts 备用入口](https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180)，2025-10-28，谢青池。
 [^network]: 同论文 [p. 2，Figure 1](https://augmentingcognition.com/assets/Silver2017a.pdf#page=2)，[pp. 8–9，Neural network architecture](https://augmentingcognition.com/assets/Silver2017a.pdf#page=8)。输入 19 × 19 × 17；价值头采用 tanh，范围 −1 到 +1；策略头还含 pass。历史与颜色的必要性由重复局面规则、贴目等条件解释。
 [^search]: 同论文 [p. 2，Figure 2](https://augmentingcognition.com/assets/Silver2017a.pdf#page=2) 和 [p. 8，Search algorithm、Self-play](https://augmentingcognition.com/assets/Silver2017a.pdf#page=8)。选择规则结合平均价值 Q 与探索项 U；π 按访问次数的 1/τ 次幂归一化。自弈前 30 手 τ=1，之后 τ→0；根节点加入 Dirichlet 噪声。原论文快棋训练每步 1,600 simulations，约 0.4 秒，时间限于当时系统配置。
-[^training]: 同论文 [pp. 7–8，Reinforcement learning、Self-play training pipeline](https://augmentingcognition.com/assets/Silver2017a.pdf#page=7)。损失包含价值均方误差、策略交叉熵和 L2 正则。Optimization 为 64 GPU workers、19 CPU parameter servers，每 worker 32 个样本、总批量 2,048；最近 500,000 盘局面中均匀抽样。Evaluator 为 400 局、每步 1,600 simulations、最高访问次数落子，胜率超过 55% 晋级。对弈搜索配置与梯度优化配置须分开。
+[^training]: 同论文 [pp. 7–8，Reinforcement learning、Self-play training pipeline](https://augmentingcognition.com/assets/Silver2017a.pdf#page=7)。损失包含价值均方误差、策略交叉熵和 L2 正则。Optimization 为 64 GPU workers、19 CPU parameter servers，每 worker 32 个样本、总批量 2,048；最近 500,000 盘局面中均匀抽样。Evaluator 为 400 局、每步 1,600 simulations、最高访问次数落子，胜率超过 55% 晋级。Self-play 说明在 10% 的自弈中关闭认输，估计本可获胜却认输的 false positives，并将阈值目标设为低于 5%；Play 说明认输判断使用根节点及最佳子节点的价值。对弈搜索配置与梯度优化配置须分开。
 [^results]: 同论文 [pp. 2–3，Empirical analysis、Figure 3](https://augmentingcognition.com/assets/Silver2017a.pdf#page=3) 与 [p. 5，Final performance、Figure 6](https://augmentingcognition.com/assets/Silver2017a.pdf#page=5)。两实例分别为 4.9 M／29 M 自弈棋局、700,000／3.1 M 训练批次，每批 2,048 个局面。直接对局采用每方 2 小时基本时间、3 次 60 秒读秒，中国规则、贴 7.5 目，见 p. 9 Evaluation；40 天版从随机网络权重重新训练，但搜索参数曾借助较小训练实例重新优化，不等于所有设置完全独立重选。
 [^comparison]: 同论文 [p. 3，Figure 3](https://augmentingcognition.com/assets/Silver2017a.pdf#page=3)、[p. 16，Extended Data Table 1](https://augmentingcognition.com/assets/Silver2017a.pdf#page=16) 与 [p. 17，Extended Data Table 2](https://augmentingcognition.com/assets/Silver2017a.pdf#page=17)。表中两列均为论文称 20 块的网络，GoKifu validation 上为 54.3%／49.0%、0.207／0.177。Figure 3c 将原始胜负均方误差乘以 1/4，缩放到 0–1。监督版用 KGS 棋谱训练 3 天，其损失中的 MSE 项权重为 0.01，自弈版两项等权，见 p. 8 Supervised learning。
 [^ablation]: 同论文 [pp. 3–4，Figure 4](https://augmentingcognition.com/assets/Silver2017a.pdf#page=3) 与 [p. 9，Neural network architecture comparison](https://augmentingcognition.com/assets/Silver2017a.pdf#page=9)。固定先前训练产生的最后 200 万盘自弈数据；四种组合为 dual–res、sep–res、dual–conv、sep–conv，网络均配合 Zero 搜索，图注比较为每步 5 秒。约 600 Elo 是各自对照下的结果，不是可以任意相加的通用收益。

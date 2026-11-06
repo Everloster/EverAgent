@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-cot-r1-20261105",
+    "run_id": "ai-yanyi-cot-r2-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮agent_identity.py inspect：model=gpt-6-astra，model_source=codex-turn-context，current_model_confirmed=true。仅证明协调生成者；子Reviewer的配置与运行身份另记，不借根身份补证。"
+    "identity_basis": "本轮eacli session current返回gpt-6-astra/codex，confirmed=true，source=codex-thread-state，confidence=session-bound；仅证明生成者身份。"
   },
   "task": {
-    "summary": "《AI演义》第19节CoT深入展开并同步改写原节；以苹果题解释中间步骤、实验、反例与方法边界。",
+    "summary": "《AI演义》32篇全量精修中的第19篇：保持原PDF主线，逐段核对CoT的机制、对照、实验单位与阅读表达。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "原第19节实质改写且标题后第一块为展开入口，展开可回原节/第18节/第20节；其余主文和前18节保持。"
+        "text": "保留第19篇路径和编号，往返总览与相邻分章；总览在系列收束时统一核对，不要求重改其他已验收分章。"
       },
       {
         "id": "R6",
-        "text": "正文独立可读；工作台桌面1440和窄屏390实际点击、目录/脚注/表格验证；来源优先独立复核，私有过程不入正文。"
+        "text": "正文独立可读，核对术语、算式、表格、脚注与导航；独立来源优先复核，执行记录留已有质量文件，不捆绑工作台功能验收。系列富文本呈现另按用户要求作有限检查。"
       }
     ],
     "reader_feedback": [
@@ -147,14 +147,14 @@
     },
     {
       "id": "C3",
-      "claim": "先生成的中间文字会参与后续上下文；有助拆解与调试，但可见步骤不能证明全部内部计算忠实可见。",
+      "claim": "先生成的中间文字会参与后续上下文；先答后解释不能在同一次不回改的自回归生成中反向成为答案前文。过程逻辑正确也不证明忠实呈现模型内部计算。",
       "report_anchor": "intermediate-context",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§2、第3页，完整characterization是open question。"
+      "evidence": "§2/§3.3；自回归时序为机制解释，完整characterization仍为open question。"
     },
     {
       "id": "C4",
@@ -181,14 +181,14 @@
     },
     {
       "id": "C6",
-      "claim": "LaMDA137B GSM8K标准6.5±0.4、算式5.4±0.2、点号6.4±0.3、先答6.1±0.4、CoT14.3±0.4；±为5种示例顺序标准差。",
+      "claim": "LaMDA137B GSM8K标准6.5±0.4、算式5.4±0.2、点号6.4±0.3、先答6.1±0.4、CoT14.3±0.4；±为5种示例顺序标准差。点号数量参照解题算式字符数，不是与CoT严格等token/开销的对照。",
       "report_anchor": "ablation",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§3.3和Table6，不写成CI或仅多token必有效。"
+      "evidence": "§3.3和Table6：equal to the number of characters in the equation；不能推出所有等算力方案比较已完成。"
     },
     {
       "id": "C7",
@@ -203,14 +203,14 @@
     },
     {
       "id": "C8",
-      "claim": "尾字母CoT长度2/3/4为99.4/94.8/63.0，是有限toy长度迁移；text-davinci-002 CSQA79.5→73.5是反例，SayCan测离散计划不是真实机器人执行率。",
+      "claim": "尾字母任务按一个名字的词数2/3/4扩长，非2/3/4个人；PaLM540B CoT为99.4/94.8/63.0。text-davinci-002 CSQA79.5→73.5是反例，SayCan测离散计划不是真实机器人执行率。",
       "report_anchor": "where-it-helps",
       "support": "direct",
       "source_ids": [
         "PAPER"
       ],
       "critical": true,
-      "evidence": "§4–5、Tables4/5；OpenAI模型参数对照由作者推定。"
+      "evidence": "§4–5、Figure3、Tables4/5；Lady Gaga为两词名，OpenAI参数对照由作者推定。"
     },
     {
       "id": "C9",
@@ -274,7 +274,7 @@
     },
     {
       "id": "C14",
-      "claim": "本章278段原时间范围4947.03–5406.77秒，0负时长/倒退、1处0.03秒重叠和1处1.38秒间隔；未听校/测WER，shownotes只给Part1大段起点。",
+      "claim": "本章完整自动转写有轻微时间重叠、间隔与术语识别问题，未听校或测字错率；精确结构记录留转写核查摘要，shownotes仅给Part1起点。",
       "report_anchor": "source-notes",
       "support": "direct",
       "source_ids": [
@@ -282,7 +282,7 @@
         "TRANSCRIPT_REVIEW"
       ],
       "critical": true,
-      "evidence": "原分段与独立百分秒检查、原生公开收据。"
+      "evidence": "原分段278段4947.03–5406.77秒；0负时长/倒退，1处0.03秒重叠与1处1.38秒间隔。正文只保留影响读者判断的边界。"
     },
     {
       "id": "C15",
@@ -319,7 +319,7 @@
     },
     {
       "id": "U3",
-      "title": "先生成的中间文字会参与后续上下文；有助拆解与调试，但可见步骤不能证明全部内部计算忠实可见。",
+      "title": "先生成的中间文字会参与后续上下文；先答后解释不能在同一次不回改的自回归生成中反向成为答案前文。过程逻辑正确也不证明忠实呈现模型内部计算。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -350,7 +350,7 @@
     },
     {
       "id": "U6",
-      "title": "LaMDA137B GSM8K标准6.5±0.4、算式5.4±0.2、点号6.4±0.3、先答6.1±0.4、CoT14.3±0.4；±为5种示例顺序标准差。",
+      "title": "LaMDA137B GSM8K标准6.5±0.4、算式5.4±0.2、点号6.4±0.3、先答6.1±0.4、CoT14.3±0.4；±为5种示例顺序标准差。点号数量参照解题算式字符数，不是与CoT严格等token/开销的对照。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -370,7 +370,7 @@
     },
     {
       "id": "U8",
-      "title": "尾字母CoT长度2/3/4为99.4/94.8/63.0，是有限toy长度迁移；text-davinci-002 CSQA79.5→73.5是反例，SayCan测离散计划不是真实机器人执行率。",
+      "title": "尾字母任务按一个名字的词数2/3/4扩长，非2/3/4个人；PaLM540B CoT为99.4/94.8/63.0。text-davinci-002 CSQA79.5→73.5是反例，SayCan测离散计划不是真实机器人执行率。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -435,7 +435,7 @@
     },
     {
       "id": "U14",
-      "title": "本章278段原时间范围4947.03–5406.77秒，0负时长/倒退、1处0.03秒重叠和1处1.38秒间隔；未听校/测WER，shownotes只给Part1大段起点。",
+      "title": "本章完整自动转写有轻微时间重叠、间隔与术语识别问题，未听校或测字错率；精确结构记录留转写核查摘要，shownotes仅给Part1起点。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -480,7 +480,7 @@
     },
     {
       "id": "U18",
-      "title": "原节改写、节首展开入口与前后节往返，开放问题回接ReAct",
+      "title": "保留原节回链与18/20分章直达，开放问题自然接到ReAct，不把教学顺序误作单线历史。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -496,7 +496,7 @@
     "论文内部部分计数不一致，使用明确表格口径和具体案例，不拼接成总体可靠率。",
     "只精读所列相关页与后续两篇摘要，未精读43页全部材料或后续论文全文。",
     "人物履历、引用统计和产品训练因果未核定；输入工程应用属于待实测建议。",
-    "本轮19节验收不代表31节全系列本轮重验。"
+    "本篇是32篇逐篇精修的一部分；总览一致性与实际富文本呈现由系列收束检查，不把本篇验收冒充全系列完成。"
   ],
   "research_receipts": {
     "source_manifest": {
@@ -527,5 +527,18 @@
       "网页、搜索与图像理解先eacli catalog/select/invoke；本地PDF文字提取与渲染复用成熟工具。",
       "图像辅助中有额外错误推论，已按原页与表内数据排除，未照抄工具解读。"
     ]
+  },
+  "revision_scope": {
+    "revised_on": "2026-11-06",
+    "read_this_revision": [
+      "报告全文、本章278段完整转写、讲义p18文字、作者博客全文、转写核查摘要全文；两篇后续论文仅摘要/版本记录。",
+      "CoT v6正文pp1–9、附录pp16–23与25–30；原图未重看，未变p31/p35相关核验沿用旧记录。"
+    ],
+    "substantive_changes": [
+      "解释先答后讲不能反向提供上下文；将解答正确与内部计算忠实性分开。",
+      "明确点号按算式字符数而非严格等算力；修正尾字母实验的长度单位是词数而非人数。",
+      "全文中英文/数字间距、标题与导航逐段整理；正文不放转写执行计数。"
+    ],
+    "inherited_checks": "来源身份、原图与未变网络收据继承前轮，未重听、重训、复跑模型或验收工作台功能。"
   }
 }
