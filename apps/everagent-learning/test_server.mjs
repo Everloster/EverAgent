@@ -10,7 +10,10 @@ import { fileURLToPath } from 'node:url';
 import { start } from './miniapp/node/server.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const PUBLIC_ROOT = join(HERE, '../..');
+const platform = { darwin: 'darwin', linux: 'linux', win32: 'windows' }[process.platform];
+const arch = process.arch === 'x64' ? 'amd64' : process.arch;
+// Fixtures exercise the same prebuilt Go adapter, never a checkout script.
+process.env.EVERAGENT_LEARNING_INDEXER ||= join(HERE, 'miniapp/bin', `${platform}-${arch}`, `ea-learning-index${process.platform === 'win32' ? '.exe' : ''}`);
 // Keep an inherited personal checkout selection out of synthetic fixtures.
 delete process.env.EVERAGENT_PUBLIC_ROOT;
 function fixture(t) {
@@ -24,7 +27,6 @@ function fixture(t) {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, value);
   };
-  put('scripts/report_catalog.py', readFileSync(join(PUBLIC_ROOT, 'scripts/report_catalog.py')));
   put('config/report-quality-policy.json', '{}');
   put('docs/REPORT_INDEX.md', '# 报告目录');
   put('ai-learning/reports/2026-11-01_demo.md', '---\ntitle: 测试报告\nupdated_on: 2026-11-01\nsource_url: javascript:alert(1)\n---\n# 示例\n\n<script>alert(1)</script>\n\n[危险](java\tscript:alert)\n');
@@ -36,7 +38,7 @@ function fixture(t) {
   put('.git/config', '[remote "origin"]\nurl=' + fixtureRemote.href);
   put('podcast-learning/reports/transcripts/private.md', 'PRIVATE_TRANSCRIPT');
   cpSync(join(HERE, 'miniapp'), join(pluginRoot, 'miniapp'), {
-    recursive: true, filter: (source) => !source.includes('__pycache__'),
+    recursive: true, filter: (source) => !source.includes('__pycache__') && !source.includes(join('miniapp', 'bin')),
   });
   return { temp, repo, pluginRoot, configFile, put };
 }
@@ -111,6 +113,65 @@ test('HTTP origin and settings protection; arbitrary files and transcripts stay 
   } finally { await app.dispose(); }
 });
 
+test('blog pin exposes a chronological title feed without replacing its source document', async (t) => {
+  const f = fixture(t);
+  f.put('web-surfing/TECH_BLOG_UPDATES.md', `# 顶尖技术博客更新
+**最近检查：2026-11-04**
+## 2026 年 11 月
+<details>
+<summary><strong>第一个来源 · 1 篇</strong></summary>
+
+- **11-01** [较早标题](https://example.com/old) · 未做
+
+</details>
+<details>
+<summary><strong>第二个来源 · 1 篇</strong></summary>
+
+- **11-03** [最新标题](https://example.com/new "Original title") · 已学习
+  [阅读报告](../ai-learning/reports/2026-11-01_demo.md#示例)
+
+</details>`);
+  const app = await boot(f, { repoRoot: f.repo });
+  try {
+    const { status, body } = await get(app, '/api/report?path=web-surfing/TECH_BLOG_UPDATES.md');
+    assert.equal(status, 200);
+    assert.deepEqual(body.report.update_feed.items.map((item) => item.date), ['2026-11-03', '2026-11-01']);
+    assert.equal(body.report.update_feed.checked_on, '2026-11-04');
+    assert.equal(body.report.update_feed.items[0].channel, '第二个来源');
+    assert.ok(body.report.update_feed.items[0].report_url.startsWith('dashboard?report='));
+    assert.ok(body.report.html.includes('<details>'));
+    assert.ok(body.report.markdown.includes('Original title'));
+  } finally { await app.dispose(); }
+});
+
+test('podcast title feed retains available, related and missing report states', async (t) => {
+  const f = fixture(t);
+  f.put('podcast-learning/PODCAST_UPDATES.md', `# 小宇宙精选播客
+**最近检查：2026-11-04**
+<details>
+<summary><strong>某档节目 · 3 条</strong></summary>
+
+| 日期 | 本期内容 | 时长 | 学习报告 |
+| --- | --- | --- | --- |
+| 2026-11-04 | [最新一期](https://example.com/new) · [音频](https://example.com/new.mp3) | 30分钟 | [阅读报告](../ai-learning/reports/2026-11-01_demo.md) |
+| 2026-11-03 | [串台版](https://example.com/crossover) | 35分钟 | [相关报告（另一版本）](../ai-learning/reports/2026-11-01_demo.md) |
+| 2026-11-02 | [旧一期](https://example.com/old) | 1小时 | 未做 |
+
+</details>`);
+  const app = await boot(f, { repoRoot: f.repo });
+  try {
+    const { status, body } = await get(app, '/api/report?path=podcast-learning/PODCAST_UPDATES.md');
+    assert.equal(status, 200);
+    assert.equal(body.report.update_feed.kind, 'podcast');
+    const items = body.report.update_feed.items;
+    assert.deepEqual(items.map((item) => item.report_status), ['available', 'related', 'none']);
+    assert.equal(items[0].audio_url, 'https://example.com/new.mp3');
+    assert.ok(items[0].report_url.startsWith('dashboard?report='));
+    assert.equal(items[2].report_url, '');
+    assert.ok(body.report.html.includes('<details>'));
+  } finally { await app.dispose(); }
+});
+
 test('complete long reports, refresh, local images, and symlink escape rejection', async (t) => {
   const f = fixture(t);
   const longPath = 'ai-learning/reports/2026-11-02_long.md';
@@ -133,11 +194,12 @@ test('complete long reports, refresh, local images, and symlink escape rejection
     const asset = await fetch(app.base + '/api/asset?path=docs/assets/sample.png');
     assert.equal(asset.status, 200);
     assert.equal(asset.headers.get('content-type'), 'image/png');
-    assert.equal((await get(app, '/api/asset?path=scripts/report_catalog.py')).status, 404);
+    assert.equal((await get(app, '/api/asset?path=config/report-quality-policy.json')).status, 404);
     f.put('ai-learning/reports/new.md', '# 新报告');
     assert.equal((await get(app, '/api/reports?refresh=1')).body.total, 3);
     f.put(longPath, 'x'.repeat(2 * 1024 * 1024 + 1));
     assert.equal((await get(app, '/api/report?path=' + encodeURIComponent(longPath))).body.error, 'report_too_large');
+    assert.equal((await get(app, '/api/reports?refresh=1')).body.complete, false);
   } finally { await app.dispose(); }
 });
 

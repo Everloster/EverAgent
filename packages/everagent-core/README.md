@@ -48,6 +48,7 @@ go -C packages/everagent-core run ./cmd/ea-quality index --write
 | JSON 形状 | `src/everagent_core/schemas/`；保留资产路径，不代表仍有 Python 包 |
 | Git 参数、消息、双身份与 tree 核验 | `git.go` |
 | 公开质量与快照 | `internal/publicquality/`；`cmd/ea-quality` |
+| 学习工作台文件与渲染适配 | `internal/learning/`；`cmd/ea-learning-index`，复用上述报告目录 |
 | 公开提交绑定 | `cmd/ea-git`；`scripts/ecommit.sh` |
 | 报告模型资格、评分与不可变版本 | [公开策略](../../config/report-quality-policy.json)；core 不复制另一套策略 |
 
@@ -76,5 +77,5 @@ OpenCode V2 目前只能核实 requested Model.Ref，不是 provider 返回型�
 行为记录，不执行新模型回放，也不把过期 A/B 结果当成本次改进证据。
 
 完整契约见 [AGENT_SESSION](../../docs/AGENT_SESSION.md)、[Git 协议](../../docs/PROTOCOL_COMMON.md)
-和 [报告质量门](../../docs/REPORT_QUALITY_GATE.md)。公开仓的学习、报告作者工具及既有实验脚本不属于
-本 module；它们不是 Go 身份/提交/质量链的运行依赖。
+和 [报告质量门](../../docs/REPORT_QUALITY_GATE.md)。[学习工作台](../../apps/everagent-learning/README.md)的
+Node 宿主使用本 module 的 Go 阅读适配器；报告作者工具及既有实验脚本不是 Go 身份/提交/质量链的运行依赖。

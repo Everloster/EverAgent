@@ -6,9 +6,11 @@
 
 想听播客，可以看 [小宇宙精选播客历史速看表](../podcast-learning/PODCAST_UPDATES.md)。
 
-**最近检查：2026-11-02（北京时间）** · **本轮存量：2026-09-02—2026-11-02**
+**最近检查：2026-11-04（北京时间）** · **累计收录时段：2026-09-02—2026-11-04**
 
-检查了 **28 个官方渠道**，目前收录 **349 篇**日期已核实的文章：**43 篇已学习**，**10 篇有相关报告**，**296 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **368 篇**日期已核实的文章：**43 篇已学习**，**10 篇有相关报告**，**315 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+
+**本次补充 19 篇**，增量检查范围为 2026-10-28—2026-11-04；保留历史文章与报告关联。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -16,8 +18,8 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 1 篇 | 0 篇 |
-| [2026-10](#m202610) | 211 篇 | 39 篇 |
+| [2026-11](#m202611) | 18 篇 | 0 篇 |
+| [2026-10](#m202610) | 213 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
 「已学习」表示有直接研究该文或该系列的已完成报告；「相关报告」只提供背景，仍可继续深读本篇。「未做」表示未找到对应专题报告，日报提及或参考文献引用不算完成学习。
@@ -33,6 +35,116 @@
 
 - **11-02** [Schmidhuber 与 Sakana 的 AI 研究研讨会](https://sakana.ai/symposium-2026 "【開催レポート】Sakana AIシンポジウム：Jürgen Schmidhuberが語るAIのこれまでとこれから、日本から挑む言語モデル・世界モデル・Physical AI") · 未做  
   回顾语言模型、世界模型和物理 AI 的讨论，适合了解研究方向。
+
+</details>
+
+
+<details>
+<summary><strong>OpenAI 研究与技术更新 · 2 篇</strong></summary>
+
+- **11-02** [LifeVal：评测 AI 能否帮人完成日常事务](https://openai.com/index/lifeval "LifeVal") · 未做
+
+  介绍覆盖育儿、财务和政务手续等日常任务的评测，重点看 AI 是否真正帮助用户完成事情。
+
+- **11-02** [Qodo × Codex：把团队知识带入代码审查](https://openai.com/index/qodo-codex-plugin "Qodo builds context into AI code review with Codex") · 未做
+
+  介绍如何把公司知识和编码规范纳入审查上下文，关注跨仓库代码检查的工作流。
+
+</details>
+
+
+<details>
+<summary><strong>Google DeepMind · 1 篇</strong></summary>
+
+- **11-03** [Google Antigravity：Agent 驱动的化学信息学](https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity "Agentic cheminformatics with Google Antigravity") · 未做
+
+  介绍化学信息学 Skills 如何支持化合物检索与药物发现工作流；应用效果仍需结合具体实验判断。
+
+</details>
+
+
+<details>
+<summary><strong>AMD ROCm · 4 篇</strong></summary>
+
+- **11-03** [FlyDSL Mono：降低 ATOM 模型服务的解码延迟](https://rocm.blogs.amd.com/software-tools-optimization/flydsl-mono-atom/README.html "FlyDSL Mono Kernels for High-Interactivity LLM Serving in ATOM") · 未做
+
+  围绕高交互性模型服务，介绍内核优化如何减少解码等待，让编码 Agent 更快进入下一步工具调用。
+
+- **11-02** [MI300X 内存加载停顿与指令调度](https://rocm.blogs.amd.com/software-tools-optimization/scheduling_VMEM_loads_gfx942/README.html "Device Memory Load Issue Stalls and Scheduling Opportunities in Lock-Stepped Kernels on AMD Instinct™ MI300X") · 未做
+
+  分析设备内存和缓存层级里的加载停顿，探索锁步执行内核的指令调度优化。
+
+- **11-02** [在多张 AMD RDNA 4 GPU 上扩展扩散推理](https://rocm.blogs.amd.com/artificial-intelligence/diffusion-xdit-rdna4/README.html "How to Scale Diffusion Inference Across AMD RDNA 4 GPUs") · 未做
+
+  围绕图像与视频生成，介绍如何利用多卡显存和计算资源运行更大的扩散模型工作负载。
+
+- **11-02** [TeaCache：加速 Ryzen AI 上的 Stable Diffusion](https://rocm.blogs.amd.com/software-tools-optimization/sd-teacache-npu/README.html "Faster Stable Diffusion on AMD Ryzen™ AI with TeaCache") · 未做
+
+  介绍如何复用中间结果、减少重复计算，在不重新训练模型的前提下加速 NPU 上的图像生成。
+
+</details>
+
+
+<details>
+<summary><strong>NVIDIA 技术博客 · 3 篇</strong></summary>
+
+- **11-02** [分布式训练的自动故障恢复](https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery "Keep Distributed Training Running with Automated Workload Recovery") · 未做
+
+  讨论大规模训练中硬件与软件故障的影响，以及自动恢复工作负载的工程方法。
+
+- **11-02** [让 Kubernetes 从第一天适配 Vera Rubin](https://developer.nvidia.com/blog/making-kubernetes-ai-ready-for-nvidia-vera-rubin-on-day-one "Making Kubernetes AI-Ready for NVIDIA Vera Rubin on Day One") · 未做
+
+  介绍新 GPU 硬件对应的驱动、内核、运行时与网络配置，关注基础设施就绪与验证。
+
+- **11-02** [用 NVIDIA Cosmos 构建交互式仿真世界模型](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos "Build World Models for Interactive Simulation with NVIDIA Cosmos") · 未做
+
+  面向物理 AI 开发，讨论如何让世界模型适配传感器、任务和数据，并进入仿真应用。
+
+</details>
+
+
+<details>
+<summary><strong>Hugging Face 与机构作者 · 3 篇</strong></summary>
+
+- **11-03** [StateBench：长文中的状态变化，模型能跟住吗？](https://huggingface.co/blog/allenai/statebench "StateBench: Testing how language models track state changes over long documents") · 未做
+
+  Ai2 将状态跟踪分为四种复杂度，比较 Transformer、循环与混合架构；长上下文不等于能可靠追踪多步状态变化。
+
+- **11-03** [Palette：让小模型按指定设计语言制作幻灯片](https://huggingface.co/blog/ibm-research/palette-deck-building "Palette: teaching a small model to build decks in your design language") · 未做
+
+  IBM 介绍合成训练数据、规划与绘制分工，以及渲染检查的组合；评测成绩为作者自报。
+
+- **11-03** [Transformers MIC：用小模型提前捕捉集成回归](https://huggingface.co/blog/transformers-mic "Transformers Model Integration Contracts") · 未做
+
+  提出将缩小的模型 fixture、可运行用例和人工复核基线打包为集成契约，在 CPU 上更早发现回归。
+
+</details>
+
+
+<details>
+<summary><strong>PyTorch · 1 篇</strong></summary>
+
+- **11-02** [Ray 加速器 SIG：面向多种硬件的协作计划](https://pytorch.org/blog/announcing-the-special-interest-group-sig-for-ray-on-accelerators "Announcing the Special Interest Group (SIG) for Ray on Accelerators") · 未做
+
+  介绍围绕 Ray 与硬件加速器成立的特别兴趣组；这是协作方向的公告，不代表所有硬件支持已经交付。
+
+</details>
+
+
+<details>
+<summary><strong>Z.ai / 智谱 · 3 篇</strong></summary>
+
+- **11-04** [AutoClaw 多 Agent 研究：规划、分工与复核](https://autoclaw.z.ai/blog/product/autoclaw-agent-cluster-multi-agent-research "Multi-Agent Research with AutoClaw: Plan, Divide, and Review") · 未做
+
+  介绍怎样为并行研究设定一致的比较维度，按依赖关系组织汇总与复核；更多 Agent 不自动等于更好的报告。
+
+- **11-03** [AutoClaw Goal Mode：用交付证据推进多步骤任务](https://autoclaw.z.ai/blog/product/autoclaw-goal-mode-multi-step-tasks "How to Use AutoClaw Goal Mode for Multi-Step Tasks") · 未做
+
+  说明如何定义可验证的目标，将执行与评估分开，并检查文件、来源或实际交互等完成证据。
+
+- **11-02** [AutoClaw Design：把产品简报变成可编辑界面](https://autoclaw.z.ai/blog/product/product-brief-to-ui-design-with-autoclaw "How to Turn a Product Brief into an Editable UI with AutoClaw") · 未做
+
+  从明确用户任务和交互状态开始，介绍界面生成、局部修订、跨设备预览与交付检查。
 
 </details>
 
@@ -159,7 +271,11 @@
 </details>
 
 <details>
-<summary><strong>Google DeepMind · 8 篇</strong></summary>
+<summary><strong>Google DeepMind · 9 篇</strong></summary>
+
+- **10-30** [用 AI 加快规划审批：DeepMind 与英国政府的合作](https://deepmind.google/blog/speeding-up-planning-decisions-with-ai "Speeding up planning decisions with AI") · 未做
+
+  介绍 AI 在规划审批评估中的应用，关注如何辅助行政流程，而不是把规划理解为 Agent 的任务规划。
 
 - **10-28** [Gemini 4 Carbon 发布](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model "Gemini 4 Carbon: Our next frontier model") · 未做  
   介绍新模型的综合能力与官方评测，适合和其他前沿模型横向比较。
@@ -785,6 +901,16 @@
 
 </details>
 
+
+<details>
+<summary><strong>Z.ai / 智谱 · 1 篇</strong></summary>
+
+- **10-29** [AutoClaw 接入 GLM-5.3-flashX-Legal](https://autoclaw.z.ai/blog/model/GLM-5.3-flashX-Legal "GLM-5.3-flashX-Legal Is Now Available in AutoClaw - Z.ai") · 未做
+
+  介绍法律模型在合同修订、证据核对和合规研究中的应用；能力与评测为官方自述。
+
+</details>
+
 [回到顶部](#顶尖技术博客更新)
 
 <a id="m202609"></a>
@@ -1354,11 +1480,12 @@
 
 ## 原文已找到，发布日期待补
 
-这些条目已取得正文，但尚未核实完整发布时间，可能含更早的文章。先保留阅读入口，不把搜索显示的日期当成发布日，也不计入两个月新文数量。
+这些条目已取得正文，但尚未核实完整发布时间，可能含更早的文章。先保留阅读入口，不把搜索显示的日期当成发布日，也不计入逐日收录数量。
 
 <details>
 <summary><strong>Ai2：待补日期的研究文章</strong></summary>
 
+- [Olmo 3 与 Nextcloud：透明、可审计的自托管 AI](https://allenai.org/blog/nextcloud) · 未做。正文已读；本轮未取得确切发布日期，原始页面返回 403，不采用搜索的相对日期。
 - [LitPivot：用动态文献检索发展研究想法](https://allenai.org/blog/litpivot) · 未做。让新论文影响研究方向，而不只是最后补参考文献。
 - [Olmo-core 3：开放的规模化训练基础设施](https://allenai.org/blog/olmocore3) · 未做。介绍 MoE 训练系统与框架更新。
 - [OlmoEarth 1.3：全球卫星数据嵌入](https://allenai.org/blog/olmoearth-v1-3) · 未做。介绍模型与预计算地理表示。
@@ -1405,36 +1532,38 @@
 
 ## 渠道获取情况
 
+2026-11-04 已检查注册表全部 28 个渠道，并对搜索型渠道补读官方目录。RSS/XML 未被 Token Plan 完整保留时使用只读原始来源；搜索日期只作线索，新增日期取自 RSS、原文或官方结构化元数据。下表数量为当前累计，未改写的说明继续记录历史覆盖缺口。
+
 “收录 0 篇”表示本轮没有取得符合范围且日期已核实的条目，不能据此判断该渠道没有更新。后续查询会继续补这些缺口。
 
-| 渠道 | 两个月内已收录 | 本轮获取情况与待补项 |
+| 渠道 | 累计已收录 | 获取情况与待补项 |
 | --- | ---: | --- |
-| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 已核对官方目录，并补查 9、10 月。 |
-| [OpenAI 研究与技术更新](https://openai.com/news/) | 16 | 已读取官方订阅，保留研究、模型、开发接口及有技术内容的案例。 |
-| [Anthropic](https://www.anthropic.com/engineering) | 20 | 已补官方 Research 目录；经济情景研究的具体发布日期仍待补。 |
+| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 本轮搜索与官方目录未取得可核实的近期新文；目录返回内容偏旧，历史缺口继续保留。 |
+| [OpenAI 研究与技术更新](https://openai.com/news/) | 18 | 已复查官方 RSS，补入 LifeVal 与 Qodo/Codex；保留原有研究、模型和技术案例。 |
+| [Anthropic](https://www.anthropic.com/engineering) | 20 | 已复查工程与研究目录；本轮未新增日期已核实的条目，经济情景文章日期缺口保留。 |
 | [Google Research](https://research.google/blog/) | 11 | 已补首页归档和原文；分页返回旧内容，9 月上旬仍可能遗漏。 |
-| [Google DeepMind](https://deepmind.google/discover/blog/) | 18 | 已读取官方订阅；本次条目覆盖 9、10 月。 |
+| [Google DeepMind](https://deepmind.google/discover/blog/) | 20 | 已复查官方 RSS，补入化学信息学与规划审批两篇文章。 |
 | [Google Developers](https://developers.googleblog.com/) | 15 | 已按月补查并核对原文日期，剔除了被搜索误标为近期的旧文。 |
 | [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 10 | 已检查官方目录与分页；本次取得的历史主要从 9 月下旬开始。 |
 | [Apple 机器学习研究](https://machinelearning.apple.com/) | 10 | 已查订阅及研究目录；4 篇只标月份，另列。9 月历史可能不全。 |
-| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 主站访问与搜索覆盖受限，未核实窗口内新文；Muse Spark 的配套文章见 HF、PyTorch 和 vLLM。 |
-| [Ai2](https://allenai.org/blog) | 1 | Novelty Bench 日期由 Ai2 的 HF 同文镜像核对；其他候选已读正文，但原站日期未能取得。 |
-| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 当前检索主要返回招聘或旧内容，尚未取得可核实的近期技术文章。 |
-| [腾讯混元](https://hy.tencent.ai/research) | 1 | 已检查官方研究目录，核实 batch scaling 文章日期。 |
-| [Qwen](https://qwen.ai/blog) | 0 | 当前文章页只读到脚本外壳，未核实近期发布时间；部署文章见 vLLM。 |
-| [Kimi](https://www.kimi.com/blog) | 1 | 已检查当前官方目录；新英文路径已加入渠道。 |
+| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 本轮读到官方目录，但返回的最新可见文章为较早内容；未据此声称没有新发布。 |
+| [Ai2](https://allenai.org/blog) | 1 | StateBench 的 HF 官方文章列在 HF 与机构作者组；Nextcloud 文章日期仍待补，其余原有日期缺口保留。 |
+| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 已复查官方首页；最新可见条目为招聘与较早发布，本轮未新增技术文章。 |
+| [腾讯混元](https://hy.tencent.ai/research) | 1 | 已复查研究目录；Hy4 候选原文读取失败，目录所列 preview 为 8 月旧文，不算近期更新。 |
+| [Qwen](https://qwen.ai/blog) | 0 | 本轮仍只读到页面外壳，无法据此核验近期新文；保留获取缺口。 |
+| [Kimi](https://www.kimi.com/blog) | 1 | 已复查官方目录；搜索命中的 K2 Thinking 为 2025-11-06 旧文，未误列为新发布。 |
 | [vLLM](https://vllm.ai/blog/) | 35 | 已读取官方订阅；覆盖窗口内的发布、模型适配与推理工程文章。 |
-| [PyTorch](https://pytorch.org/blog/) | 26 | 已补至第三页，覆盖到 9 月初；保留技术内容。 |
-| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 47 | 已读取完整博客列表中的窗口内条目，补回关键词筛选遗漏的技术文章。 |
-| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 63 | 已读取官方订阅，另补 TensorRT 调优下篇。 |
-| [Hugging Face 与机构作者](https://huggingface.co/blog) | 24 | 已读取订阅并补 IBM、NVIDIA 配套原文；Ai2 同文镜像合并到 Ai2，历史仍可能有遗漏。 |
+| [PyTorch](https://pytorch.org/blog/) | 27 | 已复查官方 RSS，补入 Ray 加速器 SIG 公告；与已有 PyTorch 发布文章分开保留。 |
+| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 51 | 已复查官方 RSS，补入 FlyDSL Mono、MI300X 调度、多卡扩散推理与 TeaCache 四篇。 |
+| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 66 | 已复查官方 RSS，补入训练恢复、Vera Rubin/Kubernetes 与 Cosmos 三篇。 |
+| [Hugging Face 与机构作者](https://huggingface.co/blog) | 27 | 已复查 RSS，读取 StateBench、Palette 与 Transformers MIC 原文并补入；旧文镜像合并规则不变。 |
 | [GitHub AI & ML](https://github.blog/ai-and-ml/) | 4 | 已查目录、分页和分月搜索；9 月技术文章的历史覆盖仍有限。 |
 | [Cloudflare AI](https://blog.cloudflare.com/) | 5 | 已核实 10 月文章；订阅较短，9 月历史仍待补。 |
 | [Amazon Science](https://www.amazon.science/blog) | 9 | 已检查博客目录与分页；本次最早核实到 9 月 10 日。 |
 | [Sakana AI](https://sakana.ai/blog) | 15 | 已补官方目录中的日文、英文技术文章；同文语言版本不重复计数。 |
-| [MiniMax](https://www.minimax.io/blog) | 2 | 已核实 M3.1 Flash、Code Mini App 两篇原文的发布时间。 |
-| [Mistral AI](https://mistral.ai/news) | 2 | 已核实两篇 Large 4 原文；Timestral 为 7 月旧文，未放入本时间段。 |
-| [Z.ai / 智谱](https://z.ai/blog) | 0 | 已读近期候选正文，但页面缺少可核实的发布日期，另列。 |
+| [MiniMax](https://www.minimax.io/blog) | 2 | 已复查官方目录；当前可见最新仍为 10 月 M3.1 Flash 与 Code Mini App，未新增条目。 |
+| [Mistral AI](https://mistral.ai/news) | 2 | 官方目录将 Large 4 开放权重文章列为 2026-10-29；未将搜索的“2小时前”误当新发布，也未重复收录。 |
+| [Z.ai / 智谱](https://z.ai/blog) | 4 | 主博客仍返回空壳；从官方 AutoClaw 子站核对原文与 datePublished，补入 4 篇。旧主站文章的日期缺口保留。 |
 | [DeepSeek](https://www.deepseek.com/en/news) | 1 | 已核实 V4.1 Flash 官方发布；当前渠道为发布信号源，不能代表全部研究产出。 |
 | [Manus](https://manus.im/blog) | 7 | 补查近期原文，并用页面中的发布时间核对年月日；另保留已学习旧文。 |
 

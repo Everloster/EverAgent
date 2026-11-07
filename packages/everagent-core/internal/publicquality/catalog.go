@@ -344,6 +344,20 @@ func Catalog(s *Snapshot) ([]Report, []Finding) {
 	return reports, findings
 }
 
+// CatalogFiles projects a caller-scoped file source through the same report
+// catalog used by quality/index. It does not require Git (ZIPs and forks work),
+// execute repository code, or claim to be a verified quality snapshot. The
+// caller owns path confinement and the reader must enforce the supplied limit.
+func CatalogFiles(paths []string, read func(string, int) ([]byte, error)) ([]Report, []Finding) {
+	entries := make(map[string]Entry, len(paths))
+	for _, p := range paths {
+		entries[p] = Entry{Mode: "100644"}
+	}
+	return Catalog(newSnapshot(entries, func(p string, _ Entry, limit int) ([]byte, error) {
+		return read(p, limit)
+	}))
+}
+
 func mdCell(s string) string { return strings.TrimSpace(strings.ReplaceAll(s, "|", "\\|")) }
 
 // Encode only the displayed destination; Report.Path remains the file identity.

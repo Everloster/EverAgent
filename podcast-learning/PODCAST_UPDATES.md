@@ -6,11 +6,13 @@
 
 每次查询「小宇宙精选播客最近有什么更新」，都更新这一页，保留之前的单集和报告链接。
 
-**最近检查：2026-11-02（北京时间）** · **已收录时段：2026-09-02—2026-11-02**
+**最近检查：2026-11-04（北京时间）** · **已收录时段：2026-09-02—2026-11-04**
 
 报告状态更新于 **2026-11-03**：新增十字路口年终复盘①的学习报告。
 
-本页收录 **294 条单集发布记录**：**66 条已有学习报告**，**228 条未做学习任务**。覆盖精选清单的 **58 档节目**，其中 42 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+**本次补充 13 期**，增量检查覆盖 2026-10-28—2026-11-04；新增单集未找到对应的已完成专题报告，原有报告关联保留。
+
+本页收录 **307 条单集发布记录**：**66 条已有专题报告**，**1 条仅有相关报告**，**240 条暂无报告**。覆盖精选清单的 **58 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -18,9 +20,9 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 99 条 | 49 条 |
-| [商业 / 投资 / 职场](#business) | 104 条 | 11 条 |
-| [泛文化 / 生活 / 健康](#life) | 91 条 | 6 条 |
+| [AI / 科技](#tech) | 105 条 | 49 条 |
+| [商业 / 投资 / 职场](#business) | 107 条 | 11 条 |
+| [泛文化 / 生活 / 健康](#life) | 95 条 | 6 条 |
 
 「已有学习报告」表示本期有对应的已完成或已归档报告，共 66 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
@@ -30,16 +32,29 @@
 
 ## 最近一周
 
-2026-10-27—2026-11-02，共 32 条，其中 7 条已有学习报告。
+2026-10-29—2026-11-04，共 35 条，其中 5 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
 
 | 日期 | 节目 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- | --- |
+| 2026-11-04 | 开始连接 LinkStart | [Vol.137｜Personal AI：记忆、主动服务与托付边界](https://www.xiaoyuzhoufm.com/episode/6ae9aa3297726cd4675c21c0 "Vol.137｜Personal AI：你愿意把生活托付给一个怎样的 AI？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/63ff0da51b1faf8a0b70b337/6ae9aa3297726cd4675c21c0/media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lrrSvSpWtlt9ywxPiUDGuFzU0UL8.m4a) | 1小时24分 | 未做 |
+| 2026-11-04 | 罗永浩的十字路口 | [叶洪新 × 罗永浩：徕芬的产品与创业路径](https://www.xiaoyuzhoufm.com/episode/6aea8204c96c8942ec16ee88 "徕芬科技创始人叶洪新×罗永浩！初中毕业后，我先造飞机去了......") · [音频](https://dts-api.xiaoyuzhoufm.com/track/68981df29e7bcd326eb91d88/6aea8204c96c8942ec16ee88/media.xyzcdn.net/68981df29e7bcd326eb91d88/ll4eKwtvjNpxit2gDkVcfPHF0ELi.m4a) | 3小时19分 | 未做 |
+| 2026-11-04 | 声动早咖啡 | [航司为何越来越依赖租来的飞机？](https://www.xiaoyuzhoufm.com/episode/6ae9d09e97726cd4675c34fd "全球一半的客机都是租来的，为什么航空公司越来越依赖租飞机？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6ae9d09e97726cd4675c34fd/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lru7CLFAKMT0_gYOJiiPEXcj-we9.m4a) | 14分钟 | 未做 |
+| 2026-11-03 | 硅基立场 | [Vol.34｜ZooWork 胡宁：企业如何积累自己的 AI 资产](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8 "Vol.34 对话ZooWork胡宁： AI 时代里，企业不应该再帮别人数钱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6ae450f197726cd4675a2ca8/media.xyzcdn.net/655b2870583732e09f301b22/lu1pUSC3jKtg3_TEXK1VHI7irTAp.m4a) | 1小时31分 | 未做 |
+| 2026-11-03 | AI炼金术 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") | 1小时35分 | 未做 |
+| 2026-11-03 | 高能量 | [Vol.240｜资本市场再平衡与全球股市波动](https://www.xiaoyuzhoufm.com/episode/6ae99c15c96c8942ec16a53d "Vol.240 宏观漫谈113｜中国资本市场的提前再平衡与全球股市波动（10.30录制）") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6ae99c15c96c8942ec16a53d/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lqlF4PXdQ6EjWHQIV1MDr1hSE-wn.m4a) | 1小时10分 | 未做 |
+| 2026-11-03 | 屠龙之术 | [非典型创作者的知识付费尝试与内容方法](https://www.xiaoyuzhoufm.com/episode/6ae8794197726cd4675b9a63 "一个非典型内容创作者的知识付费新尝试，也是一个重轻粉丝对重轻的致敬") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6507bc165c88d2412626b401/6ae8794197726cd4675b9a63/media.xyzcdn.net/6507bc165c88d2412626b401/ltJ_b4PWcIm7bHFLW60jrglDrerb.m4a) | 20分钟 | 未做 |
+| 2026-11-03 | 半拿铁·周刊 | [No.53｜电摩出海、车险涨价与 AI 电影](https://www.xiaoyuzhoufm.com/episode/6ae967cec96c8942ec167f82 "No.53 电摩出海闯远方、车险价格为何涨、老干妈辟谣忙、AI 电影票房凉、红果时长掀风浪") · [音频](https://dts-api.xiaoyuzhoufm.com/track/682c566cc7c5f17595635a2c/6ae967cec96c8942ec167f82/media.xyzcdn.net/682c566cc7c5f17595635a2c/lkoNCf4-V8FcuNem50MowIGN1RbQ.m4a) | 2小时1分 | 未做 |
+| 2026-11-03 | 起朱楼宴宾客 | [187｜凌华薇：识别金融骗局与暴雷风险](https://www.xiaoyuzhoufm.com/episode/6ae6d14b97726cd4675adb85 "187.普通人究竟要如何识别金融“骗局”，规避暴雷风险？｜对话财新主编凌华薇") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61dd99a47b29652ff572257b/6ae6d14b97726cd4675adb85/media.xyzcdn.net/61dd99a47b29652ff572257b/lq8qt1sstvzaug_NmKFTGt17tf49.m4a) | 1小时12分 | 未做 |
+| 2026-11-03 | 三五环 | [No.234｜捷克游记：城堡、银矿与酒馆](https://www.xiaoyuzhoufm.com/episode/6ae8bb1097726cd4675bbd9d "No.234 捷克游记：属于城堡、银矿与酒馆的波西米亚地图") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e280fab418a84a0461faa3c/6ae8bb1097726cd4675bbd9d/media.xyzcdn.net/5e280fab418a84a0461faa3c/lmCKv_XOcbjfcVCD5wbYTBAMuKwf.m4a) | 2小时9分 | 未做 |
+| 2026-11-03 | 忽左忽右 | [513｜林晓光：南齐武帝与永明文学](https://www.xiaoyuzhoufm.com/episode/6ae9a8d3c96c8942ec16aeb7 "513 为永明时代作传：林晓光谈南齐武帝萧赜与南朝文学的爆发") | 1小时35分 | 未做 |
+| 2026-11-03 | 声动早咖啡 | [羽毛球价格回落，无印良品复制中国经验](https://www.xiaoyuzhoufm.com/episode/6ae876cf97726cd4675b98f1 "羽毛球价格回落，无印良品将向欧美复制中国经验") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6ae876cf97726cd4675b98f1/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lkP7cJvG3qzt0XBa5zC4ucOE2S0O.m4a) | 11分钟 | 未做 |
 | 2026-11-02 | 十字路口Crossing | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
 | 2026-11-02 | 屠龙之术 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | [相关报告（十字路口版）](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)；本版未单独学习 · [串台](#crossover) |
 | 2026-11-02 | 商业就是这样 | [商业小样 53｜豪华车市场：领先者如何重新挑战？](https://www.ximalaya.com/sound/1029453890 "商业小样53 &#124; 当原来的领先者拿出挑战者的姿态，豪华车市场就变得有趣了") | 20分钟 | 未做 |
+| 2026-11-02 | 面基 | [范恩洁：资本集团与长期投资的“异类”](https://www.xiaoyuzhoufm.com/episode/6ae7f63bc96c8942ec15cfd2 "异 类") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6388760f22567e8ea6ad070f/6ae7f63bc96c8942ec15cfd2/media.xyzcdn.net/6388760f22567e8ea6ad070f/lossAd1tRaYjDP11PBjIYWRXY43O.m4a) | 1小时45分 | 未做 |
 | 2026-11-02 | 声动早咖啡 | [7-11 在印度：牵手本土巨头为何仍难立足？](https://www.xiaoyuzhoufm.com/episode/6ae7126ac96c8942ec1583b4 "7-11 败走印度市场，为何牵手本土巨头仍难站稳脚跟？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lg-G1rR9Iy0Zz7xosOoYGIRYRxD3.m4a) | 17分钟 | 未做 |
 | 2026-11-02 | 菠萝健康派 | [Vol.136｜吴小华：年年体检，卵巢癌为何仍难早发现？](https://www.xiaoyuzhoufm.com/episode/6ae6d4e5c96c8942ec1569ff "吴小华教授：年年体检，为什么卵巢癌还是发现晚了？vol.136") · [音频](https://media.xyzcdn.net/6693ae814ce7c8de0f47e220/lttIGwJ3TGTeDrxKwv3Ee8D_B2aZ.m4a) | 1小时1分 | 未做 |
 | 2026-10-30 | 赛博对话 | [Vol.60｜马斯克、飞行汽车与技术兑现](https://www.xiaoyuzhoufm.com/episode/6ae3f61897726cd46759f169 "vol.60｜马斯克吹过的牛基本都实现了？做飞行汽车的真正目的是啥？｜电动EmmaX说车的阿飞X一苒") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/ltbUF_BqWL8gP_PpSTMFcDdBmOiM.m4a) | 1小时30分 | [阅读报告](./reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) |
@@ -59,16 +74,6 @@
 | 2026-10-29 | 听懂涨声 | [课代表立正：离开大厂，告别 Fake Work](https://www.xiaoyuzhoufm.com/episode/6ae1e359c96c8942ec13bb1f "离开大厂之后，我才发现，没有Fake Work的工作其实很开心｜对话课代表立正") · [音频](https://media.xyzcdn.net/6543750424e7ad2107e8b0b5/lgkpIcLmF5iBCJCk_RIeT8saBmnV.m4a) | 1小时9分 | 未做 |
 | 2026-10-29 | 声动早咖啡 | [苹果系统屏蔽“摇一摇”广告，胡润百富榜更新](https://www.xiaoyuzhoufm.com/episode/6ae1decbc96c8942ec13b8dd "达霏欣｜苹果新系统可禁止「摇一摇」广告，张一鸣再登胡润百富榜首") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lkvtf1ossI80ZbDnDP7vQQHCzXRl.m4a) | 12分钟 | 未做 |
 | 2026-10-29 | 人文清华播客：对话清华学者 | [144｜人口学家：少生孩子，下一代会更轻松吗？](https://www.ximalaya.com/sound/1027412508 "144 对话人口学家：这代人不生孩子，下一代人会过得更轻松吗？") | 1小时6分 | 未做 |
-| 2026-10-28 | AI炼金术 | [余一入职 Manus：个人 Agent 与团队协作](https://www.ximalaya.com/sound/1028338072 "找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊") | 1小时26分 | [阅读报告](./reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) |
-| 2026-10-28 | 半拿铁｜商业沉浮录 | [No.224｜美第奇家族与文艺复兴（下）](https://www.xiaoyuzhoufm.com/episode/6ae1861197726cd46758f0f3 "No.224 🏛️ 1492、破产、教皇、达芬奇、拉斐尔与托斯卡纳：文艺复兴背后的美第奇家族·下") · [音频](https://media.xyzcdn.net/62382c1103bea1ebfffa1c00/llEmOtCVCjXE2AMuY24ljcmeN-69.m4a) | 2小时36分 | 未做 |
-| 2026-10-28 | 能者多唠｜商业原声 | [Vol.133｜天猫校园 CEO：年轻人的消费趋势](https://www.xiaoyuzhoufm.com/episode/6ae18934c96c8942ec138091 "Vol.133 和天猫校园CEO，聊聊年轻人的消费趋势和潜力市场") · [音频](https://media.xyzcdn.net/64dc85711f9ccf7870016a0e/lo-SsSBSFWznf7iIPjo3dIRkwgG6.m4a) | 1小时36分 | 未做 |
-| 2026-10-28 | 屠龙大实话 | [65｜主体性是鸡汤，还是有实际意义？](https://www.xiaoyuzhoufm.com/episode/6ae0833097726cd467588865 "65. 主体性是鸡汤还是有实际意义？") · [音频](https://media.xyzcdn.net/663c1227c844ff347a305223/loao13eYPEkNHyBxBAditHMDOwZG.m4a) | 50分钟 | 未做 |
-| 2026-10-28 | 声动早咖啡 | [美国肯德基为何告别合作近四十年的百事？](https://www.xiaoyuzhoufm.com/episode/6ae0b2e7c96c8942ec133473 "达霏欣｜抛弃合作近 40 年的百事，美国肯德基在折腾什么？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lussgvJZqq7RT7as1U33H_Ct2spr.m4a) | 17分钟 | 未做 |
-| 2026-10-27 | 屠龙之术 | [AI 2026：模型更迭、产业变化与 Personal Agent](https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d "不是，怎么又换版本了？---狂飙中的AI 2026") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/liFTkQnDduLqfyZNmKIqZVdacEH6.m4a) | 2小时6分 | [阅读报告](./reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) |
-| 2026-10-27 | 疯投圈 | [150｜alo 入华，凯乐石与之禾提价](https://crazy.capital/150 "150 ✪ alo入华姗姗来迟；凯乐石、之禾持续提价") | 1小时14分 | 未做 |
-| 2026-10-27 | 半拿铁·周刊 | [No.52｜AI 投毒、反诈机器人、航线与消费动态](https://www.xiaoyuzhoufm.com/episode/6ae084d2c96c8942ec1317e2 "No.52 欧洲航线扩张、AI 投毒新章、反诈机器人登场、星巴克座位设防、医院托育转行、校外培训很忙、骑手送货补偿") · [音频](https://media.xyzcdn.net/682c566cc7c5f17595635a2c/lmdGXEDDaDpm2jTjIXRqin0Zl1N0.m4a) | 2小时 | 未做 |
-| 2026-10-27 | 忽左忽右 | [511｜费孝通、江南丝业与三十年代青年思潮](https://www.xiaoyuzhoufm.com/episode/6ae0674fc96c8942ec13048e "511 重新发现费孝通：文学视角下的三十年代江南丝业危机与北平青年思潮") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lnSUCO6DZ9OdGC5X4rw5NRd_EQbs.m4a) | 1小时58分 | 未做 |
-| 2026-10-27 | 声动早咖啡 | [航司调整航线，减肥药可能影响啤酒业](https://www.xiaoyuzhoufm.com/episode/6adf52e2c96c8942ec12933e "达霏欣｜国内航司调整航线布局，减肥药流行或影响啤酒业") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lkTS-8Ubo2CwTFKBBndbOnhnMeeR.m4a) | 13分钟 | 未做 |
 
 </details>
 
@@ -135,12 +140,13 @@
 <a id="show-guiji-lichang"></a>
 
 <details>
-<summary><strong>硅基立场 · 2 条 · 1 条有报告</strong></summary>
+<summary><strong>硅基立场 · 3 条 · 1 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/hnetc83hllku) · [更早单集索引](./wiki/show-indexes/guiji-lichang.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [Vol.34｜ZooWork 胡宁：企业如何积累自己的 AI 资产](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8 "Vol.34 对话ZooWork胡宁： AI 时代里，企业不应该再帮别人数钱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6ae450f197726cd4675a2ca8/media.xyzcdn.net/655b2870583732e09f301b22/lu1pUSC3jKtg3_TEXK1VHI7irTAp.m4a) | 1小时31分 | 未做 |
 | 2026-10-16 | [Vol.33｜姚旭：Z 世代与 AI 情绪陪伴](https://www.xiaoyuzhoufm.com/episode/6ad0f9230e4e410a05bd8550 "Vol.33 对话Nauk Nauk姚旭：Z世代拒绝表演，AI成了情绪出口") · [音频](https://media.xyzcdn.net/655b2870583732e09f301b22/lhrM8zzT4biLpzYe8ebUiMvisTMI.m4a) | 2小时19分 | 未做 |
 | 2026-09-24 | [Vol.32｜张帆：FDE 与企业自身的 AI 能力](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407 "Vol.32 对话元理智能张帆：去他X的FDE") · [音频](https://media.xyzcdn.net/655b2870583732e09f301b22/ltzT3cXqoqhtu0oe-q1p3fmFy847.m4a) | 1小时43分 | [阅读报告](./reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) |
 
@@ -167,12 +173,13 @@
 <a id="show-linkstart"></a>
 
 <details>
-<summary><strong>开始连接 LinkStart · 8 条 · 2 条有报告</strong></summary>
+<summary><strong>开始连接 LinkStart · 9 条 · 2 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/q9a6lueucj6a) · [更早单集索引](./wiki/show-indexes/linkstart.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-04 | [Vol.137｜Personal AI：记忆、主动服务与托付边界](https://www.xiaoyuzhoufm.com/episode/6ae9aa3297726cd4675c21c0 "Vol.137｜Personal AI：你愿意把生活托付给一个怎样的 AI？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/63ff0da51b1faf8a0b70b337/6ae9aa3297726cd4675c21c0/media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lrrSvSpWtlt9ywxPiUDGuFzU0UL8.m4a) | 1小时24分 | 未做 |
 | 2026-10-29 | [Vol.136｜Stripe CMO 谈中国公司出海](https://www.xiaoyuzhoufm.com/episode/6ae1c5a5c96c8942ec13abef "Vol.136｜关于中国公司出海，Stripe CMO 给出了几条准则") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/ltGT-3XUaQwwCwrDQmBDsWjws4cS.m4a) | 51分钟 | [阅读报告](./reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) |
 | 2026-10-21 | [Vol.135｜UDL：AI 眼镜与折叠屏的设计取舍](https://www.xiaoyuzhoufm.com/episode/6ad6fb05a09b94f787eb2cae "Vol.135｜对话 UDL：AI 眼镜、折叠屏，以及技术背后的设计取舍") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lkbrkbdXtWZ38IpZNo4rs4q8fYeF.m4a) | 1小时5分 | [阅读报告](./reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) |
 | 2026-10-14 | [Vol.134｜GPT-6 之后，机器人创业还剩什么？](https://www.xiaoyuzhoufm.com/episode/6ace096ee742e36efcc25e5a "Vol.134｜GPT-6 之后，机器人创业还剩下什么？") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/loFRKDr9p_Al4E5z-D9WpiLGkyTP.m4a) | 1小时13分 | 未做 |
@@ -187,12 +194,13 @@
 <a id="show-ai-lianjinshu"></a>
 
 <details>
-<summary><strong>AI炼金术 · 9 条 · 6 条有报告</strong></summary>
+<summary><strong>AI炼金术 · 10 条 · 6 条有报告</strong></summary>
 
 [公开订阅](https://www.ximalaya.com/album/74194808.xml) · [更早单集索引](./wiki/show-indexes/ai-lianjinshu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") | 1小时35分 | 未做 |
 | 2026-10-28 | [余一入职 Manus：个人 Agent 与团队协作](https://www.ximalaya.com/sound/1028338072 "找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊") | 1小时26分 | [阅读报告](./reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) |
 | 2026-10-23 | [姚旭聊 NaukNauk：AI 如何听普通人的心里话](https://www.ximalaya.com/sound/1026998207 "AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk") | 1小时43分 | [阅读报告](./reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) |
 | 2026-10-18 | [晓辉博士与任鑫：AI 创业，先卖还是先做？](https://www.ximalaya.com/sound/1025210406 "以后一定会更糟，所以现在先别慌 ｜和晓辉博士聊创业和 AI") | 2小时15分 | [阅读报告](./reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md) |
@@ -284,15 +292,31 @@
 
 </details>
 
+<a id="show-luoyonghao-crossing"></a>
+
+<details>
+<summary><strong>罗永浩的十字路口 · 1 条</strong></summary>
+
+[公开订阅](https://feed.xyzfm.space/wmnkvmrpwuww) · [更早单集索引](./wiki/show-indexes/luoyonghao-crossing.md)
+
+| 日期 | 本期内容 | 时长 | 学习报告 |
+| --- | --- | --- | --- |
+| 2026-11-04 | [叶洪新 × 罗永浩：徕芬的产品与创业路径](https://www.xiaoyuzhoufm.com/episode/6aea8204c96c8942ec16ee88 "徕芬科技创始人叶洪新×罗永浩！初中毕业后，我先造飞机去了......") · [音频](https://dts-api.xiaoyuzhoufm.com/track/68981df29e7bcd326eb91d88/6aea8204c96c8942ec16ee88/media.xyzcdn.net/68981df29e7bcd326eb91d88/ll4eKwtvjNpxit2gDkVcfPHF0ELi.m4a) | 3小时19分 | 未做 |
+
+</details>
+
+[回到顶部](#小宇宙精选播客历史速看表)
+
 <a id="show-gaonengliang"></a>
 
 <details>
-<summary><strong>高能量 · 7 条 · 2 条有报告</strong></summary>
+<summary><strong>高能量 · 8 条 · 2 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/jhfuba3dahq8) · [更早单集索引](./wiki/show-indexes/gaonengliang.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [Vol.240｜资本市场再平衡与全球股市波动](https://www.xiaoyuzhoufm.com/episode/6ae99c15c96c8942ec16a53d "Vol.240 宏观漫谈113｜中国资本市场的提前再平衡与全球股市波动（10.30录制）") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6ae99c15c96c8942ec16a53d/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lqlF4PXdQ6EjWHQIV1MDr1hSE-wn.m4a) | 1小时10分 | 未做 |
 | 2026-10-26 | [Vol.239｜陆铭：AI、内卷、房价与消费](https://www.xiaoyuzhoufm.com/episode/6adf44a3c96c8942ec128914 "Vol.239 访问思考者1｜李翔对话陆铭：聊聊AI、内卷、房价和消费抉择") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/ltYDlkriTPwTwp7w2t1cypuJaYak.m4a) | 2小时21分 | [阅读报告](./reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md) |
 | 2026-10-20 | [Vol.238｜全球资本市场为什么“缺钱”？](https://www.xiaoyuzhoufm.com/episode/6ad73cbbef67611cac7972a7 "Vol.238 宏观漫谈112｜全球资本市场，集体“缺钱”？") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lptdvCfn8Elgq5cwD6ZgmqO5zmdS.m4a) | 1小时27分 | [阅读报告](./reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) |
 | 2026-10-16 | [Vol.237｜冯仑：做一个有益于人民的老登](https://www.xiaoyuzhoufm.com/episode/6ad1296c0e4e410a05bd8be2 "Vol.237 对话冯仑：做一个有益于人民的老登") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lnAZ5vH8WBgTOjJouEir0Ba-mzGp.m4a) | 3小时5分 | 未做 |
@@ -355,12 +379,13 @@
 <a id="show-tulong-zhishu"></a>
 
 <details>
-<summary><strong>屠龙之术 · 7 条 · 4 条有报告</strong></summary>
+<summary><strong>屠龙之术 · 8 条 · 4 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/834hyx3v9k74) · [更早单集索引](./wiki/show-indexes/tulong-zhishu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [非典型创作者的知识付费尝试与内容方法](https://www.xiaoyuzhoufm.com/episode/6ae8794197726cd4675b9a63 "一个非典型内容创作者的知识付费新尝试，也是一个重轻粉丝对重轻的致敬") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6507bc165c88d2412626b401/6ae8794197726cd4675b9a63/media.xyzcdn.net/6507bc165c88d2412626b401/ltJ_b4PWcIm7bHFLW60jrglDrerb.m4a) | 20分钟 | 未做 |
 | 2026-11-02 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | [相关报告（十字路口版）](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)；本版未单独学习 · [串台](#crossover) |
 | 2026-10-27 | [AI 2026：模型更迭、产业变化与 Personal Agent](https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d "不是，怎么又换版本了？---狂飙中的AI 2026") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/liFTkQnDduLqfyZNmKIqZVdacEH6.m4a) | 2小时6分 | [阅读报告](./reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) |
 | 2026-09-29 | [AI 开始设计芯片：EDA 会怎么变？](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88 "当AI开始设计芯片---聊聊EDA与AI时代的芯片设计") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lrhW9aNpML4jmHFQgw6PYzIFx3-Q.m4a) | 58分钟 | [阅读报告](./reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) |
@@ -436,12 +461,13 @@
 <a id="show-bannatie-zhoukan"></a>
 
 <details>
-<summary><strong>半拿铁·周刊 · 4 条 · 1 条有报告</strong></summary>
+<summary><strong>半拿铁·周刊 · 5 条 · 1 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/vylham8uw3ay) · [更早单集索引](./wiki/show-indexes/bannatie-zhoukan.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [No.53｜电摩出海、车险涨价与 AI 电影](https://www.xiaoyuzhoufm.com/episode/6ae967cec96c8942ec167f82 "No.53 电摩出海闯远方、车险价格为何涨、老干妈辟谣忙、AI 电影票房凉、红果时长掀风浪") · [音频](https://dts-api.xiaoyuzhoufm.com/track/682c566cc7c5f17595635a2c/6ae967cec96c8942ec167f82/media.xyzcdn.net/682c566cc7c5f17595635a2c/lkoNCf4-V8FcuNem50MowIGN1RbQ.m4a) | 2小时1分 | 未做 |
 | 2026-10-27 | [No.52｜AI 投毒、反诈机器人、航线与消费动态](https://www.xiaoyuzhoufm.com/episode/6ae084d2c96c8942ec1317e2 "No.52 欧洲航线扩张、AI 投毒新章、反诈机器人登场、星巴克座位设防、医院托育转行、校外培训很忙、骑手送货补偿") · [音频](https://media.xyzcdn.net/682c566cc7c5f17595635a2c/lmdGXEDDaDpm2jTjIXRqin0Zl1N0.m4a) | 2小时 | 未做 |
 | 2026-10-13 | [No.51｜深睡、养老院、临终照护与诺奖](https://www.xiaoyuzhoufm.com/episode/6acda912e742e36efcc22411 "No.51 深睡如何增强、养老院青年进场、临终照护扩张、气候影响产粮、最后再聊聊诺奖") · [音频](https://media.xyzcdn.net/682c566cc7c5f17595635a2c/lrvOSA9EXvwkwXvpuMuSeQ-hxbfX.m4a) | 1小时33分 | 未做 |
 | 2026-09-22 | [No.50｜内容刷量、便利店、豆包手机等动态](https://www.xiaoyuzhoufm.com/episode/6ab0ce5bf04646b3a954cee7 "No.50 内容刷量灌水、便利店员工吃亏、电玩城连锁清退、钟薛高再次回归、豆包手机争位、家长信息合规") · [音频](https://media.xyzcdn.net/682c566cc7c5f17595635a2c/loUdTZLiD7ZCXiL7ohJbMZXdUs5C.m4a) | 1小时39分 | [阅读报告](./reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) |
@@ -479,12 +505,13 @@
 <a id="show-qizhulou"></a>
 
 <details>
-<summary><strong>起朱楼宴宾客 · 7 条 · 3 条有报告</strong></summary>
+<summary><strong>起朱楼宴宾客 · 8 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/ahng8d9qlywl) · [更早单集索引](./wiki/show-indexes/qizhulou.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [187｜凌华薇：识别金融骗局与暴雷风险](https://www.xiaoyuzhoufm.com/episode/6ae6d14b97726cd4675adb85 "187.普通人究竟要如何识别金融“骗局”，规避暴雷风险？｜对话财新主编凌华薇") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61dd99a47b29652ff572257b/6ae6d14b97726cd4675adb85/media.xyzcdn.net/61dd99a47b29652ff572257b/lq8qt1sstvzaug_NmKFTGt17tf49.m4a) | 1小时12分 | 未做 |
 | 2026-10-30 | [186｜郭凯：中国经济的新范式](https://www.xiaoyuzhoufm.com/episode/6ae4143cc96c8942ec1497a8 "186.何为中国经济新范式？｜对话CF40研究院院长郭凯") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lpwBBhAK2umZDD-U4T2WGSTlMAve.m4a) | 55分钟 | 未做 |
 | 2026-10-20 | [185｜ETF 如何改变和塑造市场](https://www.xiaoyuzhoufm.com/episode/6ad1b796641ef406308c86ef "185.复制市场，制造市场，成为市场：当 ETF 开始接管世界") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lgzTiKMynJ2_j-PQfkJ__hmdkrTY.m4a) | 1小时11分 | [阅读报告](./reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) |
 | 2026-10-08 | [184｜加息周期中的投资决策：三季度复盘](https://www.xiaoyuzhoufm.com/episode/6ac74f1be742e36efcbfc0e0 "184.这轮加息周期我做的一个重大投资决策｜三季度投资账复盘") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lsKQFNA_XWX0TdLTTjGkupTO3PT-.m4a) | 1小时12分 | [阅读报告](./reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) |
@@ -637,12 +664,13 @@
 <a id="show-mianji"></a>
 
 <details>
-<summary><strong>面基 · 5 条</strong></summary>
+<summary><strong>面基 · 6 条</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/6hpdgggtxpxb) · [更早单集索引](./wiki/show-indexes/mianji.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-02 | [范恩洁：资本集团与长期投资的“异类”](https://www.xiaoyuzhoufm.com/episode/6ae7f63bc96c8942ec15cfd2 "异 类") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6388760f22567e8ea6ad070f/6ae7f63bc96c8942ec15cfd2/media.xyzcdn.net/6388760f22567e8ea6ad070f/lossAd1tRaYjDP11PBjIYWRXY43O.m4a) | 1小时45分 | 未做 |
 | 2026-10-19 | [宋念申：从沈阳西塔看东北与东亚历史](https://www.xiaoyuzhoufm.com/episode/6ad58dbe641ef406308db8a7 "从东北到东亚，历史是一个过程，人也是") · [音频](https://media.xyzcdn.net/6388760f22567e8ea6ad070f/lgoluEQq4aiWJ4bg5jk-Im4qhzC5.m4a) | 1小时50分 | 未做 |
 | 2026-10-12 | [写一份《纪律.md》，代替我入市投资](https://www.xiaoyuzhoufm.com/episode/6acb9dd0e742e36efcc15a45 "写一份《纪律.md》，代替我入市投资") · [音频](https://media.xyzcdn.net/6388760f22567e8ea6ad070f/lnb4eEnlg5UVx2bTqPpqA87eIEUf.m4a) | 1小时31分 | 未做 |
 | 2026-09-28 | [E177｜新一代投资者与 ETF 主导的市场](https://www.xiaoyuzhoufm.com/episode/6aba2ca3e742e36efcbc2fa2 "E177.新一代投资者似乎不爱买股票了：逐渐被ETF主导的市场和未来") · [音频](https://media.xyzcdn.net/6388760f22567e8ea6ad070f/liVW_Jpazo5fOChz1wTsUHqjcqeM.m4a) | 1小时35分 | 未做 |
@@ -694,12 +722,13 @@
 <a id="show-sanwuhuan"></a>
 
 <details>
-<summary><strong>三五环 · 1 条</strong></summary>
+<summary><strong>三五环 · 2 条</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/m3dda867gh7j) · [更早单集索引](./wiki/show-indexes/sanwuhuan.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [No.234｜捷克游记：城堡、银矿与酒馆](https://www.xiaoyuzhoufm.com/episode/6ae8bb1097726cd4675bbd9d "No.234 捷克游记：属于城堡、银矿与酒馆的波西米亚地图") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e280fab418a84a0461faa3c/6ae8bb1097726cd4675bbd9d/media.xyzcdn.net/5e280fab418a84a0461faa3c/lmCKv_XOcbjfcVCD5wbYTBAMuKwf.m4a) | 2小时9分 | 未做 |
 | 2026-09-11 | [No.233｜手机为什么折叠，苹果为什么跟进？](https://www.xiaoyuzhoufm.com/episode/6aa41efc492687f6aad88f7f "No.233 单口｜手机为什么要折叠？Apple 为什么要「跟风」？") · [音频](https://media.xyzcdn.net/5e280fab418a84a0461faa3c/llkUoSB_R2vQcWbB9AKiGl1dRpkS.m4a) | 1小时18分 | 未做 |
 
 </details>
@@ -725,12 +754,13 @@
 <a id="show-huzuo-huyou"></a>
 
 <details>
-<summary><strong>忽左忽右 · 16 条 · 1 条有报告</strong></summary>
+<summary><strong>忽左忽右 · 17 条 · 1 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/cv4bkgpuglwp) · [更早单集索引](./wiki/show-indexes/huzuo-huyou.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-03 | [513｜林晓光：南齐武帝与永明文学](https://www.xiaoyuzhoufm.com/episode/6ae9a8d3c96c8942ec16aeb7 "513 为永明时代作传：林晓光谈南齐武帝萧赜与南朝文学的爆发") | 1小时35分 | 未做 |
 | 2026-10-30 | [512｜王恺：从文人蟹宴到江南土菜](https://www.xiaoyuzhoufm.com/episode/6ae4546797726cd4675a2ef0 "512 与王恺漫话江南食事：从文人蟹宴到乡野土菜") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lh0W1a0jWaFUYdxpDGHQPPuWVbZY.m4a) | 1小时24分 | 未做 |
 | 2026-10-27 | [511｜费孝通、江南丝业与三十年代青年思潮](https://www.xiaoyuzhoufm.com/episode/6ae0674fc96c8942ec13048e "511 重新发现费孝通：文学视角下的三十年代江南丝业危机与北平青年思潮") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lnSUCO6DZ9OdGC5X4rw5NRd_EQbs.m4a) | 1小时58分 | 未做 |
 | 2026-10-23 | [510｜泰国侨批与跨国华人经济网络](https://www.xiaoyuzhoufm.com/episode/6adb27a497726cd4675696ad "510 泰国侨批沉浮录：下南洋浪潮中的跨国华人经济网络") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/ltWAJSww37kmooFownSqmZAbGbZO.m4a) | 1小时26分 | [阅读报告](./reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) |
@@ -753,12 +783,14 @@
 <a id="show-shengdong-zaokafei"></a>
 
 <details>
-<summary><strong>声动早咖啡 · 38 条</strong></summary>
+<summary><strong>声动早咖啡 · 40 条</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/q88qwmydeuw8) · [更早单集索引](./wiki/show-indexes/shengdong-zaokafei.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-04 | [航司为何越来越依赖租来的飞机？](https://www.xiaoyuzhoufm.com/episode/6ae9d09e97726cd4675c34fd "全球一半的客机都是租来的，为什么航空公司越来越依赖租飞机？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6ae9d09e97726cd4675c34fd/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lru7CLFAKMT0_gYOJiiPEXcj-we9.m4a) | 14分钟 | 未做 |
+| 2026-11-03 | [羽毛球价格回落，无印良品复制中国经验](https://www.xiaoyuzhoufm.com/episode/6ae876cf97726cd4675b98f1 "羽毛球价格回落，无印良品将向欧美复制中国经验") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6ae876cf97726cd4675b98f1/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lkP7cJvG3qzt0XBa5zC4ucOE2S0O.m4a) | 11分钟 | 未做 |
 | 2026-11-02 | [7-11 在印度：牵手本土巨头为何仍难立足？](https://www.xiaoyuzhoufm.com/episode/6ae7126ac96c8942ec1583b4 "7-11 败走印度市场，为何牵手本土巨头仍难站稳脚跟？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lg-G1rR9Iy0Zz7xosOoYGIRYRxD3.m4a) | 17分钟 | 未做 |
 | 2026-10-30 | [好莱坞为什么越来越爱拍恐怖片？](https://www.xiaoyuzhoufm.com/episode/6ae3388097726cd46759be3e "达霏欣｜咖啡豆：好莱坞迎来恐怖片大年，为什么这类电影越来越多？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/loy6ukidPjNyozu8THF-MThDIx1Z.m4a) | 18分钟 | 未做 |
 | 2026-10-29 | [苹果系统屏蔽“摇一摇”广告，胡润百富榜更新](https://www.xiaoyuzhoufm.com/episode/6ae1decbc96c8942ec13b8dd "达霏欣｜苹果新系统可禁止「摇一摇」广告，张一鸣再登胡润百富榜首") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lkvtf1ossI80ZbDnDP7vQQHCzXRl.m4a) | 12分钟 | 未做 |
@@ -896,18 +928,17 @@
 
 ## 获取情况
 
-本轮检查了全部 58 档精选节目：55 档读到公开订阅，2 档查了公开节目页，1 档订阅读取失败。公开订阅提供了本时段的 293 条记录，另保留 1 条旧索引记录。
+本轮检查了全部 58 档精选节目：54 档取得公开订阅，2 档核对公开节目页的绝对发布日期，2 档订阅读取失败。新增 13 条发布记录；短窗口与失败来源均未覆盖或删除旧条目。
 
 ### 本时段未取得新单集的节目
 
-以下 15 档的可见最新单集早于 2026-09-02。日期仅反映本轮公开来源返回的内容，不能据此判断其他平台是否更新或节目是否停更。
+以下 14 档的可见最新单集早于 2026-09-02。日期仅反映本轮公开来源返回的内容，不能据此判断其他平台是否更新或节目是否停更。
 
 | 节目 | 可见最新单集日期 | 查看来源 |
 | --- | --- | --- |
 | 101 Weekly | 2025-10-14 | [公开订阅](https://feeds.fireside.fm/101weekly/rss) · [旧索引](./wiki/show-indexes/101-weekly.md) |
 | 老talk消息 | 2026-08-10 | [公开订阅](https://www.ximalaya.com/album/31225613.xml) · [旧索引](./wiki/show-indexes/laotalk-xiaoxi.md) |
 | 大小马智驾 | 2024-12-25 | [公开订阅](https://www.ximalaya.com/album/76366265.xml) · [旧索引](./wiki/show-indexes/daxiaoma-zhijia.md) |
-| 罗永浩的十字路口 | 2026-09-01 | [公开订阅](https://feed.xyzfm.space/wmnkvmrpwuww) · [旧索引](./wiki/show-indexes/luoyonghao-crossing.md) |
 | 组织进化论 | 2025-04-02 | [公开订阅](https://feed.xyzfm.space/wb9n7uukpubp) · [旧索引](./wiki/show-indexes/zuzhi-jinhualun.md) |
 | 半拿铁·故事篇 | 2026-08-13 | [公开订阅](https://www.ximalaya.com/album/83323735.xml) · [旧索引](./wiki/show-indexes/bannatie-gushipian.md) |
 | 成为巴菲特｜价投村 | 2026-02-11 | [公开订阅](https://feed.xyzfm.space/w67gc9bantgx) · [旧索引](./wiki/show-indexes/chengwei-buffett.md) |
@@ -920,12 +951,13 @@
 | 职场有话说 | 2026-05-23 | [公开节目页](https://www.xiaoyuzhoufm.com/podcast/6391b9f7a07c5e0cda6c6fff)（无公开订阅） |
 | 窦文涛的聊客 | 2026-06-17 | [公开节目页](https://www.xiaoyuzhoufm.com/podcast/6a018752bc9b8779be53038b)（无公开订阅） |
 
-《职场有话说》的公开页展示最近 15 期；《窦文涛的聊客》展示 2 期。以上日期取自页面的单集资料。
+《职场有话说》的原始公开页返回 15 期，最新绝对日期为 2026-05-23；《窦文涛的聊客》返回 2 期，最新为 2026-06-17。本轮以页面单集资料的 pubDate 核对，不采用阅读器中的“几天前”等相对时间。
 
 ### 本轮未能读取
 
 | 节目 | 情况 | 保留记录 |
 | --- | --- | --- |
+| 声东击西 | [公开订阅](https://www.etw.fm/rss)超出原始来源读取上限，改用有界 RSS 读取仍超时；近期更新未完全核实。 | [旧单集索引](./wiki/show-indexes/shengdong-jixi.md)，本页原有条目及报告全部保留。 |
 | 一苒一刻 | [公开订阅](https://feed.xyzfm.space/yeprwl3lx4hc)返回 HTTP 410；未能核实近期更新。 | [旧单集索引](./wiki/show-indexes/yiran-yike.md) |
 
 <a id="history-note"></a>
@@ -951,8 +983,9 @@
 
 - 单集日期统一换算为北京时间，可能与旧索引或报告文件名相差一天；上面注明的历史保留项沿用旧索引日期。
 - 时长来自订阅或公开节目页，四舍五入到分钟；不足 5 分钟保留到秒。这里收录的是节目发布记录，包含串台、短节目和通知。
-- 「音频」来自同一期的官方公开订阅，最近核对于 **2026-11-02**。它直接打开发布方的音频，评论、收藏和播放进度仍需在播客客户端中使用。
+- 「音频」来自同一期的官方公开订阅。新增 11 个音频入口已于 **2026-11-04** 用 HEAD 核验成功且响应为音频类型；未下载完整音频。旧入口保留 **2026-11-02** 的核验记录，不冒称本轮全部重验。忽左忽右第 513 期的订阅音频跟踪域名解析失败，本轮仅保留节目页，不拼猜替代地址。
 - 首次补录从 2026-09-02 开始；更早的单集继续查[详细索引](./wiki/show-indexes/)。以后查询会追加新条目、补报告链接，旧条目继续保留。
 - 获取失败的节目留到下次继续检查；拿到新数据后补齐条目和来源说明。
+- RSS 先走 eacli Token Plan；遇到 XML 丢失或输出超限后使用 eacli 原始来源。个别订阅超过 4 MiB 或返回较旧片段，再按更新规则使用有界公开 RSS 读取；这些降级不改变来源与去重口径。
 
 [查看精选节目与更新规则](./wiki/curated-podcasts.md#查看近期更新) · [回到顶部](#小宇宙精选播客历史速看表)

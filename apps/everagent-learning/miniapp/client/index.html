@@ -540,6 +540,26 @@
         scrollbar-gutter: stable;
       }
 
+      .update-feed { max-width: 920px; margin: 0 auto; }
+      .update-feed__tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 10px; }
+      .update-feed__search { flex: 1 1 240px; width: auto; min-width: 0; }
+      .update-feed__count { margin: 0; color: var(--mcode-text-muted); font-size: 12px; }
+      .update-feed__list { list-style: none; margin: 0; padding: 0; }
+      .update-feed__item { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--mcode-border); }
+      .update-feed__date { padding-top: 3px; color: var(--mcode-text-muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .update-feed__title { color: var(--mcode-text); font-size: var(--reader-font-size, 17px); font-weight: 550; line-height: 1.55; text-decoration: none; overflow-wrap: anywhere; }
+      .update-feed__title:hover { color: var(--mcode-accent); text-decoration: underline; }
+      .update-feed a:focus-visible { outline: 2px solid var(--mcode-accent); outline-offset: 3px; }
+      .update-feed__meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; color: var(--mcode-text-muted); font-size: 12px; line-height: 1.5; }
+      .update-feed__report { margin-left: auto; white-space: nowrap; }
+      .update-feed__more { display: block; margin: 18px auto 0; }
+      @media (max-width: 620px) {
+        .update-feed__item { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
+        .update-feed__date { padding: 0; }
+        .update-feed__tools { gap: 8px; }
+        .update-feed__search { flex-basis: 100%; }
+      }
+
       .reader__content { display: flex; position: relative; flex: 1; min-height: 0; }
       .reader__toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 8px 20px; border-bottom: 1px solid var(--mcode-border); }
       .reader__font { display: flex; align-items: center; gap: 8px; }
@@ -935,6 +955,7 @@
           <button class="btn" id="toc-toggle" type="button" aria-expanded="false" aria-controls="reader-toc">目录</button>
           <div class="seg" role="group" aria-label="显示方式">
             <button class="seg__btn" id="view-rendered" type="button" aria-pressed="true">阅读</button>
+            <button class="seg__btn" id="view-archive" type="button" aria-pressed="false" hidden>完整清单</button>
             <button class="seg__btn" id="view-source" type="button" aria-pressed="false">Markdown</button>
           </div>
           <div class="reader__font" role="group" aria-label="正文字号">
@@ -988,6 +1009,8 @@
         index: -1,
         currentPath: '',
         view: 'rendered',
+        feedQuery: '',
+        feedLimit: 40,
         opener: null,
         requestId: 0,
         cache: new Map(),
@@ -1033,6 +1056,7 @@
         readerNext: document.getElementById('reader-next'),
         readerClose: document.getElementById('reader-close'),
         viewRendered: document.getElementById('view-rendered'),
+        viewArchive: document.getElementById('view-archive'),
         viewSource: document.getElementById('view-source'),
         readerNav: document.getElementById('reader-nav'),
         toc: document.getElementById('reader-toc'),
@@ -1289,12 +1313,13 @@
       function renderMeta(payload) {
         const parts = [`${payload.total} 份报告`, `${payload.domains.length} 个方向`];
         if (payload.latest_on) parts.push(`最近更新 ${payload.latest_on}`);
+        if (payload.complete === false) parts.push('目录不完整：有报告无法读取，请检查源文件后刷新');
         text(ui.meta, parts.join(' · '));
       }
 
       /**
        * Mount server-rendered Markdown. The HTML comes from the package's own
-       * renderer, which escapes every report character, but it is still parsed
+       * Go renderer, which filters report HTML, but it is still parsed
        * into an inert document and filtered before it reaches the live page.
        */
       function mountMarkdown(host, html) {
@@ -1357,8 +1382,8 @@
         ui.progress.title = `阅读位置 ${percent}%`;
         ui.progressBar.setAttribute('aria-valuenow', String(percent));
         ui.progressFill.style.width = `${percent}%`;
-        if (state.view !== 'rendered') return;
-        state.renderedRatio = ratio;
+        if (state.view === 'source') return;
+        if (state.view === 'rendered') state.renderedRatio = ratio;
         const top = ui.readerBody.getBoundingClientRect().top + 40;
         let current = null;
         for (const entry of state.headings) {
@@ -1381,7 +1406,7 @@
         ui.toc.replaceChildren();
         state.headings = [];
         state.activeHeading = null;
-        if (state.view === 'rendered') {
+        if (state.view !== 'source') {
           for (const node of ui.readerBody.querySelectorAll('.md h2[id], .md h3[id]')) {
             const link = make('a', null, node.textContent);
             link.href = `#${encodeURIComponent(node.id)}`;
@@ -1401,17 +1426,93 @@
       function applyFontSize() {
         document.documentElement.style.setProperty('--reader-font-size', `${preferences.fontSize}px`);
         text(ui.fontSize, preferences.fontSize);
-        ui.fontSmaller.disabled = !state.detail || state.view !== 'rendered' || preferences.fontSize <= 16;
-        ui.fontLarger.disabled = !state.detail || state.view !== 'rendered' || preferences.fontSize >= 22;
+        ui.fontSmaller.disabled = !state.detail || state.view === 'source' || preferences.fontSize <= 16;
+        ui.fontLarger.disabled = !state.detail || state.view === 'source' || preferences.fontSize >= 22;
       }
 
       function changeFontSize(delta) {
-        if (!state.detail || state.view !== 'rendered') return;
+        if (!state.detail || state.view === 'source') return;
         const ratio = readingRatio();
         preferences.fontSize = Math.max(16, Math.min(22, preferences.fontSize + delta));
         applyFontSize();
         setPosition(ratio);
         persistPreferences();
+      }
+
+      function hasUpdateFeed() {
+        return Array.isArray(state.detail?.update_feed?.items) && state.detail.update_feed.items.length > 0;
+      }
+
+      function renderUpdateFeed(host, feed) {
+        const podcast = feed.kind === 'podcast';
+        const unit = podcast ? '期' : '篇';
+        const tools = make('div', 'update-feed__tools');
+        const search = make('input', 'search update-feed__search');
+        search.type = 'search';
+        search.placeholder = podcast ? '搜索标题、原题或节目' : '搜索标题、原题或来源';
+        search.setAttribute('aria-label', podcast ? '搜索播客单集' : '搜索博客文章');
+        search.value = state.feedQuery;
+        const count = make('p', 'update-feed__count');
+        count.setAttribute('role', 'status');
+        const list = make('ul', 'update-feed__list');
+        list.setAttribute('aria-label', podcast ? '近期播客单集' : '近期博客文章');
+        const more = make('button', 'btn update-feed__more', `再看 40 ${unit}`);
+        more.type = 'button';
+        tools.append(search, count);
+        host.append(tools, list, more);
+        function update() {
+          const query = state.feedQuery.trim().toLocaleLowerCase();
+          const articles = feed.items.filter((article) =>
+            [article.title, article.original_title, article.channel].join(' ').toLocaleLowerCase().includes(query),
+          );
+          list.replaceChildren();
+          text(count, query ? `${articles.length} ${unit}匹配 · 由新到旧` : `由新到旧 · 先看最近 ${Math.min(state.feedLimit, articles.length)} ${unit}`);
+          for (const article of articles.slice(0, state.feedLimit)) {
+            const row = make('li', 'update-feed__item');
+            const date = make('time', 'update-feed__date', article.date);
+            date.dateTime = article.date;
+            const content = make('div');
+            const title = make('a', 'update-feed__title', article.title);
+            title.href = article.url;
+            title.title = article.original_title || article.title;
+            title.target = '_blank';
+            title.rel = 'noreferrer noopener';
+            const meta = make('div', 'update-feed__meta');
+            if (article.channel) meta.append(make('span', null, article.channel));
+            if (article.duration) meta.append(make('span', null, article.duration));
+            if (article.audio_url) {
+              const audio = make('a', 'link', '音频');
+              audio.href = article.audio_url;
+              audio.target = '_blank';
+              audio.rel = 'noreferrer noopener';
+              meta.append(audio);
+            }
+            if (article.report_url) {
+              const report = make('a', podcast ? 'link update-feed__report' : 'link', article.report_label || '阅读报告');
+              report.href = article.report_url;
+              if (article.report_note) report.title = article.report_note;
+              meta.append(report);
+            } else if (podcast) {
+              meta.append(make('span', 'update-feed__report', article.report_status === 'unavailable' ? '报告链接不可用' : '暂无报告'));
+            }
+            content.append(title, meta);
+            row.append(date, content);
+            list.append(row);
+          }
+          if (!articles.length) list.append(make('li', 'reader__notice', podcast ? '没有匹配的单集，试试其他标题关键词或节目名。' : '没有匹配的文章，试试其他标题关键词或来源。'));
+          more.hidden = articles.length <= state.feedLimit;
+          updateReadingState();
+        }
+        search.addEventListener('input', () => {
+          state.feedQuery = search.value;
+          state.feedLimit = 40;
+          update();
+        });
+        more.addEventListener('click', () => {
+          state.feedLimit += 40;
+          update();
+        });
+        update();
       }
 
       function renderReaderBody(ratio = 0) {
@@ -1423,6 +1524,10 @@
         }
         if (state.view === 'source') {
           ui.readerBody.append(make('pre', 'md-source', report.markdown || ''));
+        } else if (state.view === 'rendered' && hasUpdateFeed()) {
+          const host = make('section', 'update-feed');
+          ui.readerBody.append(host);
+          renderUpdateFeed(host, report.update_feed);
         } else {
           const host = make('div', 'md');
           mountMarkdown(host, report.html || '');
@@ -1448,6 +1553,10 @@
           if (report.source) meta.push(report.source);
           if (report.episode) meta.push(report.episode);
         }
+        if (hasUpdateFeed()) {
+          if (report.update_feed.checked_on) meta.push(`最近检查 ${report.update_feed.checked_on}`);
+          meta.push(report.update_feed.kind === 'podcast' ? '已收录单集，非实时更新' : '已收录文章，非实时更新');
+        }
         text(ui.readerMeta, meta.join(' · '));
 
         ui.readerLinks.replaceChildren();
@@ -1472,6 +1581,15 @@
         ui.readerNav.hidden = state.index < 0;
         ui.readerPrev.disabled = state.index <= 0;
         ui.readerNext.disabled = state.index < 0 || state.index >= total - 1;
+        const feed = hasUpdateFeed();
+        const scanning = feed && state.view === 'rendered';
+        text(ui.viewRendered, feed ? '标题速览' : '阅读');
+        ui.viewArchive.hidden = !feed;
+        ui.viewArchive.setAttribute('aria-pressed', String(state.view === 'archive'));
+        ui.tocToggle.hidden = scanning;
+        ui.fontSmaller.parentElement.hidden = scanning;
+        ui.progress.hidden = scanning;
+        ui.progressBar.hidden = scanning;
         ui.viewRendered.setAttribute('aria-pressed', String(state.view === 'rendered'));
         ui.viewSource.setAttribute('aria-pressed', String(state.view === 'source'));
         ui.viewRendered.disabled = !state.detail;
@@ -1514,6 +1632,8 @@
         state.selected = report;
         state.currentPath = report.path;
         state.view = 'rendered';
+        state.feedQuery = '';
+        state.feedLimit = 40;
         state.renderedRatio = 0;
         state.tocOpen = window.innerWidth >= 960;
 
@@ -1612,6 +1732,7 @@
         if (!hash) return;
         let id;
         try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+        if (hasUpdateFeed() && state.view !== 'archive') switchView('archive');
         const target = Array.from(ui.readerBody.querySelectorAll('[id]')).find((node) => node.id === id);
         if (!target) return;
         for (let parent = target.parentElement; parent && parent !== ui.readerBody; parent = parent.parentElement) {
@@ -1681,6 +1802,7 @@
       ui.readerPrev.addEventListener('click', () => step(-1));
       ui.readerNext.addEventListener('click', () => step(1));
       ui.viewRendered.addEventListener('click', () => switchView('rendered'));
+      ui.viewArchive.addEventListener('click', () => switchView('archive'));
       ui.viewSource.addEventListener('click', () => switchView('source'));
       ui.fontSmaller.addEventListener('click', () => changeFontSize(-1));
       ui.fontLarger.addEventListener('click', () => changeFontSize(1));
@@ -1806,8 +1928,8 @@
           ui.status.className = 'status status--error';
           text(
             ui.status,
-            payload?.error === 'python_unavailable'
-              ? '缺少 Python 3。安装后重新启动工作台，或用 --python 指定命令。'
+            payload?.error === 'indexer_unavailable'
+              ? '缺少 Go 阅读适配器。请先在应用目录运行 npm run build；安装副本需一并包含构建产物。'
               : '暂时无法读取报告。请检查本地仓库是否完整，再点击刷新。',
           );
           return;

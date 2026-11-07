@@ -9,11 +9,11 @@ try {
     port: { type: 'string', default: '4173' },
     repo: { type: 'string' },
     container: { type: 'boolean', default: false },
-    python: { type: 'string', default: process.env.EVERAGENT_PYTHON || (process.platform === 'win32' ? 'python' : 'python3') },
+    indexer: { type: 'string' },
     help: { type: 'boolean', short: 'h' },
   } });
   if (values.help) {
-    console.log('用法：node apps/everagent-learning/start.mjs [--port 4173] [--repo /path/to/EverAgent] [--python python3] [--container]\n默认只监听 127.0.0.1；--container 仅供受控反向代理使用，须指定 --repo。Ctrl+C 停止。');
+    console.log('用法：node apps/everagent-learning/start.mjs [--port 4173] [--repo /path/to/EverAgent] [--indexer /path/to/ea-learning-index] [--container]\n首次运行先在应用目录 npm run build。默认只监听 127.0.0.1；--container 仅供受控反向代理使用，须指定 --repo。Ctrl+C 停止。');
   } else {
     const port = Number(values.port);
     if (!/^\d+$/.test(values.port) || !Number.isInteger(port) || port < 0 || port > 65535) throw new Error('端口须为 0–65535');
@@ -23,7 +23,7 @@ try {
       listen: { host: values.container ? '0.0.0.0' : '127.0.0.1', port },
       signal: controller.signal,
       logger: { info() {} },
-    }, { repoRoot: values.repo, python: values.python, container: values.container });
+    }, { repoRoot: values.repo, indexer: values.indexer, container: values.container });
     const stop = () => { controller.abort(); };
     process.once('SIGINT', stop);
     process.once('SIGTERM', stop);

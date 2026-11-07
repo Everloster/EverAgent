@@ -169,6 +169,9 @@ func headingSlug(s string) string {
 	return s
 }
 
+// HeadingSlug is shared by the local reader and the offline anchor checker.
+func HeadingSlug(s string) string { return headingSlug(s) }
+
 // Use CommonMark/GFM rather than treating every bracket pair as a link.
 // In particular a footnote's body is prose containing links, not a reference
 // destination. Unresolved reference labels render as text, not clickable URLs.

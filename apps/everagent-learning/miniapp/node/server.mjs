@@ -22,7 +22,7 @@ function inspectCandidate(value) {
   try {
     const root = realpathSync(expandPath(value.trim()));
     // Check the public checkout's shape, not its remote. Forks and ZIPs work too.
-    for (const name of ['scripts/report_catalog.py', 'config/report-quality-policy.json', 'docs/REPORT_INDEX.md']) {
+    for (const name of ['config/report-quality-policy.json', 'docs/REPORT_INDEX.md']) {
       const file = join(root, name);
       if (!statSync(file).isFile() || realpathSync(file) !== file) return { ok: false, reason: 'no_catalog' };
     }
@@ -82,7 +82,10 @@ export async function start(context, options = {}) {
     throw new Error('只允许本机回环地址；容器须显式启用 --container');
   }
   if (options.container && !options.repoRoot) throw new Error('容器模式须指定只读公开仓 --repo');
-  const script = join(context.pluginRoot, 'miniapp/node/report_index.py');
+  const platform = { darwin: 'darwin', linux: 'linux', win32: 'windows' }[process.platform];
+  const arch = process.arch === 'x64' ? 'amd64' : process.arch;
+  const indexer = options.indexer || process.env.EVERAGENT_LEARNING_INDEXER ||
+    join(context.pluginRoot, 'miniapp/bin', `${platform}-${arch}`, `ea-learning-index${process.platform === 'win32' ? '.exe' : ''}`);
   const setupToken = randomBytes(24).toString('hex');
   const clientEntry = (await readFile(join(context.pluginRoot, 'miniapp/client/index.html'), 'utf8'))
     .replace('__SETUP_TOKEN__', setupToken);
@@ -96,10 +99,10 @@ export async function start(context, options = {}) {
   function runCatalog(root, args, timeout = 30_000) {
     if (disposed) return Promise.resolve({ ok: false, error: 'stopped' });
     return new Promise((done) => {
-      // Only this fixed adapter is launched; the chosen checkout must be trusted.
-      const child = spawn(options.python || process.env.EVERAGENT_PYTHON || (process.platform === 'win32' ? 'python' : 'python3'), [script, root, ...args], {
-        cwd: dirname(script), stdio: ['ignore', 'pipe', 'pipe'],
-        env: { ...process.env, PYTHONIOENCODING: 'utf-8', PYTHONDONTWRITEBYTECODE: '1' },
+      // The installed Go adapter reads files; it never executes the selected
+      // checkout's scripts. No interpreter or compiler runs on an HTTP request.
+      const child = spawn(indexer, [root, ...args], {
+        cwd: context.pluginRoot, stdio: ['ignore', 'pipe', 'pipe'],
       });
       children.add(child);
       const chunks = [];
@@ -124,7 +127,7 @@ export async function start(context, options = {}) {
       });
       // Drain stderr, but never return local paths or tracebacks to the page.
       child.stderr.resume();
-      child.on('error', () => finish({ ok: false, error: 'python_unavailable' }));
+      child.on('error', () => finish({ ok: false, error: 'indexer_unavailable' }));
       child.on('close', (code) => {
         children.delete(child);
         try {
