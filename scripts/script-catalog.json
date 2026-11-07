@@ -1,52 +1,15 @@
 {
   "schema_version": 1,
   "repository": "EverAgent",
-  "scope": "identity-session-git",
+  "scope": "identity-session-git-quality",
   "scripts": [
     {
-      "id": "agent.identity",
-      "description": "自动核实当前 harness/model；失败先诊断并修复可行读取路径，用户指定兜底。",
-      "entrypoint": "scripts/agent_identity.py",
+      "id": "session.core",
+      "description": "自动核实当前调用方的harness和模型；diagnose协助修复，declare仅记录用户兜底。",
+      "entrypoint": "packages/everagent-core/cmd/everagent-identity/main.go",
       "owner": {
         "repository": "EverAgent",
-        "path": "packages/everagent-core/src/everagent_core/identity/detect.py"
-      },
-      "kind": "canonical",
-      "aliases": [
-        {
-          "path": "scripts/whoami_agent.py",
-          "description": "旧 whoami 名称；转交同一公共 core 身份实现。"
-        },
-        {
-          "path": "scripts/agent_identity/__init__.py",
-          "description": "旧 Python 包 import 路径；转交同一公共 core。"
-        }
-      ],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
-      "requirements": [
-        "Python >=3.10"
-      ],
-      "input": "inspect [--json|--name|--email|--git-ident] | diagnose --json",
-      "output": "Agent identity v2 JSON | current-caller diagnosis v1; neither diagnosis nor configuration authorizes a model",
-      "side_effects": [],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "A"
-      },
-      "scope": "当前调用方和 checkout"
-    },
-    {
-      "id": "agent.model-declaration",
-      "description": "自动核实和可行修复仍无法取证时，记录用户明确指定的当前模型，绑定本会话并在有效期后失效。",
-      "entrypoint": "scripts/agent_model_declare.py",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "packages/everagent-core/src/everagent_core/identity/declarations.py"
+        "path": "packages/everagent-core/identity.go"
       },
       "kind": "canonical",
       "aliases": [],
@@ -56,61 +19,33 @@
         "windows"
       ],
       "requirements": [
-        "Python >=3.10"
+        "Go >=1.27 或预编译二进制"
       ],
-      "input": "--model <id> --user-confirmed [--ttl-seconds]",
-      "output": "Session-scoped model declaration v1",
+      "input": "everagent-identity inspect|diagnose|declare [--json]",
+      "output": "当前调用方的身份、证据、诊断或有期限声明",
       "side_effects": [
-        "写本机模型声明 receipt"
+        "仅declare写当前会话声明"
       ],
       "authorization": {
         "repository": "EverAgent",
         "path": "docs/PROTOCOL_COMMON.md",
-        "section": "C"
+        "section": "A/C"
       },
-      "scope": "当前调用方和 checkout"
+      "scope": "当前调用方；不扫描其他会话正文"
     },
     {
-      "id": "git.identity",
-      "description": "校验 Author、当前 Agent Committer 和模型确认依据。",
-      "entrypoint": "scripts/git_identity.py",
+      "id": "git.core",
+      "description": "核实双身份；提交只消费暂存tree，绑定同源质量门、消息和前后身份。",
+      "entrypoint": "packages/everagent-core/cmd/ea-git/main.go",
       "owner": {
         "repository": "EverAgent",
-        "path": "scripts/git_identity.py"
-      },
-      "kind": "canonical",
-      "aliases": [],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
-      "requirements": [
-        "Python >=3.10"
-      ],
-      "input": "show|validate",
-      "output": "Git identity validation exit code",
-      "side_effects": [],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "A"
-      },
-      "scope": "当前调用方和 checkout"
-    },
-    {
-      "id": "git.commit",
-      "description": "提交已经暂存的 tree，校验身份、门禁和 index 不变；共同作者显式填写。",
-      "entrypoint": "scripts/git_commit.py",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "packages/everagent-core/src/everagent_core/git.py"
+        "path": "packages/everagent-core/git.go"
       },
       "kind": "canonical",
       "aliases": [
         {
           "path": "scripts/ecommit.sh",
-          "description": "兼容 Bash 入口；仅寻找 Python 并转交提交器。"
+          "description": "薄Bash入口；构建并调用ea-git commit，不配置Git或跳过门禁。"
         }
       ],
       "platforms": [
@@ -119,27 +54,28 @@
         "windows"
       ],
       "requirements": [
-        "Python >=3.10"
+        "Git",
+        "Go >=1.27 或预编译二进制"
       ],
-      "input": "Git commit metadata arguments",
-      "output": "Git exit code; explicit trailers preserved by Git",
+      "input": "ea-git [--repo-root <checkout>] validate|commit <Git消息参数>",
+      "output": "Git退出码；消息与显式trailer由Git处理",
       "side_effects": [
-        "写 Git commit"
+        "commit写Git提交"
       ],
       "authorization": {
         "repository": "EverAgent",
         "path": "docs/PROTOCOL_COMMON.md",
         "section": "C"
       },
-      "scope": "当前调用方和 checkout"
+      "scope": "当前公开checkout和暂存tree"
     },
     {
-      "id": "scripts.catalog",
-      "description": "查看本族脚本的描述、owner、兼容名、平台和输入输出契约。",
-      "entrypoint": "scripts/script_catalog.py",
+      "id": "quality.public",
+      "description": "检查公开内容、报告来源和复核快照、Context及索引；不调用模型或改历史产物。",
+      "entrypoint": "packages/everagent-core/cmd/ea-quality/main.go",
       "owner": {
         "repository": "EverAgent",
-        "path": "packages/everagent-core/src/everagent_core/catalog.py"
+        "path": "packages/everagent-core/internal/publicquality/gate.go"
       },
       "kind": "canonical",
       "aliases": [],
@@ -149,47 +85,22 @@
         "windows"
       ],
       "requirements": [
-        "Python >=3.10"
+        "Git",
+        "Go >=1.27",
+        "匹配go.mod/go.sum的依赖缓存"
       ],
-      "input": "list|show <id>|check|render [--json]",
-      "output": "script-catalog v1; generated SCRIPT_INDEX.md",
+      "input": "ea-quality quick|full|context|catalog|report|privacy|links|policy|sampling|scripts|index [--scope index|worktree|head]",
+      "output": "质量结果JSON；index --write更新三个生成视图",
       "side_effects": [
-        "render 写生成索引"
+        "quick/full按影响面运行仓内Go回归",
+        "仅index --write写生成视图"
       ],
       "authorization": {
         "repository": "EverAgent",
         "path": "docs/PROTOCOL_COMMON.md",
-        "section": "C"
+        "section": "D"
       },
-      "scope": "当前调用方和 checkout"
-    },
-    {
-      "id": "core.bootstrap",
-      "description": "从当前公开 checkout 加载唯一公共 core，实现稳定脚本的源码运行。",
-      "entrypoint": "scripts/core_bootstrap.py",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "scripts/core_bootstrap.py"
-      },
-      "kind": "internal",
-      "aliases": [],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
-      "requirements": [
-        "Python >=3.10"
-      ],
-      "input": "Python import",
-      "output": "Import path binding",
-      "side_effects": [],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "A"
-      },
-      "scope": "当前调用方和 checkout"
+      "scope": "当前公开快照；不读私仓、不做真实模型回放"
     },
     {
       "id": "evaluation.harness-experiment",

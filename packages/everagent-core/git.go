@@ -97,6 +97,9 @@ func IdentityEnvironment(identity Object, base []string, author Author) ([]strin
 		count++
 	}
 	env["GIT_CONFIG_COUNT"] = strconv.Itoa(count)
+	// Commit, message reuse, hooks and the quality gate must all see the actual
+	// Git objects, not a workstation's refs/replace view of their contents.
+	env["GIT_NO_REPLACE_OBJECTS"] = "1"
 	out := []string{}
 	for k, v := range env {
 		out = append(out, k+"="+v)
@@ -139,13 +142,60 @@ func commitOptions(args []string) ([]commitOption, error) {
 	return options, nil
 }
 func gitRead(ctx context.Context, cwd string, env []string, args ...string) (string, error) {
-	b, e := command(ctx, cwd, env, 2<<20, append([]string{"git"}, args...)...)
+	b, e := command(ctx, cwd, env, 2<<20, append([]string{"git", "--no-replace-objects"}, args...)...)
 	if e != nil {
 		return "", blocked("无法读取仓库或 Git index", 1)
 	}
 	return strings.TrimSpace(string(b)), nil
 }
-func messageArgs(ctx context.Context, parts []commitOption, cwd, temp string, stdin io.Reader) ([]string, error) {
+
+// Commit and the repository-owned gate must see the same repository and index.
+// A caller may use an alternate index, but never redirect repository discovery
+// or objects. Absolute index paths survive the gate's different working dir.
+func commitEnvironment(base []string) error {
+	for _, entry := range base {
+		key, value, _ := strings.Cut(entry, "=")
+		switch key {
+		case "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE", "GIT_SHALLOW_FILE", "GIT_REPLACE_REF_BASE":
+			return blocked("提交不接受仓库定位环境变量 "+key+"；请在目标 checkout 中运行", 2)
+		case "GIT_INDEX_FILE":
+			if !filepath.IsAbs(value) {
+				return blocked("GIT_INDEX_FILE 必须是绝对路径，避免提交和门禁使用不同 index", 2)
+			}
+		}
+	}
+	return nil
+}
+
+func commitRoot(ctx context.Context, cwd string, env []string) (string, error) {
+	// Independently compare the effective location with the gate's
+	// explicit-checkout discovery semantics;
+	// retain caller config for hooks and signing, but refuse a different target.
+	canonical := []string{}
+	for _, entry := range env {
+		key, _, _ := strings.Cut(entry, "=")
+		if !strings.HasPrefix(key, "GIT_") || key == "GIT_INDEX_FILE" {
+			canonical = append(canonical, entry)
+		}
+	}
+	root := ""
+	for _, option := range []string{"--show-toplevel", "--absolute-git-dir"} {
+		actual, err := gitRead(ctx, cwd, env, "rev-parse", option)
+		if err != nil {
+			return "", err
+		}
+		expected, err := gitRead(ctx, cwd, canonical, "rev-parse", option)
+		if err != nil || realPath(actual) != realPath(expected) {
+			return "", blocked("提交与质量门的 Git 仓库定位不一致；未执行提交", 2)
+		}
+		if option == "--show-toplevel" {
+			root = realPath(actual)
+		}
+	}
+	return root, nil
+}
+
+func messageArgs(ctx context.Context, parts []commitOption, cwd, temp string, env []string, stdin io.Reader) ([]string, error) {
 	messages, files, reused := []string{}, []string{}, []commitOption{}
 	amend, noEdit := false, false
 	for _, p := range parts {
@@ -202,11 +252,11 @@ func messageArgs(ctx context.Context, parts []commitOption, cwd, temp string, st
 		if len(reused) > 0 {
 			revision = *reused[0].value
 		}
-		sha, e := gitRead(ctx, cwd, nil, "rev-parse", "--verify", "--end-of-options", revision+"^{commit}")
+		sha, e := gitRead(ctx, cwd, env, "rev-parse", "--verify", "--end-of-options", revision+"^{commit}")
 		if e != nil {
 			return nil, e
 		}
-		b, e := command(ctx, cwd, nil, 1<<20, "git", "show", "-s", "--format=%B", sha)
+		b, e := command(ctx, cwd, env, 1<<20, "git", "--no-replace-objects", "show", "-s", "--format=%B", sha)
 		if e != nil {
 			return nil, blocked("无法读取复用的 commit message", 2)
 		}
@@ -289,20 +339,23 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	if e != nil {
 		return e
 	}
+	base := os.Environ()
+	if e := commitEnvironment(base); e != nil {
+		return e
+	}
 	identity := options.IdentityReader()
 	author, e := options.AuthorReader()
 	if e != nil {
 		return e
 	}
-	env, e := IdentityEnvironment(identity, os.Environ(), author)
+	env, e := IdentityEnvironment(identity, base, author)
 	if e != nil {
 		return e
 	}
-	root, e := gitRead(ctx, options.Directory, env, "rev-parse", "--show-toplevel")
+	root, e := commitRoot(ctx, options.Directory, env)
 	if e != nil {
 		return e
 	}
-	root = realPath(root)
 	if options.Preflight != nil {
 		if e = options.Preflight(root, identity); e != nil {
 			return e
@@ -319,7 +372,7 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		return e
 	}
 	defer os.RemoveAll(temp)
-	forwarded, e := messageArgs(ctx, parts, root, temp, options.Stdin)
+	forwarded, e := messageArgs(ctx, parts, root, temp, env, options.Stdin)
 	if e != nil {
 		return e
 	}
@@ -356,7 +409,18 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 			return e
 		}
 	}
-	c := exec.CommandContext(ctx, "git", append([]string{"commit"}, forwarded...)...)
+	// A repository hook may reuse this successful gate for this exact tree.
+	// It must still validate identity. This is not an authorization token and
+	// never lets the commit wrapper itself skip its gate or tree rechecks.
+	for n := 0; n < len(env); {
+		if strings.HasPrefix(env[n], "EVERAGENT_QUALITY_GATE_TREE=") {
+			env = append(env[:n], env[n+1:]...)
+		} else {
+			n++
+		}
+	}
+	env = append(env, "EVERAGENT_QUALITY_GATE_TREE="+before)
+	c := exec.CommandContext(ctx, "git", append([]string{"--no-replace-objects", "commit"}, forwarded...)...)
 	c.Dir = root
 	c.Env = env
 	c.Stdin = options.Stdin
@@ -462,7 +526,7 @@ func Push(ctx context.Context, cwd, remote, branch string) (Object, error) {
 	if e != nil {
 		return nil, blocked("无法获取实际 push 目的分支，未推送", 1)
 	}
-	if _, e = command(ctx, cwd, nil, 8192, "git", "merge-base", "--is-ancestor", base, head); e != nil {
+	if _, e = command(ctx, cwd, nil, 8192, "git", "--no-replace-objects", "merge-base", "--is-ancestor", base, head); e != nil {
 		return nil, blocked("远端不是待推送 SHA 的祖先；先检查并集成，不强推", 3)
 	}
 	if e = check(); e != nil {

@@ -14,7 +14,6 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import audit_public_context as audit
-import precommit_quality
 
 
 def credential(char="A"):
@@ -82,7 +81,7 @@ settings = {"@KEY@": config.api_key}
                 self.assertIn(expected, {item.code for item in audit.scan_text(code, "fixture.py")})
         reference = "os." + "environ"
         for filename, code in (
-            ("config.json", json.dumps({"api_key": reference})),
+            ("config.json", json.dumps({"api" + "_key": reference})),
             ("config.yaml", "api_key: " + reference),
             ("fixture.py", 'api_key = "' + reference + '"'),
         ):
@@ -353,37 +352,6 @@ settings = {"@KEY@": config.api_key}
         payload = json.loads(result.stdout)
         self.assertEqual(payload["findings"][0]["file"], path)
         self.assertNotIn(credential(), result.stdout + result.stderr)
-
-    def test_precommit_public_gate_and_readme_use_correct_snapshots(self):
-        self.write("target.md", "# Target\n")
-        self.write("README.md", "[target](target.md#target)\n")
-        self.commit()
-        self.write("README.md", "[missing](missing.md)\n")
-        self.git("add", "README.md")
-        self.write("README.md", "[target](target.md#target)\n")
-        for name in ("audit_public_context.py", "check_readme_links.py"):
-            destination = self.root / "scripts" / name
-            destination.parent.mkdir(exist_ok=True)
-            shutil.copyfile(ROOT / "scripts" / name, destination)
-        self.git("add", "scripts")
-        calls = []
-        actual_run = precommit_quality.run
-
-        def selected_run(label, command, cwd):
-            calls.append(label)
-            if label in {"incremental public content", "root README links"}:
-                return actual_run(label, command, cwd)
-            return True
-
-        with mock.patch.object(precommit_quality, "ROOT", self.root), mock.patch.object(
-            precommit_quality, "run", side_effect=selected_run
-        ), contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
-            self.assertEqual(precommit_quality.main(), 1)
-        self.assertEqual(calls[:2], ["incremental public content", "root README links"])
-
-    def test_precommit_git_failure_is_not_an_empty_change(self):
-        with mock.patch.object(precommit_quality, "git_paths", side_effect=RuntimeError), contextlib.redirect_stderr(io.StringIO()):
-            self.assertEqual(precommit_quality.main(), 1)
 
     def test_ignore_patterns_keep_public_research_visible(self):
         shutil.copyfile(ROOT / ".gitignore", self.root / ".gitignore")

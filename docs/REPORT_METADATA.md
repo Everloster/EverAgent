@@ -64,7 +64,7 @@ related_entities: ["vaswani_ashish", "google_brain"]
 - **新增报告**必须填写 `semantic_tags`；`related_concepts` 和 `related_entities` 在有明确关联时填写。
 - 2026-10-20 起新增或实质重写的播客报告填写 `report_depth` 与 `reader_contract: standalone`；`brief` 只用于用户明确要求速览或摘要。此前已经成稿的报告不因字段新增被追溯阻断。
 - `semantic_tags` 使用小写英文，多个单词用下划线连接（如 `test_time_compute`）。
-- 以上字段由 `scripts/reindex.py` 消费，自动生成阅读索引 [REPORT_INDEX.md](./REPORT_INDEX.md)（按更新时间列出全部报告）。缺少日期元数据的历史报告沿用索引中已有日期，避免 Git 快照不保留文件 mtime 导致索引漂移。
+- 以上字段由 Go `ea-quality index --write` 消费，自动生成阅读索引 [REPORT_INDEX.md](./REPORT_INDEX.md)（按更新时间列出全部报告）。缺少日期元数据的历史报告沿用索引中已有日期；仍未知就保持未知，不以文件 mtime 伪造更新日期。完整命令见[共享协议](./PROTOCOL_COMMON.md#d-报告质量门)。
 - `reports/transcripts/` 下的 shownotes、转写与润色稿属于来源产物，不计入报告数量和阅读索引。
 - `report-v2` 的证据与复核文件放在报告同级 `.quality/` 目录；`in_progress` 可在本地暂缺，新增报告提交前必须通过质量门并 finalize。详细格式见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
 - 当前质量门：`python3 scripts/audit_reports.py --changed`；全库盘点：`python3 scripts/audit_reports.py --all --json`。

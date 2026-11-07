@@ -70,11 +70,15 @@ Curator 不重写整份 context。完整重写容易丢失例外、证据来源�
 - 静态预算只用于发现风险。最终判断依赖真实任务的成功率、无效读取、澄清次数、工具调用、compaction、返工和安全结果。
 - 行为回放同时记录 skill precision / recall、无关 context 读取率、澄清率和提前停止率；均值之外必须查看 P10 与零分率。
 
-运行：
+静态检查由同一 Go 质量门执行，不调用模型：
 
 ```bash
-python3 scripts/eval_report_context.py
-python3 scripts/eval_report_context.py --json
+go -C packages/everagent-core run ./cmd/ea-quality context
+```
+
+既有行为实验工具单独保留；生成模板或评分不等于执行了模型回放：
+
+```bash
 python3 scripts/eval_report_context.py --template > /tmp/ace-run.json
 python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json

@@ -74,6 +74,34 @@ func TestCommitOnlyStagedTreeAndIdentity(t *testing.T) {
 	}
 }
 
+func TestCommitAndMessageReuseIgnoreReplaceRefs(t *testing.T) {
+	dir, options := gitFixture(t)
+	message := fixtureMessage("[maintenance] fixture: 保留原始提交消息")
+	if err := Commit(context.Background(), []string{"-m", message}, options); err != nil {
+		t.Fatal(err)
+	}
+	head := testGit(t, dir, "rev-parse", "HEAD")
+	tree := testGit(t, dir, "write-tree")
+	other := testGit(t, dir, "-c", "user.name=Overlay", "-c", "user.email=overlay@example.invalid", "commit-tree", tree, "-m", fixtureMessage("不能复用替换视图的消息"))
+	testGit(t, dir, "replace", head, other)
+	if !strings.Contains(testGit(t, dir, "show", "-s", "--format=%B", "HEAD"), "替换视图") {
+		t.Fatal("fixture did not exercise the native replacement view")
+	}
+	options.Gate = func(ctx context.Context, root string, env []string) error {
+		if !contains(env, "GIT_NO_REPLACE_OBJECTS=1") {
+			t.Fatal("hooks/gate did not inherit literal object semantics")
+		}
+		return nil
+	}
+	if err := Commit(context.Background(), []string{"--amend", "--no-edit"}, options); err != nil {
+		t.Fatal(err)
+	}
+	actual := testGit(t, dir, "--no-replace-objects", "show", "-s", "--format=%B", "HEAD")
+	if actual != strings.TrimSpace(message) || testGit(t, dir, "replace", "-l") != head {
+		t.Fatal("amend reused replacement metadata or modified the user's replacement refs")
+	}
+}
+
 func TestCommitRejectsContentModesBeforeGate(t *testing.T) {
 	_, options := gitFixture(t)
 	options.Gate = func(context.Context, string, []string) error {
@@ -191,5 +219,72 @@ func TestIdentityEnvironmentPreservesGitConfig(t *testing.T) {
 	}
 	if _, err := exec.LookPath("git"); err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestCommitRejectsRedirectedRepository(t *testing.T) {
+	for _, scenario := range []string{"git-dir", "common-dir", "relative-index"} {
+		t.Run(scenario, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			other := realPath(t.TempDir())
+			testGit(t, other, "init", "--initial-branch=main")
+			writeFixture(t, filepath.Join(other, "other.txt"), []byte("not the reviewed tree"), time.Now())
+			testGit(t, other, "add", "other.txt")
+			a, b := testGit(t, dir, "write-tree"), testGit(t, other, "write-tree")
+			switch scenario {
+			case "git-dir":
+				t.Setenv("GIT_DIR", filepath.Join(other, ".git"))
+				t.Setenv("GIT_WORK_TREE", dir)
+			case "common-dir":
+				t.Setenv("GIT_COMMON_DIR", filepath.Join(other, ".git"))
+			case "relative-index":
+				t.Setenv("GIT_INDEX_FILE", "relative-index")
+			}
+			options.Gate = func(context.Context, string, []string) error {
+				t.Fatal("ambiguous repository/index reached gate")
+				return nil
+			}
+			if err := Commit(context.Background(), []string{"--dry-run", "-m", fixtureMessage("[maintenance] fixture: 仓库定位")}, options); ErrorCode(err) != 2 {
+				t.Fatalf("repository redirection was not refused: %v", err)
+			}
+			for _, key := range []string{"GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE"} {
+				_ = os.Unsetenv(key)
+			}
+			t.Setenv("GIT_CONFIG_GLOBAL", os.DevNull)
+			if testGit(t, dir, "write-tree") != a || testGit(t, other, "write-tree") != b {
+				t.Fatal("refusal changed an index")
+			}
+		})
+	}
+}
+
+func TestCommitKeepsExplicitAlternateIndex(t *testing.T) {
+	dir, options := gitFixture(t)
+	defaultTree := testGit(t, dir, "write-tree")
+	index := filepath.Join(t.TempDir(), "index")
+	t.Setenv("GIT_INDEX_FILE", index)
+	testGit(t, dir, "read-tree", "--empty")
+	writeFixture(t, filepath.Join(dir, "alternate.txt"), []byte("explicit alternate index"), time.Now())
+	testGit(t, dir, "add", "alternate.txt")
+	alternateTree := testGit(t, dir, "write-tree")
+	options.Gate = func(ctx context.Context, root string, env []string) error {
+		if !strings.Contains("\n"+strings.Join(env, "\n")+"\n", "\nGIT_INDEX_FILE="+index+"\n") {
+			t.Fatal("gate lost caller's alternate index")
+		}
+		tree, err := gitRead(ctx, root, env, "write-tree")
+		if err != nil || tree != alternateTree {
+			t.Fatal("gate read a different index")
+		}
+		return nil
+	}
+	if err := Commit(context.Background(), []string{"-m", fixtureMessage("[maintenance] fixture: 显式备用索引")}, options); err != nil {
+		t.Fatal(err)
+	}
+	if testGit(t, dir, "rev-parse", "HEAD^{tree}") != alternateTree {
+		t.Fatal("commit did not use reviewed alternate index")
+	}
+	_ = os.Unsetenv("GIT_INDEX_FILE")
+	if testGit(t, dir, "write-tree") != defaultTree {
+		t.Fatal("alternate-index commit changed default index")
 	}
 }

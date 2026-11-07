@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-06 · [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](./ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)
-- 2026-11-06 · [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](./ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)
-- 2026-11-06 · [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](./ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md)
-- 2026-11-06 · [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](./ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md)
-- 2026-11-06 · [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](./ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md)
+- 2026-11-06 · [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-06 · [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-06 · [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-06 · [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-06 · [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_27_Diffusion2015_%E9%80%90%E6%AD%A5%E5%8A%A0%E5%99%AA%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -140,7 +140,7 @@ cd EverAgent
 
 [AGENTS.md](./AGENTS.md) 是规则入口，Claude Code 经 `CLAUDE.md` 导入。模型访问、联网检索和转写服务需另行配置。其中的 `eacli` 是维护者的私有命令行工具，公开仓不提供；没有它时，Agent 按 AGENTS.md 做最小降级并记录原因。
 
-维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 `scripts/reindex.py` 生成；配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
+维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 Go `ea-quality index --write` 生成，命令见该协议；配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
 
 </details>
 

@@ -38,12 +38,12 @@ python3 scripts/report_generator.py summary daily '<repos_json>' output.md '<mis
 
 ## 完成定义
 
-从仓库根目录运行：
+新增报告或目录元数据改变时，从仓库根目录更新索引：
 
 ```bash
-python3 scripts/reindex.py
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
+go -C packages/everagent-core run ./cmd/ea-quality index --write
 ```
+
+提交器自动检查受影响报告和索引；只预览时按[共享质量门](../../../docs/PROTOCOL_COMMON.md#d-报告质量门)运行，不重复检查。
 
 每次任务都做简短反思；只有跨 repo 可复用或高风险的新发现才以最小 delta 更新 skill/reference。

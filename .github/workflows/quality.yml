@@ -15,6 +15,35 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: packages/everagent-core/go.mod
+          cache-dependency-path: packages/everagent-core/go.sum
+      - name: Test shared core and public quality contracts
+        run: go -C packages/everagent-core test -mod=readonly ./...
+      - name: Vet shared core and public quality contracts
+        run: go -C packages/everagent-core vet -mod=readonly ./...
+      - name: Check the committed snapshot with the same public gate
+        env:
+          BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          [[ "$BASE_REVISION" =~ ^[0-9a-f]{40,64}$ ]] || exit 1
+          if [[ "$BASE_REVISION" =~ ^0+$ ]]; then
+            BASE_REVISION=$(git hash-object -w -t tree --stdin </dev/null)
+          elif [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASE_REVISION=$(git merge-base "$BASE_REVISION" HEAD)
+          fi
+          go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false \
+            ./cmd/ea-quality quick --scope head --base "$BASE_REVISION"
+
+  # Retained authoring/research tools are separate from the Go commit gate.
+  report-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -29,63 +58,11 @@ jobs:
           dependencies = project["dependencies"] + project["optional-dependencies"]["dev"]
           subprocess.run([sys.executable, "-m", "pip", "install", *dependencies], check=True)
           PY
-      - name: Run report and public gate tests
+      - name: Run retained report authoring and research tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'
-      - name: Run all script regression tests
+      - name: Run retained experiment script tests
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - name: Run Bilibili inbox tests
         run: python3 -m unittest discover -s web-surfing/skills/site-bilibili/tests -p 'test_*.py'
       - name: Run GitHub research tests
         run: python3 -m pytest github-trending-analyzer/tests -q
-      - name: Audit newly introduced public content
-        env:
-          BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          [[ "$BASE_REVISION" =~ ^[0-9a-f]{40,64}$ ]] || exit 1
-          if [[ "$BASE_REVISION" =~ ^0+$ ]]; then
-            BASE_REVISION=$(git hash-object -w -t tree --stdin </dev/null)
-          elif [[ "$EVENT_NAME" == "pull_request" ]]; then
-            BASE_REVISION=$(git merge-base "$BASE_REVISION" HEAD)
-          fi
-          python3 scripts/audit_public_context.py --changed --base "$BASE_REVISION" --head HEAD
-          printf 'AUDIT_BASE=%s\n' "$BASE_REVISION" >> "$GITHUB_ENV"
-      - name: Check root README links and media
-        run: python3 scripts/check_readme_links.py
-      - name: Check script catalog and generated index
-        run: python3 scripts/script_catalog.py check
-      - name: Audit affected reports (full when the report gate changes)
-        run: |
-          python3 - <<'PY'
-          import os
-          import subprocess
-          import sys
-          sys.path.insert(0, "scripts")
-          from precommit_quality import report_audit_command
-          from report_catalog import ROOT, new_report_paths
-          paths = subprocess.check_output([
-              "git", "diff", "--no-renames", "--name-only", "-z",
-              os.environ["AUDIT_BASE"], "HEAD", "--",
-          ]).decode().split("\0")
-          added = {str(path.relative_to(ROOT)) for path in new_report_paths(os.environ["AUDIT_BASE"], "HEAD")}
-          subprocess.run(report_audit_command({path for path in paths if path}, added), check=True)
-          PY
-      - name: Verify generated indexes
-        run: python3 scripts/reindex.py --check
-      - name: Evaluate changed Context or report review sampling
-        run: |
-          python3 - <<'PY'
-          import os
-          import subprocess
-          import sys
-          sys.path.insert(0, "scripts")
-          from precommit_quality import context_evaluation_required, review_sampling_required
-          paths = set(subprocess.check_output([
-              "git", "diff", "--no-renames", "--name-only", "-z",
-              os.environ["AUDIT_BASE"], "HEAD", "--",
-          ]).decode().split("\0")) - {""}
-          if context_evaluation_required(paths):
-              subprocess.run([sys.executable, "scripts/eval_report_context.py"], check=True)
-          elif review_sampling_required(paths):
-              subprocess.run([sys.executable, "scripts/report_quality.py", "sampling-status", "--check"], check=True)
-          PY

@@ -35,11 +35,13 @@
   },
   "root_forbidden_snippets": [
     "python3 scripts/reindex.py",
+    "./cmd/ea-quality",
     "quality_schema:"
   ],
   "domain_agents_forbidden_snippets": [
     "quality_schema:",
     "python3 scripts/reindex.py",
+    "./cmd/ea-quality",
     "python3 scripts/audit_reports.py",
     "python3 scripts/report_quality.py",
     "## 报告 frontmatter",

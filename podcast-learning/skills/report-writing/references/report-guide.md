@@ -43,7 +43,7 @@
 
 1. 转写或声明数字改变时核验统计；仓内原文可用 `fill_report_stats.py <报告>`，私有原文按上文方法检查。不改统计时不重跑。
 2. 本期已在 [精选播客速看表](../../../PODCAST_UPDATES.md) 中时，核对完成状态并补回报告链接；需要批量回填才用 `sync_index_status.py`。
-3. 新增报告或目录元数据变化时运行 `python3 scripts/reindex.py`。受影响检查由 `scripts/ecommit.sh` 执行一次；尚不提交时可单独运行 `python3 scripts/audit_reports.py --changed`。
+3. 新增报告或目录元数据变化时在仓根运行 `go -C packages/everagent-core run ./cmd/ea-quality index --write`。受影响检查由 `scripts/ecommit.sh` 执行一次；只预览时用[共享质量门](../../../../docs/PROTOCOL_COMMON.md#d-报告质量门)，不重复全库检查。
 4. 普通过程记录不写入长期上下文；可复用的新知识才更新对应 owner，不另建收尾档案。
 5. 若本批出现跨节目复用价值或高风险问题，以一条局部 delta 更新本 skill；否则不改
 

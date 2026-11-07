@@ -19,7 +19,7 @@ Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORA
 
 ## current → diagnose → declare
 
-本页描述core 0.3.0及对应eacli源码契约；安装态升级与真实平台覆盖由私仓分别验收，源码/fixture通过不代表已发布。
+本页描述 Go core 0.4.0-dev 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
 - `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
@@ -94,7 +94,7 @@ macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自�
 目前仅支持存储行version=2.0.27；这不是当前可执行程序版本证明，旧会话行及Windows原生cwd绑定尚未验证。
 
 SQLite只读事务先按id+directory筛session，再取该session最新assistant的有界标量：model id/provider/variant、
-created/streamed/completed及更新时刻；不返回或Python解码正文/工具输入输出，不读其他session或凭据表。
+created/streamed/completed及更新时刻；不返回或解码正文/工具输入输出，不读其他session或凭据表。
 workspace/fork或存在location-switched时保守拒绝；两次精确快照不同、记录早于进程、过期/未来/损坏、
 后续模型选择改变均不借旧条目。最新provider流未结束时不可用；streamed已记录但工具未结算时仅返回
 `request_observation.step_completed=false`的请求元数据，不能当作完整回复或当前provider模型证明。
@@ -106,7 +106,8 @@ workspace/fork或存在location-switched时保守拒绝；两次精确快照不�
 
 ### 自动核实失败的修复路径
 
-`eacli session diagnose --json` 或 `python3 scripts/agent_identity.py diagnose --json` 返回当前调用方的
+`eacli session diagnose --json` 或在公开仓根运行
+`go -C packages/everagent-core run ./cmd/everagent-identity diagnose --json` 返回当前调用方的
 `automatic_probe`、原因码、公共 owner、复验入口和最后的用户兜底条件。安装 core 使用
 `everagent-identity diagnose --json`。成功的常规 inspect 保持原有精简输出，诊断按需展开。
 
@@ -162,9 +163,8 @@ MiniMax Code Desktop 同样没有会话环境变量，且 Bash 工具起的是�
 Kimi Desktop 也无会话环境变量。读取器从 `KIMI_SHARE_DIR` 或平台用户数据目录定位
 `daimon/agents/main/runner.state.json`，要求 runtime 正在运行、控制端点为 loopback WebSocket，
 且 endpoint/daemon PID 一致并属于当前调用方祖先。只枚举其中有界的 `activeKernelTurns`，
-不按最近更新时间、active conversation 或 focused pane 猜会话。随包 Node runtime 在内存中使用控制令牌调用
-`backgroundTasks.list`（`activeOnly=true`）。Python 不向 Node 传令牌，令牌不进入命令行、查询输入或输出；
-Python 只接收任务元数据。
+不按最近更新时间、active conversation 或 focused pane 猜会话。Go 读取器在内存中使用控制令牌调用
+`backgroundTasks.list`（`activeOnly=true`），只消费任务元数据；令牌不进入命令行、查询输入或输出。
 同一运行 Bash 任务的 PID 必须命中 App 之前的祖先 shell，任务与 shell 启动时间相差不超过 2 秒，
 且任务不早于活动 turn；所有候选合计必须恰好一个绑定。并行会话、重复绑定、他人或结束任务均不核实。
 
@@ -177,7 +177,7 @@ Python 只接收任务元数据。
 这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
 
 cursor-cli（Cursor Agent）尚无自动模型读取器。用户声明绑定祖先链中的 `sand-exit-watch`
-与会话环境；通用 `node` 进程不构成身份。绑定顺序（`everagent_core.identity.declarations.caller_scope`）：
+与会话环境；通用 `node` 进程不构成身份。绑定顺序由公共 `declarations.go` 的 `factScope` 拥有：
 
 1. 必须有 `sand-exit-watch` 锚点，否则整段 scope 为未绑定（`None`）。
 2. 若存在合法 `CURSOR_CONVERSATION_ID`，写入 `session_ref`。
@@ -200,7 +200,8 @@ App 外层的启动 shell 不构成执行依据。新批次按用户已明确指
 
 [`scripts/script-catalog.json`](../scripts/script-catalog.json) 登记本族的目的、唯一 owner、canonical/compatibility/internal、
 平台、依赖、输入、输出、副作用、授权 owner 和范围。它不取代能力目录或 Skill。
-[`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md) 是生成视图；`script_catalog.py list|show` 可按需发现。
+[`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md) 是生成视图；
+`go -C packages/everagent-core run ./cmd/ea-quality scripts --check` 按需查看和校验。
 
 新增或改名必须更新目录，保留已承诺的兼容入口并验证转发。门禁校验目录 schema、唯一 ID/alias、owner/路径、
 索引哈希和行为测试；算法移动不要求旧 wrapper 继续出现实现源码。

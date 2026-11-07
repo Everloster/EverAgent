@@ -1,26 +1,10 @@
 #!/bin/sh
-# EverAgent pre-commit hook: validate git identity and staged report/context quality
-# Defense in depth. scripts/ecommit.sh always runs the same gate first.
-# If an environment already owns core.hooksPath, do not overwrite it merely to
-# activate this hook; the repository commit wrapper remains authoritative.
-
+# Defense in depth; do not replace a user's existing core.hooksPath.
+set -eu
 REPO_ROOT="$(git rev-parse --show-toplevel)"
-IDENTITY_SCRIPT="$REPO_ROOT/scripts/git_identity.py"
-
-if [ -f "$IDENTITY_SCRIPT" ]; then
-    python3 "$IDENTITY_SCRIPT" validate
-    if [ $? -ne 0 ]; then
-        echo "[pre-commit] BLOCKED: git identity check failed."
-        exit 1
-    fi
+go -C "$REPO_ROOT/packages/everagent-core" run -mod=readonly -trimpath -buildvcs=false \
+  ./cmd/ea-git --repo-root "$REPO_ROOT" validate
+if [ "${EVERAGENT_QUALITY_GATE_TREE:-}" != "$(git write-tree)" ]; then
+    go -C "$REPO_ROOT/packages/everagent-core" run -mod=readonly -trimpath -buildvcs=false \
+      ./cmd/ea-quality quick --repo-root "$REPO_ROOT" --scope index
 fi
-
-if [ "${EVERAGENT_QUALITY_GATE_DONE:-0}" != "1" ]; then
-    python3 "$REPO_ROOT/scripts/precommit_quality.py"
-    if [ $? -ne 0 ]; then
-        echo "[pre-commit] BLOCKED: report/context quality gate failed."
-        exit 1
-    fi
-fi
-
-exit 0

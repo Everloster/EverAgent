@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
-# Stable ecommit entry; shared identity, argument, trailer and index rules live in git_commit.py.
+# Stable public entry: shared Go identity/Git core and this checkout's quality gate.
 set -euo pipefail
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-for _COMMAND in python3 python; do
-  if [ "$("$_COMMAND" -c 'print("everagent-python-ok")' 2>/dev/null || true)" = "everagent-python-ok" ]; then
-    exec "$_COMMAND" "$_SCRIPT_DIR/git_commit.py" "$@"
-  fi
-done
-if [ "$(py -3 -c 'print("everagent-python-ok")' 2>/dev/null || true)" = "everagent-python-ok" ]; then
-  exec py -3 "$_SCRIPT_DIR/git_commit.py" "$@"
-fi
-echo "[ecommit] BLOCKED: 找不到可执行的 Python 解释器" >&2
-exit 1
+_BUILD_DIR="$(mktemp -d "${TMPDIR:-/tmp}/everagent-git.XXXXXXXX")"
+trap 'rm -rf -- "$_BUILD_DIR"' EXIT
+go -C "$_SCRIPT_DIR/../packages/everagent-core" build -mod=readonly -trimpath -buildvcs=false \
+  -o "$_BUILD_DIR/ea-git" ./cmd/ea-git
+# go run collapses every nonzero child status to 1; preserve the CLI contract.
+"$_BUILD_DIR/ea-git" --repo-root "$_SCRIPT_DIR/.." commit "$@"

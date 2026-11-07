@@ -163,14 +163,13 @@ semantic_tags: ["tag"]
 
 普通报告由提交器自动执行受影响检查；以下命令是按问题选用的诊断入口，不是每篇报告的必跑清单。只有门禁、Schema 或质量策略改变，才自动扩大全库审计；全局 Context 检查也不随普通报告和生成索引变化运行。
 
-确需全库审计时先固定 Git 快照。记录当前 HEAD 与目标 ref（默认 `origin/main`）；若当前 HEAD 不包含目标 ref，`audit_reports.py --all` 会以 `SCOPE001` 停止。此时在隔离 worktree 中审目标 commit，不能扫描当前脏工作树后宣称“全量完成”。
+确需全库审计时先固定 Git 快照，使用 `full --scope head --base <完整base-SHA>`；提交检查 index，工作区预览使用 worktree。不能扫描脏工作树后宣称目标 commit 已通过。
 
 ```bash
-python3 scripts/audit_reports.py --changed
-python3 scripts/audit_reports.py --all --json
-python3 scripts/report_quality.py check <报告路径>
-python3 scripts/eval_report_context.py
-python3 scripts/reindex.py --check
+go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false ./cmd/ea-quality quick --scope worktree
+go -C packages/everagent-core run ./cmd/ea-quality report --report <仓内报告路径>
+go -C packages/everagent-core run ./cmd/ea-quality context
+go -C packages/everagent-core run ./cmd/ea-quality index --check
 ```
 
 报告检查负责元数据、来源、占位符、内部链接和索引；内容质量与覆盖看证据和独立复核，不靠固定章节名称。Context 检查另行负责指令 Owner、常驻字节预算、skill description、渐进披露和 ACE 任务集结构。

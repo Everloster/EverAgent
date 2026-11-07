@@ -37,7 +37,7 @@ Task-Type: {project-optimization | new-project | task-execution}
 常规报告和维护默认直接在 `main` 完成并交付。确需临时分支时，任务收尾要把成果合入 `main`；确认已推送、没有独有未合入提交或在用工作树后，清理对应本地和远端分支。用户只需在主分支查阅报告。
 
 > **双身份**：Author 由 [`config/git-policy.json`](../config/git-policy.json) 拥有，Committer 是当前 harness 与模型。
-> `scripts/ecommit.sh` 是稳定入口；[`git_commit.py`](../scripts/git_commit.py) 绑定公开仓质量门禁，公共
+> `scripts/ecommit.sh` 是稳定入口；[`ea-git`](../packages/everagent-core/cmd/ea-git/main.go) 绑定公开仓 Go 质量门禁，公共
 > [`everagent-core`](../packages/everagent-core/README.md) 拥有 Git 参数、身份注入、消息与 index 不变规则。
 > 私仓 eacli 随包携带同源 core，绑定私仓门禁；安装态身份与会话无需相邻 checkout。
 
@@ -46,12 +46,12 @@ Codex 当前 thread、Pi 当前 shell context、TRAE thread 与 Claude Code UUID
 配置默认值、一般环境提示、全局最近日志、历史对话和 `AGENT_ID` 都不能自动放行。
 OpenCode V2原生会话的请求Model.Ref也不是provider返回型号；requested-only记录不能自动授权署名。
 诊断入口是 `eacli session diagnose --json`；源码兜底为
-`python3 scripts/agent_identity.py diagnose --json`。按诊断核对当前调用方绑定，回公共 core owner 修复
+`go -C packages/everagent-core run ./cmd/everagent-identity diagnose --json`。按诊断核对当前调用方绑定，回公共 core owner 修复
 读取器或 adapter、补针对性回归，再复验当前会话。已授权的源码修复与只读工作可继续；仅配置值不能提交。
 确实无法取得当前会话证据时，请用户给出当前模型 ID，再运行：
 
 ```bash
-python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-confirmed
+go -C packages/everagent-core run ./cmd/everagent-identity declare --model <用户明确指定的ID> --user-confirmed
 ```
 
 新源码入口为`eacli session declare`，可只补用户明确指定的device/harness/form/model；`declare-model`继续兼容模型。
@@ -61,10 +61,13 @@ python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-
 身份缺失只阻断提交，已获授权的只读和源码工作可以继续。当前证据与字段定义见
 [身份与会话契约](./AGENT_SESSION.md)。
 
-`agent_identity.py` 是 canonical 入口，`whoami_agent.py` 和旧 Python import 路径保持兼容。
-Git validator 消费同一公共 core；上一会话的 Git 配置不构成本会话证据。
+旧 Python 身份/提交入口已从源码退役；Go 独立入口与 eacli 复用同一公共 core。
+Git validator 消费当前会话证据；上一会话的 Git 配置不构成本会话证据。
 
 提交只消费显式暂存的 tree，拒绝 pathspec、`--all/--include/--only/--patch/--fixup` 等改变内容的参数。
+同时拒绝 `GIT_DIR`、`GIT_WORK_TREE` 等仓库重定向，核对配置未让提交与门禁定位到不同 checkout；
+显式备用 `GIT_INDEX_FILE` 仍支持，但须使用绝对路径，避免门禁切换工作目录后读取另一个 index。
+快照、提交和祖先核验均读取原始 Git 对象，不使用本地 `refs/replace` 覆盖；不删除或修改用户的替换引用。
 质量门禁前后核验 index，并重新读取当前身份。`-m/-F`、复用消息、amend 与原生编辑器保留调用方消息及
 显式 trailer，只补必要的末尾换行。内部 amend 作者重置仍绑定仓库 owner，
 不接受用户用 `--reset-author` 绕过双身份。
@@ -95,7 +98,7 @@ git push origin main
 |------|------|
 | `fatal: Unable to create '.git/index.lock': File exists` | 用 `git rev-parse --git-path index.lock` 定位真实锁，检查相关 Git 进程；现有操作结束后重试。锁文件清理按用户授权处理。 |
 | `Updates were rejected because the tip of your current branch is behind` | 先 `git fetch origin main` 并检查差异；只做可证明的 fast-forward，分叉时先处理集成方案。 |
-| `pre-commit hook denied` | 检查 git identity（运行 `python3 scripts/git_identity.py validate`） |
+| `pre-commit hook denied` | 用 `eacli git identity --json` 核对当前身份；公开独立入口为 `go -C packages/everagent-core run ./cmd/ea-git validate`。 |
 | 网络超时 / 502 | 只读请求可有界重试；commit/push等写入结果未知先查原提交/目的ref，不自动重放；读回仍失败则明确未核实并上报 |
 
 ---
@@ -105,18 +108,22 @@ git push origin main
 新增或实质修改报告后，先按报告质量流程完成复核与最终判定。新增报告或目录元数据改变时更新索引：
 
 ```bash
-python3 scripts/reindex.py
+go -C packages/everagent-core run ./cmd/ea-quality index --write
 ```
 
-提交时复用 `scripts/ecommit.sh` 的受影响检查，不提前手工重复执行整套命令。尚不提交时运行 `python3 scripts/audit_reports.py --changed`；需要定位单篇质量错误才用 `python3 scripts/report_quality.py check <报告路径>`。
+提交时复用 `scripts/ecommit.sh` 的受影响检查，不提前手工重复执行整套命令。只预览时用
+`go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false ./cmd/ea-quality quick --scope worktree`；
+定位单篇错误用 `go -C packages/everagent-core run ./cmd/ea-quality report --report <仓内报告路径>`。
 
 - 新报告使用 `quality_schema: report-v2`，并通过证据账本、独立复核和评分门；`report-v1` 保留为过渡格式。
 - `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁，并校验门禁前后的 index tree 未变化。
 - 普通报告提交只审受影响报告与依赖；质量文件由报告审计统一检查一次。全库报告审计和全局 Context 评估按变更范围触发，不是每次报告提交的固定行程。纯编辑修订见 [轻量处理](./REPORT_QUALITY_GATE.md#判定)，不为改标题重做全文审稿。
 - 历史报告只进入 WARN 清单，不因一次任务批量重写。
 - 同一领域内正文完全不变的报告改名沿用原合同；复制、新建、跨领域移动或从其他目录迁入仍按新报告检查。提交前与 CI 共用该判定，原有版本合同和来源检查继续执行。
+- 提交只检查 index，CI 检查 HEAD 与完整 base SHA；不把未暂存内容或漂移中的快照当作本次提交。Go 门禁源代码必须与所审快照一致；缺工具或未完成检查返回失败，不回退旧实现。
+- macOS/Linux 的 Go 检查以独立进程组运行，取消时回收后再清理临时目录；退出状态不明则保留目录并报失败。不是恶意代码沙箱。Windows 尚缺无竞态的进程树回收，涉及源码测试时在启动前拒绝，不宣称跨平台运行验收已完成。
 - 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。
-- `lint_evidence.py` 保留为单文件快速诊断，由统一审计器复用。
+- `lint_evidence.py` 等作者工具保留用于单文件诊断；提交与 CI 以同源 Go 质量门为准，不调用这些脚本。
 
 ---
 

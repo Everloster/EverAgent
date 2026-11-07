@@ -50,15 +50,15 @@ ls ~/<your-workspace>/EverAgent-infra/README.md && echo "✅ infra 就位"
 ## 三、git 身份（两仓都要）
 
 两仓都用双身份：Author = 仓库主人 Everloster，Committer = 当前 Agent。
-两仓提交都走自己的 `scripts/ecommit.sh`；公共规则由公开仓 `scripts/git_commit.py` 拥有，
+两仓提交都走自己的 `scripts/ecommit.sh`；公共规则由公开仓 Go `packages/everagent-core/git.go` 拥有，
 私仓只绑定自己的 gate。首次使用和每次换模型均无需手动复制身份配置。
 
 ```bash
-python3 scripts/whoami_agent.py --json   # 公开仓身份 owner
+go -C packages/everagent-core run ./cmd/everagent-identity inspect --json
 scripts/ecommit.sh -m "[maintenance] global: 更新工作区说明"
 ```
 
-私仓用 `python3 scripts/agent_identity.py --json` 桥接同一 owner。
+安装态用 `eacli session current --json`，公共 core 已编译进 CLI，无需相邻源码或解释器。
 身份来源、模型可信度、trailer 和提交检查见 [PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §B/§C。
 linked worktree 从 Git common directory 找到并排公开 owner；单独 clone 私仓时，
 先恢复公开 owner，再进行提交。

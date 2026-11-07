@@ -14,8 +14,6 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import audit_reports  # noqa: E402
 import eval_report_context  # noqa: E402
-import precommit_quality  # noqa: E402
-import reindex  # noqa: E402
 import report_catalog  # noqa: E402
 import report_quality  # noqa: E402
 import run_ace_context_ab  # noqa: E402
@@ -88,51 +86,6 @@ class ChapterTitleTests(unittest.TestCase):
             self.assertEqual(entry["title"], "《AI演义》01｜Brook：为什么？")
             self.assertEqual(entry["metadata"]["title"], "AI演义·01 Brook：为什么？")
             self.assertEqual(path.read_text(encoding="utf-8"), original)
-
-
-class ReportSidecarTests(unittest.TestCase):
-    def setUp(self):
-        temporary = tempfile.TemporaryDirectory()
-        self.addCleanup(temporary.cleanup)
-        self.root = Path(temporary.name)
-        self.report = "ai-learning/reports/topic.md"
-        path = self.root / self.report
-        path.parent.mkdir(parents=True)
-        path.write_text("# Topic\n", encoding="utf-8")
-        patch = mock.patch.object(precommit_quality, "ROOT", self.root)
-        patch.start()
-        self.addCleanup(patch.stop)
-
-    def test_supported_artifacts_resolve_to_their_report(self):
-        for suffix in ("evidence", "review", "transcription-review"):
-            with self.subTest(suffix=suffix):
-                path = f"ai-learning/reports/.quality/topic.{suffix}.json"
-                self.assertEqual(precommit_quality.report_for_sidecar(path), self.report)
-
-    def test_missing_reports_and_unknown_artifacts_remain_rejected(self):
-        for path in (
-            "ai-learning/reports/.quality/missing.transcription-review.json",
-            "ai-learning/reports/.quality/topic.unknown.json",
-            "ai-learning/reports/topic.evidence.json",
-        ):
-            with self.subTest(path=path):
-                self.assertIsNone(precommit_quality.report_for_sidecar(path))
-
-    def test_transcription_review_is_audited_once_without_global_context(self):
-        artifact = "ai-learning/reports/.quality/topic.transcription-review.json"
-        with mock.patch.object(precommit_quality, "git_paths", side_effect=[{artifact}, set()]), \
-                mock.patch.object(precommit_quality, "new_report_paths", return_value=[]), \
-                mock.patch.object(precommit_quality, "run", return_value=True) as run, \
-                mock.patch.object(precommit_quality.subprocess, "run", return_value=mock.Mock(returncode=0)), \
-                mock.patch("sys.stdout", new=io.StringIO()):
-            self.assertEqual(precommit_quality.main(), 0)
-        commands = [call.args[1] for call in run.call_args_list]
-        audits = [command for command in commands if "scripts/audit_reports.py" in command]
-        self.assertEqual(len(audits), 1)
-        self.assertIn("--changed-path=" + artifact, audits[0])
-        self.assertIn("--affected", audits[0])
-        self.assertNotIn([sys.executable, "scripts/report_quality.py", "check", self.report], commands)
-        self.assertNotIn([sys.executable, "scripts/eval_report_context.py"], commands)
 
 
 class ReportToolingTests(unittest.TestCase):
@@ -610,41 +563,6 @@ semantic_tags: ["quality"]
 
         self.assertEqual(paths, {ROOT / relative})
 
-    def test_generated_index_covers_github_and_skips_shownotes(self):
-        index = reindex.build_index(reindex.collect_reports())
-
-        self.assertIn("## 🔭 GitHub Research", index)
-        self.assertIn("research_yetone_magpie.md", index)
-        self.assertNotIn(".shownotes.md", index)
-
-    def test_static_context_evaluation_has_no_errors(self):
-        result = eval_report_context.static_evaluation()
-        self.assertEqual(result["errors"], [])
-        self.assertGreaterEqual(result["ace_cases"], 10)
-        self.assertEqual(result["quality_replays"], 5)
-        self.assertTrue(result["commit_wrapper_guarded"])
-        self.assertTrue(result["ci_quality_guarded"])
-        self.assertIn(result["ace_context_ab_status"], {"current", "context-changed"})
-        self.assertEqual(result["ace_context_ab_guarded"], result["ace_context_ab_status"] == "current")
-        self.assertTrue(result["cross_model_sampling_guarded"])
-        self.assertEqual(result["discoverable_skill_count"], 1)
-        self.assertLessEqual(result["report_skill_description_chars"], 180)
-
-    def test_ab_context_fingerprint_change_is_pending_not_fresh_evidence(self):
-        with mock.patch.object(eval_report_context, "_behavior_context_sha256", return_value="0" * 64):
-            result = eval_report_context.static_evaluation()
-        self.assertFalse(result["ace_context_ab_guarded"])
-        self.assertEqual(result["ace_context_ab_status"], "context-changed")
-        self.assertTrue(any("上下文指纹已变化" in warning for warning in result["warnings"]))
-
-    def test_matching_ab_context_fingerprint_allows_complete_evidence(self):
-        owner = eval_report_context._load_instruction_policy()["owners"]["ace_context_ab_result"]
-        value = json.loads((ROOT / owner).read_text(encoding="utf-8"))
-        fingerprint = value["refs"]["candidate"]["context_sha256"]
-        with mock.patch.object(eval_report_context, "_behavior_context_sha256", return_value=fingerprint):
-            result = eval_report_context.static_evaluation()
-        self.assertTrue(result["ace_context_ab_guarded"])
-        self.assertEqual(result["ace_context_ab_status"], "current")
 
     def test_pi_trace_parser_uses_observed_repo_reads(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -817,26 +735,6 @@ semantic_tags: ["quality"]
             )
 
         self.assertEqual(changed, ["podcast-learning/AGENTS.md"])
-
-    def test_ecommit_rejects_options_that_change_the_index_after_gate(self):
-        proc = subprocess.run(
-            ["bash", str(ROOT / "scripts" / "ecommit.sh"), "--all", "--dry-run"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(proc.returncode, 2)
-        self.assertIn("改变待提交内容", proc.stderr)
-
-    def test_precommit_blocks_mutating_an_archived_policy(self):
-        archived = "config/report-quality-policies/report-quality-2026-10-15-r1.json"
-        with mock.patch.object(
-            precommit_quality,
-            "git_paths",
-            return_value={archived},
-        ), mock.patch("sys.stderr", new=io.StringIO()):
-            self.assertEqual(precommit_quality.main(), 1)
 
     def test_behavioral_template_can_score_a_complete_run(self):
         template = eval_report_context.run_template()
@@ -1056,16 +954,6 @@ semantic_tags: ["sampling"]
 
         self.assertNotIn("./research_acme_rocket.md", content)
         self.assertIn("acme/rocket — 本地深研报告缺失", content)
-
-    def test_reindex_check_is_clean_after_generation(self):
-        proc = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / "reindex.py"), "--check"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
 
 
 if __name__ == "__main__":

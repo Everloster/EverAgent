@@ -1,180 +1,180 @@
 # 📖 报告索引
 
-> 由 `python3 scripts/reindex.py` 自动生成，请勿手改。
+> 由 `go -C packages/everagent-core run ./cmd/ea-quality index --write` 自动生成，请勿手改。
 > 数据源：各报告 frontmatter（约定见 [REPORT_METADATA.md](./REPORT_METADATA.md)）。
 
 ## 最近更新（Top 25）
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](../ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | ai-learning |
-| 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_27_Diffusion2015_%E9%80%90%E6%AD%A5%E5%8A%A0%E5%99%AA%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_26_GAN_%E4%B8%A4%E4%B8%AA%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%9C%A8%E5%AF%B9%E6%8A%97%E4%B8%AD%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
+| 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_25_CLIP_%E5%9B%BE%E6%96%87%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%9B%B8%E4%BA%92%E5%8C%B9%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_24_ViT_%E5%9B%BE%E5%83%8F%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90Transformer%E8%BE%93%E5%85%A5_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_23_TwoStream_%E5%A4%96%E8%A7%82%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%80%8E%E6%A0%B7%E5%85%B1%E5%90%8C%E8%AF%86%E5%88%AB%E5%8A%A8%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_22_DeepVideo_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%88%A9%E7%94%A8%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4%E4%BF%A1%E6%81%AF_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_21_Tulu3_%E5%90%8E%E8%AE%AD%E7%BB%83%E9%85%8D%E6%96%B9%E6%80%8E%E6%A0%B7%E8%B5%B7%E4%BD%9C%E7%94%A8_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_20_ReAct_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E8%BE%B9%E6%9F%A5%E8%BE%B9%E6%83%B3_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_19_CoT_%E4%B8%AD%E9%97%B4%E6%AD%A5%E9%AA%A4%E6%80%8E%E6%A0%B7%E5%B8%AE%E5%8A%A9%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%AD%94_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_18_InstructGPT_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E6%8C%89%E8%A6%81%E6%B1%82%E5%9B%9E%E7%AD%94_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_17_AlphaGoZero_%E4%B8%8D%E9%9D%A0%E6%A3%8B%E8%B0%B1%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E4%B8%8B%E6%A3%8B_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_16_LoRA_%E5%B0%91%E9%87%8F%E5%8F%82%E6%95%B0%E6%80%8E%E6%A0%B7%E9%80%82%E9%85%8D%E6%96%B0%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_15_%E7%A8%80%E7%96%8FMoE_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%8F%AA%E8%AE%A1%E7%AE%97%E4%B8%80%E9%83%A8%E5%88%86_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_14_MegaScale_%E4%B8%87%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E8%AE%AD%E7%BB%83_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_13_LAION_%E5%9B%BE%E6%96%87%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_12_RefinedWeb_%E7%BD%91%E9%A1%B5%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_11_ZeRO_%E5%A4%9A%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%88%86%E6%8B%85%E8%AE%AD%E7%BB%83%E6%98%BE%E5%AD%98_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_10_ScalingLaws%E4%B8%8EChinchilla_%E7%AE%97%E5%8A%9B%E9%A2%84%E7%AE%97%E6%80%8E%E6%A0%B7%E5%88%86%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_09_GPT2%E4%B8%8EGPT3_%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E4%B8%8A%E4%B8%8B%E6%96%87_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_08_GPT1%E4%B8%8EBERT_%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_07_GNMT%E4%B8%8ETransformer_%E4%BB%8E%E7%BF%BB%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%88%B0%E5%B9%B6%E8%A1%8C%E6%9E%B6%E6%9E%84_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
 ## 🤖 AI Learning（185 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md) | `ai_history`, `diffusion_transformer`, `vision_transformer`, `scaling`, `generative_models` |
-| 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md) | `ai_history`, `stable_diffusion`, `text_to_image`, `classifier_free_guidance`, `latent_diffusion` |
-| 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) | `ai_history`, `latent_diffusion`, `autoencoder`, `cross_attention`, `generative_models` |
-| 2026-11-06 | [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](../ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md) | `ai_history`, `ddpm`, `diffusion`, `denoising`, `generative_models` |
-| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md) | `ai_history`, `diffusion`, `generative_models`, `probabilistic_modeling` |
-| 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | `ai_history`, `gan`, `generative_models`, `adversarial_training` |
-| 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | `ai_history`, `clip`, `contrastive_learning`, `multimodal`, `zero_shot` |
-| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |
-| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
-| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
-| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
-| 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | `ai_history`, `react`, `agents`, `tool_use`, `reasoning`, `evaluation` |
-| 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | `ai_history`, `chain_of_thought`, `prompting`, `in_context_learning`, `reasoning`, `evaluation` |
-| 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | `ai_history`, `instructgpt`, `rlhf`, `instruction_following`, `reward_model`, `alignment` |
-| 2026-11-06 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) | `ai_history`, `alphago_zero`, `reinforcement_learning`, `self_play`, `mcts`, `test_time_compute` |
-| 2026-11-06 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) | `ai_history`, `lora`, `parameter_efficient_finetuning`, `low_rank_adaptation`, `transfer_learning` |
-| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | `ai_history`, `mixture_of_experts`, `conditional_computation`, `sparse_routing`, `load_balancing`, `language_modeling` |
-| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | `ai_history`, `megascale`, `distributed_training`, `parallelism`, `observability`, `fault_tolerance` |
-| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | `ai_history`, `laion`, `clip`, `multimodal`, `training_data`, `data_curation` |
-| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | `AI演义`, `RefinedWeb`, `Falcon`, `训练数据`, `数据去重`, `科普讲解` |
-| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | `AI演义`, `ZeRO`, `DeepSpeed`, `分布式训练`, `显存`, `科普讲解` |
-| 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | `AI演义`, `Scaling Laws`, `Chinchilla`, `语言模型`, `训练预算`, `科普讲解` |
-| 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | `AI演义`, `GPT-2`, `GPT-3`, `上下文学习`, `语言模型`, `科普讲解` |
-| 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | `ai_history`, `gpt`, `bert`, `pretraining`, `transfer_learning`, `language_model` |
-| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | `ai_history`, `neural_machine_translation`, `gnmt`, `transformer`, `attention`, `wordpiece` |
-| 2026-11-06 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md) | `ai_history`, `seq2seq`, `attention`, `neural_machine_translation`, `lstm`, `encoder_decoder` |
-| 2026-11-06 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) | `ai_history`, `word2vec`, `representation_learning`, `embeddings`, `negative_sampling`, `contextual_representation` |
-| 2026-11-06 | [《AI演义》04｜蒸馏：大模型学到的本领，小模型怎样接过去？](../ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md) | `ai_history`, `knowledge_distillation`, `soft_targets`, `model_compression`, `generalization` |
-| 2026-11-06 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
-| 2026-11-06 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
-| 2026-11-06 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
-| 2026-11-06 | [AI演义·总览｜从关键论文看懂 AI 的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
-| 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
-| 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
+| 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `diffusion_transformer`, `vision_transformer`, `scaling`, `generative_models` |
+| 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `stable_diffusion`, `text_to_image`, `classifier_free_guidance`, `latent_diffusion` |
+| 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `latent_diffusion`, `autoencoder`, `cross_attention`, `generative_models` |
+| 2026-11-06 | [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `ddpm`, `diffusion`, `denoising`, `generative_models` |
+| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_27_Diffusion2015_%E9%80%90%E6%AD%A5%E5%8A%A0%E5%99%AA%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `diffusion`, `generative_models`, `probabilistic_modeling` |
+| 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_26_GAN_%E4%B8%A4%E4%B8%AA%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%9C%A8%E5%AF%B9%E6%8A%97%E4%B8%AD%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `gan`, `generative_models`, `adversarial_training` |
+| 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_25_CLIP_%E5%9B%BE%E6%96%87%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%9B%B8%E4%BA%92%E5%8C%B9%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `clip`, `contrastive_learning`, `multimodal`, `zero_shot` |
+| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_24_ViT_%E5%9B%BE%E5%83%8F%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90Transformer%E8%BE%93%E5%85%A5_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |
+| 2026-11-06 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_23_TwoStream_%E5%A4%96%E8%A7%82%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%80%8E%E6%A0%B7%E5%85%B1%E5%90%8C%E8%AF%86%E5%88%AB%E5%8A%A8%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
+| 2026-11-06 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_22_DeepVideo_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%88%A9%E7%94%A8%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4%E4%BF%A1%E6%81%AF_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
+| 2026-11-06 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_21_Tulu3_%E5%90%8E%E8%AE%AD%E7%BB%83%E9%85%8D%E6%96%B9%E6%80%8E%E6%A0%B7%E8%B5%B7%E4%BD%9C%E7%94%A8_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
+| 2026-11-06 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_20_ReAct_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E8%BE%B9%E6%9F%A5%E8%BE%B9%E6%83%B3_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `react`, `agents`, `tool_use`, `reasoning`, `evaluation` |
+| 2026-11-06 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_19_CoT_%E4%B8%AD%E9%97%B4%E6%AD%A5%E9%AA%A4%E6%80%8E%E6%A0%B7%E5%B8%AE%E5%8A%A9%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%AD%94_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `chain_of_thought`, `prompting`, `in_context_learning`, `reasoning`, `evaluation` |
+| 2026-11-06 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_18_InstructGPT_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E6%8C%89%E8%A6%81%E6%B1%82%E5%9B%9E%E7%AD%94_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `instructgpt`, `rlhf`, `instruction_following`, `reward_model`, `alignment` |
+| 2026-11-06 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_17_AlphaGoZero_%E4%B8%8D%E9%9D%A0%E6%A3%8B%E8%B0%B1%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E4%B8%8B%E6%A3%8B_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `alphago_zero`, `reinforcement_learning`, `self_play`, `mcts`, `test_time_compute` |
+| 2026-11-06 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_16_LoRA_%E5%B0%91%E9%87%8F%E5%8F%82%E6%95%B0%E6%80%8E%E6%A0%B7%E9%80%82%E9%85%8D%E6%96%B0%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `lora`, `parameter_efficient_finetuning`, `low_rank_adaptation`, `transfer_learning` |
+| 2026-11-06 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_15_%E7%A8%80%E7%96%8FMoE_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%8F%AA%E8%AE%A1%E7%AE%97%E4%B8%80%E9%83%A8%E5%88%86_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `mixture_of_experts`, `conditional_computation`, `sparse_routing`, `load_balancing`, `language_modeling` |
+| 2026-11-06 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_14_MegaScale_%E4%B8%87%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E8%AE%AD%E7%BB%83_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `megascale`, `distributed_training`, `parallelism`, `observability`, `fault_tolerance` |
+| 2026-11-06 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_13_LAION_%E5%9B%BE%E6%96%87%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `laion`, `clip`, `multimodal`, `training_data`, `data_curation` |
+| 2026-11-06 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_12_RefinedWeb_%E7%BD%91%E9%A1%B5%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `AI演义`, `RefinedWeb`, `Falcon`, `训练数据`, `数据去重`, `科普讲解` |
+| 2026-11-06 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_11_ZeRO_%E5%A4%9A%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%88%86%E6%8B%85%E8%AE%AD%E7%BB%83%E6%98%BE%E5%AD%98_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `AI演义`, `ZeRO`, `DeepSpeed`, `分布式训练`, `显存`, `科普讲解` |
+| 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_10_ScalingLaws%E4%B8%8EChinchilla_%E7%AE%97%E5%8A%9B%E9%A2%84%E7%AE%97%E6%80%8E%E6%A0%B7%E5%88%86%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `AI演义`, `Scaling Laws`, `Chinchilla`, `语言模型`, `训练预算`, `科普讲解` |
+| 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_09_GPT2%E4%B8%8EGPT3_%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E4%B8%8A%E4%B8%8B%E6%96%87_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `AI演义`, `GPT-2`, `GPT-3`, `上下文学习`, `语言模型`, `科普讲解` |
+| 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_08_GPT1%E4%B8%8EBERT_%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `gpt`, `bert`, `pretraining`, `transfer_learning`, `language_model` |
+| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_07_GNMT%E4%B8%8ETransformer_%E4%BB%8E%E7%BF%BB%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%88%B0%E5%B9%B6%E8%A1%8C%E6%9E%B6%E6%9E%84_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `neural_machine_translation`, `gnmt`, `transformer`, `attention`, `wordpiece` |
+| 2026-11-06 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_06_seq2seq%E4%B8%8EAttention_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E7%BF%BB%E8%AF%91%E4%B8%80%E5%8F%A5%E8%AF%9D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | `ai_history`, `seq2seq`, `attention`, `neural_machine_translation`, `lstm`, `encoder_decoder` |
+| 2026-11-06 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_05_Word2Vec_%E8%AF%8D%E5%90%91%E9%87%8F%E6%80%8E%E6%A0%B7%E5%AD%A6%E5%87%BA%E6%9D%A5_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `word2vec`, `representation_learning`, `embeddings`, `negative_sampling`, `contextual_representation` |
+| 2026-11-06 | [《AI演义》04｜蒸馏：大模型学到的本领，小模型怎样接过去？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_04_%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F_%E4%BB%8E%E6%95%99%E5%B8%88%E5%88%B0%E5%AD%A6%E7%94%9F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `knowledge_distillation`, `soft_targets`, `model_compression`, `generalization` |
+| 2026-11-06 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_03_ResNet_%E6%B7%B1%E5%B1%82%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
+| 2026-11-06 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_02_AlexNet_%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E7%AA%81%E7%A0%B4_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
+| 2026-11-06 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_01_Brook_GPU%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
+| 2026-11-06 | [AI演义·总览｜从关键论文看懂 AI 的发展路径](../ai-learning/reports/AI%E6%BC%94%E4%B9%89_%E7%AC%94%E8%AE%B0%E5%88%86%E6%9E%90%E4%B8%8E%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88%E6%8A%A5%E5%91%8A.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E5%AE%8C%E6%95%B4%E7%89%88_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
+| 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94%E4%B8%8E%E6%96%AD%E7%BA%BF%E6%81%A2%E5%A4%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
-| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
-| 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | `personal_context`, `context_engineering`, `multi_agent`, `multi_device`, `session_handoff`, `durable_execution` |
-| 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](../ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | `context_engineering`, `long_context`, `agent_harness`, `agent_memory`, `strategic_forgetting`, `personal_context` |
-| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | `minimax_code`, `mini_app`, `agent_runtime`, `plugin`, `mcp`, `human_agent_collaboration` |
-| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | `kimi_k3_1_pro`, `moonshot_ai`, `agentic_model`, `reinforcement_learning`, `open_weights`, `coding_agent` |
-| 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | `context_engineering`, `agent_memory`, `openviking`, `multi_device`, `mobile_context`, `conversational_memory` |
-| 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | `vllm`, `deepseek-v4.1-flash`, `P-D-disaggregation`, `wide-EP`, `EPLB`, `DSpark` |
-| 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | `vLLM`, `Humming`, `quantization`, `GEMM`, `kernel`, `JIT` |
-| 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | `ThinkingBox`, `RL`, `GRPO`, `reward-design`, `agent-eval`, `RLVR` |
-| 2026-10-25 | [TensorRT Global Performance Tuner：从单一 build route 到可搜索的精度感知端到端调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md) | `TensorRT`, `NVIDIA`, `compiler-tuning`, `build-route`, `auto-tuning`, `accuracy-aware` |
-| 2026-10-25 | [PyTorch TorchTitan：新模型覆盖、规模化训练性能与 TitanRL 深度解析](../ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA模型规模化训练与TitanRL_深度解析_20261025.md) | `PyTorch`, `TorchTitan`, `TitanRL`, `分布式训练`, `MoE`, `RL` |
-| 2026-10-25 | [OpenAI 千 Agent 并行生物数据研究：证据聚合与科学发现的深度解析](../ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md) | `AI-for-Science`, `Agent`, `GPT-Rosalind`, `Perturb-seq`, `科学发现`, `证据聚合` |
-| 2026-10-25 | [OpenAI 十亿用户在线存储：Habitat × Azure Cosmos DB 的多租户、热点与可靠性深度解析](../ai-learning/reports/knowledge_reports/OpenAI_十亿用户在线存储_CosmosDB多租户与可靠性_深度解析_20261025.md) | `OpenAI`, `Habitat`, `Azure-Cosmos-DB`, `多租户`, `限流`, `缓存` |
-| 2026-10-25 | [OpenAI Decisions API：低延迟决策端点的请求模型、能力边界与可迁移价值](../ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_低延迟决策与响应式应用_深度解析_20261025.md) | `OpenAI`, `Decisions-API`, `gpt-6-luna`, `classification`, `routing`, `latency` |
-| 2026-10-25 | [NVIDIA Microduck Agentic Robotics：Agent 做准备，RL 学会走路，Sim-to-Real 才是难点](../ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md) | `robotics`, `agentic-ai`, `Microduck`, `Isaac-Lab`, `reinforcement-learning`, `sim-to-real` |
-| 2026-10-25 | [MiniMax M3.1 Flash：Agent 模型与 vLLM Day-0 支持深度解析](../ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md) | `MiniMax`, `M3.1-Flash`, `MSA`, `MoE`, `投机解码`, `vLLM` |
+| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext%E6%AD%A3%E4%BA%A4%E8%AE%BA_PC%E6%9E%84%E5%BB%BA%E6%8C%87%E5%8D%97_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
+| 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/%E5%A4%9A%E8%AE%BE%E5%A4%87%E5%A4%9AAgent%E5%85%B1%E4%BA%ABContext%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%BB%AD%E6%8E%A5_Manus%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%9E%B6%E6%9E%84%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261029.md) | `personal_context`, `context_engineering`, `multi_agent`, `multi_device`, `session_handoff`, `durable_execution` |
+| 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](../ai-learning/reports/knowledge_reports/Context_Engineering_%E5%A4%B1%E8%B4%A5%E4%BF%AE%E5%A4%8D%E4%B8%8E%E6%88%98%E7%95%A5%E6%80%A7%E9%81%97%E5%BF%98_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261027.md) | `context_engineering`, `long_context`, `agent_harness`, `agent_memory`, `strategic_forgetting`, `personal_context` |
+| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_%E6%8C%81%E4%B9%85%E5%B7%A5%E4%BD%9C%E9%9D%A2%E4%B8%8EAgent%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E6%97%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261026.md) | `minimax_code`, `mini_app`, `agent_runtime`, `plugin`, `mcp`, `human_agent_collaboration` |
+| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_%E8%81%94%E5%90%88RL_%E9%95%BF%E7%A8%8BAgent%E4%B8%8E%E5%BC%80%E6%94%BE%E6%9D%83%E9%87%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261026.md) | `kimi_k3_1_pro`, `moonshot_ai`, `agentic_model`, `reinforcement_learning`, `open_weights`, `coding_agent` |
+| 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/%E4%B8%AA%E4%BA%BAContext%E4%B8%8EMemory%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84_OpenViking_%E6%89%8B%E6%9C%BA%E7%8E%AF%E5%A2%83_APP%E8%B7%A8%E5%AF%B9%E8%AF%9D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `context_engineering`, `agent_memory`, `openviking`, `multi_device`, `mobile_context`, `conversational_memory` |
+| 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD%E5%88%86%E7%A6%BB%E4%B8%8EWide-EP%E6%9C%BA%E6%9E%B6%E7%BA%A7%E6%9C%8D%E5%8A%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `vllm`, `deepseek-v4.1-flash`, `P-D-disaggregation`, `wide-EP`, `EPLB`, `DSpark` |
+| 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_%E9%87%8F%E5%8C%96%E6%8E%A8%E7%90%86Kernel%E5%BA%93_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `vLLM`, `Humming`, `quantization`, `GEMM`, `kernel`, `JIT` |
+| 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%84%E5%88%86%E8%BD%ACRL%E5%A5%96%E5%8A%B1%E4%B8%8EAgent%E5%90%8E%E8%AE%AD%E7%BB%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `ThinkingBox`, `RL`, `GRPO`, `reward-design`, `agent-eval`, `RLVR` |
+| 2026-10-25 | [TensorRT Global Performance Tuner：从单一 build route 到可搜索的精度感知端到端调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_%E5%8F%AF%E6%90%9C%E7%B4%A2build_route%E4%B8%8E%E7%B2%BE%E5%BA%A6%E6%84%9F%E7%9F%A5%E8%B0%83%E4%BC%98_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `TensorRT`, `NVIDIA`, `compiler-tuning`, `build-route`, `auto-tuning`, `accuracy-aware` |
+| 2026-10-25 | [PyTorch TorchTitan：新模型覆盖、规模化训练性能与 TitanRL 深度解析](../ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA%E6%A8%A1%E5%9E%8B%E8%A7%84%E6%A8%A1%E5%8C%96%E8%AE%AD%E7%BB%83%E4%B8%8ETitanRL_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `PyTorch`, `TorchTitan`, `TitanRL`, `分布式训练`, `MoE`, `RL` |
+| 2026-10-25 | [OpenAI 千 Agent 并行生物数据研究：证据聚合与科学发现的深度解析](../ai-learning/reports/knowledge_reports/OpenAI_%E5%8D%83Agent%E5%B9%B6%E8%A1%8C%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E7%A0%94%E7%A9%B6_%E8%AF%81%E6%8D%AE%E8%81%9A%E5%90%88%E4%B8%8E%E7%A7%91%E5%AD%A6%E5%8F%91%E7%8E%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `AI-for-Science`, `Agent`, `GPT-Rosalind`, `Perturb-seq`, `科学发现`, `证据聚合` |
+| 2026-10-25 | [OpenAI 十亿用户在线存储：Habitat × Azure Cosmos DB 的多租户、热点与可靠性深度解析](../ai-learning/reports/knowledge_reports/OpenAI_%E5%8D%81%E4%BA%BF%E7%94%A8%E6%88%B7%E5%9C%A8%E7%BA%BF%E5%AD%98%E5%82%A8_CosmosDB%E5%A4%9A%E7%A7%9F%E6%88%B7%E4%B8%8E%E5%8F%AF%E9%9D%A0%E6%80%A7_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `OpenAI`, `Habitat`, `Azure-Cosmos-DB`, `多租户`, `限流`, `缓存` |
+| 2026-10-25 | [OpenAI Decisions API：低延迟决策端点的请求模型、能力边界与可迁移价值](../ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%86%B3%E7%AD%96%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BA%94%E7%94%A8_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `OpenAI`, `Decisions-API`, `gpt-6-luna`, `classification`, `routing`, `latency` |
+| 2026-10-25 | [NVIDIA Microduck Agentic Robotics：Agent 做准备，RL 学会走路，Sim-to-Real 才是难点](../ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_%E4%BB%BF%E7%9C%9F%E8%AE%AD%E7%BB%83%E4%B8%8ESim2Real_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `robotics`, `agentic-ai`, `Microduck`, `Isaac-Lab`, `reinforcement-learning`, `sim-to-real` |
+| 2026-10-25 | [MiniMax M3.1 Flash：Agent 模型与 vLLM Day-0 支持深度解析](../ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent%E6%A8%A1%E5%9E%8B%E4%B8%8EvLLM_Day0%E6%94%AF%E6%8C%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `MiniMax`, `M3.1-Flash`, `MSA`, `MoE`, `投机解码`, `vLLM` |
 | 2026-10-25 | [LitPivot 深度分析：当文献不是被「读」，而是随想法重组——可迁移的证据地图设计](../ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md) | `paper-analysis`, `hci`, `research-ideation`, `literature-review`, `evidence-mapping`, `llm-agents` |
-| 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | `medical-ai`, `tuberculosis`, `chest-x-ray`, `MedGemma`, `HAI-DEF`, `HeAR` |
-| 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | `TPU`, `TorchTPU`, `vLLM-TorchTPU`, `SGLang-TorchTPU`, `TPU-Sync`, `Pallas` |
-| 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md) | `vLLM`, `GLM-5.3`, `context-parallel`, `DCP`, `PCP`, `HiSparse` |
-| 2026-10-25 | [FlyDSL × PyTorch：把 GPU kernel 写进 Python 的 CuTe 式布局路线深度解析](../ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md) | `FlyDSL`, `PyTorch`, `AMD`, `ROCm`, `MI355X`, `kernel` |
-| 2026-10-25 | [Flint-interactive：交互式数据可视化语言——语义事件与更新算子深度解析](../ai-learning/reports/knowledge_reports/Flint_interactive_交互式数据可视化语言_语义事件与更新算子_深度解析_20261025.md) | `可视化`, `Flint`, `Vega-Lite`, `Agent`, `交互式图表`, `IR` |
-| 2026-10-25 | [Cloudflare AI 代码审查推理成本优化：从 2.43 美元到 0.77 美元的完整拆解与口径核验](../ai-learning/reports/knowledge_reports/Cloudflare_AI代码审查推理成本优化_68%降本_深度解析_20261025.md) | `AI-code-review`, `cost-optimization`, `prompt-caching`, `model-routing`, `effort-routing`, `multi-agent` |
-| 2026-10-25 | [Amazon × AVERI：把「评估集本身」交给第三方复核的元评估实践与其独立性边界](../ai-learning/reports/knowledge_reports/Amazon_AVERI_第三方安全评估元评估_独立性与可核查边界_深度解析_20261025.md) | `AI-safety-evaluation`, `third-party-review`, `meta-evaluation`, `AVERI`, `Amazon`, `assurance-levels` |
-| 2026-10-25 | [Amazon TorchNeuron：AWS Trainium 的原生 PyTorch 后端——执行路径、算子覆盖与分布式边界深度解析](../ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium原生PyTorch后端_深度解析_20261025.md) | `PyTorch`, `AWS-Trainium`, `TorchNeuron`, `异构后端`, `torch.compile`, `算子覆盖` |
-| 2026-10-25 | [AMD 分布式 3D Gaussian Splatting：Gaussian 分片、RCCL 通信与扩展口径](../ai-learning/reports/knowledge_reports/AMD_分布式3D_Gaussian_Splatting_Gaussian分片与RCCL_深度解析_20261025.md) | `3d-gaussian-splatting`, `distributed-training`, `gsplat`, `RCCL`, `MI300X`, `all-to-all` |
-| 2026-10-25 | [AMD ROCm MegaKernel：MI355X 上交互式单请求推理的持久化内核路线深度解析](../ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md) | `AMD`, `ROCm`, `MI355X`, `MegaKernel`, `持久化内核`, `投机解码` |
-| 2026-10-25 | [AMD RDNA 4 FP8 GEMM：WMMA、LDS 预算与 Tile 搜索](../ai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA与Tile搜索_深度解析_20261025.md) | `RDNA4`, `FP8`, `GEMM`, `WMMA`, `LDS`, `hipBLASLt` |
+| 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB%E7%AD%9B%E6%9F%A5_%E4%BB%8ECAD%E5%B7%A5%E5%85%B7%E5%88%B0%E5%BC%80%E6%94%BE%E5%8C%BB%E7%96%97%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `medical-ai`, `tuberculosis`, `chest-x-ray`, `MedGemma`, `HAI-DEF`, `HeAR` |
+| 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU%E6%8E%A8%E7%90%86%E5%BC%95%E6%93%8E_%E8%83%BD%E5%8A%9B%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%A3%E5%BE%84%E6%A0%B8%E9%AA%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `TPU`, `TorchTPU`, `vLLM-TorchTPU`, `SGLang-TorchTPU`, `TPU-Sync`, `Pallas` |
+| 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_%E7%99%BE%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E6%8E%A8%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `vLLM`, `GLM-5.3`, `context-parallel`, `DCP`, `PCP`, `HiSparse` |
+| 2026-10-25 | [FlyDSL × PyTorch：把 GPU kernel 写进 Python 的 CuTe 式布局路线深度解析](../ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel%E5%8A%A0%E9%80%9F_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `FlyDSL`, `PyTorch`, `AMD`, `ROCm`, `MI355X`, `kernel` |
+| 2026-10-25 | [Flint-interactive：交互式数据可视化语言——语义事件与更新算子深度解析](../ai-learning/reports/knowledge_reports/Flint_interactive_%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AF%AD%E8%A8%80_%E8%AF%AD%E4%B9%89%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%9B%B4%E6%96%B0%E7%AE%97%E5%AD%90_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `可视化`, `Flint`, `Vega-Lite`, `Agent`, `交互式图表`, `IR` |
+| 2026-10-25 | [Cloudflare AI 代码审查推理成本优化：从 2.43 美元到 0.77 美元的完整拆解与口径核验](../ai-learning/reports/knowledge_reports/Cloudflare_AI%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96_68%25%E9%99%8D%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `AI-code-review`, `cost-optimization`, `prompt-caching`, `model-routing`, `effort-routing`, `multi-agent` |
+| 2026-10-25 | [Amazon × AVERI：把「评估集本身」交给第三方复核的元评估实践与其独立性边界](../ai-learning/reports/knowledge_reports/Amazon_AVERI_%E7%AC%AC%E4%B8%89%E6%96%B9%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0%E5%85%83%E8%AF%84%E4%BC%B0_%E7%8B%AC%E7%AB%8B%E6%80%A7%E4%B8%8E%E5%8F%AF%E6%A0%B8%E6%9F%A5%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `AI-safety-evaluation`, `third-party-review`, `meta-evaluation`, `AVERI`, `Amazon`, `assurance-levels` |
+| 2026-10-25 | [Amazon TorchNeuron：AWS Trainium 的原生 PyTorch 后端——执行路径、算子覆盖与分布式边界深度解析](../ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium%E5%8E%9F%E7%94%9FPyTorch%E5%90%8E%E7%AB%AF_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `PyTorch`, `AWS-Trainium`, `TorchNeuron`, `异构后端`, `torch.compile`, `算子覆盖` |
+| 2026-10-25 | [AMD 分布式 3D Gaussian Splatting：Gaussian 分片、RCCL 通信与扩展口径](../ai-learning/reports/knowledge_reports/AMD_%E5%88%86%E5%B8%83%E5%BC%8F3D_Gaussian_Splatting_Gaussian%E5%88%86%E7%89%87%E4%B8%8ERCCL_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `3d-gaussian-splatting`, `distributed-training`, `gsplat`, `RCCL`, `MI300X`, `all-to-all` |
+| 2026-10-25 | [AMD ROCm MegaKernel：MI355X 上交互式单请求推理的持久化内核路线深度解析](../ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%8D%95%E8%AF%B7%E6%B1%82%E6%8E%A8%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `AMD`, `ROCm`, `MI355X`, `MegaKernel`, `持久化内核`, `投机解码` |
+| 2026-10-25 | [AMD RDNA 4 FP8 GEMM：WMMA、LDS 预算与 Tile 搜索](../ai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA%E4%B8%8ETile%E6%90%9C%E7%B4%A2_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261025.md) | `RDNA4`, `FP8`, `GEMM`, `WMMA`, `LDS`, `hipBLASLt` |
 | 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](../ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | `harnesspro`, `recursive_self_improvement`, `pareto_optimization`, `context_engineering`, `agent_evaluation` |
-| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | `autonomous_wet_lab`, `scientific_agents`, `verid`, `lab_in_the_loop`, `aptamer_design`, `protein_binder_design` |
-| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | `agent_memory`, `memory_middleware`, `self_improving_agents`, `altk_evolve`, `tau2_bench`, `context_engineering` |
-| 2026-10-21 | [NVIDIA OpenShell 与 Sentry：把 Agent 安全从提示词移到运行时边界](../ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md) | `agent_security`, `openshell`, `nvidia_sentry`, `sandbox`, `runtime_governance`, `bluefield` |
-| 2026-10-21 | [NVIDIA CUDA Tile 加速 Mamba-2：从 SSD 分块到三内核融合](../ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021.md) | `mamba_2`, `structured_state_space_duality`, `cuda_tile`, `cutile`, `gpu_kernel`, `triton` |
-| 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | `deepinfer`, `llm_inference`, `speculative_decoding`, `dspark`, `kv_cache`, `moe` |
-| 2026-10-21 | [Apple MLX + RDMA：把多台 Mac Studio 变成桌面级大模型推理集群](../ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021.md) | `mlx`, `rdma`, `apple_silicon`, `distributed_inference`, `pipeline_parallelism`, `tensor_parallelism` |
-| 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
-| 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | `china_ai`, `venture_capital`, `ai_startups`, `market_analysis` |
-| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | `dual_repo_refactor`, `context_engineering`, `agent_harness`, `tool_routing`, `deep_review` |
-| 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | `vllm`, `continuous_batching`, `scheduler`, `llm_inference` |
-| 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | `vllm`, `inference_engine`, `scheduler`, `kv_cache` |
+| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_%E8%87%AA%E4%B8%BB%E6%B9%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4Agent_%E7%94%9F%E7%89%A9%E7%8E%B0%E5%AE%9E%E7%BA%A6%E6%9D%9F%E4%B8%8E%E9%97%AD%E7%8E%AF_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `autonomous_wet_lab`, `scientific_agents`, `verid`, `lab_in_the_loop`, `aptamer_design`, `protein_binder_design` |
+| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_%E5%AD%A6%E4%B9%A0%E5%9E%8BMemory%E4%B8%8EAgent%E6%9C%8D%E5%8A%A1%E4%BB%BB%E5%8A%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `agent_memory`, `memory_middleware`, `self_improving_agents`, `altk_evolve`, `tau2_bench`, `context_engineering` |
+| 2026-10-21 | [NVIDIA OpenShell 与 Sentry：把 Agent 安全从提示词移到运行时边界](../ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `agent_security`, `openshell`, `nvidia_sentry`, `sandbox`, `runtime_governance`, `bluefield` |
+| 2026-10-21 | [NVIDIA CUDA Tile 加速 Mamba-2：从 SSD 分块到三内核融合](../ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2%E9%AB%98%E6%80%A7%E8%83%BDKernel_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `mamba_2`, `structured_state_space_duality`, `cuda_tile`, `cutile`, `gpu_kernel`, `triton` |
+| 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_%E4%BB%8E%E6%A8%A1%E5%9E%8B%E5%8D%8F%E5%90%8C%E8%AE%BE%E8%AE%A1%E5%88%B0%E7%94%9F%E4%BA%A7%E6%8E%A8%E7%90%86%E5%86%85%E6%A0%B8_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `deepinfer`, `llm_inference`, `speculative_decoding`, `dspark`, `kv_cache`, `moe` |
+| 2026-10-21 | [Apple MLX + RDMA：把多台 Mac Studio 变成桌面级大模型推理集群](../ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio%E5%88%86%E5%B8%83%E5%BC%8F%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) | `mlx`, `rdma`, `apple_silicon`, `distributed_inference`, `pipeline_parallelism`, `tensor_parallelism` |
+| 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/%E6%8A%95%E6%9C%BA%E8%A7%A3%E7%A0%81SpeculativeDecoding_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
+| 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/%E4%B8%AD%E5%9B%BDAI%E5%88%9B%E4%B8%9A%E4%B8%8E%E4%B8%80%E7%BA%A7%E5%B8%82%E5%9C%BA%E6%95%85%E4%BA%8B%E7%BA%BF_%E4%BB%8E%E6%A8%A1%E5%9E%8B%E4%BF%A1%E4%BB%B0%E5%88%B0%E5%BA%94%E7%94%A8%E6%B1%82%E7%94%9F_20260731.md) | `china_ai`, `venture_capital`, `ai_startups`, `market_analysis` |
+| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/%E5%8F%8C%E4%BB%93%E9%87%8D%E6%9E%84%E5%8F%82%E7%85%A7_%E8%AF%81%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%BB%B4%E6%8A%A4_%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%88%86%E6%AE%B5%E6%B7%B1%E5%AE%A1_20261020.md) | `dual_repo_refactor`, `context_engineering`, `agent_harness`, `tool_routing`, `deep_review` |
+| 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_%E8%B0%83%E5%BA%A6%E5%99%A8_continuous_batching%E7%9C%9F%E8%BA%AB_20260909.md) | `vllm`, `continuous_batching`, `scheduler`, `llm_inference` |
+| 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1%E6%9E%B6%E6%9E%84%E6%80%BB%E8%A7%88_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260821.md) | `vllm`, `inference_engine`, `scheduler`, `kv_cache` |
 | 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | `visual_harness`, `multimodal_agent`, `arc_agi`, `visual_memory` |
-| 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
+| 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_%E5%BC%80%E6%94%BE%E4%BD%8E%E6%88%90%E6%9C%AC%E9%A2%84%E8%AE%AD%E7%BB%83%E9%85%8D%E6%96%B9_MuonHyperball%E4%B8%8ERTX5090_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
 | 2026-10-20 | [Plan or Retrieve First：大规模工具发现为何需要复杂度自适应路由](../ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md) | `tool_discovery`, `agent_routing`, `retrieval`, `plan_then_retrieve`, `toolbench` |
 | 2026-10-20 | [Meta Muse：从产品承诺到代理边界——官方能力、市场信号与人类兜底](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | `agent`, `meta`, `personal-ai`, `security`, `human-in-the-loop` |
-| 2026-10-20 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | `system1_models`, `decision_models`, `discriminative_ai`, `laya` |
-| 2026-10-20 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | `kimi_k3`, `mixture_of_experts`, `linear_attention`, `long_context` |
-| 2026-10-20 | [GPT-6 软件维护：从广义侦察到证据驱动清理](../ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md) | `gpt_6`, `codex`, `software_maintenance`, `agent_harness`, `evidence_driven_engineering` |
-| 2026-10-20 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | `ai_applications`, `business_model`, `pricing`, `startup_strategy` |
+| 2026-10-20 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1%E5%86%B3%E7%AD%96%E6%A8%A1%E5%9E%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260922.md) | `system1_models`, `decision_models`, `discriminative_ai`, `laya` |
+| 2026-10-20 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_%E4%BF%A1%E6%81%AF%E6%B5%81%E4%B8%89%E6%96%B9%E5%90%91_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260728.md) | `kimi_k3`, `mixture_of_experts`, `linear_attention`, `long_context` |
+| 2026-10-20 | [GPT-6 软件维护：从广义侦察到证据驱动清理](../ai-learning/reports/knowledge_reports/GPT6%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4_%E4%BB%8E%E5%B9%BF%E4%B9%89%E4%BE%A6%E5%AF%9F%E5%88%B0%E8%AF%81%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%B8%85%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261020.md) | `gpt_6`, `codex`, `software_maintenance`, `agent_harness`, `evidence_driven_engineering` |
+| 2026-10-20 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken%E9%99%88%E5%86%95%E6%99%9A%E7%82%B9%E8%AE%BF%E8%B0%88_AI%E5%BA%94%E7%94%A8%E7%94%9F%E5%AD%98%E7%AD%96%E7%95%A5_20260729.md) | `ai_applications`, `business_model`, `pricing`, `startup_strategy` |
 | 2026-10-20 | [Deep Review 与 Paper Assistant Tool：把长文复核从 Pass@k 改造成分段推理系统](../ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md) | `deep_review`, `paper_review`, `multi_agent`, `adaptive_compute`, `scientific_validation` |
-| 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
-| 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
-| 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md) | — |
+| 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra%E6%8C%87%E4%BB%A4%E6%9E%B6%E6%9E%84_%E4%BB%8EPrompt%E5%A0%86%E5%8F%A0%E5%88%B0%E6%8C%89%E9%9C%80%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
+| 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_%E7%94%9F%E6%80%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI%E6%95%B0%E5%AD%A6%E6%89%8B%E7%A8%BF%E4%BA%8B%E4%BB%B6_%E6%A0%B8%E5%AE%9E%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90_20261008.md) | — |
 | 2026-09-30 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | — |
-| 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | — |
-| 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | — |
-| 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
-| 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | — |
-| 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | — |
-| 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | — |
-| 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | — |
-| 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md) | `chatgpt_work`, `agent_harness`, `code_interpreter`, `headless_browser`, `persistent_filesystem`, `sub_agents` |
-| 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md) | — |
-| 2026-07-30 | [当'聪明'变成一种诅咒：AGI 会不会让普通人从此无关紧要？——《The Intelligence Curse》精读](../ai-learning/reports/knowledge_reports/IntelligenceCurse_智能诅咒_科普讲解_20260730.md) | — |
-| 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | — |
-| 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | — |
-| 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `science_popularization`, `self_evolving_agent`, `compute_allocation` |
+| 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/%E6%A0%BC%E7%BD%97%E6%BB%95%E8%BF%AA%E5%85%8B%E6%B6%A8%E6%BD%AE%E6%80%9D%E6%83%B3_%E8%AE%A9%E9%9A%BE%E9%A2%98%E6%B6%88%E5%A4%B1%E7%9A%84%E5%8D%87%E7%BB%B4%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6_20260922.md) | — |
+| 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash%E6%9E%B6%E6%9E%84%E8%A7%A3%E5%89%96_CED%E9%9D%9E%E5%AF%B9%E7%A7%B0%E4%B8%8EKV%E5%8E%8B%E7%BC%A9%E6%9E%81%E9%99%90_20260919.md) | — |
+| 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev%E4%B8%8ESystem-One-Models_TypeSafe%E5%86%B3%E7%AD%96%E6%A8%A1%E5%9E%8B%E8%8C%83%E5%BC%8F%E7%A0%94%E7%A9%B6_20260918.md) | — |
+| 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6%E5%85%AC%E5%BC%80RL%E8%AE%AD%E7%BB%83%E7%9B%B4%E6%92%AD_RL-Scaling%E4%B8%89%E7%BB%B4%E5%BA%A6%E4%BD%93%E7%B3%BB%E7%A0%94%E7%A9%B6_20260917.md) | — |
+| 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/%E6%89%8D%E5%8D%8E%E5%9F%8B%E8%91%AC%E5%9C%A8%E6%98%A8%E5%A4%A9_DeepSeek%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%87%AA%E7%99%BD%E7%B2%BE%E8%AF%BB%E4%B8%8E%E5%BB%B6%E4%BC%B8%E7%A0%94%E7%A9%B6_20260916.md) | — |
+| 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/%E7%8E%8B%E5%9D%9A%E4%B8%89%E5%88%86%E6%99%BA%E8%83%BD%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%84%8F%E8%AF%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260912.md) | — |
+| 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic%E7%BB%8F%E6%B5%8E%E6%83%85%E6%99%AF%E6%A8%A1%E5%9E%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260911.md) | — |
+| 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_%E8%83%BD%E5%8A%9B%E9%9D%A2%E4%B8%8EHarness%E6%A0%B7%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260831.md) | `chatgpt_work`, `agent_harness`, `code_interpreter`, `headless_browser`, `persistent_filesystem`, `sub_agents` |
+| 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI%E5%BA%94%E7%94%A8%E5%88%9B%E4%B8%9A%E7%94%9F%E6%AD%BB%E5%BD%95_Evoken%E4%B8%89%E4%BA%A7%E5%93%81%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90_20260731.md) | — |
+| 2026-07-30 | [当'聪明'变成一种诅咒：AGI 会不会让普通人从此无关紧要？——《The Intelligence Curse》精读](../ai-learning/reports/knowledge_reports/IntelligenceCurse_%E6%99%BA%E8%83%BD%E8%AF%85%E5%92%92_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260730.md) | — |
+| 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM%E8%AF%84%E5%88%86%E4%BD%93%E7%B3%BB%E4%B8%8E%E4%B8%BB%E6%B5%81%E6%A8%A1%E5%9E%8B%E4%BB%B7%E6%A0%BC%E8%83%BD%E5%8A%9B_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260720.md) | — |
+| 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent%E6%99%BA%E8%83%BD_%E6%A8%A1%E5%9E%8B%E4%B8%8EHarness%E5%90%84%E5%8D%A0%E5%A4%9A%E5%B0%91_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260720.md) | — |
+| 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260720.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `science_popularization`, `self_evolving_agent`, `compute_allocation` |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | `interpretability`, `global_workspace`, `jacobian_lens`, `consciousness`, `ai_safety`, `introspection` |
-| 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `ffn`, `load-balancing` |
-| 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | — |
-| 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |
-| 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
-| 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
-| 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | `long_context`, `pretraining`, `post_training`, `inference`, `kv_cache`, `rag` |
-| 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | — |
-| 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `context_engineering`, `self_evolving_agent`, `prompt_engineering` |
-| 2026-06-25 | [投机解码 Speculative Decoding：用小模型给大模型加速 2-3 倍而不改变输出](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md) | — |
-| 2026-06-22 | [MoE 混合专家深度解析](../ai-learning/reports/knowledge_reports/MoE_混合专家_深度解析_20260406.md) | — |
-| 2026-06-21 | [推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking](../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) | — |
-| 2026-06-21 | [多模态理解模型对比：GPT-4o × Claude 3.5 Vision × Gemini 2.5 × Qwen2.5-VL](../ai-learning/reports/knowledge_reports/多模态理解模型对比_GPT4o_Claude_Gemini_QwenVL_20260621.md) | — |
-| 2026-06-21 | [World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模](../ai-learning/reports/knowledge_reports/World_Models_JEPA_路线深度报告_20260621.md) | — |
-| 2026-06-21 | [MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式](../ai-learning/reports/knowledge_reports/MCP_A2A_Agents_md_标准化深度解析_20260621.md) | — |
-| 2026-06-21 | [LLM 推理优化引擎全景：vLLM / SGLang / TensorRT-LLM / llama.cpp 深度对比](../ai-learning/reports/knowledge_reports/LLM_推理优化引擎_20260621.md) | — |
+| 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6_%E4%B8%80%E4%B8%AAtoken%E7%9A%84%E4%B8%93%E5%AE%B6%E5%A4%A7%E6%A5%BC%E4%B9%8B%E6%97%85_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260719.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `ffn`, `load-balancing` |
+| 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/%E4%BC%AA%E6%99%BA%E5%8A%9B%E7%B9%81%E8%8D%A3%E6%97%B6%E4%BB%A3_%E8%AF%84%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E4%B8%8E%E6%89%B9%E5%88%A4_20260713.md) | — |
+| 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |
+| 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260715.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
+| 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260709.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
+| 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%871M_%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%80%E7%94%9F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20260715.md) | `long_context`, `pretraining`, `post_training`, `inference`, `kv_cache`, `rag` |
+| 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/%E6%B6%8C%E8%BF%9BAnthropic%E7%9A%84N%E4%B8%AA%E5%B7%A8%E4%BD%AC_%E6%A0%B8%E5%AE%9E%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90_20260714.md) | — |
+| 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_%E6%8E%A8%E6%BC%94%E4%B8%8E%E7%BD%91%E4%B8%8A%E8%A7%82%E7%82%B9%E5%AE%A1%E9%98%85_20260707.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `context_engineering`, `self_evolving_agent`, `prompt_engineering` |
+| 2026-06-25 | [投机解码 Speculative Decoding：用小模型给大模型加速 2-3 倍而不改变输出](../ai-learning/reports/knowledge_reports/%E6%8A%95%E6%9C%BA%E8%A7%A3%E7%A0%81SpeculativeDecoding_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260625.md) | — |
+| 2026-06-22 | [MoE 混合专家深度解析](../ai-learning/reports/knowledge_reports/MoE_%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260406.md) | — |
+| 2026-06-21 | [推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking](../ai-learning/reports/knowledge_reports/%E6%8E%A8%E7%90%86%E6%A8%A1%E5%9E%8B%E4%B8%89%E5%A4%A7%E6%B5%81%E6%B4%BE%E8%AF%A6%E8%A7%A3_20260621.md) | — |
+| 2026-06-21 | [多模态理解模型对比：GPT-4o × Claude 3.5 Vision × Gemini 2.5 × Qwen2.5-VL](../ai-learning/reports/knowledge_reports/%E5%A4%9A%E6%A8%A1%E6%80%81%E7%90%86%E8%A7%A3%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94_GPT4o_Claude_Gemini_QwenVL_20260621.md) | — |
+| 2026-06-21 | [World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模](../ai-learning/reports/knowledge_reports/World_Models_JEPA_%E8%B7%AF%E7%BA%BF%E6%B7%B1%E5%BA%A6%E6%8A%A5%E5%91%8A_20260621.md) | — |
+| 2026-06-21 | [MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式](../ai-learning/reports/knowledge_reports/MCP_A2A_Agents_md_%E6%A0%87%E5%87%86%E5%8C%96%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260621.md) | — |
+| 2026-06-21 | [LLM 推理优化引擎全景：vLLM / SGLang / TensorRT-LLM / llama.cpp 深度对比](../ai-learning/reports/knowledge_reports/LLM_%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96%E5%BC%95%E6%93%8E_20260621.md) | — |
 | 2026-05-13 | [SkillOS: Learning Skill Curation for Self-Evolving Agents](../ai-learning/reports/paper_analyses/44_skillos_2026.md) | — |
-| 2026-05-07 | [1M Long Context 在预训练、后训练与线上推理阶段的技术含义](../ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md) | — |
-| 2026-04-29 | [LLM 国内外主流评估体系详解](../ai-learning/reports/knowledge_reports/LLM_评估体系_深度解析_20260429.md) | — |
-| 2026-04-27 | [LLMs+、世界模型、Agent 编排：MIT 2026 AI 三条主线深度研究](../ai-learning/reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md) | — |
+| 2026-05-07 | [1M Long Context 在预训练、后训练与线上推理阶段的技术含义](../ai-learning/reports/knowledge_reports/Long_Context_1M_%E4%B8%89%E9%98%B6%E6%AE%B5%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260507.md) | — |
+| 2026-04-29 | [LLM 国内外主流评估体系详解](../ai-learning/reports/knowledge_reports/LLM_%E8%AF%84%E4%BC%B0%E4%BD%93%E7%B3%BB_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260429.md) | — |
+| 2026-04-27 | [LLMs+、世界模型、Agent 编排：MIT 2026 AI 三条主线深度研究](../ai-learning/reports/knowledge_reports/MIT_2026_AI_%E4%B8%89%E6%9D%A1%E4%B8%BB%E7%BA%BF_%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.md) | — |
 | 2026-04-25 | [Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm](../ai-learning/reports/paper_analyses/43_alphago_zero_2017.md) | — |
 | 2026-04-25 | [Distilling the Knowledge in a Neural Network](../ai-learning/reports/paper_analyses/42_distilling_2015.md) | — |
-| 2026-04-23 | [金融垂直域Agent技术架构深度解析：TradingAgents + Kronos + ai-hedge-fund](../ai-learning/reports/knowledge_reports/金融垂直域Agent技术架构深度解析.md) | — |
-| 2026-04-23 | [Agent 自进化技术路径深度解析：Hermes Agent vs GenericAgent](../ai-learning/reports/knowledge_reports/Agent_自进化技术路径深度解析.md) | — |
-| 2026-04-23 | [Agent 心跳检测与实时 Dashboard 设计](../ai-learning/reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md) | — |
-| 2026-04-23 | [Agent 团队管理产品化路径深度解析：Multica 与多 Agent 框架定位差异](../ai-learning/reports/knowledge_reports/Agent_团队管理产品化路径深度解析.md) | — |
-| 2026-04-23 | [AI编码Agent终端技术深度解析：Scaffolding + Harness + Context Engineering](../ai-learning/reports/knowledge_reports/AI编码Agent终端技术深度解析.md) | — |
-| 2026-04-22 | [Agent Memory 系统深度解析](../ai-learning/reports/knowledge_reports/Agent_Memory_系统深度解析.md) | — |
-| 2026-04-22 | [Agent Harness 三大设计流派解析](../ai-learning/reports/knowledge_reports/Agent_Harness_三大设计流派解析.md) | — |
-| 2026-04-16 | [生成模型演化全景：GAN → DDPM → Stable Diffusion → DiT](../ai-learning/reports/knowledge_reports/生成模型演化全景_GAN_DDPM_LDM_DiT_20260416.md) | — |
-| 2026-04-16 | [Megatron-LM 大规模语言模型训练系统深度解析](../ai-learning/reports/knowledge_reports/Megatron_LM_大规模训练系统_深度解析_20260416.md) | — |
+| 2026-04-23 | [金融垂直域Agent技术架构深度解析：TradingAgents + Kronos + ai-hedge-fund](../ai-learning/reports/knowledge_reports/%E9%87%91%E8%9E%8D%E5%9E%82%E7%9B%B4%E5%9F%9FAgent%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-23 | [Agent 自进化技术路径深度解析：Hermes Agent vs GenericAgent](../ai-learning/reports/knowledge_reports/Agent_%E8%87%AA%E8%BF%9B%E5%8C%96%E6%8A%80%E6%9C%AF%E8%B7%AF%E5%BE%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-23 | [Agent 心跳检测与实时 Dashboard 设计](../ai-learning/reports/knowledge_reports/Agent_%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%AE%9E%E6%97%B6Dashboard%E8%AE%BE%E8%AE%A1.md) | — |
+| 2026-04-23 | [Agent 团队管理产品化路径深度解析：Multica 与多 Agent 框架定位差异](../ai-learning/reports/knowledge_reports/Agent_%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86%E4%BA%A7%E5%93%81%E5%8C%96%E8%B7%AF%E5%BE%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-23 | [AI编码Agent终端技术深度解析：Scaffolding + Harness + Context Engineering](../ai-learning/reports/knowledge_reports/AI%E7%BC%96%E7%A0%81Agent%E7%BB%88%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-22 | [Agent Memory 系统深度解析](../ai-learning/reports/knowledge_reports/Agent_Memory_%E7%B3%BB%E7%BB%9F%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-22 | [Agent Harness 三大设计流派解析](../ai-learning/reports/knowledge_reports/Agent_Harness_%E4%B8%89%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%B5%81%E6%B4%BE%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-16 | [生成模型演化全景：GAN → DDPM → Stable Diffusion → DiT](../ai-learning/reports/knowledge_reports/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E6%BC%94%E5%8C%96%E5%85%A8%E6%99%AF_GAN_DDPM_LDM_DiT_20260416.md) | — |
+| 2026-04-16 | [Megatron-LM 大规模语言模型训练系统深度解析](../ai-learning/reports/knowledge_reports/Megatron_LM_%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%AD%E7%BB%83%E7%B3%BB%E7%BB%9F_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260416.md) | — |
 | 2026-04-16 | [EVA-02: A Visual Representation for Neon Genesis](../ai-learning/reports/paper_analyses/41_eva02_2023.md) | — |
-| 2026-04-15 | [开源 vs 闭源在 ToA 世界的重新博弈 — CLI 原生论重写胜负逻辑](../ai-learning/reports/knowledge_reports/开源vs闭源在ToA世界的重新博弈_20260415.md) | — |
-| 2026-04-15 | [奶头乐 ChatBot 的真实战略价值 — ToC 不是终点，是 ToA 的数据基础设施](../ai-learning/reports/knowledge_reports/奶头乐ChatBot的真实战略价值_20260415.md) | — |
-| 2026-04-15 | [双向驯化 · 多Agent涌现 — ToA范式的两个深层盲区](../ai-learning/reports/knowledge_reports/双向驯化与多Agent涌现_深度解析_20260415.md) | — |
-| 2026-04-15 | [ToA 范式 · CLI 原生论 · 硅碳加速论 — 观点深度解析](../ai-learning/reports/knowledge_reports/ToA_CLI_Agentic原生论_深度解析_20260415.md) | — |
-| 2026-04-15 | [EverAgent 作为 ToA 原型的解剖 — 一个运行中的硅碳协作系统的自我审视](../ai-learning/reports/knowledge_reports/EverAgent_ToA原型解剖_20260415.md) | — |
+| 2026-04-15 | [开源 vs 闭源在 ToA 世界的重新博弈 — CLI 原生论重写胜负逻辑](../ai-learning/reports/knowledge_reports/%E5%BC%80%E6%BA%90vs%E9%97%AD%E6%BA%90%E5%9C%A8ToA%E4%B8%96%E7%95%8C%E7%9A%84%E9%87%8D%E6%96%B0%E5%8D%9A%E5%BC%88_20260415.md) | — |
+| 2026-04-15 | [奶头乐 ChatBot 的真实战略价值 — ToC 不是终点，是 ToA 的数据基础设施](../ai-learning/reports/knowledge_reports/%E5%A5%B6%E5%A4%B4%E4%B9%90ChatBot%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%88%98%E7%95%A5%E4%BB%B7%E5%80%BC_20260415.md) | — |
+| 2026-04-15 | [双向驯化 · 多Agent涌现 — ToA范式的两个深层盲区](../ai-learning/reports/knowledge_reports/%E5%8F%8C%E5%90%91%E9%A9%AF%E5%8C%96%E4%B8%8E%E5%A4%9AAgent%E6%B6%8C%E7%8E%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260415.md) | — |
+| 2026-04-15 | [ToA 范式 · CLI 原生论 · 硅碳加速论 — 观点深度解析](../ai-learning/reports/knowledge_reports/ToA_CLI_Agentic%E5%8E%9F%E7%94%9F%E8%AE%BA_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260415.md) | — |
+| 2026-04-15 | [EverAgent 作为 ToA 原型的解剖 — 一个运行中的硅碳协作系统的自我审视](../ai-learning/reports/knowledge_reports/EverAgent_ToA%E5%8E%9F%E5%9E%8B%E8%A7%A3%E5%89%96_20260415.md) | — |
 | 2026-04-11 | [The Bitter Lesson (2019) 深度分析](../ai-learning/reports/paper_analyses/22_bitter_lesson_2019.md) | — |
 | 2026-04-11 | [RefinedWeb — The RefinedWeb Dataset for Falcon LLM (2023) 深度分析](../ai-learning/reports/paper_analyses/30_refinedweb_2023.md) | — |
 | 2026-04-11 | [ReAct — Synergizing Reasoning and Acting in Language Models (2022) 深度分析](../ai-learning/reports/paper_analyses/17_react_2022.md) | — |
@@ -185,18 +185,18 @@
 | 2026-04-11 | [GPT-1 (2018) 论文精读](../ai-learning/reports/paper_analyses/37_gpt1_2018.md) | — |
 | 2026-04-11 | [DiT — Scalable Diffusion Models with Transformers (2022) 深度分析](../ai-learning/reports/paper_analyses/27_dit_2022.md) | — |
 | 2026-04-11 | [Deep Video — Large-Scale Video Classification with Convolutional Neural Networks (2014) 深度分析](../ai-learning/reports/paper_analyses/40_deepvideo_2014.md) | — |
-| 2026-04-09 | [Test-time Compute · Reasoning Models 深度解析](../ai-learning/reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) | — |
-| 2026-04-09 | [RAG（检索增强生成）深度解析](../ai-learning/reports/knowledge_reports/RAG_深度解析_20260409.md) | — |
-| 2026-04-09 | [In-Context Learning（上下文学习）深度解析](../ai-learning/reports/knowledge_reports/In_Context_Learning_深度解析_20260409.md) | — |
-| 2026-04-09 | [AI Agent · ReAct · Tool Use 深度解析](../ai-learning/reports/knowledge_reports/Agent_ReAct_ToolUse_深度解析_20260409.md) | — |
+| 2026-04-09 | [Test-time Compute · Reasoning Models 深度解析](../ai-learning/reports/knowledge_reports/Test_Time_Compute_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260409.md) | — |
+| 2026-04-09 | [RAG（检索增强生成）深度解析](../ai-learning/reports/knowledge_reports/RAG_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260409.md) | — |
+| 2026-04-09 | [In-Context Learning（上下文学习）深度解析](../ai-learning/reports/knowledge_reports/In_Context_Learning_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260409.md) | — |
+| 2026-04-09 | [AI Agent · ReAct · Tool Use 深度解析](../ai-learning/reports/knowledge_reports/Agent_ReAct_ToolUse_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260409.md) | — |
 | 2026-04-04 | [VideoMAE (2022)](../ai-learning/reports/paper_analyses/36_videomae_2022.md) | — |
 | 2026-04-04 | [MegaScale — Scaling Large Language Model Training to More Than 10,000 GPUs (2024) 深度分析](../ai-learning/reports/paper_analyses/31_megascale_2024.md) | — |
 | 2026-03-31 | [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](../ai-learning/reports/paper_analyses/21_moe_2017.md) | — |
 | 2026-03-30 | [ZeRO 大模型训练内存优化精读报告](../ai-learning/reports/paper_analyses/25_zero_2019.md) | — |
-| 2026-03-30 | [KV Cache 深度解析](../ai-learning/reports/knowledge_reports/KV_Cache_深度解析_20260330.md) | — |
+| 2026-03-30 | [KV Cache 深度解析](../ai-learning/reports/knowledge_reports/KV_Cache_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260330.md) | — |
 | 2026-03-28 | [Word2Vec (2013) 论文精读](../ai-learning/reports/paper_analyses/13_word2vec_2013.md) | — |
 | 2026-03-28 | [DINOv2 论文精读分析报告](../ai-learning/reports/paper_analyses/35_dinov2_2023.md) | — |
-| 2026-03-27 | [DINOv2 深度解析](../ai-learning/reports/knowledge_reports/DINOv2_深度解析.md) | — |
+| 2026-03-27 | [DINOv2 深度解析](../ai-learning/reports/knowledge_reports/DINOv2_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
 | 2026-03-26 | [ViT — An Image is Worth 16x16 Words (2020) 深度分析](../ai-learning/reports/paper_analyses/11_vit_2020.md) | — |
 | 2026-03-26 | [Swin Transformer — Hierarchical Vision Transformer (2021) 深度分析](../ai-learning/reports/paper_analyses/14_swin_transformer_2021.md) | — |
 | 2026-03-26 | [Mistral 7B (2023) 技术报告深度分析](../ai-learning/reports/paper_analyses/33_mistral_7b_2023.md) | — |
@@ -208,37 +208,37 @@
 | 2026-03-26 | [DDPM (2020) 论文精读](../ai-learning/reports/paper_analyses/09_ddpm_2020.md) | — |
 | 2026-03-26 | [CLIP — Learning Transferable Visual Models (2021) 深度分析](../ai-learning/reports/paper_analyses/12_clip_2021.md) | — |
 | 2026-03-26 | [AlexNet (2012) 论文深度分析](../ai-learning/reports/paper_analyses/06_alexnet_2012.md) | — |
-| 2026-03-25 | [Scaling Laws 深度解析](../ai-learning/reports/knowledge_reports/Scaling_Laws_深度解析.md) | — |
+| 2026-03-25 | [Scaling Laws 深度解析](../ai-learning/reports/knowledge_reports/Scaling_Laws_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
 | 2026-03-25 | [Scaling Laws (2020) 论文精读](../ai-learning/reports/paper_analyses/05_scaling_laws_2020.md) | — |
 | 2026-03-25 | [ResNet (2015) 论文精读](../ai-learning/reports/paper_analyses/07_resnet_2015.md) | — |
-| 2026-03-25 | [LoRA 深度解析](../ai-learning/reports/knowledge_reports/LoRA_深度解析.md) | — |
+| 2026-03-25 | [LoRA 深度解析](../ai-learning/reports/knowledge_reports/LoRA_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
 | 2026-03-25 | [InstructGPT (2022) 论文精读](../ai-learning/reports/paper_analyses/04_instructgpt_2022.md) | — |
 | 2026-03-25 | [GAN (2014) 论文精读](../ai-learning/reports/paper_analyses/08_gan_2014.md) | — |
 | 2026-03-25 | [Chain-of-Thought (2022) 论文精读](../ai-learning/reports/paper_analyses/10_chain_of_thought_2022.md) | — |
 | 2026-03-23 | [Tulu 3 (2024) 后训练分析](../ai-learning/reports/paper_analyses/26_tulu3_2024.md) | — |
 | 2026-03-23 | [Transformer (2017) 论文精读](../ai-learning/reports/paper_analyses/01_transformer_2017.md) | — |
-| 2026-03-23 | [Self-Attention 深度解析](../ai-learning/reports/knowledge_reports/self_attention_深度解析.md) | — |
-| 2026-03-23 | [RLHF 深度解析](../ai-learning/reports/knowledge_reports/RLHF_深度解析.md) | — |
+| 2026-03-23 | [Self-Attention 深度解析](../ai-learning/reports/knowledge_reports/self_attention_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-03-23 | [RLHF 深度解析](../ai-learning/reports/knowledge_reports/RLHF_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
 | 2026-03-23 | [GPT-3 (2020) 论文精读](../ai-learning/reports/paper_analyses/03_gpt3_2020.md) | — |
 | 2026-03-23 | [BERT (2018) 论文精读](../ai-learning/reports/paper_analyses/02_bert_2018.md) | — |
-| 2026-03-23 | [AI 关键人物图谱](../ai-learning/reports/knowledge_reports/AI关键人物图谱.md) | — |
+| 2026-03-23 | [AI 关键人物图谱](../ai-learning/reports/knowledge_reports/AI%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1.md) | — |
 
 ## 💻 CS Learning（33 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | — |
-| 2026-06-21 | [数据库 50 年演化知识图谱：从层次/网状到向量库](../cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md) | — |
+| 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/%E8%87%AA%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9_%E6%8A%97%E5%AE%A1%E6%9F%A5%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BA%BF%E8%B7%AF%E9%80%89%E5%9E%8B_20260710.md) | — |
+| 2026-06-21 | [数据库 50 年演化知识图谱：从层次/网状到向量库](../cs-learning/reports/knowledge_reports/%E6%95%B0%E6%8D%AE%E5%BA%9350%E5%B9%B4%E6%BC%94%E5%8C%96_%E4%BB%8E%E5%B1%82%E6%AC%A1%E5%88%B0%E5%90%91%E9%87%8F%E5%BA%93_20260621.md) | — |
 | 2026-06-21 | [#35 \| RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport — IETF QUIC Working Group (2021) 深度分析](../cs-learning/reports/paper_analyses/35_quic_rfc9000_2021.md) | — |
-| 2026-05-09 | [Tailscale、WireGuard 与现代 VPN：从加密隧道到零信任私有网络](../cs-learning/reports/knowledge_reports/Tailscale_WireGuard_VPN_原理深度解析.md) | — |
-| 2026-04-22 | [编程语言范式演化：从Lisp到Go的并发模型变迁](../cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md) | — |
+| 2026-05-09 | [Tailscale、WireGuard 与现代 VPN：从加密隧道到零信任私有网络](../cs-learning/reports/knowledge_reports/Tailscale_WireGuard_VPN_%E5%8E%9F%E7%90%86%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-22 | [编程语言范式演化：从Lisp到Go的并发模型变迁](../cs-learning/reports/knowledge_reports/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E8%8C%83%E5%BC%8F%E6%BC%94%E5%8C%96_%E4%BB%8ELisp%E5%88%B0Go%E7%9A%84%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%8F%98%E8%BF%81.md) | — |
 | 2026-04-22 | [An Axiomatic Basis for Computer Programming](../cs-learning/reports/paper_analyses/33_hoare_axiomatic_1969.md) | — |
 | 2026-04-22 | [A New Solution to Dijkstra's Concurrent Programming Problem (Bakery Algorithm)](../cs-learning/reports/paper_analyses/34_lamport_bakery_1974.md) | — |
-| 2026-04-16 | [操作系统内核设计深度解析：从UNIX哲学到现代OS内核](../cs-learning/reports/knowledge_reports/操作系统内核设计深度解析_20260416.md) | — |
+| 2026-04-16 | [操作系统内核设计深度解析：从UNIX哲学到现代OS内核](../cs-learning/reports/knowledge_reports/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260416.md) | — |
 | 2026-04-16 | [Go To Statement Considered Harmful (1968)](../cs-learning/reports/paper_analyses/32_dijkstra_goto_1968.md) | — |
 | 2026-04-16 | [A Border Gateway Protocol 4 (BGP-4) — RFC 4271](../cs-learning/reports/paper_analyses/31_bgp_rfc4271_2006.md) | — |
-| 2026-04-06 | [DHT 实战排查：从协议理论到工程故障诊断](../cs-learning/reports/knowledge_reports/DHT实战排查：从协议理论到工程故障诊断.md) | — |
-| 2026-04-05 | [分布式系统知识图谱](../cs-learning/reports/knowledge_reports/分布式系统知识图谱.md) | — |
+| 2026-04-06 | [DHT 实战排查：从协议理论到工程故障诊断](../cs-learning/reports/knowledge_reports/DHT%E5%AE%9E%E6%88%98%E6%8E%92%E6%9F%A5%EF%BC%9A%E4%BB%8E%E5%8D%8F%E8%AE%AE%E7%90%86%E8%AE%BA%E5%88%B0%E5%B7%A5%E7%A8%8B%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD.md) | — |
+| 2026-04-05 | [分布式系统知识图谱](../cs-learning/reports/knowledge_reports/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1.md) | — |
 | 2026-04-05 | [#30 \| Domain Names - Concepts and Facilities (RFC 1034) & Implementation (RFC 1035) — Mockapillis, Kastensohn, et al. (1987) 深度分析](../cs-learning/reports/paper_analyses/30_dns_1987.md) | — |
 | 2026-03-31 | [Chubby (2006) 分布式锁服务论文深度分析](../cs-learning/reports/paper_analyses/29_chubby_2006.md) | — |
 | 2026-03-30 | [Chord P2P 查找协议分析报告](../cs-learning/reports/paper_analyses/28_chord_2001.md) | — |
@@ -259,32 +259,32 @@
 | 2026-03-24 | [Turing (1950) 论文精读](../cs-learning/reports/paper_analyses/01_turing_1950.md) | — |
 | 2026-03-24 | [Shannon (1948) 论文精读](../cs-learning/reports/paper_analyses/02_shannon_1948.md) | — |
 | 2026-03-24 | [MapReduce (2004) 论文精读](../cs-learning/reports/paper_analyses/10_mapreduce_2004.md) | — |
-| 2026-03-24 | [CS 关键人物图谱](../cs-learning/reports/knowledge_reports/CS关键人物图谱.md) | — |
+| 2026-03-24 | [CS 关键人物图谱](../cs-learning/reports/knowledge_reports/CS%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1.md) | — |
 
 ## 📚 Philosophy Learning（22 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | — |
-| 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | — |
-| 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | — |
+| 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/%E8%B5%B5%E9%BC%8E%E6%96%B0_%E5%84%92%E6%B3%95%E5%9B%BD%E5%AE%B6_%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_20260721.md) | — |
+| 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/%E7%A8%8B%E4%B9%90%E6%9D%BE_%E6%96%B9%E6%B3%95%E8%AE%BA%E4%B8%80%E6%89%8B%E7%B2%BE%E8%AF%BB_%E9%87%8D%E8%BF%94%E7%BB%8F%E9%AA%8C%E4%B8%8E%E5%81%9A%E4%B8%AD%E5%9B%BD%E5%93%B2%E5%AD%A6_20260720.md) | — |
+| 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活'](../philosophy-learning/reports/concept_reports/%E7%A8%8B%E4%B9%90%E6%9D%BE%E7%9A%84%E5%BD%93%E4%BB%A3%E5%93%B2%E5%AD%A6_AI%E6%97%B6%E4%BB%A3%E7%9A%84%E8%87%AA%E6%88%91%E4%B8%8E%E5%8F%8D%E5%8D%B7_20260625.md) | — |
 | 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | — |
-| 2026-06-22 | [程乐松：道教观念史与宗教经典诠释学 思想综述](../philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md) | — |
-| 2026-06-21 | [美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ 丹托《艺术的终结》](../philosophy-learning/reports/text_analyses/美学三论_20260621.md) | — |
+| 2026-06-22 | [程乐松：道教观念史与宗教经典诠释学 思想综述](../philosophy-learning/reports/concept_reports/%E7%A8%8B%E4%B9%90%E6%9D%BE_%E9%81%93%E6%95%99%E4%B8%8E%E5%AE%97%E6%95%99%E8%AF%A0%E9%87%8A%E5%AD%A6_%E6%80%9D%E6%83%B3%E7%BB%BC%E8%BF%B0_20260622.md) | — |
+| 2026-06-21 | [美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ 丹托《艺术的终结》](../philosophy-learning/reports/text_analyses/%E7%BE%8E%E5%AD%A6%E4%B8%89%E8%AE%BA_20260621.md) | — |
 | 2026-06-03 | [逻辑哲学论](../philosophy-learning/reports/text_analyses/09_wittgenstein_tractatus_1921.md) | — |
 | 2026-04-24 | [Singer (1972) Famine, Affluence, and Morality 文本分析](../philosophy-learning/reports/text_analyses/08_singer_famine_1972.md) | — |
 | 2026-04-24 | [Russell (1905) On Denoting 文本分析](../philosophy-learning/reports/text_analyses/05_russell_on_denoting_1905.md) | — |
-| 2026-04-22 | [自由意志_跨时代比较](../philosophy-learning/reports/concept_reports/自由意志_跨时代比较.md) | — |
+| 2026-04-22 | [自由意志_跨时代比较](../philosophy-learning/reports/concept_reports/%E8%87%AA%E7%94%B1%E6%84%8F%E5%BF%97_%E8%B7%A8%E6%97%B6%E4%BB%A3%E6%AF%94%E8%BE%83.md) | — |
 | 2026-04-06 | [罗尔斯《正义论》第一章 — 作为公平的正义](../philosophy-learning/reports/text_analyses/08_rawls_theory_of_justice_1971.md) | — |
 | 2026-04-05 | [黑格尔《精神现象学》导论 — 意识经验的辩证之旅](../philosophy-learning/reports/text_analyses/07_hegel_phaenomenologie_1807.md) | — |
 | 2026-03-31 | [Nagel 'What Is It Like to Be a Bat?' (1974) - Text Analysis Report](../philosophy-learning/reports/text_analyses/04_nagel_bat_1974.md) | — |
 | 2026-03-30 | [亚里士多德《尼各马可伦理学》文本分析](../philosophy-learning/reports/text_analyses/06_aristotle_nicomachean_ethics_-350.md) | — |
 | 2026-03-28 | [康德《道德形而上学基础》文本精读分析报告](../philosophy-learning/reports/text_analyses/05_kant_groundwork_1785.md) | — |
-| 2026-03-26 | [知识_跨时代比较](../philosophy-learning/reports/concept_reports/知识_跨时代比较.md) | — |
+| 2026-03-26 | [知识_跨时代比较](../philosophy-learning/reports/concept_reports/%E7%9F%A5%E8%AF%86_%E8%B7%A8%E6%97%B6%E4%BB%A3%E6%AF%94%E8%BE%83.md) | — |
 | 2026-03-26 | [柏拉图《美诺》节选与美诺悖论 文本分析](../philosophy-learning/reports/text_analyses/04_plato_meno_-380.md) | — |
 | 2026-03-26 | [柏拉图《理想国》第七卷·洞穴比喻 文本分析](../philosophy-learning/reports/text_analyses/01_plato_republic_cave_-380.md) | — |
 | 2026-03-24 | [笛卡尔《第一哲学沉思集》(1641) 文本分析](../philosophy-learning/reports/text_analyses/02_descartes_meditations_1641.md) | — |
-| 2026-03-24 | [哲学关键人物图谱](../philosophy-learning/reports/concept_reports/哲学关键人物图谱.md) | — |
+| 2026-03-24 | [哲学关键人物图谱](../philosophy-learning/reports/concept_reports/%E5%93%B2%E5%AD%A6%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1.md) | — |
 | 2026-03-24 | [Gettier (1963) 文本分析](../philosophy-learning/reports/text_analyses/03_gettier_1963.md) | — |
 | 2026-03-24 | [03_gettier_1963_分析报告](../philosophy-learning/reports/paper_analyses/03_gettier_1963.md) | — |
 
@@ -292,10 +292,10 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-06-21 | [情绪调节 Gross 模型 + 重评 vs 抑制的实证对比](../psychology-learning/reports/concept_reports/情绪调节_Gross模型_20260621.md) | — |
-| 2026-06-12 | [多元智能理论（Theory of Multiple Intelligences）深度解析](../psychology-learning/reports/concept_reports/多元智能理论_深度解析.md) | — |
-| 2026-04-22 | [心理学关键人物图谱（更新版）](../psychology-learning/reports/concept_reports/心理学关键人物图谱_更新版.md) | — |
-| 2026-04-05 | [认知偏差全景图](../psychology-learning/reports/concept_reports/认知偏差全景图.md) | — |
+| 2026-06-21 | [情绪调节 Gross 模型 + 重评 vs 抑制的实证对比](../psychology-learning/reports/concept_reports/%E6%83%85%E7%BB%AA%E8%B0%83%E8%8A%82_Gross%E6%A8%A1%E5%9E%8B_20260621.md) | — |
+| 2026-06-12 | [多元智能理论（Theory of Multiple Intelligences）深度解析](../psychology-learning/reports/concept_reports/%E5%A4%9A%E5%85%83%E6%99%BA%E8%83%BD%E7%90%86%E8%AE%BA_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md) | — |
+| 2026-04-22 | [心理学关键人物图谱（更新版）](../psychology-learning/reports/concept_reports/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1_%E6%9B%B4%E6%96%B0%E7%89%88.md) | — |
+| 2026-04-05 | [认知偏差全景图](../psychology-learning/reports/concept_reports/%E8%AE%A4%E7%9F%A5%E5%81%8F%E5%B7%AE%E5%85%A8%E6%99%AF%E5%9B%BE.md) | — |
 | 2026-03-30 | [Harlow 恒河猴依恋实验分析报告](../psychology-learning/reports/paper_analyses/13_harlow_monkey_1958.md) | — |
 | 2026-03-28 | [启发式与偏差 (1974) 论文精读](../psychology-learning/reports/paper_analyses/07_tversky_kahneman_heuristics_1974.md) | — |
 | 2026-03-28 | [Bandura Bobo娃娃实验精读分析报告](../psychology-learning/reports/paper_analyses/08_bandura_bobo_1961.md) | — |
@@ -306,7 +306,7 @@
 | 2026-03-26 | [Festinger & Carlsmith 认知失调实验 (1959) 精读](../psychology-learning/reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md) | — |
 | 2026-03-26 | [Darley & Latane 旁观者效应实验 (1968) 精读](../psychology-learning/reports/paper_analyses/10_darley_latane_bystander_1968.md) | — |
 | 2026-03-26 | [Asch 从众实验 (1951) 精读](../psychology-learning/reports/paper_analyses/14_asch_conformity_1951.md) | — |
-| 2026-03-24 | [心理学关键人物图谱](../psychology-learning/reports/concept_reports/心理学关键人物图谱.md) | — |
+| 2026-03-24 | [心理学关键人物图谱](../psychology-learning/reports/concept_reports/%E5%BF%83%E7%90%86%E5%AD%A6%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1.md) | — |
 | 2026-03-24 | [Miller 魔力数字七 (1956) 精读](../psychology-learning/reports/paper_analyses/01_miller_magical_number_seven_1956.md) | — |
 | 2026-03-24 | [Milgram 服从实验 (1963) 精读](../psychology-learning/reports/paper_analyses/02_milgram_obedience_1963.md) | — |
 
@@ -314,16 +314,16 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | — |
-| 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | — |
-| 2026-06-21 | [蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策](../biology-learning/reports/concept_reports/蓝光与褪黑素的光生物学_20260621.md) | — |
-| 2026-05-05 | [女童月经初潮提前与中枢性性早熟：国内临床经验、国际诊疗进展与家庭决策指南](../biology-learning/reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md) | — |
+| 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/%E6%9E%9C%E8%9D%87%E5%85%A8%E8%84%91%E8%BF%9E%E6%8E%A5%E7%BB%84%E4%B8%8E%E8%B5%9B%E5%8D%9A%E6%9E%9C%E8%9D%87%E7%94%9F%E6%80%81_%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6_20260917.md) | — |
+| 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/%E9%99%90%E6%97%B6%E8%BF%9B%E9%A3%9FTRE%E4%B8%8E%E4%BB%A3%E8%B0%A2%E5%81%A5%E5%BA%B7_20260625.md) | — |
+| 2026-06-21 | [蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策](../biology-learning/reports/concept_reports/%E8%93%9D%E5%85%89%E4%B8%8E%E8%A4%AA%E9%BB%91%E7%B4%A0%E7%9A%84%E5%85%89%E7%94%9F%E7%89%A9%E5%AD%A6_20260621.md) | — |
+| 2026-05-05 | [女童月经初潮提前与中枢性性早熟：国内临床经验、国际诊疗进展与家庭决策指南](../biology-learning/reports/concept_reports/%E5%A5%B3%E7%AB%A5%E5%88%9D%E6%BD%AE%E6%8F%90%E5%89%8D%E4%B8%8E%E4%B8%AD%E6%9E%A2%E6%80%A7%E6%80%A7%E6%97%A9%E7%86%9F_%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.md) | — |
 | 2026-04-25 | [Effects of exercise on circadian rhythms in humans](../biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md) | — |
 | 2026-04-25 | [Circadian rhythm phase shifts caused by timed exercise vary with chronotype](../biology-learning/reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md) | — |
-| 2026-04-24 | [运动时间生物学：整合 Hayes/Ezagouri/Gupta 研究的个体化训练时间窗决策框架](../biology-learning/reports/concept_reports/运动时间生物学_个体化训练时间窗.md) | — |
+| 2026-04-24 | [运动时间生物学：整合 Hayes/Ezagouri/Gupta 研究的个体化训练时间窗决策框架](../biology-learning/reports/concept_reports/%E8%BF%90%E5%8A%A8%E6%97%B6%E9%97%B4%E7%94%9F%E7%89%A9%E5%AD%A6_%E4%B8%AA%E4%BD%93%E5%8C%96%E8%AE%AD%E7%BB%83%E6%97%B6%E9%97%B4%E7%AA%97.md) | — |
 | 2026-04-24 | [The circadian system, sleep, and the health/disease balance: a conceptual review](../biology-learning/reports/paper_analyses/P04_roenneberg_circadian_health_2022.md) | — |
 | 2026-04-24 | [Circadian Rhythms in Exercise Performance: Implications for Hormonal and Muscular Adaptation](../biology-learning/reports/paper_analyses/P17_hayes_circadian_exercise_2013.md) | — |
-| 2026-04-22 | [昼夜节律与运动表现：时间生物学视角的深度研究报告](../biology-learning/reports/concept_reports/昼夜节律与运动表现_深度研究报告.md) | — |
+| 2026-04-22 | [昼夜节律与运动表现：时间生物学视角的深度研究报告](../biology-learning/reports/concept_reports/%E6%98%BC%E5%A4%9C%E8%8A%82%E5%BE%8B%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%A1%A8%E7%8E%B0_%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.md) | — |
 | 2026-04-22 | [Sleep and muscle recovery: endocrinological and molecular basis for a new and promising hypothesis (2011)](../biology-learning/reports/paper_analyses/P03_dattilo_sleep_muscle_2011.md) | — |
 | 2026-04-22 | [Dose-response relationship between evening exercise and sleep (2025)](../biology-learning/reports/paper_analyses/P02_stutz_evening_exercise_sleep_2025.md) | — |
 | 2026-04-06 | [Why We Sleep — 核心论据综述](../biology-learning/reports/paper_analyses/P26_walker_why_we_sleep_2017.md) | — |
@@ -331,13 +331,13 @@
 | 2026-03-26 | [Social Jetlag and Obesity (2012) 精读](../biology-learning/reports/paper_analyses/P01_social_jetlag_obesity_2012.md) | — |
 | 2026-03-26 | [Sleep Onset, Slow Wave Sleep and GH Release (1988) 精读](../biology-learning/reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) | — |
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
-| 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
+| 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/%E6%99%9A%E5%9E%8B%E4%BA%BA%E4%BD%9C%E6%81%AF%E4%B8%8E%E5%8A%9B%E9%87%8F%E8%AE%AD%E7%BB%83_%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.md) | — |
 
 ## ⚗️ AI Practice（10 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | `book_to_skill`, `docling`, `pdf_extraction`, `progressive_disclosure` |
+| 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/%E8%AF%84%E4%BC%B0%E7%AC%94%E8%AE%B0_book-to-skill%E8%83%BD%E5%90%A6%E4%BC%98%E5%8C%96%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE_20260729.md) | `book_to_skill`, `docling`, `pdf_extraction`, `progressive_disclosure` |
 | 2026-07-11 | [本机（M5 Max 128GB）本地 LLM 选型评测——whichllm × llm-checker × fastfetch](../ai-practice/experiments/exp_009_local_llm_selector.md) | — |
 | 2026-06-21 | [GRPO 缩尺模拟实验：与 T060 推理模型三大流派联动的代码复现](../ai-practice/experiments/exp_008_grpo_simulation.md) | — |
 | 2026-05-13 | [SkillOS 技能库策展小型实验复现](../ai-practice/experiments/exp_007_skillos_curator_simulation.md) | — |
