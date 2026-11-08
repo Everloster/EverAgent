@@ -134,7 +134,7 @@ func TestHarnessAndHints(t *testing.T) {
 	delete(env, "PI_SESSION_ID")
 	delete(env, "PI_CODING_AGENT")
 	delete(env, "CODEX_THREAD_ID")
-	if v = i.Inspect(); v["harness_resolved"] != false {
+	if v = i.Inspect(); v["harness_resolved"] != false || v["model_reason_code"] != "current-harness-unresolved" {
 		t.Fatalf("substring process match: %v", v)
 	}
 	i, env = testInspector(t, "codex")
@@ -143,7 +143,7 @@ func TestHarnessAndHints(t *testing.T) {
 		t.Fatal("nested TOML treated as default")
 	}
 	env["AGENT_ID"] = "spoofed-identity"
-	if i.Inspect()["commit_ready"] != false {
+	if v = i.Inspect(); v["commit_ready"] != false || v["model_reason_code"] != "explicit-identity-is-not-model-evidence" {
 		t.Fatal("AGENT_ID must not authorize commits")
 	}
 }

@@ -174,6 +174,13 @@ func TestClaudeCurrentCaller(t *testing.T) {
 			if (v["current_model_confirmed"] == true) != want {
 				t.Fatalf("%v\n%v", v, i.Diagnose())
 			}
+			if (text(v["model_reason_code"]) == "") != want {
+				t.Fatalf("lost the same observation's failure reason: %v", v)
+			}
+			session := i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+			if object(object(session["actor"])["model"])["automatic_reason_code"] != v["model_reason_code"] {
+				t.Fatalf("session discarded the observation reason: %v", session)
+			}
 			if strings.Contains(string(encoded(t, v)), "PRIVATE-DIALOG") {
 				t.Fatal("conversation body appeared in result")
 			}

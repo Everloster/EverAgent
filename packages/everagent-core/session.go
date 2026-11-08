@@ -134,6 +134,9 @@ func (i *Inspector) NormalizeSession(device, identity, checkout, host, caller, t
 	if v := identity["request_observation"]; v != nil {
 		m["request_observation"] = v
 	}
+	if reason := text(identity["model_reason_code"]); reason != "" {
+		m["automatic_reason_code"] = reason
+	}
 	form := "unknown"
 	if i != nil {
 		form = i.Form(harness)

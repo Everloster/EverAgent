@@ -170,6 +170,7 @@ func (i *Inspector) inspect() (Object, Object) {
 	if i.Getenv("AGENT_ID") != "" {
 		v := unresolved("explicit-override")
 		v["model_source"] = "explicit-identity"
+		v["model_reason_code"] = "explicit-identity-is-not-model-evidence"
 		return v, Object{"status": "unavailable", "reason_code": "explicit-identity-is-not-model-evidence"}
 	}
 	h, source := i.detectHarness()
@@ -180,7 +181,9 @@ func (i *Inspector) inspect() (Object, Object) {
 		}
 	}
 	if h == "" {
-		return unresolved(source), Object{"harness": nil, "status": "unavailable", "readers": []string{}, "reason_code": "current-harness-unresolved"}
+		v := unresolved(source)
+		v["model_reason_code"] = "current-harness-unresolved"
+		return v, Object{"harness": nil, "status": "unavailable", "readers": []string{}, "reason_code": "current-harness-unresolved"}
 	}
 	evidence, probe := i.modelEvidence(h)
 	m := text(evidence["model"])
@@ -194,6 +197,10 @@ func (i *Inspector) inspect() (Object, Object) {
 		if x, ok := evidence[k]; ok {
 			v[k] = x
 		}
+	}
+	// Preserve this observation's failure, not a later diagnostic's result.
+	if reason := text(probe["reason_code"]); reason != "" {
+		v["model_reason_code"] = reason
 	}
 	return v, probe
 }

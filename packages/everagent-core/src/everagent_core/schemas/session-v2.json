@@ -108,6 +108,10 @@
             "configured": {
               "type": "string"
             },
+            "automatic_reason_code": {
+              "type": "string",
+              "description": "Failure reason from this observation; absent after successful automatic verification."
+            },
             "request_observation": {
               "type": "object",
               "additionalProperties": false,

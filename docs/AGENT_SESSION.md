@@ -19,7 +19,7 @@ Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORA
 
 ## current → diagnose → declare
 
-本页描述 Go core 0.4.0-dev 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
+本页描述 Go core 0.4.1 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
 - `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
@@ -111,6 +111,11 @@ workspace/fork或存在location-switched时保守拒绝；两次精确快照不�
 `automatic_probe`、原因码、公共 owner、复验入口和最后的用户兜底条件。安装 core 使用
 `everagent-identity diagnose --json`。成功的常规 inspect 保持原有精简输出，诊断按需展开。
 
+自动核实失败时，当前身份保留 `model_reason_code`，Session 映射为
+`actor.model.automatic_reason_code`；原因来自该次观测，成功时不输出此字段。
+eacli diagnose 的 session 与 `diagnosis.identity/automatic_probe` 复用同一次身份观测。
+诊断只读，不保存成功缓存或修复记录；另一次 diagnose/current 成功不能解释或追溯认证先前失败。
+
 Agent 可以在任务授权内修复 harness 分类、进程/session 绑定或原生模型读取器；先读诊断所指 owner，
 以当前会话元数据或独立合成 fixture 为依据，补针对性回归并复验。读取器失败只提供实际能判断的原因，
 `native-metadata-unavailable-or-invalid` 不推断更具体的文件、租约或记录问题。不得为排障扫描全局最近对话、
@@ -140,7 +145,7 @@ Claude 原件正在追加、末行 JSON/UTF-8 尚未写完，或读取时钟早�
 重读三次，两次之间等待 20 ms 并重新取时间。持续未完成返回 `native-observation-in-progress`；不跳过
 末行借用旧模型。完整畸形记录、超大记录或缺少最新 assistant 绑定分别给出
 `native-metadata-invalid`、`native-record-oversized`、`native-assistant-binding-invalid`，不自动重试或放行。
-`automatic_probe.retry_count` 记录实际重读次数。复现某种输入失败不等于证明历史失败原因；缺当时原件时
+Go 读取器不输出 `retry_count`。复现某种输入失败不等于证明历史失败原因；缺当时原件时
 保留待验证，不能用当前重试成功代替历史证据。
 
 ZCode Desktop 无会话环境变量；会话标签出现在 Bash 工具 shell 启动命令的
