@@ -3,7 +3,7 @@
 公共 Go module：当前调用方的身份与模型证据、用户声明、会话组合、Git 原语和公开仓质量门。
 可直接编译进 CLI，不依赖解释器、独立身份 helper 或相邻私仓。Go 版本与依赖由 `go.mod` / `go.sum` 固定。
 
-当前源码为 `0.4.1`；这是模块版本，不是设备安装态或九类客户端均已验收的声明。
+当前源码为 `0.5.0`；这是模块版本，不是设备安装态或九类客户端均已验收的声明。
 本次退役 Python core 和相关 wrapper，保留 `scripts/ecommit.sh`；已有设备安装副本须单独升级和验收。
 
 ## 入口
@@ -41,10 +41,11 @@ go -C packages/everagent-core run ./cmd/ea-quality index --write
 | 内容 | Owner |
 |---|---|
 | 版本与会话组合 | `core.go`、`session.go` |
-| 调用方进程、harness 与宿主 | `process*.go`、`identity.go`、`apps.go` |
+| 调用方进程、harness 与宿主 | `process*.go`、`identity.go`、`desktop.go` |
 | 有界读取配置 | `config.go`；`src/everagent_core/identity/readers.json` |
 | 原生模型证据、声明及失效 | `observations*.go`、`declarations.go` |
 | DSH 官方 shellEnv 插件 | `src/everagent_core/identity/dsh_plugin.mjs`；产品接口要求的 JS 适配，不运行 Python |
+| OpenCode V1 官方 shell.env 插件 | `src/everagent_core/identity/opencode_plugin.mjs`；仅转交调用绑定，验证和读取逻辑在 `opencode.go` |
 | JSON 形状 | `src/everagent_core/schemas/`；保留资产路径，不代表仍有 Python 包 |
 | Git 参数、消息、双身份与 tree 核验 | `git.go` |
 | 公开质量与快照 | `internal/publicquality/`；`cmd/ea-quality` |
@@ -72,7 +73,7 @@ go -C packages/everagent-core vet ./...
 来源/复核 SHA、独立会话、报告范围与旧策略、转写和 Context。真实客户端、模型调用、设备安装及
 跨平台运行仍需各自证据，交叉编译不等于实机通过。
 
-OpenCode V2 目前只能核实 requested Model.Ref，不是 provider 返回型号；Cursor 只有 harness/声明
+OpenCode V1/V2目前只能核实请求模型，不是provider返回型号；V1另需加载官方shell.env绑定插件。Cursor只有harness/声明
 绑定。这些缺口保持 unknown/requested，不能仅凭配置放行提交。Context 检查会复验已登记报告和历史
 行为记录，不执行新模型回放，也不把过期 A/B 结果当成本次改进证据。
 

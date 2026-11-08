@@ -12,8 +12,16 @@ import (
 // normal `go run`, which deliberately omits debug data unlike `go build`.
 // The manifest is not an attestation against a deliberately modified checker.
 //
-//go:embed *.go go.mod go.sum cmd internal processtree src/everagent_core/identity/readers.json src/everagent_core/identity/dsh_plugin.mjs src/everagent_core/schemas
+//go:embed *.go go.mod go.sum cmd internal processtree src/everagent_core/identity/readers.json src/everagent_core/identity/dsh_plugin.mjs src/everagent_core/identity/opencode_plugin.mjs src/everagent_core/schemas
 var buildSources embed.FS
+
+// OpenCodeShellPlugin is the minimal official V1 shell binding adapter. It
+// contains no configuration, credentials or model assertions. Installers must
+// preserve existing user plugins and explicitly load it in the native config.
+func OpenCodeShellPlugin() []byte {
+	b, _ := buildSources.ReadFile("src/everagent_core/identity/opencode_plugin.mjs")
+	return b
+}
 
 // BuildSourceHashes returns module-relative hashes, not a second source tree on
 // disk. Test sources are included so the gate also binds the tests it will run.

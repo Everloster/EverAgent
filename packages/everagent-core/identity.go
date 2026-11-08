@@ -227,7 +227,7 @@ func (i *Inspector) modelEvidence(h string) (Object, Object) {
 		e["requested_model"] = found["requested_model"]
 		metadata := object(found["request_metadata"])
 		observation := Object{"source": found["source"], "scope_ref": Digest(scope)[:24], "observed_at": found["observed_at"], "observation_ref": found["observation_ref"]}
-		for _, k := range []string{"provider_id", "variant", "step_completed", "storage_version"} {
+		for _, k := range []string{"provider_id", "variant", "step_completed", "storage_version", "binding"} {
 			if v, ok := metadata[k]; ok {
 				observation[k] = v
 			}
@@ -267,7 +267,11 @@ func (i *Inspector) Diagnose() Object {
 	if ready {
 		status = "ready"
 	}
-	return Object{"schema_version": 1, "status": status, "identity": identity, "automatic_probe": probe, "reader_config": Object{"owner": "packages/everagent-core/src/everagent_core/identity/readers.json", "override_environment": "EVERAGENT_IDENTITY_CONFIG", "status": "valid"}, "repair": Object{"owner_repository": "EverAgent", "owners": []string{"packages/everagent-core/config.go", "packages/everagent-core/process.go", "packages/everagent-core/identity.go", "packages/everagent-core/observations.go", "packages/everagent-core/declarations.go"}, "order": []string{"inspect-current-caller-binding", "repair-supported-reader-or-adapter", "verify-current-session-and-regressions", "request-explicit-user-facts-if-unverifiable"}, "validation": []string{"eacli session current --json", "eacli session diagnose --json"}, "boundary": "Only current-caller metadata; retain privacy, process/session binding, freshness and unknown states."}, "user_fallback": Object{"role": "last-resort", "available": i.factScope() != nil, "fields": []string{"device", "harness", "form", "model"}, "requires_explicit_user_confirmation": true}, "authorized_source_repair_allowed": true, "authorized_read_only_allowed": true, "commit_allowed": ready, "diagnostics_are_model_evidence": false}
+	owners := []string{"packages/everagent-core/config.go", "packages/everagent-core/process.go", "packages/everagent-core/identity.go", "packages/everagent-core/observations.go", "packages/everagent-core/declarations.go"}
+	if identity["cli"] == "opencode" {
+		owners = append(owners, "packages/everagent-core/opencode.go", "packages/everagent-core/src/everagent_core/identity/opencode_plugin.mjs")
+	}
+	return Object{"schema_version": 1, "status": status, "identity": identity, "automatic_probe": probe, "reader_config": Object{"owner": "packages/everagent-core/src/everagent_core/identity/readers.json", "override_environment": "EVERAGENT_IDENTITY_CONFIG", "status": "valid"}, "repair": Object{"owner_repository": "EverAgent", "owners": owners, "order": []string{"inspect-current-caller-binding", "repair-supported-reader-or-adapter", "verify-current-session-and-regressions", "request-explicit-user-facts-if-unverifiable"}, "validation": []string{"eacli session current --json", "eacli session diagnose --json"}, "boundary": "Only current-caller metadata; retain privacy, process/session binding, freshness and unknown states."}, "user_fallback": Object{"role": "last-resort", "available": i.factScope() != nil, "fields": []string{"device", "harness", "form", "model"}, "requires_explicit_user_confirmation": true}, "authorized_source_repair_allowed": true, "authorized_read_only_allowed": true, "commit_allowed": ready, "diagnostics_are_model_evidence": false}
 }
 
 // Form is a classification, not model evidence or a task authorization.

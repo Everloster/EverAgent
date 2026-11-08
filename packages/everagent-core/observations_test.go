@@ -265,3 +265,99 @@ func TestDshExactEntryAndResponse(t *testing.T) {
 		t.Fatal("generic Node process accepted as DSH")
 	}
 }
+
+func TestOpenCodeV1ToolBoundRequest(t *testing.T) {
+	for _, tc := range []string{"current", "missing-hook", "wrong-pid", "wrong-call", "wrong-session", "completed-tool", "foreign-message", "duplicate-call", "wrong-cwd", "unsupported-version", "stale-tool", "future-tool", "malformed", "oversized"} {
+		t.Run(tc, func(t *testing.T) {
+			i, env := testInspector(t, "opencode")
+			env["OPENCODE"], env["OPENCODE_SESSION_ID"], env["OPENCODE_CALL_ID"], env["OPENCODE_RUNTIME_PID"] = "1", "ses_current", "call_current", "4200"
+			at := i.Now().Add(-2 * time.Second).UnixMilli()
+			started := i.Now().Add(-time.Second).UnixMilli()
+			if tc == "stale-tool" {
+				i.Processes[1].StartTime = i.Now().Add(-10 * time.Minute)
+				at, started = i.Now().Add(-302*time.Second).UnixMilli(), i.Now().Add(-301*time.Second).UnixMilli()
+			}
+			if tc == "future-tool" {
+				started = i.Now().Add(time.Second).UnixMilli()
+			}
+			db := fixtureDB(t, filepath.Join(i.Home, ".local/share/opencode/opencode.db"))
+			sqlFixture(t, db, `CREATE TABLE session(id TEXT PRIMARY KEY,directory TEXT,version TEXT,workspace_id TEXT,time_archived INTEGER,time_compacting INTEGER)`)
+			sqlFixture(t, db, `CREATE TABLE message(id TEXT PRIMARY KEY,session_id TEXT REFERENCES session(id),time_created INTEGER,time_updated INTEGER,data TEXT)`)
+			sqlFixture(t, db, `CREATE TABLE part(id TEXT PRIMARY KEY,message_id TEXT REFERENCES message(id),session_id TEXT,time_created INTEGER,time_updated INTEGER,data TEXT)`)
+			sqlFixture(t, db, `CREATE TABLE session_message(id TEXT PRIMARY KEY,session_id TEXT REFERENCES session(id))`)
+			sqlFixture(t, db, `INSERT INTO session VALUES(?,?,?,NULL,NULL,NULL)`, "ses_current", i.Directory, "1.18.32")
+			message := Object{"role": "assistant", "modelID": "requested-alias", "providerID": "provider", "variant": "high", "path": Object{"cwd": i.Directory}, "time": Object{"created": at}, "text": "PRIVATE-DIALOG-SENTINEL"}
+			part := Object{"type": "tool", "tool": "bash", "callID": "call_current", "state": Object{"status": "running", "time": Object{"start": started}, "input": Object{"command": "PRIVATE-COMMAND-SENTINEL"}}}
+			switch tc {
+			case "missing-hook":
+				delete(env, "OPENCODE_CALL_ID")
+			case "wrong-pid":
+				env["OPENCODE_RUNTIME_PID"] = "9999"
+			case "wrong-call":
+				env["OPENCODE_CALL_ID"] = "call_another"
+			case "wrong-session":
+				env["OPENCODE_SESSION_ID"] = "ses_another"
+			case "completed-tool":
+				object(part["state"])["status"] = "completed"
+			case "wrong-cwd":
+				object(message["path"])["cwd"] = filepath.Join(i.Directory, "another")
+			case "unsupported-version":
+				sqlFixture(t, db, `UPDATE session SET version='1.99.0'`)
+			case "oversized":
+				message["text"] = strings.Repeat("x", maxRecordBytes)
+			}
+			data := encoded(t, message)
+			if tc == "malformed" {
+				data = []byte(`{"role":`)
+			}
+			sqlFixture(t, db, `INSERT INTO message VALUES(?,?,?,?,?)`, "msg_current", "ses_current", at, at, string(data))
+			sqlFixture(t, db, `INSERT INTO part VALUES(?,?,?,?,?,?)`, "prt_current", "msg_current", "ses_current", started, started, string(encoded(t, part)))
+			if tc == "foreign-message" {
+				sqlFixture(t, db, `UPDATE message SET session_id='ses_foreign'`)
+			}
+			if tc == "duplicate-call" {
+				sqlFixture(t, db, `INSERT INTO part SELECT 'prt_duplicate',message_id,session_id,time_created,time_updated,data FROM part`)
+			}
+			got := i.Inspect()
+			if got["current_model_confirmed"] != false || got["commit_ready"] != false || got["observed_model"] != nil {
+				t.Fatalf("request became actual-model/commit proof: %v", got)
+			}
+			if tc == "current" {
+				observation := object(got["request_observation"])
+				if got["requested_model"] != "requested-alias" || observation["binding"] != "active-tool" || observation["storage_version"] != "1.18.32" || got["model_reason_code"] != "provider-response-model-unavailable" {
+					t.Fatalf("active call unavailable: %v\n%v", got, i.Diagnose())
+				}
+				owners := string(encoded(t, object(i.Diagnose()["repair"])["owners"]))
+				if !strings.Contains(owners, "packages/everagent-core/opencode.go") || !strings.Contains(owners, "identity/opencode_plugin.mjs") {
+					t.Fatal("diagnose does not point to the applicable reader and binding adapter")
+				}
+			} else if got["requested_model"] != nil {
+				t.Fatalf("borrowed unbound request: %v", got)
+			}
+			if strings.Contains(string(encoded(t, got)), "PRIVATE-") {
+				t.Fatal("body/arguments escaped scalar projection")
+			}
+		})
+	}
+}
+
+func TestOpenCodeV2RequestedOnly(t *testing.T) {
+	for _, version := range []string{"2.0.27", "2.2.5"} {
+		t.Run(version, func(t *testing.T) {
+			i, env := testInspector(t, "opencode")
+			env["OPENCODE"], env["OPENCODE_SESSION_ID"] = "1", "ses_current"
+			db := fixtureDB(t, filepath.Join(i.Home, ".local/share/opencode/opencode.db"))
+			sqlFixture(t, db, `CREATE TABLE session_v2(id TEXT PRIMARY KEY,directory TEXT,version TEXT,workspace_id TEXT,fork_session_id TEXT,model TEXT)`)
+			sqlFixture(t, db, `CREATE TABLE session_message(id TEXT PRIMARY KEY,session_id TEXT REFERENCES session_v2(id),type TEXT,seq INTEGER,time_created INTEGER,time_updated INTEGER,data TEXT)`)
+			at := i.Now().Add(-time.Second).UnixMilli()
+			selected := Object{"id": "requested-alias", "providerID": "provider"}
+			sqlFixture(t, db, `INSERT INTO session_v2 VALUES(?,?,?,NULL,NULL,?)`, "ses_current", i.Directory, version, string(encoded(t, selected)))
+			message := Object{"model": selected, "time": Object{"created": at, "streamed": at}, "text": "PRIVATE-DIALOG-SENTINEL"}
+			sqlFixture(t, db, `INSERT INTO session_message VALUES(?,?,'assistant',1,?,?,?)`, "msg_current", "ses_current", at, at, string(encoded(t, message)))
+			got := i.Inspect()
+			if got["requested_model"] != "requested-alias" || got["current_model_confirmed"] != false || got["commit_ready"] != false || strings.Contains(string(encoded(t, got)), "PRIVATE-") {
+				t.Fatalf("V2 boundary regressed: %v\n%v", got, i.Diagnose())
+			}
+		})
+	}
+}

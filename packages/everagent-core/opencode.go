@@ -6,13 +6,14 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 )
 
 // V2's model/time projection is shared by the independently inspected 2.0.27
 // and 2.2.5 releases. Their part storage differs, but no body is read here.
-// V1 has neither this schema nor the same shell binding: do not alias it.
+// V1 has a separate schema and requires the official shell.env adapter below.
 func opencodeSnapshot(ctx context.Context, db *sql.DB, native, cwd string) (Object, error) {
 	tx, e := db.BeginTx(ctx, &sql.TxOptions{ReadOnly: true})
 	if e != nil {
@@ -49,6 +50,86 @@ FROM session_v2 WHERE id=? AND directory=? AND workspace_id IS NULL AND fork_ses
 		return nil, e
 	}
 	return Object{"session": own, "message": rows[0]}, nil
+}
+
+// V1 stores modelID on the assistant as a REQUEST, not a provider response.
+// Bind through the exact running call, never the latest session in a directory.
+// SQL projects scalars only; tool arguments and conversation bodies stay in DB.
+func opencodeV1Snapshot(ctx context.Context, db *sql.DB, native, cwd, call string) (Object, error) {
+	tx, e := db.BeginTx(ctx, &sql.TxOptions{ReadOnly: true})
+	if e != nil {
+		return nil, e
+	}
+	defer tx.Rollback()
+	rows, e := queryRows(ctx, tx, `SELECT version FROM session WHERE id=? AND directory=?
+AND workspace_id IS NULL AND time_archived IS NULL AND time_compacting IS NULL LIMIT 1`, native, cwd)
+	if e != nil || len(rows) != 1 || rows[0]["version"] != "1.18.32" {
+		return nil, e
+	}
+	own := rows[0]
+	rows, e = queryRows(ctx, tx, `SELECT p.id,p.message_id,p.time_created,p.time_updated,
+json_extract(p.data,'$.state.time.start') AS started
+FROM part p JOIN message m ON m.id=p.message_id AND m.session_id=p.session_id
+WHERE p.session_id=? AND CASE WHEN length(p.data)<=? AND json_valid(p.data) THEN
+json_extract(p.data,'$.type')='tool' AND json_extract(p.data,'$.callID')=?
+AND json_extract(p.data,'$.tool')='bash' AND json_extract(p.data,'$.state.status')='running' END LIMIT 2`, native, maxRecordBytes, call)
+	if e != nil || len(rows) != 1 {
+		return nil, e
+	}
+	tool := rows[0]
+	rows, e = queryRows(ctx, tx, `SELECT id,time_created,time_updated,
+json_extract(data,'$.role') AS role,json_extract(data,'$.modelID') AS model,
+json_extract(data,'$.providerID') AS provider,json_extract(data,'$.variant') AS variant,
+json_extract(data,'$.time.created') AS created_at,json_extract(data,'$.time.completed') AS completed,
+json_extract(data,'$.path.cwd') AS cwd,json_type(data,'$.error') AS error
+FROM message WHERE id=? AND session_id=? AND CASE WHEN length(data)<=? THEN json_valid(data) END LIMIT 1`, tool["message_id"], native, maxRecordBytes)
+	if e != nil || len(rows) != 1 {
+		return nil, e
+	}
+	return Object{"session": own, "message": rows[0], "tool": tool}, nil
+}
+
+func opencodeForeignKey(ctx context.Context, db *sql.DB, table, column, target string) bool {
+	rows, e := queryRows(ctx, db, "PRAGMA foreign_key_list("+table+")")
+	if e != nil {
+		return false
+	}
+	for _, row := range rows {
+		if row["from"] == column && row["table"] == target && row["to"] == "id" {
+			return true
+		}
+	}
+	return false
+}
+
+func (i *Inspector) opencodeV1(ctx context.Context, db *sql.DB, native, cwd string, p Process, now time.Time) (Object, string) {
+	call := i.Getenv("OPENCODE_CALL_ID")
+	if !nativePattern.MatchString(call) || i.Getenv("OPENCODE_RUNTIME_PID") != strconv.Itoa(p.PID) {
+		return nil, "native-tool-binding-unavailable"
+	}
+	snapshot, e := opencodeV1Snapshot(ctx, db, native, cwd, call)
+	if e != nil || snapshot == nil {
+		return nil, "native-tool-metadata-unavailable"
+	}
+	again, e := opencodeV1Snapshot(ctx, db, native, cwd, call)
+	if e != nil || Digest(snapshot) != Digest(again) {
+		return nil, "native-observation-in-progress"
+	}
+	row, tool := object(snapshot["message"]), object(snapshot["tool"])
+	validMS := func(v any) bool { n := number(v); return n >= seconds(p.StartTime)*1000 && n <= seconds(now)*1000 }
+	valid := row["role"] == "assistant" && row["cwd"] == cwd && model(row["model"]) != "" && model(row["provider"]) != "" &&
+		(row["variant"] == nil || model(row["variant"]) != "") && (row["error"] == nil || row["error"] == "null") && row["completed"] == nil &&
+		number(row["created_at"]) <= number(tool["started"]) && seconds(now)-number(tool["started"])/1000 <= 300
+	for _, entry := range []Object{row, tool} {
+		valid = valid && validMS(entry["time_created"]) && validMS(entry["time_updated"]) && number(entry["time_created"]) <= number(entry["time_updated"])
+	}
+	if !valid || !validMS(row["created_at"]) || !validMS(tool["started"]) {
+		return nil, "native-request-metadata-incomplete-or-stale"
+	}
+	return Object{"model": row["model"], "requested_model": row["model"], "source": "opencode-session-request",
+		"observed_at": number(tool["started"]) / 1000, "turn": []any{row["id"], tool["id"], call},
+		"request_metadata": Object{"provider_id": row["provider"], "variant": row["variant"], "step_completed": false,
+			"storage_version": object(snapshot["session"])["version"], "binding": "active-tool"}}, ""
 }
 
 func (i *Inspector) opencode(native string, p Process, now time.Time) (Object, string) {
@@ -92,28 +173,26 @@ func (i *Inspector) opencode(native string, p Process, now time.Time) (Object, s
 	defer db.Close()
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	types, e := queryRows(ctx, db, "SELECT name,type FROM sqlite_master WHERE name IN ('session_v2','session_message')")
-	if e != nil || len(types) != 2 {
-		return nil, "native-schema-unsupported"
-	}
-	for _, r := range types {
-		if r["type"] != "table" {
-			return nil, "native-schema-unsupported"
-		}
-	}
-	// A same-named transitional table may refer to V1. Validate its foreign key,
-	// not only its label, before associating rows with this session namespace.
-	fks, e := queryRows(ctx, db, "PRAGMA foreign_key_list(session_message)")
+	types, e := queryRows(ctx, db, "SELECT name,type FROM sqlite_master WHERE name IN ('session','message','part','session_v2','session_message')")
 	if e != nil {
 		return nil, "native-schema-unsupported"
 	}
-	linked := false
-	for _, r := range fks {
-		if r["from"] == "session_id" && r["table"] == "session_v2" && r["to"] == "id" {
-			linked = true
-		}
+	tables := map[string]bool{}
+	for _, r := range types {
+		tables[text(r["name"])] = r["type"] == "table"
 	}
-	if !linked {
+	if !tables["session_v2"] && tables["session"] && tables["message"] && tables["part"] && tables["session_message"] &&
+		opencodeForeignKey(ctx, db, "message", "session_id", "session") && opencodeForeignKey(ctx, db, "part", "message_id", "message") &&
+		opencodeForeignKey(ctx, db, "session_message", "session_id", "session") {
+		found, reason := i.opencodeV1(ctx, db, native, cwd, p, now)
+		after, err := os.Stat(database)
+		if err != nil || !os.SameFile(before, after) || i.callerCwd(p) != cwd || i.nativeID("opencode") != native {
+			return nil, "native-caller-changed"
+		}
+		return found, reason
+	}
+	// Transitional session_message can point to V1; table names are not proof.
+	if !tables["session_v2"] || !tables["session_message"] || !opencodeForeignKey(ctx, db, "session_message", "session_id", "session_v2") {
 		return nil, "native-schema-unsupported"
 	}
 	snapshot, e := opencodeSnapshot(ctx, db, native, cwd)

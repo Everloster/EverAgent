@@ -68,7 +68,7 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 | Kimi Code CLI | 当前 Kimi 祖先进程的原生 cwd 定位当前目录会话；只接受当前进程运行期唯一更新会话，并读取其 wire 最新 `llm.request.model`；多会话、过期或未来记录不核实 |
 | Kimi Desktop | 活动 turn 经原生 `backgroundTasks.list` 的 running Bash PID 与启动时间绑定当前执行 shell，再以精确会话 wire 的 `usage.record` 和 `llm.request` 交叉核对模型 |
 | DSH | 官方 `shellEnv` 扩展绑定当前 tool call 与生成它的 assistant response；只使用 provider 返回的 `responseModel`，并核对 DSH 祖先进程、session 与有效期 |
-| OpenCode 2.0.27 | 原生shell注入的OPENCODE_SESSION_ID、唯一祖先进程及精确cwd限定V2 SQLite元数据；只能读step请求Model.Ref，返回requested-only，不自动放行提交，详见下节 |
+| OpenCode | 1.18.32通过官方shell.env插件绑定精确运行工具；2.0.27/2.2.5通过原生shell绑定精确会话。分别只读V1/V2 SQLite请求元数据，均为requested-only，不自动放行提交 |
 
 读取器只取当前调用方元数据；Codex、Kimi Code CLI 与 Kimi Desktop 的记录尾部有 4 MiB 上限，SQLite 只读查询指定会话的元数据字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
@@ -79,9 +79,21 @@ DSH 适配文件为 [`dsh_plugin.mjs`](../packages/everagent-core/src/everagent_
 调用完成即删除；core 读取上限 4 KiB、有效期 5 分钟。请求别名与返回模型分开记录，缺少返回型号保持未核实。
 macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自身事实决定，不冒充宿主。Windows DSH 未验证。
 
-### OpenCode V2：请求元数据与返回模型分开
+### OpenCode：请求元数据与返回模型分开
 
-实现对应官方`anomalyco/opencode@1f4d07a4a519185955ae8ab2ea3607805509e386`（2.0.27）：
+V1实现对应官方[`anomalyco/opencode@545f51d26cc39a907d2867492d498d9607ea5fa4`](https://github.com/anomalyco/opencode/tree/545f51d26cc39a907d2867492d498d9607ea5fa4)（1.18.32）。
+`packages/opencode/src/tool/shell.ts:416–426`的官方`"shell.env"`提供当前sessionID/callID；
+[`opencode_plugin.mjs`](../packages/everagent-core/src/everagent_core/identity/opencode_plugin.mjs)只转交这两个ID和运行进程PID，
+无会话绑定时清空继承值，不保存正文或生成模型证明。可由原生配置`plugin`加载该文件的`file://`URI，
+或以`.js`文件安装到既有OpenCode配置的`plugins/`目录；加载作用于该配置的后续原生运行，不重启已有任务。
+
+Go读取器要求同一OpenCode祖先进程、精确session/cwd、`part`中唯一运行的Bash call，按FK关联该assistant；
+只投影模型/provider/variant/时间等标量，不按同目录最近会话猜身份。未知版本、工具已完成、跨会话、过期、
+两次快照变化或数据损坏保持不可用。`request_observation.binding=active-tool`说明调用绑定，不说明返回型号。
+`prompt.ts`写入的assistant.modelID仍是请求模型，`llm/ai-sdk.ts`与`processor.ts`未提供可用的provider返回型号；
+因此绑定修复后仍为requested-only。这是自动诊断的准确缺口，不用代理拦截、用户声明或配置值伪装自动成功。
+
+V2实现对应官方`anomalyco/opencode@1f4d07a4a519185955ae8ab2ea3607805509e386`（2.0.27）：
 `packages/core/src/tool/plugin/shell.ts:199–218`在公共shell create.before hook之后设置OPENCODE_SESSION_ID；
 公共hook本身没有session/message/tool字段，不能照搬V1 shell.env或借同目录最近会话。
 `packages/schema/src/session-message.ts:212–237`的Assistant.model和`packages/core/src/session/model-request.ts:239–256,355–363`
@@ -91,7 +103,7 @@ macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自�
 要求调用方cwd、祖先cwd、session_v2.directory精确一致。默认读取XDG数据根下opencode/opencode.db，
 无XDG时为用户.local/share/opencode；可通过readers配置root或明确OPENCODE_DB定位，不枚举其他数据库。
 `:memory:`、未指明的其他channel布局、相对路径逃逸、symlink、未知schema/版本或跨目录工具调用保持不可用。
-目前仅支持存储行version=2.0.27；这不是当前可执行程序版本证明，旧会话行及Windows原生cwd绑定尚未验证。
+V2支持存储行version=2.0.27/2.2.5；这不是当前可执行程序版本证明，旧会话行及Windows原生cwd绑定尚未验证。
 
 SQLite只读事务先按id+directory筛session，再取该session最新assistant的有界标量：model id/provider/variant、
 created/streamed/completed及更新时刻；不返回或解码正文/工具输入输出，不读其他session或凭据表。
@@ -101,8 +113,8 @@ workspace/fork或存在location-switched时保守拒绝；两次精确快照不�
 
 自动成功读取后：`requested_model`及`request_observation`保留来源/范围摘要/时间/provider/variant，
 `model=unknown`、confidence=requested、current_model_confirmed=false；diagnose说明provider-response-model-unavailable。
-实际模型仍可由用户明确声明，且与原生requested分列。该读取器不声称精确tool-call或provider返回型号绑定，
-不修改OpenCode插件/App/环境，不为取得返回型号读取完整响应；有更强原生证据时再独立适配和验收。
+实际模型仍可由用户明确声明，且与原生requested分列。V2不声称精确tool-call绑定，两版均不声称provider返回型号；
+不为取得返回型号读取完整响应。有更强原生证据时再独立适配和验收，合成回归不代替真实客户端验收。
 
 ### 自动核实失败的修复路径
 

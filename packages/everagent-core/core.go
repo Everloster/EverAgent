@@ -20,7 +20,7 @@ import (
 	"unicode/utf16"
 )
 
-const Version = "0.4.1"
+const Version = "0.5.0"
 
 type Object = map[string]any
 

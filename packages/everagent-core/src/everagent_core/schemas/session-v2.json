@@ -117,6 +117,7 @@
               "additionalProperties": false,
               "required": ["source", "scope_ref", "observed_at", "observation_ref"],
               "properties": {
+                "binding": {"const": "active-tool", "description": "Exact native running tool call; does not attest a provider response model."},
                 "source": {"const": "opencode-session-request"},
                 "scope_ref": {"type": "string"},
                 "observed_at": {"type": "number"},
