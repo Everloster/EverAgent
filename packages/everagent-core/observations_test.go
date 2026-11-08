@@ -135,6 +135,54 @@ func TestCodexModelEvidence(t *testing.T) {
 	}
 }
 
+func TestCodexConcurrentObservation(t *testing.T) {
+	for _, tc := range []string{"mtime-advances", "prefix-completes", "record-completes", "still-partial", "future-clock", "malformed"} {
+		t.Run(tc, func(t *testing.T) {
+			i, _ := testInspector(t, "codex")
+			now := i.Now()
+			path := filepath.Join(i.Home, ".codex/sessions/2026/01/01/rollout-fixture-thread-one.jsonl")
+			record := func(kind, payload string) string {
+				return `{"timestamp":` + strconv.Quote(now.Format(time.RFC3339Nano)) + `,"type":` + strconv.Quote(kind) + `,"payload":` + payload + "}\n"
+			}
+			data := record("session_meta", `{"id":"thread-one"}`) + record("event_msg", `{"type":"task_started","turn_id":"turn-one"}`)
+			data += record("turn_context", `{"turn_id":"turn-one","model":"older-model"}`)
+			initial, mtime := data, now
+			switch tc {
+			case "mtime-advances":
+				mtime = now.Add(time.Millisecond)
+			case "prefix-completes", "still-partial":
+				initial += `{"timestamp":`
+			case "record-completes":
+				initial += `{"timestamp":` + strconv.Quote(now.Format(time.RFC3339Nano)) + `,"type":"turn_context","payload":`
+			case "future-clock":
+				mtime = now.Add(10 * time.Second)
+			case "malformed":
+				initial += `{"timestamp":INVALID}`
+			}
+			writeFixture(t, path, []byte(initial), mtime)
+			refreshes := 0
+			i.Now = func() time.Time {
+				refreshes++
+				advanced := now.Add(20 * time.Millisecond)
+				if tc == "mtime-advances" || tc == "prefix-completes" || tc == "record-completes" {
+					writeFixture(t, path, []byte(strings.ReplaceAll(data, "older-model", "current-model")), advanced)
+				}
+				return advanced
+			}
+			found, reason := i.codex("thread-one", i.Processes[1], now)
+			want := tc == "mtime-advances" || tc == "prefix-completes" || tc == "record-completes"
+			if want {
+				if found["model"] != "current-model" || reason != "" || refreshes != 1 {
+					t.Fatalf("did not reread the completed native observation: %v %q refreshes=%d", found, reason, refreshes)
+				}
+			} else if found != nil || tc == "malformed" && (reason != "native-metadata-invalid" || refreshes != 0) ||
+				tc != "malformed" && (reason != "native-observation-in-progress" || refreshes != 2) {
+				t.Fatalf("unresolved observation reused an older model or retried indefinitely: %v %q refreshes=%d", found, reason, refreshes)
+			}
+		})
+	}
+}
+
 func TestClaudeCurrentCaller(t *testing.T) {
 	for _, tc := range []string{"current", "tool-cd", "wrong-session", "wrong-cwd", "sidechain", "latest-missing-model", "old", "future", "partial", "malformed", "symlink", "oversized"} {
 		t.Run(tc, func(t *testing.T) {

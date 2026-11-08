@@ -288,7 +288,7 @@ func (i *Inspector) observe(h string, scope Object) (Object, Object) {
 	reason := "native-metadata-unavailable-or-invalid"
 	switch h {
 	case "codex":
-		found, err = i.codex(native, p, now)
+		found, reason = i.codex(native, p, now)
 	case "pi":
 		if m := model(i.Getenv("PI_MODEL")); m != "" && i.Getenv("PI_CODING_AGENT") == "true" && i.nativeID("pi") == native {
 			found = Object{"model": m, "source": "pi-session-runtime"}
@@ -371,48 +371,94 @@ func codexIndex(root, native string) Object {
 	}
 	return nil
 }
-func (i *Inspector) codex(native string, p Process, now time.Time) (Object, error) {
+func (i *Inspector) codex(native string, p Process, now time.Time) (Object, string) {
+	// The native writer can append between the clock/SQLite read and the tail
+	// snapshot. Retry only an in-progress observation, never reuse a prior model
+	// or relax the freshness, session or process checks.
+	for attempt := 0; attempt < 3; attempt++ {
+		found, reason := i.codexOnce(native, p, now)
+		if reason != "native-observation-in-progress" {
+			if found != nil {
+				found["observed_at"] = seconds(now)
+			}
+			return found, reason
+		}
+		if attempt < 2 {
+			time.Sleep(20 * time.Millisecond)
+			now = i.Now()
+		}
+	}
+	return nil, "native-observation-in-progress"
+}
+
+func (i *Inspector) codexOnce(native string, p Process, now time.Time) (Object, string) {
 	root := i.root("codex", i.Getenv("CODEX_HOME"))
 	if root == "" {
-		return nil, nil
+		return nil, "native-root-unavailable"
 	}
 	index := codexIndex(root, native)
 	path := ""
 	if index != nil {
 		if number(index["archived"]) != 0 {
-			return nil, nil
+			return nil, "native-session-archived"
 		}
 		path = text(index["rollout_path"])
 	} else {
 		paths, e := filepath.Glob(filepath.Join(root, "sessions", "*", "*", "*", "rollout-*-"+native+".jsonl"))
 		if e != nil || len(paths) != 1 {
-			return nil, e
+			return nil, "native-session-file-unavailable"
 		}
 		path = paths[0]
 	}
-	if !filepath.IsAbs(path) || !within(path, filepath.Join(root, "sessions")) || !recentFile(path, now) {
-		return nil, nil
+	if !filepath.IsAbs(path) || !within(path, filepath.Join(root, "sessions")) || !regular(path, false) {
+		return nil, "native-session-file-unavailable"
+	}
+	s, e := os.Stat(path)
+	if e != nil {
+		return nil, "native-session-file-unavailable"
+	}
+	if s.ModTime().After(now) {
+		return nil, "native-observation-in-progress"
+	}
+	if !fresh(s.ModTime(), now) {
+		return nil, "native-session-file-stale"
 	}
 	f, e := os.Open(path)
 	if e != nil {
-		return nil, e
+		return nil, "native-session-file-unavailable"
 	}
 	raw, e := bufio.NewReaderSize(f, maxRecordBytes+1).ReadSlice('\n')
 	f.Close()
 	if e != nil || len(raw) > maxRecordBytes {
-		return nil, e
+		return nil, "native-session-header-unavailable"
 	}
 	head, e := fields(bytes.TrimSpace(raw))
 	if e != nil || string(head["type"]) != `"session_meta"` {
-		return nil, e
+		return nil, "native-session-header-invalid"
 	}
 	payload, e := metadata(head["payload"], "id")
 	if e != nil || payload["id"] != native {
-		return nil, e
+		return nil, "native-session-binding-invalid"
 	}
-	lines, _, stable, e := tail(path, maxTailBytes)
-	if e != nil || !stable {
-		return nil, e
+	lines, terminated, stable, e := tail(path, maxTailBytes)
+	if e != nil {
+		return nil, "native-session-file-unavailable"
+	}
+	if !stable {
+		return nil, "native-observation-in-progress"
+	}
+	if len(lines) > 0 && !terminated {
+		// Even a partial envelope may announce a new turn/model. Do not skip it
+		// and authenticate from the older complete record underneath it.
+		last := lines[len(lines)-1]
+		if !json.Valid(last) || !utf8.Valid(last) {
+			var value json.RawMessage
+			syntax := json.Unmarshal(last, &value)
+			if !utf8.Valid(last) || syntax != nil && strings.Contains(syntax.Error(), "unexpected end of JSON") {
+				return nil, "native-observation-in-progress"
+			}
+			return nil, "native-metadata-invalid"
+		}
 	}
 	var turnContext, usage Object
 	active := ""
@@ -425,15 +471,15 @@ func (i *Inspector) codex(native string, p Process, now time.Time) (Object, erro
 		kind := string(line[match[2]:match[3]])
 		if kind == "turn_context" || kind == "token_usage_record" {
 			if len(line) > maxRecordBytes {
-				return nil, nil
+				return nil, "native-record-oversized"
 			}
 			row, e := metadata(line, "timestamp")
 			if e != nil {
-				return nil, e
+				return nil, "native-metadata-invalid"
 			}
 			spans, e := fields(line)
 			if e != nil {
-				return nil, e
+				return nil, "native-metadata-invalid"
 			}
 			key := i.Rules["codex"].ModelKey
 			if key == "" {
@@ -441,7 +487,7 @@ func (i *Inspector) codex(native string, p Process, now time.Time) (Object, erro
 			}
 			v, e := metadata(spans["payload"], key, "turn_id", "thread_id")
 			if e != nil {
-				return nil, e
+				return nil, "native-metadata-invalid"
 			}
 			if kind == "turn_context" {
 				turnContext = Object{"model": model(v[key]), "turn": v["turn_id"], "at": stamp(row["timestamp"])}
@@ -462,16 +508,19 @@ func (i *Inspector) codex(native string, p Process, now time.Time) (Object, erro
 		}
 	}
 	if ended {
-		return nil, nil
+		return nil, "native-turn-ended"
 	}
 	indexed := model(index["model"])
 	if turnContext != nil {
 		at, _ := turnContext["at"].(time.Time)
+		if at.After(now) {
+			return nil, "native-observation-in-progress"
+		}
 		if model(turnContext["model"]) != "" && afterStart(at, p) && !at.After(now) && active != "" && turnContext["turn"] == active {
 			if indexed != "" && indexed != turnContext["model"] {
-				return nil, nil
+				return nil, "native-model-conflict"
 			}
-			return Object{"model": turnContext["model"], "source": "codex-turn-context", "turn": active}, nil
+			return Object{"model": turnContext["model"], "source": "codex-turn-context", "turn": active}, ""
 		}
 	}
 	updated := number(index["updated_at"])
@@ -480,10 +529,25 @@ func (i *Inspector) codex(native string, p Process, now time.Time) (Object, erro
 	}
 	at, _ := usage["at"].(time.Time)
 	updateTime := time.UnixMilli(int64(updated * 1000))
-	if indexed != "" && text(usage["turn"]) != "" && afterStart(at, p) && fresh(at, now) && afterStart(updateTime, p) && fresh(updateTime, now) && (active == "" || usage["turn"] == active) && (turnContext == nil || turnContext["turn"] != usage["turn"] || turnContext["model"] == indexed) {
-		return Object{"model": indexed, "source": "codex-thread-state", "turn": usage["turn"]}, nil
+	if at.After(now) || updateTime.After(now) {
+		return nil, "native-observation-in-progress"
 	}
-	return nil, nil
+	if indexed == "" || text(usage["turn"]) == "" {
+		return nil, "native-current-model-evidence-unavailable"
+	}
+	if !fresh(at, now) || !fresh(updateTime, now) {
+		return nil, "native-session-metadata-stale"
+	}
+	if !afterStart(at, p) || !afterStart(updateTime, p) {
+		return nil, "native-process-binding-invalid"
+	}
+	if active != "" && usage["turn"] != active {
+		return nil, "native-turn-binding-invalid"
+	}
+	if turnContext != nil && turnContext["turn"] == usage["turn"] && turnContext["model"] != indexed {
+		return nil, "native-model-conflict"
+	}
+	return Object{"model": indexed, "source": "codex-thread-state", "turn": usage["turn"]}, ""
 }
 
 func (i *Inspector) claude(native string, p Process, now time.Time) (Object, string) {

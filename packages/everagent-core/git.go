@@ -42,17 +42,26 @@ type Author struct {
 	Email string `json:"email"`
 }
 
+func identityFailure(message string, identity Object) error {
+	// Keep the failed observation's code: a later diagnose can succeed and
+	// cannot reconstruct it. Never include native paths or error payloads.
+	if reason := text(identity["model_reason_code"]); regexp.MustCompile(`^[a-z][a-z0-9-]{0,95}$`).MatchString(reason) {
+		message += " (" + reason + ")"
+	}
+	return blocked(message, 1)
+}
+
 func RequireModel(identity Object) error {
 	observed := identity["current_model_confirmed"] == true && identity["model_confidence"] == "session-bound"
 	declared := identity["user_model_declared"] == true && identity["model_confidence"] == "declared" && identity["model_source"] == "user-declared" && len(object(identity["declaration"])) > 0
 	if model(identity["model"]) == "" || !(observed || declared) {
-		return blocked("当前模型未核实；先 eacli session diagnose --json 修复自动读取，确实无法核实才请用户指定。已授权源码和只读工作可继续", 1)
+		return identityFailure("当前模型未核实；先 eacli session diagnose --json 修复自动读取，确实无法核实才请用户指定。已授权源码和只读工作可继续", identity)
 	}
 	return nil
 }
 func ValidIdentity(identity Object) error {
 	if identity["resolved"] != true || !regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]{0,160}$`).MatchString(text(identity["name"])) || strings.HasSuffix(text(identity["name"]), "-unknown") || !regexp.MustCompile(`^noreply@[^\s<>@]+$`).MatchString(text(identity["email"])) {
-		return blocked("当前 Agent 身份未识别；运行 eacli session diagnose --json 修复，不从配置猜测署名", 1)
+		return identityFailure("当前 Agent 身份未识别；运行 eacli session diagnose --json 修复，不从配置猜测署名", identity)
 	}
 	return RequireModel(identity)
 }

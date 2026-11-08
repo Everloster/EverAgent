@@ -49,6 +49,37 @@ func gitFixture(t *testing.T) (string, CommitOptions) {
 
 func fixtureMessage(subject string) string { return subject + "\n\nCo-Authored-By: Aiden\n" }
 
+func TestCommitKeepsFailedObservationReason(t *testing.T) {
+	for _, tc := range []string{"model-hint", "unknown-model"} {
+		t.Run(tc, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			read := options.IdentityReader
+			afterGate := false
+			options.IdentityReader = func() Object {
+				v := read()
+				if afterGate {
+					v["current_model_confirmed"] = false
+					v["model_reason_code"] = "native-observation-in-progress"
+					if tc == "unknown-model" {
+						v["model"], v["name"], v["resolved"] = "unknown", "codex-unknown", false
+					}
+				}
+				return v
+			}
+			options.Gate = func(context.Context, string, []string) error { afterGate = true; return nil }
+			err := Commit(context.Background(), []string{"-m", fixtureMessage("[maintenance] fixture: 保留失败原因")}, options)
+			if err == nil || ErrorCode(err) != 1 || !strings.Contains(err.Error(), "native-observation-in-progress") || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
+				t.Fatalf("post-gate identity failure was lost or committed: %v", err)
+			}
+		})
+	}
+	for _, check := range []func(Object) error{RequireModel, ValidIdentity} {
+		if err := check(Object{"model_reason_code": "/PRIVATE-PATH/secret"}); err == nil || strings.Contains(err.Error(), "PRIVATE-PATH") {
+			t.Fatal("native path leaked through a diagnostic code", err)
+		}
+	}
+}
+
 func TestCommitOnlyStagedTreeAndIdentity(t *testing.T) {
 	dir, options := gitFixture(t)
 	writeFixture(t, filepath.Join(dir, "tracked.txt"), []byte("unstaged\n"), time.Now())
