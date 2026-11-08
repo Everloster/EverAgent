@@ -32,6 +32,22 @@ func sqlFixture(t *testing.T, db *sql.DB, query string, args ...any) {
 	}
 }
 
+func TestNativeDatabasePath(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "state_5.sqlite")
+	db := fixtureDB(t, path)
+	sqlFixture(t, db, "CREATE TABLE threads(id TEXT PRIMARY KEY)")
+	sqlFixture(t, db, "INSERT INTO threads VALUES('thread-one')")
+	read, err := openReadDB(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer read.Close()
+	var id string
+	if err = read.QueryRow("SELECT id FROM threads").Scan(&id); err != nil || id != "thread-one" {
+		t.Fatalf("native database path was not readable: %q %v", id, err)
+	}
+}
+
 func TestCodexModelEvidence(t *testing.T) {
 	for _, tc := range []string{"current", "long-turn", "no-index", "conflict", "wrong-header", "wrong-thread", "ended", "stale-file", "archived", "restart", "nested", "missing-id", "disagreeing-ids", "duplicate-model"} {
 		t.Run(tc, func(t *testing.T) {

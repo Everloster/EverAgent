@@ -3,9 +3,11 @@
 package core
 
 import (
+	"encoding/binary"
 	"errors"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"time"
 	"unsafe"
@@ -52,6 +54,69 @@ func readProcess(pid int) (Process, error) {
 func processArgs(pid int) ([]string, error) {
 	return nil, errors.New("Windows native argv reader is not yet supported")
 }
+
+type processBasicInformation struct {
+	ExitStatus                   uintptr
+	PebBaseAddress               uintptr
+	AffinityMask                 uintptr
+	BasePriority                 uintptr
+	UniqueProcessID              uintptr
+	InheritedFromUniqueProcessID uintptr
+}
+
+func readProcessMemory(process windows.Handle, address uintptr, size uint32) ([]byte, error) {
+	if address == 0 || size == 0 {
+		return nil, errors.New("process memory address unavailable")
+	}
+	buffer := make([]byte, int(size))
+	var read uintptr
+	if err := windows.ReadProcessMemory(process, address, &buffer[0], uintptr(size), &read); err != nil {
+		return nil, err
+	}
+	if read != uintptr(size) {
+		return nil, errors.New("process memory read incomplete")
+	}
+	return buffer, nil
+}
+
 func processCwd(p Process) (string, error) {
-	return "", errors.New("Windows native cwd reader is not yet supported")
+	if runtime.GOARCH != "amd64" {
+		return "", errors.New("Windows native cwd requires amd64")
+	}
+	process, err := windows.OpenProcess(windows.PROCESS_QUERY_LIMITED_INFORMATION|windows.PROCESS_VM_READ, false, uint32(p.PID))
+	if err != nil {
+		return "", err
+	}
+	defer windows.CloseHandle(process)
+	var basic processBasicInformation
+	if err = windows.NtQueryInformationProcess(process, windows.ProcessBasicInformation, unsafe.Pointer(&basic), uint32(unsafe.Sizeof(basic)), nil); err != nil {
+		return "", err
+	}
+	parametersBytes, err := readProcessMemory(process, basic.PebBaseAddress+0x20, uint32(unsafe.Sizeof(uintptr(0))))
+	if err != nil {
+		return "", err
+	}
+	parameters := uintptr(binary.LittleEndian.Uint64(parametersBytes))
+	directoryBytes, err := readProcessMemory(process, parameters+0x38, 16)
+	if err != nil {
+		return "", err
+	}
+	length := binary.LittleEndian.Uint16(directoryBytes[:2])
+	buffer := uintptr(binary.LittleEndian.Uint64(directoryBytes[8:16]))
+	if length == 0 || length%2 != 0 || length > 32766 {
+		return "", errors.New("process cwd length invalid")
+	}
+	utf16, err := readProcessMemory(process, buffer, uint32(length))
+	if err != nil {
+		return "", err
+	}
+	values := make([]uint16, int(length)/2)
+	for index := range values {
+		values[index] = binary.LittleEndian.Uint16(utf16[index*2:])
+	}
+	cwd := windows.UTF16ToString(values)
+	if !filepath.IsAbs(cwd) {
+		return "", errors.New("process cwd is not absolute")
+	}
+	return cwd, nil
 }

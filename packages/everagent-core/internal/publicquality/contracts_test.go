@@ -7,7 +7,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"testing"
 )
@@ -507,18 +506,6 @@ func TestGateEnvironmentDoesNotInheritSessionOrCredentials(t *testing.T) {
 		t.Setenv(key, "fixture")
 	}
 	values, err := checkEnvironment(context.Background(), scratch)
-	if runtime.GOOS == "windows" {
-		// Until the Job Object adapter exists, fail before launching tests,
-		// rather than count an uncontained child process as supported.
-		if err == nil || !strings.Contains(err.Error(), "Windows检查进程树回收尚未实现") {
-			t.Fatalf("unsupported process containment was not reported: %v", err)
-		}
-		cmd := exec.CommandContext(context.Background(), "go", "version")
-		if err := runCheckProcess(cmd); err == nil || cmd.Process != nil {
-			t.Fatal("unsupported process containment started a child")
-		}
-		return
-	}
 	if err != nil {
 		t.Fatal(err)
 	}

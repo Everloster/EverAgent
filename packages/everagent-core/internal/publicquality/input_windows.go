@@ -1,9 +1,10 @@
 package publicquality
 
 import (
-	"errors"
 	"os"
 	"os/exec"
+
+	"github.com/Everloster/EverAgent/packages/everagent-core/processtree"
 )
 
 // Pre-open type validation rejects non-files; os.Root contains the path and
@@ -13,7 +14,5 @@ func openInput(root *os.Root, name string) (*os.File, error) {
 }
 
 func runCheckProcess(cmd *exec.Cmd) error {
-	// Do not start tests until a race-free Windows Job Object adapter exists.
-	// Killing only the Go parent would leave its test executables running.
-	return errors.New("Windows检查进程树回收尚未实现；未启动Go子进程。")
+	return processtree.Run(cmd)
 }

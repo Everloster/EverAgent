@@ -55,7 +55,7 @@ func NewInspector() (*Inspector, error) {
 	return i, nil
 }
 
-var shells = map[string]bool{"bash": true, "zsh": true, "sh": true, "fish": true, "cmd.exe": true, "powershell.exe": true, "pwsh.exe": true, "pwsh": true}
+var shells = map[string]bool{"bash": true, "bash.exe": true, "zsh": true, "sh": true, "fish": true, "cmd.exe": true, "powershell.exe": true, "pwsh.exe": true, "pwsh": true}
 
 func appForProcess(p Process, windows bool) string {
 	for id, name := range map[string]string{"kimi-desktop": "Kimi", "minimax-code": "MiniMax Code", "zcode": "ZCode"} {
@@ -93,7 +93,7 @@ func (i *Inspector) matches(p Process, harness string) bool {
 			}
 			if harness == "kimi-cli" && strings.EqualFold(strings.TrimSuffix(base, ".exe"), "kimi") {
 				path := strings.ToLower(strings.ReplaceAll(p.Image, "\\", "/"))
-				for _, part := range []string{"/.local/bin/", "/scripts/", "/kimi-cli/", "/.kimi/bin/"} {
+				for _, part := range []string{"/.local/bin/", "/scripts/", "/kimi-cli/", "/.kimi/bin/", "/.kimi-code/bin/"} {
 					if strings.Contains(path, part) {
 						return true
 					}

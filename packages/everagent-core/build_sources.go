@@ -12,7 +12,7 @@ import (
 // normal `go run`, which deliberately omits debug data unlike `go build`.
 // The manifest is not an attestation against a deliberately modified checker.
 //
-//go:embed *.go go.mod go.sum cmd internal src/everagent_core/identity/readers.json src/everagent_core/identity/dsh_plugin.mjs src/everagent_core/schemas
+//go:embed *.go go.mod go.sum cmd internal processtree src/everagent_core/identity/readers.json src/everagent_core/identity/dsh_plugin.mjs src/everagent_core/schemas
 var buildSources embed.FS
 
 // BuildSourceHashes returns module-relative hashes, not a second source tree on

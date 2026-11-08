@@ -8,6 +8,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -29,6 +30,16 @@ func testInspector(t *testing.T, harness string) (*Inspector, map[string]string)
 		name = rules[harness].ProcessNames[0]
 	}
 	owner := Process{PID: 4200, Parent: 1, Name: name, Image: "/fixture/" + name, Started: "fixture-owner-start", StartTime: now.Add(-time.Minute)}
+	if runtime.GOOS == "windows" {
+		images := map[string]string{
+			"kimi-desktop": `C:\Program Files\Kimi\Kimi.exe`,
+			"minimax-code": `C:\Program Files\MiniMax Code\MiniMax Code.exe`,
+			"zcode":        `C:\Program Files\ZCode\ZCode.exe`,
+		}
+		if image, ok := images[harness]; ok {
+			owner.Name, owner.Image = filepath.Base(image), image
+		}
+	}
 	shell := Process{PID: 4201, Parent: owner.PID, Name: "bash", Image: "/bin/bash", Started: "fixture-shell-start", StartTime: now.Add(-time.Second)}
 	i := &Inspector{Home: home, Directory: home, Getenv: func(key string) string { return env[key] }, Now: func() time.Time { return now }, Rules: rules, Processes: []Process{shell, owner}}
 	i.ReadProcess = func(pid int) (Process, error) {

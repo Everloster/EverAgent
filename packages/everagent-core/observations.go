@@ -169,7 +169,11 @@ func openReadDB(path string) (*sql.DB, error) {
 	if !regular(path, false) || !filepath.IsAbs(path) {
 		return nil, errors.New("native-database-unavailable")
 	}
-	u := url.URL{Scheme: "file", Path: filepath.ToSlash(path)}
+	urlPath := filepath.ToSlash(path)
+	if filepath.VolumeName(path) != "" && !strings.HasPrefix(urlPath, "/") {
+		urlPath = "/" + urlPath
+	}
+	u := url.URL{Scheme: "file", Path: urlPath}
 	q := url.Values{"mode": {"ro"}, "_pragma": {"query_only(1)", "trusted_schema(0)", "busy_timeout(250)"}}
 	u.RawQuery = q.Encode()
 	db, e := sql.Open("sqlite", u.String())

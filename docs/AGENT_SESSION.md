@@ -130,8 +130,8 @@ Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>
 工具 shell 切换到其他工作树、当前 cwd 下没有该记录时，macOS/Linux 可从当前 Claude 祖先进程的
 cwd 定位同一 UUID 的唯一原生项目文件；分别使用精确 PID 的 `lsof -d cwd` 或 `/proc/<pid>/cwd`，
 读取前后核对进程创建身份，不枚举项目或其他进程。记录中的 cwd 仍须等于该原生项目目录。
-当前候选已存在但损坏、过期或不可信时不换目录借证据；原生定位不可用时仍保持未核实，Windows
-保留原有当前 cwd 路径，不声称已支持跨目录定位。
+当前候选已存在但损坏、过期或不可信时不换目录借证据；原生定位不可用时仍保持未核实。Windows
+使用原生进程 cwd 读取器并复核进程创建身份，仍拒绝与当前原生项目目录不匹配的记录。
 读取器只解码 session、cwd、时间、assistant UUID 与模型字段，跳过对话正文；文件尾部上限 4 MiB，
 单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
 均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
