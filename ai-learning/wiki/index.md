@@ -24,6 +24,7 @@
 | 3. Agent 能从做过的任务里学到什么？ | [ALTK-Evolve 学习型 Memory](../reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | 程序性经验有条件收益；留出测试、排行榜和成本分别看 |
 | 4. 历史越来越长，什么时候该重建上下文？ | [上下文工程的失效与修复](../reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | 当前输入、长期保存和个人信息删除是不同操作 |
 | 5. 换设备、换 Agent，怎样继续同一项工作？ | [Manus 共享 Context 与会话续接](../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | 共享资料、原生 Session 恢复和跨 Harness 交接各有条件 |
+| 6. 记忆写错以后，怎样纠正并验证收益？ | [Anthropic Agent 记忆组件](../reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md) | 区分原始记录、笔记、wiki 与注入；预算不等于实测消耗 |
 
 各报告附原文入口与证据边界。尚未解决的部分汇入[问题池](./open-questions.md)；其中的设计建议不等于已完成行为验证。
 

@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-08 | [Agent 应该记住什么，又怎样知道自己记错了？——Anthropic 记忆组件深读](../ai-learning/reports/knowledge_reports/Anthropic_Agent%E8%AE%B0%E5%BF%86%E7%BB%84%E4%BB%B6_%E6%98%BE%E8%91%97%E6%80%A7%E5%88%A4%E6%96%AD%E4%B8%8EDreaming_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261108.md) | ai-learning |
 | 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
@@ -31,12 +32,12 @@
 | 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_10_ScalingLaws%E4%B8%8EChinchilla_%E7%AE%97%E5%8A%9B%E9%A2%84%E7%AE%97%E6%80%8E%E6%A0%B7%E5%88%86%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_09_GPT2%E4%B8%8EGPT3_%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E4%B8%8A%E4%B8%8B%E6%96%87_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_08_GPT1%E4%B8%8EBERT_%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_07_GNMT%E4%B8%8ETransformer_%E4%BB%8E%E7%BF%BB%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%88%B0%E5%B9%B6%E8%A1%8C%E6%9E%B6%E6%9E%84_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
-## 🤖 AI Learning（185 篇）
+## 🤖 AI Learning（186 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-08 | [Agent 应该记住什么，又怎样知道自己记错了？——Anthropic 记忆组件深读](../ai-learning/reports/knowledge_reports/Anthropic_Agent%E8%AE%B0%E5%BF%86%E7%BB%84%E4%BB%B6_%E6%98%BE%E8%91%97%E6%80%A7%E5%88%A4%E6%96%AD%E4%B8%8EDreaming_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261108.md) | `agent_memory`, `dreaming`, `memory_consolidation`, `context_engineering`, `knowledge_wiki`, `memory_evaluation` |
 | 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `diffusion_transformer`, `vision_transformer`, `scaling`, `generative_models` |
 | 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `stable_diffusion`, `text_to_image`, `classifier_free_guidance`, `latent_diffusion` |
 | 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `latent_diffusion`, `autoencoder`, `cross_attention`, `generative_models` |
@@ -469,11 +470,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🔭 GitHub Research（125 篇）
+## 🔭 GitHub Research（126 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | `computer_use`, `desktop_automation`, `accessibility`, `agent_harness`, `rust` |
+| 2026-11-04 | [Agent Autoloop 深研：把命令行 Agent 变成可持续跟进的后台系统](../github-trending-analyzer/reports/research_KKKKhazix_agent-autoloop.md) | `agent_automation`, `event_sourcing`, `human_in_the_loop`, `workflow_orchestration` |
 | 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | `llm-gateway`, `model-routing`, `coding-agent`, `multi-provider` |
 | 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | `computer-use`, `virtualization`, `agent-infrastructure`, `mcp` |
 | 2026-10-20 | [NandhaKishorM/laya 深度研究：非自回归 System 1 决策引擎](../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) | `decision-model`, `non-autoregressive`, `classification`, `system-1` |

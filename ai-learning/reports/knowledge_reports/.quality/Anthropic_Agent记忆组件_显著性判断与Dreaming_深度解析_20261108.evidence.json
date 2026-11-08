@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-08",
+  "generator": {
+    "model": "ferry-gpt-6-astra-max",
+    "harness": "codex",
+    "run_id": "codex-anthropic-memory-20261108",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "routing_note": "生成沿用当前已核实的 Codex 会话；不是用户指定模型覆盖。"
+  },
+  "task": {
+    "summary": "深度学习 Anthropic The components of agent memory，形成可独立阅读的中文报告；同轮移除用户不再希望检查的播客订阅，历史资料保留。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "围绕目标原文完成深度学习，讲清记忆定义、分层、显著性判断、Dreaming 与主要案例。"
+      },
+      {
+        "id": "R2",
+        "text": "准确核对关键实验数值、比较口径及统计或成本边界，不把厂商报告当独立复现。"
+      },
+      {
+        "id": "R3",
+        "text": "区分研究结果、产品文档合同与本文工程推断，提供关联知识和可验证后续问题。"
+      },
+      {
+        "id": "R4",
+        "text": "报告完成后回链技术博客清单和知识入口；一苒一刻从活跃订阅与重复失败提示中移除，保留历史索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "official",
+      "title": "The components of agent memory",
+      "locator": "https://www.anthropic.com/research/components-of-agent-memory",
+      "accessed_on": "2026-11-08",
+      "snapshot_sha256": "fed871c4b3a1fb7f698ee754ab3aa3742a8c9e4fb0aae9b37d73393ae008ba05",
+      "read_scope": "原文全文、原始 HTML 与 15 幅图的官方 alt/caption；图 5、10 经 eacli 图像读取核对。图 3 视觉读取超时且 CDN 直连 403，数值仅按官方 alt 登记；未声称像素复验。"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "How Claude remembers your project",
+      "locator": "https://code.claude.com/docs/en/memory",
+      "accessed_on": "2026-11-08",
+      "snapshot_sha256": "87fe2a3639e60975b7d48a94fe7da5eefaa60db31d80a0def41784eb1d83cf52",
+      "read_scope": "读取 auto memory 启动上限、主题按需加载、上下文与强制配置区别的相关章节。"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "Managed Agents Dreams",
+      "locator": "https://platform.claude.com/docs/en/managed-agents/dreams",
+      "accessed_on": "2026-11-08",
+      "snapshot_sha256": "f5b7d6629f39084ffb3f93305ed1d0e46a2df4615901c005ccc2934dc955fa25",
+      "read_scope": "全文读取，核对研究预览、输入输出隔离、异步状态及失败残留。"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "Managed Agents Memory Stores",
+      "locator": "https://platform.claude.com/docs/en/managed-agents/memory",
+      "accessed_on": "2026-11-08",
+      "snapshot_sha256": "ad4cf44e0626d4f48b735362280120784be70006745f6d508af6513c0202c200",
+      "read_scope": "核对挂载、版本、read_only 与 content_sha256 乐观并发；未执行云端调用。"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "Dreaming with a dynamic workflow",
+      "locator": "https://platform.claude.com/cookbook/managed-agents-cma-dreaming-with-a-dynamic-workflow",
+      "accessed_on": "2026-11-08",
+      "snapshot_sha256": "f13ae08893e609dfc387b603590943be657eff300d11ccb3fb3234ac42ebffd4",
+      "read_scope": "读取流程、Analyze/Organize、原地更新与不可信 transcript 章节；未运行教程。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "原文将 memory 定义为经验知识跨会话保存并在以后读取，区分权重更新、单会话上下文学习与 compaction。",
+      "report_anchor": "1. 本文的“记忆”具体指什么",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "Memory notes 定义；原文图 1 有 transcripts、notes、representations、injected context 四层。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "数据库任务的六组 mean reward 分别为 0.330/0.364、0.306/0.610、0.383/0.700、0.564/0.828、0.644/0.833、0.655/0.838；不是 CL-Bench 总成绩。",
+      "report_anchor": "同一个记忆目录，为什么不同模型收益差别很大",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "图 3 官方 alt 与 caption；右图标注 over 30 questions。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "加强 Sonnet 4.6 读记忆与检验猜测的指令后 mean reward 为 0.641；只记失败使 Opus 5/4.7 的记忆收益减少 0.234/0.150 奖励单位。",
+      "report_anchor": "提示规则何时有帮助",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "图 5 文本、alt 与图像核对；左 SD、右 SE，重复次数不均，不能宣称统计显著。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "Pokémon 比较各取一次运行，Sonnet 3.7 有 413 文件、225 文件夹、一枚徽章；Fable 5 总共10文件、四枚徽章。",
+      "report_anchor": "413 个文件为什么没有带来更好进展",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "正文说明 one run each；九个目录内文件加 global.md，图 4 alt 显示总数10。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "Mt. Moon 的错位置笔记被 Dreaming 对照会话更正后，运行成功到达下一城市；不能把所有日志自述当真值。",
+      "report_anchor": "月见山案例：错误记忆怎样自我强化",
+      "source_ids": [
+        "S1",
+        "S5"
+      ],
+      "support": "derived",
+      "evidence": "正文 Dreaming can correct memory 与图7/8；教程说明 transcript 是不可信数据。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "Stainless 约35万文件、420M tokens、25问题：wiki 13%→48%，搜索53%，wiki+搜索54%→61%，回答阶段约节省2万tokens/题。",
+      "report_anchor": "企业文档实验：搜索仍然不可替代",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "正文与图10：百分比是 graded criteria met；图下注明每会话1M budget，not measured spend。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "24问题并购测试中相应跨文档项目为87%对73%；另一LAB任务无明确优势；示例wiki 203KB大于原文115KB。",
+      "report_anchor": "跨文档问题与单文档查找，需要不同的表示",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "direct",
+      "evidence": "正文限定 on those items；图11/12，68页、1.77倍。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "单个LAB合同任务从41/57事实到57/57，同时改变了构建指令、每合同独立写入和逐字保留，不能归因于单个组件或外推法律任务100%。",
+      "report_anchor": "合同案例：“100%”背后到底改了什么",
+      "source_ids": [
+        "S1"
+      ],
+      "support": "derived",
+      "evidence": "Dreaming can focus memory on a specific goal 与图14；图15另说明修复9条悬空链接并新增3页。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "Claude Code 启动载入 MEMORY.md 前200行或25KB的较早上限，主题按需读；记忆上下文不是强制权限。",
+      "report_anchor": "每次自动注入的东西，应接受更严格的筛选",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "support": "direct",
+      "evidence": "官方文档 How it works 与 CLAUDE.md vs auto memory。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "Dreams API 从1–100会话及输入库生成独立输出库，不改输入；ID出现或部分输出不等于completed，失败/取消残留须单独处理。",
+      "report_anchor": "从研究想法到产品：三份文档分别承诺了什么",
+      "source_ids": [
+        "S3"
+      ],
+      "support": "direct",
+      "evidence": "Dreams How it works、Use the output；research preview。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "Memory Stores 的read_only由文件系统执行；content_sha256条件可以避免并发覆盖；教程的自建Dynamic Workflow原地更新目标库。",
+      "report_anchor": "从研究想法到产品：三份文档分别承诺了什么",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "support": "direct",
+      "evidence": "Memory Stores Access/Safe content edits；cookbook intro明确 updates your store in place。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] 记忆收益应以独立任务对照与含维护的成功任务成本衡量，128M图轴是预算；6400查询只是预算全用满等额外假定下的算术示例。",
+      "report_anchor": "计算什么时候值得提前支付",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "support": "inference",
+      "evidence": "128000000/20000=6400；实际Dreaming消耗与完整成本未知，报告明确假定与未验证状态。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "定义、四层材料与在线/离线分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "1. 本文的“记忆”具体指什么"
+    },
+    {
+      "id": "U2",
+      "title": "CL-Bench memory能力与反馈闭环",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "同一个记忆目录，为什么不同模型收益差别很大"
+    },
+    {
+      "id": "U3",
+      "title": "指导规则的模型差异与误差口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "提示规则何时有帮助"
+    },
+    {
+      "id": "U4",
+      "title": "Pokémon 显著性、冗余记录及模型混杂",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "413 个文件为什么没有带来更好进展"
+    },
+    {
+      "id": "U5",
+      "title": "Mt. Moon 更正与日志证据边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S5"
+      ],
+      "report_anchor": "月见山案例：错误记忆怎样自我强化"
+    },
+    {
+      "id": "U6",
+      "title": "Stainless wiki、搜索、组合与预算",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "企业文档实验：搜索仍然不可替代"
+    },
+    {
+      "id": "U7",
+      "title": "跨文档问题、单文档检索与表示膨胀",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "跨文档问题与单文档查找，需要不同的表示"
+    },
+    {
+      "id": "U8",
+      "title": "合同任务的并发冲突、目标引导与表示精度",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "合同案例：“100%”背后到底改了什么"
+    },
+    {
+      "id": "U9",
+      "title": "Dreaming 补悬空链接与遗漏页面",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "另一轮整理还修好了"
+    },
+    {
+      "id": "U10",
+      "title": "记忆提升、顶层注入和按需层级",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "每次自动注入的东西，应接受更严格的筛选"
+    },
+    {
+      "id": "U11",
+      "title": "时效、触发频率、维护成本与开放问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "最值得继续检验的问题"
+    },
+    {
+      "id": "U12",
+      "title": "Dreams与自建教程的不同写入合同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "report_anchor": "从研究想法到产品：三份文档分别承诺了什么"
+    },
+    {
+      "id": "U13",
+      "title": "工程迁移、对照设计与成本条件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "report_anchor": "怎样把这个思路变成可验证的学习系统"
+    }
+  ],
+  "limitations": [
+    "原文数据为厂商实验；没有内部原始运行数据、完整配置或第三方复现。",
+    "图3直接像素复验未成功，数值来自原文官方替代文本；图5/10已用typed图像能力核对统计脚注。",
+    "CL-Bench是单一数据库任务，Pokémon各一次对比有模型与轨迹混杂，合同57项并非全域法律正确率。",
+    "图10的128M是预算而非测量支出，不能用它估计真实ROI；全额预算算例只是条件推导。",
+    "产品文档反映2026-11-08公开合同；未创建、运行或验证云端Dreams/Memory API。",
+    "资料主要来自Anthropic，教程实现不能作为论文效果的独立复现；迁移与评估建议仍待验证。"
+  ],
+  "review_routing": {
+    "default_reviewer": "glm-5.3",
+    "selected_profile": "ferry-gpt-5-6-sol",
+    "policy_order_entry": "gpt-5.6-sol",
+    "reason": "当前内置独立子Agent接口不提供GLM-5.3，选择机器策略premium_reviewer_order首项的可用Sol部署；非用户指定覆盖。"
+  }
+}

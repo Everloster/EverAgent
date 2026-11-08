@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "report_path": "github-trending-analyzer/reports/research_KKKKhazix_agent-autoloop.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "claude-gpt-6-astra-max",
+    "harness": "claude-code",
+    "run_id": "818514e4-319f-4dda-b32f-9b78777b0766",
+    "explicit_model_override": false,
+    "override_reason": "由当前已核验会话直接研究与撰写；不是用户显式指定模型。独立复核使用机器策略默认 glm-5.3。"
+  },
+  "task": {
+    "summary": "研究微信公众号文章 T9_acg247gxzUNL4j5zrCw 及对应开源项目，核对核心机制、成熟度、权限边界和替代方案。",
+    "requirements": [
+      {"id": "R1", "text": "完整理解文章主线与案例，区分作者个人系统、开源实现及未经独立核验的效果。"},
+      {"id": "R2", "text": "定位对应仓库，读取固定版本真实代码，解释事件、调度、持久化、回执和审批续接。"},
+      {"id": "R3", "text": "交叉核验安全、性能与可靠性主张，说明真实边界，不用 README 冒充运行验证。"},
+      {"id": "R4", "text": "提供 API 元数据、量化社区信号、至少两个竞品与适用建议，形成七章中文报告。"}
+    ]
+  },
+  "sources": [
+    {"id": "S1", "kind": "primary", "title": "卡兹克：开源 Agent 自动化系统文章", "locator": "https://mp.weixin.qq.com/s/T9_acg247gxzUNL4j5zrCw", "accessed_on": "2026-11-04"},
+    {"id": "S2", "kind": "primary", "title": "Agent Autoloop 固定版本 README", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/README.md", "accessed_on": "2026-11-04"},
+    {"id": "S3", "kind": "primary", "title": "核心状态转换 decide.ts", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/kernel/decide.ts", "accessed_on": "2026-11-04"},
+    {"id": "S4", "kind": "primary", "title": "SQLite 事务 store.ts", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/kernel/store.ts", "accessed_on": "2026-11-04"},
+    {"id": "S5", "kind": "primary", "title": "运行外壳 runtime.ts", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/host/runtime.ts", "accessed_on": "2026-11-04"},
+    {"id": "S6", "kind": "primary", "title": "提示词与回执 contract.ts", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/worker/contract.ts", "accessed_on": "2026-11-04"},
+    {"id": "S7", "kind": "primary", "title": "Claude 插件", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/plugins/claude/agent.ts", "accessed_on": "2026-11-04"},
+    {"id": "S8", "kind": "primary", "title": "Codex 插件", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/plugins/codex/agent.ts", "accessed_on": "2026-11-04"},
+    {"id": "S9", "kind": "primary", "title": "安全边界 SECURITY.md", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/SECURITY.md", "accessed_on": "2026-11-04"},
+    {"id": "S10", "kind": "primary", "title": "交付状态机", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/plugins/delivery/delivery.ts", "accessed_on": "2026-11-04"},
+    {"id": "S11", "kind": "primary", "title": "交付审查隔离实现", "locator": "https://github.com/KKKKhazix/agent-autoloop/blob/cecec75be3ca26e6ca1d6833b50152ee9450088d/plugins/delivery/review.ts", "accessed_on": "2026-11-04"},
+    {"id": "S12", "kind": "official", "title": "GitHub 仓库 API", "locator": "https://api.github.com/repos/KKKKhazix/agent-autoloop", "accessed_on": "2026-11-04"},
+    {"id": "S13", "kind": "official", "title": "GitHub 提交与贡献者计数来源", "locator": "https://api.github.com/repos/KKKKhazix/agent-autoloop/commits?per_page=100", "accessed_on": "2026-11-04"},
+    {"id": "S14", "kind": "official", "title": "GitHub Issue 与 PR 列表", "locator": "https://api.github.com/repos/KKKKhazix/agent-autoloop/issues?state=all&per_page=100", "accessed_on": "2026-11-04"},
+    {"id": "S15", "kind": "official", "title": "v1.0.0 正式发布", "locator": "https://github.com/KKKKhazix/agent-autoloop/releases/tag/v1.0.0", "accessed_on": "2026-11-04"},
+    {"id": "S16", "kind": "official", "title": "Activepieces README", "locator": "https://github.com/activepieces/activepieces/blob/main/README.md", "accessed_on": "2026-11-04"},
+    {"id": "S17", "kind": "official", "title": "Activepieces API", "locator": "https://api.github.com/repos/activepieces/activepieces", "accessed_on": "2026-11-04"},
+    {"id": "S18", "kind": "official", "title": "Temporal README", "locator": "https://github.com/temporalio/temporal/blob/main/README.md", "accessed_on": "2026-11-04"},
+    {"id": "S19", "kind": "official", "title": "Temporal API", "locator": "https://api.github.com/repos/temporalio/temporal", "accessed_on": "2026-11-04"},
+    {"id": "S20", "kind": "primary", "title": "固定源码树、package、纯度测试与行数统计输入", "locator": "https://github.com/KKKKhazix/agent-autoloop/tree/cecec75be3ca26e6ca1d6833b50152ee9450088d", "accessed_on": "2026-11-04"},
+    {"id": "S21", "kind": "official", "title": "GitHub 贡献者 API", "locator": "https://api.github.com/repos/KKKKhazix/agent-autoloop/contributors?per_page=100", "accessed_on": "2026-11-04"}
+  ],
+  "claims": [
+    {"id": "C1", "claim": "文章介绍的项目为 agent-autoloop，其目标是在已有命令行 Agent 外添加事件与长期跟进能力。", "report_anchor": "## 1. 项目概述", "support": "direct", "source_ids": ["S1", "S2"], "evidence": "原文明示 GitHub 地址；README:11-19 定义后台事件调度和现成 CLI 接入。", "critical": true},
+    {"id": "C2", "claim": "固定版本内核通过 WAL+FULL 和同一事务持久化事实与投影，不能据此证明外部副作用恰好一次或整机断电恢复。", "report_anchor": "### 3.2 确定性内核与不确定的执行器分开", "support": "derived", "source_ids": ["S3", "S4", "S5", "S9"], "evidence": "runtime.ts:31-32; store.ts:13-43; decide.ts:168-183,342-368; SECURITY.md:30,42-44。", "critical": true},
+    {"id": "C3", "claim": "askFirst 主要是提示词中的业务审批约定，不能替代 CLI 和操作系统的权限隔离；通用 command 不自动强制 access。", "report_anchor": "### 3.4 审批究竟由谁强制执行", "support": "derived", "source_ids": ["S6", "S7", "S8", "S9", "S20"], "evidence": "contract.ts:42; claude/agent.ts:8,31-32; codex/agent.ts:6,22-25; command/agent.ts:5-19; SECURITY.md:13-14。", "critical": true},
+    {"id": "C4", "claim": "8 层熔断只限制派生事件链；失败重试最多间隔 60 分钟但无次数终止分支，定时复查保留 hops 而不逐次递增。", "report_anchor": "### 3.3 四个机制成立，但各有边界", "support": "derived", "source_ids": ["S3", "S20"], "evidence": "decide.ts:30,172-180,258-305,334-337,442-449; tests/hops.test.ts:28-42。未称用户已经遭遇无限重试。", "critical": true},
+    {"id": "C5", "claim": "等待时退出的是 Agent；人工回答通过卡片事件新建后续执行，专用插件用真实会话编号续接，而非任意命令天然支持恢复。", "report_anchor": "### 3.3 四个机制成立，但各有边界", "support": "derived", "source_ids": ["S3", "S6", "S7", "S8", "S20"], "evidence": "decide.ts:314-327,371-397; contract.ts:43; claude/agent.ts:26; codex/agent.ts:16,26; command/agent.ts 无 resume 模板。", "critical": true},
+    {"id": "C6", "claim": "交付插件固定提交审查、合并前复核并回读外部状态，配置健康端点时核验上线版本；不在本机检出和运行 PR 代码。", "report_anchor": "### 3.5 交付插件的亮点：核验状态，而不只相信成功响应", "support": "direct", "source_ids": ["S10", "S11", "S9"], "evidence": "delivery.ts:108-161; review.ts:58-109。保留本仓库分支到 main 与 GitHub CI 执行边界。", "critical": true},
+    {"id": "C7", "claim": "内核 1651 行、生产七目录 TypeScript 共 5983 行；参考性能数据是项目方自测，不是本报告重测。", "report_anchor": "## 2. 基本信息", "support": "derived", "source_ids": ["S2", "S20"], "evidence": "本地 Python -I splitlines() 统计 kernel/*.ts 和 kernel/host/protocol/worker/plugins/cli/bin/**/*.ts，含空行注释；后者不含 SQL、测试、示例。README:194-207 的 p99 为 1.82ms。", "critical": false},
+    {"id": "C8", "claim": "2026-11-04 快照为 955 Stars、191 Forks、29 默认分支提交、1 贡献者、2 Issues 与 21 PRs；PR 中开放5、合并13、关闭未合并3。", "report_anchor": "## 4. 社区活跃度", "support": "derived", "source_ids": ["S12", "S13", "S14", "S15", "S21"], "evidence": "非分页截断：commits 29<100，issues 23<100，contributors 1<100。issues 返回含 pull_request 时按 PR 计数，merged_at 判定合并。", "critical": true},
+    {"id": "C9", "claim": "Activepieces 与 Temporal 分别代表可视化集成自动化和持久执行平台，不是同类性能排名；API 快照 Stars 分别为25364与24173。", "report_anchor": "## 6. 竞品对比", "support": "derived", "source_ids": ["S16", "S17", "S18", "S19"], "evidence": "Activepieces API license=NOASSERTION，README 列 CE MIT/企业商业许可；Temporal MIT、Go。", "critical": false},
+    {"id": "C10", "claim": "[推测] 文章个人业务效果与开源模板完整验证应分开；现有材料更适合支持低权限试用与学习，而非成熟生产可靠性承诺。", "report_anchor": "## 7. 总结评价", "support": "inference", "source_ids": ["S1", "S2", "S9", "S14", "S15"], "evidence": "README:132,147,149 与 SECURITY:42 明示验证范围；首次 release 与单日公开历史。", "critical": true}
+  ],
+  "source_coverage": [
+    {"id": "U1", "title": "原文问题、论证与业务案例", "importance": "core", "status": "included", "source_ids": ["S1"], "report_anchor": "## 1. 项目概述"},
+    {"id": "U2", "title": "事件与派活、持久状态和审批续接", "importance": "core", "status": "included", "source_ids": ["S2", "S3", "S4", "S5", "S6"], "report_anchor": "## 3. 技术分析"},
+    {"id": "U3", "title": "四种机制与安全可靠性限制", "importance": "core", "status": "included", "source_ids": ["S3", "S6", "S7", "S8", "S9"], "report_anchor": "### 3.3 四个机制成立，但各有边界"},
+    {"id": "U4", "title": "插件接入及通道实测范围、代码交付与性能口径", "importance": "core", "status": "included", "source_ids": ["S2", "S10", "S11"], "report_anchor": "### 3.5 交付插件的亮点：核验状态，而不只相信成功响应"},
+    {"id": "U5", "title": "元数据、早期社区与替代方案", "importance": "supporting", "status": "included", "source_ids": ["S12", "S13", "S14", "S16", "S17", "S18", "S19", "S21"], "report_anchor": "## 6. 竞品对比"},
+    {"id": "U6", "title": "项目方用量与账号条款说明及本次未独立核验范围", "importance": "supporting", "status": "included", "source_ids": ["S2"], "report_anchor": "## 7. 总结评价"}
+  ],
+  "limitations": [
+    "已完整读取文章文本，图片经网页解析显示为 blob 占位，未独立图像理解。",
+    "下载固定提交并静态阅读；未安装 agent-autoloop、运行其测试、性能基准、实际 CLI Agent 或账号业务。",
+    "作者业务效果、性能数据、兼容性 issue 的复现均未由本报告独立重现；正文明确区分。",
+    "GitHub API 是约 2026-11-04 04:20—04:25 UTC 的动态快照；贡献者统计不代表全部潜在维护者。",
+    "竞品 README 通过 repo.public.read 读取，服务返回来源标为 master，实际 GitHub 默认分支是 main；仅用于稳定功能与许可描述，不据此写动态插件数量。",
+    "网页读取已走 eacli；repo.public.structure 返回 ProviderSourceUnavailable，故固定源码采用 gh api zipball 最小降级。未绕过 typed capability 调供应商私有工具。"
+  ],
+  "audit": {
+    "source_commit": "cecec75be3ca26e6ca1d6833b50152ee9450088d",
+    "article_request_id": "req_76d940c892394d1caed6b6ad8a8c0111",
+    "repo_unavailable_request_id": "req_76d940c892394d1caed6b6ad8a8c0112",
+    "competitor_request_ids": ["req_76d940c892394d1caed6b6ad8a8c0114", "req_76d940c892394d1caed6b6ad8a8c0115"],
+    "metadata_snapshot": {"stars": 955, "forks": 191, "open_issues_including_prs": 7, "created_at": "2026-11-03T08:02:11Z", "pushed_at": "2026-11-03T21:58:03Z", "release_published_at": "2026-11-03T21:58:04Z", "commits": 29, "contributors": 1, "issues": 2, "prs": 21, "open_prs": 5, "merged_prs": 13, "closed_unmerged_prs": 3},
+    "competitor_snapshot": {"activepieces": {"stars": 25364, "language": "TypeScript", "api_license": "NOASSERTION", "pushed_at": "2026-11-04T04:22:48Z"}, "temporal": {"stars": 24173, "language": "Go", "license": "MIT", "pushed_at": "2026-11-04T03:00:49Z"}}
+  }
+}

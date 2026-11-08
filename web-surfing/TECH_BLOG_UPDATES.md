@@ -6,11 +6,11 @@
 
 想听播客，可以看 [小宇宙精选播客历史速看表](../podcast-learning/PODCAST_UPDATES.md)。
 
-**最近检查：2026-11-04（北京时间）** · **累计收录时段：2026-09-02—2026-11-04**
+**最近检查：2026-11-08（北京时间）** · **累计收录时段：2026-09-02—2026-11-06**
 
-检查了 **28 个官方渠道**，目前收录 **368 篇**日期已核实的文章：**43 篇已学习**，**10 篇有相关报告**，**315 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **429 篇**日期已核实的文章：**44 篇已学习**，**10 篇有相关报告**，**375 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
-**本次补充 19 篇**，增量检查范围为 2026-10-28—2026-11-04；保留历史文章与报告关联。
+**本次补充 61 篇**：其中 **59 篇**发表于 2026-11-01—2026-11-08 检查窗口，另补录 **2 篇 10 月旧文**。历史文章与报告关联保留；新增条目中的 Anthropic 记忆组件已完成专题学习，其余新增条目未找到对应的已完成报告。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -18,8 +18,8 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 18 篇 | 0 篇 |
-| [2026-10](#m202610) | 213 篇 | 39 篇 |
+| [2026-11](#m202611) | 77 篇 | 1 篇 |
+| [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
 「已学习」表示有直接研究该文或该系列的已完成报告；「相关报告」只提供背景，仍可继续深读本篇。「未做」表示未找到对应专题报告，日报提及或参考文献引用不算完成学习。
@@ -40,7 +40,51 @@
 
 
 <details>
-<summary><strong>OpenAI 研究与技术更新 · 2 篇</strong></summary>
+<summary><strong>OpenAI 研究与技术更新 · 14 篇</strong></summary>
+
+- **11-06** [OpenAI 与 Hacktron 合作开展安全研究](https://openai.com/index/partnering-with-hacktron "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems") · 未做
+
+  介绍利用前沿 AI 查找漏洞、检查第三方服务连接的安全研究合作；这是一则协作进展说明。
+
+- **11-06** [BioBasicsBench：评测 Agent 处理日常湿实验数据](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science "Measuring how AI agents handle everyday wet-lab science") · 未做
+
+  用实验室常见任务检查 Agent 对原始数据的理解与分析，区分工具使用能力和具体科学判断。
+
+- **11-05** [Cult.fit：让不同职能的团队用 Codex 制作工具](https://openai.com/index/cultfit-builds-with-codex "Cult.fit builds operational muscle with Codex") · 未做
+
+  以健身服务企业的内部实践为例，介绍业务团队如何把重复工作转成工具，并调整协作方式。
+
+- **11-05** [GPT-6 Cyber：漏洞研究与授权范围对齐](https://openai.com/index/introducing-gpt-6-cyber "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents") · 未做
+
+  介绍安全模型的漏洞发现、验证与修复能力，以及遵守任务边界的训练和评测；性能与对齐结果均为官方报告。
+
+- **11-05** [Franklin Templeton：用 AI 支持投资研究](https://openai.com/index/franklin-templeton "Franklin Templeton uses OpenAI to support investment research") · 未做
+
+  介绍如何组织研究观点、比较分析结果和检查风险；这是辅助研究工作流的案例，不代表投资结果已经改善。
+
+- **11-05** [Merge：把 OpenAI 工具用于代码与业务工作](https://openai.com/index/merge-builds-with-openai "Merge builds product and business tools with OpenAI technology") · 未做
+
+  介绍团队如何将模型、ChatGPT 和 Codex 用于代码审查、营销准备和内部业务工具。
+
+- **11-04** [Linux 内核漏洞研究：从发现到验证与候选补丁](https://openai.com/index/a-thousand-fewer-paths-to-root "A thousand fewer paths to root") · 未做
+
+  介绍受控环境中的自动化安全研究流程；动态复现、可利用性判断与人工审查分别承担不同验证责任。
+
+- **11-04** [Images 2.6：图像生成、GIF 与更精细的编辑](https://openai.com/index/introducing-images-2-6 "Introducing Images 2.6") · 未做
+
+  介绍图像模型的生成和编辑更新，以及面向 API 的控制能力；便于了解制作与迭代工作流。
+
+- **11-04** [DevRev：结合企业知识与权限的自主服务](https://openai.com/index/devrev-enterprise-self-service "DevRev delivers autonomous self-service with GPT-6.1 Sol") · 未做
+
+  介绍 Computer、Operator 与企业 Harness 如何连接实时数据、控制动作，并用企业任务评测模型组合。
+
+- **11-03** [把 ChatGPT 与 Codex 用于 CAD、PCB 和仿真](https://openai.com/index/accelerating-engineering-for-the-physical-world "Accelerating engineering for the physical world") · 未做
+
+  汇集物理工程中的辅助设计与分析工作流，关注 AI 如何接入专业工具及工程师的检查环节。
+
+- **11-03** [Cisco：把网络情报与 AI 安全分析结合](https://openai.com/index/cisco-cyber "How Cisco defends at machine speed with OpenAI") · 未做
+
+  介绍网络安全团队利用模型组织信息、支持检测与调查的实践，属于企业应用案例。
 
 - **11-02** [LifeVal：评测 AI 能否帮人完成日常事务](https://openai.com/index/lifeval "LifeVal") · 未做
 
@@ -50,11 +94,19 @@
 
   介绍如何把公司知识和编码规范纳入审查上下文，关注跨仓库代码检查的工作流。
 
+- **11-02** [Pando：为 Codex 带来的开发规模扩展 Git](https://openai.com/index/scaling-git-at-openai "Scaling Git at OpenAI") · 未做
+
+  介绍保持 Git 协议和客户端兼容的新后端，重点是并发写入、读取吞吐与大型单仓库的存储设计。
+
 </details>
 
 
 <details>
-<summary><strong>Google DeepMind · 1 篇</strong></summary>
+<summary><strong>Google DeepMind · 2 篇</strong></summary>
+
+- **11-05** [Gemini Omni 1.2 Flash：更长的视频与多轮编辑](https://deepmind.google/blog/gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips") · 未做
+
+  介绍原生 15 秒视频生成、参考素材遵循和对话式局部编辑，并说明不同分辨率之间的制作流程。
 
 - **11-03** [Google Antigravity：Agent 驱动的化学信息学](https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity "Agentic cheminformatics with Google Antigravity") · 未做
 
@@ -64,7 +116,35 @@
 
 
 <details>
-<summary><strong>AMD ROCm · 4 篇</strong></summary>
+<summary><strong>AMD ROCm · 11 篇</strong></summary>
+
+- **11-06** [ROCm InferaSim：用仿真筛选模型服务配置](https://rocm.blogs.amd.com/software-tools-optimization/inferasim/README.html "ROCm InferaSim: Cut LLM Serving Trial Costs and Deploy the Best Configuration") · 未做
+
+  面向引擎、并行方式、精度和调度参数的组合搜索，介绍如何在实际部署前缩小待测配置范围。
+
+- **11-06** [PrimusClaw：GPU 集群里的受管 Agent 运行时](https://rocm.blogs.amd.com/software-tools-optimization/primusclaw/README.html "PrimusClaw: An Open-Source Managed Agent Runtime for AMD Instinct GPU Clusters") · 未做
+
+  介绍部署在自有 Kubernetes 集群中的会话存储、Agent Harness 与独立沙箱，便于将任务放到 GPU 资源附近执行。
+
+- **11-05** [在线量化：同一检查点适配多种推理场景](https://rocm.blogs.amd.com/artificial-intelligence/online_quantization/README.html "Online Quantization: Smooth Path from One Checkpoint to Any Desired Serving Scenario") · 未做
+
+  讨论把权重量化移到加载与服务阶段的工程方法，以及显存、精度和推理效率之间的取舍。
+
+- **11-05** [用 madengine 分析 Primus 训练：从算子到内核](https://rocm.blogs.amd.com/software-tools-optimization/madengine-primus-profiling/README.html "From Operator to Kernel: Profile DeepSeek-V4-Flash in Primus with madengine") · 未做
+
+  以 DeepSeek-V4-Flash 的缩小训练配置为例，关联框架算子、GPU 内核与通信，定位训练步骤中的开销。
+
+- **11-04** [MI355X 上的 GLM-5.2：优化编码 Agent 的交互](https://rocm.blogs.amd.com/software-tools-optimization/glm52-agentx-mi355x/README.html "GLM-5.2 AgentX on AMD Instinct MI355X: Boosting Throughput and Interactivity") · 未做
+
+  围绕持续增长的提示词、上下文复用与并发任务，介绍基于 AgentX 负载的吞吐和交互延迟优化。
+
+- **11-04** [AMD GPU 性能分析第七篇：AI 与 PyTorch](https://rocm.blogs.amd.com/software-tools-optimization/profiling-guide/ai_tinyopenfold/README.html "Performance Profiling on AMD GPUs - Part 7: AI/PyTorch® Edition") · 未做
+
+  把系列性能分析方法应用到 AI 工作负载，说明如何从应用层追踪到 GPU 执行与瓶颈。
+
+- **11-04** [用 Quark 混合精度量化运行 Wan2.2](https://rocm.blogs.amd.com/artificial-intelligence/quark-wan22-mixed-precision/README.html "Quark Mixed-Precision Quantization for Wan2.2 Video Generation on AMD Instinct GPUs") · 未做
+
+  介绍视频生成模型在 AMD GPU 上的量化实践，关注精度配置、显存占用与生成质量的平衡。
 
 - **11-03** [FlyDSL Mono：降低 ATOM 模型服务的解码延迟](https://rocm.blogs.amd.com/software-tools-optimization/flydsl-mono-atom/README.html "FlyDSL Mono Kernels for High-Interactivity LLM Serving in ATOM") · 未做
 
@@ -86,7 +166,39 @@
 
 
 <details>
-<summary><strong>NVIDIA 技术博客 · 3 篇</strong></summary>
+<summary><strong>NVIDIA 技术博客 · 13 篇</strong></summary>
+
+- **11-06** [在 Blackwell GPU 上加速 FLUX 3 Image Klein](https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus "Speed Up Image Generation with FLUX 3 Image Klein on NVIDIA Blackwell GPUs") · 未做
+
+  围绕设计工具与图像编辑中的生成等待，介绍扩散模型部署和推理延迟优化。
+
+- **11-06** [Reshard：加快强化学习中的权重同步](https://developer.nvidia.com/blog/accelerating-reinforcement-learning-weight-refit-with-the-reshard-collective "Accelerating Reinforcement Learning Weight Refit with the Reshard Collective") · 未做
+
+  说明训练与推理使用不同并行布局时，如何重新分片并传输模型权重，以支持分离式 RL 后训练。
+
+- **11-05** [NVIDIA DSX OS：配置、验证与运维 GPU 集群](https://developer.nvidia.com/blog/configure-certify-and-operate-kubernetes-gpu-clusters-with-nvidia-dsx-os "Configure, Certify, and Operate Kubernetes GPU Clusters with NVIDIA DSX OS") · 未做
+
+  讨论 GPU 集群的环境一致性与性能就绪检查，关注分布式训练中单个异常节点带来的影响。
+
+- **11-05** [让每字节显存更有用：NVIDIA 的软硬件协同](https://developer.nvidia.com/blog/five-ways-nvidia-co-design-maximizes-the-value-of-every-byte-in-the-ai-factory "Five Ways NVIDIA Co-Design Maximizes the Value of Every Byte in the AI Factory") · 未做
+
+  从低精度权重、KV Cache 到上下文存储，讨论推理服务怎样减少冗余占用和重复计算；性能数字需结合其测试条件。
+
+- **11-04** [NVIDIA 如何把 Agent 用进 AI 集群运维](https://developer.nvidia.com/blog/how-nvidia-uses-ai-agents-to-streamline-ai-factory-operations "How NVIDIA Uses AI Agents to Streamline AI Factory Operations") · 未做
+
+  介绍将计算、网络、硬件和调度信息组织到运维工作流中，帮助工程师调查跨系统问题。
+
+- **11-04** [CUDA 13.5：Vera Rubin 正式支持与开发更新](https://developer.nvidia.com/blog/nvidia-cuda-13-5-brings-nvidia-vera-rubin-ga-support "NVIDIA CUDA 13.5 Brings NVIDIA Vera Rubin GA Support") · 未做
+
+  梳理新一代硬件支持及 CUDA 开发能力的变化，适合关注 GPU 软件栈适配与迁移的读者。
+
+- **11-04** [Factory Operations Blueprint：多 Agent 调查生产问题](https://developer.nvidia.com/blog/how-nvidia-factory-operations-blueprint-coordinates-ai-agents-to-investigate-production-issues "How NVIDIA Factory Operations Blueprint Coordinates AI Agents to Investigate Production Issues") · 未做
+
+  介绍如何协调不同 Agent 收集证据、分析故障，并把分散的生产信息汇总成可追踪的调查过程。
+
+- **11-04** [NVIDIA NeMo：把 Agent 失败变成测试与 Harness 修复](https://developer.nvidia.com/blog/use-nvidia-nemo-to-turn-agent-failures-into-tests-and-harness-fixes "Use NVIDIA NeMo to Turn Agent Failures into Tests and Harness Fixes") · 未做
+
+  用轨迹定位问题、生成针对性评测，再修改指令并比较开发集与留出任务；示例覆盖工具、记忆、技能和控制流程。
 
 - **11-02** [分布式训练的自动故障恢复](https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery "Keep Distributed Training Running with Automated Workload Recovery") · 未做
 
@@ -100,11 +212,39 @@
 
   面向物理 AI 开发，讨论如何让世界模型适配传感器、任务和数据，并进入仿真应用。
 
+- **11-02** [NVIDIA Attribution：为分布式 AI 故障寻找根因](https://developer.nvidia.com/blog/diagnose-distributed-ai-workload-failures-with-nvidia-attribution "Diagnose Distributed AI Workload Failures with NVIDIA Attribution") · 未做
+
+  将任务日志、指标和调度状态关联起来，用可复现规则给出故障原因、受影响节点和证据路径。
+
+- **11-02** [Workload Map：统一描述 Kubernetes 上的 AI 任务](https://developer.nvidia.com/blog/support-new-ai-frameworks-faster-using-nvidia-workload-map "Support New AI Frameworks Faster Using NVIDIA Workload Map") · 未做
+
+  为不同训练与服务框架描述 Pod 组、角色和副本关系，减少调度器、控制器和观察工具重复编写适配逻辑。
+
 </details>
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 3 篇</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 9 篇</strong></summary>
+
+- **11-06** [Open ASR 排行榜加入埃及与尼日利亚英语](https://huggingface.co/blog/open-asr-leaderboard-liva "Egyptian and Nigerian English join the Open ASR Leaderboard") · 未做
+
+  补充不同口音的保留测试数据和分组结果，关注语音识别评测的代表性与数据泄漏问题。
+
+- **11-06** [ToyBlocks：用可控积木世界研究机器人学习](https://huggingface.co/blog/allenai/toyblocks "ToyBlocks: A controlled world for robot learning and evaluation") · 未做
+
+  Ai2 介绍自动生成任务和示范的仿真环境，让研究者改变数据与模型条件，再追踪机器人行为及失败原因。
+
+- **11-05** [Cosmos 3：面向交互仿真的四组开放模型](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation") · 未做
+
+  介绍驾驶多传感器场景、仿真转视频和双臂机器人动作预测等模型；各检查点面向不同的世界模拟任务。
+
+- **11-05** [Phonon TTS：在设备上运行的语音合成](https://huggingface.co/blog/phonon-tts "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.") · 未做
+
+  回顾端侧语音模型的开放发布、定制声音与使用方式；不同规模模型的许可条件需分别核对。
+
+- **11-04** [Dharma Field Extractor：按要求从文档提取 JSON 字段](https://huggingface.co/blog/Dharma-AI/dharma-field-extractor "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out") · 未做
+
+  介绍专门用于字段抽取的小模型，区分全文 OCR 与结构化业务数据提取；与大模型的对比为作者自测。
 
 - **11-03** [StateBench：长文中的状态变化，模型能跟住吗？](https://huggingface.co/blog/allenai/statebench "StateBench: Testing how language models track state changes over long documents") · 未做
 
@@ -118,11 +258,19 @@
 
   提出将缩小的模型 fixture、可运行用例和人工复核基线打包为集成契约，在 CPU 上更早发现回归。
 
+- **11-03** [CWE-bench v2：更透明的安全漏洞修复评测](https://huggingface.co/blog/cwe-bench "CWE-bench v2: More coverage, quality, and transparency") · 未做
+
+  开放程序化评分的真实仓库任务，检查 Agent 能否修复安全弱点并保留原有功能，同时保留未公开测试集。
+
 </details>
 
 
 <details>
-<summary><strong>PyTorch · 1 篇</strong></summary>
+<summary><strong>PyTorch · 2 篇</strong></summary>
+
+- **11-03** [KV Cache 技术交流回顾：CXL、调度与 LMCache](https://pytorch.org/blog/kvcache-meetup-korea-2026-event-recap "KVCache Meetup Korea 2026: Event Recap") · 未做
+
+  整理 CXL 内存扩展、GPU/HBM 瓶颈、推理调度和 LMCache MP Mode 的技术分享；活动发生在 9 月，文章于 11 月发布。
 
 - **11-02** [Ray 加速器 SIG：面向多种硬件的协作计划](https://pytorch.org/blog/announcing-the-special-interest-group-sig-for-ray-on-accelerators "Announcing the Special Interest Group (SIG) for Ray on Accelerators") · 未做
 
@@ -132,7 +280,11 @@
 
 
 <details>
-<summary><strong>Z.ai / 智谱 · 3 篇</strong></summary>
+<summary><strong>Z.ai / 智谱 · 5 篇</strong></summary>
+
+- **11-05** [金融 AI 从试用到日常：任务、数据与查错](https://autoclaw.z.ai/blog/news/autoclaw-finance-observation-01-agent-cluster-earnings-review "AI in Finance Pilot to Daily Use: 3 Deciding Conditions") · 未做
+
+  从金融工作流讨论清晰的任务、真实资料和可见错误如何影响日常使用；这是产品团队的实践分析。
 
 - **11-04** [AutoClaw 多 Agent 研究：规划、分工与复核](https://autoclaw.z.ai/blog/product/autoclaw-agent-cluster-multi-agent-research "Multi-Agent Research with AutoClaw: Plan, Divide, and Review") · 未做
 
@@ -142,9 +294,143 @@
 
   说明如何定义可验证的目标，将执行与评估分开，并检查文件、来源或实际交互等完成证据。
 
+- **11-03** [AutoClaw 定时任务：明确时间、动作与交付位置](https://autoclaw.z.ai/blog/product/autoclaw-scheduled-tasks-reminders-recurring-work "How to Schedule AI Tasks with AutoClaw") · 未做
+
+  介绍一次性提醒与周期工作如何设置、核对和维护，强调时区、来源范围、输出格式与接收位置。
+
 - **11-02** [AutoClaw Design：把产品简报变成可编辑界面](https://autoclaw.z.ai/blog/product/product-brief-to-ui-design-with-autoclaw "How to Turn a Product Brief into an Editable UI with AutoClaw") · 未做
 
   从明确用户任务和交互状态开始，介绍界面生成、局部修订、跨设备预览与交付检查。
+
+</details>
+
+<details>
+<summary><strong>Cloudflare AI · 2 篇</strong></summary>
+
+- **11-05** [Agent 代表人访问网站，身份该如何传递？](https://blog.cloudflare.com/trusted-agent-delegation "Agents aren’t humans (but they kinda are)") · 未做
+
+  讨论代理请求中用户身份与授权信息的丢失，提出网站、用户和 Agent 服务之间的可信委托思路。
+
+- **11-04** [识别个人 Agent 流量，并设定访问规则](https://blog.cloudflare.com/personal-agents-visibility-control "See the agents, set the terms: new visibility and control for personal agents") · 未做
+
+  介绍站点如何观察个人 Agent 的访问，并为自动化请求设置控制；重点是区分请求身份与访问许可。
+
+</details>
+
+<details>
+<summary><strong>Microsoft Research · 1 篇</strong></summary>
+
+- **11-05** [PDD Kit：验证 Agent 写出的代码是否符合意图](https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit "Formally verifying agent-written full-stack web apps with PDD Kit") · 未做
+
+  将开发者意图变成 Verus 规格，对可覆盖的逻辑做形式化证明，其余部分用测试；示例验证的是登录逻辑对规格的符合性。
+
+</details>
+
+<details>
+<summary><strong>vLLM · 4 篇</strong></summary>
+
+- **11-06** [零数值偏差与异步 RL：校正旧策略产生的样本](https://vllm.ai/blog/2026-11-06-zero-mismatch-async-rl "Zero Mismatch, Simple Async RL: REINFORCE Zero, DeepSeek-V4.1 and Kimi K3.1") · 未做
+
+  讨论逐位对齐 rollout 与训练内核，并用重要性采样处理异步训练中的策略滞后；介绍相关模型与硬件适配。
+
+- **11-06** [vLLM 迁移到 LibTorch Stable ABI](https://vllm.ai/blog/2026-11-06-stable-abi-cuda "Migrating vLLM to the LibTorch Stable ABI") · 未做
+
+  介绍 CUDA 构建及编译依赖的迁移，目标是让兼容的 PyTorch 升级不再要求重新构建 vLLM。
+
+- **11-04** [vLLM 对 Kimi K3.1 Pro 的首日支持](https://vllm.ai/blog/2026-11-04-kimi-k31-pro "vLLM Delivers Day-0 Support for Kimi K3.1 Pro") · 未做
+
+  介绍混合架构的稀疏注意力、压缩 KV Cache、上下文并行和低延迟解码；这是服务引擎适配文章。
+
+- **11-04** [Kinference：vLLM 与 Kubernetes 的推理控制面](https://vllm.ai/blog/2026-11-04-introducing-kinference "Introducing Kinference: An Open Source Inference Control Plane for vLLM and Kubernetes") · 未做
+
+  面向多租户推理平台，介绍 Token 限流、用量与成本统计、负载均衡及推理策略管理。
+
+</details>
+
+<details>
+<summary><strong>腾讯混元 · 2 篇</strong></summary>
+
+- **11-04** [Hy4：视觉、Computer Use 与长流程任务](https://hy.tencent.ai/research/hy4 "Introducing Hy4 - Tencent Hy") · 未做
+
+  官方介绍相较 preview 的训练扩展，以及视觉理解、跨应用操作、研究与个人助理工作流；效果为厂商自报。
+
+- **11-01** [Hyra 2.0：从反复解题转向改进研究工具](https://hy.tencent.ai/research/hyra2 "Hyra 2.0: The Next Step for Auto Research") · 未做
+
+  介绍让通用 Agent 开发和改善科学模型、研究工作流及软件工具，以便把一次研究投入复用到后续任务。
+
+</details>
+
+<details>
+<summary><strong>Apple 机器学习研究 · 1 篇</strong></summary>
+
+- **11-05** [更快的检索如何支持更高效的 RAG](https://machinelearning.apple.com/research/faster-retrieval "Faster Retrieval for Better, More Efficient RAG") · 未做
+
+  从最大内积搜索入手，讨论检索查询与文档向量分布的差异，以及如何利用查询特征改善检索效率。
+
+</details>
+
+<details>
+<summary><strong>GitHub AI &amp; ML · 1 篇</strong></summary>
+
+- **11-06** [Agentic Engineering：从生成代码到完整开发流程](https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering "Beyond code generation: A developer’s guide to agentic engineering") · 未做
+
+  围绕规划、编码、审查和生产问题调查展开，说明开发者如何组织 Agent 工作，以及哪些判断仍需自己承担。
+
+</details>
+
+<details>
+<summary><strong>Amazon Science · 1 篇</strong></summary>
+
+- **11-05** [回顾 Polyak–Łojasiewicz 条件与梯度法收敛](https://www.amazon.science/blog/hamed-karimi-wins-ecml-pkdd-test-of-time-award "Hamed Karimi wins ECML PKDD Test-of-Time Award") · 未做
+
+  借论文获奖回顾不依赖强凸性的线性收敛分析及其影响；讨论对象是既有优化理论，并非本周提出的新算法。
+
+</details>
+
+<details>
+<summary><strong>Anthropic · 5 篇 · 1 篇已学习</strong></summary>
+
+- **11-06** [Agent 记忆的组成：记录、整理与纠错](https://www.anthropic.com/research/components-of-agent-memory "The components of agent memory") · **已学习**
+
+  将运行中捕获经历与离线整理记忆分开，介绍通过 dreaming 反思日志、纠正错误并形成可复用记忆的设计。 [阅读报告](../ai-learning/reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md)
+
+- **11-06** [让 AI 参与科学模型的构建与解释](https://www.anthropic.com/research/teaching-ai-to-build-scientific-models "Teaching AI to build scientific models") · 未做
+
+  研究者讨论从科学假设、模型构造到结果解释的变化，关注 AI 怎样进入科学建模过程及其局限。
+
+- **11-05** [研究者怎样使用 Claude 做科学工作](https://www.anthropic.com/research/how-researchers-use-claude "AI for scientific discovery: How researchers use Claude") · 未做
+
+  基于研究会话分析不同学科与任务的使用分布，区分数据分析、写作、提出想法和采集数据等环节。
+
+- **11-04** [Claude 参与 vault 蛋白颗粒结构研究](https://www.anthropic.com/research/investigating-vault-particles-with-claude "Investigating vault particles with Claude") · 未做
+
+  介绍从序列文献检索、分离方法优化到结构解析的研究流程；这是官方实验室披露的阶段性结果。
+
+- **11-02** [FlashProve：证明模型回答来自指定推理计算](https://www.anthropic.com/research/provable-inference "Progress on provable inference for large language models") · 未做
+
+  讨论以 zkSNARK 构建可验证推理，使用户能检查响应是否来自承诺的模型；密码学保证与系统成本需一起看。
+
+</details>
+
+<details>
+<summary><strong>Mistral AI · 1 篇</strong></summary>
+
+- **11-05** [Mistral Studio：企业 Agent、工作流与上下文](https://mistral.ai/news/build-with-studio "Le Chonk brings the brains. Studio gets it working.") · 未做
+
+  介绍受管 Agent、应用、企业上下文和可观测性，支持在云、VPC 或本地基础设施中部署企业工作流。
+
+</details>
+
+<details>
+<summary><strong>Google Developers · 2 篇</strong></summary>
+
+- **11-06** [Agent 注意力偏移：旧 TODO 怎样让任务跑偏](https://developers.googleblog.com/agent-distraction "Agent Distraction") · 未做
+
+  通过代码中的 TODO 与工单状态分析无关调查、过期问题和任务范围扩张，讨论清理上下文噪声的价值。
+
+- **11-03** [按任务成本路由：选择 Gemini 模型与思考深度](https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels "Cost per task: Using cheap classifiers to route across Gemini models and thinking levels") · 未做
+
+  讨论用低成本分类器为任务选择模型和思考配置，并从任务效果与总成本衡量路由策略。
 
 </details>
 
@@ -304,7 +590,7 @@
 </details>
 
 <details>
-<summary><strong>Google Developers · 12 篇 · 2 篇已学习</strong></summary>
+<summary><strong>Google Developers · 13 篇 · 2 篇已学习</strong></summary>
 
 - **10-22** [可治理、可持续改进的 Google Cloud Agent](https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform "Architecting Governed, Self-Evolving AI Agents on Google Cloud") · 未做  
   介绍模型、执行流程和治理机制如何共同组成可维护的 Agent 系统。
@@ -338,6 +624,10 @@
 
 - **10-08** [ML Drift：边缘 GPU 推理](https://developers.googleblog.com/ml-drift-next-gen-gpu-aiml-inference-at-the-edge "ML Drift: Next-Gen GPU AI/ML Inference at the Edge") · 未做  
   介绍面向边缘设备的 AI/ML 推理方案与开发方式。
+
+- **10-08** [AQuA：在请求之外诊断线上 Agent 的质量问题](https://developers.googleblog.com/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent "The Outer Loop, Insights First: An Ambient Quality Agent That Diagnoses Your Production Agent") · 未做
+
+  分析运行轨迹与部署源码快照，聚类并核验失败模式，区分模型、编排、工具契约和指令问题。
 
 - **10-06** [在端侧做多模态语义搜索](https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2 "Bring multimodal semantic search to the edge with EmbeddingGemma 2") · 未做  
   用 EmbeddingGemma 2 组织语义检索，关注设备侧的数据与运行流程。
@@ -871,10 +1161,14 @@
 </details>
 
 <details>
-<summary><strong>Mistral AI · 2 篇</strong></summary>
+<summary><strong>Mistral AI · 3 篇</strong></summary>
 
 - **10-29** [Mistral Large 4 开放权重](https://mistral.ai/news/mistral-large-4-oss "Le Chonk: Built for Coders, Trusted by Defenders.") · 未做  
   聚焦编码与网络安全能力，关注开放版本、评测与使用条件。
+
+- **10-22** [Voxtral 3：把听、说、推理与工具调用连起来](https://mistral.ai/news/voxtral-3 "Voxtral 3") · 未做
+
+  介绍语音识别、语音合成与实时 Voice Agent SDK，关注多语言、打断处理及多步骤工具工作流。
 
 - **10-06** [Mistral Large 4 首次发布](https://mistral.ai/news/mistral-large-4 "Introducing Mistral Large 4") · 未做  
   了解模型预览版的能力定位，与后续开放权重版本区分阅读。
@@ -1421,11 +1715,12 @@
 
 ## 已有学习报告
 
-本轮清单中，43 篇原文对应 34 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，44 篇原文对应 35 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
 
+- [Anthropic Agent 记忆：显著性、Dreaming 与纠错](../ai-learning/reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md) · 对应本页 1 篇原文。
 - [Agent 逐字输出与断线恢复（全链路续篇）](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) · 对应本页 1 篇原文。
 - [Kimi K3.1 Pro](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) · 对应本页 1 篇原文。
 - [DeepSeek-V4.1-Flash 的机架级服务](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) · 对应本页 2 篇原文。
@@ -1532,40 +1827,42 @@
 
 ## 渠道获取情况
 
-2026-11-04 已检查注册表全部 28 个渠道，并对搜索型渠道补读官方目录。RSS/XML 未被 Token Plan 完整保留时使用只读原始来源；搜索日期只作线索，新增日期取自 RSS、原文或官方结构化元数据。下表数量为当前累计，未改写的说明继续记录历史覆盖缺口。
+2026-11-08 已检查注册表全部 28 个渠道，并回看官方目录、原文和被关键词筛掉的技术条目。日期取自 RSS、原文或官方 HTML 的 datePublished；搜索相对时间不作发布日期。下表记录当前累计数量与尚存缺口。
+
+RSS/XML 丢失或输出超限后，降级读取同一官方公开来源。Google、Mistral 与腾讯的部分正文或日期在 eacli 中缺失，原始来源读取也失败，遂使用 Firecrawl 补读官方页面；未将获取成功等同于历史覆盖完整。
 
 “收录 0 篇”表示本轮没有取得符合范围且日期已核实的条目，不能据此判断该渠道没有更新。后续查询会继续补这些缺口。
 
 | 渠道 | 累计已收录 | 获取情况与待补项 |
 | --- | ---: | --- |
-| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 本轮搜索与官方目录未取得可核实的近期新文；目录返回内容偏旧，历史缺口继续保留。 |
-| [OpenAI 研究与技术更新](https://openai.com/news/) | 18 | 已复查官方 RSS，补入 LifeVal 与 Qodo/Codex；保留原有研究、模型和技术案例。 |
-| [Anthropic](https://www.anthropic.com/engineering) | 20 | 已复查工程与研究目录；本轮未新增日期已核实的条目，经济情景文章日期缺口保留。 |
-| [Google Research](https://research.google/blog/) | 11 | 已补首页归档和原文；分页返回旧内容，9 月上旬仍可能遗漏。 |
-| [Google DeepMind](https://deepmind.google/discover/blog/) | 20 | 已复查官方 RSS，补入化学信息学与规划审批两篇文章。 |
-| [Google Developers](https://developers.googleblog.com/) | 15 | 已按月补查并核对原文日期，剔除了被搜索误标为近期的旧文。 |
-| [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 10 | 已检查官方目录与分页；本次取得的历史主要从 9 月下旬开始。 |
-| [Apple 机器学习研究](https://machinelearning.apple.com/) | 10 | 已查订阅及研究目录；4 篇只标月份，另列。9 月历史可能不全。 |
-| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 本轮读到官方目录，但返回的最新可见文章为较早内容；未据此声称没有新发布。 |
-| [Ai2](https://allenai.org/blog) | 1 | StateBench 的 HF 官方文章列在 HF 与机构作者组；Nextcloud 文章日期仍待补，其余原有日期缺口保留。 |
-| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 已复查官方首页；最新可见条目为招聘与较早发布，本轮未新增技术文章。 |
-| [腾讯混元](https://hy.tencent.ai/research) | 1 | 已复查研究目录；Hy4 候选原文读取失败，目录所列 preview 为 8 月旧文，不算近期更新。 |
-| [Qwen](https://qwen.ai/blog) | 0 | 本轮仍只读到页面外壳，无法据此核验近期新文；保留获取缺口。 |
-| [Kimi](https://www.kimi.com/blog) | 1 | 已复查官方目录；搜索命中的 K2 Thinking 为 2025-11-06 旧文，未误列为新发布。 |
-| [vLLM](https://vllm.ai/blog/) | 35 | 已读取官方订阅；覆盖窗口内的发布、模型适配与推理工程文章。 |
-| [PyTorch](https://pytorch.org/blog/) | 27 | 已复查官方 RSS，补入 Ray 加速器 SIG 公告；与已有 PyTorch 发布文章分开保留。 |
-| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 51 | 已复查官方 RSS，补入 FlyDSL Mono、MI300X 调度、多卡扩散推理与 TeaCache 四篇。 |
-| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 66 | 已复查官方 RSS，补入训练恢复、Vera Rubin/Kubernetes 与 Cosmos 三篇。 |
-| [Hugging Face 与机构作者](https://huggingface.co/blog) | 27 | 已复查 RSS，读取 StateBench、Palette 与 Transformers MIC 原文并补入；旧文镜像合并规则不变。 |
-| [GitHub AI & ML](https://github.blog/ai-and-ml/) | 4 | 已查目录、分页和分月搜索；9 月技术文章的历史覆盖仍有限。 |
-| [Cloudflare AI](https://blog.cloudflare.com/) | 5 | 已核实 10 月文章；订阅较短，9 月历史仍待补。 |
-| [Amazon Science](https://www.amazon.science/blog) | 9 | 已检查博客目录与分页；本次最早核实到 9 月 10 日。 |
-| [Sakana AI](https://sakana.ai/blog) | 15 | 已补官方目录中的日文、英文技术文章；同文语言版本不重复计数。 |
-| [MiniMax](https://www.minimax.io/blog) | 2 | 已复查官方目录；当前可见最新仍为 10 月 M3.1 Flash 与 Code Mini App，未新增条目。 |
-| [Mistral AI](https://mistral.ai/news) | 2 | 官方目录将 Large 4 开放权重文章列为 2026-10-29；未将搜索的“2小时前”误当新发布，也未重复收录。 |
-| [Z.ai / 智谱](https://z.ai/blog) | 4 | 主博客仍返回空壳；从官方 AutoClaw 子站核对原文与 datePublished，补入 4 篇。旧主站文章的日期缺口保留。 |
-| [DeepSeek](https://www.deepseek.com/en/news) | 1 | 已核实 V4.1 Flash 官方发布；当前渠道为发布信号源，不能代表全部研究产出。 |
-| [Manus](https://manus.im/blog) | 7 | 补查近期原文，并用页面中的发布时间核对年月日；另保留已学习旧文。 |
+| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 本轮搜索与目录仍返回偏旧内容；未取得可核实的近期新文，历史缺口保留。 |
+| [OpenAI 研究与技术更新](https://openai.com/news/) | 30 | 已核对官方 RSS 与新增原文，补入 Pando、Images 2.6、BioBasicsBench、安全研究和企业工作流；纯人事、政策与奖励公告未纳入。 |
+| [Anthropic](https://www.anthropic.com/engineering) | 25 | 已核对工程、研究目录及原文，补入 Agent 记忆、科学建模、科研使用分析、vault 颗粒与 FlashProve 五篇；旧经济情景文章日期缺口保留。 |
+| [Google Research](https://research.google/blog/) | 11 | RSS 本轮超时，备用搜索未返回近期条目；官方首页仍显示 10 月内容，不能据此判断 11 月没有更新，9 月历史缺口保留。 |
+| [Google DeepMind](https://deepmind.google/discover/blog/) | 21 | 已读取官方 RSS 和原文，补入 Gemini Omni 1.2 Flash；历史条目保留。 |
+| [Google Developers](https://developers.googleblog.com/) | 18 | 目录与搜索返回旧内容，补读原文及官方 HTML；加入本周模型路由、Agent Distraction，并补录 10 月的 AQuA；Chrysalis 已收录，核对日期后保留原条目。分页及更早历史仍可能遗漏。 |
+| [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 11 | 已读取官方 RSS 与 PDD Kit 原文；历史覆盖仍主要从 9 月下旬开始。 |
+| [Apple 机器学习研究](https://machinelearning.apple.com/) | 11 | 已读取订阅及 Faster Retrieval 原文；另有 4 篇只标月份，9 月历史可能不全。 |
+| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 已复查搜索与官方目录，但返回的可见最新文章仍在 7 月；近期覆盖不足，未据此声称没有更新。 |
+| [Ai2](https://allenai.org/blog) | 1 | ToyBlocks 主站链接返回 404，改读 Ai2 在 Hugging Face 发布的原文并列入 HF 组；Nextcloud 及原有日期缺口保留。 |
+| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 官方首页经回源读取，最新可见记录为 10 月招聘；Seedance 2.5 为 7 月旧文，DA3 搜索结果日期未核实，均未列作本周新增。 |
+| [腾讯混元](https://hy.tencent.ai/research) | 3 | Hy4 原文核实为 11 月 4 日；Hyra 2.0 经渲染读取核实为 11 月 1 日。公开目录返回旧快照，不能单靠目录判断更新。 |
+| [Qwen](https://qwen.ai/blog) | 0 | 搜索与公开页仍未提供可核实的近期文章，保留页面外壳与动态内容获取缺口。 |
+| [Kimi](https://www.kimi.com/blog) | 1 | 已复查官方目录；搜索命中的 K2 Thinking 为 2025-11-06 旧文。K3.1 Pro 的新适配文章列在 vLLM 组，未重复算作 Kimi 博客。 |
+| [vLLM](https://vllm.ai/blog/) | 39 | 已核对官方订阅和原文，新增异步 RL、Stable ABI、Kimi K3.1 Pro 首日支持与 Kinference 四篇。 |
+| [PyTorch](https://pytorch.org/blog/) | 28 | 已核对 RSS 并回看筛选掉的条目，补入 KV Cache 技术回顾；该活动发生于 9 月，博客发表于 11 月。活动征稿未纳入。 |
+| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 58 | 已核对官方 RSS 与原文，新增 InferaSim、PrimusClaw、在线量化、训练分析及视频生成等七篇。 |
+| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 76 | 已核对官方 RSS 与原文，并复核关键词漏选项；补入 NeMo 修复循环、Reshard、Attribution、Workload Map 等十篇。 |
+| [Hugging Face 与机构作者](https://huggingface.co/blog) | 33 | 已核对 RSS 与机构原文，补入 Cosmos 3、Phonon、ToyBlocks、ASR 口音评测、Dharma 字段抽取和 CWE-bench 六篇；同文镜像不重复收录。 |
+| [GitHub AI & ML](https://github.blog/ai-and-ml/) | 5 | 已核对官方 RSS 与 Agentic Engineering 原文；9 月历史覆盖仍有限。 |
+| [Cloudflare AI](https://blog.cloudflare.com/) | 7 | 已核对官方 RSS 与两篇个人 Agent 访问、委托文章；订阅较短，9 月历史缺口保留。 |
+| [Amazon Science](https://www.amazon.science/blog) | 10 | 已核对 RSS 并回读获奖文章的技术内容，补入 PL 条件与优化理论回顾；文章发布不代表新算法提出。 |
+| [Sakana AI](https://sakana.ai/blog) | 15 | 已复查官方订阅，本轮未取得新的窗口内技术条目；既有日文、英文文章与去重记录保留。 |
+| [MiniMax](https://www.minimax.io/blog) | 2 | 已复查官方目录；可见最新仍为 10 月 M3.1 Flash 与 Code Mini App，本轮未新增已核实条目。 |
+| [Mistral AI](https://mistral.ai/news) | 4 | 目录直连失败，搜索后读取原文；用官方 HTML 核实 Studio 为 11 月 5 日、Voxtral 3 为 10 月 22 日，分别计入本周与历史补录。 |
+| [Z.ai / 智谱](https://z.ai/blog) | 6 | 主博客仍为空壳；从 AutoClaw 官方目录和原文补入定时任务与金融工作流两篇，Token 赠送活动未纳入；主站旧文日期缺口保留。 |
+| [DeepSeek](https://www.deepseek.com/en/news) | 1 | 已检查官方 sitemap、搜索与公开页，本轮未获得近期且日期已核实的新增条目；发布信号源不代表全部研究产出。 |
+| [Manus](https://manus.im/blog) | 7 | 已复查搜索与官方目录，本轮返回页面的最新可见文章为 10 月初，近期覆盖不足；保留原有文章与已学习旧文。 |
 
 ## 日期与学习记录怎么维护
 

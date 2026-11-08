@@ -1,6 +1,6 @@
 # 精选播客清单
 
-> 58 档精选播客（56 档附公开 RSS）。近期更新看[历史速看表](../PODCAST_UPDATES.md)；更早的单集见 [show-indexes/](./show-indexes/)，按下面的更新规则刷新。
+> 57 档精选播客（55 档附公开 RSS）。近期更新看[历史速看表](../PODCAST_UPDATES.md)；更早的单集见 [show-indexes/](./show-indexes/)，按下面的更新规则刷新。
 > 源文件：[curated-podcasts.opml](./curated-podcasts.opml)（OPML 2.0，可导入任意播客客户端）。
 > 中英文 SOTA AI 技术节目使用独立的 [`ai-tech-podcast-radar`](../skills/ai-tech-podcast-radar/SKILL.md)；它按技术相关性与已学习状态筛选，不改变这份个人综合精选。
 > 收录：2026-08-23 首批 51 档（小宇宙 OPML 导出）；2026-09-25 增补 7 档——小宇宙 OPML 导出对分享合集中部分节目会丢档（本次丢 7 档），经「我也在听的品质播客」collection 链接 API 补齐，其中 5 档 RSS 由 Apple iTunes 反查，2 档（窦文涛的聊客、职场有话说）小宇宙独播未暴露公开 feed、待补。
@@ -71,7 +71,6 @@
 | 职场有话说 | [公开节目页](https://www.xiaoyuzhoufm.com/podcast/6391b9f7a07c5e0cda6c6fff)（未取得公开 RSS） | — |
 | 姜Dora在此 | [rss](https://feed.xyzfm.space/pjq9hb8ggrjm) | [show-indexes/jiang-dora](./show-indexes/jiang-dora.md) |
 | 是宇弦啊 | [rss](https://feed.xyzfm.space/guaamk8ml3cb) | [show-indexes/yuxian](./show-indexes/yuxian.md) |
-| 一苒一刻 | 订阅返回 HTTP 410（2026-11-02 复查）；近期更新待核实 | [show-indexes/yiran-yike](./show-indexes/yiran-yike.md) |
 
 ## 泛文化 / 生活 / 健康
 

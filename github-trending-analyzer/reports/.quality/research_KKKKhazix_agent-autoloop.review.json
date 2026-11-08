@@ -1,0 +1,777 @@
+{
+  "schema_version": 1,
+  "report_path": "github-trending-analyzer/reports/research_KKKKhazix_agent-autoloop.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "bde014dd-4aa5-4260-8a6f-cbdc8e71cd45",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "机器策略默认复核模型（PI_MODEL=glm-5.3），非用户显式指定"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 95,
+        "reasoning_quality": 95,
+        "readability": 96,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮为同一 Reviewer 会话对 revision 2 的定向复验：先核对修订版报告与证据 SHA-256（23209eb3…/c5042ebd…，与 revision2-contract 一致），再回读固定提交 README 第 147-149 行与 209-213 行原文，逐句核对报告 §3.4 新增的通道实测边界段（飞书实测发送/按钮/卡片更新、四种 Webhook 模板仅本地模拟验证）与 §7 新增的账号条款段（消耗计入本人账号、高频建议 API Key、对外提供服务用 API Key、与厂商无隶属）——两段均忠实转述且行号引用准确，未夸大。链接转换后用机械校验确认 round 1 已核实的全部关键数字（1651/5983/955/191/29/1/23=2+21、5/13/3、25364/24173、1.82ms、88.78ms、170.49MB、43.1s、99.8ms、提交 cecec75）完整无损，无重复段落，8 个原嵌套 backtick 的链接标签文字逐一保留。round 1 存疑的文章标题已由最初 eacli web.read 原始回执（tool-results/blroncio7.txt 的 title 字段）证实与报告引用逐字一致，该保留项撤销。证据账本新增 U6、U4 标题更新，audit 与 request_id 追溯链未变。仅保留文章图像未读取一项余量。",
+        "request_coverage": "round 1 记录的两处轻微覆盖缺口已消除：M11（通道实测范围声明）现由 §3.4 直接引用 README:147-149 解决；M19（README 用量与合规说明）现由 §7 新段引用 README:209-213 解决，且证据账本同步新增 U6。20 个来源优先独立地图单元中，19 个 covered，仅 M13（安装流程与 recipe 清单，supporting）仍为 partial——报告『研究边界』已声明不包含安装部署，属声明过的取舍而非遗漏；R1-R4 全部满足。",
+        "reasoning_quality": "新增账号条款段的认知姿态规范：明确『转述的是项目方 README 建议，本次未逐条核验厂商最新条款，不能推导订阅账号一律允许或一律禁止自动化』，与 README 原文『遵循各家服务条款』的措辞匹配，没有替厂商下结论；通道段的『已有模板/项目方接通/自己账号验收』三层区分准确。round 1 已核实的全部边界推理（账本幂等≠外部恰好一次、8 层熔断≠费用上限、审批是提示词约定+CLI 权限映射而非网关）经数字完整性校验确认未被修订扰动。",
+        "readability": "链接格式修订经机器验证落到实处：reference-style 定义列表残留 0，76 个 inline 链接，链接文字内嵌 backtick 0，证据标签与链接间空格存在；协调者在真实学习工作台（1440x1000 与 390x844）的 Playwright 验收回执显示 unresolvedReferences=false、无水平溢出、窄屏目录点击后关闭、『微信公众号文章』点击目标与原文 URL 一致、无 pageerror。此前不被阅读器支持的引用式链接与错误显示的 code 标签两个真实阅读障碍已消除；七章结构与固定提交锚定不变，仍可独立阅读。",
+        "limitations": "研究边界声明继续与实际工作范围一致（静态源码分析、未装未跑、图像未读取、API 时点快照），新增段又如实声明账号条款未独立核验厂商最新文本。渲染验收范围在记录中被准确归属为协调者执行，未冒称复核者亲验。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6"
+      ],
+      "source_content_map": [
+        {
+          "id": "M1",
+          "title": "文章背景与开源动机：前作反响、借鉴 Pi 极简内核与 DeepSeek Harness『一切皆插件』、两天重写后开源 1.0.0",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "维持 round 1 判断：§1 重构问题与验证强度分层；设计出处细节省略可接受。"
+        },
+        {
+          "id": "M2",
+          "title": "总体架构与五步流程：中台内核+四方向插件；事件→rules.json 派活（同对象排队消息合并一轮）→Agent 执行→自动闭环 vs 卡片拍板→续接",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2"
+          ],
+          "notes": "未受修订影响，round 1 已按 decide.ts 核对。"
+        },
+        {
+          "id": "M3",
+          "title": "内核轻量化与性能数字：约1600行（README 1651）、启动<0.1s/88.78ms、60MB/59.94MB、1000连接170MB+/170.49MB、派活1.5ms/p99 1.82ms、110万事实99.8ms、重建43.1s",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "修订后数字经机械校验完整保留。"
+        },
+        {
+          "id": "M4",
+          "title": "内核职责边界与确定性：只做四件事、不外连、不写死产品名、时间与熵由外部传入，由 purity.test.ts 强制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M5",
+          "title": "机制一 挂起零消耗：等拍板时进程退出、存档-读档、等待期零 Agent Token",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M6",
+          "title": "机制二 事件溯源：append-only 账本、事务落盘才应答、同事件只记一次、why 命令、强杀/断电边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M7",
+          "title": "机制三 指令数据分离：外部正文只进资料文件、提示词只含校验字段、事件带 cwd/agent/access 拒收、非硬隔离",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S6",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M8",
+          "title": "机制四 跳数熔断：>8 层停止派发并发卡；回答/定时复查继承 hops 不清零；失败重试另走指数退避（5min 起、上限 60min、无次数终止）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M9",
+          "title": "事件插件：GitHub Issue/PR、定时、HTTP、轮询脚本无新内容不叫醒模型、自定义格式翻译",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M10",
+          "title": "Agent 插件与回执协议：最后一条回复约定、agent-autoloop JSON 回执（ask/notice/resolve/later/events）、无 SDK；内置 Claude/Codex/ACP/command；其他 CLI 一行接入且官方声明尚未逐个跑过",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S6",
+            "S7",
+            "S8",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U4"
+          ],
+          "notes": "round 1 为 covered；本轮 §3.4 新段引 README:147-149 把『一行接入命令未逐个跑过』的实测口径也落到正文，覆盖更完整。"
+        },
+        {
+          "id": "M11",
+          "title": "通道插件实测范围：桌面通知默认、飞书实测（发送/按钮/卡片更新）、四种 Webhook 模板仅本地模拟服务验证",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "round 1 为 partial；修订后 §3.4 末段直接引用 README:147-149 并给出三层验证程度区分，已回读原始行核对无误，升级为 covered。"
+        },
+        {
+          "id": "M12",
+          "title": "交付流水线：deliver/deliver-review 标签、审→等CI→合并→等发布→核对线上版本、配置只读 main、不检出不运行 PR 代码、排队重试复用内核",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S10",
+            "S11",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M13",
+          "title": "安装与场景模板：install.sh、agent-autoloop try、INSTALL.md 写给 Agent、六套拿来即用 recipe",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U4"
+          ],
+          "notes": "维持 round 1 判断：报告『研究边界』已声明不含安装部署，属声明过的取舍；对深研报告可接受。"
+        },
+        {
+          "id": "M14",
+          "title": "作者日常六个自动化案例与公司虚实中台案例（80+意见、近70条自主修改、1小时内闭环）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M15",
+          "title": "仓库元数据与社区信号：955/191、29 提交、1 贡献者、2 Issue+21 PR、v1.0.0 单日发布",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S21"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "数字经机械校验完整保留。"
+        },
+        {
+          "id": "M16",
+          "title": "早期反馈：Issue #21 try 误判失败、PR #22 fish shell 启动失败、Issue #17 Windows 请求",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S14",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M17",
+          "title": "竞品对比：Activepieces（可视化集成自动化）与 Temporal（durable execution）的定位、Stars、许可口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S16",
+            "S17",
+            "S18",
+            "S19"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M18",
+          "title": "安全边界细节：默认只听本机、数据目录 0700、密钥只存哈希、master.key、卡片链接 7 天持有即授权、接收人属整个中台、插件是受信本地代码、默认权限 edit",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "维持 round 1 判断。"
+        },
+        {
+          "id": "M19",
+          "title": "README『用量与合规说明』：个人订阅额度面向人工交互、高频自动化建议 API Key（附 Anthropic/OpenAI 官方链接）、与厂商无隶属",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "round 1 为 missing；修订后 §7 新段引用 README:209-213，已回读原始行逐句核对（不读转存凭据、计入本人账号、遵循厂商条款、高频建议 API Key、对外提供服务用 API Key、无隶属背书），并正确限定为『项目方 README 建议、未核验厂商最新条款、不推导一律允许或禁止』，升级为 covered；证据账本新增 U6 对应。"
+        },
+        {
+          "id": "M20",
+          "title": "文章数字与 README 实测数字的差异口径（1600行/1651行、1.5ms/p99 1.82ms）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U4"
+          ],
+          "notes": "维持 round 1 判断。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "本轮是同一 Reviewer 会话（glm-5.3/pi，run_id bde014dd…，与生成 run 818514e4… 不同源）按 revision2 任务书做的定向复验，未重复全部来源研究，来源优先的独立地图保留 round 1 的 20 个单元并按修订事实更新 M11/M19 两项评估，未重建。快照校验：报告 23209eb3…、证据 c5042ebd…，与 revision2-contract 一致；复核全程未改 report/evidence、未提交、未 finalize。定向核验结果：① §3.4 末段与 §7 新段分别回读 README:147-149、209-213 原始行逐句核对，转述忠实、行号准确、账号条款段的『不推导一律允许/禁止』限定恰当；② 链接转换机械验证：reference-style 定义残留 0、inline 链接 76、链接文字内 backtick 0、无重复段落，round 1 已核实的全部关键数字与 8 个原嵌套 backtick 标签文字完整保留；③ 渲染验收由协调者用本地真实学习工作台服务与 Playwright 在 1440x1000 与 390x844 视口执行（外跳阻止、未用浏览器重抓远程来源），机器回执 preview-result.json 经本复核读取：76 链接渲染、unresolvedReferences=false、桌面与 390px 窄屏均无水平溢出、窄屏目录点击后关闭、『微信公众号文章』点击目标与原文 URL 一致、无 pageerror、正文无脚注；desktop.png/mobile.png/desktop-permissions.png 三张截图仅由协调者人工查看确认（含 §3.4 权限映射表格），本复核模型无图像能力，未亲自查看图片，此范围如实归属协调者；④ round 1 保留项更正：文章标题已由最初 eacli web.read 原始回执 tool-results/blroncio7.txt 的 title 字段证实与报告引用逐字一致（本轮仅打印该字段），保留项撤销；round 1 notes 中『已列入 missing_requirements』的表述与当时实际为空的字段不一致，属记录瑕疵，本轮起修订建议统一记录于 notes 且 missing_requirements 如实为空（R1-R4 均满足，两处轻微建议已经修订解决）。剩余已知边界：文章图像未读取（快照为 blob 占位）、M13 为声明过的取舍。无捏造、无关键数字错误、无核心遗漏，hard_failures 为空。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "bde014dd-4aa5-4260-8a6f-cbdc8e71cd45",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "机器策略默认复核模型（PI_MODEL=glm-5.3），非用户显式指定"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 92,
+            "reasoning_quality": 94,
+            "readability": 95,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "复核前先独立读取原文全文、固定提交 cecec75 的 12 个指定源码文件与全部 API/工具回执快照，再逐条核对 C1-C10：kernel/*.ts 实测 1651 行、七生产目录实测 5983 行、p99 1.82ms、955/191 Stars/Forks、29 提交/1 贡献者、23 条记录=2 Issue+21 PR（5 开放/13 合并/3 关闭未合并，与提交信息交叉验证一致）、竞品 25364/24173 及 Activepieces CE MIT+企业商业许可（README License 章节核实）、WAL+FULL 事务、askFirst 纯提示词、Claude/Codex 权限映射表、command 插件不落实 access、MAX_HOPS=8 与 retryLater 指数退避无终止分支、worker.ts 登录 shell exec \"$0\" \"$@\" 与 PR#22 根因——全部与原始材料一致，未发现任何捏造或错数。证据账本 audit 的 request_id 与 structure.json ProviderSourceUnavailable 失败回执相符，降级记录如实。唯一无法从本次材料直接验证的是报告引用的文章标题（快照正文无标题行），属引用细节而非证据主张，不构成扣分项；扣 4 分保留对图像未读取、文章标题未经二次确认的余量。",
+            "request_coverage": "用户要求『研究文章及对应开源项目』，evidence R1-R4 均已满足：文章主线与六个日常案例及公司虚实中台案例全部覆盖且标注自述属性；固定版本源码的事件、调度、持久化、回执、审批续接机制均有实现级解释；安全/性能/可靠性主张逐项交叉核验并给出真实边界；API 元数据、社区信号、两个竞品与七章结构齐备。轻微缺口：README『用量与合规说明』（个人订阅 vs API Key 官方建议、与厂商无隶属）未覆盖；通道实测情况（四种 webhook 模板仅本地模拟）只间接体现；安装流程与场景模板清单未展开。这些不损害核心结论，故落在 85-94 档上部。",
+            "reasoning_quality": "报告的关键贡献是准确的边界区分：『内核账本幂等≠外部副作用恰好一次』（结合 unknown 状态与 SECURITY webhook 重复说明）、『挂起零消耗指 Agent Token 非系统零资源』、『指令数据分离非硬语义隔离』、『8 层熔断≠费用上限，与重试/复查是不同控制项』（与 decide.ts/hops.test.ts 实现完全吻合）、『审批靠提示词约定+CLI 权限映射，非权限网关』（逐插件核对命令行参数属实）。推断均显式标注 [推测]，issue 复现明确注明非本报告独立重现，性能数字区分项目方自测与本报告未重测。总结的三条可迁移经验与试用验收清单由证据直接支撑。未发现推理错误或过度推断。",
+            "readability": "报告可独立阅读：七章结构完整，不依赖外部索引即可理解全部论证；关键数字进表格，代码引用统一锚定到固定提交的文件与行号，来源链接分组清晰；术语（投影、事实、回执、卡片）首次出现即有解释；对文章自述、README 声明与代码事实三个层次始终显式区分。中文行文流畅，符合仓库语言约定。",
+            "limitations": "『研究边界与可继续的问题』如实声明：完整读取文章文本但未做图像理解、仅静态源码分析未安装运行、作者业务效果与性能均保留为自述、API 为时点快照；证据账本 limitations 额外记录了图片占位、竞品 README 来源分支口径差异、structure 失败后 gh api zipball 最小降级及未绕过 typed capability。与本次复核观察到的实际工作范围完全一致，无夸大或隐瞒。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5"
+          ],
+          "source_content_map": [
+            {
+              "id": "M1",
+              "title": "文章背景与开源动机：前作反响、借鉴 Pi 极简内核与 DeepSeek Harness『一切皆插件』、两天重写后开源 1.0.0",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "报告 §1 重构了问题与答案并区分『用一年的个人系统/两天重构的开源代码/公开示例』三种验证强度；Pi 与 DeepSeek Harness 的设计出处未提及，属可接受的次要省略。"
+            },
+            {
+              "id": "M2",
+              "title": "总体架构与五步流程：中台内核+四方向插件；事件→rules.json 派活（同对象排队消息合并一轮）→Agent 执行→自动闭环 vs 卡片拍板→续接",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U2"
+              ],
+              "notes": "§1 与 §3.1 完整重构执行链，合并一轮在 §6/§7 以『重复事件合并/只派一轮』体现，与 decide.ts enqueue 实现一致。"
+            },
+            {
+              "id": "M3",
+              "title": "内核轻量化与性能数字：约1600行（README 1651）、启动<0.1s/88.78ms、60MB/59.94MB、1000连接170MB+/170.49MB、派活1.5ms/p99 1.82ms、110万事实99.8ms、重建43.1s",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "报告独立复测行数（1651/5983）并明确区分文章口述近似值与 README 统计量，未重跑基准且如实声明。"
+            },
+            {
+              "id": "M4",
+              "title": "内核职责边界与确定性：只做四件事、不外连、不写死产品名、时间与熵由外部传入，由 purity.test.ts 强制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§3.2 描述与 purity.test.ts 五项断言逐一对应，并正确指出这是正则级检查而非形式化证明。"
+            },
+            {
+              "id": "M5",
+              "title": "机制一 挂起零消耗：等拍板时进程退出、存档-读档、等待期零 Agent Token",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "§3.3 正确限定为『Agent Token 不消耗，而非整套系统零资源』。"
+            },
+            {
+              "id": "M6",
+              "title": "机制二 事件溯源：append-only 账本、事务落盘才应答、同事件只记一次、why 命令、强杀/断电边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4",
+                "S5",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "报告核对 store.ts 事务与 runtime WAL+FULL，并引用 README/SECURITY『整机断电未单独测』，比文章表述更严谨。"
+            },
+            {
+              "id": "M7",
+              "title": "机制三 指令数据分离：外部正文只进资料文件、提示词只含校验字段、事件带 cwd/agent/access 拒收、非硬隔离",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S6",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "§3.3/§3.4 与 contract.ts promptFor 及 SECURITY『挡不住所有提示注入』一致。"
+            },
+            {
+              "id": "M8",
+              "title": "机制四 跳数熔断：>8 层停止派发并发卡；回答/定时复查继承 hops 不清零；失败重试另走指数退避（5min 起、上限 60min、无次数终止）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S3",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "报告对 MAX_HOPS=8、hopsOf+1、hops.test.ts 继承行为、retryLater 无终止分支的描述经代码逐行核对属实，是全报告最有价值的边界澄清之一。"
+            },
+            {
+              "id": "M9",
+              "title": "事件插件：GitHub Issue/PR、定时、HTTP、轮询脚本无新内容不叫醒模型、自定义格式翻译",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "§3.1 步骤1 与 §7 第一条经验准确传达『确定性过滤先于模型』。"
+            },
+            {
+              "id": "M10",
+              "title": "Agent 插件与回执协议：最后一条回复约定、```agent-autoloop JSON（ask/notice/resolve/later/events）、无 SDK；内置 Claude/Codex/ACP/command；其他 CLI 一行接入且官方声明尚未逐个跑过",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S6",
+                "S7",
+                "S8",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U4"
+              ],
+              "notes": "回执协议与插件差异（含 command 无会话续接）覆盖充分；『一行接入命令未逐个实测』的 README 原话未直接引用，但 §5 已以『能接一行命令≠稳定续接并正确记账』表达同一保留意见。"
+            },
+            {
+              "id": "M11",
+              "title": "通道插件：桌面通知默认、飞书实测（发送/按钮/卡片更新）、四种 webhook 模板仅本地模拟服务验证",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4"
+              ],
+              "notes": "报告传达了卡片链接持有即授权、接收人全局配置与 webhook 无外部幂等保证，但『四种 webhook 模板仅本地模拟验证』这一实测范围声明未明确引用；与 M13 同属轻微覆盖缺口。"
+            },
+            {
+              "id": "M12",
+              "title": "交付流水线：deliver/deliver-review 标签、审→等CI→合并→等发布→核对线上版本、配置只读 main、不检出不运行 PR 代码、排队重试复用内核",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S10",
+                "S11",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "§3.5 与 delivery.ts/review.ts 逐项吻合，『操作成功≠状态已实现』的提炼准确。"
+            },
+            {
+              "id": "M13",
+              "title": "安装与场景模板：install.sh、agent-autoloop try、INSTALL.md 写给 Agent、六套拿来即用 recipe",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U4"
+              ],
+              "notes": "报告只覆盖运行要求（Node≥24、macOS/Linux）与模板验证范围；安装流程与 recipe 清单未展开。对深研报告非核心，可选择性补充。"
+            },
+            {
+              "id": "M14",
+              "title": "作者日常六个自动化案例与公司虚实中台案例（80+意见、近70条自主修改、1小时内闭环）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "六例全部列举且共同点归纳准确；公司案例明确标注作者自述、无公开日志可独立核验，处理恰当。"
+            },
+            {
+              "id": "M15",
+              "title": "仓库元数据与社区信号：955/191、29 提交、1 贡献者、2 Issue+21 PR、v1.0.0 单日发布",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S12",
+                "S13",
+                "S14",
+                "S15",
+                "S21"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "全部数字独立复核一致；open_issues_count=7 的口径澄清（含 5 个 PR）避免了常见误读。"
+            },
+            {
+              "id": "M16",
+              "title": "早期反馈：Issue #21 try 误判失败、PR #22 fish shell 启动失败、Issue #17 Windows 请求",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S14",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "#21 标注为提交者复现而非本报告独立重现，并指出其 Node 版本低于项目要求（v22 vs ≥24），与 issue 正文相符；#22 的 worker.ts exec \"$0\" \"$@\" 根因在源码 174-219 行核实。"
+            },
+            {
+              "id": "M17",
+              "title": "竞品对比：Activepieces（可视化集成自动化）与 Temporal（durable execution）的定位、Stars、许可口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S17",
+                "S18",
+                "S19"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "NOASSERTION≠无许可证、CE MIT+企业商业许可的辨析经 Activepieces README License 章节原文核实；『分层比较而非同类排名』的框架合理。"
+            },
+            {
+              "id": "M18",
+              "title": "安全边界细节：默认只听本机、数据目录 0700、密钥只存哈希、master.key、卡片链接 7 天持有即授权、接收人属整个中台、插件是受信本地代码、默认权限 edit",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "§3.4 覆盖了链接授权、接收人范围与插件信任模型；0700/密钥哈希/master.key 等存储细节未展开，属合理取舍。"
+            },
+            {
+              "id": "M19",
+              "title": "README『用量与合规说明』：个人订阅额度面向人工交互、高频自动化建议 API Key（附 Anthropic/OpenAI 官方链接）、与厂商无隶属",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告未提及该节。与 R3『权限边界与真实边界』相关但非核心；建议修订时用一两句话补上厂商合规口径，不改核心结论。"
+            },
+            {
+              "id": "M20",
+              "title": "文章数字与 README 实测数字的差异口径（1600行/1651行、1.5ms/p99 1.82ms）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U4"
+              ],
+              "notes": "§2 与 §3.6 明确采用 README 统计量、不把口述当精确基准，处理正确。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20",
+            "S21"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "复核流程：先在工作目录核对报告与证据账本 SHA-256（7926377d…/895adbec…，均匹配），随后在未读报告的情况下独立阅读原文全文、固定提交 cecec75 的 README/SECURITY/decide/store/runtime/contract/claude/codex/command/delivery/review/hops.test 及 purity/worker/package.json，并核对全部 API 快照，建立 20 单元独立来源地图后才打开报告与证据逐项比对。结果：C1-C10 全部经原始材料独立证实，关键数字（1651/5983 行、955/191、29/1、2+21、5/13/3、25364/24173、p99 1.82ms 等）全部一致，无捏造、无关键数字错误、无核心遗漏，hard_failures 为空。两处轻微覆盖缺口（M19 合规节、M11 通道实测范围）已列入 missing_requirements，供生成者修订时参考，不影响核心结论。本复核范围限定为文本与引用：未运行任何第三方软件、未重跑基准、未做文章图像理解（快照中为 blob 占位）；阅读工作台桌面端与窄屏页面的视觉验收由协调者另行执行，不在本记录评价范围内。一点保留：报告引用的文章标题《开源我这折腾了1年的「Agent自动化系统」，愿所有人都能感受Agent的魅力。》在本次提供的正文快照中无标题行可供比对，与正文内容无矛盾，按引用细节处理，未计为问题。报告 frontmatter status=in_progress 属终审前正常状态。"
+        }
+      ],
+      "decision": {}
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.95,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "c7f4d0f2ca0bb86a57c84e80f09f8a47b5cca33186ebb8bd2ebc75760bce3d96",
+    "evidence_sha256": "c5042ebd239eb4cfa897ad418ad5d1a65ef781b2b5089ead80962bdad4cf934e"
+  }
+}

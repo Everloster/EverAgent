@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "ferry-gpt-5-6-sol",
+        "harness": "codex-subagent",
+        "run_id": "review-anthropic-memory-20261108",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "策略默认 GLM-5.3 在当前内置子 Agent 不可用，按 premium_reviewer_order 选择首个可用部署 GPT-5.6-Sol；不是用户指定覆盖。"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 96,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项回读 S1–S5 后核对 C1–C12。CL-Bench、Figure 5、Pokémon、wiki、合同案例与产品接口数字均与正文、官方 alt/caption 或文档一致；报告准确区分 mean reward、graded criteria met、百分点和 token budget，并披露图 3 未完成视觉复验。未发现关键数字错配、伪造来源或把产品合同冒充效果复现。",
+        "request_coverage": "独立来源地图的 13 个单元均进入正文主线或边界讨论；定义、四层结构、显著性、纠错、wiki 条件收益、注入层、合同并发、工程 API、安全与成本均有覆盖。S4 的 10,000-memory 上限和 S5 的特定 cookbook 成本观察未展开，但不是目标原文深读的核心要求，也不影响工程合同判断。订阅已从活跃 OPML/清单和重复失败提醒移除而历史索引保留；R4 的报告回链按任务合同在质量门通过后由主 Agent 执行。",
+        "reasoning_quality": "报告没有把相关性比较写成因果：明确指出 Pokémon 为不同模型各一次运行、合同改动同时包含指令/分工/表示、wiki 收益未分离额外计算与表示贡献。工程迁移给出可证伪的对照设计，ROI 公式逐项说明假设，6400 次查询仅作条件算术示例。作者主张、来源主张与 [推测] 基本分离。",
+        "readability": "中文报告可独立阅读，开篇先给问题和三项结论，术语首次解释，表格适合数字比较，Mermaid 关系清楚，公式逐符号解释。具名引用链接可点击，关联本地报告存在。篇幅较长但章节沿问题推进，无模板残留、乱码或需要额外 UI/截图才能理解的内容。",
+        "limitations": "完整披露同厂商来源、无第三方复现、内部数据/配置缺失、图 3 仅官方 alt、图 5 重复与误差口径不均、单次 Pokémon 混杂、128M 为预算非实耗、云端接口未实际运行，以及迁移方案未验证；外推边界紧随相关结论。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM-01",
+          "title": "Agent memory 的边界与分层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "第1–2节明确区分权重、单会话学习、compaction 与跨会话外部记忆，并重构 transcript、notes、representation、injected context 四层。"
+        },
+        {
+          "id": "SCM-02",
+          "title": "记忆写入是对未来需要的预测与闭环学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "第3节用收到反馈到保存带依据规则的闭环概括各模型差异。"
+        },
+        {
+          "id": "SCM-03",
+          "title": "显著性判断优于无差别记录，但依赖模型能力与任务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "完整覆盖 Pokémon 冗余动态状态、强弱模型提示差异和 record-only-failures 的负效应，并避免普遍化。"
+        },
+        {
+          "id": "SCM-04",
+          "title": "Dreaming 的纠错机制与 Mt. Moon 案例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U12"
+          ],
+          "notes": "第4.2节重构错误自我强化与回源纠错；第8节说明 Dreams 的异步独立输出语义。"
+        },
+        {
+          "id": "SCM-05",
+          "title": "Dreaming 构建 wiki 表示及其条件性收益",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "语料规模、问题数、13→48、54→61、53 基线与约 20k tokens/题均准确，且未把预算当实耗。"
+        },
+        {
+          "id": "SCM-06",
+          "title": "表示失效与过度抽象边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "第5.2节覆盖跨文档受益、单文档无明确增益及 wiki 1.77 倍膨胀。"
+        },
+        {
+          "id": "SCM-07",
+          "title": "分层注入与 auto memory 加载契约",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "第7节准确给出 MEMORY.md 前 200 行或 25KB、topic 按需读取，并区分上下文提示与强制权限。"
+        },
+        {
+          "id": "SCM-08",
+          "title": "目标化 dreaming、并发写覆盖与结构改进",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "第6节准确解释 41/57→57/57 的多重改动与不可单因归因。"
+        },
+        {
+          "id": "SCM-09",
+          "title": "跨 session 补洞与持续维护",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "报告记录九条悬空链接修复和新增三页，并正确区分结构维护与新增事实。"
+        },
+        {
+          "id": "SCM-10",
+          "title": "Managed memory 的工程与治理边界",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "报告覆盖挂载权限、immutable versions 与 content_sha256 并发前置条件；未展开 10,000-memory 上限、版本保留/redact 等次要治理细节，但不影响本报告核心结论。"
+        },
+        {
+          "id": "SCM-11",
+          "title": "动态 workflow 的职责分解与安全边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13"
+          ],
+          "notes": "第4.2和第8节覆盖 analyzer/organizer 分工、不可信 transcript、工具/网络限制、消费方只读与夜间原地更新风险。"
+        },
+        {
+          "id": "SCM-12",
+          "title": "Dreaming 的成本、时效与开放问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S3",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U13"
+          ],
+          "notes": "在线即时性与注意成本、离线延迟与算力、cadence、标准 token 计费及 ROI 假设均有讨论；未引用 cookbook 特定约 $8/10分钟观察，避免把配置样本外推。"
+        },
+        {
+          "id": "SCM-13",
+          "title": "关键实验数字的统计口径限制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U6",
+            "U13"
+          ],
+          "notes": "报告正确处理 Figure 3 官方 alt 限制、Figure 5 的 SD/SE 与 n 不均、Figure 10 的 budget-not-spend，并拒绝显著性与普遍 ROI 外推。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "开始前已在目标工作区核对报告 SHA-256 d913ffc610168d13f37680eca39a2c4f2b3e0a38f2607c312f2d07e5f7a27d6c 与 evidence SHA-256 2d900d0f2bb1ac3e277593c3c44ab2bf660072744b869878f3aba874a75f941e，均匹配。先独立读取 S1–S5 并写入 /tmp/anthropic-agent-memory-20261108/reviewer-source-map.json，后读报告与 evidence。实际 Reviewer 为 ferry-gpt-5-6-sol / codex-subagent；未以 eacli 的共享父进程模型观测冒充本模型。图 3 未做新的视觉核验，按官方 alt 审核；未运行云端 Dreaming，符合报告声明。未要求 UI、截图或云端实验验收。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.4,
+    "evaluated_on": "2026-11-08",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "57080ec912d97ddffc8c1eb6235ea4fd96110f6c0d90d036976a7bf6e3d51572",
+    "evidence_sha256": "2d900d0f2bb1ac3e277593c3c44ab2bf660072744b869878f3aba874a75f941e"
+  }
+}
