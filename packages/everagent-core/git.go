@@ -322,6 +322,9 @@ func signingEvidence(identity Object) string {
 }
 
 type CommitOptions struct {
+	// IdentityOnly lets a caller require only verified Committer attribution.
+	// Other repositories retain their explicitly supplied quality policy.
+	IdentityOnly   bool
 	Directory      string
 	IdentityReader func() Object
 	AuthorReader   func() (Author, error)
@@ -332,8 +335,11 @@ type CommitOptions struct {
 }
 
 func Commit(ctx context.Context, args []string, options CommitOptions) error {
-	if options.IdentityReader == nil || options.AuthorReader == nil || options.Gate == nil {
-		return blocked("identity or repository quality owner unavailable", 1)
+	if options.IdentityReader == nil {
+		return blocked("Committer identity reader unavailable", 1)
+	}
+	if !options.IdentityOnly && (options.AuthorReader == nil || options.Gate == nil) {
+		return blocked("repository quality owner unavailable", 1)
 	}
 	if options.Stdin == nil {
 		options.Stdin = os.Stdin
@@ -353,11 +359,22 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		return e
 	}
 	identity := options.IdentityReader()
-	author, e := options.AuthorReader()
-	if e != nil {
-		return e
+	author := Author{text(identity["name"]), text(identity["email"])}
+	if options.AuthorReader != nil {
+		selected, err := options.AuthorReader()
+		if err != nil && !options.IdentityOnly {
+			return err
+		}
+		if err == nil {
+			author = selected
+		}
 	}
 	env, e := IdentityEnvironment(identity, base, author)
+	if e != nil && options.IdentityOnly {
+		// Author is a default, not an independent admission policy in this mode.
+		author = Author{text(identity["name"]), text(identity["email"])}
+		env, e = IdentityEnvironment(identity, base, author)
+	}
 	if e != nil {
 		return e
 	}
@@ -365,14 +382,14 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	if e != nil {
 		return e
 	}
-	if options.Preflight != nil {
+	if !options.IdentityOnly && options.Preflight != nil {
 		if e = options.Preflight(root, identity); e != nil {
 			return e
 		}
 	}
 	expectedAuthor := author.Name + " <" + author.Email + ">"
 	for _, p := range parts {
-		if p.key == "--author" && *p.value != expectedAuthor {
+		if !options.IdentityOnly && p.key == "--author" && *p.value != expectedAuthor {
 			return blocked("--author 必须与仓库主人身份一致", 2)
 		}
 	}
@@ -384,6 +401,25 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	forwarded, e := messageArgs(ctx, parts, root, temp, env, options.Stdin)
 	if e != nil {
 		return e
+	}
+	if options.IdentityOnly {
+		// No quality callback, source snapshot, asset check or policy re-read.
+		// Git still owns normal commit errors and the caller's configured hooks.
+		c := exec.CommandContext(ctx, "git", append([]string{"--no-replace-objects", "commit"}, forwarded...)...)
+		c.Dir, c.Env, c.Stdin, c.Stdout, c.Stderr = root, env, options.Stdin, options.Stdout, options.Stderr
+		if e = c.Run(); e != nil {
+			return e
+		}
+		for _, p := range parts {
+			if p.key == "--dry-run" {
+				return nil
+			}
+		}
+		actual, err := gitRead(ctx, root, env, "show", "-s", "--format=%cn <%ce>", "HEAD")
+		if err != nil || actual != text(identity["name"])+" <"+text(identity["email"])+">" {
+			return blocked("commit 已生成，但 Committer 核验失败；保留现场，禁止自动重放或推送", 3)
+		}
+		return nil
 	}
 	before, e := gitRead(ctx, root, env, "write-tree")
 	if e != nil {

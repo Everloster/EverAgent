@@ -80,6 +80,51 @@ func TestCommitKeepsFailedObservationReason(t *testing.T) {
 	}
 }
 
+func TestIdentityOnlyCommitDoesNotRunQualityOrAuthorPolicy(t *testing.T) {
+	for _, authorPolicy := range []string{"default", "missing", "invalid"} {
+		t.Run(authorPolicy, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			options.IdentityOnly = true
+			options.Gate = func(context.Context, string, []string) error { t.Fatal("quality gate ran"); return nil }
+			options.Preflight = func(string, Object) error { t.Fatal("repository preflight ran"); return nil }
+			if authorPolicy == "missing" {
+				options.AuthorReader = nil
+			} else if authorPolicy == "invalid" {
+				options.AuthorReader = func() (Author, error) { return Author{}, errors.New("unavailable policy") }
+			}
+			reads := 0
+			read := options.IdentityReader
+			options.IdentityReader = func() Object { reads++; return read() }
+			writeFixture(t, filepath.Join(dir, "broken.py"), []byte("not valid python\n"), time.Now())
+			writeFixture(t, filepath.Join(dir, "README.md"), []byte("[broken](missing.md)\n"), time.Now())
+			testGit(t, dir, "add", "broken.py", "README.md")
+			if err := Commit(context.Background(), []string{"-m", "identity only", "--author", "Chosen Author <chosen@example.invalid>"}, options); err != nil {
+				t.Fatal(err)
+			}
+			if reads != 1 || testGit(t, dir, "show", "-s", "--format=%cn <%ce>") != "codex-fixture-model <noreply@openai.com>" {
+				t.Fatal("Committer was not bound to one current identity observation")
+			}
+			if testGit(t, dir, "show", "-s", "--format=%an <%ae>") != "Chosen Author <chosen@example.invalid>" {
+				t.Fatal("author choice was replaced by a policy gate")
+			}
+		})
+	}
+}
+
+func TestIdentityOnlyCommitStillRejectsUnknownCommitter(t *testing.T) {
+	dir, options := gitFixture(t)
+	options.IdentityOnly, options.Gate, options.AuthorReader = true, nil, nil
+	read := options.IdentityReader
+	options.IdentityReader = func() Object {
+		v := read()
+		v["current_model_confirmed"] = false
+		return v
+	}
+	if err := Commit(context.Background(), []string{"-m", "must not commit"}, options); err == nil || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
+		t.Fatal("unknown committer was accepted", err)
+	}
+}
+
 func TestCommitOnlyStagedTreeAndIdentity(t *testing.T) {
 	dir, options := gitFixture(t)
 	writeFixture(t, filepath.Join(dir, "tracked.txt"), []byte("unstaged\n"), time.Now())
