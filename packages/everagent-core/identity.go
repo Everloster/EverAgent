@@ -272,6 +272,9 @@ func (i *Inspector) Diagnose() Object {
 	if identity["cli"] == "opencode" {
 		owners = append(owners, "packages/everagent-core/opencode.go", "packages/everagent-core/src/everagent_core/identity/opencode_plugin.mjs")
 	}
+	if identity["cli"] == "kimi-cli" {
+		owners = append(owners, "packages/everagent-core/kimi.go")
+	}
 	return Object{"schema_version": 1, "status": status, "identity": identity, "automatic_probe": probe, "reader_config": Object{"owner": "packages/everagent-core/src/everagent_core/identity/readers.json", "override_environment": "EVERAGENT_IDENTITY_CONFIG", "status": "valid"}, "repair": Object{"owner_repository": "EverAgent", "owners": owners, "order": []string{"inspect-current-caller-binding", "repair-supported-reader-or-adapter", "verify-current-session-and-regressions", "request-explicit-user-facts-if-unverifiable"}, "validation": []string{"eacli session current --json", "eacli session diagnose --json"}, "boundary": "Only current-caller metadata; retain privacy, process/session binding, freshness and unknown states."}, "user_fallback": Object{"role": "last-resort", "available": i.factScope() != nil, "fields": []string{"device", "harness", "form", "model"}, "requires_explicit_user_confirmation": true}, "authorized_source_repair_allowed": true, "authorized_read_only_allowed": true, "commit_allowed": ready, "diagnostics_are_model_evidence": false}
 }
 

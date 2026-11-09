@@ -293,3 +293,250 @@ func TestBoundedCommandFailsOnCancellation(t *testing.T) {
 		t.Fatal("truncated subprocess output reported success")
 	}
 }
+
+func kimiFixture(t *testing.T, i *Inspector, id string, legacy bool) (string, Object, []byte) {
+	t.Helper()
+	now := i.Now()
+	dir := filepath.Join(i.root("kimi-cli", ""), kimiWorkspaceKey(i.Directory), id)
+	state := Object{"id": id, "version": 2, "cwd": i.Directory, "createdAt": now.Add(-time.Hour).UnixMilli(), "updatedAt": now.UnixMilli(), "archived": false,
+		"agents": Object{"main": Object{"type": "main"}}, "lastPrompt": "PRIVATE-METADATA-SENTINEL"}
+	if legacy {
+		delete(state, "id")
+		delete(state, "version")
+		delete(state, "cwd")
+		delete(state, "archived")
+		state["workDir"] = i.Directory
+		state["createdAt"] = now.Add(-time.Hour).Format(time.RFC3339Nano)
+		state["updatedAt"] = now.Format(time.RFC3339Nano)
+	}
+	wire := append([]byte(`{"type":"llm.request",`), encoded(t, Object{"model": "native-kimi", "time": now.UnixMilli(), "kind": "loop", "turnStep": "turn-1", "modelAlias": "kimi-for-code"})[1:]...)
+	wire = append(wire, '\n')
+	writeFixture(t, filepath.Join(dir, "state.json"), encoded(t, state), now)
+	writeFixture(t, filepath.Join(dir, "agents/main/wire.jsonl"), wire, now)
+	return dir, state, wire
+}
+
+func TestKimiScopedReadDoesNotStartCLI(t *testing.T) {
+	for _, legacy := range []bool{false, true} {
+		t.Run(map[bool]string{false: "v2", true: "legacy"}[legacy], func(t *testing.T) {
+			i, env := testInspector(t, "kimi-cli")
+			env["KIMI_MODEL"] = "configured-not-proof"
+			dir, _, wire := kimiFixture(t, i, "session-one", legacy)
+			// A real CLI would run an updater before parsing `session list`.
+			// No executable at all must be necessary for native metadata reads.
+			t.Setenv("PATH", t.TempDir())
+			got := i.Inspect()
+			if got["model"] != "native-kimi" || got["current_model_confirmed"] != true || got["commit_ready"] != true {
+				t.Fatalf("native read without CLI: %v", got)
+			}
+			if strings.Contains(string(encoded(t, got)), "PRIVATE-METADATA") {
+				t.Fatal("metadata body escaped projection")
+			}
+			before, _ := os.ReadFile(filepath.Join(dir, "state.json"))
+			i.Diagnose()
+			after, _ := os.ReadFile(filepath.Join(dir, "state.json"))
+			afterWire, _ := os.ReadFile(filepath.Join(dir, "agents/main/wire.jsonl"))
+			if string(before) != string(after) || string(wire) != string(afterWire) {
+				t.Fatal("read-only inspection modified native files")
+			}
+		})
+	}
+}
+
+func TestKimiNativeWorkspaceKeys(t *testing.T) {
+	for cwd, want := range map[string]string{
+		"/workspace/Project Two": "wd_project-two_8b6646286453",
+		"/workspace/中文":          "wd_workspace_d1229f0dfc6b",
+		`C:\workspace\Project\`:  "wd_project_ee63f7b5298f",
+		"/workspace/abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGH": "wd_abcdefghijklmnopqrstuvwxyz0123456789abcd_5149bedf2554",
+	} {
+		if got := kimiWorkspaceKey(cwd); got != want {
+			t.Errorf("native key for %q: %s, want %s", cwd, got, want)
+		}
+	}
+}
+
+func TestKimiNativeRootRepair(t *testing.T) {
+	for _, via := range []string{"reader-config", "native-home"} {
+		t.Run(via, func(t *testing.T) {
+			i, env := testInspector(t, "kimi-cli")
+			root := filepath.Join(i.Home, "custom", "sessions")
+			rule := i.Rules["kimi-cli"]
+			rule.Root = root
+			i.Rules["kimi-cli"] = rule
+			kimiFixture(t, i, "session-one", false)
+			if via == "native-home" {
+				rule.Root = filepath.Join(i.Home, "unused")
+				i.Rules["kimi-cli"] = rule
+				env["KIMI_CODE_HOME"] = filepath.Dir(root)
+			}
+			if got, why := i.kimiCLI(i.Processes[1], i.Now()); got == nil || why != "" {
+				t.Fatalf("root repair: %v %s", got, why)
+			}
+		})
+	}
+}
+
+func TestKimiInactiveAndUnboundDirectories(t *testing.T) {
+	i, _ := testInspector(t, "kimi-cli")
+	dir, _, _ := kimiFixture(t, i, "session-one", false)
+	for _, id := range []string{"archived", "old"} {
+		other, state, _ := kimiFixture(t, i, id, false)
+		if id == "archived" {
+			state["archived"] = true
+		} else {
+			state["updatedAt"] = i.Now().Add(-10 * time.Minute).UnixMilli()
+		}
+		writeFixture(t, filepath.Join(other, "state.json"), encoded(t, state), i.Now())
+		writeFixture(t, filepath.Join(other, "agents/main/wire.jsonl"), []byte("NOT_A_MODEL_SOURCE"), i.Now())
+	}
+	if err := os.Mkdir(filepath.Join(filepath.Dir(dir), "empty"), 0700); err != nil {
+		t.Fatal(err)
+	}
+	if got, why := i.kimiCLI(i.Processes[1], i.Now()); got == nil || why != "" {
+		t.Fatalf("empty/inactive directories blocked a bound session: %v %s", got, why)
+	}
+	// A directory with wire but no metadata is not an empty directory. Keep
+	// the gap visible and do not open that body or assume unique live binding.
+	unbound := filepath.Join(filepath.Dir(dir), "unbound", "agents/main/wire.jsonl")
+	writeFixture(t, unbound, []byte("UNBOUND_BODY_MUST_NOT_BE_PARSED"), i.Now())
+	rows, err := KimiSessions(i.root("kimi-cli", ""), i.Directory)
+	if err != nil || len(rows) != 4 || rows[3].Problem != "kimi-code-scoped-metadata-missing" {
+		t.Fatalf("unbound source hidden: %v %v", rows, err)
+	}
+	if got, why := i.kimiCLI(i.Processes[1], i.Now()); got != nil || why != "kimi-code-scoped-metadata-missing" {
+		t.Fatalf("unbound source used: %v %s", got, why)
+	}
+}
+
+func TestKimiNativeScopeRefusesInvalidOrAmbiguousEvidence(t *testing.T) {
+	for _, scenario := range []string{"two-live", "wrong-cwd", "wrong-id", "future-schema", "fork", "parent-agent", "extra-directory", "state-future", "state-old", "wire-stale", "wire-before-process", "wire-future", "wire-partial", "latest-invalid", "latest-oversized", "environment-session-mismatch", "process-changed", "cwd-changed", "metadata-changed", "wire-changed"} {
+		t.Run(scenario, func(t *testing.T) {
+			i, env := testInspector(t, "kimi-cli")
+			dir, state, wire := kimiFixture(t, i, "session-one", false)
+			switch scenario {
+			case "two-live":
+				kimiFixture(t, i, "session-two", false)
+			case "wrong-cwd":
+				state["cwd"] = filepath.Join(i.Directory, "other")
+			case "wrong-id":
+				state["id"] = "other"
+			case "future-schema":
+				state["version"] = 3
+			case "fork":
+				state["forkedFrom"] = "other"
+			case "parent-agent":
+				object(object(state["agents"])["main"])["parentAgentId"] = "other"
+			case "extra-directory":
+				state["additionalDirs"] = []string{"/other"}
+			case "state-future":
+				state["updatedAt"] = i.Now().Add(time.Hour).UnixMilli()
+			case "state-old":
+				state["updatedAt"] = i.Now().Add(-time.Hour).UnixMilli()
+			case "wire-stale", "wire-before-process", "wire-future":
+				at := i.Now().Add(-10 * time.Minute)
+				if scenario == "wire-before-process" {
+					at = i.Now().Add(-2 * time.Minute)
+				} else if scenario == "wire-future" {
+					at = i.Now().Add(time.Second)
+				}
+				wire = []byte(`{"type":"llm.request","kind":"loop","model":"native-kimi","turnStep":"turn-2","time":` + string(encoded(t, at.UnixMilli())) + "}\n")
+			case "wire-partial":
+				wire = append(wire, []byte(`{"type":"llm.request","model":"new`)...)
+			case "latest-invalid":
+				wire = append(wire, []byte("{\"type\":\"llm.request\",\"model\":\"bad\",oops}\n")...)
+			case "latest-oversized":
+				wire = append(wire, []byte(`{"type":"llm.request","body":"`+strings.Repeat("x", maxRecordBytes)+"\"}\n")...)
+			case "environment-session-mismatch":
+				env["KIMI_CLI_SESSION_ID"] = "other"
+			case "process-changed":
+				i.ReadProcess = func(int) (Process, error) { return Process{}, errors.New("process-restarted") }
+			case "cwd-changed", "metadata-changed", "wire-changed":
+				calls := 0
+				i.ProcessCwd = func(Process) (string, error) {
+					calls++
+					if calls > 1 {
+						if scenario == "cwd-changed" {
+							return filepath.Join(i.Directory, "other"), nil
+						}
+						if scenario == "wire-changed" {
+							writeFixture(t, filepath.Join(dir, "agents/main/wire.jsonl"), append(wire, 'x'), i.Now())
+						} else {
+							state["archived"] = true
+							writeFixture(t, filepath.Join(dir, "state.json"), encoded(t, state), i.Now())
+						}
+					}
+					return i.Directory, nil
+				}
+			}
+			writeFixture(t, filepath.Join(dir, "state.json"), encoded(t, state), i.Now())
+			writeFixture(t, filepath.Join(dir, "agents/main/wire.jsonl"), wire, i.Now())
+			if got, why := i.kimiCLI(i.Processes[1], i.Now()); got != nil || why == "" {
+				t.Fatalf("invalid evidence confirmed: %v %q", got, why)
+			}
+		})
+	}
+}
+
+func TestKimiScopedDiscoveryDoesNotReadOtherWorkspaces(t *testing.T) {
+	i, _ := testInspector(t, "kimi-cli")
+	dir, state, _ := kimiFixture(t, i, "session-one", false)
+	root := i.root("kimi-cli", "")
+	// Corrupt and oversize metadata in another bucket is outside this reader.
+	writeFixture(t, filepath.Join(root, "unrelated", "other", "state.json"), []byte("not metadata"), i.Now())
+	rows, err := KimiSessions(root, i.Directory)
+	if err != nil || len(rows) != 1 || rows[0].Problem != "" {
+		t.Fatalf("scoped list: %v %v", rows, err)
+	}
+	// Native also supports session-meta/state.json; a damaged primary must not
+	// silently fall back to that alternate copy.
+	if err = os.Rename(filepath.Join(dir, "state.json"), filepath.Join(dir, "original.json")); err != nil {
+		t.Fatal(err)
+	}
+	writeFixture(t, filepath.Join(dir, "session-meta/state.json"), encoded(t, state), i.Now())
+	rows, err = KimiSessions(root, i.Directory)
+	if err != nil || len(rows) != 1 || rows[0].Problem != "" {
+		t.Fatalf("native meta scope: %v %v", rows, err)
+	}
+	writeFixture(t, filepath.Join(dir, "state.json"), []byte("broken"), i.Now())
+	rows, err = KimiSessions(root, i.Directory)
+	if err != nil || len(rows) != 1 || rows[0].Problem == "" {
+		t.Fatalf("borrowed alternate state: %v %v", rows, err)
+	}
+}
+
+func TestKimiScopeRejectsSymlinksAndListOverflow(t *testing.T) {
+	for _, scenario := range []string{"state", "session", "wire-parent", "overflow"} {
+		t.Run(scenario, func(t *testing.T) {
+			if runtime.GOOS == "windows" && scenario != "overflow" {
+				t.Skip("symlink creation requires Windows developer permissions")
+			}
+			i, _ := testInspector(t, "kimi-cli")
+			dir, _, _ := kimiFixture(t, i, "session-one", false)
+			if scenario == "overflow" {
+				for n := 0; n < 256; n++ {
+					if err := os.Mkdir(filepath.Join(filepath.Dir(dir), "session-"+string(encoded(t, n))), 0700); err != nil {
+						t.Fatal(err)
+					}
+				}
+			} else {
+				path := filepath.Join(dir, "state.json")
+				if scenario == "session" {
+					path = dir
+				} else if scenario == "wire-parent" {
+					path = filepath.Join(dir, "agents")
+				}
+				moved := filepath.Join(t.TempDir(), "native")
+				if err := os.Rename(path, moved); err != nil {
+					t.Fatal(err)
+				}
+				if err := os.Symlink(moved, path); err != nil {
+					t.Fatal(err)
+				}
+			}
+			if got, why := i.kimiCLI(i.Processes[1], i.Now()); got != nil || why == "" {
+				t.Fatalf("unsafe path/partial list confirmed: %v %s", got, why)
+			}
+		})
+	}
+}

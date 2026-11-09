@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -71,99 +70,6 @@ func (i *Inspector) minimax(p Process, now time.Time) (Object, error) {
 	return Object{"model": m, "source": "minimax-session-runtime", "session": held[0], "turn": row["turn_id"]}, nil
 }
 
-func (i *Inspector) kimiCLI(p Process, now time.Time) (Object, error) {
-	cwd := i.callerCwd(p)
-	if cwd == "" {
-		return nil, nil
-	}
-	executable, e := exec.LookPath("kimi")
-	if e != nil {
-		return nil, e
-	}
-	b, e := boundedCommand("", nil, 2*time.Second, 1<<20, executable, "session", "list", "--cwd", cwd, "--limit", "16", "--json")
-	if e != nil {
-		return nil, e
-	}
-	rawDirs := regexp.MustCompile(`"sessionDir"\s*:\s*("(?:\\.|[^"\\])*")`).FindAllSubmatch(b, 17)
-	if len(rawDirs) < 1 || len(rawDirs) > 16 {
-		return nil, nil
-	}
-	root := i.root("kimi-cli", "")
-	if root == "" {
-		return nil, nil
-	}
-	seen := map[string]bool{}
-	candidates := []string{}
-	for _, raw := range rawDirs {
-		var dir string
-		if json.Unmarshal(raw[1], &dir) != nil || !filepath.IsAbs(dir) {
-			return nil, nil
-		}
-		if seen[dir] {
-			continue
-		}
-		seen[dir] = true
-		if s, e := os.Lstat(dir); e != nil || !s.IsDir() {
-			return nil, nil
-		}
-		if !within(dir, root) {
-			return nil, nil
-		}
-		b, e := readSmall(filepath.Join(dir, "state.json"), 1<<20, false)
-		if e != nil {
-			return nil, e
-		}
-		state, e := metadata(b, "id", "cwd", "createdAt", "updatedAt", "archived")
-		if e != nil {
-			return nil, e
-		}
-		created, updated := number(state["createdAt"])/1000, number(state["updatedAt"])/1000
-		if created <= 0 || updated <= 0 {
-			return nil, nil
-		}
-		if state["archived"] != false || state["id"] != filepath.Base(dir) || text(state["cwd"]) == "" || realPath(text(state["cwd"])) != cwd || created > seconds(now)+2 || updated < seconds(p.StartTime)-2 || updated > seconds(now)+2 {
-			continue
-		}
-		candidates = append(candidates, dir)
-	}
-	if len(candidates) != 1 {
-		return nil, nil
-	}
-	dir := candidates[0]
-	path := filepath.Join(dir, "agents/main/wire.jsonl")
-	if !within(path, root) {
-		return nil, nil
-	}
-	lines, _, stable, e := tail(path, maxTailBytes)
-	if e != nil || !stable {
-		return nil, e
-	}
-	var request Object
-	for n := len(lines) - 1; n >= 0; n-- {
-		raw := lines[n]
-		if !strings.Contains(string(raw), "llm.request") {
-			continue
-		}
-		if len(raw) > maxRecordBytes {
-			return nil, nil
-		}
-		r, e := kimiRecord(raw)
-		if e != nil {
-			return nil, e
-		}
-		if r["type"] == "llm.request" {
-			request = r
-			break
-		}
-	}
-	at := time.UnixMilli(int64(number(request["time"])))
-	m := model(request["model"])
-	step := text(request["turnStep"])
-	if request["kind"] != "loop" || m == "" || !regexp.MustCompile(`^[A-Za-z0-9._:-]{1,128}$`).MatchString(step) || !afterStart(at, p) || !fresh(at, now) || request["modelAlias"] != nil && model(request["modelAlias"]) == "" {
-		return nil, nil
-	}
-	return Object{"model": m, "source": "kimi-cli-session-runtime", "observed_at": seconds(at), "turn": step, "session": filepath.Base(dir)}, nil
-}
 func kimiRecord(raw []byte) (Object, error) {
 	return metadata(raw, "type", "model", "time", "usageScope", "kind", "provider", "modelAlias", "turnStep")
 }

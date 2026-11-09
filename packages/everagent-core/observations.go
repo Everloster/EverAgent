@@ -302,7 +302,7 @@ func (i *Inspector) observe(h string, scope Object) (Object, Object) {
 	case "minimax-code":
 		found, err = i.minimax(p, now)
 	case "kimi-cli":
-		found, err = i.kimiCLI(p, now)
+		found, reason = i.kimiCLI(p, now)
 	case "kimi-desktop":
 		found, err = i.kimiDesktop(p, now)
 	case "dsh":

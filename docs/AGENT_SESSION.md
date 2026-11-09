@@ -19,7 +19,7 @@ Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORA
 
 ## current → diagnose → declare
 
-本页描述 Go core 0.5.2 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
+本页描述 Go core 0.5.3 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
 - `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
@@ -78,6 +78,17 @@ configured与observed不同不说明实际模型串用；这些提示不改变�
 读取器只取当前调用方元数据；Codex、Kimi Code CLI 与 Kimi Desktop 的记录尾部有 4 MiB 上限，SQLite 只读查询指定会话的元数据字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
 未把观察接口定义本身当作覆盖证据。自动来源和未知回退都进入身份回归测试。
+
+Kimi CLI 不再执行 `kimi session list`：该入口会初始化原生索引，部分版本启动还会应用已暂存更新。
+Go 读取器按祖先进程的精确 cwd 定位官方 `wd_<slug>_<hash>` 目录，再独立核对 state 的目录和会话身份；
+支持 version=2 与已核实的旧 `workDir`/ISO 时间格式。依据是官方
+[0.42.0](https://github.com/MoonshotAI/kimi-code/tree/6954d2c8bf94a5c7fc29cc6ae35b15d042cc4dcb) 与
+[2.4.1](https://github.com/MoonshotAI/kimi-code/tree/2c73f3f50af4fa7f2540ca0d2e33b07a1408e3a7) 的
+`workdir-slug.ts`、`sessionMetadataService.ts` 与 `sessionIndexSource.ts`。
+每个 cwd 最多256项、元数据总计4 MiB、单文件1 MiB；超限、未知格式、fork、symlink 或多条运行期候选保持未知。
+空目录不算会话；缺少 state 但仍有文件的目录明确拒读，不借原生清单的省略将其当作覆盖完整。
+不扫描全局工作区/会话索引补猜别名目录。读取前后复验进程、cwd 和元数据快照；最新 wire 不完整时不借旧型号。
+`KIMI_CODE_HOME` 或 reader 的 root 可修复位置，不能直接配置观测答案。此改动的合成回归不代替真实 Kimi 工具调用验收。
 
 DSH 适配文件为 [`dsh_plugin.mjs`](../packages/everagent-core/src/everagent_core/identity/dsh_plugin.mjs)，
 使用 0.2.1-rc.2 的官方插件接口，需在所用 profile 加载。每次 shell 调用只写不含正文的临时模型元数据，
