@@ -193,7 +193,7 @@ func (i *Inspector) inspect() (Object, Object) {
 	}
 	name := strings.Trim(regexp.MustCompile(`[^A-Za-z0-9._-]+`).ReplaceAllString(h+"-"+m, "-"), "-")
 	v := Object{"schema_version": 2, "name": strings.ToLower(name), "email": email, "cli": h, "cli_source": source, "harness_user_declared": source == "user-declared", "model": m, "model_source": evidence["source"], "model_confidence": evidence["confidence"], "current_model_confirmed": evidence["current_model_confirmed"], "user_model_declared": evidence["user_model_declared"], "harness_resolved": true, "resolved": !strings.HasSuffix(name, "-unknown"), "commit_ready": evidence["current_model_confirmed"] == true || evidence["user_model_declared"] == true}
-	for _, k := range []string{"declaration", "scope_ref", "observed_at", "requested_model", "configured_model", "observed_model", "user_declared_model", "observation_ref", "request_observation"} {
+	for _, k := range []string{"declaration", "scope_ref", "observed_at", "requested_model", "configured_model", "configured_model_source", "observed_model", "user_declared_model", "observation_ref", "request_observation"} {
 		if x, ok := evidence[k]; ok {
 			v[k] = x
 		}
@@ -211,6 +211,7 @@ func (i *Inspector) modelEvidence(h string) (Object, Object) {
 	e := Object{"requested_model": nil, "configured_model": nil, "observed_model": nil, "user_declared_model": nil, "current_model_confirmed": false, "user_model_declared": false}
 	if model(hint["model"]) != "" {
 		e["configured_model"] = hint["model"]
+		e["configured_model_source"] = hint["source"]
 	}
 	requested := found != nil && found["source"] == "opencode-session-request"
 	if found != nil && !requested {

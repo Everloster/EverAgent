@@ -128,6 +128,11 @@ func (i *Inspector) NormalizeSession(device, identity, checkout, host, caller, t
 			m[strings.TrimSuffix(key, "_model")] = v
 		}
 	}
+	if m["configured"] != nil {
+		if source := text(identity["configured_model_source"]); source != "" {
+			m["configured_source"] = source
+		}
+	}
 	if d := object(identity["declaration"]); text(d["id"]) != "" {
 		m["declaration_id"] = text(d["id"])[:min(24, len(text(d["id"])))]
 	}

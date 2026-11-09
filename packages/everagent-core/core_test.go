@@ -133,13 +133,18 @@ func TestHarnessAndHints(t *testing.T) {
 	env["CODEX_THREAD_ID"] = "inherited-codex"
 	env["PI_SESSION_ID"], env["PI_MODEL"], env["PI_CODING_AGENT"] = "pi-native", "actual-pi", "true"
 	v := i.Inspect()
-	if v["cli"] != "pi" || v["model"] != "actual-pi" || v["current_model_confirmed"] != true {
+	if v["cli"] != "pi" || v["model"] != "actual-pi" || v["current_model_confirmed"] != true || v["configured_model_source"] != "env:PI_MODEL" {
 		t.Fatalf("nearest native caller: %v", v)
 	}
 	env["PI_CODING_AGENT"] = "false"
 	v = i.Inspect()
 	if v["model"] != "actual-pi" || v["commit_ready"] != false || v["current_model_confirmed"] != false {
 		t.Fatalf("configuration used as proof: %v", v)
+	}
+	session := i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+	m := object(object(session["actor"])["model"])
+	if m["id"] != "unknown" || m["configured"] != "actual-pi" || m["configured_source"] != "env:PI_MODEL" || object(session["readiness"])["commit"] != false {
+		t.Fatalf("environment hint changed session readiness: %v", session)
 	}
 	i.Processes[1].Name = "pi-similar-not-agent"
 	delete(env, "PI_SESSION_ID")
@@ -152,6 +157,24 @@ func TestHarnessAndHints(t *testing.T) {
 	writeFixture(t, filepath.Join(i.Home, ".codex/config.toml"), []byte("[nested]\nmodel = \"not-a-default\"\n"), i.Now())
 	if i.Hint("codex")["model"] != "unknown" {
 		t.Fatal("nested TOML treated as default")
+	}
+	v = i.Inspect()
+	session = i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+	if v["configured_model_source"] != nil || object(object(session["actor"])["model"])["configured_source"] != nil {
+		t.Fatalf("missing hint acquired a source: %v", session)
+	}
+	writeFixture(t, filepath.Join(i.Home, ".codex/config.toml"), []byte("model = \"default-model\"\nprofile = \"selected\"\n[profiles.selected]\nmodel = \"profile-model\"\n"), i.Now())
+	v = i.Inspect()
+	session = i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+	m = object(object(session["actor"])["model"])
+	if v["configured_model_source"] != "config-default" || m["configured"] != "default-model" || m["configured_source"] != "config-default" || m["id"] != "unknown" || object(session["readiness"])["commit"] != false {
+		t.Fatalf("default hint was lost or interpreted as the effective profile: %v", session)
+	}
+	delete(v, "configured_model_source") // Older identity clients have no provenance field.
+	session = i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+	m = object(object(session["actor"])["model"])
+	if m["configured"] != "default-model" || m["configured_source"] != nil {
+		t.Fatalf("legacy hint source was guessed: %v", session)
 	}
 	env["AGENT_ID"] = "spoofed-identity"
 	if v = i.Inspect(); v["commit_ready"] != false || v["model_reason_code"] != "explicit-identity-is-not-model-evidence" {

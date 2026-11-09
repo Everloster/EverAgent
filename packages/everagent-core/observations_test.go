@@ -125,6 +125,14 @@ func TestCodexModelEvidence(t *testing.T) {
 			if want && v["model"] != "observed-model" {
 				t.Fatalf("configured default used instead of native model: %v", v)
 			}
+			session := i.NormalizeSession(Object{"known": true}, v, Object{"status": "ok"}, Object{}, nil, nil, nil)
+			m := object(object(session["actor"])["model"])
+			if v["configured_model_source"] != "env:CODEX_MODEL" || m["configured"] != "misleading-default" || m["configured_source"] != "env:CODEX_MODEL" || m["source"] != v["model_source"] {
+				t.Fatalf("configured source lost or replaced native evidence: %v", session)
+			}
+			if want && m["id"] != "observed-model" || !want && m["id"] != "unknown" || (object(session["readiness"])["commit"] == true) != want {
+				t.Fatalf("hint provenance changed model readiness: %v", session)
+			}
 			if tc == "long-turn" && v["model_source"] != "codex-thread-state" {
 				t.Fatalf("long-turn fallback: %v", v)
 			}

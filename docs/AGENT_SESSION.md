@@ -19,7 +19,7 @@ Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORA
 
 ## current → diagnose → declare
 
-本页描述 Go core 0.4.1 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
+本页描述 Go core 0.5.2 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
 - `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
@@ -49,10 +49,15 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 | 字段/状态 | 含义 | 可用于提交 |
 |---|---|---|
 | requested | 原生派工/会话step实际请求的Model.Ref；不是provider返回型号 | 否 |
-| configured | 配置或环境中的候选模型 | 否 |
+| configured / configured_source | 配置默认值或环境提示及其来源，不是当前有效 profile | 否 |
 | observed / session-bound | 新鲜、精确会话范围的原生模型观测 | 是 |
 | user-declared / declared | 用户明确指定的本会话模型 | 是 |
 | unknown | 无依据 | 否 |
+
+`actor.model.configured_source`为可选提示来源：`config-default`或`env:<白名单键>`；独立身份输出对应
+`configured_model_source`。Codex配置提示只读顶层`model`，不合并profile或启动参数；环境提示优先。
+没有有效提示时不输出来源，旧版本也可能缺该字段，不能据此猜测。`source`仍表示模型证据来源，
+configured与observed不同不说明实际模型串用；这些提示不改变自动核实、用户声明或提交门禁。
 
 原生观测必须来自受支持 adapter，绑定 harness、进程创建身份、session/terminal 并通过新鲜度检查。
 **自动核实 → Agent 诊断及可行的源码修复 → 用户明确指定兜底。** 重构必须保留已核实的读取能力。

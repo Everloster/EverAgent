@@ -108,6 +108,10 @@
             "configured": {
               "type": "string"
             },
+            "configured_source": {
+              "type": "string",
+              "description": "Source of the optional configured hint (config-default or env:<key>), not an effective profile or observed model. Absent when no hint/source is available."
+            },
             "automatic_reason_code": {
               "type": "string",
               "description": "Failure reason from this observation; absent after successful automatic verification."
