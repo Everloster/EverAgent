@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-08 · [Agent 应该记住什么，又怎样知道自己记错了？——Anthropic 记忆组件深读](./ai-learning/reports/knowledge_reports/Anthropic_Agent%E8%AE%B0%E5%BF%86%E7%BB%84%E4%BB%B6_%E6%98%BE%E8%91%97%E6%80%A7%E5%88%A4%E6%96%AD%E4%B8%8EDreaming_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261108.md)
-- 2026-11-06 · [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
-- 2026-11-06 · [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
-- 2026-11-06 · [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
-- 2026-11-06 · [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-10 · [《AI演义》31｜DiT：用Transformer承担扩散去噪](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-10 · [《AI演义》30｜Stable Diffusion v1.4：从提示词到像素图像](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-10 · [《AI演义》29｜LDM：将反复去噪移到压缩表示中](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-10 · [《AI演义》28｜DDPM：用噪声预测计算反向生成步骤](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-10 · [《AI演义》27｜早期扩散模型：用许多小步学习生成分布](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_27_Diffusion2015_%E9%80%90%E6%AD%A5%E5%8A%A0%E5%99%AA%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 186 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 196 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

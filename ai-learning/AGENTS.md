@@ -19,6 +19,6 @@
 - 公式逐符号解释；实验与消融数字保留单位、口径和出处。
 - 技术史只写与当前机制有关的前驱和后续影响。
 - 文章分析重构作者问题、回答与行动含义，并区分原文主张和自己的推断。
-- 科普体报告交付后收一次学习反馈；只有明确反馈才写入 [FEEDBACK_LOG](./skills/科普讲解/FEEDBACK_LOG.md)。
+- 读者反馈按[公共写作约定](../docs/REPORT_WORKFLOW.md#阅读反馈)处理；实际反馈写入既有 [FEEDBACK_LOG](./skills/科普讲解/FEEDBACK_LOG.md)，需要校准表达时按需看[阅读偏好与样例](../docs/WRITING_EXAMPLES.md)。
 
 需要既有覆盖时查询 eacli `knowledge.ai`；PROFILE、MAP 和 open-questions 按根协议条件读取。报告路径与命名约定由相应体裁 skill 负责。
