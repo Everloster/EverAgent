@@ -111,6 +111,37 @@ func TestIdentityOnlyCommitDoesNotRunQualityOrAuthorPolicy(t *testing.T) {
 	}
 }
 
+func TestIdentityOnlyContentGuardIsOptionalAndBoundToIndex(t *testing.T) {
+	for _, outcome := range []string{"pass", "refuse", "index-changed"} {
+		t.Run(outcome, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			options.IdentityOnly = true
+			options.Gate = func(context.Context, string, []string) error { t.Fatal("quality gate ran"); return nil }
+			options.ContentGuard = func(_ context.Context, target string, _ []string) error {
+				if target != dir {
+					t.Fatal("wrong public-content target")
+				}
+				if outcome == "refuse" {
+					return errors.New("new disclosure")
+				}
+				if outcome == "index-changed" {
+					writeFixture(t, filepath.Join(dir, "later.txt"), []byte("not inspected"), time.Now())
+					testGit(t, dir, "add", "later.txt")
+				}
+				return nil
+			}
+			err := Commit(context.Background(), []string{"-m", "content check", "--author", "Chosen <chosen@example.invalid>"}, options)
+			if outcome == "pass" {
+				if err != nil {
+					t.Fatal(err)
+				}
+			} else if err == nil || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
+				t.Fatal("uninspected content was committed", err)
+			}
+		})
+	}
+}
+
 func TestIdentityOnlyCommitStillRejectsUnknownCommitter(t *testing.T) {
 	dir, options := gitFixture(t)
 	options.IdentityOnly, options.Gate, options.AuthorReader = true, nil, nil

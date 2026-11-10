@@ -847,8 +847,9 @@ semantic_tags: ["quality"]
                 output,
             )
             content = output.read_text(encoding="utf-8")
-        self.assertIn('quality_schema: "report-v2"', content)
-        self.assertIn('quality_tier: "important"', content)
+        self.assertNotIn('quality_schema:', content)
+        self.assertNotIn('quality_tier:', content)
+        self.assertIn('草稿', content)
         self.assertIn('status: "in_progress"', content)
         self.assertIn('report_type: "repo_deep_research"', content)
 

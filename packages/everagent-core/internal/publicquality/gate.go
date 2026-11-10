@@ -23,6 +23,7 @@ type Step struct {
 	PreserveScratch bool   `json:"preserve_scratch,omitempty"`
 }
 type GateResult struct {
+	Mode            string        `json:"mode,omitempty"`
 	SchemaVersion   int           `json:"schema_version"`
 	OK              bool          `json:"ok"`
 	Scope           string        `json:"scope"`
@@ -42,6 +43,7 @@ type GateResult struct {
 // Summary bounds routine CLI/commit output without dropping any checks. Full
 // diagnostics remain available through ea-quality --details.
 type GateSummary struct {
+	Mode            string    `json:"mode,omitempty"`
 	SchemaVersion   int       `json:"schema_version"`
 	OK              bool      `json:"ok"`
 	Scope           string    `json:"scope"`
@@ -60,7 +62,7 @@ type GateSummary struct {
 }
 
 func (r GateResult) Summary() GateSummary {
-	out := GateSummary{SchemaVersion: r.SchemaVersion, OK: r.OK, Scope: r.Scope, Head: r.Head,
+	out := GateSummary{Mode: r.Mode, SchemaVersion: r.SchemaVersion, OK: r.OK, Scope: r.Scope, Head: r.Head,
 		Base: r.Base, IndexTree: r.IndexTree, Changed: r.Changed, Reports: r.Reports, Steps: r.Steps,
 		Findings: []Finding{}, RetainedScratch: r.RetainedScratch}
 	for _, severity := range []string{"error", "warning"} {
@@ -140,8 +142,41 @@ type CheckOptions struct {
 	Full                        bool
 }
 
-// Check is the commit/CI owner. Scratch is external, tests use the captured
-// module, and the compiled source manifest must match the reviewed snapshot.
+// CheckDisclosure is the sole automatic public-content check. It reads only
+// changed public paths and does not load report policy, scan the catalog, run
+// tests, execute models or depend on eacli/private checkouts.
+func CheckDisclosure(ctx context.Context, options CheckOptions) (GateResult, error) {
+	if options.Scope == "" {
+		options.Scope = "index"
+	}
+	c, err := Capture(ctx, options.Root, options.Scope)
+	if err != nil {
+		return GateResult{}, err
+	}
+	defer c.Close()
+	if options.Base != "" {
+		if err = c.CompareBase(options.Base); err != nil {
+			return GateResult{}, err
+		}
+	}
+	p := AuditDisclosure(c)
+	out := GateResult{Mode: "public-disclosure", SchemaVersion: 1, Scope: c.Scope,
+		Head: c.Head, Base: c.Base, IndexTree: c.IndexTree, Changed: len(c.Changed),
+		Privacy: p, Findings: p.Findings, Steps: []Step{}}
+	if err = c.Verify(); err != nil {
+		return out, err
+	}
+	out.OK = noErrors(out.Findings)
+	status := "passed"
+	if !out.OK {
+		status = "failed"
+	}
+	out.Steps = append(out.Steps, Step{ID: "public-disclosure", Status: status})
+	return out, nil
+}
+
+// Check remains an explicitly requested full audit, never a commit prerequisite.
+// Scratch is external and any tests use the captured module.
 func Check(ctx context.Context, options CheckOptions) (GateResult, error) {
 	if options.Scope == "" {
 		options.Scope = "index"

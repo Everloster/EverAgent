@@ -158,17 +158,13 @@ Git 历史、已有备份、第三方服务日志或别人已复制的内容，�
 
 ### 隐私预检
 
-脚本只检查显式选定的仓内文本文件，不联网、不修改内容：
+Go入口只检查所选公开仓快照中的变更，不联网、不访问私有仓或改写内容：
 
 ```bash
-python3 scripts/audit_public_context.py --strict --json \
-  README.md PERSONAL_CONTEXT.md AI_PROGRESS.md \
-  docs/personal-context-multidevice-case-20261025.json \
-  ai-practice/MAP.md ai-practice/README.md \
-  scripts/audit_public_context.py
+go -C packages/everagent-core run ./cmd/ea-quality disclosure --scope worktree
 ```
 
-路径相对于本仓根目录，目录不会展开。它检查常见凭据、个人主目录路径、IP、邮箱和部分 SSH 入口，并拒绝仓外路径、父目录跳转、符号链接、非 UTF-8 文本、超过 2 MiB 或无法读取的文件。JSON 同时检查解码后的字符串；`line=0` 表示文件级或解码后的发现。默认将 IP、邮箱和 SSH 入口列为警告，`--strict` 使警告也返回失败。
+提交器使用index快照，工作区预览使用worktree。明显新增凭据与受限原始材料会阻断；IP、个人路径、邮箱等启发式线索只提示，不把示例地址一律判为泄密。结果不回显匹配内容；无法读取的路径明确报错，图片和二进制也不会被声称已经通过完整隐私审计。
 
 这是线索检查，不是匿名化证明；没有命中仍需人工审阅。无法安全处理的材料不应发布。
 

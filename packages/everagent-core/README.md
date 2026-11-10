@@ -1,90 +1,59 @@
 # everagent-core
 
-公共 Go module：当前调用方的身份与模型证据、用户声明、会话组合、Git 原语和公开仓质量门。
-可直接编译进 CLI，不依赖解释器、独立身份 helper 或相邻私仓。Go 版本与依赖由 `go.mod` / `go.sum` 固定。
+公共Go模块：当前调用方的身份/模型证据、用户声明、会话组合、Git原语、公开内容保护与可选审查工具。
+当前源码为`0.5.5`，不代表已发布或设备已安装。Go版本与依赖由`go.mod`、`go.sum`固定，不依赖Python、独立身份helper或相邻私仓。
 
-当前源码为 `0.5.4`；这是模块版本，不是设备安装态或九类客户端均已验收的声明。
-提交调用方可显式选择 `CommitOptions.IdentityOnly`：只核实并写入当前 Committer，不调用质量Gate/Preflight，
-Author仅作默认且允许显式指定；默认调用方仍沿用其自己的仓库策略。该选择不是跳过身份的CLI开关。
-本次退役 Python core 和相关 wrapper，保留 `scripts/ecommit.sh`；已有设备安装副本须单独升级和验收。
-
-Codex 观测遇到正在追加的原生记录时，含首次最多读取三次；仍不完整、过期或冲突则不确认模型，
-不复用上次成功结果。提交失败保留当次模型原因码，后续诊断成功不能倒推之前的原因。
-
-## 入口
-
-在公开仓根目录运行：
+## 日常入口
 
 ```bash
 go -C packages/everagent-core run ./cmd/everagent-identity inspect --json
 go -C packages/everagent-core run ./cmd/everagent-identity diagnose --json
-scripts/ecommit.sh -m "[maintenance] global: 本次修改"
+scripts/ecommit.sh -m "说明实际修改"
 ```
 
-eacli 的完整会话入口为 `session current → diagnose → declare`；公共独立入口对应
-`everagent-identity inspect → diagnose → declare`。自动核实失败先修可行的配置/读取路径，确实无法
-取证才记录用户明确给出的 harness/form/model；公共 core 不拥有私有设备登记，不能自行认领设备。
+身份查询只在需要时使用。提交器自行核实当前Committer；自动失败先修读取路径，确无依据时才承接用户明确声明，不从配置、历史或产品名猜模型。
 
-公开质量检查不联网、不调用模型、不读取私仓：
+公开提交使用`CommitOptions.IdentityOnly=true`与显式`ContentGuard`：
+- IdentityOnly不运行旧Gate/Preflight或Author策略门禁；Author是默认值，也可显式选择。
+- ContentGuard仅检查本次暂存内容的新增泄密信号，绑定检查前后及实际提交的tree。
+- 未传ContentGuard的IdentityOnly调用方不额外检查内容，原私仓行为保持。
+- 旧Gate模式保留给原调用方，不自动变为新的公开默认。安装版eacli按自己的core pin运行，不能把源码修改冒充设备升级。
+
+Git原生的冲突、签名、权限和hooks仍生效，不覆盖仓外hooks。提交后核实实际署名；结果未知或内容后置核验失败时保留现场，不自动重放或推送。
+push绑定捕获的SHA与唯一目的地，普通推送后读回匹配才称已核实，不强推。
+
+## 公开内容与主动工具
 
 ```bash
-# 只读预览未提交修改；提交器使用 index，CI 使用 head + 固定 base SHA。
-go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false ./cmd/ea-quality quick --scope worktree
-# 更新生成区，不改报告正文或元数据。
+# 提交用index，工作区预览用worktree，CI用head和固定base。
+go -C packages/everagent-core run ./cmd/ea-quality disclosure --scope worktree
+# 需要更新索引时显式调用，不改报告原文。
 go -C packages/everagent-core run ./cmd/ea-quality index --write
 ```
 
-`quick` 按变更选择报告/Context/Go 回归；`full` 扩大检查。`context`、`privacy`、`links`、`index`、
-`scripts`、`policy`、`catalog`、`report --report <仓内路径>`、`sampling` 是按问题使用的入口，
-不要求每次全部运行。输出 JSON；失败非零。`go run` 本身将非零状态折叠为1，需区分参数错误时
-使用构建后的 CLI；ecommit 已保留实际退出码。
-`quick/full` 默认只返回检查状态、完整错误/告警计数和最多16条位置，错误优先；`--details` 展开全部诊断，
-不因输出精简而跳过检查，也不把未展示的历史告警称为不存在。
+`quick`是disclosure的兼容入口，输出`mode=public-disclosure`；不校验报告评分、Context预算、索引或测试结果。
+明显新增凭据及受限原始材料阻断；路径、IP等启发式线索提示。扫描不读取私有仓、不调用模型、不输出匹配原文，也不是完整隐私或二进制内容审计。
 
-## 所有权
+`full/context/privacy/report/policy/sampling/catalog/scripts/links/index`均是主动工具。旧严格报告合同与历史评估规则保留供明确需要时使用，不约束所有新笔记或草稿，不自动重打分或运行模型回放。
+`full`可能从捕获快照运行Go测试；它不是提交前置。JSON与非零退出如实报告，`--details`展开诊断；`go run`会折叠子程序的非零退出码，正式提交脚本保留实际状态。
 
-| 内容 | Owner |
+## 实现位置
+
+| 内容 | 位置 |
 |---|---|
-| 版本与会话组合 | `core.go`、`session.go` |
-| 调用方进程、harness 与宿主 | `process*.go`、`identity.go`、`desktop.go` |
-| 有界读取配置 | `config.go`；`src/everagent_core/identity/readers.json` |
-| 原生模型证据、声明及失效 | `observations*.go`、`kimi.go`、`declarations.go` |
-| DSH 官方 shellEnv 插件 | `src/everagent_core/identity/dsh_plugin.mjs`；产品接口要求的 JS 适配，不运行 Python |
-| OpenCode V1 官方 shell.env 插件 | `src/everagent_core/identity/opencode_plugin.mjs`；仅转交调用绑定，验证和读取逻辑在 `opencode.go` |
-| JSON 形状 | `src/everagent_core/schemas/`；保留资产路径，不代表仍有 Python 包 |
-| Git 参数、消息、双身份与 tree 核验 | `git.go` |
-| 公开质量与快照 | `internal/publicquality/`；`cmd/ea-quality` |
-| 学习工作台文件与渲染适配 | `internal/learning/`；`cmd/ea-learning-index`，复用上述报告目录 |
-| 公开提交绑定 | `cmd/ea-git`；`scripts/ecommit.sh` |
-| 报告模型资格、评分与不可变版本 | [公开策略](../../config/report-quality-policy.json)；core 不复制另一套策略 |
+| 版本、会话与调用方 | `core.go`、`session.go`、`process*.go`、`identity.go`、`desktop.go` |
+| 模型观测、声明与失效 | `observations*.go`、`kimi.go`、`declarations.go` |
+| 有界读取配置 | `config.go`、`src/everagent_core/identity/readers.json` |
+| DSH/OpenCode原生绑定 | `src/everagent_core/identity/*_plugin.mjs` |
+| Git与公开入口 | `git.go`、`cmd/ea-git`、`scripts/ecommit.sh` |
+| 新增内容保护及可选审查 | `internal/publicquality/`、`cmd/ea-quality` |
+| 学习工作台读取 | `internal/learning/`、`cmd/ea-learning-index` |
 
-Git Author 只认目标仓的策略，公开入口读取 index 中的 `config/git-policy.json`。提交前后复验
-当前模型证据、Author 和 index；提交后再核对真实 commit。外部 hooksPath 不被替换。
-消息和显式 trailer 沿用 Git 原生语义。push 绑定捕获的 SHA 与唯一实际目的地，读回匹配才算已核实。
-
-质量门检查构建源码/依赖锁与待审快照一致；影响 core 时把同一模块快照导出到仓外 scratch 运行
-Go test/vet，不使用未暂存的实现或自动下载工具。测试使用临时 HOME、最小环境和既有 Go 缓存，不继承
-调用方的会话变量、认证环境或 SSH agent。该环境不是安全沙箱，源码绑定也不是对恶意检查器的防篡改证明。
-生成索引逐文件原子替换，失败返回已写清单，不宣称多文件事务。
+原生日志只取与当前调用绑定的必要元数据；不读取其他会话正文。Kimi枚举不启动CLI、更新或重建索引；原生模型字段不足的客户端继续保留unknown/requested，不以配置自动放行。
 
 ## 验证边界
 
-```bash
-go -C packages/everagent-core test ./...
-go -C packages/everagent-core vet ./...
-```
+代码改动按需运行对应Go测试与vet，CI按路径选择，不在每次提交重复整套回归。
+合成回归不等于真实客户端、模型调用、设备安装或跨平台验收。历史报告、evidence/review和policy原件不因本次简化迁移。
 
-合成回归覆盖当前会话绑定、九类读取器的支持/未知边界、声明失效、Git 参数与 hook、公开隐私、
-来源/复核 SHA、独立会话、报告范围与旧策略、转写和 Context。真实客户端、模型调用、设备安装及
-跨平台运行仍需各自证据，交叉编译不等于实机通过。
-
-Kimi CLI 的身份读取与 `KimiSessions` 只读原生 cwd 对应的元数据，不启动 CLI、应用更新或重建索引。
-共享枚举器供 Context 消费；它不读 wire 正文，也不证明其中某个会话正在执行或模型已核实。
-
-OpenCode V1/V2目前只能核实请求模型，不是provider返回型号；V1另需加载官方shell.env绑定插件。Cursor只有harness/声明
-绑定。这些缺口保持 unknown/requested，不能仅凭配置放行提交。Context 检查会复验已登记报告和历史
-行为记录，不执行新模型回放，也不把过期 A/B 结果当成本次改进证据。
-
-完整契约见 [AGENT_SESSION](../../docs/AGENT_SESSION.md)、[Git 协议](../../docs/PROTOCOL_COMMON.md)
-和 [报告质量门](../../docs/REPORT_QUALITY_GATE.md)。[学习工作台](../../apps/everagent-learning/README.md)的
-Node 宿主使用本 module 的 Go 阅读适配器；报告作者工具及既有实验脚本不是 Go 身份/提交/质量链的运行依赖。
+契约见[身份与会话](../../docs/AGENT_SESSION.md)、[提交与公开安全](../../docs/PROTOCOL_COMMON.md)和[写作指南](../../docs/REPORT_WORKFLOW.md)。

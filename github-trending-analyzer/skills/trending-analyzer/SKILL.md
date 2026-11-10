@@ -18,10 +18,10 @@ description: "Analyze GitHub Trending for a requested day, week, or month, resea
 ## 证据与写作
 
 - Stars、Forks、协议、最近推送和活跃度数字必须现查；typed capability 未覆盖时才用 `gh api`。
-- 单 repo 报告遵守 repo-research 的四轮证据与七章结构。
+- 单repo报告按repo-research核对实际源码与来源，结构按问题选择，不凑固定轮次或章数。
 - 汇总说明抓取时点、榜单周期、语言筛选和缓存阈值。
 - 趋势判断至少引用榜单数据或单 repo 证据；把事实、维护者计划与 `[推测]` 分开。
-- 新报告使用标准 frontmatter、`quality_schema: "report-v2"`、`quality_tier: "standard"` 与 `semantic_tags`。
+- 新报告使用需要的元数据并明确草稿/完成状态，详见[写作指南](../../../docs/REPORT_WORKFLOW.md)；不默认加入质量评分合同。
 
 ## 辅助命令
 
@@ -44,6 +44,6 @@ python3 scripts/report_generator.py summary daily '<repos_json>' output.md '<mis
 go -C packages/everagent-core run ./cmd/ea-quality index --write
 ```
 
-提交器自动检查受影响报告和索引；只预览时按[共享质量门](../../../docs/PROTOCOL_COMMON.md#d-报告质量门)运行，不重复检查。
+索引按需要更新，不作为提交前置。提交器只核实Committer与新增公开内容；明确需要时才运行相应内容审查。
 
 每次任务都做简短反思；只有跨 repo 可复用或高风险的新发现才以最小 delta 更新 skill/reference。

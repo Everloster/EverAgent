@@ -410,10 +410,10 @@ func TestGateSummaryPreservesFailureAndCounts(t *testing.T) {
 
 const publicCIWorkflow = "jobs:\n  validate:\n    steps:\n      - run: |\n          go -C packages/everagent-core test -mod=readonly ./...\n          go -C packages/everagent-core vet -mod=readonly ./...\n          go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false \\\n            ./cmd/ea-quality quick --scope head --base \"$BASE_REVISION\"\n"
 
-func TestPublicCIWiringRequiresExecutableGoSteps(t *testing.T) {
+func TestPublicCIWiringRequiresDisclosureNotUnconditionalTests(t *testing.T) {
 	base := map[string]string{
 		"scripts/ecommit.sh":              "./cmd/ea-git",
-		moduleDir + "/cmd/ea-git/main.go": "core.Commit( publicquality.Check(",
+		moduleDir + "/cmd/ea-git/main.go": "core.Commit( publicquality.CheckDisclosure(",
 	}
 	workflow := publicCIWorkflow
 	for _, tc := range []struct {
@@ -425,10 +425,10 @@ func TestPublicCIWiringRequiresExecutableGoSteps(t *testing.T) {
 		{"echoed", strings.ReplaceAll(workflow, "go -C", "echo go -C"), false},
 		{"ignored-failures", strings.ReplaceAll(workflow, "- run: |", "- continue-on-error: true\n        run: |"), false},
 		{"disabled-step", strings.ReplaceAll(workflow, "- run: |", "- if: false\n        run: |"), false},
-		{"narrowed-tests", strings.Replace(workflow, "test -mod=readonly ./...", "test -mod=readonly ./internal/publicquality", 1), false},
-		{"filtered-tests", strings.Replace(workflow, "test -mod=readonly", "test -mod=readonly -run '^$'", 1), false},
-		{"listed-tests", strings.Replace(workflow, "test -mod=readonly", "test -mod=readonly -list .", 1), false},
-		{"skipped-test-execution", strings.Replace(workflow, "test -mod=readonly", "test -mod=readonly -exec true", 1), false},
+		{"narrowed-tests", strings.Replace(workflow, "test -mod=readonly ./...", "test -mod=readonly ./internal/publicquality", 1), true},
+		{"no-unconditional-tests", strings.ReplaceAll(strings.ReplaceAll(workflow, "          go -C packages/everagent-core test -mod=readonly ./...\n", ""), "          go -C packages/everagent-core vet -mod=readonly ./...\n", ""), true},
+		{"disclosure-name", strings.Replace(workflow, "ea-quality quick", "ea-quality disclosure", 1), true},
+		{"wrong-check", strings.Replace(workflow, "ea-quality quick", "ea-quality catalog", 1), false},
 		{"skipped-gate-execution", strings.Replace(workflow, "run -mod=readonly", "run -mod=readonly -exec true", 1), false},
 		{"no-base", strings.Replace(workflow, " --base \"$BASE_REVISION\"", "", 1), false},
 	} {
@@ -561,7 +561,7 @@ func contextFixture(t *testing.T) (map[string]string, string) {
 	budgets["discoverable_skill_count_max"] = 1
 	files[instructionPolicy] = jsonText(t, Object{"schema_version": 1, "budgets": budgets, "owners": Object{"ace_context_ab_result": "evals/results/fixture.json"}})
 	files["evals/results/fixture.json"] = `{"schema_version":1,"comparison":{"accepted":false}}`
-	files["scripts/ecommit.sh"], files[moduleDir+"/cmd/ea-git/main.go"] = "./cmd/ea-git", "core.Commit( publicquality.Check("
+	files["scripts/ecommit.sh"], files[moduleDir+"/cmd/ea-git/main.go"] = "./cmd/ea-git", "core.Commit( publicquality.CheckDisclosure("
 	files[".github/workflows/quality.yml"] = publicCIWorkflow
 	item := Object{"id": "case", "prompt": "Read the source", "expected_route": "root", "artifact_policy": "required", "max_initial_project_files": 2,
 		"quality_tier": "standard", "required_checks": []any{"quality_gate"}, "expected_skill_paths": []any{reportSkill}, "forbidden_skill_paths": []any{},

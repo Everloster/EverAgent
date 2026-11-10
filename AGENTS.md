@@ -1,85 +1,13 @@
-# EverAgent — 主协议
+# EverAgent
 
-<!-- BEGIN MANAGED EACLI TOKEN PLAN POLICY -->
-## Token Plan-first（由 everagentcli 管理）
+EverAgent 是个人学习与研究的公开工作台，维护报告、实验代码和知识索引，将材料转化为可独立阅读、可追溯、可复用的知识。私有设备、账号与原始私人资料不放入本仓。
 
-联网搜索、网页读取、公开 GitHub、图像/视频理解、结构化数据和媒体生成，**先走 eacli 的三家 Token Plan 能力面**：
+## 目标
 
-1. 已知 capability 直接 `eacli tool invoke --capability <id> --input-json ... --device auto --request-id <stable-id> --json`；调用内置选择并返回证据，不再机械预跑 select。
-2. 不确定契约时按需 `tokenplan catalog --capability <id> --json`，未知 ID 才查短目录；`tool select` 用于解释选择，`tokenplan doctor|verify` 仅在安装、认证或实调诊断时使用，不逐任务全量巡检。
-3. 已有 typed 能力不绕过 eacli 调 provider MCP、mcporter、mmx 或私有参数。CLI 不可用或尚未覆盖时才最小降级并记录原因，优先修正式入口。
-4. 凭据仅在执行设备本地解析，不进 prompt、argv、RPC、仓库或结果。只读才允许目录内回退；生成与未知执行不自动重放，沿原 request-id 查询。
-5. 启动/恢复保留项目 context-file，禁止跳过项目指令；Claude Code 由 `CLAUDE.md` 的 `@AGENTS.md` 导入。此策略不是沙箱，不替代用户授权或仓库安全边界。
+长期积累可信、有用的知识与实践：来源可查，事实与推断分开，未验证项如实标注。按任务需要选择深度与复核，不为模板、分数或流程制造额外产物。
 
-## Personal Context-first（由 everagentcli 管理）
+## 入口
 
-涉及已有积累时，**取任务所需最小上下文，再回 owner**，不用每次加载全量目录或历史：
-
-1. 已知领域用 `eacli context get --domain <id> --json`；需要定位才用 `context search --query <text> --json` 或 `context catalog --json`。目录只负责发现、敏感级别与 owner，不是第二份事实。
-2. 接班或核对其他会话的原话/近期工作时按需 `eacli context recent --json`；旧安装按帮助使用 `context center query`。私有主题用文件/stdin；来源、时间、覆盖和缺口必须保留，role=user 不证明真人、自述不证明交付。
-3. 历史原话不替代当前用户纠正、Git、实际部署或现行 owner；路径/SHA 只证明出处。读不全就回读原文或标未知，不把旧记录冒充当前状态。
-4. `EverAgent-infra` 的私有上下文不得复制到公开仓。CLI 不可用才最小直接读取 owner，并记录原因；不默认通读整个仓库。
-5. `eacli context verify --repo all --json` 只用于资料维护/门禁，检查来源与章节漂移，不自动修复，也不证明内容真实新鲜。
-<!-- END MANAGED EACLI TOKEN PLAN POLICY -->
-
-> 个人学习与研究工作台。核心资产是可独立阅读、可追溯的报告，以及由报告沉淀出的知识索引。
-
-## §0 核心入口
-
-以下文件是条件路由，不是启动时的必读清单：
-
-| 当前任务 | 读取的唯一公共 Owner |
-|---|---|
-| 研究证据、来源与写作判断 | [METHODOLOGY.md](./METHODOLOGY.md) 的相关章节 |
-| 新建、续写或审计长期报告 | [`everagent-report`](./.agents/skills/everagent-report/SKILL.md) |
-| 报告流程与完成定义 | [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md) |
-| 证据账本、独立复核与模型升级 | [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md) |
-| Context 或 Harness 调整 | [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md) |
-| 身份、会话与脚本契约 | [AGENT_SESSION.md](./docs/AGENT_SESSION.md) |
-| 发现同伴、协作与临时空间收尾 | [AGENT_COLLABORATION.md](./docs/AGENT_COLLABORATION.md) |
-| commit、push 或安全边界 | [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) |
-| 新增或迁移报告元数据 | [REPORT_METADATA.md](./docs/REPORT_METADATA.md) |
-
-## §1 按意图路由
-
-路由看用户意图，不看当前目录。确定项目后读取该项目 `AGENTS.md`；未命中 A–F 的任务在根目录完成。
-
-| 类 | 意图 | 项目 | 默认产出 |
-|---|---|---|---|
-| A | 学习、精读、深入研究概念/论文/文章 | `ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning` | 研究报告 |
-| B | 用最小可运行 demo 理解 AI 技术 | `ai-practice` | 代码、真实输出、实验笔记 |
-| C | 播客或视频学习 | `podcast-learning` | 静默转写、润色稿、报告 |
-| D | GitHub repo 或 trending | `github-trending-analyzer` | 裸链接口头介绍；明确深挖才写报告 |
-| E | 查网站、抓公开数据、整理清单 | `web-surfing` | 直接答复；有长期价值时归档 |
-| F | 设备、网络、服务和基础设施 | `../EverAgent-infra/` | 修复与私有档案 |
-
-只有同类请求反复出现、需要专用脚本或需要长期索引时，才新增项目。
-
-## §2 Context 加载
-
-1. 先读项目 `AGENTS.md`，再选一个与任务直接匹配的 skill 或 reference；够用即停。
-2. 涉及既有积累时按顶部 Personal Context-first 获取最小切片，不默认扫描全部报告、wiki 或 skills。
-3. `PROFILE.md` 只用于适配读者或记录用户明确偏好；`MAP.md` 只用于覆盖判断与长期方向；`open-questions.md` 只用于续接或沉淀问题。
-4. 模型补丁不写入公共 context；有稳定 overlay 时按需注入，否则依赖机器策略与行为评估。
-
-## §3 执行边界
-
-- 默认独立完成；跨设备使用基础设施不等于多 Agent 协作。用户明确要求协同后，按[协同协议](./docs/AGENT_COLLABORATION.md)选择同伴；用户日常设备的 Agent 与可见空间由用户决定。
-- 启动/恢复先 `eacli session current` 与 `eacli agent list --json`；旧安装用 `session peers`。身份失败先诊断修复，声明仅用户兜底。协作前显式 `--check-activity` 并核实目标，不每轮扫描或读取所有会话正文。
-- 主题、来源或交付物明确时直接推进，不停在能力确认、列计划或首版实现。开放式学习请求若缺少方向且选题会实质改变结果，先问一次当前兴趣；确认后按需更新 `MAP.md`。
-- 开始前在当前会话中明确目标、交付物、必要检查和停止条件；无需把一次性任务合同写入仓库。
-- 只有缺失信息会实质改变结果，或外部写入、发布、生产数据、权限扩大及不可逆操作尚未获授权时才询问。
-- 最终外部发布仍需确认时，先完成本地可审阅产物与必要检查，再停在发布动作前。
-- 验证范围与改动风险匹配：先做受影响检查；只有失败、跨模块影响或未解决风险才扩大，不重复运行已通过且未受影响的检查。
-- 用户明确指令优先于 skill 的一般建议。若某个 skill 迫使任务暂停、偏离或留有未完成项，指出具体文件和适用规则。
-
-## §4 全局不变量
-
-- **语言**：项目沟通、报告正文和 commit 描述使用中文；代码、命令、专有名词与原文引用保持原样。
-- **证据**：未读内容不得推测；数字和知识截止后的事实必须可追溯；推断标 `[推测]` 或 `[待验证]`。
-- **安全**：遵守 [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A；公开仓不得写入私有设备、账号、网络或凭据信息。
-- **提交**：用 `scripts/ecommit.sh`；核实失败按 [身份修复](./docs/AGENT_SESSION.md#自动核实失败的修复路径) 诊断修复，用户指定兜底；模型仍无依据时禁止提交。
-- **工具**：做工具或代码前依次检查官方 CLI、官方 MCP/SDK、成熟开源方案，再考虑自写；联网遵守顶部 Token Plan-first。
-- **知识维护**：wiki 只随报告或明确请求做最小更新；PROFILE 只记录用户真实表达。
-
-项目结构与人类导航见 [README.md](./README.md)。F 类细节始终留在并排私有仓 `../EverAgent-infra/`。
+- **写作与资料**：[写作与报告指南](docs/REPORT_WORKFLOW.md)统一草稿、元数据和按需复核；需要深入研究方法时读[METHODOLOGY.md](METHODOLOGY.md)。
+- **领域任务**：按用户意图进入对应项目并读取其`AGENTS.md`；已有内容按需检索，不默认通读整个资料库。
+- **工具与交付**：需要时查`eacli --help`；公开提交用`scripts/ecommit.sh`，边界见[提交与公开安全](docs/PROTOCOL_COMMON.md)。只有用户明确要求协作时才按[协同说明](docs/AGENT_COLLABORATION.md)复用同伴，不擅自派工或改会话。

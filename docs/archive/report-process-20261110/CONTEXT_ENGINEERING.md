@@ -1,0 +1,109 @@
+# EverAgent Context Engineering
+
+> 目标：让项目 context 随模型和 Harness 演进，同时保留可追溯、可评估、可回滚的治理方式。
+
+## 分层
+
+| 层 | Owner | 放什么 | 避免什么 |
+|---|---|---|---|
+| 常驻项目层 | `AGENTS.md` | 安全不变量、意图路由、权限边界、关键入口 | 教程、历史备忘、模型临时补丁 |
+| 任务发现层 | skill name + description | 窄而清楚的触发条件 | 完整功能清单、宽泛“只要相关就用” |
+| 工作流层 | `SKILL.md` | 决策流程、输入输出、必要约束 | 复制所有参考资料 |
+| 专项知识层 | references / `METHODOLOGY.md` / 领域文档 | 仅本任务需要的详细方法和 schema | 默认全部加载 |
+| 确定性层 | scripts / hooks / CI | 能机械判断的格式、安全与一致性规则 | 依赖模型记住重复口令 |
+| 单次任务层 | 用户 prompt | 目标、交付物、授权、完成与停止条件 | 永久化一次性偏好 |
+
+这个结构同时吸收两类看似相反的证据：
+
+- OpenAI 对 GPT-6 Astra 的建议强调缩短发现层和常驻层，减少冲突与无关上下文；
+- ACE（Agentic Context Engineering）强调保留详细领域经验，避免反复整篇压缩造成 brevity bias 与 context collapse。
+
+二者可以同时成立：**入口保持小，知识保持全，细节按需加载，更新使用局部 delta。**
+
+## 指令生命周期
+
+新增或修改一条长期规则时记录四件事：
+
+1. **触发条件**：什么任务需要它；
+2. **证据**：哪次失败、用户偏好或安全要求支持它；
+3. **Owner**：应属于根协议、领域协议、skill、reference 还是脚本；
+4. **复核条件**：模型升级、工具替换或连续任务无再现时，何时重新评估。
+
+只出现一次且风险低的问题留在任务报告或 commit 中。跨任务重复出现，或一次出现就造成严重风险的问题，才进入长期 context。
+
+## ACE 增量循环
+
+```text
+执行任务（Generator）
+  → 基于产物和门禁识别具体成功/失败（Reflector）
+  → 形成一条最小、带作用域的 delta（Curator）
+  → 用历史任务回放验证
+  → 保留、修正或撤销
+```
+
+Curator 不重写整份 context。完整重写容易丢失例外、证据来源和仍有效的旧规则。
+
+需要从多个小 delta 中选优时，使用[有界 Harness 实验合同](./HARNESS_EXPERIMENTS.md)：固定执行配置、
+独立样本和验收，所有失败保留；没有合格新候选就保持基线。
+
+## 模型与 Harness 适配
+
+- 仓库中的长期规则默认保持模型无关。
+- 模型特有倾向不进入公共 context；Harness 有稳定 overlay 时按需注入，没有载体时如实依赖机器策略与行为评估，不承诺不存在的配置层。
+- 升级模型时重点回放：自主推进、澄清、工具选择、测试范围、子任务委派和停止时机。
+- 新模型已经稳定具备的通用能力，不继续用仓库规则逐步教一遍。
+- Harness 能确定性保证的规则迁到代码；文本只保留调用条件和失败含义。
+- 报告模型角色、额度偏好和升级顺序由 [`config/report-quality-policy.json`](../config/report-quality-policy.json) 统一维护，具体流程见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
+
+## 发现面与 Owner
+
+- 自动发现面只放 `.agents/skills/`；当前保持一个报告路由 skill，避免所有领域模板同时进入发现预算。
+- 各项目 `skills/` 是由领域 `AGENTS.md` 条件链接的按需 playbook。入口只保留模式选择与不变量，模板、故障历史和长示例放进 `references/`。
+- `CLAUDE.md` 只负责导入 `AGENTS.md` 和真正的 Claude 专属 overlay，不复制公共文档目录。
+- 公共规则的唯一 Owner、字节预算和禁止复制片段由 [`config/instruction-policy.json`](../config/instruction-policy.json) 维护，并由 context eval 阻断漂移。
+
+## 预算与指标
+
+- Codex 官方 `AGENTS.md` 合并上限默认 32 KiB；超过上限会停止继续加入文件。
+- Skill 初始发现清单默认最多占上下文窗口 2%；窗口未知时为 8,000 characters。
+- 根协议字节预算采用软警告与硬上限两级：软预算用于提醒复核，硬上限才阻断提交，避免为了几个字节反复压缩稳定规则。
+- 静态预算只用于发现风险。最终判断依赖真实任务的成功率、无效读取、澄清次数、工具调用、compaction、返工和安全结果。
+- 行为回放同时记录 skill precision / recall、无关 context 读取率、澄清率和提前停止率；均值之外必须查看 P10 与零分率。
+
+静态检查由同一 Go 质量门执行，不调用模型：
+
+```bash
+go -C packages/everagent-core run ./cmd/ea-quality context
+```
+
+既有行为实验工具单独保留；生成模板或评分不等于执行了模型回放：
+
+```bash
+python3 scripts/eval_report_context.py --template > /tmp/ace-run.json
+python3 scripts/eval_report_context.py --score /tmp/ace-run.json
+python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json
+```
+
+Context 或 Skill 大改时，先运行受控开工探针。它在重构前后 checkout 上使用相同的 Pi、模型与推理档位，覆盖全部 ACE case 并重复三次；只允许读取，不联网或写入，原始 JSONL 留在临时目录，仓库仅保存归一化结果：
+
+```bash
+python3 scripts/run_ace_context_ab.py \
+  --baseline 4b3811a --candidate HEAD \
+  --full-suite \
+  --repetitions 3 --jobs 3 \
+  --output evals/results/ace-context-ab-YYYYMMDD.json \
+  --markdown docs/ACE_CONTEXT_AB_YYYYMMDD.md
+```
+
+局部 Context 修改默认自动比较两个 snapshot，只运行命中变更领域或 Skill 的 case；根 `AGENTS.md`、`CLAUDE.md` 或任务集变化自动升级为全量。也可用 `--case <id>` 手工指定，或用 `--full-suite` 强制跑全部。开工探针测路由、产物意图、初始文件、Skill 选择和澄清边界；它不替代完整任务。报告完成质量继续由真实 `report-v2` 回放验证，需要判断提前停止、测试范围或最终交付时再运行完整行为模板。
+
+最新通过结果由 `config/instruction-policy.json` 登记为 Owner，并绑定所有 `AGENTS.md`、Skill 入口和 ACE suite 的 SHA-256。结果过期时静态门禁给出告警；只有准备宣称 Context 架构改进、合并大规模路由重构或建立新基线时，才要求完整 A/B。普通报告与局部文档提交不再同步运行 84 次模型探针；需要快速检查单一路由时使用 `--case <id>`。
+
+## 参考
+
+- [OpenAI：Rethinking skills and prompts for GPT-6 Astra](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)
+- [OpenAI：Using GPT-6 — Prompting best practices](https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra.md#prompting-best-practices)
+- [OpenAI：Build skills](https://learn.chatgpt.com/docs/build-skills)
+- [OpenAI：Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+- [Zhang et al.：Agentic Context Engineering](https://arxiv.org/abs/2510.04618)
+- [HumanLayer：Advanced Context Engineering for Coding Agents](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md)

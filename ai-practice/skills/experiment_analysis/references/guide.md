@@ -19,8 +19,6 @@ status: in_progress
 experiment_id: exp_NNN
 notebook: notebooks/{对应.ipynb}    # 若无对应 notebook 则省略此行
 updated_on: YYYY-MM-DD
-quality_schema: "report-v2"
-quality_tier: "standard"
 semantic_tags: ["experiment"]
 ---
 

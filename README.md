@@ -99,9 +99,9 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 - **需要实验的，就实际运行。** 保存输入、输出与适用条件，让读者知道结论在什么范围内成立。
 - **把新认识写回记录。** 报告保留完整分析，Wiki 整理关联，研究地图和未解问题帮助后续任务接着做。
 
-2026-10-15 起新增的报告附有证据与复核记录，由新会话中的 AI 模型对照来源复核。历史报告的复核程度不一，收录数量也不等于通过复核的数量。阅读时仍应结合来源、日期与具体论证判断。
+已有报告保留当时的证据与复核记录；新笔记、草稿与报告按用途选择复核，不再统一要求评分和独立Reviewer。收录不等于通过复核，阅读时仍应结合状态、来源、日期与具体论证判断。
 
-方法与检查范围见[研究方法论](./METHODOLOGY.md)、[报告流程](./docs/REPORT_WORKFLOW.md)和[质量检查说明](./docs/REPORT_QUALITY_GATE.md)。已有成果与缺口见 [AI 学习与实践记录](./AI_PROGRESS.md)。
+方法见[研究方法论](./METHODOLOGY.md)，写作、元数据及按需复核统一见[写作与报告指南](./docs/REPORT_WORKFLOW.md)。已有成果与缺口见 [AI 学习与实践记录](./AI_PROGRESS.md)。
 
 ## 实践中留下的经验
 
@@ -122,7 +122,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 node apps/everagent-learning/start.mjs
 ```
 
-需要 Node.js 20+ 和 Python 3.10+，无需模型账号。[启动说明](./apps/everagent-learning/README.md)也介绍了如何作为 MiniMax Code Mini App 使用。
+需要Node.js 20+及已构建的Go阅读适配器；首次源码构建需要Go 1.27+，日常阅读不需要Python或模型账号。[启动说明](./apps/everagent-learning/README.md)也介绍了如何作为 MiniMax Code Mini App 使用。
 
 **用 Agent 参与研究**：在仓库根目录启动 Agent，保留项目指令加载，再给出材料和想弄清的问题。例如：
 
@@ -138,7 +138,7 @@ git clone https://github.com/Everloster/EverAgent.git
 cd EverAgent
 ```
 
-[AGENTS.md](./AGENTS.md) 是规则入口，Claude Code 经 `CLAUDE.md` 导入。模型访问、联网检索和转写服务需另行配置。其中的 `eacli` 是维护者的私有命令行工具，公开仓不提供；没有它时，Agent 按 AGENTS.md 做最小降级并记录原因。
+[AGENTS.md](./AGENTS.md) 是简短入口，Claude Code经`CLAUDE.md`导入。模型、联网与转写按任务需要配置；eacli提供维护者的跨设备与Token Plan能力，部分桥接脚本会调用它，但公开仓的阅读和Go提交器不依赖eacli、私仓checkout或其他设备在线。缺少某项能力时明确说明，不把维护者的私有环境当成公开仓启动条件。
 
 维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 Go `ea-quality index --write` 生成，命令见该协议；配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
 

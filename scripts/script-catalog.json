@@ -35,7 +35,7 @@
     },
     {
       "id": "git.core",
-      "description": "核实双身份；提交只消费暂存tree，绑定同源质量门、消息和前后身份。",
+      "description": "核实当前Committer并保护新增公开内容；Author不是独立门禁，不运行报告质量或测试流水线。",
       "entrypoint": "packages/everagent-core/cmd/ea-git/main.go",
       "owner": {
         "repository": "EverAgent",
@@ -45,7 +45,7 @@
       "aliases": [
         {
           "path": "scripts/ecommit.sh",
-          "description": "薄Bash入口；构建并调用ea-git commit，不配置Git或跳过门禁。"
+          "description": "薄Bash入口；构建并调用ea-git commit，保留身份与新增内容检查，不配置Git或运行质量回归。"
         }
       ],
       "platforms": [
@@ -71,7 +71,7 @@
     },
     {
       "id": "quality.public",
-      "description": "检查公开内容、报告来源和复核快照、Context及索引；不调用模型或改历史产物。",
+      "description": "disclosure/quick只查新增公开内容；其余质量、Context和索引工具按需使用，不调用模型或改历史原件。",
       "entrypoint": "packages/everagent-core/cmd/ea-quality/main.go",
       "owner": {
         "repository": "EverAgent",
@@ -89,10 +89,10 @@
         "Go >=1.27",
         "匹配go.mod/go.sum的依赖缓存"
       ],
-      "input": "ea-quality quick|full|context|catalog|report|privacy|links|policy|sampling|scripts|index [--scope index|worktree|head]",
+      "input": "ea-quality disclosure|quick|full|context|catalog|report|privacy|links|policy|sampling|scripts|index [--scope index|worktree|head]",
       "output": "质量结果JSON；index --write更新三个生成视图",
       "side_effects": [
-        "quick/full按影响面运行仓内Go回归",
+        "仅显式full可能运行快照中的Go回归；disclosure/quick不运行测试",
         "仅index --write写生成视图"
       ],
       "authorization": {

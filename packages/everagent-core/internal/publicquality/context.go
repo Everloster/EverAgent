@@ -247,7 +247,7 @@ func checkPublicBindings(s *Snapshot) []Finding {
 	f := findingList{file: "scripts/ecommit.sh", items: []Finding{}}
 	wrapper, _ := s.Text(f.file)
 	engine, _ := s.Text("packages/everagent-core/cmd/ea-git/main.go")
-	f.require(strings.Contains(wrapper, "./cmd/ea-git") && strings.Contains(engine, "core.Commit(") && strings.Contains(engine, "publicquality.Check("), "CONTEXT_COMMIT_BINDING", "提交入口须绑定共享Go core与同一公开质量门。")
+	f.require(strings.Contains(wrapper, "./cmd/ea-git") && strings.Contains(engine, "core.Commit(") && strings.Contains(engine, "publicquality.CheckDisclosure("), "CONTEXT_COMMIT_BINDING", "提交入口须绑定共享Go身份与新增公开内容检查。")
 	workflowPath := ".github/workflows/quality.yml"
 	text, e := s.Text(workflowPath)
 	var workflow map[string]any
@@ -270,15 +270,13 @@ func checkPublicBindings(s *Snapshot) []Finding {
 		}
 	}
 	commands := strings.Join(runs, "\n")
-	// A static wiring check, not proof that GitHub ran it. Require real,
-	// mandatory command lines, not a comment/echo or a best-effort step.
+	// Only disclosure is unconditional. Go/Python tests are selected by changed
+	// paths; this diagnostic must not restore an unconditional test pipeline.
 	for _, check := range []struct{ label, pattern string }{
-		{"Go test ./...", `(?m)^\s*go[ \t]+-C[ \t]+packages/everagent-core[ \t]+test[ \t]+(?:-(?:mod=readonly|count=1|timeout=[1-9][0-9]*[smh]|race|v)[ \t]+)*\./\.\.\.[ \t]*$`},
-		{"Go vet ./...", `(?m)^\s*go[ \t]+-C[ \t]+packages/everagent-core[ \t]+vet[ \t]+(?:-(?:mod=readonly|v)[ \t]+)*\./\.\.\.[ \t]*$`},
-		{"Go head gate", `(?m)^\s*go[ \t]+-C[ \t]+packages/everagent-core[ \t]+run[ \t]+(?:-(?:mod=readonly|trimpath|buildvcs=false)[ \t]+)*\./cmd/ea-quality[ \t]+quick[ \t]+--scope[ \t]+head[ \t]+--base[ \t]+[^\n;&|]+$`},
+		{"changed public content", `(?m)^\s*go[ \t]+-C[ \t]+packages/everagent-core[ \t]+run[ \t]+(?:-(?:mod=readonly|trimpath|buildvcs=false)[ \t]+)*\./cmd/ea-quality[ \t]+(?:disclosure|quick)[ \t]+--scope[ \t]+head[ \t]+--base[ \t]+[^\n;&|]+$`},
 	} {
 		if !regexp.MustCompile(check.pattern).MatchString(commands) {
-			f.items = append(f.items, issue(workflowPath, "CONTEXT_CI", "CI缺少必需Go检查："+check.label))
+			f.items = append(f.items, issue(workflowPath, "CONTEXT_CI", "CI缺少新增公开内容检查："+check.label))
 		}
 	}
 	return f.items

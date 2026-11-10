@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stable public entry: shared Go identity/Git core and this checkout's quality gate.
+# Public entry: verified Committer plus changed-content disclosure; no quality pipeline.
 set -euo pipefail
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 _BUILD_DIR="$(mktemp -d "${TMPDIR:-/tmp}/everagent-git.XXXXXXXX")"

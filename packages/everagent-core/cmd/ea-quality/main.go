@@ -16,14 +16,14 @@ func main() { os.Exit(run()) }
 func run() int {
 	args := os.Args[1:]
 	if len(args) == 0 {
-		fmt.Fprintln(os.Stderr, "ea-quality <quick|full|context|catalog|privacy|links|index|scripts|policy|report|sampling> --repo-root <checkout> [--scope index|worktree|head] [--base <full-sha>] [--write]")
+		fmt.Fprintln(os.Stderr, "ea-quality <disclosure|quick|full|context|catalog|privacy|links|index|scripts|policy|report|sampling> --repo-root <checkout> [--scope index|worktree|head] [--base <full-sha>] [--write]; quick is the lightweight disclosure compatibility entry, other audits are opt-in")
 		return 2
 	}
 	command := args[0]
 	f := flag.NewFlagSet("ea-quality "+command, flag.ContinueOnError)
 	root := f.String("repo-root", "../..", "public checkout")
 	defaultScope := "worktree"
-	if command == "quick" || command == "full" {
+	if command == "quick" || command == "disclosure" || command == "full" {
 		defaultScope = "index"
 	}
 	scope := f.String("scope", defaultScope, "snapshot scope")
@@ -45,8 +45,12 @@ func run() int {
 	defer stop()
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Minute)
 	defer cancel()
-	if command == "quick" || command == "full" {
-		out, err := q.Check(ctx, q.CheckOptions{Root: *root, Scope: *scope, Base: *base, TempRoot: *tempRoot, Full: command == "full"})
+	if command == "quick" || command == "disclosure" || command == "full" {
+		check := q.CheckDisclosure
+		if command == "full" {
+			check = q.Check
+		}
+		out, err := check(ctx, q.CheckOptions{Root: *root, Scope: *scope, Base: *base, TempRoot: *tempRoot, Full: command == "full"})
 		var result any = out
 		if !*details {
 			result = out.Summary()

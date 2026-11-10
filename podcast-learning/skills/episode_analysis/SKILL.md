@@ -1,7 +1,7 @@
 # Skill: episode_analysis — 播客总结/报告模板
 
 > 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../../METHODOLOGY.md)；按当前任务读取相关章节。本文件只保留领域差异。
-> 前置：已取得完整原文与润色稿，默认存放在仓库外私有目录。节目观点以原始材料为据；转写疑点需核验，外部事实另附来源。
+> 完整节目分析须以足够的原始材料为据，转写与润色稿默认留在仓外私有目录。来源不足时可先保存明确标注范围的草稿，不冒充完整学习；转写疑点需核验，外部事实另附来源。
 
 ---
 
@@ -33,8 +33,6 @@ transcript_path: null
 polished_transcript_path: null
 status: in_progress
 updated_on: YYYY-MM-DD
-quality_schema: "report-v2"
-quality_tier: "important"
 report_depth: "standard"
 reader_contract: "standalone"
 semantic_tags: ["podcast"]
@@ -46,7 +44,7 @@ semantic_tags: ["podcast"]
 ## 背景
 - 节目/嘉宾是谁，为什么值得听（可查证的客观信息，来源标注）。
 
-## 核心观点（3-6 条）
+## 核心观点与论证
 - 观点：……（如有原话，引用转写原文，标大致时间戳）
 
 ## 关键概念 / 人物 / 数字
@@ -71,7 +69,7 @@ semantic_tags: ["podcast"]
 
 `cross_episode` / `concept_tracking` 复用上面骨架，把「核心观点」换成跨期对比表或演变时间线。
 
-`standard/deep` 报告需完整展开来源主线，不以固定标题或小节数量判断深度。按原始来源建立 evidence 的 `source_coverage`，由独立 Reviewer 留下 `source_content_map`；覆盖表留在质量文件，正文选择方便读者的导航与讲解结构。详细合同见 [report-guide §三](../report-writing/references/report-guide.md#三报告写作规范模板-v2)。
+`standard/deep`报告需完整展开来源主线，不以固定标题、小节数量或分数判断深度。先对照原始内容核对覆盖，正文选择方便读者的结构；只有用户明确采用独立复核或旧严格合同，才另建覆盖表和质量附件。写作细节见[report-guide §三](../report-writing/references/report-guide.md#三报告写作规范模板-v2)，默认流程以根写作指南为准。
 
 > 观点成体系、摘要装不下推理路径时，改用 [qa_chain](../qa_chain/SKILL.md) 的问答链格式（`format: qa_chain`）。
 

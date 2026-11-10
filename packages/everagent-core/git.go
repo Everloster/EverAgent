@@ -324,7 +324,10 @@ func signingEvidence(identity Object) string {
 type CommitOptions struct {
 	// IdentityOnly lets a caller require only verified Committer attribution.
 	// Other repositories retain their explicitly supplied quality policy.
-	IdentityOnly   bool
+	IdentityOnly bool
+	// ContentGuard is an optional, caller-owned check of the exact staged content.
+	// Unlike Gate/Preflight it may accompany IdentityOnly (e.g. public disclosure).
+	ContentGuard   func(context.Context, string, []string) error
 	Directory      string
 	IdentityReader func() Object
 	AuthorReader   func() (Author, error)
@@ -403,7 +406,32 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		return e
 	}
 	if options.IdentityOnly {
-		// No quality callback, source snapshot, asset check or policy re-read.
+		// No quality gate, asset check or Author-policy re-read. A public caller
+		// may explicitly check disclosure; bind that check to the committed tree.
+		guardedTree := ""
+		if options.ContentGuard != nil {
+			guardedTree, e = gitRead(ctx, root, env, "write-tree")
+			if e != nil {
+				return e
+			}
+			if e = options.ContentGuard(ctx, root, env); e != nil {
+				return e
+			}
+			after, err := gitRead(ctx, root, env, "write-tree")
+			if err != nil || after != guardedTree {
+				return blocked("公开内容检查期间暂存区已变化；请重新提交", 3)
+			}
+		}
+		cleanEnv := env[:0]
+		for _, entry := range env {
+			if !strings.HasPrefix(entry, "EVERAGENT_PUBLIC_CONTENT_TREE=") {
+				cleanEnv = append(cleanEnv, entry)
+			}
+		}
+		env = cleanEnv
+		if guardedTree != "" {
+			env = append(env, "EVERAGENT_PUBLIC_CONTENT_TREE="+guardedTree)
+		}
 		// Git still owns normal commit errors and the caller's configured hooks.
 		c := exec.CommandContext(ctx, "git", append([]string{"--no-replace-objects", "commit"}, forwarded...)...)
 		c.Dir, c.Env, c.Stdin, c.Stdout, c.Stderr = root, env, options.Stdin, options.Stdout, options.Stderr
@@ -413,6 +441,12 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		for _, p := range parts {
 			if p.key == "--dry-run" {
 				return nil
+			}
+		}
+		if guardedTree != "" {
+			tree, err := gitRead(ctx, root, env, "rev-parse", "HEAD^{tree}")
+			if err != nil || tree != guardedTree {
+				return blocked("commit 已生成，但不是已检查的公开内容；保留现场，禁止推送", 3)
 			}
 		}
 		actual, err := gitRead(ctx, root, env, "show", "-s", "--format=%cn <%ce>", "HEAD")

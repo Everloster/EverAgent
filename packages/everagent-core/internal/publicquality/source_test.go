@@ -249,6 +249,61 @@ func TestPrivacyMediaAndTranscriptPermission(t *testing.T) {
 		t.Fatal("deleted permission did not recheck unchanged source")
 	}
 }
+func TestDisclosureChecksNewMaterialOnly(t *testing.T) {
+	key := "api_" + "key"
+	secret := key + ` = "` + strings.Repeat("a9", 18) + `"`
+	c := &Candidate{Before: memory(map[string]string{"note.md": secret, "unrelated.md": "sk-" + strings.Repeat("x", 24)}), After: memory(map[string]string{"note.md": secret + "\nextra prose", "unrelated.md": "sk-" + strings.Repeat("x", 24)}), Changed: []string{"note.md"}}
+	r := AuditDisclosure(c)
+	if !noErrors(r.Findings) || r.Selected != 1 || r.Scanned != 1 || r.Existing == 0 {
+		t.Fatalf("unrelated or existing content blocked: %+v", r)
+	}
+	c.After = memory(map[string]string{"note.md": secret + "\nsk-" + strings.Repeat("y", 24)})
+	if noErrors(AuditDisclosure(c).Findings) {
+		t.Fatal("new token was accepted")
+	}
+	header, end := "-----BEGIN "+"PRIVATE KEY-----\n", "\n-----END "+"PRIVATE KEY-----"
+	c.Before = memory(map[string]string{"note.md": header + "old-material" + end})
+	c.After = memory(map[string]string{"note.md": header + "new-material" + end})
+	if noErrors(AuditDisclosure(c).Findings) {
+		t.Fatal("changed key body inherited the old header exemption")
+	}
+}
+
+func TestDisclosureAdviceAndDefiniteCredentials(t *testing.T) {
+	key := "pass" + "word"
+	for _, tc := range []struct {
+		path, body string
+		blocked    bool
+	}{
+		{"note.md", "Example path /" + "Users/example/project and a@b.invalid", false},
+		{"example.py", key + " = settings.current_secret", false},
+		{".env.example", key + "=example_password", false},
+		{"note.md", key + ` = "` + strings.Repeat("r7", 12) + `"`, true},
+		{".env", "ordinary=value", true},
+		{"note.md", "https://git@example.invalid/repo", false},
+		{"note.md", "https://user:" + strings.Repeat("r7", 12) + "@example.invalid/repo", true},
+		{"raw.transcript.txt", "private full text", true},
+	} {
+		c := &Candidate{Before: memory(map[string]string{}), After: memory(map[string]string{tc.path: tc.body}), Changed: []string{tc.path}}
+		if got := !noErrors(AuditDisclosure(c).Findings); got != tc.blocked {
+			t.Errorf("%s: blocked=%v want=%v", tc.path, got, tc.blocked)
+		}
+	}
+}
+
+func TestDisclosureAllowsDraftsWithoutQualityOrTests(t *testing.T) {
+	root := fixtureRepo(t)
+	writeFixture(t, root, "README.md", "[broken](missing.md)\n")
+	writeFixture(t, root, "ai-learning/reports/draft.md", "---\nstatus: in_progress\n---\n# Draft\nUnverified working notes.\n")
+	writeFixture(t, root, "broken_test.go", "not valid Go\n")
+	writeFixture(t, root, "data.json", "{unfinished")
+	runGit(t, root, "add", ".")
+	r, err := CheckDisclosure(context.Background(), CheckOptions{Root: root, Scope: "index"})
+	if err != nil || !r.OK || r.Mode != "public-disclosure" || len(r.Steps) != 1 || r.ReportAudit != nil || r.Context != nil {
+		t.Fatalf("unexpected quality prerequisite: %+v %v", r, err)
+	}
+}
+
 func TestStrictJSONAndArchiveCanonicalBytes(t *testing.T) {
 	for _, s := range []string{`{"a":1,"a":2}`, `{} {}`, `[1,]`} {
 		if _, e := DecodeJSON([]byte(s)); e == nil {

@@ -36,9 +36,47 @@ var privacyPatterns = func() []*regexp.Regexp {
 	return out
 }()
 
+var privateKeyEnd = regexp.MustCompile(`-----END (?:[A-Z0-9 ]+ )?PRIVATE KEY(?: BLOCK)?-----`)
+var credentialAssignment = regexp.MustCompile(`[:=]\s*(["']?)(.*)$`)
+var plainReference = regexp.MustCompile(`^[A-Za-z_][A-Za-z0-9_]*(?:[.][A-Za-z_][A-Za-z0-9_]*)*$`)
+
+func disclosurePlaceholder(value string) bool {
+	v := strings.ToLower(value)
+	for _, prefix := range []string{"your_", "your-", "example", "dummy", "placeholder", "redacted", "test_", "test-", "changeme", "<", "${"} {
+		if strings.HasPrefix(v, prefix) {
+			return true
+		}
+	}
+	return false
+}
+func definiteDisclosure(code, value string) bool {
+	switch code {
+	case "PRIVATE_KEY", "KNOWN_TOKEN_PREFIX":
+		return true
+	case "BEARER_TOKEN":
+		parts := strings.Fields(value)
+		return len(parts) > 0 && !disclosurePlaceholder(parts[len(parts)-1])
+	case "URL_CREDENTIAL":
+		u, err := url.Parse(value)
+		if err == nil && u.User != nil {
+			password, present := u.User.Password()
+			return present && password != "" && !disclosurePlaceholder(password)
+		}
+	case "CREDENTIAL_VALUE":
+		m := credentialAssignment.FindStringSubmatch(value)
+		if len(m) != 3 || disclosurePlaceholder(m[2]) {
+			return false
+		}
+		// Bare references in code are advice, not proof of an embedded secret.
+		return m[1] != "" || !plainReference.MatchString(m[2])
+	}
+	return false
+}
+
 type privacyHit struct {
-	finding Finding
-	key     string
+	finding  Finding
+	key      string
+	definite bool // High-confidence disclosure, not merely a private-looking example.
 }
 type span struct{ start, end int }
 
@@ -145,14 +183,19 @@ func textHits(text, file string, decoded bool) []privacyHit {
 			if !decoded {
 				line = 1 + strings.Count(text[:start], "\n")
 			}
-			key := ""
-			if rule.code != "PRIVATE_KEY" && rule.code != "CREDENTIAL_VALUE" {
-				key = rule.code + ":" + digest([]byte(value))
-				if decoded {
-					key += ":decoded"
+			material := value
+			if rule.code == "PRIVATE_KEY" {
+				// A changed key body is new disclosure even if its header is unchanged.
+				material = text[start:]
+				if end := privateKeyEnd.FindStringIndex(material); end != nil {
+					material = material[:end[1]]
 				}
 			}
-			out = append(out, privacyHit{Finding{File: file, Line: line, Severity: rule.severity, Code: rule.code, Message: rule.message}, key})
+			key := rule.code + ":" + digest([]byte(material))
+			if decoded {
+				key += ":decoded"
+			}
+			out = append(out, privacyHit{finding: Finding{File: file, Line: line, Severity: rule.severity, Code: rule.code, Message: rule.message}, key: key, definite: definiteDisclosure(rule.code, value)})
 		}
 	}
 	return out
@@ -164,7 +207,7 @@ func contentHits(text, file string) []privacyHit {
 	}
 	value, e := DecodeJSON([]byte(text))
 	if e != nil {
-		return append(out, privacyHit{issue(file, "INVALID_JSON", "JSON无法完整解析。"), ""})
+		return append(out, privacyHit{finding: issue(file, "INVALID_JSON", "JSON无法完整解析。")})
 	}
 	var visit func(any)
 	visit = func(v any) {
@@ -269,7 +312,13 @@ type PrivacyResult struct {
 	Findings      []Finding `json:"findings"`
 }
 
-func AuditPrivacy(c *Candidate, paths []string) PrivacyResult {
+func AuditPrivacy(c *Candidate, paths []string) PrivacyResult { return auditPrivacy(c, paths, false) }
+
+// AuditDisclosure scans changed public paths only. Definite new credentials and
+// raw-publication violations block; heuristic examples remain visible warnings.
+func AuditDisclosure(c *Candidate) PrivacyResult { return auditPrivacy(c, nil, true) }
+
+func auditPrivacy(c *Candidate, paths []string, light bool) PrivacyResult {
 	if paths == nil {
 		paths = c.Changed
 	}
@@ -292,7 +341,8 @@ func AuditPrivacy(c *Candidate, paths []string) PrivacyResult {
 	sort.Strings(ordered)
 	out := PrivacyResult{Selected: len(ordered), Findings: []Finding{}}
 	for _, p := range ordered {
-		if protectedPath(p) {
+		template := containsString([]string{".env.example", ".env.sample", ".env.template"}, strings.ToLower(path.Base(p)))
+		if protectedPath(p) && !(light && template) {
 			out.Findings = append(out.Findings, issue(p, "PROTECTED_FILE", "凭据文件不得进入公开仓库。"))
 			continue
 		}
@@ -320,7 +370,7 @@ func AuditPrivacy(c *Candidate, paths []string) PrivacyResult {
 		old := map[string]int{}
 		if before, e := c.Before.Text(p); e == nil {
 			for _, h := range contentHits(before, p) {
-				if h.key != "" {
+				if h.key != "" && (light || h.finding.Code != "PRIVATE_KEY" && h.finding.Code != "CREDENTIAL_VALUE") {
 					old[h.key]++
 				}
 			}
@@ -331,7 +381,11 @@ func AuditPrivacy(c *Candidate, paths []string) PrivacyResult {
 				old[h.key]--
 				out.Existing++
 			} else {
-				out.Findings = append(out.Findings, h.finding)
+				finding := h.finding
+				if light && !h.definite {
+					finding.Severity = "warning"
+				}
+				out.Findings = append(out.Findings, finding)
 			}
 		}
 	}

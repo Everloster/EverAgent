@@ -1,5 +1,5 @@
-// ea-git binds the standalone public checkout to the shared identity/Git core
-// and public quality owner. It neither reads nor requires the private checkout.
+// ea-git verifies Committer identity and new public-content disclosure only.
+// It neither requires eacli/private checkouts nor runs report quality gates.
 package main
 
 import (
@@ -43,24 +43,21 @@ func run(args []string) int {
 	switch f.Arg(0) {
 	case "commit":
 		err = core.Commit(ctx, f.Args()[1:], core.CommitOptions{
-			Directory: absolute, IdentityReader: core.InspectIdentity, AuthorReader: reader,
-			Preflight: func(target string, _ core.Object) error {
+			IdentityOnly: true, Directory: absolute, IdentityReader: core.InspectIdentity, AuthorReader: reader,
+			ContentGuard: func(ctx context.Context, target string, _ []string) error {
 				if target != absolute {
 					return errors.New("commit must target this public checkout")
 				}
-				return nil
-			},
-			Gate: func(ctx context.Context, target string, _ []string) error {
-				ctx, cancel := context.WithTimeout(ctx, 10*time.Minute)
+				ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 				defer cancel()
-				result, e := publicquality.Check(ctx, publicquality.CheckOptions{Root: target, Scope: "index"})
+				result, e := publicquality.CheckDisclosure(ctx, publicquality.CheckOptions{Root: target, Scope: "index"})
 				encoder := json.NewEncoder(os.Stderr)
 				encoder.SetEscapeHTML(false)
 				if encodeErr := encoder.Encode(result.Summary()); e == nil {
 					e = encodeErr
 				}
 				if e == nil && !result.OK {
-					e = errors.New("public quality gate did not pass")
+					e = errors.New("new public content contains a disclosure blocker")
 				}
 				return e
 			},
@@ -69,19 +66,17 @@ func run(args []string) int {
 		if f.NArg() != 1 {
 			return 2
 		}
-		expected, e := reader()
+		identity := core.InspectIdentity()
+		if err = core.ValidIdentity(identity); err != nil {
+			break
+		}
+		committer, e := gitIdent(ctx, absolute, "GIT_COMMITTER_IDENT")
 		if e != nil {
 			err = e
 			break
 		}
-		committer, e1 := gitIdent(ctx, absolute, "GIT_COMMITTER_IDENT")
-		author, e2 := gitIdent(ctx, absolute, "GIT_AUTHOR_IDENT")
-		if e1 != nil || e2 != nil {
-			err = errors.New("Git identity unavailable")
-			break
-		}
-		if issues := core.ValidateIdentity(core.InspectIdentity(), committer, author, expected); len(issues) > 0 {
-			err = errors.New(strings.Join(issues, "; "))
+		if committer.Name != identity["name"] || committer.Email != identity["email"] {
+			err = errors.New("Git Committer does not match the current Agent/model")
 		}
 	default:
 		return 2

@@ -44,8 +44,6 @@ domain: "web-surfing"
 report_type: "daily_summary"
 status: "in_progress"
 updated_on: "{{DATE}}"
-quality_schema: "report-v2"
-quality_tier: "standard"
 semantic_tags: ["ai_news", "daily_digest"]
 ---
 

@@ -1,4 +1,4 @@
-name: EverAgent quality
+name: Public content and relevant tests
 
 on:
   push:
@@ -9,60 +9,133 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  changes:
     runs-on: ubuntu-latest
+    outputs:
+      base: ${{ steps.scope.outputs.base }}
+      core: ${{ steps.scope.outputs.core }}
+      python: ${{ steps.scope.outputs.python }}
+      reports: ${{ steps.scope.outputs.reports }}
+      github: ${{ steps.scope.outputs.github }}
+      bilibili: ${{ steps.scope.outputs.bilibili }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: packages/everagent-core/go.mod
-          cache-dependency-path: packages/everagent-core/go.sum
-      - name: Test shared core and public quality contracts
-        run: go -C packages/everagent-core test -mod=readonly ./...
-      - name: Vet shared core and public quality contracts
-        run: go -C packages/everagent-core vet -mod=readonly ./...
-      - name: Check the committed snapshot with the same public gate
+          persist-credentials: false
+      - id: scope
+        shell: bash
         env:
           BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
           EVENT_NAME: ${{ github.event_name }}
         run: |
+          set -euo pipefail
           [[ "$BASE_REVISION" =~ ^[0-9a-f]{40,64}$ ]] || exit 1
           if [[ "$BASE_REVISION" =~ ^0+$ ]]; then
             BASE_REVISION=$(git hash-object -w -t tree --stdin </dev/null)
           elif [[ "$EVENT_NAME" == "pull_request" ]]; then
             BASE_REVISION=$(git merge-base "$BASE_REVISION" HEAD)
           fi
-          go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false \
-            ./cmd/ea-quality quick --scope head --base "$BASE_REVISION"
+          core=false; python=false; reports=false; github=false; bilibili=false
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              packages/everagent-core/*.go|packages/everagent-core/go.mod|packages/everagent-core/go.sum|scripts/ecommit.sh|scripts/hooks/pre-commit|schemas/report-*|config/report-quality*) core=true ;;
+            esac
+            case "$file" in
+              *.py|*/pyproject.toml|*/requirements*.txt|schemas/report-*|config/report-quality*) python=true ;;
+            esac
+            case "$file" in
+              scripts/*.py|tests/*.py|podcast-learning/scripts/*.py|podcast-learning/skills/*/*.py|web-surfing/skills/ai-tech-blog-radar/*.py|github-trending-analyzer/scripts/report_generator.py|schemas/report-*|config/report-quality*) reports=true ;;
+            esac
+            case "$file" in
+              github-trending-analyzer/*.py|github-trending-analyzer/pyproject.toml|github-trending-analyzer/requirements*.txt) github=true ;;
+            esac
+            case "$file" in
+              web-surfing/skills/site-bilibili/*.py|scripts/radar_common.py) bilibili=true ;;
+            esac
+          done < <(git diff --name-only -z "$BASE_REVISION" HEAD)
+          printf 'base=%s\ncore=%s\npython=%s\nreports=%s\ngithub=%s\nbilibili=%s\n' \
+            "$BASE_REVISION" "$core" "$python" "$reports" "$github" "$bilibili" >> "$GITHUB_OUTPUT"
 
-  # Retained authoring/research tools are separate from the Go commit gate.
-  report-tools:
+  disclosure:
+    needs: changes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: packages/everagent-core/go.mod
+          cache-dependency-path: packages/everagent-core/go.sum
+      - name: Check changed public content only
+        env:
+          BASE_REVISION: ${{ needs.changes.outputs.base }}
+        run: |
+          git hash-object -w -t tree --stdin </dev/null >/dev/null
+          go -C packages/everagent-core run -mod=readonly -trimpath -buildvcs=false \
+            ./cmd/ea-quality disclosure --scope head --base "$BASE_REVISION"
+
+  core-tests:
+    needs: changes
+    if: ${{ needs.changes.outputs.core == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: packages/everagent-core/go.mod
+          cache-dependency-path: packages/everagent-core/go.sum
+      - run: go -C packages/everagent-core test -mod=readonly ./...
+      - run: go -C packages/everagent-core vet -mod=readonly ./...
+
+  python-tools:
+    needs: changes
+    if: ${{ needs.changes.outputs.python == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install GitHub research test dependencies
+      - name: Compile changed Python without importing or running examples
+        env:
+          BASE_REVISION: ${{ needs.changes.outputs.base }}
         run: |
-          python3 - <<'PY'
-          import pathlib
-          import subprocess
-          import sys
-          import tomllib
+          python3 -I - <<'PY'
+          import pathlib, subprocess, os
+          subprocess.run(["git", "hash-object", "-w", "-t", "tree", "--stdin"], input=b"", stdout=subprocess.DEVNULL, check=True)
+          paths = subprocess.check_output(["git", "diff", "--diff-filter=ACMR", "--name-only", "-z", os.environ["BASE_REVISION"], "HEAD"]).decode().split("\0")
+          for name in paths:
+              if name.endswith(".py"):
+                  path = pathlib.Path(name)
+                  if path.is_symlink():
+                      raise ValueError("refusing to compile a symlink")
+                  compile(path.read_bytes(), name, "exec")
+          PY
+      - name: Report and experiment tool tests
+        if: ${{ needs.changes.outputs.reports == 'true' }}
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Bilibili inbox tests
+        if: ${{ needs.changes.outputs.bilibili == 'true' }}
+        run: python3 -m unittest discover -s web-surfing/skills/site-bilibili/tests -p 'test_*.py'
+      - name: Install only GitHub research test dependencies
+        if: ${{ needs.changes.outputs.github == 'true' }}
+        run: |
+          python3 -I - <<'PY'
+          import pathlib, subprocess, sys, tomllib
           project = tomllib.loads(pathlib.Path("github-trending-analyzer/pyproject.toml").read_text())["project"]
           dependencies = project["dependencies"] + project["optional-dependencies"]["dev"]
           subprocess.run([sys.executable, "-m", "pip", "install", *dependencies], check=True)
           PY
-      - name: Run retained report authoring and research tests
-        run: python3 -m unittest discover -s tests -p 'test_*.py'
-      - name: Run retained experiment script tests
-        run: python3 -m unittest discover -s scripts -p 'test_*.py'
-      - name: Run Bilibili inbox tests
-        run: python3 -m unittest discover -s web-surfing/skills/site-bilibili/tests -p 'test_*.py'
-      - name: Run GitHub research tests
+      - name: GitHub research tests
+        if: ${{ needs.changes.outputs.github == 'true' }}
         run: python3 -m pytest github-trending-analyzer/tests -q

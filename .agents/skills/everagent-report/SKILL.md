@@ -1,20 +1,18 @@
 ---
 name: everagent-report
-description: "Create, revise, or audit a durable EverAgent research report when explicitly requested; skip brief answers, simple lookups, and bare repository links."
+description: "Create or revise an EverAgent research report when requested; skip brief answers, simple lookups, and bare repository links."
 ---
 
 # EverAgent Report
 
-This skill is a router. Load only the branch needed for the current report.
+Use only the material needed for the requested output.
 
-| Need | Read or run |
+| Need | Read |
 |---|---|
-| Common research, drafting, completion | [REPORT_WORKFLOW.md](../../../docs/REPORT_WORKFLOW.md) |
-| Evidence manifest, independent review, escalation | [REPORT_QUALITY_GATE.md](../../../docs/REPORT_QUALITY_GATE.md) |
-| Metadata or migration | [REPORT_METADATA.md](../../../docs/REPORT_METADATA.md) |
-| Domain-specific evidence and format | The target project's `AGENTS.md`, then one matching domain skill |
-| Existing topic | Locate the current report and update it instead of creating a duplicate |
+| Writing, metadata, drafts and completion | [REPORT_WORKFLOW.md](../../../docs/REPORT_WORKFLOW.md) |
+| Research and evidence judgment | Relevant sections of [METHODOLOGY.md](../../../METHODOLOGY.md) |
+| Domain-specific material | Target project's AGENTS.md and one relevant reference |
+| Explicit legacy scoring/evidence request or historical review | [REPORT_QUALITY_GATE.md](../../../docs/REPORT_QUALITY_GATE.md) |
 
-Use `eacli context get/search` only when prior project knowledge is relevant. Keep the task's goal, deliverable, required checks, and stop conditions in the current conversation; do not create a planning artifact unless it is itself requested.
-
-Finish only when the selected workflow's observable completion conditions pass. If a skill instruction conflicts with the user's explicit request or would stop authorized work, follow the user and identify the conflicting instruction.
+Use eacli context only when prior project knowledge is relevant. Do not preload all policies, scan all reports, query Agent inventories or create planning artifacts by default.
+Deliver the requested content and state its scope and limitations. Drafts can be committed when clearly marked. Independent review, score thresholds and evidence/review JSON are opt-in, not automatic completion gates; do not assign work to other Agents without the user's request.

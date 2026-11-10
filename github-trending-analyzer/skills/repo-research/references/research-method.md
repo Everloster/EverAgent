@@ -1,6 +1,6 @@
 # 事A · 单 Repo 深度研究（= 深度研究方法论本身）
 
-> **2026-10-15 路由说明**：仓库结构、文件读取和文档搜索先用 eacli `repo.public.*`；下文 `gh api` 命令只用于 typed capability 尚未覆盖的精确元数据、提交、issue、PR 与 release 统计。质量门由根 `scripts/audit_reports.py` 负责，本文件保留研究细节。
+> **2026-10-15 路由说明**：仓库结构、文件读取和文档搜索先用 eacli `repo.public.*`；下文 `gh api` 命令只用于 typed capability 尚未覆盖的精确元数据、提交、issue、PR 与 release 统计。当前写作与按需复核统一见根写作指南，`audit_reports.py`仅作主动严格审查工具，本文件保留研究方法。
 
 本 reference 只在 `repo-research` skill 已因明确的“研究 / 深挖 / 出报告”请求而触发后加载。仅粘贴 GitHub 链接时做口头介绍，不执行四轮深研，也不落文件。
 它既是单 repo 的研究细节，也是 trending 汇总逐项深研时复用的方法。
@@ -181,10 +181,10 @@ python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概
 
 ## 报告：7 章中文结构
 
-研究结果**必须**转换为下列 7 章中文结构存档，禁止直接存英文模板：
+下列结构只是覆盖面参考，按用户问题选择需要的部分，不要求七章齐全或固定竞品数量；交付中文分析，不直接留下未填写的模板：
 
 ```
-frontmatter: title / domain / report_type / status / updated_on / quality_schema / semantic_tags
+frontmatter（按需）: title / domain / report_type / status / updated_on / semantic_tags
 1. 项目概述   2-3 句定位与核心价值
 2. 基本信息   表格：Stars / Forks / 语言 / 协议 / 创建时间 / 最近更新 / GitHub 链接（API 精确值）
 3. 技术分析   技术栈 / 架构设计 / 核心功能（≥1 处 [代码] 证据）
@@ -194,7 +194,7 @@ frontmatter: title / domain / report_type / status / updated_on / quality_schema
 7. 总结评价   优势 / 劣势 / 适用场景
 ```
 
-新报告使用 `domain: github-trending-analyzer`、`report_type: repo_deep_research`、`quality_schema: "report-v2"` 和 `quality_tier: "important"`。
+新报告可用`domain: github-trending-analyzer`与`report_type: repo_deep_research`进入索引，明确草稿或完成状态。质量附件和评分等级仅在明确采用旧严格审查合同时使用。
 
 页脚统一（沿用既有报告格式，便于批量识别）：
 ```

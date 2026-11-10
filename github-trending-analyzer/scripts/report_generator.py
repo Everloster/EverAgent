@@ -14,9 +14,6 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
-QUALITY_SCHEMA = "report-v2"
-
-
 def get_skill_dir() -> Path:
     """
     Get the directory where this skill is located.
@@ -102,12 +99,12 @@ domain: "github-trending-analyzer"
 report_type: "repo_deep_research"
 status: "in_progress"
 updated_on: "{report_date}"
-quality_schema: "{QUALITY_SCHEMA}"
-quality_tier: "important"
 semantic_tags: ["github", "open_source", "repository_research"]
 ---
 
 # {repo_data.get('owner', '')}/{repo_data.get('repo', '')}
+
+> 草稿：以下内容按输入资料生成，未核实项和缺口需在后续研究中说明；不代表已通过独立复核。
 
 > {repo_data.get('description', 'No description available')}
 
@@ -368,12 +365,12 @@ domain: "github-trending-analyzer"
 report_type: "{period}_summary"
 status: "in_progress"
 updated_on: "{report_date}"
-quality_schema: "{QUALITY_SCHEMA}"
-quality_tier: "standard"
 semantic_tags: ["github", "trending", "open_source"]
 ---
 
 # {report_title}
+
+> 草稿：本汇总尚未完成内容复核；生成成功不代表研究结论已验证。
 
 > 生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 

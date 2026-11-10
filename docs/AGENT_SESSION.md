@@ -9,7 +9,7 @@
 | 层 | 职责 |
 |---|---|
 | 公共 core | 通用 harness/model 证据、session schema、script catalog、Git 原语 |
-| 公开仓入口 | 学习仓策略、作者策略与 staged 质量门禁 |
+| 公开仓入口 | 当前Committer核实与新增公开内容检查；不运行报告质量流水线 |
 | 私有 eacli | 私有设备事实与红线、原生 runtime adapter、基础设施策略 |
 | 安装包 | 锁定的公共 core 和私有派生资产，无相邻 checkout 依赖 |
 | 兼容脚本 | 转交 canonical owner，不维护第二套事实或算法 |
@@ -164,10 +164,9 @@ cwd 定位同一 UUID 的唯一原生项目文件；分别使用精确 PID 的 `
 单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
 均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
 
-Claude 的 assistant UUID 标识单条回复，`observation_ref` 随新回复更新并保留为来源证据；它不是新的
-提交身份。提交门禁仍前后读取新鲜原件，仅在两次都由原生 Claude 读取器核实、模型与绑定
-进程/session/terminal 的 `scope_ref` 均未变化时允许回复推进。其他 adapter 的 turn 引用继续参与比较；
-失去核实、模型或绑定改变、声明变化仍阻断。身份变化错误只列出变化字段名，不输出模型、引用或私有原件值。
+Claude的assistant UUID标识单条回复，`observation_ref`随回复更新，不是新的提交身份。
+当前公开提交器只做一次当前Committer观测，提交后核对实际署名；不因可选质量检查再遍历模型证据。
+共享core保留的旧Gate调用模式仍可前后比较模型、进程/session/terminal绑定，但不是本仓默认路径。诊断不输出私有原件内容。
 
 Claude 原件正在追加、末行 JSON/UTF-8 尚未写完，或读取时钟早于并发写入时，读取器只对同一路径最多
 重读三次，两次之间等待 20 ms 并重新取时间。持续未完成返回 `native-observation-in-progress`；不跳过
@@ -236,8 +235,7 @@ App 外层的启动 shell 不构成执行依据。新批次按用户已明确指
 [`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md) 是生成视图；
 `go -C packages/everagent-core run ./cmd/ea-quality scripts --check` 按需查看和校验。
 
-新增或改名必须更新目录，保留已承诺的兼容入口并验证转发。门禁校验目录 schema、唯一 ID/alias、owner/路径、
-索引哈希和行为测试；算法移动不要求旧 wrapper 继续出现实现源码。
+新增或改名时同步实际调用方与目录；不保留无人使用的重复实现。目录schema、ID/alias、路径和索引可按需检查，不作为提交门禁。
 
 ## 验证边界
 

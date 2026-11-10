@@ -1,6 +1,6 @@
 ---
 name: repo-research
-description: "Deeply research one public GitHub repository and produce or update its seven-part Chinese report. Use only when the user explicitly asks to research, deep-dive, or create a report; a pasted repo link alone gets a brief introduction."
+description: "Deeply research one public GitHub repository and produce or update a Chinese report organized around the user's questions. Use only when the user explicitly asks to research, deep-dive, or create a report; a pasted repo link alone gets a brief introduction."
 ---
 
 # 单仓库深度研究
@@ -15,9 +15,9 @@ description: "Deeply research one public GitHub repository and produce or update
 
 1. 用 eacli `repo.public.structure/read/search` 获取仓库结构、README 与关键源码。
 2. typed capability 未覆盖的 stars、forks、release、issue、PR 和提交统计，可用 `gh api` 补充并在工作记录中注明原因。
-3. 依次形成四类证据：仓库元数据、真实代码、至少两个竞品、活跃度或社区量化信号。
-4. 写成七部分中文报告，新增报告使用标准 frontmatter、`quality_schema: "report-v2"` 和 `quality_tier: "important"`。
-5. 通过受影响报告的质量门；只把跨仓库可复用的新经验作为最小 delta 写回本 skill 或 reference。
+3. 按问题获取仓库元数据、真实代码及必要的社区信号；相关时比较替代方案，不凑竞品数量。
+4. 用中文回答本次研究问题，结构按内容选择；元数据与草稿状态见[写作指南](../../../docs/REPORT_WORKFLOW.md)，不默认创建质量附件。
+5. 核对结论与来源，说明缺口；独立复核按用户要求安排，只把可复用的新经验写回对应资料。
 
 详细命令、分支判断、薄壳包下钻、竞品核验和报告结构见 [research-method.md](./references/research-method.md)。只读取与当前仓库实际问题有关的小节。
 
@@ -32,4 +32,4 @@ description: "Deeply research one public GitHub repository and produce or update
 go -C packages/everagent-core run ./cmd/ea-quality index --write
 ```
 
-提交器自动检查受影响报告和索引；只预览时按[共享质量门](../../../docs/PROTOCOL_COMMON.md#d-报告质量门)运行，不重复检查。
+索引按需要更新，不作为提交前置。提交器只核实Committer与新增公开内容；来源审查或严格评分工具仅在明确需要时使用。
