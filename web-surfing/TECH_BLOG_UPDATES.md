@@ -8,9 +8,9 @@
 
 **最近检查：2026-11-10（北京时间）** · **累计收录时段：2026-09-02—2026-11-09**
 
-检查了 **28 个官方渠道**，目前收录 **438 篇**日期已核实的文章：**44 篇已学习**，**10 篇有相关报告**，**384 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **438 篇**日期已核实的文章：**45 篇已学习**，**10 篇有相关报告**，**383 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
-**本次补充 9 篇**，均发表于 11 月 9 日；增量检查覆盖 2026-11-03—2026-11-10。新增条目均未找到对应的专题报告；历史文章、导读与学习记录保留。
+**本次补充 9 篇**，均发表于 11 月 9 日；增量检查覆盖 2026-11-03—2026-11-10。新增时均未找到对应专题报告；CodeRabbit 条目现已完成主题研究，原页全文未核验，资料范围见报告。历史文章、导读与学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 86 篇 | 1 篇 |
+| [2026-11](#m202611) | 86 篇 | 2 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -40,15 +40,15 @@
 
 
 <details>
-<summary><strong>OpenAI 研究与技术更新 · 17 篇</strong></summary>
+<summary><strong>OpenAI 研究与技术更新 · 17 篇 · 1 篇已学习</strong></summary>
 
 - **11-09** [Control Room：集中追踪与中止研究推理任务](https://openai.com/index/control-room "Control Room: A central system to track and stop model workloads across our research infrastructure") · 未做
 
   介绍把任务身份、推理引擎和监控告警连接起来，在安全或可靠性问题出现时停止模型输出；停机时延与故障处理能力为官方报告。
 
-- **11-09** [CodeRabbit：用多 Agent、评测与安全检查审查 AI 代码](https://openai.com/index/coderabbit-codex-daybreak "CodeRabbit scales agentic software development and ships 20x more") · 未做
+- **11-09** [CodeRabbit：用多 Agent、评测与安全检查审查 AI 代码](https://openai.com/index/coderabbit-codex-daybreak "CodeRabbit scales agentic software development and ships 20x more") · **已学习**
 
-  介绍按任务分配推理模型、维护缺陷基准，以及把代码审查和漏洞修复接入开发流程；交付增幅为客户自报。
+  结合案例摘要与 CodeRabbit 官方文档分析审查、评测和运行时验证，附可运行的离线实验。原页全文未核验，交付增幅为客户自报。 [阅读报告](../ai-learning/reports/knowledge_reports/CodeRabbit_多Agent代码审查_评测与运行时验证_深度解析_20261110.md)
 
 - **11-09** [Kuken：用模型检索历史设备图纸](https://openai.com/index/kuken "Kuken Industries searches 70 years of drawings in minutes") · 未做
 
@@ -1751,10 +1751,12 @@
 
 ## 已有学习报告
 
-本轮清单中，44 篇原文对应 35 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，45 篇原文对应 36 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [CodeRabbit：多 Agent 审查、评测与运行时验证](../ai-learning/reports/knowledge_reports/CodeRabbit_多Agent代码审查_评测与运行时验证_深度解析_20261110.md) · 对应本页 1 篇原文；案例原页全文未核验。
 
 - [Anthropic Agent 记忆：显著性、Dreaming 与纠错](../ai-learning/reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md) · 对应本页 1 篇原文。
 - [Agent 逐字输出与断线恢复（全链路续篇）](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) · 对应本页 1 篇原文。

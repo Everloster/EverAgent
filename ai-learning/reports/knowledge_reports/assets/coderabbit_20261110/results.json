@@ -1,0 +1,195 @@
+{
+  "experiment": "hand-authored review fixtures and executable contract probes",
+  "model_calls": 0,
+  "snapshot_ids_are": "SHA-256 of local fixture functions, not Git commits",
+  "snapshots": {
+    "original": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+    "only_reported_bugs_fixed": "b5f9dc2a76accf6d04a5306d9eeaf18b6b866a92475d06b75c1cd2b20ef693a3",
+    "all_declared_checks_pass": "f0bae1d03f56be87b40ea83b235d0111673f0b7728bab9a4a096fe153d4f7c6d"
+  },
+  "raw_comments": 6,
+  "unique_candidates": 3,
+  "known_issues": [
+    "last-page",
+    "positive-quantity",
+    "tenant-isolation"
+  ],
+  "votes": {
+    "empty-page": 3,
+    "last-page": 1,
+    "tenant-isolation": 2
+  },
+  "policies": {
+    "deduplicated_union": {
+      "tp": 2,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "issue_ids": [
+        "empty-page",
+        "last-page",
+        "tenant-isolation"
+      ]
+    },
+    "two_of_three_vote": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1": 0.4,
+      "issue_ids": [
+        "empty-page",
+        "tenant-isolation"
+      ]
+    },
+    "contract_confirmed_candidates": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "f1": 0.8,
+      "issue_ids": [
+        "last-page",
+        "tenant-isolation"
+      ]
+    }
+  },
+  "candidate_evidence": [
+    {
+      "root_cause": "tenant-isolation",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "application_ready": true,
+      "target_exercised": true,
+      "status": "reproduced",
+      "evidence": {
+        "input": "tenant-a reads tenant-b order",
+        "expected": null,
+        "observed": {
+          "tenant": "tenant-b",
+          "amount": 42
+        },
+        "violation": true
+      }
+    },
+    {
+      "root_cause": "empty-page",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "application_ready": true,
+      "target_exercised": true,
+      "status": "not_reproduced",
+      "evidence": {
+        "input": {
+          "total": 0,
+          "page_size": 10
+        },
+        "expected": 0,
+        "observed": 0,
+        "violation": false,
+        "contract_note": "The fixture explicitly requires zero pages, not one."
+      }
+    },
+    {
+      "root_cause": "last-page",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "application_ready": true,
+      "target_exercised": true,
+      "status": "reproduced",
+      "evidence": {
+        "input": {
+          "total": 23,
+          "page_size": 10
+        },
+        "expected": 3,
+        "observed": 2,
+        "violation": true
+      }
+    }
+  ],
+  "verification_cases": {
+    "setup_failure": {
+      "root_cause": "tenant-isolation",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "application_ready": false,
+      "target_exercised": false,
+      "status": "inconclusive",
+      "reason": "setup_failed"
+    },
+    "unexercised_target": {
+      "root_cause": "tenant-isolation",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "application_ready": true,
+      "target_exercised": false,
+      "status": "inconclusive",
+      "reason": "target_not_exercised"
+    },
+    "old_evidence_new_snapshot": {
+      "root_cause": "tenant-isolation",
+      "reviewed_snapshot": "0d9bb6a7d2c0c969f80a0e95aaef3759d72a77456153fde5e92cfc384d6939c2",
+      "tested_snapshot": "b5f9dc2a76accf6d04a5306d9eeaf18b6b866a92475d06b75c1cd2b20ef693a3",
+      "application_ready": true,
+      "target_exercised": false,
+      "status": "stale",
+      "reason": "snapshot_changed"
+    },
+    "fresh_check_after_fix": {
+      "root_cause": "tenant-isolation",
+      "reviewed_snapshot": "b5f9dc2a76accf6d04a5306d9eeaf18b6b866a92475d06b75c1cd2b20ef693a3",
+      "tested_snapshot": "b5f9dc2a76accf6d04a5306d9eeaf18b6b866a92475d06b75c1cd2b20ef693a3",
+      "application_ready": true,
+      "target_exercised": true,
+      "status": "not_reproduced",
+      "evidence": {
+        "input": "tenant-a reads tenant-b order",
+        "expected": null,
+        "observed": null,
+        "violation": false
+      }
+    }
+  },
+  "regression_checks": {
+    "original": {
+      "own_order_readable": true,
+      "unknown_order_absent": true,
+      "cross_tenant_denied": false,
+      "page_counts": false,
+      "valid_quantity": true,
+      "reject_quantity_0": false,
+      "reject_quantity_-1": false
+    },
+    "only_reported_bugs_fixed": {
+      "own_order_readable": true,
+      "unknown_order_absent": true,
+      "cross_tenant_denied": true,
+      "page_counts": true,
+      "valid_quantity": true,
+      "reject_quantity_0": false,
+      "reject_quantity_-1": false
+    },
+    "all_declared_checks_pass": {
+      "own_order_readable": true,
+      "unknown_order_absent": true,
+      "cross_tenant_denied": true,
+      "page_counts": true,
+      "valid_quantity": true,
+      "reject_quantity_0": true,
+      "reject_quantity_-1": true
+    }
+  },
+  "limits": [
+    "Findings and root-cause groups were written by the author, not discovered by an AI.",
+    "Contracts cover this fixture only; they are not exhaustive security tests.",
+    "Not reproduced alone does not establish that a real-world finding is false.",
+    "Inconclusive findings must remain unresolved, not be counted as passed.",
+    "The confirmed set misses a known issue absent from every reviewer output."
+  ],
+  "script_sha256": "f6ebd63a437d918a70c4a62940df370326b3c295ccd2875bee278b7dc20d1572"
+}
