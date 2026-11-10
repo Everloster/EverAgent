@@ -236,6 +236,13 @@ func kimiTime(v any) time.Time {
 	return at
 }
 
+type kimiObservation struct {
+	model, step string
+	at          time.Time
+	wire        os.FileInfo
+	present     bool
+}
+
 func (i *Inspector) kimiCLI(p Process, now time.Time) (Object, string) {
 	cwd := i.callerCwd(p)
 	if cwd == "" {
@@ -261,24 +268,84 @@ func (i *Inspector) kimiCLI(p Process, now time.Time) (Object, string) {
 			candidates = append(candidates, row)
 		}
 	}
-	if len(candidates) != 1 {
+	if native := i.nativeID("kimi-cli"); native != "" {
+		bound := []KimiSession{}
+		for _, row := range candidates {
+			if row.ID == native {
+				bound = append(bound, row)
+			}
+		}
+		if len(bound) == 0 {
+			return nil, "native-session-scope-mismatch"
+		}
+		candidates = bound
+	}
+	if len(candidates) == 0 {
 		return nil, "kimi-code-live-session-not-unique"
 	}
-	row := candidates[0]
-	if native := i.nativeID("kimi-cli"); native != "" && native != row.ID {
-		return nil, "native-session-scope-mismatch"
+	type active struct {
+		row KimiSession
+		obs kimiObservation
+	}
+	live := []active{}
+	if len(candidates) == 1 {
+		obs, reason := readKimiObservation(root, candidates[0], p, now)
+		if reason != "" {
+			return nil, reason
+		}
+		if !obs.present {
+			return nil, "native-metadata-unavailable-or-invalid"
+		}
+		live = append(live, active{row: candidates[0], obs: obs})
+	} else {
+		for _, row := range candidates {
+			obs, reason := readKimiObservation(root, row, p, now)
+			if reason == "native-observation-stale" || !obs.present {
+				continue
+			}
+			if reason != "" {
+				return nil, reason
+			}
+			live = append(live, active{row: row, obs: obs})
+		}
+	}
+	if len(live) != 1 {
+		return nil, "kimi-code-live-session-not-unique"
+	}
+	row, obs := live[0].row, live[0].obs
+	if i.callerCwd(p) != cwd {
+		return nil, "native-caller-changed"
 	}
 	path := filepath.Join(row.Directory, "agents/main/wire.jsonl")
+	after, e := os.Stat(path)
+	if e != nil || !kimiSafePath(root, path, false) || !os.SameFile(obs.wire, after) || obs.wire.Size() != after.Size() || obs.wire.ModTime() != after.ModTime() {
+		return nil, "native-observation-in-progress"
+	}
+	again, e := KimiSessions(root, cwd)
+	if e != nil || Digest(rows) != Digest(again) {
+		return nil, "kimi-code-scoped-list-changed"
+	}
+	return Object{"model": obs.model, "source": "kimi-cli-session-runtime", "observed_at": seconds(obs.at), "turn": obs.step, "session": row.ID}, ""
+}
+
+func readKimiObservation(root string, row KimiSession, p Process, now time.Time) (kimiObservation, string) {
+	path := filepath.Join(row.Directory, "agents/main/wire.jsonl")
+	if _, e := os.Lstat(path); errors.Is(e, os.ErrNotExist) {
+		return kimiObservation{}, ""
+	}
 	if !kimiSafePath(root, path, false) {
-		return nil, "kimi-code-scoped-wire-unavailable"
+		return kimiObservation{}, "kimi-code-scoped-wire-unavailable"
 	}
 	before, e := os.Stat(path)
 	if e != nil {
-		return nil, "kimi-code-scoped-wire-unavailable"
+		return kimiObservation{}, "kimi-code-scoped-wire-unavailable"
+	}
+	if before.Size() == 0 {
+		return kimiObservation{}, ""
 	}
 	lines, terminated, stable, e := tail(path, maxTailBytes)
 	if e != nil || !stable || !terminated {
-		return nil, "native-observation-in-progress"
+		return kimiObservation{}, "native-observation-in-progress"
 	}
 	var request Object
 	envelope := regexp.MustCompile(`^\s*\{\s*"type"\s*:\s*"llm\.request"`)
@@ -288,32 +355,28 @@ func (i *Inspector) kimiCLI(p Process, now time.Time) (Object, string) {
 			continue
 		}
 		if len(raw) > maxRecordBytes {
-			return nil, "native-record-oversized"
+			return kimiObservation{}, "native-record-oversized"
 		}
 		request, e = kimiRecord(raw)
 		if e != nil {
-			return nil, "native-metadata-invalid"
+			return kimiObservation{}, "native-metadata-invalid"
 		}
 		break
+	}
+	if request == nil {
+		return kimiObservation{}, ""
 	}
 	at := kimiTime(request["time"])
 	m, step := model(request["model"]), text(request["turnStep"])
 	if request["kind"] != "loop" || m == "" || !nativePattern.MatchString(step) || len(step) > 128 || request["modelAlias"] != nil && model(request["modelAlias"]) == "" {
-		return nil, "native-metadata-unavailable-or-invalid"
+		return kimiObservation{}, "native-metadata-unavailable-or-invalid"
 	}
 	if !afterStart(at, p) || !fresh(at, now) {
-		return nil, "native-observation-stale"
-	}
-	if i.callerCwd(p) != cwd || !kimiSafePath(root, path, false) {
-		return nil, "native-caller-changed"
+		return kimiObservation{present: true}, "native-observation-stale"
 	}
 	after, e := os.Stat(path)
 	if e != nil || !os.SameFile(before, after) || before.Size() != after.Size() || before.ModTime() != after.ModTime() {
-		return nil, "native-observation-in-progress"
+		return kimiObservation{}, "native-observation-in-progress"
 	}
-	again, e := KimiSessions(root, cwd)
-	if e != nil || Digest(rows) != Digest(again) {
-		return nil, "kimi-code-scoped-list-changed"
-	}
-	return Object{"model": m, "source": "kimi-cli-session-runtime", "observed_at": seconds(at), "turn": step, "session": row.ID}, ""
+	return kimiObservation{model: m, step: step, at: at, wire: before, present: true}, ""
 }

@@ -409,6 +409,20 @@ func TestKimiInactiveAndUnboundDirectories(t *testing.T) {
 	}
 }
 
+func TestKimiResumeAfterEmptyNewSession(t *testing.T) {
+	i, _ := testInspector(t, "kimi-cli")
+	kimiFixture(t, i, "session-current", false)
+	_, state, _ := kimiFixture(t, i, "session-empty-new", false)
+	writeFixture(t, filepath.Join(i.root("kimi-cli", ""), kimiWorkspaceKey(i.Directory), "session-empty-new", "agents/main/wire.jsonl"), []byte{}, i.Now())
+	state["createdAt"] = i.Now().Add(-time.Minute).UnixMilli()
+	state["updatedAt"] = i.Now().UnixMilli()
+	writeFixture(t, filepath.Join(i.root("kimi-cli", ""), kimiWorkspaceKey(i.Directory), "session-empty-new", "state.json"), encoded(t, state), i.Now())
+	got, why := i.kimiCLI(i.Processes[1], i.Now())
+	if why != "" || got == nil || got["session"] != "session-current" || got["model"] != "native-kimi" {
+		t.Fatalf("resume after /new was not identified: %v %q", got, why)
+	}
+}
+
 func TestKimiNativeScopeRefusesInvalidOrAmbiguousEvidence(t *testing.T) {
 	for _, scenario := range []string{"two-live", "wrong-cwd", "wrong-id", "future-schema", "fork", "parent-agent", "extra-directory", "state-future", "state-old", "wire-stale", "wire-before-process", "wire-future", "wire-partial", "latest-invalid", "latest-oversized", "environment-session-mismatch", "process-changed", "cwd-changed", "metadata-changed", "wire-changed"} {
 		t.Run(scenario, func(t *testing.T) {
