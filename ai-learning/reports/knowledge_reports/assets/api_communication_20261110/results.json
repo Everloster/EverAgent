@@ -1,0 +1,243 @@
+{
+  "kind": "offline-teaching-contract-lab",
+  "scope": "手写状态机与合成报文；没有真实模型、网络、工具执行或供应商 Schema 验证",
+  "tests_run": 12,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "harness": {
+    "inflight_snapshot": [
+      {
+        "role": "user",
+        "content": "定位并修复这个测试失败。"
+      }
+    ],
+    "next_request_input": [
+      {
+        "role": "user",
+        "content": "定位并修复这个测试失败。"
+      },
+      {
+        "type": "function_call",
+        "id": "fc_demo_read",
+        "call_id": "call_demo_read",
+        "name": "read_test",
+        "arguments": "{\"path\": \"tests/demo.py\"}"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "call_demo_read",
+        "output": "合成工具结果：测试期望空列表，实际返回 null。"
+      },
+      {
+        "role": "user",
+        "content": "先只读分析，不要修改文件。"
+      },
+      {
+        "role": "user",
+        "content": "结论用中文解释。"
+      }
+    ]
+  },
+  "native_steering_trace": [
+    {
+      "type": "response.steer.accepted",
+      "queued": true
+    },
+    {
+      "type": "response.steer.pending",
+      "required_input": [
+        {
+          "type": "function_call_output",
+          "call_id": "call_demo_read"
+        }
+      ]
+    },
+    {
+      "type": "response.created",
+      "id": "resp_demo_successor",
+      "logical_new_input": [
+        {
+          "role": "user",
+          "content": "先只读分析，不要修改文件。"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "call_demo_read",
+          "output": "合成工具结果：测试期望空列表，实际返回 null。"
+        }
+      ]
+    }
+  ],
+  "payload_examples": {
+    "openai": {
+      "request_1": {
+        "model": "<OPENAI_MODEL_ID>",
+        "instructions": "你是代码助手。遵守用户授权。",
+        "input": [
+          {
+            "role": "user",
+            "content": "定位并修复这个测试失败。"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "name": "read_test",
+            "description": "只读指定的测试文件。",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        ],
+        "stream": true
+      },
+      "request_2": {
+        "model": "<OPENAI_MODEL_ID>",
+        "instructions": "你是代码助手。遵守用户授权。",
+        "input": [
+          {
+            "role": "user",
+            "content": "定位并修复这个测试失败。"
+          },
+          {
+            "type": "function_call",
+            "id": "fc_demo_read",
+            "call_id": "call_demo_read",
+            "name": "read_test",
+            "arguments": "{\"path\": \"tests/demo.py\"}"
+          },
+          {
+            "type": "function_call_output",
+            "call_id": "call_demo_read",
+            "output": "合成工具结果：测试期望空列表，实际返回 null。"
+          },
+          {
+            "role": "user",
+            "content": "先只读分析，不要修改文件。"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "name": "read_test",
+            "description": "只读指定的测试文件。",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        ],
+        "stream": true
+      }
+    },
+    "anthropic": {
+      "request_1": {
+        "model": "<CLAUDE_MODEL_ID>",
+        "max_tokens": 1024,
+        "system": "你是代码助手。遵守用户授权。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "定位并修复这个测试失败。"
+          }
+        ],
+        "tools": [
+          {
+            "name": "read_test",
+            "description": "只读指定的测试文件。",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "stream": true
+      },
+      "request_2": {
+        "model": "<CLAUDE_MODEL_ID>",
+        "max_tokens": 1024,
+        "system": "你是代码助手。遵守用户授权。",
+        "messages": [
+          {
+            "role": "user",
+            "content": "定位并修复这个测试失败。"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_demo_read",
+                "name": "read_test",
+                "input": {
+                  "path": "tests/demo.py"
+                }
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_demo_read",
+                "content": "合成工具结果：测试期望空列表，实际返回 null。"
+              },
+              {
+                "type": "text",
+                "text": "先只读分析，不要修改文件。"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "read_test",
+            "description": "只读指定的测试文件。",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "stream": true
+      }
+    }
+  }
+}

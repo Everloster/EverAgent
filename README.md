@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-11 · [管家怎样把新纸条递给正在工作的鹦鹉？——OpenAI、Anthropic API 与 Codex 运行中追加消息](./ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md)
+- 2026-11-10 · [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](./ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md)
 - 2026-11-10 · [《AI演义》31｜DiT：用Transformer承担扩散去噪](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
 - 2026-11-10 · [《AI演义》30｜Stable Diffusion v1.4：从提示词到像素图像](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
 - 2026-11-10 · [《AI演义》29｜LDM：将反复去噪移到压缩表示中](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
-- 2026-11-10 · [《AI演义》28｜DDPM：用噪声预测计算反向生成步骤](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_28_DDPM_%E9%A2%84%E6%B5%8B%E5%99%AA%E5%A3%B0%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
-- 2026-11-10 · [《AI演义》27｜早期扩散模型：用许多小步学习生成分布](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_27_Diffusion2015_%E9%80%90%E6%AD%A5%E5%8A%A0%E5%99%AA%E6%80%8E%E6%A0%B7%E5%AD%A6%E4%BC%9A%E7%94%9F%E6%88%90_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 197 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 199 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

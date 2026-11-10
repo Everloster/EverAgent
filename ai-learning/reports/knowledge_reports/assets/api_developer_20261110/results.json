@@ -1,0 +1,8 @@
+{
+  "kind": "offline-sdk-shaped-client-loop-tests",
+  "scope": "Fake Client 控制流测试；不导入真实 SDK、不请求 API、不验证实际模型行为",
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "passed": true
+}

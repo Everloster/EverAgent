@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-11 | [管家怎样把新纸条递给正在工作的鹦鹉？——OpenAI、Anthropic API 与 Codex 运行中追加消息](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | ai-learning |
+| 2026-11-10 | [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md) | ai-learning |
 | 2026-11-10 | [《AI演义》31｜DiT：用Transformer承担扩散去噪](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
 | 2026-11-10 | [《AI演义》30｜Stable Diffusion v1.4：从提示词到像素图像](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
 | 2026-11-10 | [《AI演义》29｜LDM：将反复去噪移到压缩表示中](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
@@ -30,13 +32,13 @@
 | 2026-11-10 | [《AI演义》11｜ZeRO：把训练状态分给多张 GPU](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_11_ZeRO_%E5%A4%9A%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%88%86%E6%8B%85%E8%AE%AD%E7%BB%83%E6%98%BE%E5%AD%98_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》10｜Scaling Laws 与 Chinchilla：怎样分配训练预算](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_10_ScalingLaws%E4%B8%8EChinchilla_%E7%AE%97%E5%8A%9B%E9%A2%84%E7%AE%97%E6%80%8E%E6%A0%B7%E5%88%86%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》09｜GPT-2 与 GPT-3：用上下文说明任务](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_09_GPT2%E4%B8%8EGPT3_%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E4%B8%8A%E4%B8%8B%E6%96%87_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-10 | [《AI演义》08｜GPT-1 与 BERT：把预训练网络用于不同任务](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_08_GPT1%E4%B8%8EBERT_%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-10 | [《AI演义》07｜GNMT 与 Transformer：翻译系统与并行架构](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_07_GNMT%E4%B8%8ETransformer_%E4%BB%8E%E7%BF%BB%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%88%B0%E5%B9%B6%E8%A1%8C%E6%9E%B6%E6%9E%84_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
-## 🤖 AI Learning（197 篇）
+## 🤖 AI Learning（199 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-11 | [管家怎样把新纸条递给正在工作的鹦鹉？——OpenAI、Anthropic API 与 Codex 运行中追加消息](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | `agent_harness`, `api_protocol`, `responses_api`, `messages_api`, `codex`, `steering` |
+| 2026-11-10 | [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md) | `api_protocol`, `developer_guide`, `responses_api`, `messages_api`, `tool_use`, `streaming` |
 | 2026-11-10 | [《AI演义》31｜DiT：用Transformer承担扩散去噪](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `diffusion_transformer`, `vision_transformer`, `scaling`, `generative_models` |
 | 2026-11-10 | [《AI演义》30｜Stable Diffusion v1.4：从提示词到像素图像](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `stable_diffusion`, `text_to_image`, `classifier_free_guidance`, `latent_diffusion` |
 | 2026-11-10 | [《AI演义》29｜LDM：将反复去噪移到压缩表示中](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_29_LDM_%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%80%8E%E6%A0%B7%E9%99%8D%E4%BD%8E%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%88%90%E6%9C%AC_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | `ai_history`, `latent_diffusion`, `autoencoder`, `cross_attention`, `generative_models` |
