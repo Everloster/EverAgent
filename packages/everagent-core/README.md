@@ -1,7 +1,7 @@
 # everagent-core
 
 公共Go模块：当前调用方的身份/模型证据、用户声明、会话组合、Git原语、公开内容保护与可选审查工具。
-当前源码为`0.5.5`，不代表已发布或设备已安装。Go版本与依赖由`go.mod`、`go.sum`固定，不依赖Python、独立身份helper或相邻私仓。
+当前源码为`0.6.0`，不代表已发布或设备已安装。Go版本与依赖由`go.mod`、`go.sum`固定，不依赖Python、独立身份helper或相邻私仓。
 
 ## 日常入口
 
@@ -13,14 +13,14 @@ scripts/ecommit.sh -m "说明实际修改"
 
 身份查询只在需要时使用。提交器自行核实当前Committer；自动失败先修读取路径，确无依据时才承接用户明确声明，不从配置、历史或产品名猜模型。
 
-公开提交使用`CommitOptions.IdentityOnly=true`与显式`ContentGuard`：
-- IdentityOnly不运行旧Gate/Preflight或Author策略门禁；Author是默认值，也可显式选择。
+公开提交使用`CommitOptions.IdentityOnly=true`、`EnforceAuthor=true`与显式`ContentGuard`：
+- IdentityOnly只跳过旧Gate/Preflight；EnforceAuthor独立要求有效Author策略、拒绝覆盖并核对最终Author。策略错误不回退全局身份，也不恢复质量流水线。
 - ContentGuard仅检查本次暂存内容的新增泄密信号，绑定检查前后及实际提交的tree。
 - 未传ContentGuard的IdentityOnly调用方不额外检查内容，原私仓行为保持。
 - 旧Gate模式保留给原调用方，不自动变为新的公开默认。安装版eacli按自己的core pin运行，不能把源码修改冒充设备升级。
 
 Git原生的冲突、签名、权限和hooks仍生效，不覆盖仓外hooks。提交后核实实际署名；结果未知或内容后置核验失败时保留现场，不自动重放或推送。
-push绑定捕获的SHA与唯一目的地，普通推送后读回匹配才称已核实，不强推。
+`scripts/egit.sh merge <revision>`在洁净checkout中冻结目标，快进不创建提交，分叉合并复用Commit的双身份与内容检查；冲突保留现场。`scripts/egit.sh push`绑定捕获的SHA与唯一目的地，经PushWithGuard检查新增署名和撤销提交后普通推送，读回匹配才称已核实，不强推。原生Git/GUI不保证经过wrapper，hooks仍按原配置运行。
 
 ## 公开内容与主动工具
 
