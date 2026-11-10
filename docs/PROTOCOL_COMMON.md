@@ -15,11 +15,11 @@
 
 ## §C Push Flow（推送流程 · 全局统一）
 
-正式入口是`scripts/ecommit.sh`，它编译本仓Go提交器，不依赖eacli、私仓checkout或其他设备在线。
+正式Git入口是`scripts/egit.sh commit|merge|push`，`scripts/ecommit.sh`保留为commit简写。它们编译同一个本仓Go实现，不依赖eacli、私仓checkout或其他设备在线。
 
 只自动检查：
 
-1. **Committer身份**：当前Agent/模型必须能核实，或由用户明确声明。Author使用默认或显式选择，不另设Author策略门禁。
+1. **双身份**：Author必须符合仓库`config/git-policy.json`中的公开主人身份；Committer是当前核实或用户明确声明的Agent/模型。策略缺失或冲突时拒绝，不回退全局身份；显式--author不能绕过。提交后核实实际Author和Committer，不输出错误身份中的邮箱。
 2. **新增公开内容**：只检查本次变更中的明显凭据和受限原始材料；结果不输出匹配到的秘密原文。疑似IP、路径、邮箱等给出提示，不做全仓隐私审计。
 
 不运行报告评分、独立评审、索引审计或Go/Python回归。草稿可以提交；坏链接或测试失败不改变Committer资格，但实际问题仍须如实说明。
@@ -36,7 +36,11 @@ scripts/ecommit.sh -m "说明实际修改"
 公开内容检查绑定实际暂存树，防止检查后换成另一份内容；Git正常的冲突、签名、权限和参数错误仍返回失败。若commit已产生但后置身份/内容不符，保留现场，不自动再提交或推送。
 仓外global hooks不读取、不替换、不绕过。仓内可选hook只做同样的身份与内容检查，不恢复质量流水线。
 
-使用普通Git快进交付到`origin/main`，先看实际远端与本地差异；不强推、不擅自stash/reset别人的工作。存在并行写入时隔离，不切换用户正在使用的工作树分支。
+使用普通快进交付到`origin/main`，先看实际远端与本地差异；不强推、不擅自stash/reset别人的工作。确需创建merge commit时用`scripts/egit.sh merge <明确revision>`，它在洁净checkout中冻结目标、准备合并并沿同一双身份/内容检查提交；冲突保留现场，不自动abort。普通pull建议设为ff-only，独立clone不会继承原仓的local配置。
+
+推送用`scripts/egit.sh push`：只校验本次新增提交的Author和Committer元数据，并拒绝策略中明确撤销的提交进入祖先链；既有历史不因工具署名同域名而批量改写。推送期的元数据格式检查不冒充当时的模型运行验证。原生Git/GUI直接操作不保证经过此wrapper，不能声称本地入口是不可能绕过的安全边界。
+
+跨仓任务必须事先说明目标仓、必要原因和源码/提交/推送/安装各自范围；起始cwd或创建隔离clone不代表获得跨仓发布授权。进入新clone后重新核对origin及个人署名配置，不能只设置Committer而遗漏Author。
 推送结果未知先读回目的ref，SHA匹配才称已交付；不因超时盲目重复写入。
 
 安装版eacli可以作为兼容入口，但其自身core版本须另行核实。公开仓`ea-quality quick`已改为轻量disclosure兼容入口，不再启动整套检查；正式提交优先使用本仓脚本。

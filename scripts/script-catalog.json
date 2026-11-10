@@ -35,7 +35,7 @@
     },
     {
       "id": "git.core",
-      "description": "核实当前Committer并保护新增公开内容；Author不是独立门禁，不运行报告质量或测试流水线。",
+      "description": "固定仓库Author并核实Agent/模型Committer；合并复用同一身份流程，推送检查新增署名与撤销提交，不运行质量流水线。",
       "entrypoint": "packages/everagent-core/cmd/ea-git/main.go",
       "owner": {
         "repository": "EverAgent",
@@ -45,7 +45,11 @@
       "aliases": [
         {
           "path": "scripts/ecommit.sh",
-          "description": "薄Bash入口；构建并调用ea-git commit，保留身份与新增内容检查，不配置Git或运行质量回归。"
+          "description": "调用同一egit commit入口，保留双身份与新增内容检查。"
+        },
+        {
+          "path": "scripts/egit.sh",
+          "description": "构建并调用仓库绑定的ea-git commit/merge/push，不跳过已有hooks。"
         }
       ],
       "platforms": [
@@ -57,10 +61,11 @@
         "Git",
         "Go >=1.27 或预编译二进制"
       ],
-      "input": "ea-git [--repo-root <checkout>] validate|commit <Git消息参数>",
+      "input": "ea-git [--repo-root <checkout>] validate|commit|merge|push <对应参数>",
       "output": "Git退出码；消息与显式trailer由Git处理",
       "side_effects": [
-        "commit写Git提交"
+        "commit/merge写Git提交或工作树",
+        "push写明确远端分支"
       ],
       "authorization": {
         "repository": "EverAgent",

@@ -322,9 +322,11 @@ func signingEvidence(identity Object) string {
 }
 
 type CommitOptions struct {
-	// IdentityOnly lets a caller require only verified Committer attribution.
-	// Other repositories retain their explicitly supplied quality policy.
+	// IdentityOnly skips Gate/Preflight, but not identity or ContentGuard checks.
 	IdentityOnly bool
+	// EnforceAuthor requires a valid AuthorReader policy independently of quality
+	// checks, rejects conflicting --author values and verifies the final Author.
+	EnforceAuthor bool
 	// ContentGuard is an optional, caller-owned check of the exact staged content.
 	// Unlike Gate/Preflight it may accompany IdentityOnly (e.g. public disclosure).
 	ContentGuard   func(context.Context, string, []string) error
@@ -338,8 +340,16 @@ type CommitOptions struct {
 }
 
 func Commit(ctx context.Context, args []string, options CommitOptions) error {
+	return commit(ctx, args, options, nil)
+}
+
+// beforeCommit binds Merge's prepared index and parents across policy callbacks.
+func commit(ctx context.Context, args []string, options CommitOptions, beforeCommit func(string, []string) error) error {
 	if options.IdentityReader == nil {
 		return blocked("Committer identity reader unavailable", 1)
+	}
+	if options.EnforceAuthor && options.AuthorReader == nil {
+		return blocked("repository author policy unavailable", 1)
 	}
 	if !options.IdentityOnly && (options.AuthorReader == nil || options.Gate == nil) {
 		return blocked("repository quality owner unavailable", 1)
@@ -365,6 +375,9 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	author := Author{text(identity["name"]), text(identity["email"])}
 	if options.AuthorReader != nil {
 		selected, err := options.AuthorReader()
+		if err != nil && options.EnforceAuthor {
+			return blocked("repository author policy unavailable", 1)
+		}
 		if err != nil && !options.IdentityOnly {
 			return err
 		}
@@ -373,7 +386,7 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		}
 	}
 	env, e := IdentityEnvironment(identity, base, author)
-	if e != nil && options.IdentityOnly {
+	if e != nil && options.IdentityOnly && !options.EnforceAuthor {
 		// Author is a default, not an independent admission policy in this mode.
 		author = Author{text(identity["name"]), text(identity["email"])}
 		env, e = IdentityEnvironment(identity, base, author)
@@ -392,7 +405,10 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	}
 	expectedAuthor := author.Name + " <" + author.Email + ">"
 	for _, p := range parts {
-		if !options.IdentityOnly && p.key == "--author" && *p.value != expectedAuthor {
+		if options.EnforceAuthor && p.key == "--no-verify" {
+			return blocked("protected commits do not bypass configured Git hooks", 2)
+		}
+		if (options.EnforceAuthor || !options.IdentityOnly) && p.key == "--author" && *p.value != expectedAuthor {
 			return blocked("--author 必须与仓库主人身份一致", 2)
 		}
 	}
@@ -432,6 +448,11 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		if guardedTree != "" {
 			env = append(env, "EVERAGENT_PUBLIC_CONTENT_TREE="+guardedTree)
 		}
+		if beforeCommit != nil {
+			if e = beforeCommit(root, env); e != nil {
+				return e
+			}
+		}
 		// Git still owns normal commit errors and the caller's configured hooks.
 		c := exec.CommandContext(ctx, "git", append([]string{"--no-replace-objects", "commit"}, forwarded...)...)
 		c.Dir, c.Env, c.Stdin, c.Stdout, c.Stderr = root, env, options.Stdin, options.Stdout, options.Stderr
@@ -447,6 +468,12 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 			tree, err := gitRead(ctx, root, env, "rev-parse", "HEAD^{tree}")
 			if err != nil || tree != guardedTree {
 				return blocked("commit 已生成，但不是已检查的公开内容；保留现场，禁止推送", 3)
+			}
+		}
+		if options.EnforceAuthor {
+			actual, err := gitRead(ctx, root, env, "show", "-s", "--format=%an <%ae>", "HEAD")
+			if err != nil || actual != expectedAuthor {
+				return blocked("commit 已生成，但 Author 核验失败；保留现场，禁止自动重放或推送", 3)
 			}
 		}
 		actual, err := gitRead(ctx, root, env, "show", "-s", "--format=%cn <%ce>", "HEAD")
@@ -472,6 +499,9 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	fresh := options.IdentityReader()
 	nextAuthor, e := options.AuthorReader()
 	if e != nil {
+		if options.EnforceAuthor {
+			return blocked("repository author policy unavailable", 1)
+		}
 		return e
 	}
 	if e = ValidIdentity(fresh); e != nil {
@@ -499,6 +529,11 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 		}
 	}
 	env = append(env, "EVERAGENT_QUALITY_GATE_TREE="+before)
+	if beforeCommit != nil {
+		if e = beforeCommit(root, env); e != nil {
+			return e
+		}
+	}
 	c := exec.CommandContext(ctx, "git", append([]string{"--no-replace-objects", "commit"}, forwarded...)...)
 	c.Dir = root
 	c.Env = env
@@ -522,7 +557,221 @@ func Commit(ctx context.Context, args []string, options CommitOptions) error {
 	return nil
 }
 
+// Merge integrates one resolved commit into a clean checkout (including no
+// untracked files). Fast-forwards create no commit and need no identity readers.
+// A divergent merge uses Commit's policy pipeline with EnforceAuthor enabled;
+// IdentityOnly still skips quality checks. Errors retain all state for the user.
+func Merge(ctx context.Context, target string, options CommitOptions) error {
+	if strings.TrimSpace(target) == "" || strings.HasPrefix(target, "-") {
+		return blocked("merge requires one non-option target revision", 2)
+	}
+	env := os.Environ()
+	if e := commitEnvironment(env); e != nil {
+		return e
+	}
+	for _, entry := range env {
+		if strings.HasPrefix(entry, "GIT_INDEX_FILE=") {
+			return blocked("merge requires the checkout's default index", 2)
+		}
+	}
+	root, e := commitRoot(ctx, options.Directory, env)
+	if e != nil {
+		return e
+	}
+	sha, e := gitRead(ctx, root, env, "rev-parse", "--verify", "--end-of-options", target+"^{commit}")
+	if e != nil {
+		return e
+	}
+	head, e := gitRead(ctx, root, env, "rev-parse", "--verify", "HEAD")
+	if e != nil {
+		return e
+	}
+	ref, e := gitRead(ctx, root, env, "rev-parse", "--symbolic-full-name", "HEAD")
+	if e != nil {
+		return e
+	}
+	checkHead := func(cwd string, env []string, expected string) error {
+		actual, e1 := gitRead(ctx, cwd, env, "rev-parse", "--verify", "HEAD")
+		branch, e2 := gitRead(ctx, cwd, env, "rev-parse", "--symbolic-full-name", "HEAD")
+		if cwd != root || e1 != nil || e2 != nil || actual != expected || branch != ref {
+			return blocked("merge HEAD changed; retain state and review before retrying", 3)
+		}
+		return nil
+	}
+	checkClean := func() error {
+		if e := mergeOperation(ctx, root, env, ""); e != nil {
+			return e
+		}
+		status, e := gitRead(ctx, root, env, "status", "--porcelain=v1", "-z", "--untracked-files=all", "--ignore-submodules=none")
+		if e != nil || status != "" {
+			return blocked("merge requires a clean index and worktree, including untracked files", 3)
+		}
+		return nil
+	}
+	if e = checkClean(); e != nil {
+		return e
+	}
+	ancestor := func(a, b string) (bool, error) {
+		_, err := command(ctx, root, env, 8192, "git", "--no-replace-objects", "merge-base", "--is-ancestor", a, b)
+		if err != nil && ErrorCode(err) != 1 {
+			return false, blocked("cannot determine merge ancestry", 1)
+		}
+		return err == nil, nil
+	}
+	ff, e := ancestor(head, sha)
+	if e != nil {
+		return e
+	}
+	upToDate, e := ancestor(sha, head)
+	if e != nil {
+		return e
+	}
+	mode := "--ff-only"
+	var author Author
+	if !ff && !upToDate {
+		mode = "--no-ff" // Explicitly override merge.ff=only for this authorized API.
+		if options.IdentityReader == nil {
+			return blocked("Committer identity reader unavailable", 1)
+		}
+		if options.AuthorReader == nil {
+			return blocked("repository author policy unavailable", 1)
+		}
+		// Git needs a Committer even for --no-commit. Reuse this observation for
+		// Commit's first read; quality mode retains its existing fresh recheck.
+		identity := options.IdentityReader()
+		author, e = options.AuthorReader()
+		if e != nil {
+			return blocked("repository author policy unavailable", 1)
+		}
+		env, e = IdentityEnvironment(identity, env, author)
+		if e != nil {
+			return e
+		}
+		read, first := options.IdentityReader, true
+		options.IdentityReader = func() Object {
+			if first {
+				first = false
+				return identity
+			}
+			return read()
+		}
+	}
+	if e = checkClean(); e != nil {
+		return e
+	}
+	if e = checkHead(root, env, head); e != nil {
+		return e
+	}
+	// Never autostash, squash, overwrite ignored files or bypass configured hooks.
+	c := exec.CommandContext(ctx, "git", "--no-replace-objects", "merge", mode, "--no-commit", "--no-squash", "--no-autostash", "--no-overwrite-ignore", "--no-edit", "--verify", "--", sha)
+	c.Dir, c.Env = root, env
+	c.Stdin, c.Stdout, c.Stderr = options.Stdin, options.Stdout, options.Stderr
+	if c.Stdin == nil {
+		c.Stdin = os.Stdin
+	}
+	if c.Stdout == nil {
+		c.Stdout = os.Stdout
+	}
+	if c.Stderr == nil {
+		c.Stderr = os.Stderr
+	}
+	if e = c.Run(); e != nil {
+		return e // In particular, never abort or commit conflict state.
+	}
+	if ff || upToDate {
+		expected := head
+		if ff {
+			expected = sha
+		}
+		if e = checkHead(root, env, expected); e != nil {
+			return e
+		}
+		return checkClean()
+	}
+	tree, e := gitRead(ctx, root, env, "write-tree")
+	if e != nil {
+		return e
+	}
+	checkPrepared := func(cwd string, env []string) error {
+		if e := checkHead(cwd, env, head); e != nil {
+			return e
+		}
+		if e := mergeOperation(ctx, cwd, env, sha); e != nil {
+			return e
+		}
+		actual, e := gitRead(ctx, cwd, env, "write-tree")
+		if e != nil || actual != tree {
+			return blocked("prepared merge index changed; retain state and review before committing", 3)
+		}
+		return nil
+	}
+	if e = checkPrepared(root, env); e != nil {
+		return e
+	}
+	nextAuthor, e := options.AuthorReader()
+	if e != nil {
+		return blocked("repository author policy unavailable", 1)
+	}
+	if nextAuthor != author {
+		return blocked("repository author policy changed during merge; retain state and review before committing", 3)
+	}
+	// Freeze the pre-merge Author for Commit, while retaining quality mode's
+	// normal post-gate policy recheck. Never adopt policy from incoming content.
+	readAuthor, firstAuthor := options.AuthorReader, true
+	options.AuthorReader = func() (Author, error) {
+		if firstAuthor {
+			firstAuthor = false
+			return author, nil
+		}
+		return readAuthor()
+	}
+	options.Directory, options.EnforceAuthor = root, true
+	if e = commit(ctx, []string{"--no-edit"}, options, checkPrepared); e != nil {
+		return e
+	}
+	actual, e1 := gitRead(ctx, root, env, "rev-parse", "HEAD^{tree}")
+	parents, e2 := gitRead(ctx, root, env, "show", "-s", "--format=%P", "HEAD")
+	branch, e3 := gitRead(ctx, root, env, "rev-parse", "--symbolic-full-name", "HEAD")
+	if e1 != nil || e2 != nil || e3 != nil || actual != tree || parents != head+" "+sha || branch != ref {
+		return blocked("merge commit created but tree/parents verification failed; retain state, do not push", 3)
+	}
+	return nil
+}
+
+// A merge must not join another in-progress operation. When prepared is set,
+// exactly that one MERGE_HEAD must survive until the final commit.
+func mergeOperation(ctx context.Context, root string, env []string, prepared string) error {
+	for _, name := range []string{"MERGE_HEAD", "CHERRY_PICK_HEAD", "REVERT_HEAD", "rebase-apply", "rebase-merge", "sequencer"} {
+		path, e := gitRead(ctx, root, env, "rev-parse", "--git-path", name)
+		if e != nil {
+			return e
+		}
+		if !filepath.IsAbs(path) {
+			path = filepath.Join(root, path)
+		}
+		if name == "MERGE_HEAD" && prepared != "" {
+			b, e := os.ReadFile(path)
+			if e != nil || strings.TrimSpace(string(b)) != prepared {
+				return blocked("prepared merge state changed; retain state and review before committing", 3)
+			}
+		} else if _, e := os.Lstat(path); !os.IsNotExist(e) {
+			return blocked("merge refuses an existing or unreadable Git operation state", 3)
+		}
+	}
+	return nil
+}
+
 func Push(ctx context.Context, cwd, remote, branch string) (Object, error) {
+	return push(ctx, cwd, remote, branch, nil)
+}
+
+// PushWithGuard checks the exact fetched base and frozen outgoing head before
+// pushing. A guard error prevents the push; Push retains its existing policy.
+func PushWithGuard(ctx context.Context, cwd, remote, branch string, guard func(context.Context, string, string, string) error) (Object, error) {
+	return push(ctx, cwd, remote, branch, guard)
+}
+
+func push(ctx context.Context, cwd, remote, branch string, guard func(context.Context, string, string, string) error) (Object, error) {
 	if !regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$`).MatchString(remote) || !regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._/-]{0,160}$`).MatchString(branch) || strings.Contains(branch, "..") {
 		return nil, blocked("invalid Git remote or branch", 2)
 	}
@@ -607,6 +856,11 @@ func Push(ctx context.Context, cwd, remote, branch string) (Object, error) {
 	}
 	if _, e = command(ctx, cwd, nil, 8192, "git", "--no-replace-objects", "merge-base", "--is-ancestor", base, head); e != nil {
 		return nil, blocked("远端不是待推送 SHA 的祖先；先检查并集成，不强推", 3)
+	}
+	if guard != nil {
+		if e = guard(ctx, cwd, base, head); e != nil {
+			return nil, e
+		}
 	}
 	if e = check(); e != nil {
 		return nil, e

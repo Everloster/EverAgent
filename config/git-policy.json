@@ -3,5 +3,8 @@
   "author": {
     "name": "Everloster",
     "email": "2820419+Everloster@users.noreply.github.com"
-  }
+  },
+  "forbidden_commits": [
+    "3aad9e3539de99fa2f4cc7d6d7291defb83b1259"
+  ]
 }

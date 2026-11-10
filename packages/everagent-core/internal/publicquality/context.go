@@ -246,6 +246,10 @@ func AuditContext(s *Snapshot, rules *Rules, reports []Report) ContextAudit {
 func checkPublicBindings(s *Snapshot) []Finding {
 	f := findingList{file: "scripts/ecommit.sh", items: []Finding{}}
 	wrapper, _ := s.Text(f.file)
+	if strings.Contains(wrapper, "egit.sh") {
+		shared, _ := s.Text("scripts/egit.sh")
+		wrapper += "\n" + shared
+	}
 	engine, _ := s.Text("packages/everagent-core/cmd/ea-git/main.go")
 	f.require(strings.Contains(wrapper, "./cmd/ea-git") && strings.Contains(engine, "core.Commit(") && strings.Contains(engine, "publicquality.CheckDisclosure("), "CONTEXT_COMMIT_BINDING", "提交入口须绑定共享Go身份与新增公开内容检查。")
 	workflowPath := ".github/workflows/quality.yml"

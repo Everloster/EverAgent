@@ -1,4 +1,4 @@
-// ea-git verifies Committer identity and new public-content disclosure only.
+// ea-git binds the public Author, verified Committer and public-content checks.
 // It neither requires eacli/private checkouts nor runs report quality gates.
 package main
 
@@ -26,7 +26,7 @@ func run(args []string) int {
 	f := flag.NewFlagSet("ea-git", flag.ContinueOnError)
 	root := f.String("repo-root", "../..", "public checkout root")
 	if err := f.Parse(args); err != nil || f.NArg() == 0 {
-		fmt.Fprintln(os.Stderr, "ea-git [--repo-root <checkout>] commit <git-message-options> | validate")
+		fmt.Fprintln(os.Stderr, "ea-git [--repo-root <checkout>] commit <options> | merge <revision> | push [--remote origin] [--branch main] | validate")
 		return 2
 	}
 	absolute, err := filepath.Abs(*root)
@@ -41,9 +41,9 @@ func run(args []string) int {
 	defer stop()
 	reader := func() (core.Author, error) { return readAuthor(ctx, absolute) }
 	switch f.Arg(0) {
-	case "commit":
-		err = core.Commit(ctx, f.Args()[1:], core.CommitOptions{
-			IdentityOnly: true, Directory: absolute, IdentityReader: core.InspectIdentity, AuthorReader: reader,
+	case "commit", "merge":
+		options := core.CommitOptions{
+			IdentityOnly: true, EnforceAuthor: true, Directory: absolute, IdentityReader: core.InspectIdentity, AuthorReader: reader,
 			ContentGuard: func(ctx context.Context, target string, _ []string) error {
 				if target != absolute {
 					return errors.New("commit must target this public checkout")
@@ -61,7 +61,38 @@ func run(args []string) int {
 				}
 				return e
 			},
+		}
+		if f.Arg(0) == "merge" {
+			if f.NArg() != 2 {
+				return 2
+			}
+			err = core.Merge(ctx, f.Arg(1), options)
+		} else {
+			err = core.Commit(ctx, f.Args()[1:], options)
+		}
+	case "push":
+		flags := flag.NewFlagSet("push", flag.ContinueOnError)
+		remote := flags.String("remote", "origin", "exact remote")
+		branch := flags.String("branch", "", "current branch")
+		if flags.Parse(f.Args()[1:]) != nil || flags.NArg() != 0 {
+			return 2
+		}
+		if *branch == "" {
+			checkout, _ := core.Checkout(absolute)
+			*branch, _ = checkout["branch"].(string)
+		}
+		policy, policyErr := readPushPolicy(ctx, absolute)
+		if policyErr != nil {
+			err = policyErr
+			break
+		}
+		var report core.Object
+		report, err = core.PushWithGuard(ctx, absolute, *remote, *branch, func(ctx context.Context, root, base, head string) error {
+			return core.CheckPushIdentities(ctx, root, base, head, policy)
 		})
+		if report != nil {
+			_ = json.NewEncoder(os.Stdout).Encode(report)
+		}
 	case "validate":
 		if f.NArg() != 1 {
 			return 2
@@ -77,6 +108,16 @@ func run(args []string) int {
 		}
 		if committer.Name != identity["name"] || committer.Email != identity["email"] {
 			err = errors.New("Git Committer does not match the current Agent/model")
+			break
+		}
+		expected, e := reader()
+		if e != nil {
+			err = e
+			break
+		}
+		author, e := gitIdent(ctx, absolute, "GIT_AUTHOR_IDENT")
+		if e != nil || author != expected {
+			err = errors.New("Git Author does not match the repository owner")
 		}
 	default:
 		return 2
@@ -107,6 +148,28 @@ func readAuthor(ctx context.Context, root string) (core.Author, error) {
 		return core.Author{}, errors.New("repository author policy invalid")
 	}
 	return core.Author{Name: name, Email: email}, c.Verify()
+}
+
+func readPushPolicy(ctx context.Context, root string) (core.PushIdentityPolicy, error) {
+	c, err := publicquality.Capture(ctx, root, "head")
+	if err != nil {
+		return core.PushIdentityPolicy{}, err
+	}
+	defer c.Close()
+	value, err := publicquality.JSON(c.After, "config/git-policy.json")
+	if err != nil {
+		return core.PushIdentityPolicy{}, errors.New("committed push identity policy unavailable")
+	}
+	raw, err := json.Marshal(value)
+	var policy struct {
+		Schema    int         `json:"schema_version"`
+		Author    core.Author `json:"author"`
+		Forbidden []string    `json:"forbidden_commits"`
+	}
+	if err != nil || json.Unmarshal(raw, &policy) != nil || policy.Schema != 1 {
+		return core.PushIdentityPolicy{}, errors.New("committed push identity policy invalid")
+	}
+	return core.PushIdentityPolicy{Author: policy.Author, ForbiddenCommits: policy.Forbidden}, c.Verify()
 }
 
 func gitIdent(ctx context.Context, root, variable string) (core.Author, error) {

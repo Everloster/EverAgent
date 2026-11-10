@@ -24,16 +24,25 @@ func testGit(t *testing.T, cwd string, args ...string) string {
 func gitFixture(t *testing.T) (string, CommitOptions) {
 	t.Helper()
 	// Real Git, but no user's hooks, signing defaults, index or global identity.
+	for _, entry := range os.Environ() {
+		key, _, _ := strings.Cut(entry, "=")
+		if strings.HasPrefix(key, "GIT_") || key == "EMAIL" {
+			t.Setenv(key, "") // testing restores the original value on cleanup.
+			if err := os.Unsetenv(key); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
 	t.Setenv("GIT_CONFIG_GLOBAL", os.DevNull)
 	t.Setenv("GIT_CONFIG_NOSYSTEM", "1")
 	t.Setenv("GIT_CONFIG_COUNT", "0")
-	// An empty GIT_DIR/INDEX_FILE is still a path override, not an unset key.
-	for _, key := range []string{"GIT_INDEX_FILE", "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR"} {
-		t.Setenv(key, "") // testing restores the original value on cleanup.
-		if err := os.Unsetenv(key); err != nil {
-			t.Fatal(err)
-		}
-	}
+	t.Setenv("GIT_TEMPLATE_DIR", t.TempDir())
+	t.Setenv("GIT_TERMINAL_PROMPT", "0")
+	t.Setenv("GIT_ALLOW_PROTOCOL", "file")
+	t.Setenv("GIT_AUTHOR_NAME", "Fixture Seed")
+	t.Setenv("GIT_AUTHOR_EMAIL", "seed@example.invalid")
+	t.Setenv("GIT_COMMITTER_NAME", "Fixture Seed")
+	t.Setenv("GIT_COMMITTER_EMAIL", "seed@example.invalid")
 	dir := realPath(t.TempDir())
 	testGit(t, dir, "init", "--initial-branch=main")
 	writeFixture(t, filepath.Join(dir, "tracked.txt"), []byte("staged\n"), time.Now())
@@ -81,7 +90,7 @@ func TestCommitKeepsFailedObservationReason(t *testing.T) {
 }
 
 func TestIdentityOnlyCommitDoesNotRunQualityOrAuthorPolicy(t *testing.T) {
-	for _, authorPolicy := range []string{"default", "missing", "invalid"} {
+	for _, authorPolicy := range []string{"default", "missing", "invalid", "invalid-value"} {
 		t.Run(authorPolicy, func(t *testing.T) {
 			dir, options := gitFixture(t)
 			options.IdentityOnly = true
@@ -91,6 +100,8 @@ func TestIdentityOnlyCommitDoesNotRunQualityOrAuthorPolicy(t *testing.T) {
 				options.AuthorReader = nil
 			} else if authorPolicy == "invalid" {
 				options.AuthorReader = func() (Author, error) { return Author{}, errors.New("unavailable policy") }
+			} else if authorPolicy == "invalid-value" {
+				options.AuthorReader = func() (Author, error) { return Author{}, nil }
 			}
 			reads := 0
 			read := options.IdentityReader
@@ -153,6 +164,138 @@ func TestIdentityOnlyCommitStillRejectsUnknownCommitter(t *testing.T) {
 	}
 	if err := Commit(context.Background(), []string{"-m", "must not commit"}, options); err == nil || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
 		t.Fatal("unknown committer was accepted", err)
+	}
+}
+
+func TestEnforceAuthorIndependentOfQuality(t *testing.T) {
+	for _, args := range [][]string{{"-m", "enforced"}, {"-m", "enforced", "--author=Fixture Owner <owner@example.invalid>"}} {
+		t.Run(strings.Join(args, " "), func(t *testing.T) {
+			dir, options := gitFixture(t)
+			options.IdentityOnly, options.EnforceAuthor = true, true
+			options.Gate = func(context.Context, string, []string) error { t.Fatal("quality gate ran"); return nil }
+			options.Preflight = func(string, Object) error { t.Fatal("preflight ran"); return nil }
+			global := filepath.Join(t.TempDir(), "config")
+			config := "[user]\n\tname = Company Fixture\n\temail = company@example.invalid\n"
+			writeFixture(t, global, []byte(config), time.Now())
+			t.Setenv("GIT_CONFIG_GLOBAL", global)
+			identities, authors, guards := 0, 0, 0
+			readIdentity, readAuthor := options.IdentityReader, options.AuthorReader
+			options.IdentityReader = func() Object { identities++; return readIdentity() }
+			options.AuthorReader = func() (Author, error) { authors++; return readAuthor() }
+			options.ContentGuard = func(context.Context, string, []string) error { guards++; return nil }
+			if err := Commit(context.Background(), args, options); err != nil {
+				t.Fatal(err)
+			}
+			if identities != 1 || authors != 1 || guards != 1 {
+				t.Fatalf("unexpected checks: identity=%d author=%d guard=%d", identities, authors, guards)
+			}
+			if actual := testGit(t, dir, "show", "-s", "--format=%an <%ae>|%cn <%ce>"); actual != "Fixture Owner <owner@example.invalid>|codex-fixture-model <noreply@openai.com>" {
+				t.Fatal("enforced identities not applied")
+			}
+			b, err := os.ReadFile(global)
+			if err != nil || string(b) != config {
+				t.Fatal("global config changed", err)
+			}
+			if err := Commit(context.Background(), []string{"--amend", "--no-edit"}, options); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
+}
+
+func TestEnforceAuthorFailsClosed(t *testing.T) {
+	for _, scenario := range []string{"missing", "unavailable", "empty", "bad-name", "bad-email", "conflicting-author", "conflicting-equals-author"} {
+		t.Run(scenario, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			options.IdentityOnly, options.EnforceAuthor = true, true
+			options.ContentGuard = func(context.Context, string, []string) error { t.Fatal("invalid author reached guard"); return nil }
+			args := []string{"-m", "must not commit"}
+			switch scenario {
+			case "missing":
+				options.AuthorReader = nil
+			case "unavailable":
+				options.AuthorReader = func() (Author, error) { return Author{}, errors.New("private@example.invalid unavailable") }
+			case "empty":
+				options.AuthorReader = func() (Author, error) { return Author{}, nil }
+			case "bad-name":
+				options.AuthorReader = func() (Author, error) { return Author{"Bad <Name>", "private@example.invalid"}, nil }
+			case "bad-email":
+				options.AuthorReader = func() (Author, error) { return Author{"Owner", "invalid-email"}, nil }
+			case "conflicting-author":
+				args = append(args, "--author", "Wrong <private@example.invalid>")
+			case "conflicting-equals-author":
+				args = append(args, "--author=Wrong <private@example.invalid>")
+			}
+			err := Commit(context.Background(), args, options)
+			if err == nil || strings.Contains(err.Error(), "@") || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
+				t.Fatal("author policy failed open or disclosed its value", err)
+			}
+		})
+	}
+}
+
+func TestEnforceAuthorSanitizesPolicyRecheckFailure(t *testing.T) {
+	dir, options := gitFixture(t)
+	options.EnforceAuthor = true
+	read := options.AuthorReader
+	calls := 0
+	options.AuthorReader = func() (Author, error) {
+		calls++
+		if calls == 2 {
+			return Author{}, errors.New("private@example.invalid changed")
+		}
+		return read()
+	}
+	err := Commit(context.Background(), []string{"-m", "must not commit"}, options)
+	if ErrorCode(err) != 1 || strings.Contains(err.Error(), "@") || calls != 2 || testGit(t, dir, "rev-list", "--all", "--count") != "0" {
+		t.Fatal("policy recheck did not fail closed privately", err)
+	}
+}
+
+func TestEnforceAuthorChecksFinalIdentity(t *testing.T) {
+	for _, role := range []string{"AUTHOR", "COMMITTER"} {
+		t.Run(role, func(t *testing.T) {
+			dir, options := gitFixture(t)
+			options.IdentityOnly, options.EnforceAuthor = true, true
+			path := filepath.Join(dir, ".git", "hooks", "post-commit")
+			script := "#!/bin/sh\ntree=$(git rev-parse HEAD^{tree})\nreplacement=$(GIT_" + role + "_NAME=Changed GIT_" + role + "_EMAIL=changed@example.invalid git commit-tree \"$tree\" -m changed) || exit 1\ngit update-ref HEAD \"$replacement\"\n"
+			writeFixture(t, path, []byte(script), time.Now())
+			if err := os.Chmod(path, 0700); err != nil {
+				t.Fatal(err)
+			}
+			err := Commit(context.Background(), []string{"-m", "post-check"}, options)
+			if ErrorCode(err) != 3 || strings.Contains(err.Error(), "@") || testGit(t, dir, "show", "-s", "--format=%s") != "changed" {
+				t.Fatal("changed final identity not blocked or state not retained", err)
+			}
+		})
+	}
+}
+
+func TestPushWithGuardRefusesBeforePush(t *testing.T) {
+	dir, options := gitFixture(t)
+	if err := Commit(context.Background(), []string{"-m", "base"}, options); err != nil {
+		t.Fatal(err)
+	}
+	base := testGit(t, dir, "rev-parse", "HEAD")
+	remote := filepath.Join(t.TempDir(), "remote.git")
+	testGit(t, dir, "clone", "--bare", dir, remote)
+	testGit(t, dir, "remote", "add", "origin", remote)
+	writeFixture(t, filepath.Join(dir, "tracked.txt"), []byte("next"), time.Now())
+	testGit(t, dir, "add", "tracked.txt")
+	if err := Commit(context.Background(), []string{"-m", "next"}, options); err != nil {
+		t.Fatal(err)
+	}
+	head := testGit(t, dir, "rev-parse", "HEAD")
+	refused, calls := errors.New("guard refused"), 0
+	report, err := PushWithGuard(context.Background(), dir, "origin", "main", func(_ context.Context, cwd, gotBase, gotHead string) error {
+		calls++
+		if cwd != dir || gotBase != base || gotHead != head {
+			t.Fatal("guard received different endpoints")
+		}
+		return refused
+	})
+	if !errors.Is(err, refused) || report != nil || calls != 1 || testGit(t, remote, "rev-parse", "main") != base {
+		t.Fatal("guard failure did not prevent push", err)
 	}
 }
 
