@@ -4,6 +4,8 @@
 
 同一套应用可以在浏览器里独立运行，也可以作为 MiniMax Code 的 Mini App 打开。报告直接读取本地 EverAgent，无需私有仓、模型账号或 API Key。
 
+**交给 Agent 安装**：复制[部署指南中的 prompt](./DEPLOY.md#交给-agent-的-prompt)，让 Agent 完成克隆、构建、启动和报告阅读检查。指南也说明依赖、进程保留与后续更新。
+
 ## 在浏览器里打开
 
 准备 **Node.js 20+**；从源码首次构建还需要 **Go 1.27+**。下载或克隆完整 EverAgent 仓库后，在仓库根目录运行：

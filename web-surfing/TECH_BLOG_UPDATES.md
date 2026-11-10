@@ -6,11 +6,11 @@
 
 想听播客，可以看 [小宇宙精选播客历史速看表](../podcast-learning/PODCAST_UPDATES.md)。
 
-**最近检查：2026-11-08（北京时间）** · **累计收录时段：2026-09-02—2026-11-06**
+**最近检查：2026-11-10（北京时间）** · **累计收录时段：2026-09-02—2026-11-09**
 
-检查了 **28 个官方渠道**，目前收录 **429 篇**日期已核实的文章：**44 篇已学习**，**10 篇有相关报告**，**375 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **438 篇**日期已核实的文章：**44 篇已学习**，**10 篇有相关报告**，**384 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
-**本次补充 61 篇**：其中 **59 篇**发表于 2026-11-01—2026-11-08 检查窗口，另补录 **2 篇 10 月旧文**。历史文章与报告关联保留；新增条目中的 Anthropic 记忆组件已完成专题学习，其余新增条目未找到对应的已完成报告。
+**本次补充 9 篇**，均发表于 11 月 9 日；增量检查覆盖 2026-11-03—2026-11-10。新增条目均未找到对应的专题报告；历史文章、导读与学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 77 篇 | 1 篇 |
+| [2026-11](#m202611) | 86 篇 | 1 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -40,7 +40,19 @@
 
 
 <details>
-<summary><strong>OpenAI 研究与技术更新 · 14 篇</strong></summary>
+<summary><strong>OpenAI 研究与技术更新 · 17 篇</strong></summary>
+
+- **11-09** [Control Room：集中追踪与中止研究推理任务](https://openai.com/index/control-room "Control Room: A central system to track and stop model workloads across our research infrastructure") · 未做
+
+  介绍把任务身份、推理引擎和监控告警连接起来，在安全或可靠性问题出现时停止模型输出；停机时延与故障处理能力为官方报告。
+
+- **11-09** [CodeRabbit：用多 Agent、评测与安全检查审查 AI 代码](https://openai.com/index/coderabbit-codex-daybreak "CodeRabbit scales agentic software development and ships 20x more") · 未做
+
+  介绍按任务分配推理模型、维护缺陷基准，以及把代码审查和漏洞修复接入开发流程；交付增幅为客户自报。
+
+- **11-09** [Kuken：用模型检索历史设备图纸](https://openai.com/index/kuken "Kuken Industries searches 70 years of drawings in minutes") · 未做
+
+  介绍根据图纸内容、零件信息和现场需求建立检索应用，并比较模型的提取准确率与成本；效率变化来自客户案例。
 
 - **11-06** [OpenAI 与 Hacktron 合作开展安全研究](https://openai.com/index/partnering-with-hacktron "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems") · 未做
 
@@ -116,7 +128,11 @@
 
 
 <details>
-<summary><strong>AMD ROCm · 11 篇</strong></summary>
+<summary><strong>AMD ROCm · 12 篇</strong></summary>
+
+- **11-09** [MONAILabel 0.8.5：在 AMD GPU 上交互标注医学图像](https://rocm.blogs.amd.com/artificial-intelligence/monailabel-2608/README.html "MONAILabel 0.8.5 on AMD Instinct™ GPUs: Interactive Medical-Image Annotation") · 未做
+
+  介绍 ROCm 适配、脾脏 CT 分割测试与模型建议—人工修正的标注流程，并区分模型推理和预处理、文件读写的耗时。
 
 - **11-06** [ROCm InferaSim：用仿真筛选模型服务配置](https://rocm.blogs.amd.com/software-tools-optimization/inferasim/README.html "ROCm InferaSim: Cut LLM Serving Trial Costs and Deploy the Best Configuration") · 未做
 
@@ -166,7 +182,11 @@
 
 
 <details>
-<summary><strong>NVIDIA 技术博客 · 13 篇</strong></summary>
+<summary><strong>NVIDIA 技术博客 · 14 篇</strong></summary>
+
+- **11-09** [Holoscan 5：机械臂重力补偿与低延迟控制](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5 "Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5") · 未做
+
+  以读取关节状态、计算补偿力矩、发送指令三个算子搭建控制环，说明队列、线程划分、看门狗及延迟和抖动测量。
 
 - **11-06** [在 Blackwell GPU 上加速 FLUX 3 Image Klein](https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus "Speed Up Image Generation with FLUX 3 Image Klein on NVIDIA Blackwell GPUs") · 未做
 
@@ -224,7 +244,15 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 9 篇</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 11 篇</strong></summary>
+
+- **11-09** [HOPE：考虑专家协作关系的 MoE 剪枝](https://huggingface.co/blog/amazon/higher-order-pruning-experts "Your Experts Have Partners. There&#x27;s HOPE for Keeping Them Together") · 未做
+
+  Amazon 研究团队介绍二阶专家剪枝，将专家之间的相互作用纳入删除决策；文章给出校准方法、使用示例和作者实验结果。
+
+- **11-09** [Nemotron-Personas-Finance-Japan：日本金融场景合成人物数据](https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan&#x27;s Demographics and Financial Context") · 未做
+
+  NVIDIA 与 Elith 介绍结合官方统计、概率图模型和文本生成的合成数据流程，用于金融 Agent 开发、用户模拟与评测。
 
 - **11-06** [Open ASR 排行榜加入埃及与尼日利亚英语](https://huggingface.co/blog/open-asr-leaderboard-liva "Egyptian and Nigerian English join the Open ASR Leaderboard") · 未做
 
@@ -388,7 +416,15 @@
 </details>
 
 <details>
-<summary><strong>Anthropic · 5 篇 · 1 篇已学习</strong></summary>
+<summary><strong>Anthropic · 7 篇 · 1 篇已学习</strong></summary>
+
+- **11-09** [Claude Fable 5.2 与 Mythos 5.2：技术任务与安全评测](https://www.anthropic.com/claude-fable-and-mythos-5-2 "Introducing Claude Fable 5.2 and Claude Mythos 5.2") · 未做
+
+  介绍编程、推理、视觉和科学任务的能力变化，以及两个版本的访问与防护差异；性能、安全性和案例结果均为官方报告。
+
+- **11-09** [Claude 电子设计：从电路、PCB 到实物原型](https://www.anthropic.com/research/claude-electronics-design "Testing Claude on real-world electronics design") · 未做
+
+  报告与 Diode 合作设计三种设备的实验，讨论几何推理、布局布线、固件和制造约束；长期可靠性与商业认证仍未验证。
 
 - **11-06** [Agent 记忆的组成：记录、整理与纠错](https://www.anthropic.com/research/components-of-agent-memory "The components of agent memory") · **已学习**
 
@@ -1827,42 +1863,42 @@
 
 ## 渠道获取情况
 
-2026-11-08 已检查注册表全部 28 个渠道，并回看官方目录、原文和被关键词筛掉的技术条目。日期取自 RSS、原文或官方 HTML 的 datePublished；搜索相对时间不作发布日期。下表记录当前累计数量与尚存缺口。
+2026-11-10 已检查注册表全部 28 个渠道，并复查官方目录、原文和关键词漏选项。日期取自 RSS、原文或官方目录；搜索相对时间不作发布日期。新增 9 篇 11 月文章，保留所有历史条目。下表记录当前累计数量与尚存缺口。
 
-RSS/XML 丢失或输出超限后，降级读取同一官方公开来源。Google、Mistral 与腾讯的部分正文或日期在 eacli 中缺失，原始来源读取也失败，遂使用 Firecrawl 补读官方页面；未将获取成功等同于历史覆盖完整。
+RSS/XML 丢失、输出超限或正文获取失败后，降级读取同一官方公开来源；目录缺少文章链接时补读官方 HTML。本轮 NVIDIA 合成数据文章遇阅读器限流后已回源取得正文。搜索或关键词筛选漏掉的 Anthropic 两篇新文、HOPE 和两个 OpenAI 工程应用案例均经一手来源补核；未将渠道返回结果等同于完整覆盖。
 
 “收录 0 篇”表示本轮没有取得符合范围且日期已核实的条目，不能据此判断该渠道没有更新。后续查询会继续补这些缺口。
 
 | 渠道 | 累计已收录 | 获取情况与待补项 |
 | --- | ---: | --- |
-| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 本轮搜索与目录仍返回偏旧内容；未取得可核实的近期新文，历史缺口保留。 |
-| [OpenAI 研究与技术更新](https://openai.com/news/) | 30 | 已核对官方 RSS 与新增原文，补入 Pando、Images 2.6、BioBasicsBench、安全研究和企业工作流；纯人事、政策与奖励公告未纳入。 |
-| [Anthropic](https://www.anthropic.com/engineering) | 25 | 已核对工程、研究目录及原文，补入 Agent 记忆、科学建模、科研使用分析、vault 颗粒与 FlashProve 五篇；旧经济情景文章日期缺口保留。 |
-| [Google Research](https://research.google/blog/) | 11 | RSS 本轮超时，备用搜索未返回近期条目；官方首页仍显示 10 月内容，不能据此判断 11 月没有更新，9 月历史缺口保留。 |
-| [Google DeepMind](https://deepmind.google/discover/blog/) | 21 | 已读取官方 RSS 和原文，补入 Gemini Omni 1.2 Flash；历史条目保留。 |
-| [Google Developers](https://developers.googleblog.com/) | 18 | 目录与搜索返回旧内容，补读原文及官方 HTML；加入本周模型路由、Agent Distraction，并补录 10 月的 AQuA；Chrysalis 已收录，核对日期后保留原条目。分页及更早历史仍可能遗漏。 |
-| [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 11 | 已读取官方 RSS 与 PDD Kit 原文；历史覆盖仍主要从 9 月下旬开始。 |
-| [Apple 机器学习研究](https://machinelearning.apple.com/) | 11 | 已读取订阅及 Faster Retrieval 原文；另有 4 篇只标月份，9 月历史可能不全。 |
-| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 已复查搜索与官方目录，但返回的可见最新文章仍在 7 月；近期覆盖不足，未据此声称没有更新。 |
-| [Ai2](https://allenai.org/blog) | 1 | ToyBlocks 主站链接返回 404，改读 Ai2 在 Hugging Face 发布的原文并列入 HF 组；Nextcloud 及原有日期缺口保留。 |
-| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 官方首页经回源读取，最新可见记录为 10 月招聘；Seedance 2.5 为 7 月旧文，DA3 搜索结果日期未核实，均未列作本周新增。 |
-| [腾讯混元](https://hy.tencent.ai/research) | 3 | Hy4 原文核实为 11 月 4 日；Hyra 2.0 经渲染读取核实为 11 月 1 日。公开目录返回旧快照，不能单靠目录判断更新。 |
-| [Qwen](https://qwen.ai/blog) | 0 | 搜索与公开页仍未提供可核实的近期文章，保留页面外壳与动态内容获取缺口。 |
-| [Kimi](https://www.kimi.com/blog) | 1 | 已复查官方目录；搜索命中的 K2 Thinking 为 2025-11-06 旧文。K3.1 Pro 的新适配文章列在 vLLM 组，未重复算作 Kimi 博客。 |
-| [vLLM](https://vllm.ai/blog/) | 39 | 已核对官方订阅和原文，新增异步 RL、Stable ABI、Kimi K3.1 Pro 首日支持与 Kinference 四篇。 |
-| [PyTorch](https://pytorch.org/blog/) | 28 | 已核对 RSS 并回看筛选掉的条目，补入 KV Cache 技术回顾；该活动发生于 9 月，博客发表于 11 月。活动征稿未纳入。 |
-| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 58 | 已核对官方 RSS 与原文，新增 InferaSim、PrimusClaw、在线量化、训练分析及视频生成等七篇。 |
-| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 76 | 已核对官方 RSS 与原文，并复核关键词漏选项；补入 NeMo 修复循环、Reshard、Attribution、Workload Map 等十篇。 |
-| [Hugging Face 与机构作者](https://huggingface.co/blog) | 33 | 已核对 RSS 与机构原文，补入 Cosmos 3、Phonon、ToyBlocks、ASR 口音评测、Dharma 字段抽取和 CWE-bench 六篇；同文镜像不重复收录。 |
-| [GitHub AI & ML](https://github.blog/ai-and-ml/) | 5 | 已核对官方 RSS 与 Agentic Engineering 原文；9 月历史覆盖仍有限。 |
-| [Cloudflare AI](https://blog.cloudflare.com/) | 7 | 已核对官方 RSS 与两篇个人 Agent 访问、委托文章；订阅较短，9 月历史缺口保留。 |
-| [Amazon Science](https://www.amazon.science/blog) | 10 | 已核对 RSS 并回读获奖文章的技术内容，补入 PL 条件与优化理论回顾；文章发布不代表新算法提出。 |
-| [Sakana AI](https://sakana.ai/blog) | 15 | 已复查官方订阅，本轮未取得新的窗口内技术条目；既有日文、英文文章与去重记录保留。 |
-| [MiniMax](https://www.minimax.io/blog) | 2 | 已复查官方目录；可见最新仍为 10 月 M3.1 Flash 与 Code Mini App，本轮未新增已核实条目。 |
-| [Mistral AI](https://mistral.ai/news) | 4 | 目录直连失败，搜索后读取原文；用官方 HTML 核实 Studio 为 11 月 5 日、Voxtral 3 为 10 月 22 日，分别计入本周与历史补录。 |
-| [Z.ai / 智谱](https://z.ai/blog) | 6 | 主博客仍为空壳；从 AutoClaw 官方目录和原文补入定时任务与金融工作流两篇，Token 赠送活动未纳入；主站旧文日期缺口保留。 |
-| [DeepSeek](https://www.deepseek.com/en/news) | 1 | 已检查官方 sitemap、搜索与公开页，本轮未获得近期且日期已核实的新增条目；发布信号源不代表全部研究产出。 |
-| [Manus](https://manus.im/blog) | 7 | 已复查搜索与官方目录，本轮返回页面的最新可见文章为 10 月初，近期覆盖不足；保留原有文章与已学习旧文。 |
+| [OpenAI Developers](https://developers.openai.com/blog/) | 6 | 目录与搜索仍返回偏旧内容；本轮未取得可核实的近期新文，历史缺口保留。 |
+| [OpenAI 研究与技术更新](https://openai.com/news/) | 33 | 核对官方 RSS 与正文，新增 Control Room、CodeRabbit 和 Kuken 三篇；采购、活动、人事和纯合作公告未纳入。 |
+| [Anthropic](https://www.anthropic.com/engineering) | 27 | 核对工程、研究和新闻目录及原文，补入搜索漏掉的 Fable / Mythos 5.2 与电子设计实验；旧经济情景文章日期缺口保留。 |
+| [Google Research](https://research.google/blog/) | 11 | RSS 本轮仍超时，备用搜索未取得近期条目，目录返回 10 月内容；不能据此判断 11 月没有更新，9 月历史缺口保留。 |
+| [Google DeepMind](https://deepmind.google/discover/blog/) | 21 | 已核对官方 RSS，窗口内返回的两篇均已收录；历史条目保留。 |
+| [Google Developers](https://developers.googleblog.com/) | 18 | 复查目录与搜索，返回内容偏旧；已有 Chrysalis、模型路由和 Agent Distraction 条目保留，近期及分页历史仍可能遗漏。 |
+| [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 11 | 已核对官方 RSS，窗口内返回的 PDD Kit 已收录；历史覆盖仍主要从 9 月下旬开始。 |
+| [Apple 机器学习研究](https://machinelearning.apple.com/) | 11 | 已核对订阅，窗口内返回的 Faster Retrieval 已收录；另有 4 篇只标月份，9 月历史可能不全。 |
+| [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 已读取公开目录并复查搜索，未取得可核实的窗口内新文；近期覆盖仍不足。 |
+| [Ai2](https://allenai.org/blog) | 1 | 搜索再次命中 ToyBlocks；其 Hugging Face 机构原文已收录，本轮未重复新增；原有日期缺口保留。 |
+| [ByteDance Seed](https://seed.bytedance.com/en/) | 0 | 已复查官方首页，最新可见记录仍为 10 月招聘；未获得可核实的窗口内技术新文。 |
+| [腾讯混元](https://hy.tencent.ai/research) | 3 | 已复查搜索和官方目录，目录仍返回偏旧内容；已有 Hy4、Hyra 2.0 保留，本轮未取得已核实的新增条目。 |
+| [Qwen](https://qwen.ai/blog) | 0 | 搜索与公开页仍未提供可核实的近期文章，保留动态内容和页面外壳的获取缺口。 |
+| [Kimi](https://www.kimi.com/blog) | 1 | 已复查官方研究目录和搜索，可见内容偏旧；vLLM 的适配文仍归入 vLLM 组，不重复计数。 |
+| [vLLM](https://vllm.ai/blog/) | 39 | 已核对官方订阅，窗口内返回的四篇均已收录；本轮未取得新增条目。 |
+| [PyTorch](https://pytorch.org/blog/) | 28 | 已核对 RSS 并复查漏选项；KV Cache 技术回顾已收录，PyTorch Day China 征稿公告未纳入。 |
+| [AMD ROCm](https://rocm.blogs.amd.com/blog.html) | 59 | 已核对官方 RSS 与正文，新增 MONAILabel 在 AMD GPU 上的交互标注适配与性能分析。 |
+| [NVIDIA 技术博客](https://developer.nvidia.com/blog/) | 77 | 已核对官方 RSS 与正文，新增 Holoscan 5 机械臂重力补偿教程。 |
+| [Hugging Face 与机构作者](https://huggingface.co/blog) | 35 | 已核对 RSS、作者身份与原文，新增 Amazon 的 HOPE 专家剪枝、NVIDIA 的日本金融合成人物数据；镜像不重复收录。 |
+| [GitHub AI & ML](https://github.blog/ai-and-ml/) | 5 | 已核对官方 RSS，窗口内返回的 Agentic Engineering 已收录；9 月历史覆盖仍有限。 |
+| [Cloudflare AI](https://blog.cloudflare.com/) | 7 | 已核对官方 RSS，AI 范围内两篇均已收录；开源基金和通用网络安全文章未纳入，较短订阅的历史缺口保留。 |
+| [Amazon Science](https://www.amazon.science/blog) | 10 | 已核对 RSS，PL 条件与优化理论回顾已收录；本轮未取得新增技术条目。 |
+| [Sakana AI](https://sakana.ai/blog) | 15 | 已复查官方订阅，本轮未取得窗口内新增技术条目；既有日文、英文文章与去重记录保留。 |
+| [MiniMax](https://www.minimax.io/blog) | 2 | 已复查官方目录；最新可见仍为 10 月 M3.1 Flash 与 Code Mini App，本轮未新增已核实条目。 |
+| [Mistral AI](https://mistral.ai/news) | 4 | 已复查官方目录，11 月 5 日的 Studio 已收录；本轮未取得已核实的新增条目。 |
+| [Z.ai / 智谱](https://z.ai/blog) | 6 | 复查搜索与 AutoClaw 目录；搜索命中的 Token 赠送活动未纳入，目录快照偏旧，主站旧文日期缺口保留。 |
+| [DeepSeek](https://www.deepseek.com/en/news) | 1 | 已检查官方 sitemap 与备用发现结果，本轮未获得日期已核实的近期新增条目；发布信号源不代表全部研究产出。 |
+| [Manus](https://manus.im/blog) | 7 | 目录已返回 10 月 30 日的 Rebuilding Manus with Manus，补读原文后确认已收录；本轮未重复添加，原有相关报告与已学习旧文保留。 |
 
 ## 日期与学习记录怎么维护
 
