@@ -33,7 +33,7 @@
 | 2026-11-10 | [《AI演义》08｜GPT-1 与 BERT：把预训练网络用于不同任务](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_08_GPT1%E4%B8%8EBERT_%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E8%BF%81%E7%A7%BB%E5%88%B0%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》07｜GNMT 与 Transformer：翻译系统与并行架构](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_07_GNMT%E4%B8%8ETransformer_%E4%BB%8E%E7%BF%BB%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%88%B0%E5%B9%B6%E8%A1%8C%E6%9E%B6%E6%9E%84_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
-## 🤖 AI Learning（196 篇）
+## 🤖 AI Learning（197 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -69,6 +69,7 @@
 | 2026-11-10 | [《AI演义》02｜AlexNet：从像素学到图像特征](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_02_AlexNet_%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E7%AA%81%E7%A0%B4_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
 | 2026-11-10 | [《AI演义》01｜Brook：让普通计算用上 GPU](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_01_Brook_GPU%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
 | 2026-11-10 | [OpenAI API Docs 中文导读](../ai-learning/reports/knowledge_reports/OpenAI_API_Docs_%E4%B8%AD%E6%96%87%E5%AF%BC%E8%AF%BB_20261110.md) | `openai`, `api_docs`, `chinese_guide`, `responses_api`, `agents`, `tools` |
+| 2026-11-10 | [CodeRabbit：多 Agent 审查怎样形成可信的代码改进](../ai-learning/reports/knowledge_reports/CodeRabbit_%E5%A4%9AAgent%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5_%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261110.md) | `code_review`, `coderabbit`, `multi_agent`, `evaluation`, `runtime_verification`, `security` |
 | 2026-11-10 | [AI演义·总览｜从计算与表示，到生成和行动](../ai-learning/reports/AI%E6%BC%94%E4%B9%89_%E7%AC%94%E8%AE%B0%E5%88%86%E6%9E%90%E4%B8%8E%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88%E6%8A%A5%E5%91%8A.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
 | 2026-11-08 | [Agent 应该记住什么，又怎样知道自己记错了？——Anthropic 记忆组件深读](../ai-learning/reports/knowledge_reports/Anthropic_Agent%E8%AE%B0%E5%BF%86%E7%BB%84%E4%BB%B6_%E6%98%BE%E8%91%97%E6%80%A7%E5%88%A4%E6%96%AD%E4%B8%8EDreaming_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261108.md) | `agent_memory`, `dreaming`, `memory_consolidation`, `context_engineering`, `knowledge_wiki`, `memory_evaluation` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E5%AE%8C%E6%95%B4%E7%89%88_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
