@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="470" viewBox="0 0 1100 470" role="img" aria-labelledby="title desc">
+  <title id="title">WebSocket 通道与 response 历史关系</title>
+  <desc id="desc">同一连接中，main 通道的 resp_1 续接到 resp_2、resp_3；critic 通道的 resp_4 从已完成的 resp_2 分支。research 通道的 resp_5 独立开始。行表示 stream_id，箭头表示 previous_response_id 引用的历史关系，不表示严格时间比例。</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #18283f; }
+      .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+      .lane { fill: #f5f8fc; stroke: #d7e0ed; }
+      .node { fill: white; stroke: #426fb6; stroke-width: 2; }
+      .edge { fill: none; stroke: #2754a0; stroke-width: 2.5; }
+    </style>
+  </defs>
+  <rect width="1100" height="470" rx="14" fill="#fff"/>
+  <text x="36" y="41" font-size="24" font-weight="650">一条 WebSocket 连接，三条通道</text>
+  <text x="36" y="69" font-size="15" fill="#53667f">行表示事件与排队通道；箭头表示历史引用。通道名称本身不保存会话血缘。</text>
+  <rect x="25" y="88" width="1050" height="325" rx="14" fill="none" stroke="#9aaec7" stroke-width="2"/>
+  <rect class="lane" x="44" y="107" width="1012" height="87" rx="9"/>
+  <rect class="lane" x="44" y="210" width="1012" height="87" rx="9"/>
+  <rect class="lane" x="44" y="313" width="1012" height="81" rx="9"/>
+  <text class="mono" x="65" y="144" font-size="16">stream_id</text>
+  <text class="mono" x="65" y="170" font-size="20" font-weight="650">main</text>
+  <text class="mono" x="65" y="247" font-size="16">stream_id</text>
+  <text class="mono" x="65" y="273" font-size="20" font-weight="650">critic</text>
+  <text class="mono" x="65" y="345" font-size="16">stream_id</text>
+  <text class="mono" x="65" y="371" font-size="20" font-weight="650">research</text>
+  <rect class="node" x="235" y="125" width="160" height="50" rx="8"/>
+  <text class="mono" x="315" y="157" font-size="21" text-anchor="middle">resp_1</text>
+  <rect class="node" x="490" y="125" width="160" height="50" rx="8"/>
+  <text class="mono" x="570" y="157" font-size="21" text-anchor="middle">resp_2</text>
+  <rect class="node" x="835" y="125" width="160" height="50" rx="8"/>
+  <text class="mono" x="915" y="157" font-size="21" text-anchor="middle">resp_3</text>
+  <rect class="node" x="835" y="229" width="160" height="50" rx="8"/>
+  <text class="mono" x="915" y="261" font-size="21" text-anchor="middle">resp_4</text>
+  <rect class="node" x="235" y="329" width="160" height="50" rx="8"/>
+  <text class="mono" x="315" y="361" font-size="21" text-anchor="middle">resp_5</text>
+  <path class="edge" d="M 395 150 L 486 150"/>
+  <path d="M 488 150 L 477 144 L 477 156 Z" fill="#2754a0"/>
+  <path class="edge" d="M 650 150 L 831 150"/>
+  <path d="M 833 150 L 822 144 L 822 156 Z" fill="#2754a0"/>
+  <text x="710" y="137" font-size="15">原通道续接</text>
+  <path class="edge" d="M 650 166 C 713 166, 712 254, 831 254"/>
+  <path d="M 833 254 L 822 248 L 822 260 Z" fill="#2754a0"/>
+  <text x="625" y="274" font-size="15">从 resp_2 分支</text>
+  <text x="425" y="360" font-size="16">独立开始，没有 previous_response_id</text>
+  <text x="36" y="444" font-size="16">分支绑定父响应后，resp_3 与 resp_4 可并发；同一通道的响应依次执行。</text>
+</svg>

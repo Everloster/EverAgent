@@ -455,6 +455,8 @@ OpenAI `response.steer` 在响应运行时接收更新；Claude Messages 在下�
 
 ### 8.2 OpenAI 原生 steering 的事件分支
 
+连接、通道、历史缓存与 steering 怎样组合，见[《OpenAI Responses WebSocket 与 Steering：协议详解》](./OpenAI_Responses_WebSocket与Steering_连接续接与运行中改向_深度解析_20261111.md)。其中的[完整工具案例](./OpenAI_Responses_WebSocket与Steering_连接续接与运行中改向_深度解析_20261111.md#pending-tools)展开了多条更新共享一次结果回填的时序。
+
 | 收到的事件／状态 | 译解与应用动作 |
 |---|---|
 | `response.created` | 确定正在工作的 response ID；后续 steer 指向该 ID |

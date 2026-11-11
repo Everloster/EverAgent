@@ -27,6 +27,8 @@ OpenAI Responses 的 `response.steer` 允许用户在响应运行时补充信息
 
 ## 1. OpenAI：运行时接收更新，在后继 response 中应用
 
+深入连接缓存、并发通道、分支等待和断线恢复，可继续读[《OpenAI Responses WebSocket 与 Steering：协议详解》](./OpenAI_Responses_WebSocket与Steering_连接续接与运行中改向_深度解析_20261111.md)。本节保留与 Claude 对照所需的主要契约。
+
 ### 哪些模型支持，什么时候加入的
 
 官方 steering 指南写明：**GPT-6 系列支持，GPT-5.6 及更早模型不支持；传输必须使用 Responses WebSocket。** 普通 HTTP/SSE 请求与 Chat Completions 不能因此获得这个事件接口。官方更新日志在 **2026-09-03** 的 Responses 条目中加入 Mid-turn steering，与 GPT-6 Astra 发布同日。[^openai-steering][^openai-changelog]
