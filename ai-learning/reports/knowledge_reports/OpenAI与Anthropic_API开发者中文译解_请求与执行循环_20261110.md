@@ -3,7 +3,7 @@ title: "从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发�
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-10"
+updated_on: "2026-11-11"
 semantic_tags: ["api_protocol", "developer_guide", "responses_api", "messages_api", "tool_use", "streaming", "steering", "sdk", "error_handling"]
 ---
 
@@ -13,11 +13,11 @@ semantic_tags: ["api_protocol", "developer_guide", "responses_api", "messages_ap
 
 > **适合谁**：会读 Python、JSON 和 HTTP，希望自己接入模型、实现工具循环或维护 Agent Harness 的开发者。
 >
-> **与上一篇的分工**：[《管家怎样把新纸条递给正在工作的鹦鹉？》](./OpenAI与Anthropic_API通信与运行中追加消息_技术研究_20261110.md)解释用户观察到的连续工作体验；本篇解释开发者实际应该发送、保存、判断和执行什么。
+> **与专题报告的分工**：[《运行中追加消息与修改目标》](./OpenAI与Anthropic_API通信与运行中追加消息_技术研究_20261110.md)对照 OpenAI Responses、Claude Messages 和 Managed Agents 的官方 API，解释更新何时进入、何时生效；本篇展开 SDK 调用与客户端工具循环。
 >
 > **译解范围**：OpenAI Responses、Anthropic Messages 的核心调用契约，兼顾 Chat Completions 的迁移差异；覆盖客户端工具、流式响应、历史续接、运行中追加与错误处理。不是两家整个文档站的逐页全文翻译，也不覆盖所有模型参数、云厂商变体和服务端工具。
 >
-> **证据与验证**：官方文档及 SDK 源码核验于 2026-11-10。部分参考页面读取失败，字段语义改由固定版本的官方 SDK 类型定义核对。附带 Python 示例完成 **17 项离线 Fake Client 测试**；没有安装或实调供应商 SDK，没有调用真实模型，不把模拟通过写成线上兼容性认证。
+> **证据与验证**：核心调用文档及 SDK 源码核验于 2026-11-10；2026-11-11 重新核对运行中追加的官方文档并修订第 8 节。初稿部分参考页面读取失败，字段语义改由固定版本的官方 SDK 类型定义核对。附带 Python 示例完成 **17 项离线 Fake Client 测试**；没有安装或实调供应商 SDK，没有调用真实模型，不把模拟通过写成线上兼容性认证。
 
 ## 1. 先翻译几个容易写错代码的术语
 
@@ -436,18 +436,22 @@ Anthropic Threads 是服务端短期会话状态，应用仍应保留自己的�
 
 这里分开了应用 turn、HTTP request、模型 response 和 tool call。它们不应共用一个含义模糊的 `id` 字段。日志中的引用也不自动等于状态内容已经持久化；结果必须真的存在并能读取。
 
-## 8. 运行中追加：开发者应维护什么状态
+<a id="runtime-updates"></a>
+
+## 8. 运行中追加与改目标：先选定 API，再维护状态
+
+OpenAI `response.steer` 在响应运行时接收更新；Claude Messages 在下一次请求带入更新；Claude Managed Agents 另有会话中断后按新消息继续的接口。三者都能表达用户改变了目标，生效时机和续接责任各不相同。[专题报告](./OpenAI与Anthropic_API通信与运行中追加消息_技术研究_20261110.md)给出完整对照与模型支持范围。[^steering][^messages-a][^managed-a]
 
 ### 8.1 Harness 队列和模型服务的 steer 队列不能混记
 
-前篇已经追踪了 Codex `turn/steer`：它发给 Agent 引擎，而不是直接发给模型服务。本篇从接口设计角度强调：
+应用自己的输入队列和模型服务的队列有不同的确认状态。Codex `turn/steer` 是 Agent 层接口的一个例子，不能用它证明底层已发送 `response.steer`。实现时分别记录：
 
 - UI 已排队，可能只是 UI 层状态；
 - Harness 已接受，可能还没进入下一次模型请求；
 - OpenAI `response.steer.accepted` 表示服务端持有待处理输入；
-- 后继 `response.created` 才是官方 SDK 所说明的 steering 提交点。
+- 后继 `response.created` 才是官方事件参考所说明的 steering 提交点。
 
-**不要在收到任一层 ack 后就从所有层的账本中删除原始输入。**[^steering-type]
+**不要在收到任一层 ack 后就从所有层的账本中删除原始输入。**[^steering-events]
 
 ### 8.2 OpenAI 原生 steering 的事件分支
 
@@ -467,15 +471,17 @@ Anthropic Threads 是服务端短期会话状态，应用仍应保留自己的�
 {
   "type": "response.steer",
   "previous_response_id": "resp_demo",
-  "input": "继续查询，但不要执行任何写操作。"
+  "input": "先别修复，改为只分析原因，不要修改文件。"
 }
 ```
 
-不要给它添加 `stream_id`、新的 tools、系统角色或工具结果；该事件按目标 response 定位通道，只接受受支持的用户输入。当前指南将模型范围限定在支持该特性的 GPT-6 系列；SDK 类型说明还排除了 conversation 绑定和自动 compaction 等配置。[^steering][^steering-type]
+不要给它添加 `stream_id`、新的 tools、系统角色或工具结果；该事件按目标 response 定位通道，只接受受支持的用户输入。当前指南限定为 **GPT-6 系列与 Responses WebSocket**，明确不支持 GPT-5.6 及更早模型。官方事件参考还要求适用的单 Agent response，并排除 conversation 绑定和自动 compaction 等配置。[^steering][^steering-events]
 
-如需客户端结果，使用同一连接和正确通道的显式 `response.create` 回填。已 accepted 的补充由服务端合并，不应再次复制，也不能为了多个 pending 通知重复执行同一个工具。[^steering-pending]
+无客户端结果阻塞时，服务端自动创建后继 response 并继承原设置。需要客户端结果时，使用同一连接和正确通道的显式 `response.create` 回填，这次请求使用自己的设置。已 accepted 的更新由服务端合并，不应再次复制，也不能为了多个 pending 通知重复执行同一个工具。[^steering][^steering-events]
 
-### 8.3 Anthropic：优先组织合法的下一次请求
+### 8.3 Claude Messages：下一次请求也可以改变目标
+
+普通 `user` 消息就可以传达“改为只分析原因”。当前 Messages 文档没有提供向正在生成的那次响应追加 steer 的等价操作；应用保存更新，在后续请求中带入。这个结论的范围是直接 Messages API。[^messages-a]
 
 使用 Messages 客户端工具时，一种明确的输入组织方式是：
 
@@ -485,11 +491,17 @@ user: [tool_result, tool_result, 用户补充 text]
 → 下一次 Messages 请求
 ```
 
-当前官方中途消息文档，对 Sonnet 5.5 与 Haiku 5.5 明确建议这样传递用户原话；Harness 提醒另放在合法位置的 system 消息里。其他适用模型的 system 转述方式及位置限制，见前篇与官方文档。[^mid-a]
+当前官方中途消息文档，对 Sonnet 5.5 与 Haiku 5.5 明确要求这样传递用户原话；Harness 提醒另放在合法位置的 system 消息里。中途 system 消息主要处理操作者权限与缓存前缀的保留，也随新请求进入；其支持模型名单不代表普通后续 user 消息的支持范围。完整位置规则见[专题的 Claude Messages 一节](./OpenAI与Anthropic_API通信与运行中追加消息_技术研究_20261110.md#claude-messages)。[^mid-a]
 
 这不是把生成中的 SSE 请求体“打开再加几行”。应用接收新消息与下一次调用可以异步衔接，但请求快照、工具结果配对与更新顺序应当确定。
 
 **实现建议**：让一个会话调度器串行提交历史变更；UI、工具进程和网络读取器可以并发产出事件，但不要各自直接修改同一个正在发送的 `messages` 列表。若新要求涉及立即撤销写权限，还需要执行器的权限／取消机制，不能只指望模型在下一次判断时看到文本。
+
+### 8.4 Claude Managed Agents：运行中中断并改向
+
+如果接入的是托管 session，官方提供 `user.interrupt` 后跟 `user.message` 的事件序列。调用返回表示入队；中断应用后结束当前 turn，再用下一 turn 处理新消息。正在运行的工具可能延迟中断；有未结束的 workflow runs 时，session 不一定发出 idle。应用应结合事件与 `processed_at` 跟踪，不能把入队当作处理完成。[^managed-a]
+
+这属于 Managed Agents 的会话执行接口，不能当成直接 Messages API 的能力。具体报文与边界见[专题的 Managed Agents 一节](./OpenAI与Anthropic_API通信与运行中追加消息_技术研究_20261110.md#claude-managed-agents)。本篇附带的客户端工具循环没有实现这条路径。
 
 ## 9. 错误、重试和观测：不要把“网络成功”当“任务成功”
 
@@ -627,8 +639,8 @@ python3 -I ai-learning/reports/knowledge_reports/assets/api_developer_20261110/c
 
 - OpenAI Python SDK 固定提交：`13c000d1f32c1e3e3c4b3e16bc6b956dfd4f5216`。
 - Anthropic Python SDK 固定提交：`d4976414f2cc4652a7ec19947627f993a2959645`。
-- 工具、流式、steering、Threads、中途消息文档复用同日上一篇实际取得的官方材料；Responses conversation-state 在本篇另行读取。
-- 一些参数参考页本次通过 eacli 读取失败，Anthropic 直接网页读取还遇到地区访问重定向。本文没有推断未读页面内容，而是引用官方 SDK 中实际读取的声明及实现。
+- 工具与流式基础复用 2026-11-10 实际取得的官方材料；Responses conversation-state 在初稿另行读取。2026-11-11 重新读取 steering、WebSocket 事件参考、Claude Messages、中途 system、Threads 与 Managed Agents 事件文档，更新第 8 节；实验代码未改。
+- 初稿中一些参数参考页通过 eacli 读取失败，Anthropic 直接网页读取还遇到地区访问重定向。对应字段当时引用官方 SDK 中实际读取的声明及实现，未推断未读页面内容。
 - 完成状态表示当前写作与离线控制流验证完成，不表示生产可用、独立审稿或真实 API 验收。
 
 [^sdk-wire]: [OpenAI SDK `responses.py` L1381 起](https://github.com/openai/openai-python/blob/13c000d1f32c1e3e3c4b3e16bc6b956dfd4f5216/src/openai/resources/responses/responses.py#L1381)；[Anthropic SDK `messages.py` L1247 起](https://github.com/anthropics/anthropic-sdk-python/blob/d4976414f2cc4652a7ec19947627f993a2959645/src/anthropic/resources/messages/messages.py#L1247)，以及同文件 L1368–1406 的 stream manager 构造。
@@ -640,12 +652,13 @@ python3 -I ai-learning/reports/knowledge_reports/assets/api_developer_20261110/c
 [^tools-o]: [OpenAI：Function calling](https://developers.openai.com/api/docs/guides/function-calling)，Responses/Chat Completions 工具协议、reasoning 保留与参数流；同日已读材料。
 [^tools-a]: [Anthropic：Implement tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/implement-tool-use)，工具选择、客户端／服务端工具、结果紧邻及内容块顺序；同日已读材料。
 [^stream-a]: [Anthropic：Streaming messages](https://platform.claude.com/docs/en/build-with-claude/streaming)，SDK 累积、SSE 事件、partial JSON、流内错误与未知事件；同日已读材料。
-[^steering]: [OpenAI：Mid-turn steering](https://developers.openai.com/api/docs/guides/steering)，原生 steering 支持范围、自动／显式 continuation 与失败恢复；同日已读材料。
-[^steering-type]: [OpenAI SDK：ResponseSteerEventParam](https://github.com/openai/openai-python/blob/13c000d1f32c1e3e3c4b3e16bc6b956dfd4f5216/src/openai/types/responses/response_steer_event_param.py)，支持限制、事件字段、accepted 与提交点。
-[^steering-pending]: [OpenAI SDK：ResponseSteerPendingEvent](https://github.com/openai/openai-python/blob/13c000d1f32c1e3e3c4b3e16bc6b956dfd4f5216/src/openai/types/responses/response_steer_pending_event.py)，客户端结果与单一父响应的续接要求。
-[^threads-a]: [Anthropic：Message threads](https://platform.claude.com/docs/en/build-with-claude/message-threads)，create/continue、system/tools 省略、应用副本与 `message_stop`；同日已读材料。
+[^steering]: [OpenAI：Mid-turn steering](https://developers.openai.com/api/docs/guides/steering)，原生 steering 支持范围、自动／显式 continuation 与失败恢复；2026-11-11 重读。
+[^steering-events]: [OpenAI：Responses WebSocket events](https://developers.openai.com/api/reference/resources/responses/websocket-events)，steering 输入、状态、限制与结果回填；读取于 2026-11-11。
+[^threads-a]: [Anthropic：Message threads](https://platform.claude.com/docs/en/build-with-claude/message-threads)，create/continue、system/tools 省略、应用副本与 `message_stop`；2026-11-11 重读。
 [^websocket]: [OpenAI：WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode)，连接内存状态、`store=false`、通道与恢复；同日已读材料。
-[^mid-a]: [Anthropic：Mid-conversation system messages and tool changes](https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages)，工具结果后的用户输入、模型差异、system 位置与信任边界；同日已读材料。
+[^mid-a]: [Anthropic：Mid-conversation system messages and tool changes](https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages)，工具结果后的用户输入、模型差异、system 权限、缓存与位置；2026-11-11 重读。
+[^messages-a]: [Anthropic：Using the Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)，多轮请求及与 Managed Agents 的分工；读取于 2026-11-11。
+[^managed-a]: [Anthropic：Session event stream](https://platform.claude.com/docs/en/managed-agents/events-and-streaming)，Interrupt the agent 与事件处理时机；读取于 2026-11-11。
 [^state-o]: [OpenAI：Conversation state](https://developers.openai.com/api/docs/guides/conversation-state)，响应链状态与历史输入计费；本篇读取。`instructions` 不继承及与 conversation 互斥另以 SDK 参数定义为依据。
 [^sdk-errors-o]: [OpenAI Python SDK README：Handling errors 至 Timeouts](https://github.com/openai/openai-python/blob/13c000d1f32c1e3e3c4b3e16bc6b956dfd4f5216/README.md#handling-errors)，网络／HTTP／流异常、request ID、重试与超时。
 [^retry-a]: [Anthropic SDK `_constants.py`](https://github.com/anthropics/anthropic-sdk-python/blob/d4976414f2cc4652a7ec19947627f993a2959645/src/anthropic/_constants.py) 与 [`_base_client.py` L934–992](https://github.com/anthropics/anthropic-sdk-python/blob/d4976414f2cc4652a7ec19947627f993a2959645/src/anthropic/_base_client.py#L934-L992)，默认重试次数及判断规则。
