@@ -34,7 +34,7 @@ scripts/ecommit.sh -m "说明实际修改"
 未核实身份只阻断提交，不妨碍已授权只读或源码工作。声明只能承接用户明确事实，不猜模型或伪造自动观测。
 
 公开内容检查绑定实际暂存树，防止检查后换成另一份内容；Git正常的冲突、签名、权限和参数错误仍返回失败。若commit已产生但后置身份/内容不符，保留现场，不自动再提交或推送。
-仓外global hooks不读取、不替换、不绕过。仓内可选hook只做同样的身份与内容检查，不恢复质量流水线。
+仓外global hooks不读取、不替换、不绕过。[项目钩子](PROJECT_HOOKS.md)通过`egit.sh hooks install`只安装到本仓`.git/hooks`：身份检查阻断，后台采集与回执验证不阻断；新增公开内容检查仍由正式Git入口拥有，不恢复质量流水线。安装文件存在不代表Git已选择该目录，外部路由不由安装器改写。
 
 使用普通快进交付到`origin/main`，先看实际远端与本地差异；不强推、不擅自stash/reset别人的工作。确需创建merge commit时用`scripts/egit.sh merge <明确revision>`，它在洁净checkout中冻结目标、准备合并并沿同一双身份/内容检查提交；冲突保留现场，不自动abort。普通pull建议设为ff-only，独立clone不会继承原仓的local配置。
 

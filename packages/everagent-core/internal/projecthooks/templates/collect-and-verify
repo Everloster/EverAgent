@@ -1,0 +1,19 @@
+#!/bin/sh
+# Dispatch only to the existing local collector service. Never install, enable,
+# restart or force-kill a service; its existing scope and ACK checks remain owner.
+helper_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P) || exit 0
+repo=$(CDPATH='' cd -- "$helper_dir/../../.." && pwd -P) || exit 0
+actual=$(git -C "$repo" rev-parse --show-toplevel 2>/dev/null) || exit 0
+[ "$actual" = "$repo" ] || exit 0
+case "$(uname -s 2>/dev/null)" in
+  Darwin)
+    uid=$(id -u) || exit 0
+    launchctl kickstart "gui/$uid/com.everagent.context-sync" </dev/null >/dev/null 2>&1 || :
+    ;;
+  Linux)
+    systemctl --user start --no-block everagent-context-sync.service </dev/null >/dev/null 2>&1 || :
+    ;;
+  *) : ;; # Unsupported platforms do not pretend collection was requested.
+esac
+# Missing service, busy collector and pending backfill must never fail Git.
+exit 0

@@ -1,0 +1,21 @@
+#!/bin/sh
+# Uses the existing shared identity implementation; never invents identities.
+helper_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P) || exit 1
+repo=$(CDPATH='' cd -- "$helper_dir/../../.." && pwd -P) || exit 1
+cd -- "$repo" || exit 1
+actual=$(git rev-parse --show-toplevel 2>/dev/null) || exit 1
+if [ "$actual" != "$repo" ]; then
+  printf '%s\n' '[identity-hook] BLOCKED: Git checkout does not match this project hook.' >&2
+  exit 1
+fi
+cli=''
+if [ -n "${HOME:-}" ] && [ -x "$HOME/.local/bin/eacli" ]; then
+  cli="$HOME/.local/bin/eacli"
+else
+  cli=$(command -v eacli 2>/dev/null) || :
+fi
+if [ -n "$cli" ] && "$cli" git identity validate --json >/dev/null; then
+  exit 0
+fi
+printf '%s\n' '[identity-hook] BLOCKED: eacli is missing or Author/verified Agent Committer validation failed.' 'Use the protected project commit entry; inspect eacli git identity --json for diagnostics.' >&2
+exit 1

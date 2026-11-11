@@ -1,0 +1,4 @@
+#!/bin/sh
+# Managed project hook: identity failures block commits.
+hook_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P) || exit 1
+exec "$hook_dir/everagent/identity-check" "$@"

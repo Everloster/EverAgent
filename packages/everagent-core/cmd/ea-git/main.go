@@ -1,5 +1,6 @@
 // ea-git binds the public Author, verified Committer and public-content checks.
-// It neither requires eacli/private checkouts nor runs report quality gates.
+// Commit/merge/push do not require eacli/private checkouts or report quality gates.
+// Optional project hooks delegate identity checks to the installed eacli.
 package main
 
 import (
@@ -17,6 +18,7 @@ import (
 	"time"
 
 	core "github.com/Everloster/EverAgent/packages/everagent-core"
+	"github.com/Everloster/EverAgent/packages/everagent-core/internal/projecthooks"
 	"github.com/Everloster/EverAgent/packages/everagent-core/internal/publicquality"
 )
 
@@ -24,9 +26,9 @@ func main() { os.Exit(run(os.Args[1:])) }
 
 func run(args []string) int {
 	f := flag.NewFlagSet("ea-git", flag.ContinueOnError)
-	root := f.String("repo-root", "../..", "public checkout root")
+	root := f.String("repo-root", "../..", "explicit checkout root")
 	if err := f.Parse(args); err != nil || f.NArg() == 0 {
-		fmt.Fprintln(os.Stderr, "ea-git [--repo-root <checkout>] commit <options> | merge <revision> | push [--remote origin] [--branch main] | validate")
+		fmt.Fprintln(os.Stderr, "ea-git [--repo-root <checkout>] commit <options> | merge <revision> | push [--remote origin] [--branch main] | validate | hooks install [--adopt-legacy] | hooks status")
 		return 2
 	}
 	absolute, err := filepath.Abs(*root)
@@ -34,13 +36,15 @@ func run(args []string) int {
 		absolute, err = filepath.EvalSymlinks(absolute)
 	}
 	if err != nil || os.Chdir(absolute) != nil {
-		fmt.Fprintln(os.Stderr, "public checkout unavailable")
+		fmt.Fprintln(os.Stderr, "checkout unavailable")
 		return 1
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 	reader := func() (core.Author, error) { return readAuthor(ctx, absolute) }
 	switch f.Arg(0) {
+	case "hooks":
+		return projecthooks.Run(ctx, absolute, f.Args()[1:], os.Stdout)
 	case "commit", "merge":
 		options := core.CommitOptions{
 			IdentityOnly: true, EnforceAuthor: true, Directory: absolute, IdentityReader: core.InspectIdentity, AuthorReader: reader,

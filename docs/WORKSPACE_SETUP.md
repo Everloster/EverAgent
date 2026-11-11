@@ -45,13 +45,21 @@ ls ~/<your-workspace>/EverAgent-infra/README.md && echo "✅ infra 就位"
 
 > 私有仓 clone 不下来？→ `gh auth status` 确认已登录 Everloster 且有 `repo` scope；或用 `gh repo clone Everloster/EverAgent-infra`。
 
+个人设备完成Git、Go及eacli准备后，默认再执行一次项目钩子安装（macOS/Linux）：
+
+```bash
+bash ~/<your-workspace>/EverAgent-infra/scripts/install-hooks.sh
+```
+
+它从同一公开core构建一次安装器，只更新这两个clone的`.git/hooks`，不设置`core.hooksPath`、不碰全局钩子或安装服务。自定义公开仓目录可传`--public-repo /absolute/EverAgent`。退出3表示需要查看安装/路由状态，不代表已全部生效；规则、回滚与旧版迁移见[项目钩子](PROJECT_HOOKS.md)。
+
 ---
 
 ## 三、git 身份（两仓都要）
 
 两仓都用双身份：Author = 仓库主人 Everloster，Committer = 当前 Agent。
 两仓提交都走自己的 `scripts/ecommit.sh`；公共规则由公开仓 Go `packages/everagent-core/git.go` 拥有，
-私仓只绑定自己的 gate。首次使用和每次换模型均无需手动复制身份配置。
+私仓绑定自己的身份策略，不恢复质量门禁。首次使用和每次换模型均无需手动复制身份配置。
 
 ```bash
 go -C packages/everagent-core run ./cmd/everagent-identity inspect --json
@@ -75,6 +83,9 @@ cd ~/<your-workspace>/EverAgent && git pull --ff-only
 
 # 私有仓
 cd ~/<your-workspace>/EverAgent-infra && git pull --ff-only
+
+# 两仓更新后，检查并应用同一版本的项目钩子；无变化则no-op。
+bash scripts/install-hooks.sh
 ```
 
 > **历史重写恢复**：公开仓 2026-07-27 做过历史脱敏。旧 clone 出现分叉时，先 fetch 并检查
