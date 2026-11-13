@@ -271,7 +271,17 @@
 - **本批 pipeline 事件（已记）**：eacli transcription 远端 worker 的 yt-dlp 对小宇宙**单集页 URL 与官方 m4a 直链**连续两次在 acquiring-audio 阶段失败（exit 3）；改走 `--file` 通道——本地 curl 下载官方音频（SHA-256 校验一致）→ scp 推至执行设备 → submit --file 一次成功（22 分钟音频转写约 1 分钟，5 分块全过）。**直链 URL 也不再可信，--file 是小宇宙源的保底通道。**
 - **本批方法亮点**：同场对谈**文字实录**（腾讯新闻 2026-10-22，硅星人整理）用于话轮归属与专名校正——转写无 speaker 标签的双人舞台对谈首次走通"实录归属法"；两版互有独有句（Claude 被封、张一鸣例仅见转写；Prosumer 句仅见实录）均逐处标注，精编以转写为准不据实录补写。
 
+### 2026-11-13 五轮 AI 学习批次（用户 /goal：本机转写，逐轮提交推送）
+
+- **硅谷101 E258：HF0 与 OpenRouter 早期故事**（2026-11-10 发布，54m19s / 1,993 段 / 15,228→14,019 汉字，高保真精编 92.1%）
+  - 路径：`reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md`；转写/精编存仓外私有目录，公开仅脱敏审计收据（`transcripts/2026-11-10_...audit.json`，receipt_only）
+  - 内容：HF0 修道院模式（subtraction/Demo Dinner 唯一目标/北极星指标）/ 8万→80万美元月收入与"术与道"分层（Blake Anderson"数量级稳定论"200 联系 40 回复；涨价 AB test +30% vs 模型 SOTA）/ 内部加速器"服兵役"（每 12 个月 3 个月，惠州/天津/杭州/富士山）/ OpenRouter +5% 统一接口卡位与 **Stripe 70 亿美元收购（独立核实：Bloomberg 08-16 + Stripe 官方 08-19）** / AI 音乐"精美有余粗粝不足"
+  - 新增 entities：[HF0](wiki/entities/hf0.md)、[OpenRouter](wiki/entities/openrouter.md)、[郭靖 Joe](wiki/entities/joe-guo.md)；新增 concepts：[生成内容的不完美缺口](wiki/concepts/roughness-gap.md)（接 KK"不写剧本的电影"）
+  - 增量观点定位：OpenRouter 段与张阔 E255 帕累托路由构成路由层"入口卡位 vs 成本优化"双视角；open-questions"千瓦时指标"线获得机制解释
+  - **pipeline**：用户指定**本机转写**——whisper.cpp large-v3 + Silero VAD（Metal）一次通过（结构审计 max 重复 2 段）；喜马拉雅 CDN 对签名 URL/直链/cookies 全线 403（AI炼金术音频改走小宇宙版官方 enclosure）；R2 起确立"m4a 先 ffmpeg 转 16k wav 再转写"通道（whisper-cli 直读 m4a 不产 JSON）
+
 ## ⚠️ 边界（防幻觉）
+
 
 以下主题已有报告，禁止重复生成：
 

@@ -669,3 +669,11 @@
 - 信息源和 Bot 增多时，如何避免主 Agent 成为排队瓶颈，又不把筛选工作退回用户？
 
 来源：[余一聊 Manus：怎样把任务真正交给 Agent](../reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md)·思考与追问。本次未运行规则精简的对照实验。
+
+## 2026-11-10 硅谷101 E258：HF0 与 OpenRouter
+
+- OpenRouter 的"+5% 入口"卡位能否挡住"便宜 20%"的价格战？Stripe 收购（支付巨头的分发与结算资源）是否正是对这一风险的回答？检验点 2027：折扣路由层份额变化与 OpenRouter 用量榜单权威性的存续。
+- HF0"第七周分水岭"（10/31 break out/hang out talk，11/01 全批齐飞）是巧合还是机制必然？HF0 是否有跨批次起飞时间统计？
+- "不完美缺口"（[roughness-gap](./concepts/roughness-gap.md)）的技术根源：human preference 收窄分布的必然代价，还是"不完美语料"（现场翻录/粗糙演出/事故瞬间）的数据缺口？若是后者，谁会系统性采集这批数据？
+
+来源：[硅谷101 E258：HF0 与 OpenRouter 早期故事](../reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)·思考与追问。

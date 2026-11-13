@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-13",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "guigu101-e258-20261113-report-v1",
+    "explicit_model_override": false,
+    "note": "转写由本机 whisper.cpp large-v3 + Silero VAD 完成（非 LLM）；高保真精编由独立 context 的 Claude Code 子任务执行；报告正文由主会话 glm-5.3 撰写；外部事实经 eacli Token Plan（web.search）核验。"
+  },
+  "contributors": [
+    {
+      "role": "transcription",
+      "harness": "whisper.cpp",
+      "model": "whisper-large-v3",
+      "model_identity_basis": "本机 whisper-cli 进程与模型文件 ~/workspace/whisper.cpp/models/ggml-large-v3.bin；转写产物经确定性结构审计。",
+      "run_id": "local-metal-20261113-e258"
+    },
+    {
+      "role": "transcript_polish",
+      "harness": "claude-code",
+      "model": "glm-5.3",
+      "model_identity_basis": "子 agent 会话身份标识；未逐条核验内部部署后缀。",
+      "run_id": "guigu101-e258-20261113-polish-v1"
+    }
+  ],
+  "session_observations": {
+    "private_materials": "完整转写与高保真精编稿保存于仓库外私有目录；公开仓仅保留脱敏审计收据与内容哈希引用，不含私有路径与原文样本。",
+    "generator_read_scope": "主会话通读精编稿全文（393 行）与 shownotes；抽查原始转写中段（第 920-950 段）；未逐句听音。",
+    "verification_channel": "HF0/OpenRouter/收购/嘉宾身份等外部事实经 eacli Token Plan（web.search，zhipu provider）多轮检索核验，检索回执 request_id 留存于本地会话。"
+  },
+  "task": {
+    "summary": "用户目标：从播客与博客速看表中选取 AI 相关内容做五轮学习任务，本轮（第 1/5）为硅谷101 E258（HF0 与 OpenRouter 早期故事），要求使用本机转写能力，完成后提交推送。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "用本机 whisper.cpp（large-v3+VAD）转写全量音频并通过确定性结构审计；不把结构审计当逐字正确。"
+      },
+      {
+        "id": "R2",
+        "text": "高保真精编全部 1993 段并按官方 10 章节重组，保留误识别修正清单与 [?] 存疑标注。"
+      },
+      {
+        "id": "R3",
+        "text": "覆盖 54 分 19 秒版本的 10 个官方章节、核心论证、关键数字与反例；报告独立可读。"
+      },
+      {
+        "id": "R4",
+        "text": "区分嘉宾口述、shownotes 与独立核验三层证据；重大事实（Stripe 收购）独立核实并标来源。"
+      },
+      {
+        "id": "R5",
+        "text": "全文与精编稿仅存仓外，公开产物脱敏；新增实体/概念页并更新索引、速看表与开放问题。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-audio",
+      "kind": "primary",
+      "title": "本集官方音频与全量转写（Fireside RSS enclosure）",
+      "locator": "https://aphid.fireside.fm/d/1437767933/f0f20376-8faf-4940-b920-84af6c734e2d/f6618818-b288-4798-bab8-d60d77c70aff.mp3",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-shownotes",
+      "kind": "primary",
+      "title": "硅谷101 E258 官方 shownotes（10 章节时间轴、主播/嘉宾身份）",
+      "locator": "https://sv101.fireside.fm/272",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-polished",
+      "kind": "execution",
+      "title": "高保真精编稿（仓外私有，按内容哈希引用）",
+      "locator": "sha256:009605f1c708a9ea3f21473bccafe1b5b454f3779911d7f5351ad0e99ac52d9c",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-audit",
+      "kind": "local",
+      "title": "全量转写的脱敏结构审计收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-10_rss-guigu101_e258-hf0-openrouter.audit.json",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-stripe-newsroom",
+      "kind": "official",
+      "title": "Stripe 官方新闻室：Stripe agrees to acquire OpenRouter",
+      "locator": "https://stripe.com/newsroom/news/stripe-agrees-to-acquire-openrouter",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-bloomberg-stripe",
+      "kind": "secondary",
+      "title": "Bloomberg：Stripe Finalizes Deal to Acquire OpenRouter（2026-08-16）",
+      "locator": "https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-newcomer",
+      "kind": "secondary",
+      "title": "Newcomer：The Story of a Cap Table: OpenRouter（三位联创名单）",
+      "locator": "https://www.newcomer.co/p/the-story-of-a-cap-table-openrouter",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-nyt-hf0",
+      "kind": "secondary",
+      "title": "NYT Magazine：A Week With the Wild Children of the A.I. Boom（HF0 模式）",
+      "locator": "https://www.nytimes.com/2023/05/31/magazine/ai-start-up-accelerator-san-francisco.html",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-sfstandard-hf0",
+      "kind": "secondary",
+      "title": "SF Standard：Inside SF's most competitive 'hacker house'（每批 10 队/12 周）",
+      "locator": "https://sfstandard.com/2023/01/23/inside-sfs-most-competitive-hacker-house-where-workers-eat-sleep-and-breathe-tech",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-joe-linkedin",
+      "kind": "secondary",
+      "title": "Joe Jing Guo LinkedIn（ACE Studio CEO、HF0 F24）",
+      "locator": "https://www.linkedin.com/in/jingguoai",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-startersss-hf0",
+      "kind": "secondary",
+      "title": "startersss HF0 Residency 目录（投资条款第三方口径）",
+      "locator": "https://www.startersss.com/accelerators/hf0-residency",
+      "accessed_on": "2026-11-13"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "HF0 每期仅 10 个团队、12 周驻地、偏好连续/技术创始人；嘉宾口述投资条款为本批 100 万美元/5%（上批 62.5 万/3%，更早期 25 万/2.5%）。",
+      "report_anchor": "一、反概率学的加速器：10 个座位换 selectivity",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "critical": true,
+      "evidence": "口播（泓君与 Joe 对答）；10 队/12 周驻地另获 NYT、SF Standard 报道佐证；条款与 startersss 目录口径（$1M uncapped/5%）吻合。"
+    },
+    {
+      "id": "C02",
+      "claim": "HF0 的核心仪式是每周 Demo Dinner：每队两分钟只讲唯一目标的进展；北极星指标因公司而异，OpenRouter 为每周 token 调用量而非收入。",
+      "report_anchor": "二、修道院模式：subtraction 是一切的本源",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "critical": true,
+      "evidence": "口播整章；Louis '够喝两杯咖啡'与 Evan 'Enough for coffee' 为嘉宾亲历转述。"
+    },
+    {
+      "id": "C03",
+      "claim": "ACE 在 HF0 的 12 周内月收入从 8 万美元增至 80 万美元峰值，此后月均回落至四五十万美元；嘉宾主动区分峰值与均值。",
+      "report_anchor": "三、像做算法一样做增长：8 万→80 万的术与道",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "critical": true,
+      "evidence": "嘉宾口述自报经营数据，shownotes 同口径；未获独立财务核验，报告按口播层级标注。"
+    },
+    {
+      "id": "C04",
+      "claim": "ACE 将 HF0 模式复制为公司内部加速器：分主题别墅冲刺（惠州/天津/杭州/富士山），全员每 12 个月有 3 个月义务参加（'服兵役'），已办四五次。",
+      "report_anchor": "四、把修道院搬回家：内部加速器与\"服兵役\"",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": false,
+      "evidence": "嘉宾口述内部机制；2025 年'算法加速器'产出首版自研基础模型并开源（模型名转写作'小火'，依公开信息补全为 ACE-Step，标注 [?]）。"
+    },
+    {
+      "id": "C05",
+      "claim": "OpenRouter 于 2026 年 8 月被 Stripe 以超 70 亿美元收购；其早期形态为 4 名员工（2 兼职）、无测试环境 YOLO 上线、+5% 加价的 LLM 统一接口、不融资不做商业化。",
+      "report_anchor": "六、OpenRouter 做对了什么：+5% 的统一接口",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-bloomberg-stripe",
+        "src-stripe-newsroom"
+      ],
+      "critical": true,
+      "evidence": "收购金额经 Bloomberg（2026-08-16）与 Stripe 官方新闻室（2026-08-19）独立核实；早期画像为嘉宾目击口述。"
+    },
+    {
+      "id": "C06",
+      "claim": "Louis Vichy 的早期画像：睡地下室小屋、凌晨 3 点睡、走路单手写代码、语速快到 Snowflake CEO 三次没听懂；2023 秋季因签证远程、2024 秋季二进 HF0 且不上 Demo Day。",
+      "report_anchor": "五、Dave 与 Louis：两种狂热",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-newcomer"
+      ],
+      "critical": false,
+      "evidence": "嘉宾同批目击口述；Louis Vichy 身份经 Newcomer 三联创报道核实。"
+    },
+    {
+      "id": "C07",
+      "claim": "AI 音乐现状判断：个别 case（融合人类不可能共存的唱功机能）已远超人类，但分布窄——'生成不出一首难听的歌'，缺粗粝与不完美瞬间；李志现场、左小祖咒、单依纯唱停的《给电影人的情书》为例证。",
+      "report_anchor": "七、音乐模型之战与\"粗粝感\"缺口",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "critical": false,
+      "evidence": "口播整章；泓君与 Joe 共同举例；Billboard 第一为泓君口述未独立核验。"
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] HF0 的增长奇迹可拆为可复制的机械部分（subtraction 环境设计、唯一目标仪式化、同侪压力）与不可复制的部分（10 个座位的 selectivity 本身）。",
+      "report_anchor": "思考与追问",
+      "support": "inference",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": false,
+      "evidence": "本报告分析性归纳，基于口述机制拆解；无跨批次统计数据支持，单批次样本。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "CU01",
+      "title": "02:05 入选率远低于 YC 的孵化器",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "入选率远低于 YC 的孵化器"
+    },
+    {
+      "id": "CU02",
+      "title": "06:57 豪宅里的修道院，学习做减法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "豪宅里的\"修道院\"，学习做减法"
+    },
+    {
+      "id": "CU03",
+      "title": "09:43 每周仪式 Demo Dinner，唯一目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "每周仪式 Demo Dinner"
+    },
+    {
+      "id": "CU04",
+      "title": "13:26 像做算法一样做增长，12周营收10倍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "像做算法一样做增长"
+    },
+    {
+      "id": "CU05",
+      "title": "17:56 增长术与道：奇技淫巧的瓶颈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "增长术与道"
+    },
+    {
+      "id": "CU06",
+      "title": "22:57 把 HF0 模式搬回公司",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "把 HF0 模式搬回公司"
+    },
+    {
+      "id": "CU07",
+      "title": "33:37 当过和尚，会说中文：Dave 其人",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "当过和尚的 Dave"
+    },
+    {
+      "id": "CU08",
+      "title": "36:20 地下室与 OpenRouter Louis 当室友",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-newcomer"
+      ],
+      "report_anchor": "与 Louis 当\"室友\""
+    },
+    {
+      "id": "CU09",
+      "title": "44:44 音乐模型之战：追赶 Suno",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "音乐模型之战"
+    },
+    {
+      "id": "CU10",
+      "title": "50:28 AI 音乐现状：精美有余，粗粝不足",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "AI 音乐：精美有余，粗粝不足"
+    }
+  ],
+  "limitations": [
+    "全部口播数字（HF0 条款、8万→80万、+30%、150/200 联系量、11-01 齐飞等）为嘉宾单一信源自报，除 Stripe 收购外未独立核验。",
+    "转写为机器产物（whisper.cpp），未逐句听音复核；ACE 开源模型名（'小火'→ACE-Step[?]）、[HUZ？] 榜单名、'Jerry Chaplin'、'Summertown' 四处存疑未决。",
+    "嘉宾涉自身产品的表述（SOTA 水平、表征基座出身、顶级用户名单、Tastemaker 机制）未经独立核实，按口播层级处理。"
+  ]
+}

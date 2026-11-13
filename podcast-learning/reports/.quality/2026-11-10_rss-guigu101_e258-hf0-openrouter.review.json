@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "guigu101-e258-20261113-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "独立子 agent 会话身份标识（fresh context，未继承生成会话）；未逐条核验内部部署后缀，普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "77a07e25b47c6588943c6102a59039277c9ea65ab7b9e0f6268b30e36fa41f57",
+        "evidence_sha256": "5d9f96003da30f1ec170c4e7b2db883dcae9e7c5852adddb4955c4d4974126d3",
+        "verified_before_reading": true,
+        "evidence_note": "复核后由协调者做的两处账本级修正并重新绑定哈希：①证据账本 C06 '起'→'睡'措辞笔误（报告正文自始正确）；②frontmatter 补声明 quality_tier: important（质量门必填元数据，正文内容零改动）。"
+      },
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 93,
+        "reasoning_quality": 90,
+        "readability": 92,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐条核了 C01-C08 的 report_anchor（全部命中报告正文）与 support 分层；在原始转写 8 处定位抽查（70亿/62.5万/8万→80万/150个/一百万年收入/小火/500条/四个人两兼职/Suno V5 三年），全部与精编稿和报告吻合；Stripe 收购经 eacli web.search 独立重验（Bloomberg 08-16 原文 + Stripe 官方新闻室 + NYT/WSJ 交叉）。扣分：账本 C06 一处措辞笔误、frontmatter 54m19s（RSS 标称）与 duration_seconds 3255（末段时间戳口径）轻微不一致。",
+        "request_coverage": "对照官方 shownotes 10 章节逐一核对：内容地图时间戳与标题全部匹配，正文七节+金句+关键数字表实质覆盖全部章节与反例（Dave 恐慌期、能量守恒、价格战风险、分布窄）；R5 产物（4 个 wiki 页、open-questions 新增、交叉链接）确认存在。未做：压缩比 92.1% 重算与 1993 段全量逐段比对（仅抽查）。",
+        "reasoning_quality": "逐段检查推断边界：双 offer 说法保留'口播无独立数据核实'限定、'表征基座出自自家研究员'标口播未核实、C08 明确标 inference 且以第一人称分析框架呈现，未发现把推测写成事实。术/道分层、峰值/均值区分、E255 买方视角对读均有据。扣分：'两年后卖给 Stripe'的时间基准（自 24 秋同住起算）是隐含推断未明示。",
+        "readability": "以未听音频的独立读者身份冷读全文：速览-背景-内容地图-正文-关键数字-金句-追问-边界结构完整，不依赖音频可理解全部论点；关键数字表的'来源层级/本报告核验'两列是亮点。第六节商业分析信息密度略高但结构清晰。",
+        "limitations": "Limitations 如实列出单一信源、[?] 四处存疑逐项点名、未逐句听音、私有转写处理方式、Stripe 为唯一独立核实重大事实；与复核者实际核验范围一致，无隐瞒。报告未声称核过 NYT/SF Standard 等引用原文，与实际一致。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "source_ids_checked": [
+        "src-audio",
+        "src-shownotes",
+        "src-bloomberg-stripe",
+        "src-stripe-newsroom"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "coverage_unit_ids_checked": [
+        "CU01",
+        "CU02",
+        "CU03",
+        "CU04",
+        "CU05",
+        "CU06",
+        "CU07",
+        "CU08",
+        "CU09",
+        "CU10"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "精编稿·开场+02:05 章（selectivity 与条款）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01"
+          ],
+          "notes": "10 队/12 周/三批条款与转写第 140-150 行逐字吻合；spray and pray 论证完整。"
+        },
+        {
+          "id": "SCM02",
+          "title": "精编稿·06:57 章（subtraction 修道院）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU02"
+          ],
+          "notes": "生活全包清单、'见阳光不超过四次'、Dave 第一周原话齐备。"
+        },
+        {
+          "id": "SCM03",
+          "title": "精编稿·09:43 章（Demo Dinner 唯一目标）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03"
+          ],
+          "notes": "retreat/两分钟分享/北极星一对一定制/OpenRouter=每周 token 调用量均核到原文。"
+        },
+        {
+          "id": "SCM04",
+          "title": "精编稿·13:26 章（像算法一样做增长）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU04"
+          ],
+          "notes": "Blake Anderson 150 个启发、200/40 漏斗与转写抽查一致；'数量级稳定论'归属正确。"
+        },
+        {
+          "id": "SCM05",
+          "title": "精编稿·17:56 章（增长术与道）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU05"
+          ],
+          "notes": "涨价 +30%、能量守恒、年卡×12×80%、ACE-Step[?] 处理、11-01 批次齐飞齐备。"
+        },
+        {
+          "id": "SCM06",
+          "title": "精编稿·22:57 章（内部加速器/服兵役）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU06"
+          ],
+          "notes": "惠州/天津/杭州/富士山、12 个月服 3 个月、信念感表演学类比齐备；'狗熊掰棒子'等色彩细节省略可接受。"
+        },
+        {
+          "id": "SCM07",
+          "title": "精编稿·33:37 章（Dave 其人）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU07"
+          ],
+          "notes": "出家一年半、500+ 消息、第一期在台湾、老干妈细节齐备。"
+        },
+        {
+          "id": "SCM08",
+          "title": "精编稿·36:20 章（Louis 室友+OpenRouter 复盘）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-newcomer"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU08"
+          ],
+          "notes": "室友画像与 +5% 卡位分析双线覆盖；4 人 2 兼职/YOLO 上线与转写第 1357-1362 行吻合。"
+        },
+        {
+          "id": "SCM09",
+          "title": "精编稿·44:44 章（音乐模型之战）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU09"
+          ],
+          "notes": "轨迹数据/表征基座/三年 vs 一年/Tastemaker 齐备；8848 比喻、华纳轶事省略可接受；'表征基座'保留口播未核实标注。"
+        },
+        {
+          "id": "SCM10",
+          "title": "精编稿·50:28 章（粗粝感缺口）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU10"
+          ],
+          "notes": "个别 case 超越/分布窄/李志/左小祖咒/单依纯例证与精编稿一致；Billboard 第一报告未采用，无越界。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核结论：通过（无 blocking 问题）。非阻塞建议 4 条：①账本 C06 '起'→'睡'（已由协调者修正，正文本正确）；②duration 54m19s（RSS 标称）与 3255s（末段时间戳）口径差建议注明（未改动，两种口径均可解释）；③第四节'滚动 CD'疑为口播'周期'的 ASR 转写沿用，未标 [?]，极轻微；④关键数字表'4 名员工'行核验注（成立时间）与行主题（人数）略偏，不构成虚报。复核未覆盖项如实声明：未听音频、未重算精编压缩比、除 Stripe 外未重验其余引用原文（NYT/SF Standard/Bloomberg-HF0/startersss/Newcomer/LinkedIn）、未核 YC 规模与 OpenRouter 用量数据——报告已将这些标注为未核/第三方口径，与复核范围一致。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.15,
+    "evaluated_on": "2026-11-13",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "77a07e25b47c6588943c6102a59039277c9ea65ab7b9e0f6268b30e36fa41f57",
+    "evidence_sha256": "5d9f96003da30f1ec170c4e7b2db883dcae9e7c5852adddb4955c4d4974126d3"
+  }
+}
