@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-13（北京时间）** · **已收录时段：2026-09-02—2026-11-13**
 
-报告状态更新于 **2026-11-13**：本轮新增单集中《硅基立场》Vol.35、《硅谷101》E258 已有 completed 专题报告，其余未找到；已核对原有报告文件与完成状态。
+报告状态更新于 **2026-11-13**：本轮新增单集中《硅基立场》Vol.35、《硅谷101》E258、AI炼金术鸭哥期已有 completed 专题报告，其余未找到；已核对原有报告文件与完成状态。
 
 **本次补充 24 期**，增量检查覆盖 2026-11-07—2026-11-13；其中 18 期发表于 11 月 11—13 日，6 期发表于 11 月 10 日。
 
-本页收录 **362 条单集发布记录**：**68 条已有专题报告**，**1 条仅有相关报告**，**293 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **362 条单集发布记录**：**69 条已有专题报告**，**1 条仅有相关报告**，**292 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -32,7 +32,7 @@
 
 ## 最近一周
 
-2026-11-07—2026-11-13，共 38 条，其中 2 条已有专题报告。
+2026-11-07—2026-11-13，共 38 条，其中 3 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -58,7 +58,7 @@
 | 2026-11-11 | 半拿铁｜商业沉浮录 | [No.226｜文曲星的三十年往事](https://www.xiaoyuzhoufm.com/episode/6af33d7eb4a4e20202f7e101 "No.226 💻 文曲星的三十年往事") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62382c1103bea1ebfffa1c00/6af33d7eb4a4e20202f7e101/media.xyzcdn.net/62382c1103bea1ebfffa1c00/lsVk2xdiAoRgaL4qNadYy4dFXVqu.m4a) | 1小时46分 | 未做 |
 | 2026-11-11 | 声动早咖啡 | [九阳净利大跌近 75%，美国「亲戚」为何越赚越多](https://www.xiaoyuzhoufm.com/episode/6af30ecbb4a4e20202f7c772 "九阳净利润大跌近 75%，它的美国「亲戚」怎么越赚越多？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6af30ecbb4a4e20202f7c772/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lpGk1falY_NJPfL8GkNwWp0reUSb.m4a) | 14分钟 | 未做 |
 | 2026-11-10 | 硅谷101 | [E258｜HF0 驻地创业与 OpenRouter 早期故事](https://sv101.fireside.fm/272 "E258｜聊聊硅谷创业“修道院”HF0与OpenRouter早期故事") | 54分钟 | ✅ [报告](../reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) |
-| 2026-11-10 | AI炼金术 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | 未做 |
+| 2026-11-10 | AI炼金术 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | ✅ [报告](./reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) |
 | 2026-11-10 | 课代表立正 | [对话 339｜Julie Zhuo：三千份简历后的职业劝告](https://share.transistor.fm/s/df0d23a3 "对话 339｜一天收到三千份简历之后，我劝数据科学家别当数据科学家｜Julie Zhuo 主持") | 18分钟 | 未做 |
 | 2026-11-10 | 卫诗婕｜漫谈Light the Star | [92｜方言：财富、欲望与成功之后的风险](https://www.xiaoyuzhoufm.com/episode/6af26476b4a4e20202f7616b "92.【番外】财富是诅咒，围猎顶级富人的 100 种方式｜黄仁勋事件有感") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6627fda4b56459544087d86a/6af26476b4a4e20202f7616b/media.xyzcdn.net/6627fda4b56459544087d86a/lnpjVsjl0dWlC0IB8VUxeqexGF4E.m4a) | 1小时26分 | 未做 |
 | 2026-11-10 | 疯投圈 | [151｜国产时尚品牌如何从功能走向品牌价值](https://crazy.capital/151 "151 ✪ 从「需要」到「想要」：中国时尚品牌集体向上") | 1小时34分 | 未做 |
@@ -203,7 +203,7 @@
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-10 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | 未做 |
+| 2026-11-10 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | ✅ [报告](./reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) |
 | 2026-11-03 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") | 1小时35分 | 未做 |
 | 2026-10-28 | [余一入职 Manus：个人 Agent 与团队协作](https://www.ximalaya.com/sound/1028338072 "找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊") | 1小时26分 | [阅读报告](./reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) |
 | 2026-10-23 | [姚旭聊 NaukNauk：AI 如何听普通人的心里话](https://www.ximalaya.com/sound/1026998207 "AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk") | 1小时43分 | [阅读报告](./reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) |

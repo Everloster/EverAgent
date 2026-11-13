@@ -38,6 +38,7 @@
 
 ### 创业方法论 / 商业认知
 
+- [AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味](../reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md)（episode_summary · 发布 2026-11-10，归档 2026-11-13）— 任鑫×鸭哥（Superlinear Academy，二次登场），1h16m；委托两件事（验收+关键技术决策）/ AI 找 AI 跨会话协调 / context infrastructure"一百次犯错" / 反向对微调（输入 AI 文输出原文，双盲 20 篇 3 识破）/ 100 直播间 CRM 社会研究 / "大脑变手"升职悖论 / 电饭锅岗位论 / WorkBuddy×朱啸虎互证；本机 whisper 转写（m4a→wav 通道）
 - [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)（episode_summary · 发布 2026-11-10，归档 2026-11-13）— 泓君×郭靖 Joe（ACE Studio，HF0 F24），54m19s；subtraction/修道院模式 / Demo Dinner 唯一目标 / 8万→80万美元月收入与"术与道"分层（+5% 涨价 AB test vs 模型 SOTA）/ 内部加速器"服兵役" / OpenRouter +5% 统一接口卡位与 Stripe 70 亿美元收购（独立核实）/ AI 音乐[不完美缺口](./concepts/roughness-gap.md)；本机 whisper.cpp large-v3+VAD 转写
 - [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场](../reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md)（episode_summary · 发布 2026-09-18，归档 2026-09-28）— B站易论AI（易亚婷），123min，创作即消费/废人论 / 双边vs多边网络结构 / 内容积木+康威定律 / 冷启动纪律 / AIGC vs AIUGC 参与感 / 小世界·迪士尼乐园·fork / 可塑性软件+AI内容四象限 / 公司光谱 / 教堂比喻；首个官方字幕单源（无 whisper）全程润色案例，修正 50+ 处
 - [课代表立正对谈屠龙博士](../reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md)（episode_summary · 2026-07-07）— B 站，非线性世界观 / 定价锚定 / 人才洼地
@@ -214,6 +215,10 @@
 - [HF0](./entities/hf0.md) — 旧金山驻地创业加速器（Dave Fontenot 创立）：每期 10 队×12 周封闭"黑客修道院"，subtraction+Demo Dinner 唯一目标；条款 100 万美元/5%
 - [OpenRouter](./entities/openrouter.md) — LLM 路由市场（+5% 加价的统一接口）：用量榜单卡位开发者第一入口，2026-08 被 Stripe 以超 70 亿美元收购；接 [E255 张阔](../reports/2026-10-08_rss-guigu101_e255-zhangkuo.md)帕累托路由与 open-questions"千瓦时指标"线
 - [郭靖 Joe](./entities/joe-guo.md) — ACE Studio 创始人兼 CEO（AI 音乐工作站，Text to Singing Voice），HF0 F24；8万→80万美元月收入 / "像做算法一样做增长" / AI 音乐"精美有余粗粝不足"
+
+### 来自 2026-11-10 AI炼金术（鸭哥期，二次登场）
+
+- [鸭哥](./entities/yage.md) — Superlinear Academy 联合创始人（哥大 PhD；微软/Pinterest/Samsara）；委托"验收+拍板"两件事 / context infrastructure 一百次犯错 / 反向对微调去 AI 味 / 大脑变手；首见 2026-10-11 十字路口（Jev 三条件/CI 三要素）
 
 ## Concepts（核心概念）
 

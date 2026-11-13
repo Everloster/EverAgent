@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "ailianjinshu-yage-20261113-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "独立子 agent 会话（fresh context）；普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "d627e3c9bf4ca64b7ef5d8c5cc811ab3348e0a5ea80b8798844a176fd25ba862",
+        "evidence_sha256": "1e2ed0b6813d0f9de52229541c158ca3fe8826e0db34971e3fb7a98250d0b3e0",
+        "verified_before_reading": true,
+        "authorized_update": "第二轮（终版）快照。第一轮发现的 5 项非阻塞问题由协调者修订（双盲 20/3 补口播自我更正存疑、shownotes 时间轴描述更正、Limitations 阅读口径分层、删除非本期金句、账本 C04-C09 补 src-polished），复核者对照修订位置复验后上调 evidence_fidelity 91→93、limitations 90→92；金句区一处悬空注由协调者按复核者建议删除（一句话编辑残留，复核者明示不需再走一轮复核）。"
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 88,
+        "reasoning_quality": 88,
+        "readability": 90,
+        "limitations": 92
+      },
+      "score_reasons": {
+        "evidence_fidelity": "通读报告与精编稿全文（18 章节区块对上官方时间轴 18 条）；C01-C10 逐句回精编稿核对引语，11 组关键数字在精编稿与原始转写双份定位全命中；审计收据与 frontmatter 一致、96.3% 压缩比数学正确；superlinear.academy / AI Builders / yage.ai（100% AI 生成自述）经独立渠道重验成立。修订后：双盲 20/3 以原始口播引文+采用理由+[?] 完整补注，shownotes 结构描述与事实一致，Limitations 与账本口径对齐——三个原扣分主因消除。残留：速览 bullet 未带 [?]（主文已带）；C02 未列 src-polished；'双盲'沿用嘉宾第一词（其自述'或者单盲'）。",
+        "request_coverage": "15 个覆盖单元逐一对照，core 单元（CU02/05/06/07/08/13/14）均有完整小节；R1-R5 逐条对照产物（收据/精编结构/增量声明/利益标注/实体页）。扣分：supporting 单元 CU01/04/09 及 CU12 细节仅内容地图表行级（report_depth=standard 下可辩护）。未核速看表与 open-questions 落盘（R5 另一半）。",
+        "reasoning_quality": "所有分析性连接核对事实基础：朱啸虎期 WorkBuddy 原句在库内存在；首期基线（Jev 三条件/CI 三要素/+1h）全部确认；C10 对偶正确标 inference 且正文未越界；反向对微调→EverAgent 润色对建议具体可执行。扣分：'agent mesh/委托谱系'类挂钩论证轻；'学得够慢'章分析价值多留表行。",
+        "readability": "速览→背景→地图→八节→数字表→金句→追问→边界结构完整，独立可读；数字表来源分层是亮点。修订删除非本期金句为净改善；一处悬空注已按建议清理。",
+        "limitations": "Limitations 具体诚实：转写参数、[?] 存疑串、口播单源、卖课利益关系、私有边界、'阅读口径分层'如实自述（精编 agent 逐段通读/主会话按摘要撰写+抽查/复核者通读）。20/3[?] 已入账本 limitations。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "source_ids_checked": [
+        "src-audio",
+        "src-shownotes",
+        "src-yage-share",
+        "src-superlinear",
+        "src-aibuilders",
+        "src-polished"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "coverage_unit_ids_checked": [
+        "CU01",
+        "CU02",
+        "CU03",
+        "CU04",
+        "CU05",
+        "CU06",
+        "CU07",
+        "CU08",
+        "CU09",
+        "CU10",
+        "CU11",
+        "CU12",
+        "CU13",
+        "CU14",
+        "CU15"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "精编稿·冷开场+第1章（结缘与家项目）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01"
+          ],
+          "notes": "硬件清单进正文；结缘史细节留表行（thin，已如实评分）。"
+        },
+        {
+          "id": "SCM02",
+          "title": "精编稿·第2章（100 直播间→CRM）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU02"
+          ],
+          "notes": "第五节完整展开；数字双份定位命中。"
+        },
+        {
+          "id": "SCM03",
+          "title": "精编稿·第3章（毫米波雷达/模拟器先行）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03"
+          ],
+          "notes": "模拟器先行方法论加粗进正文。"
+        },
+        {
+          "id": "SCM04",
+          "title": "精编稿·第4章（不为赚钱）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU04"
+          ],
+          "notes": "表行级；变现=卖课素材在第八节呼应。"
+        },
+        {
+          "id": "SCM05",
+          "title": "精编稿·第5章（fine tune 去 AI 味）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-yage-share"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU05"
+          ],
+          "notes": "第四节全文最完整：流水线/反向对/盲测[?]/公理；20/3 存疑修订后忠实。"
+        },
+        {
+          "id": "SCM06",
+          "title": "精编稿·第6章（只管验收与拍板）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU06"
+          ],
+          "notes": "第一节含原话与 harness/模型判断。"
+        },
+        {
+          "id": "SCM07",
+          "title": "精编稿·第7章（AI 找 AI）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU07"
+          ],
+          "notes": "第二节含三点配套设计。"
+        },
+        {
+          "id": "SCM08",
+          "title": "精编稿·第8章（一百次犯错）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU08"
+          ],
+          "notes": "第三节含 semantic search 与知识图谱细节。"
+        },
+        {
+          "id": "SCM09",
+          "title": "精编稿·第9章（学得够慢）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU09"
+          ],
+          "notes": "表行级为主；'出题'在第八节一笔带过（已如实评分）。"
+        },
+        {
+          "id": "SCM10",
+          "title": "精编稿·第10章（AI 劝少用 AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-prior-yage"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU10"
+          ],
+          "notes": "第六节完整；首期 +1h 基线核对一致。"
+        },
+        {
+          "id": "SCM11",
+          "title": "精编稿·第11章（卖课）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-superlinear",
+            "src-aibuilders"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU11"
+          ],
+          "notes": "第八节覆盖三原因/AB Space/外婆变声器/400 页；利益相关已标注。"
+        },
+        {
+          "id": "SCM12",
+          "title": "精编稿·第12章（跟拍云台）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU12"
+          ],
+          "notes": "云台进正文；HDMI 采集卡细节留表行。"
+        },
+        {
+          "id": "SCM13",
+          "title": "精编稿·第13章（大脑变手）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU13"
+          ],
+          "notes": "第六节完整，原话逐句吻合。"
+        },
+        {
+          "id": "SCM14",
+          "title": "精编稿·第14章（电饭锅岗位论）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU14"
+          ],
+          "notes": "第七节完整。"
+        },
+        {
+          "id": "SCM15",
+          "title": "精编稿·第15章+片尾（WorkBuddy 建议）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-zhuxiaohu"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU15"
+          ],
+          "notes": "第八节+金句+朱啸虎互证（库内原句存在已核）。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "两轮复核。第一轮（89.4，无 blocking）：5 项非阻塞建议——双盲 20/3 口播自我更正未携存疑、shownotes 时间轴描述失实、阅读口径两处不一、CU01/04/09 表行级覆盖、账本小件（source_ids 漏列/单盲措词/金句区非本期引语）。第二轮（修订后复验）：三项主扣分消除并上调 evidence_fidelity 91→93、limitations 90→92；总分 90.45；最终判定通过。复核未覆盖项如实声明：未听音频（无法裁决 20/3 更正方向）、未核速看表/open-questions 落盘、未核 enclosure 字节数。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "claude-code",
+            "run_id": "ailianjinshu-yage-20261113-independent-review",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 91,
+            "request_coverage": 88,
+            "reasoning_quality": 88,
+            "readability": 90,
+            "limitations": 90
+          },
+          "notes": "第一轮复核摘要：通读报告/精编稿/原始转写抽查，C01-C10 全部 verified（C02 带 caveat：双盲 20/3 口播含未解决自我更正），15 覆盖单元 11 covered + 4 thin；superlinear 三项独立重验成立；无 blocking，5 项非阻塞建议全部被协调者采纳。"
+        }
+      ],
+      "decision": {
+        "status": "revise",
+        "score": 89.4,
+        "summary": "无 blocking；5 项非阻塞建议，协调者全部采纳修订。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 90.45,
+    "evaluated_on": "2026-11-13",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d627e3c9bf4ca64b7ef5d8c5cc811ab3348e0a5ea80b8798844a176fd25ba862",
+    "evidence_sha256": "1e2ed0b6813d0f9de52229541c158ca3fe8826e0db34971e3fb7a98250d0b3e0"
+  }
+}

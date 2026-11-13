@@ -279,6 +279,11 @@
   - 新增 entities：[HF0](wiki/entities/hf0.md)、[OpenRouter](wiki/entities/openrouter.md)、[郭靖 Joe](wiki/entities/joe-guo.md)；新增 concepts：[生成内容的不完美缺口](wiki/concepts/roughness-gap.md)（接 KK"不写剧本的电影"）
   - 增量观点定位：OpenRouter 段与张阔 E255 帕累托路由构成路由层"入口卡位 vs 成本优化"双视角；open-questions"千瓦时指标"线获得机制解释
   - **pipeline**：用户指定**本机转写**——whisper.cpp large-v3 + Silero VAD（Metal）一次通过（结构审计 max 重复 2 段）；喜马拉雅 CDN 对签名 URL/直链/cookies 全线 403（AI炼金术音频改走小宇宙版官方 enclosure）；R2 起确立"m4a 先 ffmpeg 转 16k wav 再转写"通道（whisper-cli 直读 m4a 不产 JSON）
+- **AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味**（2026-11-10 发布，1h15m56s / 2,906 段 / 21,814→21,013 汉字，高保真精编 96.3%）
+  - 路径：`reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md`（report-v2 全质量链：evidence+review）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：委托两件事（验收+关键技术决策，24h Mac+语音百字）/ AI 找 AI 跨会话 skill 协调 / context infrastructure"一百次犯错"（80-90% 对+10% 手动）/ 反向对微调去 AI 味（几百篇旧文、通义千问+Unsloth、5090 一两小时、双盲 20 篇 3 识破、44 条公理）/ 100 直播间 CRM 社会研究 / "大脑变手"升职悖论 / 电饭锅寿司学徒岗位论 / WorkBuddy×朱啸虎互证
+  - 新增 entities：[鸭哥](wiki/entities/yage.md)（二次登场首建）；与首期（2026-10-11 十字路口）增量区分：睡眠回归/CI 三要素不重复展开
+  - 增量观点定位：委托谱系第三块（余一 100% 委托 → 橘子教练式 → 鸭哥"验收派"两件事）；反向对微调是本仓 transcript polish 可直接实验的方法（已挂 open-questions）
 
 ## ⚠️ 边界（防幻觉）
 

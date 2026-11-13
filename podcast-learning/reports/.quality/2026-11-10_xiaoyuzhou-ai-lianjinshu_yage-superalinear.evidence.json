@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-13",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "ailianjinshu-yage-20261113-report-v1",
+    "explicit_model_override": false,
+    "note": "转写由本机 whisper.cpp large-v3 + Silero VAD 完成（m4a 先经 ffmpeg 转 16kHz wav；非 LLM）；高保真精编由独立 context 的 Claude Code 子任务执行；报告正文由主会话 glm-5.3 撰写；外部事实经 eacli Token Plan（web.search/web.read）核验。"
+  },
+  "contributors": [
+    {
+      "role": "transcription",
+      "harness": "whisper.cpp",
+      "model": "whisper-large-v3",
+      "model_identity_basis": "本机 whisper-cli 进程与模型文件 ~/workspace/whisper.cpp/models/ggml-large-v3.bin；转写产物经确定性结构审计（2906 段，最大连续重复 3 段）。",
+      "run_id": "local-metal-20261113-yage"
+    },
+    {
+      "role": "transcript_polish",
+      "harness": "claude-code",
+      "model": "glm-5.3",
+      "model_identity_basis": "子 agent 会话身份标识；未逐条核验内部部署后缀。",
+      "run_id": "ailianjinshu-yage-20261113-polish-v1"
+    }
+  ],
+  "session_observations": {
+    "private_materials": "完整转写与高保真精编稿保存于仓库外私有目录；公开仓仅保留脱敏审计收据与内容哈希引用。",
+    "generator_read_scope": "主会话收到精编 agent 的全量摘要与修正清单，并抽查原始转写；精编稿全文由独立复核者通读；未逐句听音。",
+    "verification_channel": "Superlinear Academy / AI Builders / yage.ai 经 eacli Token Plan（web.search，zhipu provider）核验；音频获取：喜马拉雅 CDN 403 后改走小宇宙版官方 enclosure。"
+  },
+  "task": {
+    "summary": "用户目标五轮 AI 学习任务之第 2/5：AI炼金术鸭哥期（只管验收与拍板、AI 找 AI、反向对微调去 AI 味），本机转写，完成后提交推送；与 2026-10-11 十字路口首期按增量处理。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "用本机 whisper.cpp（large-v3+VAD）转写全量音频并通过确定性结构审计（m4a 先转 wav）。"
+      },
+      {
+        "id": "R2",
+        "text": "高保真精编全部 2906 段并按 15 章结构重组，保留修正清单与 [?] 存疑标注（模型名原音保留）。"
+      },
+      {
+        "id": "R3",
+        "text": "覆盖 1h15m56s 版本的 15 个内容单元，与首期（2026-10-11）增量区分，不重复展开睡眠回归与 CI 三要素。"
+      },
+      {
+        "id": "R4",
+        "text": "区分口播自报与独立核验；机构/课程/新闻站存在性独立核实；利益相关（卖课）如实标注。"
+      },
+      {
+        "id": "R5",
+        "text": "全文与精编稿仅存仓外；更新实体（鸭哥首建）、索引、速看表；与朱啸虎期 WorkBuddy 互证。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-audio",
+      "kind": "primary",
+      "title": "本集官方音频与全量转写（小宇宙版 media.xyzcdn.net enclosure）",
+      "locator": "https://media.xyzcdn.net/63e9ef4de99bdef7d39944c8/lsf0OeJOsyWA5XGnGUlZDcDo3nzW.m4a",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-shownotes",
+      "kind": "primary",
+      "title": "AI炼金术官方 shownotes（喜马拉雅 RSS 同步版，亮点结构与嘉宾身份）",
+      "locator": "https://www.ximalaya.com/album/74194808.xml",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-page",
+      "kind": "primary",
+      "title": "小宇宙节目页（跨平台同步版，发布日期与音频入口）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6af29fa1b4a4e20202f7860a",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-polished",
+      "kind": "execution",
+      "title": "高保真精编稿（仓外私有，按内容哈希引用）",
+      "locator": "sha256:4ab509f8a5c3d75b23e9f0b3a7a98852747501a55367427766c516081ce44914",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-audit",
+      "kind": "local",
+      "title": "全量转写的脱敏结构审计收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.audit.json",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-superlinear",
+      "kind": "official",
+      "title": "Superlinear Academy 官网（超线性学院）",
+      "locator": "https://www.superlinear.academy",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-aibuilders",
+      "kind": "official",
+      "title": "AI Builders 课程页（与课代表合办）",
+      "locator": "https://ai-builders.com",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-yage-share",
+      "kind": "official",
+      "title": "yage.ai/share（自述 100% AI 生成的日更调研简报）",
+      "locator": "https://yage.ai/share",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-prior-yage",
+      "kind": "local",
+      "title": "十字路口鸭哥首期报告（2026-10-11，增量对照基线）",
+      "locator": "podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-zhuxiaohu",
+      "kind": "local",
+      "title": "硅基立场 Vol.35 朱啸虎报告（WorkBuddy 互证与消磨时间对偶）",
+      "locator": "podcast-learning/reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md",
+      "accessed_on": "2026-11-13"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "鸭哥的委托公式：只管两点——最终怎么验收与关键技术决策；形式为 24 小时 Mac + 自研手机客户端语音对话；判断 harness 与模型 90% 场景可互换。",
+      "report_anchor": "一、委托的两件事：验收与拍板",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-polished"
+      ],
+      "critical": true,
+      "evidence": "口播原话（精编稿第 6 章）：「我主要管两点：第一点是最终怎么验收……第二点是中间比较重要的技术决策」；「同样是一分钟，我语音识别可以跟他 BB 一百字」。"
+    },
+    {
+      "id": "C02",
+      "claim": "去 AI 味采用反向对微调：几百篇旧文先被 prompt 改写成 AI 腔，训练时输入 AI 文、输出原文；通义千问 + Unsloth，一张 5090 跑一两个小时；双盲 20 篇仅 3 篇被识破（口播此处含未解决自我更正，标 [?]）；另总结 44 条公理。",
+      "report_anchor": "四、去掉 AI 味：反向对微调",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-yage-share"
+      ],
+      "critical": true,
+      "evidence": "口播（精编稿第 5 章）自报方法与盲测结果；yage.ai/share 站点存在且自述 100% AI 生成（官网）。粉丝数与盲测为口播，未独立核验。"
+    },
+    {
+      "id": "C03",
+      "claim": "context infrastructure 的错误学习机制：AI 一犯错就打压会矫枉过正；让 AI 反思时看以前 100 次同类错误而非这一次，形成「何时停下问人/何时自己往前走」的脉络；目标 80-90% 对 + 10% 手动纠正。",
+      "report_anchor": "三、context infrastructure 补全：一百次犯错",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-polished"
+      ],
+      "critical": true,
+      "evidence": "口播原话（精编稿第 8 章）；与首期 CI 三要素构成同一体系的补全。"
+    },
+    {
+      "id": "C04",
+      "claim": "AI 找 AI：给 AI 装跨会话 skill（找 session、发消息），两个 AI 能协调——并行、排队、达成协议。",
+      "report_anchor": "二、AI 找 AI：跨会话协调",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿第 7 章）+ shownotes 亮点条目同口径。"
+    },
+    {
+      "id": "C05",
+      "claim": "直播间项目：AI 全天候盯约 100 个 B 站直播间、掉线自补，接入语音识别后研究打赏与话术，最终给主播/运营做 CRM，已采几百小时视频；嘉宾定性为社会研究。",
+      "report_anchor": "五、高射炮打蚊子：从松鼠相机到 100 个直播间",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播 + shownotes 亮点首条；数字为口播自报。"
+    },
+    {
+      "id": "C06",
+      "claim": "升职悖论：交活太快导致老板「五个活全给你、看哪个成了再续」，产出零散讲不出影响力故事；「你不是他一个大脑，而是一只手」；已是全公司最高 scientist 却升不上去。",
+      "report_anchor": "六、AI 强者的代价：大脑变手与睡眠回归",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes",
+        "src-polished"
+      ],
+      "critical": true,
+      "evidence": "口播个人经历（精编稿第 13 章）；shownotes 开篇即此故事；单一信源叙事已在报告标注。"
+    },
+    {
+      "id": "C07",
+      "claim": "睡眠回归（增量）：苹果手表数据 + 几百变量回归排除咖啡与酒，最强预测变量为当晚最后一次用 AI 的时间；照做后两周平均睡眠 +1.4 小时。",
+      "report_anchor": "六、AI 强者的代价：大脑变手与睡眠回归",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-prior-yage",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿第 10 章）；与首期「戒晚间 AI→+1h」方向一致，报告按增量处理不重复展开。"
+    },
+    {
+      "id": "C08",
+      "claim": "岗位论：「低级的程序员、设计师、寿司学徒本来就不应该存在」；学徒煮两年饭 vs 电饭锅好一万倍；短期阵痛但别把竞争力压在低级工作上。",
+      "report_anchor": "七、岗位论：电饭锅与寿司学徒",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播原话（精编稿第 14 章）；shownotes 亮点同条。"
+    },
+    {
+      "id": "C09",
+      "claim": "结尾唯一建议：装 WorkBuddy、找一件以为做不成的事「不用去觉得，就真的去做」；与朱啸虎期「WorkBuddy 加 DeepSeek」互证。",
+      "report_anchor": "八、副业经济学与结尾建议",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-zhuxiaohu",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播原话（精编稿第 15 章）；朱啸虎期引用见本仓报告（2026-11-11）。"
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 直播间研究与朱啸虎「消磨时间>节约时间」构成同一现象的对偶：投资人侧看到创业机会，重度用户侧把消磨时间重构为研究与工具。",
+      "report_anchor": "五、高射炮打蚊子：从松鼠相机到 100 个直播间",
+      "support": "inference",
+      "source_ids": [
+        "src-audio",
+        "src-zhuxiaohu"
+      ],
+      "critical": false,
+      "evidence": "本报告的分析性连接，非任一嘉宾表述。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "CU01",
+      "title": "01 车库门与松鼠相机（结缘史）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "结缘史（hack 苹果手表被劝创业遭拒）"
+    },
+    {
+      "id": "CU02",
+      "title": "02 盯 100 个直播间",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "盯 100 个直播间"
+    },
+    {
+      "id": "CU03",
+      "title": "03 毫米波雷达与模拟器先行",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "毫米波雷达与模拟器先行"
+    },
+    {
+      "id": "CU04",
+      "title": "04 不为赚钱",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "项目选择=好玩+好奇+佛系"
+    },
+    {
+      "id": "CU05",
+      "title": "05 fine tune 去 AI 味",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-yage-share"
+      ],
+      "report_anchor": "fine tune 去 AI 味"
+    },
+    {
+      "id": "CU06",
+      "title": "06 只管验收与拍板",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "只管验收与拍板"
+    },
+    {
+      "id": "CU07",
+      "title": "07 AI 找 AI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "AI 找 AI"
+    },
+    {
+      "id": "CU08",
+      "title": "08 一百次犯错",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "一百次犯错"
+    },
+    {
+      "id": "CU09",
+      "title": "09 学得够慢就不用学",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "出题人 vs 做题家"
+    },
+    {
+      "id": "CU10",
+      "title": "10 AI 劝少用 AI",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-prior-yage"
+      ],
+      "report_anchor": "最强预测变量=当晚最后一次用 AI 的时间"
+    },
+    {
+      "id": "CU11",
+      "title": "11 卖课",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-superlinear",
+        "src-aibuilders"
+      ],
+      "report_anchor": "400 多页教材按 agentic 年代重写"
+    },
+    {
+      "id": "CU12",
+      "title": "12 跟拍云台",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "HDMI 采集卡\"纯物理外挂\""
+    },
+    {
+      "id": "CU13",
+      "title": "13 大脑变手",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "你不是他一个大脑，而是一只手"
+    },
+    {
+      "id": "CU14",
+      "title": "14 电饭锅与寿司学徒",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "七、岗位论：电饭锅与寿司学徒"
+    },
+    {
+      "id": "CU15",
+      "title": "15 WorkBuddy 结尾建议",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-zhuxiaohu"
+      ],
+      "report_anchor": "不用去觉得，就真的去做"
+    }
+  ],
+  "limitations": [
+    "全部运营数字（粉丝数、盲测 20/3[?]、+1.4h、课程收入、百万级检索时延）为嘉宾单一口播信源，仅机构/课程/站点存在性获独立核实。",
+    "转写为机器产物且含成串模型名存疑（Gemini Orion[?]/Astra[?]/DSH[?]/JEV[?]/崩老头[?]按原音保留）；片尾曲歌词 ASR 残损；未逐句听音复核。",
+    "嘉宾与课代表存在课程商业关系（AI Builders），卖课相关表述按利益相关方自述处理。"
+  ]
+}

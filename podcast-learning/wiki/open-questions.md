@@ -677,3 +677,11 @@
 - "不完美缺口"（[roughness-gap](./concepts/roughness-gap.md)）的技术根源：human preference 收窄分布的必然代价，还是"不完美语料"（现场翻录/粗糙演出/事故瞬间）的数据缺口？若是后者，谁会系统性采集这批数据？
 
 来源：[硅谷101 E258：HF0 与 OpenRouter 早期故事](../reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)·思考与追问。
+
+## 2026-11-10 AI炼金术 鸭哥（二次登场）：委托与 AI 味
+
+- 反向对微调（输入 AI 文、输出去 AI 味原文）能否迁移到本仓转写润色任务——把 raw→polished 历史对当训练族，与 Claude 直润对照跑盲测？实验设计：同一期转写双轨润色+双盲判别。
+- "AI 找 AI"的 skill 化跨会话协调在什么规模/任务耦合度下失效？与中央编排器（workflow/DAG）的边界条件是什么？
+- "大脑变手"升职悖论有没有反例——AI 强者中成功讲出影响力故事的人做对了什么？（可验证样本：公开的自述者）
+
+来源：[AI炼金术：鸭哥（2026-11-10）](../reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md)·思考与追问。
