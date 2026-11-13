@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-12 · [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？——留存、毛利与懂人性的工程师](./podcast-learning/reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md)
-- 2026-11-11 · [运行中追加消息与修改目标——OpenAI Responses、Claude Messages 和 Managed Agents 官方 API 对照](./ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md)
-- 2026-11-11 · [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](./ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md)
-- 2026-11-11 · [OpenAI Responses WebSocket 与 Steering：连接、续接和运行中改向的协议详解](./ai-learning/reports/knowledge_reports/OpenAI_Responses_WebSocket%E4%B8%8ESteering_%E8%BF%9E%E6%8E%A5%E7%BB%AD%E6%8E%A5%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%94%B9%E5%90%91_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261111.md)
-- 2026-11-10 · [《AI演义》31｜DiT：用Transformer承担扩散去噪](./ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md)
+- 2026-11-13 · [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](./podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)
+- 2026-11-13 · [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](./podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md)
+- 2026-11-13 · [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](./ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md)
+- 2026-11-13 · [AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味，与大脑变手的升职悖论](./podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md)
+- 2026-11-13 · [AI 行业日报 · 2026-11-13](./web-surfing/reports/ai-news-daily-2026-11-13.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,15 +58,15 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 200 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 201 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 117 篇 | 58/55/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 121 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 55 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 </details>
