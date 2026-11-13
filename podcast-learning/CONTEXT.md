@@ -271,7 +271,7 @@
 - **本批 pipeline 事件（已记）**：eacli transcription 远端 worker 的 yt-dlp 对小宇宙**单集页 URL 与官方 m4a 直链**连续两次在 acquiring-audio 阶段失败（exit 3）；改走 `--file` 通道——本地 curl 下载官方音频（SHA-256 校验一致）→ scp 推至执行设备 → submit --file 一次成功（22 分钟音频转写约 1 分钟，5 分块全过）。**直链 URL 也不再可信，--file 是小宇宙源的保底通道。**
 - **本批方法亮点**：同场对谈**文字实录**（腾讯新闻 2026-10-22，硅星人整理）用于话轮归属与专名校正——转写无 speaker 标签的双人舞台对谈首次走通"实录归属法"；两版互有独有句（Claude 被封、张一鸣例仅见转写；Prosumer 句仅见实录）均逐处标注，精编以转写为准不据实录补写。
 
-### 2026-11-13 五轮 AI 学习批次（用户 /goal：本机转写，逐轮提交推送）
+### 2026-11-13 五轮 AI 学习批次（用户 /goal：本机转写，逐轮提交推送；第 5 轮为技术博客：vLLM Vera Rubin NVL72 深度解析，入库 ai-learning/reports/knowledge_reports/ 并登记 MAP）
 
 - **硅谷101 E258：HF0 与 OpenRouter 早期故事**（2026-11-10 发布，54m19s / 1,993 段 / 15,228→14,019 汉字，高保真精编 92.1%）
   - 路径：`reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md`；转写/精编存仓外私有目录，公开仅脱敏审计收据（`transcripts/2026-11-10_...audit.json`，receipt_only）
@@ -340,4 +340,4 @@
 
 ---
 
-*Last updated: 2026-11-12 (added 硅基立场 Vol.35 朱啸虎 ACC 2026 对谈：Anthropic 招股书双口径校准 + Personal Agent 系列第六块拼图 + 文字实录归属法 + --file 保底转写通道)*
+*Last updated: 2026-11-13 (五轮 AI 学习批次：硅谷101 E258 HF0/OpenRouter、AI炼金术鸭哥二次登场、晚点聊 187 LiberAI、42章经骁腾 RLaaS——全量本机 whisper 转写 + report-v2 质量链；另第 5 轮 vLLM Vera Rubin 深度解析见 ai-learning/MAP.md)*
