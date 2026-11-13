@@ -12,6 +12,7 @@
 
 ### AI 行业 / 宏观观察
 
+- [42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾](../reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md)（episode_summary · 发布 2026-11-07，归档 2026-11-13）— 曲凯×马骁腾（Mind Lab 联创，清华直博），1h02m；大厂集体失败论（信息结构解释：账单审计+局部信息）/ 国模锐评（DeepSeek infra-model co-design 飞轮、GLM 数据生产线最完善、MiniMax"信仰不坚定"）/ RSI"宣传口号"论 / RLaaS 定价（几万元/次迭代）/ LoRA 心路（100 万 LoRA 挂单底座）/ "名马名鞍"harness 金句 ×E255×鸭哥三方互文
 - [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？](../reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md)（episode_summary · 发布 2026-11-11，归档 2026-11-12）— ACC 2026 开幕式主舞台，骆轶航×朱啸虎连续第二年对谈，22m40s；Token 消耗量定开源胜负 / 年化 10 亿美金应用线（LiblibAI、Tipsy Chat 预测，利益相关已标注）/ Personal Agent 高频场景之问（90% 不用日历）/ 速度=入场券、留存=壁垒 / 消磨时间>节约时间 / Anthropic 招股书双口径校准 / 港股解禁跌 80-90% 与安全边际小额试错
 - [硅基立场 Vol.32：张帆"去他X的FDE"](../reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md)（episode_summary · 发布 2026-09-24，归档 2026-09-25）— 骆轶航×智谱前COO，1h43m，FDE=高级外包 / 正态分布与边缘解 / 知识承载三载体（workflow→harness→weight）/ 企业 RSI / 反工业革命与液态组织；立场披露：嘉宾创业方向是 FDE 替代品
 - [此话当真：同事.skill 与人生系统.skill，你害怕被蒸馏吗](../reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md)（episode_summary · 发布 2026-08-17，归档 2026-09-25）— 真格出品，56m，周天奕（23k star）×蔡不菜（Obsidian 人生系统）/ build in public / AI 审美污染与读 2023 年以前的文字 / 文风同化恐惧 / agent 的最后一百米；与张帆期构成蒸馏之争镜像
@@ -85,6 +86,7 @@
 
 ### 具身智能 / 人物访谈
 
+- [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](../reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md)（episode_summary · 发布 2026-11-13，归档同日）— 程曼祺×刘松铭（清华特奖/RDT-1B 一作），2h10m；[System 2/1/0 分层](./concepts/system-stack-embodied.md) / Day 1 全栈"硬件服务模型" / 手套数据经济学（1万h 手套>200万h 视频、替代 75% 遥操）/ Liber-0 零样本 60 题（抓取 60-70%）/ 胜率判断（真对手=非标自动化）/ LEO 本体高 30pp / 资本纪律储备 3-5 年；融资独立核实
 - [十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」](../reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md)（episode_summary · 2026-09-16，恢复补齐 2026-10-18）— 十字路口Crossing，1h09m，风浪越大鱼越贵 / 大脑小脑两层论 / HiFi-UMI 毫米微秒级数据 / 三能力定义 / 趋势≠law / 评估保持真实 / GEN-1.5·π0.7·Skild 点评
 - [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md)（episode_summary · 2026-09-20）— 十字路口Crossing 对谈清华叉院 AP，1h20m，adaptation/ICL / loss≠成功率 / 机器人 GPT-1 阶段论 / 数据四路融合
 
@@ -220,6 +222,11 @@
 
 - [鸭哥](./entities/yage.md) — Superlinear Academy 联合创始人（哥大 PhD；微软/Pinterest/Samsara）；委托"验收+拍板"两件事 / context infrastructure 一百次犯错 / 反向对微调去 AI 味 / 大脑变手；首见 2026-10-11 十字路口（Jev 三条件/CI 三要素）
 
+### 来自 2026-11-13 晚点聊 187 / 2026-11-07 42章经（具身与 RL 双子期）
+
+- [刘松铭](./entities/liu-songming.md) — LiberAI 创始人 & CEO（清华特奖、RDT-1B 一作）；6 轮融资 / Day 1 全栈 / 手套数据经济学 / System 1 及以下防守
+- [马骁腾 Pony](./entities/ma-xiaoteng.md) — Mind Lab 联创、首席科学家（Mindverse CRO；清华直博）；国模锐评 / RSI 宣传口号论 / RLaaS / 100 万 LoRA；"名马名鞍"
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -306,6 +313,10 @@
 ### 来自 2026-11-10 硅谷101 E258（HF0 期）
 
 - [生成内容的不完美缺口](./concepts/roughness-gap.md) — 生成模型"平均的好"逼近人类上限、分布收窄生成不出粗粝与不完美瞬间；接 KK"不写剧本的电影"
+
+### 来自 2026-11-13 晚点聊 187（刘松铭期）
+
+- [具身智能的 System 2/1/0 分层](./concepts/system-stack-embodied.md) — 基模吃掉 System 2、具身模型变薄；System 1 及以下的物理信息层是防守线；接 E256 Astra 之问
 
 ## Syntheses（跨期综合）
 

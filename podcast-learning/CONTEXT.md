@@ -284,6 +284,14 @@
   - 内容：委托两件事（验收+关键技术决策，24h Mac+语音百字）/ AI 找 AI 跨会话 skill 协调 / context infrastructure"一百次犯错"（80-90% 对+10% 手动）/ 反向对微调去 AI 味（几百篇旧文、通义千问+Unsloth、5090 一两小时、双盲 20 篇 3 识破、44 条公理）/ 100 直播间 CRM 社会研究 / "大脑变手"升职悖论 / 电饭锅寿司学徒岗位论 / WorkBuddy×朱啸虎互证
   - 新增 entities：[鸭哥](wiki/entities/yage.md)（二次登场首建）；与首期（2026-10-11 十字路口）增量区分：睡眠回归/CI 三要素不重复展开
   - 增量观点定位：委托谱系第三块（余一 100% 委托 → 橘子教练式 → 鸭哥"验收派"两件事）；反向对微调是本仓 transcript polish 可直接实验的方法（已挂 open-questions）
+- **晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率**（2026-11-13 发布，2h09m34s / 5,427 段 / 43,321→40,146 汉字，高保真精编 92.7%）
+  - 路径：`reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md`（report-v2 全质量链）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：System 2/1/0 分层与 Day 1 全栈（"硬件服务模型"）/ 手套数据经济学（1万h>200万h 视频、替代 75% 遥操、成本差一个数量级）/ Liber-0 零样本 60 题（抓取 60-70%、长程>10%）/ LEO 本体高 30pp / 胜率判断（OpenAI 无基因无动力、真对手=非标自动化、"吃不饱"）/ 奶茶店 5'50" 无剪辑 / 资本纪律储备 3-5 年
+  - 新增 entities：[刘松铭](wiki/entities/liu-songming.md)（含 LiberAI 公司侧写，融资独立核实 36kr）；新增 concepts：[System 2/1/0 分层](wiki/concepts/system-stack-embodied.md)（接 E256 Astra / 晚点聊具身线 / World Labs）
+- **42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾**（2026-11-07 发布，1h02m19s / 2,311 段 / 18,998→16,350 汉字，高保真精编 86.1%）
+  - 路径：`reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md`（report-v2 全质量链）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：RL 人生三件事（exploration/知行合一/γ=0.99）/ 大厂集体失败论（账单审计+局部信息的信息结构解释）/ 国模锐评（DeepSeek infra-model co-design 飞轮、GLM 数据生产线最完善、Kimi fancy、MiniMax 信仰不坚定）/ Neo Lab=research-product co-design / RSI"宣传口号"论 / RLaaS 定价（按 token、几万元/次迭代、项目几十万-100 万）/ LoRA 心路（四台 H800→Mint→100 万 LoRA 挂单底座）/ "名马名鞍"harness 金句
+  - 新增 entities：[马骁腾 Pony](wiki/entities/ma-xiaoteng.md)；三方互文：名马名鞍 × E255 乘法公式 × 鸭哥 harness 互换（模型差异化收窄→体验差异沉淀在 harness 与数据管线）
 
 ## ⚠️ 边界（防幻觉）
 

@@ -12,7 +12,7 @@
 
 **本次补充 24 期**，增量检查覆盖 2026-11-07—2026-11-13；其中 18 期发表于 11 月 11—13 日，6 期发表于 11 月 10 日。
 
-本页收录 **362 条单集发布记录**：**69 条已有专题报告**，**1 条仅有相关报告**，**292 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **362 条单集发布记录**：**71 条已有专题报告**，**1 条仅有相关报告**，**290 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -32,7 +32,7 @@
 
 ## 最近一周
 
-2026-11-07—2026-11-13，共 38 条，其中 3 条已有专题报告。
+2026-11-07—2026-11-13，共 38 条，其中 5 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -41,7 +41,7 @@
 | --- | --- | --- | --- | --- |
 | 2026-11-13 | 张小珺Jùn｜商业访谈录 | [156｜梁其伟：影之刃零制作人的 6 小时访谈](https://www.xiaoyuzhoufm.com/episode/6af5debf14d01a26f8a900ac "156. 《侠》｜对影之刃零制作人梁其伟6小时访谈") · [音频](https://dts-api.xiaoyuzhoufm.com/track/626b46ea9cbbf0451cf5a962/6af5debf14d01a26f8a900ac/media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lvnhry4gLCC3Ut_6NMJN7QRmdDaN.m4a) | 6小时27分 | 未做 |
 | 2026-11-13 | 赛博对话 | [Vol.61｜刘飞×阑夕×潘乱：与双十一互相烧心的 18 年](https://www.xiaoyuzhoufm.com/episode/6af66eb614d01a26f8a91b30 "vol.61｜从熬夜到无感：我们和双十一互相烧心的18年｜刘飞X阑夕X潘乱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/67d7955023ab6b5506e80ea4/6af66eb614d01a26f8a91b30/media.xyzcdn.net/67d7955023ab6b5506e80ea4/lvhRAkF0tL7bHyXW3AqzVg1_zIKR.m4a) | 1小时17分 | 未做 |
-| 2026-11-13 | 晚点聊 LateTalk | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | 未做 |
+| 2026-11-13 | 晚点聊 LateTalk | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | ✅ [报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-11-13 | 二的三次方 | [Vol.166｜从聊保养开始的话题漫谈](https://www.xiaoyuzhoufm.com/episode/6af5a25914d01a26f8a8e40b "vol:166 不是聊保养吗？这都聊到哪去了？！") · [音频](https://dts-api.xiaoyuzhoufm.com/track/64bf965274d8c90965c62fff/6af5a25914d01a26f8a8e40b/media.xyzcdn.net/64bf965274d8c90965c62fff/lnEtg7Jd8ggkfUHaI2GgK4n-YiTX.m4a) | 1小时41分 | 未做 |
 | 2026-11-13 | 听懂涨声 | [红酒三十年：价格、品牌、欲望与集体幻觉](https://www.xiaoyuzhoufm.com/episode/6af5697a3caef3b52f54a42e "红酒三十年：价格、品牌、欲望和一场集体幻觉") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6543750424e7ad2107e8b0b5/6af5697a3caef3b52f54a42e/media.xyzcdn.net/6543750424e7ad2107e8b0b5/lrqSFnEhYsYae6xYwltkaIMfnBVR.m4a) | 1小时13分 | 未做 |
 | 2026-11-13 | 温柔一刀 | [Vol.150｜东阿阿胶与乐品乐茶：两个品牌争的同一件事](https://www.xiaoyuzhoufm.com/episode/6af5c68614d01a26f8a8f5b1 "八竿子打不着的两个品牌，争的其实是同一件事｜Vol.150 对话东阿阿胶、乐品乐茶") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61e795844675a08411f51310/6af5c68614d01a26f8a8f5b1/media.xyzcdn.net/61e795844675a08411f51310/lhBiLmd92-vD2AvwDshVrUf6JCPc.m4a) | 1小时10分 | 未做 |
@@ -76,7 +76,7 @@
 | 2026-11-09 | 声动早咖啡 | [Klook：体验经济增长背后的盈利难题](https://www.xiaoyuzhoufm.com/episode/6af0688d5b7c4709bfe2e8c5 "体验经济火热升温，主打玩乐生意的 Klook 为何依然难赚钱？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6af0688d5b7c4709bfe2e8c5/media.xyzcdn.net/60de7c003dd577b40d5a40f3/lrHjhnCtr8S3kLDcFG-uj_C2k7V3.m4a) | 17分钟 | 未做 |
 | 2026-11-09 | 菠萝健康派 | [Vol.137｜吴芳：癌症患者的情绪支持与复发焦虑](https://www.xiaoyuzhoufm.com/episode/6af0493eb4a4e20202f69020 "吴芳教授：好心情真的能抗癌？比情绪稳定更重要的是内核稳定！vol.137") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6693ae814ce7c8de0f47e220/6af0493eb4a4e20202f69020/media.xyzcdn.net/6693ae814ce7c8de0f47e220/lpfebH-TXM7lIJnwuUCA2aRqSMr6.m4a) | 59分钟 | 未做 |
 | 2026-11-08 | 起朱楼宴宾客 | [188｜市场下跌、AI 融资链条与资产配置](https://www.xiaoyuzhoufm.com/episode/6af0491fb4a4e20202f69018 "188.关于本轮下跌的三个想法和一些建议") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61dd99a47b29652ff572257b/6af0491fb4a4e20202f69018/media.xyzcdn.net/61dd99a47b29652ff572257b/lt6yTc8uTffpeS_crF7i-RmxFXzp.m4a) | 52分钟 | 未做 |
-| 2026-11-07 | 42章经 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | 未做 |
+| 2026-11-07 | 42章经 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | ✅ [报告](./reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) |
 
 </details>
 
@@ -226,7 +226,7 @@
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-07 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | 未做 |
+| 2026-11-07 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | ✅ [报告](./reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) |
 | 2026-10-24 | [淏楠：跨过 Agent、多模态与具身的技术经验](https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e "少有的同时做过 Agent、多模态和具身的人 &#124; 对谈前混元多模态 RL Infra 负责人淏楠") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lvbhcwVCtEq4TvFmVcbkRuBW0N82.m4a) | 54分钟 | [阅读报告](./reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md) |
 | 2026-10-17 | [Articuler.ai Jason：AI 应用创业的困境与坚持](https://www.xiaoyuzhoufm.com/episode/6acddf92e742e36efcc2448d "这个破业非创不可吗？｜对谈 Articuler.ai 创始人 Jason") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lnVlrNKK-MvYHIy31eq_gw4QOpje.m4a) | 55分钟 | [阅读报告](./reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md) |
 | 2026-10-13 | [Ambi 子皓：Personal Agent 创业者的思考](https://www.xiaoyuzhoufm.com/episode/6accc5de195d838e2af0bd9a "一个 Personal Agent 创业者的思考｜对谈 Ambi 创始人子皓") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lkR2rf-l-fT_P_I6f-TaY5vLNT6e.m4a) | 1小时26分 | [阅读报告](./reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) |
@@ -291,7 +291,7 @@
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | 未做 |
+| 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | ✅ [报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-11-06 | [185｜李肇宇：Anthropic 的定价逻辑与潜在风险](https://podcast.latepost.com/185 "185: Anthropic招股书丨与Amont李肇宇聊定价逻辑和潜在风险") | 1小时0分 | 未做 |
 | 2026-11-06 | [186｜张璐：大企业怎样评估 AI 需求与回报](https://podcast.latepost.com/186 "186: Anthropic招股书丨“银行也有百亿预算”，与Fusion Fund张璐聊大企业在想什么") | 1小时13分 | 未做 |
 | 2026-10-15 | [184｜具身季报：通用模型会吃掉 Robotics 吗？](https://podcast.latepost.com/184 "184: 与陈哲的「具身季报26Q3」：Astra冲击后，通用模型会吃掉Robotics吗？") | 1小时46分 | [阅读报告](./reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) |
@@ -560,7 +560,7 @@
 | 2026-10-26 | [E66｜月光的年轻人，如何开始规划养老？](https://www.xiaoyuzhoufm.com/episode/6addc595c96c8942ec11e3a8 "E66 当一个月月光的年轻人，开始认真规划养老") · [音频](https://media.xyzcdn.net/64b0bfde585daadfc82f3b12/lpx43jtqtVkmPB2_wOgtMb-DvmPA.m4a) | 1小时9分 | 未做 |
 | 2026-10-12 | [E65｜普通人怎么和 A 股长期相处？](https://www.xiaoyuzhoufm.com/episode/6acb15cee742e36efcc1261e "E65 等待闪电的长夜里，普通人该怎么和 A 股过日子？") · [音频](https://media.xyzcdn.net/64b0bfde585daadfc82f3b12/lmVoXGusnYrbTXaWex6IoFrIAoAY.m4a) | 1小时6分 | 未做 |
 | 2026-09-28 | [E64｜投资里的“躺赢”与“躺平”有何不同？](https://www.xiaoyuzhoufm.com/episode/6aaf9f1a0916f6f8b4463441 "E64 我看了中美几十年的数据，发现投资里「躺赢」和「躺平」真不是一回事") · [音频](https://media.xyzcdn.net/64b0bfde585daadfc82f3b12/lqDuM8TnT_dIxz_5SDid22lkkQjf.m4a) | 59分钟 | 未做 |
-| 2026-09-14 | [E63｜从收租到收息：红利投资为何受关注？](https://www.xiaoyuzhoufm.com/episode/6aa630e9492687f6aad90bfa "E63 从收租到收息：为什么这些年，大家越来越关注红利投资了？") · [音频](https://media.xyzcdn.net/64b0bfde585daadfc82f3b12/li5GZjW3QtYUlvvM5Rx1wnljeaiO.m4a) | 1小时3分 | 未做 |
+| 2026-09-14 | [E63｜从收租到收息：红利投资为何受关注？](https://www.xiaoyuzhoufm.com/episode/6aa630e9492687f6aad90bfa "E63 从收租到收息：为什么这些年，大家越来越关注红利投资了？") · [音频](https://media.xyzcdn.net/64b0bfde585daadfc82f3b12/li5GZjW3QtYUlvvM5Rx1wnljeaiO.m4a) | 1小时3分 | ✅ [报告](./reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) |
 
 </details>
 
@@ -766,7 +766,7 @@
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-03 | [No.234｜捷克游记：城堡、银矿与酒馆](https://www.xiaoyuzhoufm.com/episode/6ae8bb1097726cd4675bbd9d "No.234 捷克游记：属于城堡、银矿与酒馆的波西米亚地图") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e280fab418a84a0461faa3c/6ae8bb1097726cd4675bbd9d/media.xyzcdn.net/5e280fab418a84a0461faa3c/lmCKv_XOcbjfcVCD5wbYTBAMuKwf.m4a) | 2小时9分 | 未做 |
+| 2026-11-03 | [No.234｜捷克游记：城堡、银矿与酒馆](https://www.xiaoyuzhoufm.com/episode/6ae8bb1097726cd4675bbd9d "No.234 捷克游记：属于城堡、银矿与酒馆的波西米亚地图") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e280fab418a84a0461faa3c/6ae8bb1097726cd4675bbd9d/media.xyzcdn.net/5e280fab418a84a0461faa3c/lmCKv_XOcbjfcVCD5wbYTBAMuKwf.m4a) | 2小时9分 | ✅ [报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-09-11 | [No.233｜手机为什么折叠，苹果为什么跟进？](https://www.xiaoyuzhoufm.com/episode/6aa41efc492687f6aad88f7f "No.233 单口｜手机为什么要折叠？Apple 为什么要「跟风」？") · [音频](https://media.xyzcdn.net/5e280fab418a84a0461faa3c/llkUoSB_R2vQcWbB9AKiGl1dRpkS.m4a) | 1小时18分 | 未做 |
 
 </details>
@@ -813,7 +813,7 @@
 | 2026-10-02 | [505｜王恺：中国茶的真假传说](https://www.xiaoyuzhoufm.com/episode/6abf70bee742e36efcbdbcba "505 茶海轶闻：与王恺漫谈中国茶的真假传说") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lighspj-Fv3GgyUj1wURPDbGXhza.m4a) | 1小时44分 | 未做 |
 | 2026-09-29 | [504｜林行止、《信报》与香港经济](https://www.xiaoyuzhoufm.com/episode/6abb74cee742e36efcbca2c3 "504 林行止、《信报》与香港经济黄金年代") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lsQH0b2Fi11Uc5udp330iBwuYiH_.m4a) | 1小时20分 | 未做 |
 | 2026-09-25 | [503｜冯俊文回忆历史学家许倬云](https://www.xiaoyuzhoufm.com/episode/6ab638ece742e36efcbb1e4e "503 无锡·台北·匹兹堡：冯俊文回忆时代巨变中的历史学家许倬云") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/llhGtepdsZPYV65xkizXvAqUiicu.m4a) | 1小时49分 | 未做 |
-| 2026-09-22 | [502｜刘怡：“挑战者号”事故四十周年](https://www.xiaoyuzhoufm.com/episode/6ab23bbe93d5eb3bdc793ad3 "502 宇宙超级工程是如何垮掉的：刘怡谈「挑战者号」事故四十周年") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/loYLfMnXYc-CUaJGCN12-V7--ybD.m4a) | 1小时3分 | 未做 |
+| 2026-09-22 | [502｜刘怡：“挑战者号”事故四十周年](https://www.xiaoyuzhoufm.com/episode/6ab23bbe93d5eb3bdc793ad3 "502 宇宙超级工程是如何垮掉的：刘怡谈「挑战者号」事故四十周年") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/loYLfMnXYc-CUaJGCN12-V7--ybD.m4a) | 1小时3分 | ✅ [报告](./reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) |
 | 2026-09-17 | [特番｜杨旸：移动通信三十年](https://www.xiaoyuzhoufm.com/episode/6aaa6e139d326477816a1bf6 "特番｜从蜂窝网络到手机革命：杨旸谈移动通信浪潮三十年") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lhbvzA29_24SZQusT-nWtM0Z09_4.m4a) | 1小时19分 | 未做 |
 | 2026-09-15 | [501｜洪亮吉、龚自珍、魏源怎样看国家未来？](https://www.xiaoyuzhoufm.com/episode/6aa8fe83051af796b9e8832e "501 从洪亮吉、龚自珍到魏源：清中叶的人如何看待自己国家未来？") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lgu0H9kaxmFWZOE1bYxeyQ7png9O.m4a) | 1小时15分 | 未做 |
 | 2026-09-11 | [500｜黄子懿：晋江陈埭与中国运动品牌](https://www.xiaoyuzhoufm.com/episode/6aa3c3269d32647781679918 "500 晋江陈埭镇往事：黄子懿谈改开进程中的中国运动品牌") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lhpLgbcgVkq0X4O5LNmnd3AZ1nns.m4a) | 1小时36分 | 未做 |

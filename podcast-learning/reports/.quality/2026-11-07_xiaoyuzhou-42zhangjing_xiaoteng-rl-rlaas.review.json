@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "42zhangjing-xiaoteng-20261113-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "独立子 agent 会话（fresh context）；普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "e8249ca9299aa25c12a9cc3314b640b55eb5c82316c902eb90685d32d85b7590",
+        "evidence_sha256": "635c5ca58a41c637f1af7ff251e7e1e34fee155f39066ee295fb8ded321db09b",
+        "verified_before_reading": true,
+        "authorized_update": "两轮复核。第一轮条件性不通过（evidence_fidelity 87：'coding 20 倍'假归属+Macaron 无源年份）；协调者删除/修正后第二轮判定通过（89.4，加权 89.65）。第二轮复核者另指出 4 处修复扫尾残留（账本两句 stale、Seedance/Ilya 引语未动、速览缺 [?]、地图行'争议'相抵）与'fix 5 完成 1/3'的台账失实——协调者随后全部订正（Seedance 改转述保留嘉宾自我保留、Ilya 补'据他称'、速览与正文统一 [?]、账本 limitations/read_scope 同步为最终口径）；本快照哈希为订正后终版。"
+      },
+      "scores": {
+        "evidence_fidelity": 91,
+        "request_coverage": 89,
+        "reasoning_quality": 88,
+        "readability": 90,
+        "limitations": 89
+      },
+      "score_reasons": {
+        "evidence_fidelity": "两处 blocking（假归属数字、无源年份）彻底清除且删除方式诚实；10 条 claim 锚点全部核实、support 分层诚实、汉字统计独立重算逐位一致、外部来源（主页/BigGo/TML 论文）独立重验为真。终审扣分：第一轮修复扫尾有残留（账本 stale 两句、两处引语未动）——均已订正入终版。",
+        "request_coverage": "CU01-CU12 全部实际覆盖且锚点可定位；省略（立山头/Schulman 史/争议话题）已显式声明；13:24/16:20 两章按 standard 深度处理。",
+        "reasoning_quality": "'信息结构论'归纳为真分析；开放问题具体可检验；三方互文两端（E255 乘法公式、鸭哥 90% 互换）经核实在关联报告中真实存在；导语互文为分析性连接。",
+        "readability": "standalone 可读，结构完整锚点一致。",
+        "limitations": "示范级诚实：机器转写/未逐句听音/利益相关口播/45 处 [?]（实测计数一致）/阅读口径分层如实；账本侧过时两句已在终版同步。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "source_ids_checked": [
+        "src-audio",
+        "src-homepage",
+        "src-biggo",
+        "src-polished"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "coverage_unit_ids_checked": [
+        "CU01",
+        "CU02",
+        "CU03",
+        "CU04",
+        "CU05",
+        "CU06",
+        "CU07",
+        "CU08",
+        "CU09",
+        "CU10",
+        "CU11",
+        "CU12"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "精编稿·开场+履历章",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-homepage"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01"
+          ],
+          "notes": "5000 万/万核百卡在数字表与导语，锚点可定位。"
+        },
+        {
+          "id": "SCM02",
+          "title": "精编稿·RL 三件事章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU02"
+          ],
+          "notes": "第一节全文承载，γ=0.99/Atari 10% raw 逐字核。"
+        },
+        {
+          "id": "SCM03",
+          "title": "精编稿·创业即 RL loop 章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03"
+          ],
+          "notes": "大厂局部信息论完整。"
+        },
+        {
+          "id": "SCM04",
+          "title": "精编稿·短期悲观长期乐观章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU04",
+            "CU05"
+          ],
+          "notes": "蒸不了了/国产算力/300B-500B/30T（曲凯转述标注）完整。"
+        },
+        {
+          "id": "SCM05",
+          "title": "精编稿·大厂集体失败章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-biggo"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU06"
+          ],
+          "notes": "BigGo'帳單擺在集團面前'交叉真实；林俊阳[?]标注。"
+        },
+        {
+          "id": "SCM06",
+          "title": "精编稿·拼什么章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU07"
+          ],
+          "notes": "infra co-design+data operation 完整。"
+        },
+        {
+          "id": "SCM07",
+          "title": "精编稿·锐评分家章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU08"
+          ],
+          "notes": "五家锐评+Seedance（转述口径已修）；Kimi fancy 标主播归纳。"
+        },
+        {
+          "id": "SCM08",
+          "title": "精编稿·Neo Lab 两章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU09"
+          ],
+          "notes": "research-product co-design/锤子找钉子完整。"
+        },
+        {
+          "id": "SCM09",
+          "title": "精编稿·RSI 章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU10"
+          ],
+          "notes": "'宣传口号'raw 41:31 逐字。"
+        },
+        {
+          "id": "SCM10",
+          "title": "精编稿·RLaaS 三章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU11"
+          ],
+          "notes": "定价/客户画像/中间层理由完整，raw 51:48-52:21 逐条。"
+        },
+        {
+          "id": "SCM11",
+          "title": "精编稿·LoRA/continual/终局三章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU12"
+          ],
+          "notes": "四台 H800→100 万 LoRA raw 54:38/56:32；'据说 Ilya'已修。"
+        },
+        {
+          "id": "SCM12",
+          "title": "外部来源独立重验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-homepage",
+            "src-36kr",
+            "src-biggo"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01",
+            "CU08"
+          ],
+          "notes": "xtma.github.io/百度百科（Mind Lab 2025-10）/mindlab.im/TML 论文 2025-09-29 全部独立打开核实。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "两轮复核摘要：第一轮通读报告/精编稿（418 行）/shownotes/收据+40 处 raw 抽查，抓出'coding 20 倍'跨期污染（该数字属晚点聊 187 刘松铭期）与 Macaron 无源年份两处 blocking 及 8 项非阻塞；第二轮验证修复并给终审 89.4（五维全过）；身份链（xtma/Mind Lab 2025-10/Mindverse）与《LoRA without Regret》（TML 2025-09-29）独立核实成立；11/12 关键数字 raw 逐条定位。未逐句听音。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "claude-code",
+            "run_id": "42zhangjing-xiaoteng-20261113-independent-review",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 87,
+            "request_coverage": 88,
+            "reasoning_quality": 88,
+            "readability": 90,
+            "limitations": 90
+          },
+          "notes": "第一轮：条件性不通过——'coding 20 倍'假归属（不属本期转写）与'2023 年 Macaron'无源年份两处 blocking；另有章节数/[?]计数/引语压缩/说话人归属等 8 项非阻塞。"
+        }
+      ],
+      "decision": {
+        "status": "revise",
+        "score": 88.6,
+        "summary": "两处一行级 blocking，修复后重审。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 89.65,
+    "evaluated_on": "2026-11-13",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "e8249ca9299aa25c12a9cc3314b640b55eb5c82316c902eb90685d32d85b7590",
+    "evidence_sha256": "635c5ca58a41c637f1af7ff251e7e1e34fee155f39066ee295fb8ded321db09b"
+  }
+}
