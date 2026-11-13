@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "wandian187-liberai-20261113-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "独立子 agent 会话（fresh context）；普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "ad6b2fc9d91a2a09dcf06f61f98f4b55016189fc3d6e280fa801dbb6d3cae919",
+        "evidence_sha256": "535d8c14a5ba84a5a1a9c32a136aba3e9142f90b16b55f1ca28e3da5fbe33105",
+        "verified_before_reading": true,
+        "authorized_update": "第一轮通过（91.5）后，协调者按复核者 9 项非阻塞建议做一行级修订（内容地图章节数、System 0 定义、30pp 口径注、E258 交叉引用删除、'行业首个'补 hedge、五分五十多秒、Kimi 括注、东财括注、'将闲科技'闭合），正文实质未变；本快照哈希为修订后终版。"
+      },
+      "scores": {
+        "evidence_fidelity": 92,
+        "request_coverage": 90,
+        "reasoning_quality": 91,
+        "readability": 92,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "C01-C10 全部在精编稿定位到原始陈述；11 组关键数字在精编稿与原始转写双命中；账本 4 个外部 URL 实测打开为真；两个 sha256 与 frontmatter/收据一致；support 分层诚实（9 direct+1 inference）。扣分：System 0 括注错位（已修订）、30pp 解读性定型（已加注）、E258 交叉引用不可验（已删）。",
+        "request_coverage": "R1-R5 全部落实；16 个 coverage 单元 13 个完整落地，CU01/CU04/CU05 三个 supporting 级部分覆盖。",
+        "reasoning_quality": "'分层防守'综合框架忠实且有分析增量；追问给出可证伪形式与 2027 检验点；C10 明确隔离为第一人称归纳；Astra 边界全程按内部口径标注。小瑕疵：'唯一可外部检验'之'唯一'略强。",
+        "readability": "速览→背景→地图→四节→数字表（含核验列）→金句→追问→Limitations→来源结构完整，独立可读，密度与 2h10 长访谈匹配。",
+        "limitations": "ASR 错误类别+示例、[?] 清单、口播自报总括、内部对比口径、仓外私有+脱敏收据、未逐句听音披露完整诚实；'将闲可及[?]'经复核闭合为注册名'将闲科技'（腾讯新闻 2026-10-28）。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "source_ids_checked": [
+        "src-audio",
+        "src-36kr-funding",
+        "src-qq-news",
+        "src-eastmoney",
+        "src-polished",
+        "src-embodied-money"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "coverage_unit_ids_checked": [
+        "CU01",
+        "CU02",
+        "CU03",
+        "CU04",
+        "CU05",
+        "CU06",
+        "CU07",
+        "CU08",
+        "CU09",
+        "CU10",
+        "CU11",
+        "CU12",
+        "CU13",
+        "CU14",
+        "CU15",
+        "CU16"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "精编稿·开场+第1-2章（标签与三信号）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01",
+            "CU02"
+          ],
+          "notes": "三信号全数落地第一节；CU01 解释性内容部分留表外（reviewer 已如实评分）。"
+        },
+        {
+          "id": "SCM02",
+          "title": "精编稿·第3章（履历线）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03"
+          ],
+          "notes": "背景节+第五节承载。"
+        },
+        {
+          "id": "SCM03",
+          "title": "精编稿·第4-5章（RDT-1B/融资）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU04",
+            "CU05"
+          ],
+          "notes": "融资轮次完整；开源反响细节部分省略（supporting 级）。"
+        },
+        {
+          "id": "SCM04",
+          "title": "精编稿·第6-7章（出发前判断/变薄）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU06"
+          ],
+          "notes": "分层框架与 Day 1 全栈完整。"
+        },
+        {
+          "id": "SCM05",
+          "title": "精编稿·第9章（Liber-0 三项验证）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU07"
+          ],
+          "notes": "60 题/数据效率/全栈协同落地第三节。"
+        },
+        {
+          "id": "SCM06",
+          "title": "精编稿·第10/13章（220 万小时/三阶段）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU08"
+          ],
+          "notes": "构成与'先看后做'落地。"
+        },
+        {
+          "id": "SCM07",
+          "title": "精编稿·第11章（手套经济学）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU09"
+          ],
+          "notes": "200:1 与 75% 表格+叙述双承载。"
+        },
+        {
+          "id": "SCM08",
+          "title": "精编稿·第12章（LEO/LiberSense）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU10"
+          ],
+          "notes": "构型/90%+/30pp/无法靠配方落地第二节。"
+        },
+        {
+          "id": "SCM09",
+          "title": "精编稿·第14章（奶茶店）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU11"
+          ],
+          "notes": "五分五十多秒/糖浆泵/不改造环境完整。"
+        },
+        {
+          "id": "SCM10",
+          "title": "精编稿·第15章（选场景四条件）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU12"
+          ],
+          "notes": "四条件+2-3 年+全球化完整。"
+        },
+        {
+          "id": "SCM11",
+          "title": "精编稿·第16-17章（对手判断/Kimi）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU13"
+          ],
+          "notes": "三类对手+'吃不饱'+Kimi 完整。"
+        },
+        {
+          "id": "SCM12",
+          "title": "精编稿·第18章（Astra 边界）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU14"
+          ],
+          "notes": "最后一毫米/几倍/GPT-7 完整。"
+        },
+        {
+          "id": "SCM13",
+          "title": "精编稿·第19-22章（组织/资本纪律）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU15"
+          ],
+          "notes": "三关键词/拍板/储备完整。"
+        },
+        {
+          "id": "SCM14",
+          "title": "精编稿·第23章（终局）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU16"
+          ],
+          "notes": "苹果对标/比亚迪/Liber=自由完整。"
+        },
+        {
+          "id": "SCM15",
+          "title": "审计收据与统计核验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU02",
+            "CU09"
+          ],
+          "notes": "sha256/段数/时长与 frontmatter 一致（reviewer 核）。"
+        },
+        {
+          "id": "SCM16",
+          "title": "外部来源独立打开验证",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03",
+            "CU05"
+          ],
+          "notes": "36kr/东财/腾讯三个 URL 实测打开为真（reviewer 核）。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核摘要：通读报告/精编稿全文（971 行）/shownotes/收据；11 组数字双份定位全命中；融资经 eacli 独立重验多源一致（36kr+东财 6-11+顺为官网），并另证公司注册主体'北京将闲科技有限公司'（闭合'将闲可及[?]'）与成立时间 2025-12；两个含引号锚点与标题逐字一致。无 blocking；9 项非阻塞建议全部被协调者采纳。未逐句听音（与报告阅读口径声明一致）。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 91.5,
+    "evaluated_on": "2026-11-13",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "ad6b2fc9d91a2a09dcf06f61f98f4b55016189fc3d6e280fa801dbb6d3cae919",
+    "evidence_sha256": "535d8c14a5ba84a5a1a9c32a136aba3e9142f90b16b55f1ca28e3da5fbe33105"
+  }
+}
