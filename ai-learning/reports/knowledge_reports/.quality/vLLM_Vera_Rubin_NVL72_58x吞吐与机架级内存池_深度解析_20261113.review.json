@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "vllm-rubin-20261113-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "独立子 agent 会话（fresh context）；普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "2107b60c1d24cb7736560df7419a648538ed63b256eaea8e99b66fb19b6a6c1a",
+        "evidence_sha256": "ee36eb58f150ed90a9df93d27a4b4f133e6340e6437cc37b1b013f205cb68bad",
+        "verified_before_reading": true,
+        "authorized_update": "第一轮通过（89.25，两轮逐字比对零失真）后，协调者按复核者建议做一行级修订：58× 行'字面无限定词'更正为'标题限定 Rubin 侧工作点'（at 387 tokens/s 实证）、致谢 7 人、decode -25% 补 4-GPU 节点模拟口径、§3 补两条次级优化、账本 src-gb300-post 注明转述并移除 accessed_on；正文实质未变。（另：src-gb300-post 恢复 schema 必填的 accessed_on，标题仍注明经前作转述、本轮未直接抓取。）"
+      },
+      "scores": {
+        "evidence_fidelity": 91,
+        "request_coverage": 90,
+        "reasoning_quality": 88,
+        "readability": 88,
+        "limitations": 86
+      },
+      "score_reasons": {
+        "evidence_fidelity": "C01-C08 全部数字与机制经缓存副本+eacli web.read 独立重拉两轮逐字比对；来源分级逐 claim 如实；账本如实披露未抓取项。扣分：三处小事实错（58× 限定词表述/致谢计数/decode 模拟口径漏注，均已修订）。",
+        "request_coverage": "R1-R5 全部落实；约 20 条优化机制覆盖 18 条（漏 2 条非关键 bullet，已补说明）；三条连线内链全部可解析。",
+        "reasoning_quality": "58× 辨析核心推理验算正确（1.78×），'等交互性对比'推断成立且与标题 at 387 tokens/s 语义吻合；'厂商称+限定'引用建议恰当。扣分：未先注意到标题自带限定词（修订后论证更强）。",
+        "readability": "一句话结论信息密度高且全部可追溯；来源分级块+逐处标签+口径表结构清晰；内链全部可解析。",
+        "limitations": "§8 覆盖三方利益结构、负载匹配前提、experimental、模拟值、未复现、推断非官方确认；账本 limitations 与正文一致。扣分：decode -25% 模拟口径原漏（已补）。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "source_ids_checked": [
+        "src-blog",
+        "src-prior-report"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "coverage_unit_ids_checked": [],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核摘要：报告/账本/博客缓存原文/前作头部逐字比对 + eacli web.read 独立重拉（22,375 字符）；头条数字（1.7M/387/58×/2.52M/1810/1844）与次级数字抽验全部命中；前作五个头条数字核对一致；1.78× 验算正确；致谢 7 人与标题限定词两轮确认。无 blocking；5 项非阻塞建议（3 项已修、2 项微瑕保留：§7.4 '同口径'语义与 NUMA 类比归属）全部记录。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 89.25,
+    "evaluated_on": "2026-11-13",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "2107b60c1d24cb7736560df7419a648538ed63b256eaea8e99b66fb19b6a6c1a",
+    "evidence_sha256": "ee36eb58f150ed90a9df93d27a4b4f133e6340e6437cc37b1b013f205cb68bad"
+  }
+}

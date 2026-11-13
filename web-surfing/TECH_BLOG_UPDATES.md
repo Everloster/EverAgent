@@ -447,7 +447,8 @@
 <details>
 <summary><strong>vLLM · 8 篇</strong></summary>
 
-- **11-12** [DeepSeek-V4.1-Flash 在 Vera Rubin NVL72：58 倍吞吐](https://vllm.ai/blog/2026-11-12-deepseek-v41-flash-vera-rubin "DeepSeek-V4.1-Flash on Vera Rubin NVL72: 58x Throughput vs. GB300 NVL72 at 387 tokens/s") · 未做
+- **11-12** [DeepSeek-V4.1-Flash 在 Vera Rubin NVL72：58 倍吞吐](https://vllm.ai/blog/2026-11-12-deepseek-v41-flash-vera-rubin "DeepSeek-V4.1-Flash on Vera Rubin NVL72: 58x Throughput vs. GB300 NVL72 at 387 tokens/s") · **已学习**
+  [深度解析](../../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md)：SM107 内核重写 / TP8 低延迟 / 机架级内存池；"58×"口径辨析（直接相除 1.78×）。
 
   报告新机架上以 AgentX 负载测得的吞吐与单用户延迟；性能数字为官方配置下的结果。
 
