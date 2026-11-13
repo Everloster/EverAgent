@@ -12,6 +12,7 @@
 
 ### AI 行业 / 宏观观察
 
+- [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？](../reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md)（episode_summary · 发布 2026-11-11，归档 2026-11-12）— ACC 2026 开幕式主舞台，骆轶航×朱啸虎连续第二年对谈，22m40s；Token 消耗量定开源胜负 / 年化 10 亿美金应用线（LiblibAI、Tipsy Chat 预测，利益相关已标注）/ Personal Agent 高频场景之问（90% 不用日历）/ 速度=入场券、留存=壁垒 / 消磨时间>节约时间 / Anthropic 招股书双口径校准 / 港股解禁跌 80-90% 与安全边际小额试错
 - [硅基立场 Vol.32：张帆"去他X的FDE"](../reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md)（episode_summary · 发布 2026-09-24，归档 2026-09-25）— 骆轶航×智谱前COO，1h43m，FDE=高级外包 / 正态分布与边缘解 / 知识承载三载体（workflow→harness→weight）/ 企业 RSI / 反工业革命与液态组织；立场披露：嘉宾创业方向是 FDE 替代品
 - [此话当真：同事.skill 与人生系统.skill，你害怕被蒸馏吗](../reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md)（episode_summary · 发布 2026-08-17，归档 2026-09-25）— 真格出品，56m，周天奕（23k star）×蔡不菜（Obsidian 人生系统）/ build in public / AI 审美污染与读 2023 年以前的文字 / 文风同化恐惧 / agent 的最后一百米；与张帆期构成蒸馏之争镜像
 
@@ -202,6 +203,10 @@
 ### 来自半拿铁·故事篇（金瓶梅·绿色版 9）
 
 - [半拿铁·故事篇](./entities/bannatie.md) — 《半拿铁》古典名著故事系列（刘飞×潇磊双主播单口）；西游/封神/钟馗/金瓶梅·绿色版多篇章周更；每集固定对仗时间轴+人物表+学术书单；金瓶梅 S1 已收官、S2E1 已上线
+
+### 来自 2026-11-11 硅基立场 Vol.35（朱啸虎期）
+
+- [朱啸虎](./entities/zhu-xiaohu.md) — 金沙江创投主管合伙人（滴滴、饿了么早期投资人）；"现实主义"应用派：Token 消耗量定开源胜负 / 年化 10 亿美金应用线 / Personal Agent 伪需求论 / 速度=入场券、留存=壁垒 / 安全边际小额试错；利益相关披露：LiblibAI、Tipsy Chat 为其被投
 
 ## Concepts（核心概念）
 

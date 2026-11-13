@@ -1,12 +1,14 @@
 # 硅基立场 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/hnetc83hllku>）｜ 最近拉取：2026-10-19 ｜ 总集数：33
+> 来源：官方 RSS（<https://feed.xyzfm.space/hnetc83hllku>）｜ 最近拉取：2026-11-12 ｜ 总集数：35
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-16 | 2h19m | [对话Nauk Nauk姚旭：Z世代拒绝表演，AI成了情绪出口](https://www.xiaoyuzhoufm.com/episode/6ad0f9230e4e410a05bd8550?utm_source=rss)<!--g:6ad0f9230e4e410a05bd8550--> | — |
-| — | 2026-09-24 | 1h42m | [Vol.32 对话元理智能张帆：去他X的FDE](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407?utm_source=rss)<!--g:6ab51d2d195d838e2ae9c407--> | ✅ 已处理（[[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde| ✅ 已处理（2026-09-24 xiaoyuzhou-guiji-lichang_zhangfan-fde） |
+| — | 2026-11-11 | 22m40s | [Vol.35 对话朱啸虎：Personal Agent 是个伪需求？](https://www.xiaoyuzhoufm.com/episode/6af147dfb4a4e20202f6ebed?utm_source=rss)<!--g:6af147dfb4a4e20202f6ebed--> | ✅ 已处理（2026-11-11 xiaoyuzhou-guiji-lichang_zhuxiaohu） |
+| — | 2026-11-03 | 1h31m | [Vol.34 对话ZooWork胡宁： AI 时代里，企业不应该再帮别人数钱](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8?utm_source=rss)<!--g:6ae450f197726cd4675a2ca8--> | — |
+| — | 2026-10-16 | 2h19m | [Vol.33 对话Nauk Nauk姚旭：Z世代拒绝表演，AI成了情绪出口](https://www.xiaoyuzhoufm.com/episode/6ad0f9230e4e410a05bd8550?utm_source=rss)<!--g:6ad0f9230e4e410a05bd8550--> | — |
+| — | 2026-09-24 | 1h42m | [Vol.32 对话元理智能张帆：去他X的FDE](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407?utm_source=rss)<!--g:6ab51d2d195d838e2ae9c407--> | ✅ 已处理（2026-09-24 xiaoyuzhou-guiji-lichang_zhangfan-fde） |
 | — | 2026-08-11 | 1h02m | [Vol.31 美国 AI 还有没有开源？它们在做什么？](https://www.xiaoyuzhoufm.com/episode/6a7abc7417676351c57018ef?utm_source=rss)<!--g:6a7abc7417676351c57018ef--> | — |
 | — | 2026-07-02 | 1h44m | [Vol.30 对话 Sand.ai 曹越：我现在是 100% 的 founder，0% 的 researcher](https://www.xiaoyuzhoufm.com/episode/6a4620dc9d2f574368416d6a?utm_source=rss)<!--g:6a4620dc9d2f574368416d6a--> | — |
 | — | 2026-06-18 | 1h32m | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识。](https://www.xiaoyuzhoufm.com/episode/6a3207814233e62bc54b2a3f?utm_source=rss)<!--g:6a3207814233e62bc54b2a3f--> | ✅ 已处理（2026-06-18 xiaoyuzhou-mingjing-diandian_wangxiaochuan） |

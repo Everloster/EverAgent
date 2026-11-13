@@ -6,7 +6,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-29 | 50m58s | [Vol.136｜关于中国公司出海，Stripe CMO 给出了几条准则](https://www.xiaoyuzhoufm.com/episode/6ae1c5a5c96c8942ec13abef)<!--g:6ae1c5a5c96c8942ec13abef--> | ✅ [报告](../../reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) |
+| — | 2026-10-29 | 50m58s | [Vol.136｜关于中国公司出海，Stripe CMO 给出了几条准则](https://www.xiaoyuzhoufm.com/episode/6ae1c5a5c96c8942ec13abef)<!--g:6ae1c5a5c96c8942ec13abef--> | ✅ 已处理（2026-10-29 linkstart_v136-stripe-global-ai-commerce） |
 | — | 2026-10-21 | 1h05m | [Vol.135｜对话 UDL：AI 眼镜、折叠屏，以及技术背后的设计取舍](https://www.xiaoyuzhoufm.com/episode/6ad6fb05a09b94f787eb2cae?utm_source=rss)<!--g:6ad6fb05a09b94f787eb2cae--> | ✅ 已处理（2026-10-21 xiaoyuzhou-linkstart_vol135-ai-hardware-design） |
 | — | 2026-10-14 | 1h13m | [Vol.134｜GPT-6 之后，机器人创业还剩下什么？](https://www.xiaoyuzhoufm.com/episode/6ace096ee742e36efcc25e5a?utm_source=rss)<!--g:6ace096ee742e36efcc25e5a--> | — |
 | — | 2026-10-08 | 1h49m | [Vol.133｜和开发者、投资人聊 Agent 游戏：AI 改变了游戏生产，能颠覆游戏本身吗？](https://www.xiaoyuzhoufm.com/episode/6abb7be1e742e36efcbca77f?utm_source=rss)<!--g:6abb7be1e742e36efcbca77f--> | — |

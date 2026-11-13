@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-12 | [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？——留存、毛利与懂人性的工程师](../podcast-learning/reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md) | podcast-learning |
 | 2026-11-11 | [运行中追加消息与修改目标——OpenAI Responses、Claude Messages 和 Managed Agents 官方 API 对照](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | ai-learning |
 | 2026-11-11 | [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md) | ai-learning |
 | 2026-11-11 | [OpenAI Responses WebSocket 与 Steering：连接、续接和运行中改向的协议详解](../ai-learning/reports/knowledge_reports/OpenAI_Responses_WebSocket%E4%B8%8ESteering_%E8%BF%9E%E6%8E%A5%E7%BB%AD%E6%8E%A5%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%94%B9%E5%90%91_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261111.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-10 | [《AI演义》13｜LAION：用已有模型筛选图文数据](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_13_LAION_%E5%9B%BE%E6%96%87%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》12｜RefinedWeb：筛选与去重怎样影响训练数据](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_12_RefinedWeb_%E7%BD%91%E9%A1%B5%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》11｜ZeRO：把训练状态分给多张 GPU](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_11_ZeRO_%E5%A4%9A%E5%8D%A1%E6%80%8E%E6%A0%B7%E5%88%86%E6%8B%85%E8%AE%AD%E7%BB%83%E6%98%BE%E5%AD%98_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-10 | [《AI演义》10｜Scaling Laws 与 Chinchilla：怎样分配训练预算](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_10_ScalingLaws%E4%B8%8EChinchilla_%E7%AE%97%E5%8A%9B%E9%A2%84%E7%AE%97%E6%80%8E%E6%A0%B7%E5%88%86%E9%85%8D_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
 ## 🤖 AI Learning（200 篇）
 
@@ -363,10 +363,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（116 篇）
+## 🎙️ Podcast Learning（117 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-12 | [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？——留存、毛利与懂人性的工程师](../podcast-learning/reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md) | `podcast`, `guiji-lichang`, `zhu-xiaohu`, `personal-agent`, `open-source-model`, `ai-app-revenue` |
 | 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | `podcast`, `crossing`, `zhuang-minghao`, `rsi`, `agent`, `video-model` |
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | `podcast`, `tesla`, `roadster`, `flying_car`, `europe`, `china_auto` |
 | 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | `podcast`, `china_macro`, `property_cycle`, `new_economy`, `ai_labor`, `consumption` |

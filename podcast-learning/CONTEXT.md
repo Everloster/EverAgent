@@ -260,6 +260,17 @@
 - 路径：`reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md` + 三件套。
 - **本批改进（micro-retro）**：①**B 站转写通道打通**：eacli podcast plan/run 对 bilibili.com 视频页直投成功（孙宇晨期"Razer 双败"结论作废更新——当时可能是特定链接问题），plan→run（confirm=plan_id/razer）→pull 三步全链路跑通，三条全程 Razer（50 分钟视频转写约 2 分钟）；②选题来源首次走"关注收件箱"（opencli user-videos 精选 UP 轮询——B 站盲区 UP 补入催更视野）；③质量门首战立功：抓到 1 断链（shaoailen 拼错）+1 压缩比失准（25 分钟短视频 polished 密度高，实测 25.2%）。
 
+### 2026-11-12 硅基立场 Vol.35 朱啸虎（用户点名新集）
+
+- **Vol.35 对话朱啸虎：Personal Agent 是个伪需求？**（2026-11-11 发布，ACC 2026 开幕式主舞台对谈 2026-10-21，22m40s/828 段，6,635→5,616 汉字，高保真精编 84.6%）
+  - 路径：`reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md`；转写/精编私有存仓外，公开仅脱敏审计收据（`transcripts/2026-11-11_...audit.json`，receipt_only 合规）
+  - 内容：Token 消耗量定开源胜负 / 年化 10 亿美金应用线 / Personal Agent 高频场景之问（"你自己有秘书吗"、90% 不用日历、数据封在 App）/ 速度=入场券（5 倍及格 10 倍优秀）、留存=壁垒 / 消磨时间>节约时间（Pax Historia、崇祯重生记）/ 懂人性的工程师（张一鸣例）/ 安全边际小额试错（Tipsy Chat 首笔 100 万美金）/ 明年中国≥二三十家 ARR 5 亿美金（前提：全球市场）
+  - 事实核验亮点：Anthropic 招股书双口径校准（骆引"年亏 780 亿"≈H1 净亏 807 亿非现金项 vs 朱"近两季度盈利"=Q2 营业利润转正，两人各说一个口径都成立）；Higgsfield $1B=四周折算年化；Tipsy Chat 第三方 ARR 约 1 亿（距 10 亿预测差 10 倍，利益相关已标注）；Manus 融资 5 亿美元/估值 40 亿/回海淀属实
+  - 新增 entities：朱啸虎（entities/zhu-xiaohu.md，含利益相关披露与张小珺三次访谈轨迹）
+  - 增量观点定位：本库 Personal Agent 系列第六块拼图（乱翻书275 委托权 / Today / 子皓交互成本 / 橘子转向 / 余一 100% 委托），本期=VC 侧最完整表述
+- **本批 pipeline 事件（已记）**：eacli transcription 远端 worker 的 yt-dlp 对小宇宙**单集页 URL 与官方 m4a 直链**连续两次在 acquiring-audio 阶段失败（exit 3）；改走 `--file` 通道——本地 curl 下载官方音频（SHA-256 校验一致）→ scp 推至执行设备 → submit --file 一次成功（22 分钟音频转写约 1 分钟，5 分块全过）。**直链 URL 也不再可信，--file 是小宇宙源的保底通道。**
+- **本批方法亮点**：同场对谈**文字实录**（腾讯新闻 2026-10-22，硅星人整理）用于话轮归属与专名校正——转写无 speaker 标签的双人舞台对谈首次走通"实录归属法"；两版互有独有句（Claude 被封、张一鸣例仅见转写；Prosumer 句仅见实录）均逐处标注，精编以转写为准不据实录补写。
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -286,6 +297,7 @@
 - 盛颖 / RadixArk / SGLang 实体、RadixAttention 概念（详见 2026-08-04 硅谷101 E247 报告 + entities/sheng-ying.md、radixark.md、sglang.md + concepts/radix-attention.md）
 - 刘方奇 / 李治中（菠萝）实体、遗传性肠癌 / 新辅助治疗与观察等待概念（详见 2026-08-24 菠萝健康派 vol.122 报告 + entities/liu-fangqi.md、li-zhizhong.md + concepts/hereditary-colorectal-cancer.md、neoadjuvant-watch-and-wait.md）
 - 慢性炎症与隐匿的炎症概念（详见 2026-08-21 帆书视频播客 49 期报告 + concepts/chronic-inflammation.md）
+- 朱啸虎 ACC 2026 对谈：Token 消耗量定开源胜负 / 年化 10 亿美金应用线 / Personal Agent 伪需求论 / 速度=入场券、留存=壁垒 / 安全边际小额试错（详见 2026-11-11 硅基立场 Vol.35 报告 + entities/zhu-xiaohu.md）
 
 ---
 
@@ -305,4 +317,4 @@
 
 ---
 
-*Last updated: 2026-10-26 (added 何思远方Siyuan 池化隐喻期：5 项事实核验 + report-v2 两轮 revision pass 92.75)*
+*Last updated: 2026-11-12 (added 硅基立场 Vol.35 朱啸虎 ACC 2026 对谈：Anthropic 招股书双口径校准 + Personal Agent 系列第六块拼图 + 文字实录归属法 + --file 保底转写通道)*
