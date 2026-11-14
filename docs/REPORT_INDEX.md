@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-15 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
+| 2026-11-15 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | web-surfing |
 | 2026-11-13 | [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) | podcast-learning |
 | 2026-11-13 | [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](../podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) | podcast-learning |
@@ -30,13 +32,13 @@
 | 2026-11-10 | [《AI演义》24｜ViT：用图块序列识别图像](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_24_ViT_%E5%9B%BE%E5%83%8F%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90Transformer%E8%BE%93%E5%85%A5_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》23｜双流网络：分别学习外观与光流](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_23_TwoStream_%E5%A4%96%E8%A7%82%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%80%8E%E6%A0%B7%E5%85%B1%E5%90%8C%E8%AF%86%E5%88%AB%E5%8A%A8%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 | 2026-11-10 | [《AI演义》22｜DeepVideo：连续帧怎样参与视频分类](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_22_DeepVideo_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E5%88%A9%E7%94%A8%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4%E4%BF%A1%E6%81%AF_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-10 | [《AI演义》21｜Tülu 3：公开后训练的数据、过程与得失](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_21_Tulu3_%E5%90%8E%E8%AE%AD%E7%BB%83%E9%85%8D%E6%96%B9%E6%80%8E%E6%A0%B7%E8%B5%B7%E4%BD%9C%E7%94%A8_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
-| 2026-11-10 | [《AI演义》20｜ReAct：让下一步行动用上外部反馈](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_20_ReAct_%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E8%BE%B9%E6%9F%A5%E8%BE%B9%E6%83%B3_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261105.md) | ai-learning |
 
-## 🤖 AI Learning（201 篇）
+## 🤖 AI Learning（203 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-15 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `persistent-agent`, `sandbox`, `control-plane`, `identity`, `security` |
+| 2026-11-15 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `safety-evaluation`, `construct-validity`, `llm-judge`, `statistics` |
 | 2026-11-13 | [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md) | `vllm`, `deepseek-v4.1-flash`, `vera-rubin`, `nvl72`, `sm107`, `fp4` |
 | 2026-11-11 | [运行中追加消息与修改目标——OpenAI Responses、Claude Messages 和 Managed Agents 官方 API 对照](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | `api_protocol`, `responses_api`, `messages_api`, `managed_agents`, `steering`, `tool_use` |
 | 2026-11-11 | [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md) | `api_protocol`, `developer_guide`, `responses_api`, `messages_api`, `tool_use`, `streaming` |

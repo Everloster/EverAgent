@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**47 篇已学习**，**10 篇有相关报告**，**445 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**48 篇已学习**，**10 篇有相关报告**，**444 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 4 篇 |
+| [2026-11](#m202611) | 150 篇 | 5 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -552,7 +552,8 @@
 <summary><strong>vLLM · 9 篇 · 1 篇已学习</strong></summary>
 
 - **11-12** [DeepSeek-V4.1-Flash 在 Vera Rubin NVL72：58 倍吞吐](https://vllm.ai/blog/2026-11-12-deepseek-v41-flash-vera-rubin "DeepSeek-V4.1-Flash on Vera Rubin NVL72: 58x Throughput vs. GB300 NVL72 at 387 tokens/s") · **已学习**
-  [深度解析](../../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md)：SM107 内核重写 / TP8 低延迟 / 机架级内存池；"58×"口径辨析（直接相除 1.78×）。
+
+  [阅读报告](../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md)：SM107 内核重写 / TP8 低延迟 / 机架级内存池；"58×"口径辨析（直接相除 1.78×）。
 
   报告新机架上以 AgentX 负载测得的吞吐与单用户延迟；性能数字为官方配置下的结果。
 
@@ -659,11 +660,11 @@
 </details>
 
 <details>
-<summary><strong>Anthropic · 8 篇 · 1 篇已学习</strong></summary>
+<summary><strong>Anthropic · 8 篇 · 2 篇已学习</strong></summary>
 
-- **11-13** [怎样构建可靠的 AI 安全评测](https://www.anthropic.com/research/building-strong-safety-evaluations "Building strong safety evaluations") · 未做
+- **11-13** [怎样构建可靠的 AI 安全评测](https://www.anthropic.com/research/building-strong-safety-evaluations "Building strong safety evaluations") · **已学习**
 
-  从场景设计、多轮交互、裁判校准到预注册和统计报告，说明安全评测如何更贴近风险问题，并让结果可复现。
+  从场景设计、多轮交互、裁判校准到预注册和统计报告，说明安全评测如何更贴近风险问题，并让结果可复现。 [阅读报告](../ai-learning/reports/knowledge_reports/AI安全评测_构念效度与裁判校准_深度解析_20261115.md)
 
 - **11-09** [Claude Fable 5.2 与 Mythos 5.2：技术任务与安全评测](https://www.anthropic.com/claude-fable-and-mythos-5-2 "Introducing Claude Fable 5.2 and Claude Mythos 5.2") · 未做
 
@@ -2024,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，47 篇原文对应 37 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，48 篇原文对应 39 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [AI 安全评测的构念效度与裁判校准](../ai-learning/reports/knowledge_reports/AI安全评测_构念效度与裁判校准_深度解析_20261115.md) · 对应本页 1 篇原文。
 
 - [常驻 Agent：控制面隔离与权限交集](../ai-learning/reports/knowledge_reports/常驻Agent安全_控制面隔离与权限交集_深度解析_20261115.md) · 对应本页 1 篇原文。
 
