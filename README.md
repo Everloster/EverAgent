@@ -19,10 +19,10 @@
 
 <!-- AUTO-RECENT:START -->
 - 2026-11-15 · [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](./ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
+- 2026-11-15 · [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](./ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 - 2026-11-15 · [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](./ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 - 2026-11-14 · [AI 行业日报 · 2026-11-14](./web-surfing/reports/ai-news-daily-2026-11-14.md)
 - 2026-11-13 · [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](./podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)
-- 2026-11-13 · [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](./podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 203 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 204 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

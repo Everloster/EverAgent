@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**48 篇已学习**，**10 篇有相关报告**，**444 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**49 篇已学习**，**10 篇有相关报告**，**443 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 5 篇 |
+| [2026-11](#m202611) | 150 篇 | 6 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -374,15 +374,15 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 1 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
   NVIDIA 团队用机器人、夹爪和饮料罐资产构建 Isaac Sim 场景，说明碰撞、质量、关节等仿真属性及验证步骤。
 
-- **11-13** [XYBench：AI 能否识别提问背后的真正问题](https://huggingface.co/blog/allenai/xybench "XYBench: Helping with the problem behind the question") · 未做
+- **11-13** [XYBench：AI 能否识别提问背后的真正问题](https://huggingface.co/blog/allenai/xybench "XYBench: Helping with the problem behind the question") · **已学习**
 
-  Ai2 团队评测助手面对错误前提或误选方案时的表现，检查它是否只回答表面问题，还是帮助用户重新识别目标。
+  Ai2 团队评测助手面对错误前提或误选方案时的表现，检查它是否只回答表面问题，还是帮助用户重新识别目标。 [阅读报告](../ai-learning/reports/knowledge_reports/XYBench_问题背后的目标与回答重心_深度解析_20261115.md)
 
 - **11-13** [llama.cpp 1.0：为本地 AI 生态提供更稳定的基础](https://huggingface.co/blog/ggml-org/llama-cpp-v1 "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem") · 未做
 
@@ -2025,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，48 篇原文对应 39 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，49 篇原文对应 40 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [XYBench：目标识别与回答重心](../ai-learning/reports/knowledge_reports/XYBench_问题背后的目标与回答重心_深度解析_20261115.md) · 对应本页 1 篇原文。
 
 - [AI 安全评测的构念效度与裁判校准](../ai-learning/reports/knowledge_reports/AI安全评测_构念效度与裁判校准_深度解析_20261115.md) · 对应本页 1 篇原文。
 
