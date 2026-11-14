@@ -356,6 +356,20 @@ func TestKimiNativeWorkspaceKeys(t *testing.T) {
 	}
 }
 
+func TestKimiWindowsNativePathSpelling(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("Windows path spelling")
+	}
+	i, _ := testInspector(t, "kimi-cli")
+	dir, state, _ := kimiFixture(t, i, "session-one", false)
+	state["cwd"] = strings.ToLower(filepath.ToSlash(i.Directory))
+	writeFixture(t, filepath.Join(dir, "state.json"), encoded(t, state), i.Now())
+	got, why := i.kimiCLI(i.Processes[1], i.Now())
+	if why != "" || got == nil || got["model"] != "native-kimi" {
+		t.Fatalf("Windows path spelling rejected: %v %q", got, why)
+	}
+}
+
 func TestKimiNativeRootRepair(t *testing.T) {
 	for _, via := range []string{"reader-config", "native-home"} {
 		t.Run(via, func(t *testing.T) {
