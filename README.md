@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-14 · [AI 行业日报 · 2026-11-14](./web-surfing/reports/ai-news-daily-2026-11-14.md)
 - 2026-11-13 · [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](./podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md)
 - 2026-11-13 · [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](./podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md)
 - 2026-11-13 · [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](./ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md)
 - 2026-11-13 · [AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味，与大脑变手的升职悖论](./podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md)
-- 2026-11-13 · [AI 行业日报 · 2026-11-13](./web-surfing/reports/ai-news-daily-2026-11-13.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -66,7 +66,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 121 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 55 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 56 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 </details>
