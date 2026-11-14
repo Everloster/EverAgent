@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 121 篇 | 60/61/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 122 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 56 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
