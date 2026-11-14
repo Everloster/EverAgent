@@ -174,7 +174,7 @@ func kimiSessionMetadata(root, cwd string, row *KimiSession, budget *int) string
 	if id == "" || stateCWD == "" {
 		return "kimi-code-state-identity-unavailable"
 	}
-	if id != row.ID || stateCWD != cwd || state["workDir"] != nil && text(state["workDir"]) != cwd {
+	if id != row.ID || !kimiSameDirectory(stateCWD, cwd) || state["workDir"] != nil && !kimiSameDirectory(text(state["workDir"]), cwd) {
 		return "kimi-code-state-identity-mismatch"
 	}
 	// Do not decode custom values, titles, lastPrompt, other agents or fork data.
@@ -234,6 +234,13 @@ func kimiTime(v any) time.Time {
 		return time.Time{}
 	}
 	return at
+}
+
+func kimiSameDirectory(a, b string) bool {
+	if a == b {
+		return true
+	}
+	return os.PathSeparator == '\\' && strings.EqualFold(filepath.Clean(a), filepath.Clean(b))
 }
 
 type kimiObservation struct {

@@ -1,10 +1,12 @@
 # AI炼金术 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-10-31 ｜ 总集数：146
+> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-11-13 ｜ 总集数：148
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-11-10 | 1h16m | [啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥](https://www.ximalaya.com/sound/1031626765)<!--g:xmly_track_1031626765--> | ✅ 已处理（2026-11-10 xiaoyuzhou-ai-lianjinshu_yage-superalinear，小宇宙版音频） |
+| — | 2026-11-03 | 1h35m | [要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢](https://www.ximalaya.com/sound/1029884610)<!--g:xmly_track_1029884610--> | — |
 | — | 2026-10-28 | 1h25m | [找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊](https://www.ximalaya.com/sound/1028338072)<!--g:xmly_track_1028338072--> | ✅ 已处理（2026-10-28 xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation） |
 | — | 2026-10-23 | 1h42m | [AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk](https://www.ximalaya.com/sound/1026998207)<!--g:xmly_track_1026998207--> | ✅ 已处理（2026-10-23 ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion） |
 | — | 2026-10-18 | 2h15m | [以后一定会更糟，所以现在先别慌 ｜和晓辉博士聊创业和 AI](https://www.ximalaya.com/sound/1025210406)<!--g:xmly_track_1025210406--> | ✅ 已处理（2026-10-18 ximalaya-ailianjinshu_xiaohui-renxin-ai-startup） |

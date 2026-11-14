@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-15（北京时间）** · **已收录时段：2026-09-02—2026-11-14**
 
-报告状态更新于 **2026-11-15**：本轮新增单集未找到已完成专题报告；补回《听懂涨声》10 月 9 日父子财商对谈的已有报告链接，并核对原有报告文件与完成状态。
+报告状态更新于 **2026-11-15**：已合并远端新完成的专题报告，并按单集来源与完成状态核对；本轮五期新增单集的状态见下表。
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**69 条已有专题报告**，**1 条仅有相关报告**，**298 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**71 条已有专题报告**，**1 条仅有相关报告**，**296 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +20,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 51 条 |
+| [AI / 科技](#tech) | 125 条 | 53 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 12 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 69 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 71 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -32,7 +32,7 @@
 
 ## 最近一周
 
-2026-11-09—2026-11-15，共 42 条，其中 2 条已有专题报告。
+2026-11-09—2026-11-15，共 42 条，其中 3 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -42,7 +42,7 @@
 | 2026-11-14 | 42章经 | [贺嘉琛：2C、2B Agent 与企业持续学习](https://www.xiaoyuzhoufm.com/episode/6af6678d14d01a26f8a916f6 "复盘 2C 和 2B Agent 发展脉络｜对谈 Afk.surf 创始人嘉琛") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6af6678d14d01a26f8a916f6/media.xyzcdn.net/648b0b641c48983391a63f98/ljFjTMoAfZYwI_agBwi1wZPgHCax.m4a) | 50分钟 | 未做 |
 | 2026-11-13 | 张小珺Jùn｜商业访谈录 | [156｜梁其伟：影之刃零制作人的 6 小时访谈](https://www.xiaoyuzhoufm.com/episode/6af5debf14d01a26f8a900ac "156. 《侠》｜对影之刃零制作人梁其伟6小时访谈") · [音频](https://dts-api.xiaoyuzhoufm.com/track/626b46ea9cbbf0451cf5a962/6af5debf14d01a26f8a900ac/media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lvnhry4gLCC3Ut_6NMJN7QRmdDaN.m4a) | 6小时27分 | 未做 |
 | 2026-11-13 | 赛博对话 | [Vol.61｜刘飞×阑夕×潘乱：与双十一互相烧心的 18 年](https://www.xiaoyuzhoufm.com/episode/6af66eb614d01a26f8a91b30 "vol.61｜从熬夜到无感：我们和双十一互相烧心的18年｜刘飞X阑夕X潘乱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/67d7955023ab6b5506e80ea4/6af66eb614d01a26f8a91b30/media.xyzcdn.net/67d7955023ab6b5506e80ea4/lvhRAkF0tL7bHyXW3AqzVg1_zIKR.m4a) | 1小时17分 | 未做 |
-| 2026-11-13 | 晚点聊 LateTalk | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | 未做 |
+| 2026-11-13 | 晚点聊 LateTalk | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | [阅读报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-11-13 | 课代表立正 | [对话 340｜贾雷德·戴蒙德：领导者何时能改变历史](https://share.transistor.fm/s/d630d207 "对话 340｜没有黄仁勋，还会有英伟达、GPU、和AI吗？｜对话《枪炮、病菌与钢铁》作者戴蒙德教授") | 1小时31分 | 未做 |
 | 2026-11-13 | 知行小酒馆 | [E258｜购物故事会：为喜欢的东西花钱](https://www.xiaoyuzhoufm.com/episode/6af6b7ca14d01a26f8a94459 "E258 这个东西，我真的好想要！｜小酒馆故事会🍻") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6013f9f58e2f7ee375cf4216/6af6b7ca14d01a26f8a94459/media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lmB4VjRQeKLl_DHzaFF4gJTbEWGN.m4a) | 2小时3分 | 未做 |
 | 2026-11-13 | 商业就是这样 | [黄晟：红外技术从军品走向民用市场（商业合作特番）](https://www.ximalaya.com/sound/1032159470 "特番｜从做题家变成出题家，才能为硬技术找新用途") | 43分钟 | 未做 |
@@ -224,14 +224,14 @@
 <a id="show-42zhangjing"></a>
 
 <details>
-<summary><strong>42章经 · 6 条 · 4 条有报告</strong></summary>
+<summary><strong>42章经 · 6 条 · 5 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/evgg6xle9rdc) · [更早单集索引](./wiki/show-indexes/42zhangjing.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
 | 2026-11-14 | [贺嘉琛：2C、2B Agent 与企业持续学习](https://www.xiaoyuzhoufm.com/episode/6af6678d14d01a26f8a916f6 "复盘 2C 和 2B Agent 发展脉络｜对谈 Afk.surf 创始人嘉琛") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6af6678d14d01a26f8a916f6/media.xyzcdn.net/648b0b641c48983391a63f98/ljFjTMoAfZYwI_agBwi1wZPgHCax.m4a) | 50分钟 | 未做 |
-| 2026-11-07 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | 未做 |
+| 2026-11-07 | [马骁腾：国产模型、Neo Lab 与 RLaaS](https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068 "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS &#124; 对谈 Mind Lab 首席科学家骁腾") · [音频](https://dts-api.xiaoyuzhoufm.com/track/648b0b641c48983391a63f98/6aec6bc06381f0f964c45068/media.xyzcdn.net/648b0b641c48983391a63f98/lglxSZWHG-HfxflKgavxCpsZm0Ep.m4a) | 1小时3分 | [阅读报告](./reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) |
 | 2026-10-24 | [淏楠：跨过 Agent、多模态与具身的技术经验](https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e "少有的同时做过 Agent、多模态和具身的人 &#124; 对谈前混元多模态 RL Infra 负责人淏楠") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lvbhcwVCtEq4TvFmVcbkRuBW0N82.m4a) | 54分钟 | [阅读报告](./reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md) |
 | 2026-10-17 | [Articuler.ai Jason：AI 应用创业的困境与坚持](https://www.xiaoyuzhoufm.com/episode/6acddf92e742e36efcc2448d "这个破业非创不可吗？｜对谈 Articuler.ai 创始人 Jason") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lnVlrNKK-MvYHIy31eq_gw4QOpje.m4a) | 55分钟 | [阅读报告](./reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md) |
 | 2026-10-13 | [Ambi 子皓：Personal Agent 创业者的思考](https://www.xiaoyuzhoufm.com/episode/6accc5de195d838e2af0bd9a "一个 Personal Agent 创业者的思考｜对谈 Ambi 创始人子皓") · [音频](https://media.xyzcdn.net/648b0b641c48983391a63f98/lkR2rf-l-fT_P_I6f-TaY5vLNT6e.m4a) | 1小时26分 | [阅读报告](./reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) |
@@ -290,13 +290,13 @@
 <a id="show-wandian-latetalk"></a>
 
 <details>
-<summary><strong>晚点聊 LateTalk · 7 条 · 4 条有报告</strong></summary>
+<summary><strong>晚点聊 LateTalk · 7 条 · 5 条有报告</strong></summary>
 
 [公开订阅](https://podcast.latepost.com/rss) · [更早单集索引](./wiki/show-indexes/wandian-latetalk.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | 未做 |
+| 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | [阅读报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-11-06 | [185｜李肇宇：Anthropic 的定价逻辑与潜在风险](https://podcast.latepost.com/185 "185: Anthropic招股书丨与Amont李肇宇聊定价逻辑和潜在风险") | 1小时0分 | 未做 |
 | 2026-11-06 | [186｜张璐：大企业怎样评估 AI 需求与回报](https://podcast.latepost.com/186 "186: Anthropic招股书丨“银行也有百亿预算”，与Fusion Fund张璐聊大企业在想什么") | 1小时13分 | 未做 |
 | 2026-10-15 | [184｜具身季报：通用模型会吃掉 Robotics 吗？](https://podcast.latepost.com/184 "184: 与陈哲的「具身季报26Q3」：Astra冲击后，通用模型会吃掉Robotics吗？") | 1小时46分 | [阅读报告](./reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) |

@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-13",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "wandian187-liberai-20261113-report-v1",
+    "explicit_model_override": false,
+    "note": "转写由本机 whisper.cpp large-v3 + Silero VAD 完成（非 LLM）；高保真精编由独立 context 的 Claude Code 子任务执行；报告正文由主会话基于精编 agent 的全量章节摘要与关键事实清单撰写并抽查原始转写；外部事实经 eacli Token Plan（web.search）核验。"
+  },
+  "contributors": [
+    {
+      "role": "transcription",
+      "harness": "whisper.cpp",
+      "model": "whisper-large-v3",
+      "model_identity_basis": "本机 whisper-cli 进程与 ggml-large-v3.bin 模型；确定性结构审计通过（5427 段，最大连续重复 2）。",
+      "run_id": "local-metal-20261113-wandian187"
+    },
+    {
+      "role": "transcript_polish",
+      "harness": "claude-code",
+      "model": "glm-5.3",
+      "model_identity_basis": "子 agent 会话身份标识；未逐条核验内部部署后缀。",
+      "run_id": "wandian187-liberai-20261113-polish-v1"
+    }
+  ],
+  "session_observations": {
+    "private_materials": "完整转写与高保真精编稿保存于仓库外私有目录；公开仓仅保留脱敏审计收据与内容哈希引用。",
+    "generator_read_scope": "主会话依据精编 agent 返回的全量 23 章摘要、修正清单与 15 组关键事实撰写，并抽查原始转写；精编稿全文由精编 agent 逐段通读；未逐句听音。",
+    "verification_channel": "融资/履历/时间线经 eacli Token Plan（web.search，zhipu provider）多源核验（36kr/腾讯新闻/东方财富）。"
+  },
+  "task": {
+    "summary": "用户目标五轮 AI 学习任务之 3/5：晚点聊 187（LiberAI 刘松铭×Astra 冲击波），本机转写，完成后提交推送。",
+    "requirements": [
+      {"id": "R1", "text": "用本机 whisper.cpp（large-v3+VAD）转写 2h09m 全量音频并通过确定性结构审计。"},
+      {"id": "R2", "text": "高保真精编全部 5427 段并按 shownotes 时间线重组 23 章，保留修正清单与 [?] 存疑。"},
+      {"id": "R3", "text": "按四条主线（分层判断/全栈技术/数据经济学/商业胜率）重构，覆盖长访谈全部实质内容。"},
+      {"id": "R4", "text": "区分口播自报与独立核验：融资/履历独立核实，技术数字全部标口播；Astra 边界注明内部对比口径。"},
+      {"id": "R5", "text": "全文与精编稿仅存仓外；新增实体（刘松铭）与概念（System 2/1/0 分层）；与 E256/晚点聊具身线互链。"}
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-audio",
+      "kind": "primary",
+      "title": "本集官方音频与全量转写（Fireside RSS enclosure）",
+      "locator": "https://aphid.fireside.fm/d/1437767933/19a49f52-28ee-4e25-b8e9-4f0ee70917e0/ad3b421a-d013-4a69-9613-924fa6d47992.mp3",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-shownotes",
+      "kind": "primary",
+      "title": "晚点聊 187 官方 shownotes（时间线、嘉宾身份、LiberSense/LEO 官方名称）",
+      "locator": "https://podcast.latepost.com/187",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-polished",
+      "kind": "execution",
+      "title": "高保真精编稿（仓外私有，按内容哈希引用）",
+      "locator": "sha256:712b3ed75871f68d85a0b08a001fa5c484f41f6cfd5bfac0fe56cf8173f316ba",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-audit",
+      "kind": "local",
+      "title": "全量转写的脱敏结构审计收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-13_rss-wandian-latetalk_187-liberai-astra.audit.json",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-36kr-funding",
+      "kind": "secondary",
+      "title": "36kr：红杉+顺为+真格等押注世界模型（Pre-A 数亿元，2026-06-14）",
+      "locator": "https://m.36kr.com/p/3853993177044230",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-qq-news",
+      "kind": "secondary",
+      "title": "腾讯新闻：从 RDT-1B 到 Liber-0（2026-11-05，一作身份与时间线）",
+      "locator": "https://news.qq.com/rain/a/20261105A07Z5200",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-eastmoney",
+      "kind": "secondary",
+      "title": "东方财富：物理世界模型企业 LiberAI 完成数亿元融资（2026-05-17，清华特奖履历）",
+      "locator": "https://wap.eastmoney.com/a/202605173739778454.html",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-embodied-money",
+      "kind": "local",
+      "title": "本仓：晚点聊 180 具身金钱游戏（数采成本量级对照）",
+      "locator": "podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-e256-astra",
+      "kind": "local",
+      "title": "本仓：E256 GPT-6 Astra（基模侧视角对照）",
+      "locator": "podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md",
+      "accessed_on": "2026-11-13"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "刘松铭履历与 LiberAI 时间线：清华特奖、RDT-1B 一作、2025 年底创办 LiberAI（早于 DreamZero 热潮）、不到一年 6 轮融资（第一轮真格、第二轮红杉、Pre-A 顺为领投数亿元）。",
+      "report_anchor": "背景",
+      "support": "direct",
+      "source_ids": ["src-audio", "src-36kr-funding", "src-qq-news", "src-eastmoney"],
+      "critical": true,
+      "evidence": "口播 + 三家媒体独立核实一致；融资名单与轮次口径吻合。"
+    },
+    {
+      "id": "C02",
+      "claim": "Astra 应对框架：基模吃掉 System 2（规划调度）后具身模型变薄；LiberAI Day 1 全栈、技术方向刻意偏 System 1 及以下（动作执行/重试/物理反馈补偿）。",
+      "report_anchor": "一、Astra 冲击波与 System 分层",
+      "support": "direct",
+      "source_ids": ["src-audio", "src-polished"],
+      "critical": true,
+      "evidence": "口播体系陈述（精编稿第六、七章）；创业前预判三信号与'百分之百进场'判断。"
+    },
+    {
+      "id": "C03",
+      "claim": "数据经济学：1 万小时手套 > 200 万小时互联网视频；手套+25% 真机遥操 > 100% 真机遥操（替代 75%）；遥操约千元/小时、手套低一个数量级。",
+      "report_anchor": "三、数据经济学：手套 > 遥操",
+      "support": "direct",
+      "source_ids": ["src-audio", "src-embodied-money"],
+      "critical": true,
+      "evidence": "口播自报实验结论（精编稿第十一章）；成本量级与晚点聊 180 数采叙事一致；未独立复现。"
+    },
+    {
+      "id": "C04",
+      "claim": "Liber-0 零样本成绩：GPT-6 出 60 题（20/20/20），抓取 60-70%、非抓取约 30%、四五步长程 >10%；行业首个系统性零样本测试（主张）。",
+      "report_anchor": "三、数据经济学：手套 > 遥操",
+      "support": "direct",
+      "source_ids": ["src-audio"],
+      "critical": false,
+      "evidence": "口播（精编稿第九章）；'行业首个'为主张按口播层级标注。"
+    },
+    {
+      "id": "C05",
+      "claim": "LEO 本体设计（腰 3 自由度、球形腕、细臂）在拧转/弯腰捡拖鞋等任务成功率超 90%、比对比平台高 30 个百分点；硬件影响无法靠训练配方解决。",
+      "report_anchor": "二、全栈假设：\"硬件服务模型，而非模型服务硬件\"",
+      "support": "direct",
+      "source_ids": ["src-audio", "src-shownotes"],
+      "critical": false,
+      "evidence": "口播（精编稿第十二章）；对比平台未点名；LEO/LiberSense 名称以 shownotes 为准。"
+    },
+    {
+      "id": "C06",
+      "claim": "胜率判断：OpenAI 无基因无动力（coding 回报 20 倍、Sora 关停）；先进制造看量耐心有限；真正对手是非标自动化公司；理想分工=基模 System 2、创业公司 System 1（'吃不饱'）。",
+      "report_anchor": "四、胜率判断：谁是对手，钱在哪层",
+      "support": "direct",
+      "source_ids": ["src-audio"],
+      "critical": false,
+      "evidence": "口播（精编稿第十六、十七章）；Sora 关停为公开事实；'20 倍'为嘉宾估算。"
+    },
+    {
+      "id": "C07",
+      "claim": "Astra 边界（内部对比口径）：单打做不好强接触与'最后一毫米'（来回抽搐），LiberAI 零样本成功率是其数倍；GPT-7 除非补接触/触觉/小模型否则吃不掉直觉层。",
+      "report_anchor": "一、Astra 冲击波与 System 分层",
+      "support": "direct",
+      "source_ids": ["src-audio"],
+      "critical": false,
+      "evidence": "口播（精编稿第十八章）；内部对比未见第三方评测。"
+    },
+    {
+      "id": "C08",
+      "claim": "商业路径：奶茶店 5 分 50 秒无剪辑长程演示；选场景四条件；2-3 年跑通标杆；全球化看发达国家劳动力短缺（照护/清洁/零售/酒店）；已与 Kimi 合作两方向。",
+      "report_anchor": "四、胜率判断：谁是对手，钱在哪层",
+      "support": "direct",
+      "source_ids": ["src-audio"],
+      "critical": false,
+      "evidence": "口播（精编稿第十四、十五章）；Kimi 合作未见独立披露。"
+    },
+    {
+      "id": "C09",
+      "claim": "组织与资本纪律：taste/克制/调解者三关键词；拍板'我说了算'；资本纪律='不该花钱的地方别花钱'、储备三到五年；风险意识来自家里做传统生意。",
+      "report_anchor": "五、创始人画像与组织",
+      "support": "direct",
+      "source_ids": ["src-audio", "src-shownotes"],
+      "critical": false,
+      "evidence": "口播（精编稿第十九至二十二章）；'不该花钱的地方别花钱'为 shownotes 引语。"
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 若'手套 > 遥操'三组数字可复现，具身公司的数据资产估值逻辑将从'小时数'转向'动作信息密度'——这是本报告从数据经济学主张推出的投资含义，非嘉宾表述。",
+      "report_anchor": "思考与追问",
+      "support": "inference",
+      "source_ids": ["src-audio"],
+      "critical": false,
+      "evidence": "报告分析性推论，明确标注为'我真正理解了什么'的第一人称归纳。"
+    }
+  ],
+  "source_coverage": [
+    {"id": "CU01", "title": "开场与 00 后小天才集中创业（领域年轻+经验贬值）", "importance": "supporting", "status": "included", "source_ids": ["src-audio"], "report_anchor": "背景"},
+    {"id": "CU02", "title": "2025 下半年三个信号（视频模态/UMI/灵巧手）", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "一、Astra 冲击波与 System 分层"},
+    {"id": "CU03", "title": "履历线（化学竞赛→清华→转系→AI for Science→具身）", "importance": "supporting", "status": "included", "source_ids": ["src-audio", "src-eastmoney"], "report_anchor": "背景"},
+    {"id": "CU04", "title": "RDT-1B 故事与开源反响", "importance": "supporting", "status": "included", "source_ids": ["src-audio", "src-qq-news"], "report_anchor": "背景"},
+    {"id": "CU05", "title": "融资与不等教职（真格/红杉轮次）", "importance": "core", "status": "included", "source_ids": ["src-audio", "src-36kr-funding"], "report_anchor": "背景"},
+    {"id": "CU06", "title": "System 2 变薄与 Day 1 全栈", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "一、Astra 冲击波与 System 分层"},
+    {"id": "CU07", "title": "Liber-0 三项验证（零样本 60 题/数据效率/全栈协同）", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "三、数据经济学：手套 > 遥操"},
+    {"id": "CU08", "title": "220 万小时数据构成与三阶段预训练", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "三、数据经济学：手套 > 遥操"},
+    {"id": "CU09", "title": "手套数据经济学（200:1 与 75% 替代）", "importance": "core", "status": "included", "source_ids": ["src-audio", "src-embodied-money"], "report_anchor": "1 万小时手套 > 200 万小时互联网视频"},
+    {"id": "CU10", "title": "为模型设计硬件（LEO/LiberSense）", "importance": "core", "status": "included", "source_ids": ["src-audio", "src-shownotes"], "report_anchor": "二、全栈假设：\"硬件服务模型，而非模型服务硬件\""},
+    {"id": "CU11", "title": "场景基础设施与奶茶店（5'50\" 无剪辑）", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "四、胜率判断：谁是对手，钱在哪层"},
+    {"id": "CU12", "title": "选场景四条件与全球化", "importance": "supporting", "status": "included", "source_ids": ["src-audio"], "report_anchor": "选场景四条件"},
+    {"id": "CU13", "title": "对手判断（OpenAI/先进制造/非标自动化）与 Kimi 合作", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "真正对手是非标自动化公司"},
+    {"id": "CU14", "title": "Astra 边界实测（最后一毫米）", "importance": "core", "status": "included", "source_ids": ["src-audio"], "report_anchor": "一、Astra 冲击波与 System 分层"},
+    {"id": "CU15", "title": "组织（taste/克制/调解者/我说了算）与资本纪律（储备 3-5 年）", "importance": "supporting", "status": "included", "source_ids": ["src-audio"], "report_anchor": "五、创始人画像与组织"},
+    {"id": "CU16", "title": "终局（对标苹果/利润分配/Liber=自由）", "importance": "supporting", "status": "included", "source_ids": ["src-audio"], "report_anchor": "终局是服务个人的机器人"}
+  ],
+  "limitations": [
+    "全部技术数字（数据配比 200:1 与 75%、零样本成绩、本体对比百分点、成本）为嘉宾口播自报，未独立复现；Astra 边界为内部对比口径，无第三方评测。",
+    "转写为机器产物，含系统性同音误识别（具身/遥操/蒸馏等，修正数百处）；Gen 1.5[?]/Dyna-2[?]/Sunny[?]/Jav[?]/王欣欣[?]/将闲可及[?] 等按原音保留存疑。",
+    "融资/履历/时间线获三家媒体独立核实；Kimi 合作未见独立披露。",
+    "精编由独立 agent 逐段通读，主会话按其章节摘要撰写并抽查原始转写；未逐句听音。"
+  ]
+}

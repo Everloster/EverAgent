@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-13",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "42zhangjing-xiaoteng-20261113-report-v1",
+    "explicit_model_override": false,
+    "note": "转写由本机 whisper.cpp large-v3 + Silero VAD 完成（m4a 先转 16k wav；非 LLM）；高保真精编由独立 context 子任务执行；报告正文由主会话基于精编摘要撰写并抽查原始转写；外部事实经 eacli Token Plan 核验。"
+  },
+  "contributors": [
+    {
+      "role": "transcription",
+      "harness": "whisper.cpp",
+      "model": "whisper-large-v3",
+      "model_identity_basis": "本机 whisper-cli 与 ggml-large-v3.bin；结构审计通过（2311 段，最大连续重复 2）。",
+      "run_id": "local-metal-20261113-42zhangjing"
+    },
+    {
+      "role": "transcript_polish",
+      "harness": "claude-code",
+      "model": "glm-5.3",
+      "model_identity_basis": "子 agent 会话身份标识；未逐条核验内部部署后缀。",
+      "run_id": "42zhangjing-xiaoteng-20261113-polish-v1"
+    }
+  ],
+  "session_observations": {
+    "private_materials": "完整转写与精编稿存仓库外私有目录；公开仓仅留脱敏收据与内容哈希。",
+    "generator_read_scope": "主会话依据精编 agent 的全量章节摘要（开场+25 个编号章+片尾）、修正清单与 12 组关键事实撰写并抽查原始转写；未逐句听音。",
+    "verification_channel": "嘉宾身份经 eacli web.search 核验（xtma.github.io / 36kr / BigGo 转写页）。"
+  },
+  "task": {
+    "summary": "用户目标五轮 AI 学习任务之 4/5：42章经骁腾期（国模锐评/Neo Lab/RLaaS），本机转写，完成后提交推送。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "本机 whisper.cpp 转写 1h02m 全量音频并通过结构审计（m4a→wav）。"
+      },
+      {
+        "id": "R2",
+        "text": "高保真精编 2311 段按 shownotes 重组 22 章，保留修正清单与 [?]（GLM-5.3 系列等 17 处按原音保留）。"
+      },
+      {
+        "id": "R3",
+        "text": "按四主线（RL 人生/国模格局/Neo Lab 与 RSI/RLaaS 与终局）重构全部实质内容。"
+      },
+      {
+        "id": "R4",
+        "text": "锐评按利益相关方口播处理；身份与论文事实独立核实；'coding 20 倍'等估算标注并与晚点聊 187 期交叉。"
+      },
+      {
+        "id": "R5",
+        "text": "新增实体（马骁腾）；与 E255/鸭哥/庄明浩 RSI/vLLM 报告互文连线。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-audio",
+      "kind": "primary",
+      "title": "本集官方音频与全量转写（小宇宙官方 enclosure）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-shownotes",
+      "kind": "primary",
+      "title": "42章经官方 RSS shownotes（章节与身份）",
+      "locator": "https://feed.xyzfm.space/evgg6xle9rdc",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-polished",
+      "kind": "execution",
+      "title": "高保真精编稿（仓外私有，按内容哈希引用）",
+      "locator": "sha256:72c002963b7d546b6d1470f2ce6632b81c01b72a23dced07dbfc921339a55cd8",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-audit",
+      "kind": "local",
+      "title": "全量转写的脱敏结构审计收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.audit.json",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-homepage",
+      "kind": "official",
+      "title": "马骁腾主页 xtma.github.io（Mindverse CRO、Mind Lab、Experiential Intelligence）",
+      "locator": "https://xtma.github.io",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-36kr",
+      "kind": "secondary",
+      "title": "36kr：大模型下一阶段议题（Mind Lab 与 Thinking Machines 对照，2026-07-28）",
+      "locator": "https://m.36kr.com/p/3916202023660929",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-biggo",
+      "kind": "secondary",
+      "title": "BigGo 本期第三方转写页（'账单摆在集团面前'口径对照）",
+      "locator": "https://finance.biggo.com.tw/podcast/c2d07991f8aff5fe",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-vllm-rubin",
+      "kind": "local",
+      "title": "本仓：vLLM Vera Rubin 解析（serving 侧对照）",
+      "locator": "ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-yage",
+      "kind": "local",
+      "title": "本仓：鸭哥期报告（harness/模型互换互文）",
+      "locator": "podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md",
+      "accessed_on": "2026-11-13"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "骁腾（马骁腾，Pony）身份：Mind Lab 联合创始人、首席科学家（Mindverse CRO），2017 清华直博、2025-10 与陈凯杰、 Andrew 创办 Mind Lab。",
+      "report_anchor": "背景",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-homepage"
+      ],
+      "critical": true,
+      "evidence": "口播自述 + 主页独立核实一致。"
+    },
+    {
+      "id": "C02",
+      "claim": "RL 方法论三件事：exploration（Atari 10% 随机动作）、知行合一（policy/value 一致）、长期主义（γ=0.99≈100 步）；'创业是最符合 RL loop 的事'。",
+      "report_anchor": "一、RL 人生：把强化学习活成方法论",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿 03:46/08:32 章）；RL 常识量级正确。"
+    },
+    {
+      "id": "C03",
+      "claim": "大厂集体失败论的机制：千问林俊阳走后按 ROI 审账；Google 早于 ChatGPT 做出同类物因广告顾虑未发布；大厂靠算力置换盈利，模型技术竞争会集体失败。",
+      "report_anchor": "二、国模锐评：飞轮、账单与信仰",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-biggo"
+      ],
+      "critical": true,
+      "evidence": "口播（精编稿 22:21 章）；'账单摆在集团面前'与 BigGo 第三方转写一致；千问/Google 细节未独立核实，按口播处理。"
+    },
+    {
+      "id": "C04",
+      "claim": "国模锐评：看好 DeepSeek（infra-model co-design 飞轮：encoder 跑国产卡 prefill→低价→更多数据→更快 RL）；GLM 最务实数据生产线最完善；Kimi fancy；MiniMax 信仰不坚定；海外 pick OpenAI（pre-training 阶段调 harness/reasoning）。",
+      "report_anchor": "二、国模锐评：飞轮、账单与信仰",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "口播（精编稿 30:42 章）；利益相关方锐评，报告已按口播层级处理。"
+    },
+    {
+      "id": "C05",
+      "claim": "RSI 判断：'现在完全就是一个宣传口号'，本质是高速可迭代 infra 上的自动化数据构建 pipeline；reward 设计离不开人（Dario Amodei 承认写作无法自我迭代）。",
+      "report_anchor": "三、Neo Lab 与 RSI：从锤子找钉子到宣传口号",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿 41:53 章）；观点判断。"
+    },
+    {
+      "id": "C06",
+      "claim": "RLaaS 定价：按 token 挂钩算力；frontier 开源模型单次迭代几万元人民币、项目几十万到一百万；B 轮公司 10 万美金/次'非常值'；客户筛选两维度（自有 benchmark+PMF/垂域）。",
+      "report_anchor": "四、RLaaS：中间层的生意经",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "口播（精编稿 48:40/50:52 章）；未独立核实，与 Fireworks/Tinker 模式一致性自洽。"
+    },
+    {
+      "id": "C07",
+      "claim": "LoRA 心路：2025-03 四台 H800 起步；2025-09 被 Thinking Machines《LoRA without Regret》印证；自建 Mint；2026-04 单底座挂 100 万 LoRA 推理系统。",
+      "report_anchor": "四、RLaaS：中间层的生意经",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿 54:58 章）；论文存在属实，系统指标未核实。"
+    },
+    {
+      "id": "C08",
+      "claim": "'记得住名马，记不住名鞍——Harness 就是那个马鞍子'；模型是体验差异最大的东西。",
+      "report_anchor": "四、RLaaS：中间层的生意经",
+      "support": "direct",
+      "source_ids": [
+        "src-audio",
+        "src-polished"
+      ],
+      "critical": false,
+      "evidence": "口播原话（精编稿 45:55 章）。"
+    },
+    {
+      "id": "C09",
+      "claim": "Claude Code 领先 OpenAI 半年、产品是 access 真实数据最好方式；终局立场'为百花齐放的第二种情况而奋斗'。",
+      "report_anchor": "四、RLaaS：中间层的生意经",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": false,
+      "evidence": "口播（精编稿 59:01 章）；'领先半年'为嘉宾判断。"
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] '名马名鞍'与 E255 乘法公式、鸭哥 harness 互换构成三方互文：模型差异化收窄时体验差异沉淀在 harness 与数据管线——此为本报告的分析性连接，非嘉宾表述。",
+      "report_anchor": "思考与追问",
+      "support": "inference",
+      "source_ids": [
+        "src-audio",
+        "src-yage"
+      ],
+      "critical": false,
+      "evidence": "报告第一人称归纳。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "CU01",
+      "title": "开场与履历（5000 万项目/万核百卡）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-homepage"
+      ],
+      "report_anchor": "2018 年起 5000 万元级项目"
+    },
+    {
+      "id": "CU02",
+      "title": "RL 三件事与 90 分主义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "一、RL 人生：把强化学习活成方法论"
+    },
+    {
+      "id": "CU03",
+      "title": "创业即 RL loop（大厂局部信息）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "创业是最符合 RL loop 的事"
+    },
+    {
+      "id": "CU04",
+      "title": "短期悲观长期乐观（蒸不了了/国产算力/数据 operation）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "二、国模锐评：飞轮、账单与信仰"
+    },
+    {
+      "id": "CU05",
+      "title": "Anthropic 担忧与数据现状（30T 传闻/暴力收购）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "传闻美国追求 30T"
+    },
+    {
+      "id": "CU06",
+      "title": "大厂集体失败论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-biggo"
+      ],
+      "report_anchor": "大厂集体失败论"
+    },
+    {
+      "id": "CU07",
+      "title": "拼什么（infra co-design+data operation）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "二、国模锐评：飞轮、账单与信仰"
+    },
+    {
+      "id": "CU08",
+      "title": "锐评分家与 Seedance vs Sora",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "GLM 最务实"
+    },
+    {
+      "id": "CU09",
+      "title": "Neo Lab 定义与锤子找钉子",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "三、Neo Lab 与 RSI：从锤子找钉子到宣传口号"
+    },
+    {
+      "id": "CU10",
+      "title": "RSI 是宣传口号",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "RSI 判断"
+    },
+    {
+      "id": "CU11",
+      "title": "RLaaS 定价/客户画像/中间层理由",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "四、RLaaS：中间层的生意经"
+    },
+    {
+      "id": "CU12",
+      "title": "LoRA 心路/continual learning/终局立场",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio"
+      ],
+      "report_anchor": "100 万 LoRA"
+    }
+  ],
+  "limitations": [
+    "全部锐评与商业数字为利益相关方口播（Mind Lab 联创），除身份与论文外未逐项独立核实；'coding 20 倍'经复核确认不属本期转写，已从报告移除（该数字见晚点聊 187 刘松铭期报告）。",
+    "转写为机器产物；45 处 [?]（GLM-5.3 系列拼写、Jab、顺宇、张崇杰等）按原音保留存疑。",
+    "千问重组/Google 未发布等历史细节为单一信源口播，未独立核实。",
+    "精编由独立 agent 逐段通读，主会话按摘要撰写并抽查原始转写；未逐句听音。"
+  ]
+}

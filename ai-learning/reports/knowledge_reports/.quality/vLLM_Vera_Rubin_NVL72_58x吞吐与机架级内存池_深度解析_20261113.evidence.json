@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x吞吐与机架级内存池_深度解析_20261113.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-13",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "vllm-rubin-20261113-report-v1",
+    "explicit_model_override": false,
+    "note": "博客原文经 eacli Token Plan（web.read，zhipu provider）全文获取后由主会话撰写；无转写环节（文本源）。"
+  },
+  "contributors": [],
+  "session_observations": {
+    "source_fetch": "原文 19,076 字符全文入库（/tmp 中间产物），标题/TL;DR/正文三段全部直读；前作对比数字取自本仓 2026-10-25 前作报告的头条口径。",
+    "not_fetched": "GB300 前篇原文与 SemiAnalysis AgentX 方法学页本轮未直接抓取，均经前作报告与本篇正文转述引用，已在账本与报告中标注。"
+  },
+  "task": {
+    "summary": "用户目标五轮 AI 学习任务之 5/5：技术博客速看表中 vLLM《DeepSeek-V4.1-Flash on Vera Rubin NVL72》深度解析，作为系列第三篇续作（前两篇中 GB300 篇本仓已解析），完成后提交推送。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "全文获取博客原文并重构其论证结构（硬件前提→三组优化→池化路由）。"
+      },
+      {
+        "id": "R2",
+        "text": "沿用前作的来源分级（vLLM 自报/第三方/本报告推断）与口径核对传统，逐项核对关键数字。"
+      },
+      {
+        "id": "R3",
+        "text": "对标题'58×'做口径辨析：与同栈 GB300 前作数字直接相除的差异，标为推断并给出解释。"
+      },
+      {
+        "id": "R4",
+        "text": "与本库既有线连线：前作 vLLM 系列、游凯超访谈（Inferact 主导）、CAPEX 泡沫之辩。"
+      },
+      {
+        "id": "R5",
+        "text": "厂商自报边界清单：三方利益结构、负载匹配性、实验性组件与模拟值逐项列明。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-blog",
+      "kind": "primary",
+      "title": "vLLM 官方博客：DeepSeek-V4.1-Flash on Vera Rubin NVL72（2026-11-12）",
+      "locator": "https://vllm.ai/blog/2026-11-12-deepseek-v41-flash-vera-rubin",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-prior-report",
+      "kind": "local",
+      "title": "本仓前作解析：GB300 NVL72 P/D 分离与 Wide-EP（2026-10-25，GB300 头条数字与口径基线）",
+      "locator": "ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-gb300-post",
+      "kind": "official",
+      "title": "vLLM 博客前作：DeepSeek-V4.1-Flash on GB300 NVL72（系列第二篇；经本仓前作报告转述，本轮未直接抓取）",
+      "locator": "https://vllm.ai/blog/2026-10-23-deepseek-v41-flash-gb300-nvl72",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-youkaichao",
+      "kind": "local",
+      "title": "本仓访谈：张小珺 Vol.148 游凯超（Inferact 主导方与模型×Infra×硬件 co-design 判断）",
+      "locator": "podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md",
+      "accessed_on": "2026-11-13"
+    },
+    {
+      "id": "src-capex-concept",
+      "kind": "local",
+      "title": "本仓概念页：美第奇的账本（CAPEX 泡沫之辩）",
+      "locator": "podcast-learning/wiki/concepts/ai-capex-bubble-debate.md",
+      "accessed_on": "2026-11-13"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "【vLLM 自报】单机架 AgentX all-token 吞吐 1.7M tokens/s/GPU（峰值 2.52M）、每用户 P90 387 tokens/s、单用户 TP8 路径 P50 1,844 tokens/s（1,117 起）。",
+      "report_anchor": "一句话结论",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": true,
+      "evidence": "博客 TL;DR 与正文性能节；all-token 口径含 cached input/uncached input/output（图 1 注）。"
+    },
+    {
+      "id": "C02",
+      "claim": "【vLLM 自报】Rubin 三硬件事实驱动全部优化：每 GPU 双内存域（die-local 优先）、SM107 K64/K128 宽块缩放 MMA、72 GPU 单 NVLink 域（跨 tray all-reduce 仅 +0.3µs）。",
+      "report_anchor": "2. Rubin 硬件三事实（一切优化的出发点）",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": true,
+      "evidence": "博客 'Rubin through the lens of DeepSeek-V4.1-Flash' 节三条列表原意。"
+    },
+    {
+      "id": "C03",
+      "claim": "【vLLM 自报】内核组收益：DEP2 prefill 每步 -28%（MegaMoE 按最忙 rank 定 tile -55% 等）、DEP32 decode 目标 forward -25%（基线为首版 Rubin 构建而非 GB300）。",
+      "report_anchor": "3. 内核重写：prefill -28% / decode -25% 从哪来",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": true,
+      "evidence": "博客 Kernels 节两组小节标题数字与基线声明。"
+    },
+    {
+      "id": "C04",
+      "claim": "【vLLM 自报】TP8 低延迟路径：跨两 compute tray、packed FP4 11 级 staging、Lamport 单程 all-reduce+mHC、shared expert 并入 routed GEMM（-220µs/步）等，P50 1,117→1,844 tokens/s。",
+      "report_anchor": "4. 低延迟专用路径：TP8 跨 tray",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": false,
+      "evidence": "博客 Low latency 节全清单；固定 DSpark 接受率 3.51。"
+    },
+    {
+      "id": "C05",
+      "claim": "【vLLM 自报】机架级池化+Dynamo 路由：Mooncake DRAM→空闲 HBM（RDMA）、Engram 2×94.4GiB 表 HBM 分片（NVLink）、去会话亲和；并发 4,800 请求数 +68%、TTFT P50 29.8s→4.2s、命中率 96.5–97%（12×DEP2 为模拟值）。",
+      "report_anchor": "5. 机架级内存池与 Dynamo 路由",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": true,
+      "evidence": "博客 Dynamo workload-aware routing 节；'12 × DEP2 simulation' 明示模拟。"
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] 标题'58× GB300'应理解为同等 387 tok/s/user 交互水平下的吞吐对比叙事：同栈 GB300 前作（P90 196 tok/s/user、954K all-token/s/GPU）与本篇 1.7M 直接相除仅 1.78×。",
+      "report_anchor": "6. 关键数字与口径逐项核对",
+      "support": "inference",
+      "source_ids": [
+        "src-blog",
+        "src-prior-report"
+      ],
+      "critical": false,
+      "evidence": "基于两篇公开数字的算术与口径推断；若 vLLM 给出精确对比配置应以其为准（报告 §8 已声明）。"
+    },
+    {
+      "id": "C07",
+      "claim": "[推测] 本篇由 Inferact 主导、NVIDIA 早期硬件合作、DeepSeek 开源模型，构成游凯超访谈所述'模型×Infra×硬件 co-design'的实例；同栈一年 all-token/GPU 再乘 1.78× 是 CAPEX 辩论两侧都需认账的供给侧事实。",
+      "report_anchor": "7. 迁移要点与本库连线",
+      "support": "inference",
+      "source_ids": [
+        "src-blog",
+        "src-youkaichao",
+        "src-capex-concept"
+      ],
+      "critical": false,
+      "evidence": "博客致谢节（Inferact led、NVIDIA early access）；连线为报告分析。"
+    },
+    {
+      "id": "C08",
+      "claim": "厂商自报边界：全部性能数字未独立复现；硬件商/框架方/模型方三方利益一致；AgentX 高缓存复用负载与优化方向匹配（96.5–97% 命中前提在低复用负载不成立）；HBM 池实验性。",
+      "report_anchor": "8. 厂商自报边界清单",
+      "support": "direct",
+      "source_ids": [
+        "src-blog"
+      ],
+      "critical": false,
+      "evidence": "博客致谢与正文'experimental'标注；边界归纳为报告义务性声明。"
+    }
+  ],
+  "limitations": [
+    "全部性能数字为 vLLM/Inferact 自报，本文未在任何硬件上复现；作者未接触 Vera Rubin。",
+    "'58×'的口径解释为基于两篇博客公开数字的推断（C06），非官方确认。",
+    "GB300 前篇原文与 SemiAnalysis AgentX 方法学页本轮未直接抓取，经本仓前作报告与本篇正文转述。",
+    "AgentX 为高缓存复用 agentic 负载，命中率与池化收益不可外推至低复用负载。"
+  ]
+}

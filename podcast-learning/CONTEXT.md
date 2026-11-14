@@ -271,7 +271,7 @@
 - **本批 pipeline 事件（已记）**：eacli transcription 远端 worker 的 yt-dlp 对小宇宙**单集页 URL 与官方 m4a 直链**连续两次在 acquiring-audio 阶段失败（exit 3）；改走 `--file` 通道——本地 curl 下载官方音频（SHA-256 校验一致）→ scp 推至执行设备 → submit --file 一次成功（22 分钟音频转写约 1 分钟，5 分块全过）。**直链 URL 也不再可信，--file 是小宇宙源的保底通道。**
 - **本批方法亮点**：同场对谈**文字实录**（腾讯新闻 2026-10-22，硅星人整理）用于话轮归属与专名校正——转写无 speaker 标签的双人舞台对谈首次走通"实录归属法"；两版互有独有句（Claude 被封、张一鸣例仅见转写；Prosumer 句仅见实录）均逐处标注，精编以转写为准不据实录补写。
 
-### 2026-11-13 五轮 AI 学习批次（用户 /goal：本机转写，逐轮提交推送）
+### 2026-11-13 五轮 AI 学习批次（用户 /goal：本机转写，逐轮提交推送；第 5 轮为技术博客：vLLM Vera Rubin NVL72 深度解析，入库 ai-learning/reports/knowledge_reports/ 并登记 MAP）
 
 - **硅谷101 E258：HF0 与 OpenRouter 早期故事**（2026-11-10 发布，54m19s / 1,993 段 / 15,228→14,019 汉字，高保真精编 92.1%）
   - 路径：`reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md`；转写/精编存仓外私有目录，公开仅脱敏审计收据（`transcripts/2026-11-10_...audit.json`，receipt_only）
@@ -279,6 +279,19 @@
   - 新增 entities：[HF0](wiki/entities/hf0.md)、[OpenRouter](wiki/entities/openrouter.md)、[郭靖 Joe](wiki/entities/joe-guo.md)；新增 concepts：[生成内容的不完美缺口](wiki/concepts/roughness-gap.md)（接 KK"不写剧本的电影"）
   - 增量观点定位：OpenRouter 段与张阔 E255 帕累托路由构成路由层"入口卡位 vs 成本优化"双视角；open-questions"千瓦时指标"线获得机制解释
   - **pipeline**：用户指定**本机转写**——whisper.cpp large-v3 + Silero VAD（Metal）一次通过（结构审计 max 重复 2 段）；喜马拉雅 CDN 对签名 URL/直链/cookies 全线 403（AI炼金术音频改走小宇宙版官方 enclosure）；R2 起确立"m4a 先 ffmpeg 转 16k wav 再转写"通道（whisper-cli 直读 m4a 不产 JSON）
+- **AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味**（2026-11-10 发布，1h15m56s / 2,906 段 / 21,814→21,013 汉字，高保真精编 96.3%）
+  - 路径：`reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md`（report-v2 全质量链：evidence+review）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：委托两件事（验收+关键技术决策，24h Mac+语音百字）/ AI 找 AI 跨会话 skill 协调 / context infrastructure"一百次犯错"（80-90% 对+10% 手动）/ 反向对微调去 AI 味（几百篇旧文、通义千问+Unsloth、5090 一两小时、双盲 20 篇 3 识破、44 条公理）/ 100 直播间 CRM 社会研究 / "大脑变手"升职悖论 / 电饭锅寿司学徒岗位论 / WorkBuddy×朱啸虎互证
+  - 新增 entities：[鸭哥](wiki/entities/yage.md)（二次登场首建）；与首期（2026-10-11 十字路口）增量区分：睡眠回归/CI 三要素不重复展开
+  - 增量观点定位：委托谱系第三块（余一 100% 委托 → 橘子教练式 → 鸭哥"验收派"两件事）；反向对微调是本仓 transcript polish 可直接实验的方法（已挂 open-questions）
+- **晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率**（2026-11-13 发布，2h09m34s / 5,427 段 / 43,321→40,146 汉字，高保真精编 92.7%）
+  - 路径：`reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md`（report-v2 全质量链）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：System 2/1/0 分层与 Day 1 全栈（"硬件服务模型"）/ 手套数据经济学（1万h>200万h 视频、替代 75% 遥操、成本差一个数量级）/ Liber-0 零样本 60 题（抓取 60-70%、长程>10%）/ LEO 本体高 30pp / 胜率判断（OpenAI 无基因无动力、真对手=非标自动化、"吃不饱"）/ 奶茶店 5'50" 无剪辑 / 资本纪律储备 3-5 年
+  - 新增 entities：[刘松铭](wiki/entities/liu-songming.md)（含 LiberAI 公司侧写，融资独立核实 36kr）；新增 concepts：[System 2/1/0 分层](wiki/concepts/system-stack-embodied.md)（接 E256 Astra / 晚点聊具身线 / World Labs）
+- **42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾**（2026-11-07 发布，1h02m19s / 2,311 段 / 18,998→16,350 汉字，高保真精编 86.1%）
+  - 路径：`reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md`（report-v2 全质量链）；转写/精编仓外私有，公开仅脱敏收据
+  - 内容：RL 人生三件事（exploration/知行合一/γ=0.99）/ 大厂集体失败论（账单审计+局部信息的信息结构解释）/ 国模锐评（DeepSeek infra-model co-design 飞轮、GLM 数据生产线最完善、Kimi fancy、MiniMax 信仰不坚定）/ Neo Lab=research-product co-design / RSI"宣传口号"论 / RLaaS 定价（按 token、几万元/次迭代、项目几十万-100 万）/ LoRA 心路（四台 H800→Mint→100 万 LoRA 挂单底座）/ "名马名鞍"harness 金句
+  - 新增 entities：[马骁腾 Pony](wiki/entities/ma-xiaoteng.md)；三方互文：名马名鞍 × E255 乘法公式 × 鸭哥 harness 互换（模型差异化收窄→体验差异沉淀在 harness 与数据管线）
 
 ## ⚠️ 边界（防幻觉）
 
@@ -327,4 +340,4 @@
 
 ---
 
-*Last updated: 2026-11-12 (added 硅基立场 Vol.35 朱啸虎 ACC 2026 对谈：Anthropic 招股书双口径校准 + Personal Agent 系列第六块拼图 + 文字实录归属法 + --file 保底转写通道)*
+*Last updated: 2026-11-13 (五轮 AI 学习批次：硅谷101 E258 HF0/OpenRouter、AI炼金术鸭哥二次登场、晚点聊 187 LiberAI、42章经骁腾 RLaaS——全量本机 whisper 转写 + report-v2 质量链；另第 5 轮 vLLM Vera Rubin 深度解析见 ai-learning/MAP.md)*
