@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**50 篇已学习**，**10 篇有相关报告**，**442 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**51 篇已学习**，**10 篇有相关报告**，**441 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 7 篇 |
+| [2026-11](#m202611) | 150 篇 | 8 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -374,7 +374,7 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇 · 2 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 3 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
@@ -400,9 +400,9 @@
 
   qvac 介绍用不到十亿参数的 Agent 语言模型在设备上运行个人助理。
 
-- **11-11** [面向多向量嵌入模型的 Token Pooling 感知训练](https://huggingface.co/blog/token-pooling "Token Pooling-Aware Training for Multi-Vector Embedding Models") · 未做
+- **11-11** [面向多向量嵌入模型的 Token Pooling 感知训练](https://huggingface.co/blog/token-pooling "Token Pooling-Aware Training for Multi-Vector Embedding Models") · **已学习**
 
-  介绍在训练阶段就考虑 token pooling 的多向量嵌入模型方法。
+  介绍在训练阶段就考虑 token pooling 的多向量嵌入模型方法。 [阅读报告](../ai-learning/reports/knowledge_reports/TokenPooling感知训练_多向量检索压缩与排序保持_深度解析_20261115.md)
 
 - **11-10** [Hugging Face 中的决策模型](https://huggingface.co/blog/decision "Decision Models in Hugging Face") · 未做
 
@@ -2025,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，50 篇原文对应 41 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，51 篇原文对应 42 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Token Pooling：压缩预算与排序保持](../ai-learning/reports/knowledge_reports/TokenPooling感知训练_多向量检索压缩与排序保持_深度解析_20261115.md) · 对应本页 1 篇原文。
 
 - [LLMON：指令数据分离与执行绑定](../ai-learning/reports/knowledge_reports/LLMON_指令数据分离与显式执行绑定_深度解析_20261115.md) · 对应本页 1 篇原文。
 
