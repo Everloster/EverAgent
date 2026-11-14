@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**53 篇已学习**，**10 篇有相关报告**，**439 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**54 篇已学习**，**10 篇有相关报告**，**438 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 10 篇 |
+| [2026-11](#m202611) | 150 篇 | 11 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -374,7 +374,7 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇 · 3 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 4 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
@@ -404,9 +404,9 @@
 
   介绍在训练阶段就考虑 token pooling 的多向量嵌入模型方法。 [阅读报告](../ai-learning/reports/knowledge_reports/TokenPooling感知训练_多向量检索压缩与排序保持_深度解析_20261115.md)
 
-- **11-10** [Hugging Face 中的决策模型](https://huggingface.co/blog/decision "Decision Models in Hugging Face") · 未做
+- **11-10** [Hugging Face 中的决策模型](https://huggingface.co/blog/decision "Decision Models in Hugging Face") · **已学习**
 
-  介绍 HF 生态对决策模型的新支持。
+  介绍 HF 生态对决策模型的新支持。 [阅读报告](../ai-learning/reports/knowledge_reports/DecisionModels_非生成式决策与概率接口_深度解析_20261115.md)
 
 - **11-09** [HOPE：考虑专家协作关系的 MoE 剪枝](https://huggingface.co/blog/amazon/higher-order-pruning-experts "Your Experts Have Partners. There&#x27;s HOPE for Keeping Them Together") · 未做
 
@@ -2025,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，53 篇原文对应 44 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，54 篇原文对应 45 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Decision Models：非生成式决策与概率接口](../ai-learning/reports/knowledge_reports/DecisionModels_非生成式决策与概率接口_深度解析_20261115.md) · 对应本页 1 篇原文。
 
 - [NVIDIA Snapshot：GPU 冷启动与状态恢复](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU冷启动与状态恢复_深度解析_20261115.md) · 对应本页 1 篇原文。
 
