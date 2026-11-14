@@ -22,7 +22,7 @@
 - 2026-11-15 · [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](./ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 - 2026-11-15 · [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](./ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 - 2026-11-15 · [Token Pooling 感知训练：压缩检索向量时，怎样保住真正有用的匹配](./ai-learning/reports/knowledge_reports/TokenPooling%E6%84%9F%E7%9F%A5%E8%AE%AD%E7%BB%83_%E5%A4%9A%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8E%92%E5%BA%8F%E4%BF%9D%E6%8C%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
-- 2026-11-15 · [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](./ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
+- 2026-11-15 · [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](./ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 207 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 208 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**52 篇已学习**，**10 篇有相关报告**，**440 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**53 篇已学习**，**10 篇有相关报告**，**439 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 9 篇 |
+| [2026-11](#m202611) | 150 篇 | 10 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -272,7 +272,7 @@
 
 
 <details>
-<summary><strong>NVIDIA 技术博客 · 24 篇</strong></summary>
+<summary><strong>NVIDIA 技术博客 · 24 篇 · 1 篇已学习</strong></summary>
 
 - **11-13** [cuBLAS 新 FP64 算法：在整数 Tensor Core 上做高精度计算](https://developer.nvidia.com/blog/faster-scientific-simulations-with-new-fp64-algorithms-in-nvidia-cublas "Faster Scientific Simulations with New FP64 Algorithms in NVIDIA cuBLAS") · 未做
 
@@ -302,9 +302,9 @@
 
   讨论更大的推理模型如何适配车载系统的计算与实时性约束。
 
-- **11-10** [用 NVIDIA Snapshot 秒级启动与恢复 GPU 工作负载](https://developer.nvidia.com/blog/start-and-restore-gpu-workloads-in-seconds-with-nvidia-snapshot "Start and Restore GPU Workloads in Seconds with NVIDIA Snapshot") · 未做
+- **11-10** [用 NVIDIA Snapshot 秒级启动与恢复 GPU 工作负载](https://developer.nvidia.com/blog/start-and-restore-gpu-workloads-in-seconds-with-nvidia-snapshot "Start and Restore GPU Workloads in Seconds with NVIDIA Snapshot") · **已学习**
 
-  DSX AI Factory 平台的新开源组件，把已初始化的 GPU 工作负载做成可复用快照，缩短冷启动。
+  DSX AI Factory 平台的新开源组件，把已初始化的 GPU 工作负载做成可复用快照，缩短冷启动。 [阅读报告](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU冷启动与状态恢复_深度解析_20261115.md)
 
 - **11-10** [Agent Substrate：面向大规模 Agent 的 Kubernetes 演进](https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale "Agent Substrate: Advancing Kubernetes for Agents at Scale") · 未做
 
@@ -2025,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，52 篇原文对应 43 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，53 篇原文对应 44 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [NVIDIA Snapshot：GPU 冷启动与状态恢复](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU冷启动与状态恢复_深度解析_20261115.md) · 对应本页 1 篇原文。
 
 - [vLLM EPD：编码拆分与数据交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_多模态编码拆分与数据交接_深度解析_20261115.md) · 对应本页 1 篇原文。
 
