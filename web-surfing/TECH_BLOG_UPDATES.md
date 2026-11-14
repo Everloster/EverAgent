@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**54 篇已学习**，**10 篇有相关报告**，**438 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**55 篇已学习**，**10 篇有相关报告**，**437 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **本次补充 18 篇**，增量检查覆盖 2026-11-08—2026-11-15。新增包括常驻 Agent 安全、安全评测、ChatGPT Wallet、llama.cpp 1.0、机器人仿真与 GPU 通信优化，学习状态以各条目的报告入口为准。 Google Research 的三篇候选已取得正文，但尚未核实日期，单列在待补区，不计入新增。
 
@@ -18,7 +18,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 11 篇 |
+| [2026-11](#m202611) | 150 篇 | 12 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -374,7 +374,7 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇 · 4 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 5 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
@@ -384,9 +384,9 @@
 
   Ai2 团队评测助手面对错误前提或误选方案时的表现，检查它是否只回答表面问题，还是帮助用户重新识别目标。 [阅读报告](../ai-learning/reports/knowledge_reports/XYBench_问题背后的目标与回答重心_深度解析_20261115.md)
 
-- **11-13** [llama.cpp 1.0：为本地 AI 生态提供更稳定的基础](https://huggingface.co/blog/ggml-org/llama-cpp-v1 "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem") · 未做
+- **11-13** [llama.cpp 1.0：为本地 AI 生态提供更稳定的基础](https://huggingface.co/blog/ggml-org/llama-cpp-v1 "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem") · **已学习**
 
-  项目团队介绍 1.0 版本面向下游集成的稳定性目标，以及跨硬件推理、量化与接口演进的方向。
+  项目团队介绍 1.0 版本面向下游集成的稳定性目标，以及跨硬件推理、量化与接口演进的方向。 [阅读报告](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI与本地推理兼容性_学习报告_20261115.md)
 
 - **11-12** [3D 生成模型微调指南](https://huggingface.co/blog/3d-lora-finetuning "The Definitive Fine-Tuning Guide for 3D Generation Models") · 未做
 
@@ -2025,10 +2025,12 @@
 
 ## 已有学习报告
 
-本轮清单中，54 篇原文对应 45 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，55 篇原文对应 46 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [llama.cpp 1.0：API、ABI 与本地推理兼容性](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI与本地推理兼容性_学习报告_20261115.md) · 对应本页 1 篇原文。
 
 - [Decision Models：非生成式决策与概率接口](../ai-learning/reports/knowledge_reports/DecisionModels_非生成式决策与概率接口_深度解析_20261115.md) · 对应本页 1 篇原文。
 
