@@ -13,6 +13,7 @@
 | 2026-11-15 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | podcast-learning |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | podcast-learning |
+| 2026-11-15 | [具身智能的四种一线判断：数据、模型与商业化，为什么还没有一把统一的尺子](../podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md) | podcast-learning |
 | 2026-11-15 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md) | ai-learning |
 | 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-13 | [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) | podcast-learning |
 | 2026-11-13 | [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](../podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) | podcast-learning |
 | 2026-11-13 | [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md) | ai-learning |
-| 2026-11-13 | [AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味，与大脑变手的升职悖论](../podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) | podcast-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -373,7 +373,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（131 篇）
+## 🎙️ Podcast Learning（132 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -382,6 +382,7 @@
 | 2026-11-15 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | `enterprise-ai`, `rubric`, `evaluation`, `identity`, `data-dictionary`, `fde` |
 | 2026-11-15 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | `ai-learning`, `attention`, `information-anxiety`, `personal-knowledge`, `judgment` |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | `continual-learning`, `agent-evaluation`, `neolab`, `personal-agent`, `startup` |
+| 2026-11-15 | [具身智能的四种一线判断：数据、模型与商业化，为什么还没有一把统一的尺子](../podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md) | `embodied-ai`, `simulation`, `robotics`, `generalization`, `evaluation`, `commercialization` |
 | 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-15 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
 | 2026-11-15 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | `agent-workflow`, `acceptance`, `personal-assistant`, `attention`, `product-judgment` |
