@@ -12,7 +12,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**81 条已有专题报告**，**1 条仅有相关报告**，**286 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**82 条已有专题报告**，**1 条仅有相关报告**，**285 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +20,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 61 条 |
+| [AI / 科技](#tech) | 125 条 | 62 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 81 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 82 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -201,7 +201,7 @@
 <a id="show-ai-lianjinshu"></a>
 
 <details>
-<summary><strong>AI炼金术 · 11 条 · 7 条有报告</strong></summary>
+<summary><strong>AI炼金术 · 11 条 · 8 条有报告</strong></summary>
 
 [公开订阅](https://www.ximalaya.com/album/74194808.xml) · [更早单集索引](./wiki/show-indexes/ai-lianjinshu.md)
 
@@ -212,7 +212,7 @@
 | 2026-10-28 | [余一入职 Manus：个人 Agent 与团队协作](https://www.ximalaya.com/sound/1028338072 "找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊") | 1小时26分 | [阅读报告](./reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) |
 | 2026-10-23 | [姚旭聊 NaukNauk：AI 如何听普通人的心里话](https://www.ximalaya.com/sound/1026998207 "AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk") | 1小时43分 | [阅读报告](./reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) |
 | 2026-10-18 | [晓辉博士与任鑫：AI 创业，先卖还是先做？](https://www.ximalaya.com/sound/1025210406 "以后一定会更糟，所以现在先别慌 ｜和晓辉博士聊创业和 AI") | 2小时15分 | [阅读报告](./reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md) |
-| 2026-10-14 | [AI 写得太多，人验收不过来怎么办？](https://www.ximalaya.com/sound/1024259801 "AI 帮我干完了 20 年的活儿，我却感觉像坐牢") | 1小时30分 | 未做 |
+| 2026-10-14 | [AI 写得太多，人验收不过来怎么办？](https://www.ximalaya.com/sound/1024259801 "AI 帮我干完了 20 年的活儿，我却感觉像坐牢") | 1小时30分 | [阅读报告](./reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) |
 | 2026-10-09 | [ColaOS 橘子：个人 Agent 半年的变化与转向](https://www.ximalaya.com/sound/1022384765 "和 ColaOS 橘子聊个人 Agent 这半年：时代追上了他，他却打了转向灯") | 1小时15分 | [阅读报告](./reports/2026-10-09_ximalaya-ailianjinshu_juzi-personal-agent.md) |
 | 2026-10-01 | [AI 出事谁负责？聊组织转型与应用创业](https://www.ximalaya.com/sound/1020462716 "挣钱时都是超级个体，坐牢时把锅甩给 AI") | 1小时33分 | 未做 |
 | 2026-09-23 | [PureblueAI 鲁扬：Prompt、GEO 与量化交易](https://www.ximalaya.com/sound/1017619050 "PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易") | 1小时6分 | [阅读报告](./reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) |
