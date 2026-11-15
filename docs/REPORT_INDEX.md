@@ -11,6 +11,7 @@
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | podcast-learning |
 | 2026-11-15 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md) | ai-learning |
+| 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
 | 2026-11-15 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [Token Pooling 感知训练：压缩检索向量时，怎样保住真正有用的匹配](../ai-learning/reports/knowledge_reports/TokenPooling%E6%84%9F%E7%9F%A5%E8%AE%AD%E7%BB%83_%E5%A4%9A%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8E%92%E5%BA%8F%E4%BF%9D%E6%8C%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-12 | [AI 行业日报 · 2026-11-12](../web-surfing/reports/ai-news-daily-2026-11-12.md) | web-surfing |
 | 2026-11-11 | [运行中追加消息与修改目标——OpenAI Responses、Claude Messages 和 Managed Agents 官方 API 对照](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | ai-learning |
 | 2026-11-11 | [从 SDK 调用到 Agent 执行循环——OpenAI、Anthropic API 开发者中文译解](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%AD%E6%96%87%E8%AF%91%E8%A7%A3_%E8%AF%B7%E6%B1%82%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%BE%AA%E7%8E%AF_20261110.md) | ai-learning |
-| 2026-11-11 | [OpenAI Responses WebSocket 与 Steering：连接、续接和运行中改向的协议详解](../ai-learning/reports/knowledge_reports/OpenAI_Responses_WebSocket%E4%B8%8ESteering_%E8%BF%9E%E6%8E%A5%E7%BB%AD%E6%8E%A5%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%94%B9%E5%90%91_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261111.md) | ai-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -373,11 +373,12 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（124 篇）
+## 🎙️ Podcast Learning（125 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | `continual-learning`, `agent-evaluation`, `neolab`, `personal-agent`, `startup` |
+| 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-15 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
 | 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | `podcast`, `enterprise-agent`, `continual-learning`, `distillation`, `organization` |
 | 2026-11-13 | [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) | `podcast`, `guigu101`, `hf0`, `openrouter`, `ace-studio`, `accelerator` |

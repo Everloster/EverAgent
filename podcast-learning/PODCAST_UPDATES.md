@@ -12,7 +12,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**75 条已有专题报告**，**1 条仅有相关报告**，**292 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**76 条已有专题报告**，**1 条仅有相关报告**，**291 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +20,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 57 条 |
+| [AI / 科技](#tech) | 125 条 | 58 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 12 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 75 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 76 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -145,14 +145,14 @@
 <a id="show-guiji-lichang"></a>
 
 <details>
-<summary><strong>硅基立场 · 4 条 · 2 条有报告</strong></summary>
+<summary><strong>硅基立场 · 4 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/hnetc83hllku) · [更早单集索引](./wiki/show-indexes/guiji-lichang.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
 | 2026-11-11 | [Vol.35｜朱啸虎：Personal Agent 是个伪需求？](https://www.xiaoyuzhoufm.com/episode/6af147dfb4a4e20202f6ebed "Vol.35 对话朱啸虎：Personal Agent 是个伪需求？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6af147dfb4a4e20202f6ebed/media.xyzcdn.net/655b2870583732e09f301b22/lj0PfmsRytA1dI6JtnVNRDe922Bz.m4a) | 23分钟 | [阅读报告](./reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md) |
-| 2026-11-03 | [Vol.34｜ZooWork 胡宁：企业如何积累自己的 AI 资产](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8 "Vol.34 对话ZooWork胡宁： AI 时代里，企业不应该再帮别人数钱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6ae450f197726cd4675a2ca8/media.xyzcdn.net/655b2870583732e09f301b22/lu1pUSC3jKtg3_TEXK1VHI7irTAp.m4a) | 1小时31分 | 未做 |
+| 2026-11-03 | [Vol.34｜ZooWork 胡宁：企业如何积累自己的 AI 资产](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8 "Vol.34 对话ZooWork胡宁： AI 时代里，企业不应该再帮别人数钱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6ae450f197726cd4675a2ca8/media.xyzcdn.net/655b2870583732e09f301b22/lu1pUSC3jKtg3_TEXK1VHI7irTAp.m4a) | 1小时31分 | [阅读报告](./reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) |
 | 2026-10-16 | [Vol.33｜姚旭：Z 世代与 AI 情绪陪伴](https://www.xiaoyuzhoufm.com/episode/6ad0f9230e4e410a05bd8550 "Vol.33 对话Nauk Nauk姚旭：Z世代拒绝表演，AI成了情绪出口") · [音频](https://media.xyzcdn.net/655b2870583732e09f301b22/lhrM8zzT4biLpzYe8ebUiMvisTMI.m4a) | 2小时19分 | 未做 |
 | 2026-09-24 | [Vol.32｜张帆：FDE 与企业自身的 AI 能力](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407 "Vol.32 对话元理智能张帆：去他X的FDE") · [音频](https://media.xyzcdn.net/655b2870583732e09f301b22/ltzT3cXqoqhtu0oe-q1p3fmFy847.m4a) | 1小时43分 | [阅读报告](./reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) |
 
