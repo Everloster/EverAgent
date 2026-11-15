@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-15（北京时间）** · **已收录时段：2026-09-02—2026-11-14**
 
-报告状态更新于 **2026-11-15**：已合并远端新完成的专题报告，并按单集来源与完成状态核对；本轮五期新增单集的状态见下表。
+报告状态更新于 **2026-11-15**：新完成的播客报告已按对应单集回填；转写、排队或相关主题材料不计为完成本期学习。
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**73 条已有专题报告**，**1 条仅有相关报告**，**294 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**74 条已有专题报告**，**1 条仅有相关报告**，**293 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +20,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 55 条 |
+| [AI / 科技](#tech) | 125 条 | 56 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 12 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 73 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 74 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -32,7 +32,7 @@
 
 ## 最近一周
 
-2026-11-09—2026-11-15，共 42 条，其中 5 条已有专题报告。
+2026-11-09—2026-11-15，共 42 条，其中 6 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -75,7 +75,7 @@
 | 2026-11-10 | 忽左忽右 | [515｜铁幕到解冻：波兰导演瓦伊达的电影史](https://www.xiaoyuzhoufm.com/episode/6af2df3ab4a4e20202f7ae55 "515 从铁幕创作到解冻文艺：漫谈世界电影史中的波兰巨匠安杰伊·瓦伊达") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e4ee557418a84a0466737b7/6af2df3ab4a4e20202f7ae55/media.xyzcdn.net/5e4ee557418a84a0466737b7/lgrIc01Z9_3p6bVhcQwpxK8bS-nm.m4a) | 1小时22分 | 未做 |
 | 2026-11-10 | 声动早咖啡 | [英伟达董事会调查与消费品牌跨界宠物业务](https://www.xiaoyuzhoufm.com/episode/6af1b98c5b7c4709bfe3825c "英伟达启动对黄仁勋的调查，消费品牌集体跨界宠物生意") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6af1b98c5b7c4709bfe3825c/media.xyzcdn.net/60de7c003dd577b40d5a40f3/ls47Gb-buNIUFEI06ad34ruQdxLL.m4a) | 11分钟 | 未做 |
 | 2026-11-10 | 天真不天真 | [Vol.58｜放下旧身份：转型、沉没成本与自我认同](https://www.xiaoyuzhoufm.com/episode/6af1ce25b4a4e20202f7417b "vol.58 有问必答｜从1到0：如何放弃，却不否定自己？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/65cef9e3cace72dff8d98de3/6af1ce25b4a4e20202f7417b/media.xyzcdn.net/65cef9e3cace72dff8d98de3/ljf7QgB2CkOQL1Xo5BKcqq6pgCiN.m4a) | 1小时14分 | 未做 |
-| 2026-11-09 | 十字路口Crossing | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | 未做 |
+| 2026-11-09 | 十字路口Crossing | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | [阅读报告](./reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) |
 | 2026-11-09 | 屠龙之术 | [从“字节时间”看互联网的平台竞争与监管](https://www.xiaoyuzhoufm.com/episode/6af135bcb4a4e20202f6dccc "从 3.9%时间占比到&quot;字节时间&quot;，我们是怎么走到这儿的？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6507bc165c88d2412626b401/6af135bcb4a4e20202f6dccc/media.xyzcdn.net/6507bc165c88d2412626b401/lg6vpxJZL3GePzwTdPyVC_vikILY.m4a) | 1小时2分 | 未做 |
 | 2026-11-09 | 投资ABC | [E67｜缪延亮：利率、美元周期与 AI 的宏观影响](https://www.xiaoyuzhoufm.com/episode/6af0270ab4a4e20202f68057 "E67 聊聊宏观经济：大时代的变化，最终会落进每一个小生活") · [音频](https://dts-api.xiaoyuzhoufm.com/track/64b0bfde585daadfc82f3b12/6af0270ab4a4e20202f68057/media.xyzcdn.net/64b0bfde585daadfc82f3b12/lsnl4NpuG4mZOsNptHAIKMfl_m5R.m4a) | 55分钟 | 未做 · [串台](#crossover) |
 | 2026-11-09 | 面基 | [缪延亮：宏观经济如何影响日常生活](https://www.xiaoyuzhoufm.com/episode/6af1333bb4a4e20202f6da20 "宏观经济如何传导给我们每个人？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6388760f22567e8ea6ad070f/6af1333bb4a4e20202f6da20/media.xyzcdn.net/6388760f22567e8ea6ad070f/lq3ILHp6uzpmrWQpRBUh28j5LjDt.m4a) | 1小时4分 | 未做 · [串台](#crossover) |
@@ -107,13 +107,13 @@
 <a id="show-crossing"></a>
 
 <details>
-<summary><strong>十字路口Crossing · 12 条 · 8 条有报告</strong></summary>
+<summary><strong>十字路口Crossing · 12 条 · 9 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/68fyjknth9hj) · [更早单集索引](./wiki/show-indexes/crossing.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-09 | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | 未做 |
+| 2026-11-09 | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | [阅读报告](./reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) |
 | 2026-11-02 | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
 | 2026-10-26 | [李磊：AI 时代读 PhD 的 10 个关键问题](https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1 "AI 时代，PhD 路上的 10 个关键问题｜对谈李磊：港大 PhD、小米 MiMo 研究员") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpbsXeoXbCgTv0QckX8lCTPdwViV.m4a) | 52分钟 | [阅读报告](./reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) |
 | 2026-10-19 | [Treg：Claude Code、Codex 周围的创业机会](https://www.xiaoyuzhoufm.com/episode/6ad2412d0e4e410a05be01a7 "新的创业机会，正在 Claude Code 和 Codex 周围长出来｜对谈 Treg") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lsJEudLUybIGsXWwu9v_u2KuRpSM.m4a) | 51分钟 | [阅读报告](./reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md) |
