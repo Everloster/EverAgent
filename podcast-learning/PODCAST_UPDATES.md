@@ -12,7 +12,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**74 条已有专题报告**，**1 条仅有相关报告**，**293 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**75 条已有专题报告**，**1 条仅有相关报告**，**292 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +20,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 56 条 |
+| [AI / 科技](#tech) | 125 条 | 57 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 12 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 74 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 75 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -180,13 +180,13 @@
 <a id="show-linkstart"></a>
 
 <details>
-<summary><strong>开始连接 LinkStart · 9 条 · 2 条有报告</strong></summary>
+<summary><strong>开始连接 LinkStart · 9 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/q9a6lueucj6a) · [更早单集索引](./wiki/show-indexes/linkstart.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-04 | [Vol.137｜Personal AI：记忆、主动服务与托付边界](https://www.xiaoyuzhoufm.com/episode/6ae9aa3297726cd4675c21c0 "Vol.137｜Personal AI：你愿意把生活托付给一个怎样的 AI？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/63ff0da51b1faf8a0b70b337/6ae9aa3297726cd4675c21c0/media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lrrSvSpWtlt9ywxPiUDGuFzU0UL8.m4a) | 1小时24分 | 未做 |
+| 2026-11-04 | [Vol.137｜Personal AI：记忆、主动服务与托付边界](https://www.xiaoyuzhoufm.com/episode/6ae9aa3297726cd4675c21c0 "Vol.137｜Personal AI：你愿意把生活托付给一个怎样的 AI？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/63ff0da51b1faf8a0b70b337/6ae9aa3297726cd4675c21c0/media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lrrSvSpWtlt9ywxPiUDGuFzU0UL8.m4a) | 1小时24分 | [阅读报告](./reports/2026-11-04_linkstart_137-personal-ai.md) |
 | 2026-10-29 | [Vol.136｜Stripe CMO 谈中国公司出海](https://www.xiaoyuzhoufm.com/episode/6ae1c5a5c96c8942ec13abef "Vol.136｜关于中国公司出海，Stripe CMO 给出了几条准则") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/ltGT-3XUaQwwCwrDQmBDsWjws4cS.m4a) | 51分钟 | [阅读报告](./reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) |
 | 2026-10-21 | [Vol.135｜UDL：AI 眼镜与折叠屏的设计取舍](https://www.xiaoyuzhoufm.com/episode/6ad6fb05a09b94f787eb2cae "Vol.135｜对话 UDL：AI 眼镜、折叠屏，以及技术背后的设计取舍") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/lkbrkbdXtWZ38IpZNo4rs4q8fYeF.m4a) | 1小时5分 | [阅读报告](./reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) |
 | 2026-10-14 | [Vol.134｜GPT-6 之后，机器人创业还剩什么？](https://www.xiaoyuzhoufm.com/episode/6ace096ee742e36efcc25e5a "Vol.134｜GPT-6 之后，机器人创业还剩下什么？") · [音频](https://media.xyzcdn.net/63ff0da51b1faf8a0b70b337/loFRKDr9p_Al4E5z-D9WpiLGkyTP.m4a) | 1小时13分 | 未做 |

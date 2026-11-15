@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ae9aa3297726cd4675c21c0",
+  "source_ref": "sha256:987d87113f1957b26ba6c17be273c56e0c3c6fcda133108e7790e8fcf5451b89",
+  "max_consecutive_limit": 3,
+  "audit": {
+    "ok": true,
+    "size": 143727,
+    "sha256": "987d87113f1957b26ba6c17be273c56e0c3c6fcda133108e7790e8fcf5451b89",
+    "lines": 2882,
+    "segments": 2882,
+    "duration_seconds": 5025,
+    "max_consecutive_identical": 2,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  }
+}
