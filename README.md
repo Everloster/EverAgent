@@ -19,10 +19,10 @@
 
 <!-- AUTO-RECENT:START -->
 - 2026-11-15 · [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](./ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
+- 2026-11-15 · [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](./podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md)
 - 2026-11-15 · [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](./podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md)
 - 2026-11-15 · [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](./ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md)
 - 2026-11-15 · [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](./ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md)
-- 2026-11-15 · [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](./podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 125 篇 | 60/61/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 126 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 57 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

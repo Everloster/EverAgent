@@ -12,7 +12,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**76 条已有专题报告**，**1 条仅有相关报告**，**291 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**77 条已有专题报告**，**1 条仅有相关报告**，**290 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -21,10 +21,10 @@
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
 | [AI / 科技](#tech) | 125 条 | 58 条 |
-| [商业 / 投资 / 职场](#business) | 131 条 | 12 条 |
+| [商业 / 投资 / 职场](#business) | 131 条 | 13 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 76 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 77 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -445,14 +445,14 @@
 <a id="show-zhixing-xiaojiuguan"></a>
 
 <details>
-<summary><strong>知行小酒馆 · 9 条 · 2 条有报告</strong></summary>
+<summary><strong>知行小酒馆 · 9 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/j8yp8gxkmgqr) · [更早单集索引](./wiki/show-indexes/zhixing-xiaojiuguan.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
 | 2026-11-13 | [E258｜购物故事会：为喜欢的东西花钱](https://www.xiaoyuzhoufm.com/episode/6af6b7ca14d01a26f8a94459 "E258 这个东西，我真的好想要！｜小酒馆故事会🍻") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6013f9f58e2f7ee375cf4216/6af6b7ca14d01a26f8a94459/media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lmB4VjRQeKLl_DHzaFF4gJTbEWGN.m4a) | 2小时3分 | 未做 |
-| 2026-11-06 | [E257｜少楠：AI 有问必答，为什么仍会信息焦虑](https://www.xiaoyuzhoufm.com/episode/6aed7b615b7c4709bfe1fe12 "E257 对话少楠：明明 AI 有问必答，我怎么还总是信息焦虑？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6013f9f58e2f7ee375cf4216/6aed7b615b7c4709bfe1fe12/media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lgvsXBt7TSTJ2vHXUpCRxnrf3g4V.m4a) | 1小时16分 | 未做 |
+| 2026-11-06 | [E257｜少楠：AI 有问必答，为什么仍会信息焦虑](https://www.xiaoyuzhoufm.com/episode/6aed7b615b7c4709bfe1fe12 "E257 对话少楠：明明 AI 有问必答，我怎么还总是信息焦虑？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6013f9f58e2f7ee375cf4216/6aed7b615b7c4709bfe1fe12/media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lgvsXBt7TSTJ2vHXUpCRxnrf3g4V.m4a) | 1小时16分 | [阅读报告](./reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) |
 | 2026-10-30 | [E256｜郭凯：经济回暖，为什么体感不同？](https://www.xiaoyuzhoufm.com/episode/6ae440bcc96c8942ec14b02f "E256 等等，经济已经好起来了吗，怎么还没暖到我啊？｜对话郭凯") · [音频](https://media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lvnr1aFmbKgG3GJZuMqRICvnLeu8.m4a) | 1小时2分 | [阅读报告](./reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) |
 | 2026-10-23 | [E255｜“大结果”到“大红果”：努力与意义感](https://www.xiaoyuzhoufm.com/episode/6adb068cc96c8942ec110ee1 "E255 从「大结果」到「大红果」：你还相信越努力越幸运吗？") · [音频](https://media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lmrfBKmfdmUn7-CjfvaeogEO6FQI.m4a) | 1小时9分 | 未做 · [串台](#crossover) |
 | 2026-10-16 | [E254 我的意外之财｜小酒馆故事会🍻](https://www.xiaoyuzhoufm.com/episode/6ad1c92a0e4e410a05bdc907 "E254 我的意外之财｜小酒馆故事会🍻") · [音频](https://media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lgn0zTDgDTPcHfqmHKRSSfFBphIL.m4a) | 2小时4分 | 未做 |
