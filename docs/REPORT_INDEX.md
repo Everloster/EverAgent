@@ -23,6 +23,7 @@
 | 2026-11-15 | [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](../ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [Decision Models：不生成答案文本，直接给软件一个可解释的决策分布](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | web-surfing |
+| 2026-11-15 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | podcast-learning |
 | 2026-11-15 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | podcast-learning |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | web-surfing |
@@ -31,7 +32,6 @@
 | 2026-11-13 | [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md) | ai-learning |
 | 2026-11-13 | [AI炼金术：鸭哥——只管验收与拍板、AI 找 AI、反向对微调去 AI 味，与大脑变手的升职悖论](../podcast-learning/reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) | podcast-learning |
 | 2026-11-13 | [AI 行业日报 · 2026-11-13](../web-surfing/reports/ai-news-daily-2026-11-13.md) | web-surfing |
-| 2026-11-13 | [42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾](../podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) | podcast-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -373,7 +373,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（129 篇）
+## 🎙️ Podcast Learning（130 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -384,6 +384,7 @@
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | `continual-learning`, `agent-evaluation`, `neolab`, `personal-agent`, `startup` |
 | 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-15 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
+| 2026-11-15 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | `ai-content`, `creative-workflow`, `distribution`, `platform-economy`, `unit-economics` |
 | 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | `podcast`, `enterprise-agent`, `continual-learning`, `distillation`, `organization` |
 | 2026-11-13 | [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) | `podcast`, `guigu101`, `hf0`, `openrouter`, `ace-studio`, `accelerator` |
 | 2026-11-13 | [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](../podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) | `podcast`, `wandian-latetalk`, `liberai`, `liu-songming`, `embodied-ai`, `physical-ai` |

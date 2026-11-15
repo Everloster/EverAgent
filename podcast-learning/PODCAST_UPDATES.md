@@ -12,7 +12,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**80 条已有专题报告**，**1 条仅有相关报告**，**287 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **368 条单集发布记录**：**81 条已有专题报告**，**1 条仅有相关报告**，**286 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -21,10 +21,10 @@
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
 | [AI / 科技](#tech) | 125 条 | 61 条 |
-| [商业 / 投资 / 职场](#business) | 131 条 | 13 条 |
+| [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 80 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 81 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -32,7 +32,7 @@
 
 ## 最近一周
 
-2026-11-09—2026-11-15，共 42 条，其中 6 条已有专题报告。
+2026-11-09—2026-11-15，共 42 条，其中 7 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -71,7 +71,7 @@
 | 2026-11-10 | 半拿铁·周刊 | [No.54｜图库巨头的破产，以及缅怀刘欢](https://www.xiaoyuzhoufm.com/episode/6af29e5db4a4e20202f7852e "No.54 图库巨头的破产，以及缅怀刘欢") · [音频](https://dts-api.xiaoyuzhoufm.com/track/682c566cc7c5f17595635a2c/6af29e5db4a4e20202f7852e/media.xyzcdn.net/682c566cc7c5f17595635a2c/logwBSNmPDaOvHr2WgR5dYEc7iMt.m4a) | 2小时3分 | 未做 |
 | 2026-11-10 | 听懂涨声 | [朱昂：市场下跌、基金经理心态与投资机会](https://www.xiaoyuzhoufm.com/episode/6af1d380b4a4e20202f74490 "现在是A股的至暗时刻了吗？为什么说基金布局的机会往往在熊市里") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6543750424e7ad2107e8b0b5/6af1d380b4a4e20202f74490/media.xyzcdn.net/6543750424e7ad2107e8b0b5/lrmfK9So4tykpQHBPwMAjO8bx69q.m4a) | 1小时6分 | 未做 |
 | 2026-11-10 | 梁将军商业内参 | [31 期｜投资人为什么看不起小米](https://www.xiaoyuzhoufm.com/episode/6af19e2a5b7c4709bfe375ec "31 期｜为什么投资人看不起小米？那些你对小米最经典的误会") · [音频](https://dts-api.xiaoyuzhoufm.com/track/65814c66991e2ee608035f29/6af19e2a5b7c4709bfe375ec/media.xyzcdn.net/65814c66991e2ee608035f29/lg76I4BTrW8F1ZqW9LyPaM8dmc3-.m4a) | 15分钟 | 未做 |
-| 2026-11-10 | 乱翻书 | [278｜红果 AI 漫剧：一个人、16 亿播放、七位数收入](https://www.xiaoyuzhoufm.com/episode/6af316b6b4a4e20202f7cbd2 "278.在红果做AI漫剧的人，是骆驼祥子吗？一个人、16亿播放、七位数收入") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61358d971c5d56efe5bcb5d2/6af316b6b4a4e20202f7cbd2/media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lhHrwpWMn7E-UNjT7WpXDixLlxGS.m4a) | 1小时8分 | 未做 |
+| 2026-11-10 | 乱翻书 | [278｜红果 AI 漫剧：一个人、16 亿播放、七位数收入](https://www.xiaoyuzhoufm.com/episode/6af316b6b4a4e20202f7cbd2 "278.在红果做AI漫剧的人，是骆驼祥子吗？一个人、16亿播放、七位数收入") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61358d971c5d56efe5bcb5d2/6af316b6b4a4e20202f7cbd2/media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lhHrwpWMn7E-UNjT7WpXDixLlxGS.m4a) | 1小时8分 | [阅读报告](./reports/2026-11-10_luanfanshu_278-ai-comics.md) |
 | 2026-11-10 | 忽左忽右 | [515｜铁幕到解冻：波兰导演瓦伊达的电影史](https://www.xiaoyuzhoufm.com/episode/6af2df3ab4a4e20202f7ae55 "515 从铁幕创作到解冻文艺：漫谈世界电影史中的波兰巨匠安杰伊·瓦伊达") · [音频](https://dts-api.xiaoyuzhoufm.com/track/5e4ee557418a84a0466737b7/6af2df3ab4a4e20202f7ae55/media.xyzcdn.net/5e4ee557418a84a0466737b7/lgrIc01Z9_3p6bVhcQwpxK8bS-nm.m4a) | 1小时22分 | 未做 |
 | 2026-11-10 | 声动早咖啡 | [英伟达董事会调查与消费品牌跨界宠物业务](https://www.xiaoyuzhoufm.com/episode/6af1b98c5b7c4709bfe3825c "英伟达启动对黄仁勋的调查，消费品牌集体跨界宠物生意") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60de7c003dd577b40d5a40f3/6af1b98c5b7c4709bfe3825c/media.xyzcdn.net/60de7c003dd577b40d5a40f3/ls47Gb-buNIUFEI06ad34ruQdxLL.m4a) | 11分钟 | 未做 |
 | 2026-11-10 | 天真不天真 | [Vol.58｜放下旧身份：转型、沉没成本与自我认同](https://www.xiaoyuzhoufm.com/episode/6af1ce25b4a4e20202f7417b "vol.58 有问必答｜从1到0：如何放弃，却不否定自己？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/65cef9e3cace72dff8d98de3/6af1ce25b4a4e20202f7417b/media.xyzcdn.net/65cef9e3cace72dff8d98de3/ljf7QgB2CkOQL1Xo5BKcqq6pgCiN.m4a) | 1小时14分 | 未做 |
@@ -655,13 +655,13 @@
 <a id="show-luanfanshu"></a>
 
 <details>
-<summary><strong>乱翻书 · 7 条 · 2 条有报告</strong></summary>
+<summary><strong>乱翻书 · 7 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/yxuruh3f9mc4) · [更早单集索引](./wiki/show-indexes/luanfanshu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-10 | [278｜红果 AI 漫剧：一个人、16 亿播放、七位数收入](https://www.xiaoyuzhoufm.com/episode/6af316b6b4a4e20202f7cbd2 "278.在红果做AI漫剧的人，是骆驼祥子吗？一个人、16亿播放、七位数收入") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61358d971c5d56efe5bcb5d2/6af316b6b4a4e20202f7cbd2/media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lhHrwpWMn7E-UNjT7WpXDixLlxGS.m4a) | 1小时8分 | 未做 |
+| 2026-11-10 | [278｜红果 AI 漫剧：一个人、16 亿播放、七位数收入](https://www.xiaoyuzhoufm.com/episode/6af316b6b4a4e20202f7cbd2 "278.在红果做AI漫剧的人，是骆驼祥子吗？一个人、16亿播放、七位数收入") · [音频](https://dts-api.xiaoyuzhoufm.com/track/61358d971c5d56efe5bcb5d2/6af316b6b4a4e20202f7cbd2/media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lhHrwpWMn7E-UNjT7WpXDixLlxGS.m4a) | 1小时8分 | [阅读报告](./reports/2026-11-10_luanfanshu_278-ai-comics.md) |
 | 2026-09-24 | [277｜Today：从提醒你，到替你办事](https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131 "277.从提醒你，到替你办：Today想把Personal AI带到哪一步？") · [音频](https://media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lub_XeKQnXJr6Psdo-utmiUig6M6.m4a) | 1小时40分 | [阅读报告](./reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) |
 | 2026-09-22 | [276｜AI 给出答案后，年轻人如何找到问题？](https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18 "276.当AI给出所有答案，年轻人如何找到自己的问题？") · [音频](https://media.xyzcdn.net/61358d971c5d56efe5bcb5d2/ljJh4yA6BeiyPSgHj49YWicw1c6t.m4a) | 1小时13分 | 未做 |
 | 2026-09-21 | [275｜个人 Agent：Town、Instinct、Grok Bot、Muse](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6 "275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse") · [音频](https://media.xyzcdn.net/61358d971c5d56efe5bcb5d2/lpOS2Jcsbaob2mPwqaUzV5xQ4_hD.m4a) | 2小时6分 | [阅读报告](./reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md) |
