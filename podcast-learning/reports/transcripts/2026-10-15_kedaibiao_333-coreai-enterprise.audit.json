@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://share.transistor.fm/s/fa38498a",
+  "source_ref": "sha256:2b7fbc471642028e5a0540fc84ebe0f27d23f141904340e3c6622fc9be00ce19",
+  "max_consecutive_limit": 3,
+  "audit": {
+    "ok": true,
+    "size": 70445,
+    "sha256": "2b7fbc471642028e5a0540fc84ebe0f27d23f141904340e3c6622fc9be00ce19",
+    "lines": 1109,
+    "segments": 1109,
+    "duration_seconds": 2578,
+    "max_consecutive_identical": 2,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  }
+}
