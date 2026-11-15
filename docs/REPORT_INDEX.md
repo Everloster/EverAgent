@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-15 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 | 2026-11-15 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | podcast-learning |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-13 | [42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾](../podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md) | podcast-learning |
 | 2026-11-12 | [硅基立场 Vol.35 对话朱啸虎：Personal Agent 是个伪需求？——留存、毛利与懂人性的工程师](../podcast-learning/reports/2026-11-11_xiaoyuzhou-guiji-lichang_zhuxiaohu.md) | podcast-learning |
 | 2026-11-12 | [AI 行业日报 · 2026-11-12](../web-surfing/reports/ai-news-daily-2026-11-12.md) | web-surfing |
-| 2026-11-11 | [运行中追加消息与修改目标——OpenAI Responses、Claude Messages 和 Managed Agents 官方 API 对照](../ai-learning/reports/knowledge_reports/OpenAI%E4%B8%8EAnthropic_API%E9%80%9A%E4%BF%A1%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E8%BF%BD%E5%8A%A0%E6%B6%88%E6%81%AF_%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6_20261110.md) | ai-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -373,10 +373,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（126 篇）
+## 🎙️ Podcast Learning（127 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-15 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | `agent-commerce`, `authorization`, `payments`, `kya`, `ap2`, `trust` |
 | 2026-11-15 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | `ai-learning`, `attention`, `information-anxiety`, `personal-knowledge`, `judgment` |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | `continual-learning`, `agent-evaluation`, `neolab`, `personal-agent`, `startup` |
 | 2026-11-15 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
