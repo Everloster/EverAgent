@@ -15,6 +15,7 @@
 | 2026-11-15 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](../ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [Decision Models：不生成答案文本，直接给软件一个可解释的决策分布](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
+| 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | web-surfing |
 | 2026-11-15 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | podcast-learning |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | web-surfing |
@@ -31,7 +32,6 @@
 | 2026-11-11 | [OpenAI Responses WebSocket 与 Steering：连接、续接和运行中改向的协议详解](../ai-learning/reports/knowledge_reports/OpenAI_Responses_WebSocket%E4%B8%8ESteering_%E8%BF%9E%E6%8E%A5%E7%BB%AD%E6%8E%A5%E4%B8%8E%E8%BF%90%E8%A1%8C%E4%B8%AD%E6%94%B9%E5%90%91_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261111.md) | ai-learning |
 | 2026-11-11 | [AI 行业日报 · 2026-11-11](../web-surfing/reports/ai-news-daily-2026-11-11.md) | web-surfing |
 | 2026-11-10 | [《AI演义》31｜DiT：用Transformer承担扩散去噪](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_31_DiT_Transformer%E6%80%8E%E6%A0%B7%E6%8E%A5%E6%9B%BF%E5%8E%BB%E5%99%AA%E9%AA%A8%E6%9E%B6_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
-| 2026-11-10 | [《AI演义》30｜Stable Diffusion v1.4：从提示词到像素图像](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_30_StableDiffusion_v14_%E6%96%87%E7%94%9F%E5%9B%BE%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261106.md) | ai-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -631,10 +631,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（56 篇）
+## 🏄 Web Surfing（57 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | `ai_news`, `daily` |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | `ai_news`, `daily` |
 | 2026-11-13 | [AI 行业日报 · 2026-11-13](../web-surfing/reports/ai-news-daily-2026-11-13.md) | `ai_news`, `daily` |
 | 2026-11-12 | [AI 行业日报 · 2026-11-12](../web-surfing/reports/ai-news-daily-2026-11-12.md) | `ai_news`, `daily` |
