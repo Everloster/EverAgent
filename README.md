@@ -21,8 +21,8 @@
 - 2026-11-16 · [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](./podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)
 - 2026-11-16 · [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](./podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md)
 - 2026-11-16 · [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](./ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md)
+- 2026-11-16 · [李桢谈企业 AI：项目做得出来，组织为什么接不住？](./podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md)
 - 2026-11-16 · [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](./podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md)
-- 2026-11-16 · [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](./podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 136 篇 | 60/61/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 137 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 58 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

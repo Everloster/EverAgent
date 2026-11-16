@@ -14,7 +14,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **369 条单集发布记录**：**87 条已有专题报告**，**1 条仅有相关报告**，**281 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **369 条单集发布记录**：**88 条已有专题报告**，**1 条仅有相关报告**，**280 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -22,11 +22,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 126 条 | 67 条 |
+| [AI / 科技](#tech) | 126 条 | 68 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 87 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 88 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -204,14 +204,14 @@
 <a id="show-ai-lianjinshu"></a>
 
 <details>
-<summary><strong>AI炼金术 · 11 条 · 8 条有报告</strong></summary>
+<summary><strong>AI炼金术 · 11 条 · 9 条有报告</strong></summary>
 
 [公开订阅](https://www.ximalaya.com/album/74194808.xml) · [更早单集索引](./wiki/show-indexes/ai-lianjinshu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
 | 2026-11-10 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | [阅读报告](./reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) |
-| 2026-11-03 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") | 1小时35分 | 未做 |
+| 2026-11-03 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") · [小宇宙备用](https://www.xiaoyuzhoufm.com/episode/6ae9234e97726cd4675bc75c) | 1小时35分 | [阅读报告](./reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) |
 | 2026-10-28 | [余一入职 Manus：个人 Agent 与团队协作](https://www.ximalaya.com/sound/1028338072 "找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊") | 1小时26分 | [阅读报告](./reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) |
 | 2026-10-23 | [姚旭聊 NaukNauk：AI 如何听普通人的心里话](https://www.ximalaya.com/sound/1026998207 "AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk") | 1小时43分 | [阅读报告](./reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) |
 | 2026-10-18 | [晓辉博士与任鑫：AI 创业，先卖还是先做？](https://www.ximalaya.com/sound/1025210406 "以后一定会更糟，所以现在先别慌 ｜和晓辉博士聊创业和 AI") | 2小时15分 | [阅读报告](./reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md) |
