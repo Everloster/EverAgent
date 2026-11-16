@@ -343,6 +343,19 @@ func TestKimiScopedReadDoesNotStartCLI(t *testing.T) {
 	}
 }
 
+func TestKimiProcessNamesRecognized(t *testing.T) {
+	for _, name := range []string{"kimi", "kimi-code"} {
+		t.Run(name, func(t *testing.T) {
+			i, _ := testInspector(t, "kimi-cli")
+			i.Processes[1].Name = name
+			i.Processes[1].Image = "/fixture/" + name
+			if harness, _ := i.detectHarness(); harness != "kimi-cli" {
+				t.Fatalf("Kimi process name %q was not recognized: %q", name, harness)
+			}
+		})
+	}
+}
+
 func TestKimiUsageRecordObservesCurrentModel(t *testing.T) {
 	i, env := testInspector(t, "kimi-cli")
 	env["KIMI_MODEL"] = "configured-not-proof"

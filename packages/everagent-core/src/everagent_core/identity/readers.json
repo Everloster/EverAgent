@@ -7,7 +7,7 @@
     "trae": {"process_names": ["coco", "traecli"], "session_keys": ["TRAECLI_THREAD_ID", "TRAE_THREAD_ID", "CODEX_THREAD_ID"], "root": "~/.trae/cli/log", "form": "cli"},
     "qoderclicn": {"process_names": ["qoderclicn"], "form": "cli"},
     "zcode": {"process_names": ["zcode-cli", "zcode-host", "ZCode"], "root": "~/.zcode/cli/rollout", "form": "desktop"},
-    "kimi-cli": {"process_names": ["kimi"], "session_keys": ["KIMI_CLI_SESSION_ID"], "root": "~/.kimi-code/sessions", "form": "cli"},
+    "kimi-cli": {"process_names": ["kimi", "kimi-code"], "session_keys": ["KIMI_CLI_SESSION_ID"], "root": "~/.kimi-code/sessions", "form": "cli"},
     "kimi-desktop": {"process_names": ["Kimi"], "form": "desktop"},
     "minimax-code": {"process_names": ["MiniMax Code"], "root": "~/.minimax/v2", "form": "desktop"},
     "pi": {"process_names": ["pi", "pi-coding-agent"], "session_keys": ["PI_SESSION_ID"], "form": "cli"},
