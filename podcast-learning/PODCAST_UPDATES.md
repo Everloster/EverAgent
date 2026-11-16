@@ -14,7 +14,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **369 条单集发布记录**：**85 条已有专题报告**，**1 条仅有相关报告**，**283 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **369 条单集发布记录**：**86 条已有专题报告**，**1 条仅有相关报告**，**282 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -22,11 +22,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 126 条 | 65 条 |
+| [AI / 科技](#tech) | 126 条 | 66 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 85 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 86 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -327,13 +327,13 @@
 <a id="show-gaonengliang"></a>
 
 <details>
-<summary><strong>高能量 · 10 条 · 2 条有报告</strong></summary>
+<summary><strong>高能量 · 10 条 · 3 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/jhfuba3dahq8) · [更早单集索引](./wiki/show-indexes/gaonengliang.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-06 | [Vol.242｜吴欣鸿：美图如何面对 AI、全球化与巨头](https://www.xiaoyuzhoufm.com/episode/6aeca6136381f0f964c46d4b "Vol.242 一个古典互联网创业者的突围：与吴欣鸿聊美图如何面对AI、全球化与巨头") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6aeca6136381f0f964c46d4b/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lpvRNasHCqr7MWi7leZB0RjjY_lY.m4a) | 2小时38分 | 未做 |
+| 2026-11-06 | [Vol.242｜吴欣鸿：美图如何面对 AI、全球化与巨头](https://www.xiaoyuzhoufm.com/episode/6aeca6136381f0f964c46d4b "Vol.242 一个古典互联网创业者的突围：与吴欣鸿聊美图如何面对AI、全球化与巨头") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6aeca6136381f0f964c46d4b/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lpvRNasHCqr7MWi7leZB0RjjY_lY.m4a) | 2小时38分 | [阅读报告](./reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) |
 | 2026-11-05 | [Vol.241｜脑机接口：从读取信号到临床治疗](https://www.xiaoyuzhoufm.com/episode/6aec3c316381f0f964c4368f "Vol.241 产业观察45｜从读懂大脑到治疗疾病，脑机接口还有多远的路要走？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6aec3c316381f0f964c4368f/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lhIvHALqHJ1jvX3KR1ZznB7V_07y.m4a) | 1小时28分 | 未做 |
 | 2026-11-03 | [Vol.240｜资本市场再平衡与全球股市波动](https://www.xiaoyuzhoufm.com/episode/6ae99c15c96c8942ec16a53d "Vol.240 宏观漫谈113｜中国资本市场的提前再平衡与全球股市波动（10.30录制）") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6ae99c15c96c8942ec16a53d/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lqlF4PXdQ6EjWHQIV1MDr1hSE-wn.m4a) | 1小时10分 | 未做 |
 | 2026-10-26 | [Vol.239｜陆铭：AI、内卷、房价与消费](https://www.xiaoyuzhoufm.com/episode/6adf44a3c96c8942ec128914 "Vol.239 访问思考者1｜李翔对话陆铭：聊聊AI、内卷、房价和消费抉择") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/ltYDlkriTPwTwp7w2t1cypuJaYak.m4a) | 2小时21分 | [阅读报告](./reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md) |
