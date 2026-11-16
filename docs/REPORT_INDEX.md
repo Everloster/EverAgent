@@ -28,10 +28,10 @@
 | 2026-11-16 | [Helion 怎样少做调优：从内核结构估算资源，再决定执行配置](../ai-learning/reports/knowledge_reports/Helion_%E7%BC%96%E8%AF%91%E6%9C%9F%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98%E6%88%90%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [HOPE 专家剪枝：联合删除的代价、误差上界与真实部署边界](../ai-learning/reports/knowledge_reports/HOPE_%E4%B8%93%E5%AE%B6%E5%8D%8F%E4%BD%9C%E5%85%B3%E7%B3%BB%E4%B8%8EMoE%E5%89%AA%E6%9E%9D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [Decision Models：不生成答案文本，直接返回带概率的类型化决策](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
+| 2026-11-16 | [Agent 游戏怎样才好玩：自由输入之外，还需要规则、记忆与反馈](../podcast-learning/reports/2026-10-08_linkstart_133-agent-games.md) | podcast-learning |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | podcast-learning |
 | 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | web-surfing |
 | 2026-11-16 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | podcast-learning |
-| 2026-11-16 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 
 ## 🤖 AI Learning（216 篇）
 
@@ -379,7 +379,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（137 篇）
+## 🎙️ Podcast Learning（138 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -394,6 +394,7 @@
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | `ai-safety`, `effective-altruism`, `rationalism`, `dacc`, `governance`, `philanthropy` |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
+| 2026-11-16 | [Agent 游戏怎样才好玩：自由输入之外，还需要规则、记忆与反馈](../podcast-learning/reports/2026-10-08_linkstart_133-agent-games.md) | `agent-games`, `npc`, `world-state`, `memory`, `game-design`, `generative-ai` |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | `agent-workflow`, `acceptance`, `personal-assistant`, `attention`, `product-judgment` |
 | 2026-11-16 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | `ai-content`, `creative-workflow`, `distribution`, `platform-economy`, `unit-economics` |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | `continual-learning`, `agent-evaluation`, `neolab`, `personal-agent`, `startup` |
