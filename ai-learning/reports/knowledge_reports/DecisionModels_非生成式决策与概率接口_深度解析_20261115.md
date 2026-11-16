@@ -1,15 +1,15 @@
 ---
-title: "Decision Models：不生成答案文本，直接给软件一个可解释的决策分布"
+title: "Decision Models：不生成答案文本，直接返回带概率的类型化决策"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
 source_url: "https://huggingface.co/blog/decision"
 source_published_on: "2026-11-10"
-updated_on: "2026-11-15"
+updated_on: "2026-11-16"
 semantic_tags: ["decision-model", "classification", "calibration", "structured-output", "hugging-face"]
 ---
 
-# Decision Models：不生成答案文本，直接给软件一个可解释的决策分布
+# Decision Models：不生成答案文本，直接返回带概率的类型化决策
 
 客服系统收到“我的订阅被扣了两次，请退款”。如果系统只需要知道该转哪个部门、紧急程度和是否包含退款请求，就不一定需要先生成一段文字，再从中解析 JSON。
 
@@ -66,7 +66,7 @@ Noul 名称来自 Bernoulli，返回二元问题为真的概率 \(p\)，而不�
 
 ## 3. `confidence` 不是“正确率保证”
 
-原文为 Choice 给出的 confidence，是将最大概率相对于均匀分布归一化：
+原文为 Choice 给出的 confidence，是将最大概率相对于均匀分布归一化；下面的公式适用于选项数 \(K>1\)：
 
 \[
 c=\frac{p_{\max}-1/K}{1-1/K}
@@ -98,7 +98,7 @@ c=\frac{p_{\max}-1/K}{1-1/K}
 - 采取阳性动作的预期损失为 \((1-p)C_{FP}\)。
 - 不采取的预期损失为 \(pC_{FN}\)。
 
-比较两者，可得到阈值 \(p>C_{FP}/(C_{FP}+C_{FN})\)。若自拟代价分别为 2 和 10，阈值约为 0.167，而不是一律 0.5。
+比较两者，可得到阈值 \(p>C_{FP}/(C_{FP}+C_{FN})\)。若自拟的误报代价 \(C_{FP}=2\)、漏报代价 \(C_{FN}=10\)，阈值约为 0.167，而不是一律 0.5。这里必须明确两种代价的对应关系；若把它们交换，阈值会变成约 0.833。
 
 这是教学上的决策理论推导，不是原文模型已经实现的业务策略。真实成本可能非线性，概率也可能未校准；未经验证就使用精细阈值，会给错误判断增加一种虚假的精确感。
 

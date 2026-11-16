@@ -5,7 +5,7 @@ report_type: "knowledge_report"
 status: "completed"
 source_url: "https://developer.nvidia.com/blog/start-and-restore-gpu-workloads-in-seconds-with-nvidia-snapshot"
 source_published_on: "2026-11-10"
-updated_on: "2026-11-15"
+updated_on: "2026-11-16"
 semantic_tags: ["gpu", "checkpoint-restore", "cold-start", "kubernetes", "inference-serving"]
 ---
 
@@ -76,7 +76,7 @@ NVIDIA Snapshot 的思路是：在兼容条件下保存一个已经完成初始�
 
 ## 5. 怎样正确阅读 8—36 倍的加速
 
-原文基准使用 B200、特定驱动、VAST NFS，以及 vLLM 0.31.0、SGLang 0.5.21、TensorRT LLM 1.3.0。每个配置在同一硬件软件栈上比较冷启动与快照恢复。[1]
+原文基准使用 B200、NVIDIA 驱动 615.71.09、VAST NFS，以及 vLLM 0.31.0、SGLang 0.5.21、TensorRT LLM 1.3.0。每个配置在同一硬件软件栈上比较冷启动与快照恢复。[1]
 
 摘取三行展示不同规模，单位均为秒或 GB：
 
@@ -89,6 +89,8 @@ NVIDIA Snapshot 的思路是：在兼容条件下保存一个已经完成初始�
 这里的 speedup 是冷启动计时除以恢复计时。DeepSeek 这一行约为 35.87 倍，本次重新计算与原文一致。
 
 但计时边界不包含拉取容器镜像和建立容器运行时；基础设施供给也不是被消除的初始化工作。若用户真正关心“提交扩容请求到副本可用”，还必须加上这些阶段。[1]
+
+两列还采用各自的操作起止点：冷启动从进程启动计到引擎初始化返回、尚未推理；恢复从向 Snapshot 提出恢复请求计到工作负载重新提供服务。倍数应保留这两个时钟的定义，不能改称完整扩容延迟或首个用户请求的加速比。[1]
 
 用一个**自拟条件**演示：若两条路径都有额外 120 秒的基础设施成本，总体加速变成：
 
@@ -107,7 +109,7 @@ NVIDIA Snapshot 的思路是：在兼容条件下保存一个已经完成初始�
 - \(P\)：为复用快照付出的准备成本。
 - \(k\)：后续需要启动的副本次数。
 
-在不计并行和资源争用的简化时间账本里，快照方案节省累计工作时间的条件是：
+在不计并行和资源争用的简化时间账本里，快照方案减少累计启动／恢复时长的条件是：
 
 \[
 P+kR<kC\quad\Longleftrightarrow\quad k(C-R)>P

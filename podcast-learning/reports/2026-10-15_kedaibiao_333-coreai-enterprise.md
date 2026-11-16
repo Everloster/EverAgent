@@ -9,7 +9,7 @@ episode: "对话333｜AI在大企业中的应用才刚刚开始，人才供不�
 host: "孙煜征（立正）"
 guest: "Marco Casalaina"
 source_published_on: "2026-10-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-16"
 duration_seconds: 2589
 transcript_visibility: "private"
 transcript_path: null
@@ -60,9 +60,11 @@ Marco 区分了给助手起一个名字，与让它在独立安全上下文中�
 
 **节目约 17:32—23:51。**
 
-Marco 介绍了 BMW MDR 测试车辆数据的案例。按其说法，车辆带有大量传感器，过去只有少数熟悉数据的人能有效查询；团队花了约半年跨部门整理数据字典，才让更多工程师能用自然语言提问。
+Marco 介绍了 BMW MDR（Mobile Data Recorder）测试车辆数据的案例。按其说法，车辆带有大量传感器，过去只有少数熟悉数据的人能有效查询；团队花了约半年跨部门整理数据字典，才让更多工程师能用自然语言提问。
 
 这里的工作不是单纯把数据搬进模型，而是解释：传感器测什么、数值有什么含义、相关业务术语怎样映射到它，以及用户会如何提问。
+
+例如，他自述现场查询了最近一周雨天的急刹车事件。系统需要把“急刹车”“雨天”和时间范围映射到相应传感器、阈值与字段，不能只写出语法正确的查询就算完成。这正是数据字典为模型补上的企业语义。
 
 这个案例可以拆成四个层次：
 
@@ -79,7 +81,7 @@ Marco 介绍了 BMW MDR 测试车辆数据的案例。按其说法，车辆带�
 
 **节目约 23:51—28:47。**
 
-访谈中的公寓定价例子说明了通用指标的盲区：Agent 收到房源表，返回填满价格的表。若只看任务完成，似乎已经成功；但某类户型的价格可能明显不合理。
+Marco 从客户提出的公寓定价需求出发，构造了一个假设例子：Agent 收到房源表，返回填满价格的表。若只看任务完成，似乎已经成功；但三居室的价格可能明显不合理。这是用于解释通用指标盲区的情景，不是一项已报告误差数据的定价试验。
 
 这不意味着任务完成度、相关性或来源一致性毫无价值，而是它们不能替代业务标准。回答基于检索资料，也不证明资料本身正确，或模型选择了正确的比较对象。
 
@@ -146,7 +148,7 @@ Marco 提到评测维护者、FDE，以及每个工程师对 AI、上下文和�
 
 [1] 课代表立正，2026-10-15，[对话333：Marco Casalaina](https://share.transistor.fm/s/fa38498a)。本次通读英文访谈转写与官方中文说明。案例与产品介绍按嘉宾自述记录，未部署微软产品或核验客户原始数据。
 
-[2] Microsoft Learn，[Microsoft Graph permissions overview](https://learn.microsoft.com/en-us/graph/permissions-overview)，2026-11-15 读取，用于补充委托权限与应用权限的区别；不代表所有 Agent 产品都使用相同授权机制。
+[2] Microsoft Learn，[Microsoft Graph permissions overview](https://learn.microsoft.com/en-us/graph/permissions-overview)，2026-11-15 读取、2026-11-16 复核相关条目，用于补充委托权限与应用权限的区别；不代表所有 Agent 产品都使用相同授权机制。
 
 转写由 **eacli transcription 远端静默 worker** 处理，9 个分块完成，1,109 段，最大连续相同文本 2 段，无时间倒序。[脱敏审计收据](./transcripts/2026-10-15_kedaibiao_333-coreai-enterprise.audit.json)与私有文本哈希一致。
 

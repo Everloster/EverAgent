@@ -9,7 +9,7 @@ episode: "Vol.34 对话ZooWork胡宁：AI时代里，企业不应该再帮别人
 host: "骆轶航"
 guest: "胡宁"
 source_published_on: "2026-11-03"
-updated_on: "2026-11-15"
+updated_on: "2026-11-16"
 duration_seconds: 5464
 transcript_visibility: "private"
 transcript_path: null
@@ -86,7 +86,7 @@ semantic_tags: ["enterprise-ai", "evaluation", "data-governance", "agent-rl", "f
 - 新模型的收益是否覆盖接入、迁移和维护成本？
 - 高分是否来自熟悉题目，而不是可迁移的能力？
 
-胡宁还提到概率校准：模型给出概率，并不意味着这个概率足够可信。以自拟例子说明，如果很多判断都报 0.9，就应在代表性的标注样本里检查其正确频率是否与此相称；这仍不是对单次判断的保证。
+胡宁还提到概率校准：模型给出概率，并不意味着这个概率足够可信。以自拟例子说明，如果模型对所选答案给出的概率都约为 0.9，就应在代表性的标注样本里检查这些答案的正确频率是否接近 90%；这仍不是对单次判断的保证。
 
 评测的最终用途应是支持分层处置，例如自动执行、请求复核或拒绝继续，而不是只给发布材料提供一个好看的分数。可以与[决策模型的概率接口](../../ai-learning/reports/knowledge_reports/DecisionModels_非生成式决策与概率接口_深度解析_20261115.md)对照：集中程度、校准程度和业务风险，是不同维度。
 
@@ -97,6 +97,8 @@ semantic_tags: ["enterprise-ai", "evaluation", "data-governance", "agent-rl", "f
 胡宁用修复软件问题的例子介绍三类训练思路：给示例和答案进行监督微调；比较候选方案进行偏好对齐；让 Agent 在环境中尝试，并根据测试和反馈改进。
 
 这是一种便于理解的分法，不应当成互不重叠的完整分类。访谈里的“老师上限”“评委上限”也是教学比喻，本文不把它们视为已经验证的严格能力定理。
+
+技术上，RLHF 强调人类反馈这一信号来源，Agent RL 强调智能体与环境交互的训练场景，二者可以重叠；DPO 则是直接利用偏好数据优化策略的方法，无须把奖励模型训练与强化学习优化显式拆成两步。[3] 因而，不能把前两类统称为“不能超越老师”、第三类统称为“能超越老师”。
 
 其中更有价值的部分是对**环境**的强调。只有静态结果，模型未必能学会过程；可以交互、重置、评价的环境，才允许它尝试动作并观察后果。
 
@@ -142,7 +144,9 @@ semantic_tags: ["enterprise-ai", "evaluation", "data-governance", "agent-rl", "f
 
 胡宁更关注垂直行业和传统企业，认为既有渠道、现场服务和客户关系仍然重要。即使技术可行，客户也需要知道它怎样增加收入、减少成本或改善具体流程。
 
-节目同时讨论了 Personal Agent 的数据控制、广告变现和大厂优势。这些是带有创业者立场的商业判断，不能由此断言所有个人助手最后一定属于大公司。不同收费方式、用户群和成本结构，可能支持不同产品。
+Personal Agent 一段有两条不同的论证。骆轶航希望自建个人助手，以掌握上下文和数据控制权；胡宁则从大众市场的商业化推断大厂占优：服务新增用户仍有推理成本，多数用户未必愿意付费，而大厂已有更强的广告变现和用户画像基础。她由此给出“Personal Agent 一定是大厂的”这一较强判断。
+
+这个判断依赖付费意愿、单位服务成本和变现方式等前提，不是已经确立的市场规律。付费小众产品、推理成本变化或其他商业模式，都可能改变推论；个人希望控制数据，也不等于面向大众的产品必须全部自建。
 
 同样，“两三年内积累决定企业差距”是趋势预测，不是已经观察到的统一规律。企业应从可测量的场景入手，而不是因为焦虑就一次性重建全部系统。
 
@@ -156,7 +160,9 @@ semantic_tags: ["enterprise-ai", "evaluation", "data-governance", "agent-rl", "f
 
 [1] 硅基立场，2026-11-03，[Vol.34：对话 ZooWork 胡宁](https://www.xiaoyuzhoufm.com/episode/6ae450f197726cd4675a2ca8)。本次通读官方章节和整份私有转写。产品能力、客户需求、薪酬、市场规模及未来预测按访谈观点处理，未独立验证。
 
-[2] OpenAI，[Data controls in the OpenAI platform](https://developers.openai.com/api/docs/guides/your-data)，2026-11-15 读取。用于区分训练用途、监控日志与应用状态；适用范围是该公开 API 政策，不扩展为所有 AI 产品的保证。
+[2] OpenAI，[Data controls in the OpenAI platform](https://developers.openai.com/api/docs/guides/your-data)，2026-11-15 读取、2026-11-16 复核相关条目。用于区分训练用途、监控日志与应用状态；适用范围是该公开 API 政策，不扩展为所有 AI 产品的保证。
+
+[3] Rafailov 等，[Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)，2023。2026-11-16 阅读摘要，用于校准偏好优化与强化学习的关系，不作为节目团队实现方式的证据。
 
 音频通过 **eacli transcription 远端静默 worker** 处理，19 个分块均完成，转写 4,030 段；无时间戳倒序或重叠，最大连续相同文本 2 段。[脱敏审计收据](./transcripts/2026-11-03_guiji-lichang_34-zoowork-ai-assets.audit.json)绑定原始私有文件哈希。
 
