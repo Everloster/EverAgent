@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**57 篇已学习**，**10 篇有相关报告**，**435 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**58 篇已学习**，**10 篇有相关报告**，**434 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 14 篇 |
+| [2026-11](#m202611) | 150 篇 | 15 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -376,7 +376,7 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇 · 5 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 6 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
@@ -410,9 +410,9 @@
 
   介绍 HF 生态对决策模型的新支持。 [阅读报告](../ai-learning/reports/knowledge_reports/DecisionModels_非生成式决策与概率接口_深度解析_20261115.md)
 
-- **11-09** [HOPE：考虑专家协作关系的 MoE 剪枝](https://huggingface.co/blog/amazon/higher-order-pruning-experts "Your Experts Have Partners. There&#x27;s HOPE for Keeping Them Together") · 未做
+- **11-09** [HOPE：考虑专家协作关系的 MoE 剪枝](https://huggingface.co/blog/amazon/higher-order-pruning-experts "Your Experts Have Partners. There&#x27;s HOPE for Keeping Them Together") · **已学习**
 
-  Amazon 研究团队介绍二阶专家剪枝，将专家之间的相互作用纳入删除决策；文章给出校准方法、使用示例和作者实验结果。
+  Amazon 研究团队介绍二阶专家剪枝，将专家之间的相互作用纳入删除决策；文章给出校准方法、使用示例和作者实验结果。 [阅读报告](../ai-learning/reports/knowledge_reports/HOPE_专家协作关系与MoE剪枝_深度解析_20261116.md)
 
 - **11-09** [Nemotron-Personas-Finance-Japan：日本金融场景合成人物数据](https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan&#x27;s Demographics and Financial Context") · 未做
 
@@ -2028,10 +2028,12 @@
 
 ## 已有学习报告
 
-本轮清单中，57 篇原文对应 48 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，58 篇原文对应 49 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [HOPE 专家剪枝：联合删除的代价、误差上界与真实部署边界](../ai-learning/reports/knowledge_reports/HOPE_专家协作关系与MoE剪枝_深度解析_20261116.md) · 对应本页 1 篇原文。
 
 - [Helion 怎样少做调优：从内核结构估算资源，再决定执行配置](../ai-learning/reports/knowledge_reports/Helion_编译期启发式与内核调优成本_深度解析_20261116.md) · 对应本页 1 篇原文。
 
