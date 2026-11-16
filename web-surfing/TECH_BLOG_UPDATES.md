@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**55 篇已学习**，**10 篇有相关报告**，**437 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**56 篇已学习**，**10 篇有相关报告**，**436 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 12 篇 |
+| [2026-11](#m202611) | 150 篇 | 13 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -458,7 +458,7 @@
 
 
 <details>
-<summary><strong>PyTorch · 7 篇</strong></summary>
+<summary><strong>PyTorch · 7 篇 · 1 篇已学习</strong></summary>
 
 - **11-12** [默认即快：Helion 内核的编译期启发式](https://pytorch.org/blog/fast-by-default-compile-time-heuristics-for-helion-kernels "Fast by Default: Compile-Time Heuristics for Helion Kernels") · 未做
 
@@ -472,9 +472,10 @@
 
   介绍在共享公共超算上预训练约一万亿参数 MoE 模型时遇到的架构与互连瓶颈及应对。
 
-- **11-10** [ExecuTorch WebGPU：浏览器 GPU 上运行 PyTorch 模型](https://pytorch.org/blog/executorch-webgpu-pytorch-models-on-the-gpu-in-the-browser "ExecuTorch WebGPU: PyTorch Models on the GPU, in the Browser") · 未做
+- **11-10** [ExecuTorch WebGPU：浏览器 GPU 上运行 PyTorch 模型](https://pytorch.org/blog/executorch-webgpu-pytorch-models-on-the-gpu-in-the-browser "ExecuTorch WebGPU: PyTorch Models on the GPU, in the Browser") · **已学习**
 
-  通过 torch.export 导出 .pte 文件，在浏览器 WebGPU 上推理，无需转换为其他框架格式。
+  通过 torch.export 导出 .pte 文件，在浏览器 WebGPU 上推理，无需转换为其他框架格式。 [阅读报告](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_浏览器推理的数据路径与部署边界_深度解析_20261116.md)
+
 
 - **11-10** [TPU v7 上用 SGLang-TorchTPU 服务 Muse Spark Open](https://pytorch.org/blog/optimizing-muse-spark-open-on-tpu-v7-with-sglang-torchtpu "Optimizing Muse Spark Open on TPU v7 with SGLang-TorchTPU") · 未做
 
@@ -2027,10 +2028,12 @@
 
 ## 已有学习报告
 
-本轮清单中，55 篇原文对应 46 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，56 篇原文对应 47 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [ExecuTorch WebGPU：浏览器推理的数据路径与部署边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_浏览器推理的数据路径与部署边界_深度解析_20261116.md) · 对应本页 1 篇原文。
 
 - [llama.cpp 1.0：API、ABI 与本地推理兼容性](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI与本地推理兼容性_学习报告_20261115.md) · 对应本页 1 篇原文。
 
