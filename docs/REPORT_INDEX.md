@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | web-surfing |
 | 2026-11-15 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
 | 2026-11-15 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 | 2026-11-15 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | web-surfing |
 | 2026-11-13 | [硅谷101 E258：硅谷创业"修道院"HF0 与 OpenRouter 早期故事](../podcast-learning/reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) | podcast-learning |
 | 2026-11-13 | [晚点聊 187：对话 LiberAI 刘松铭——Astra 来袭，00 后物理 AI 创始人看到的胜率](../podcast-learning/reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) | podcast-learning |
-| 2026-11-13 | [vLLM 在 Vera Rubin NVL72 上服务 DeepSeek-V4.1-Flash：SM107 内核重写、TP8 低延迟与机架级内存池（系列第三篇）](../ai-learning/reports/knowledge_reports/vLLM_Vera_Rubin_NVL72_58x%E5%90%9E%E5%90%90%E4%B8%8E%E6%9C%BA%E6%9E%B6%E7%BA%A7%E5%86%85%E5%AD%98%E6%B1%A0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261113.md) | ai-learning |
 
 ## 🤖 AI Learning（210 篇）
 
@@ -641,10 +641,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（57 篇）
+## 🏄 Web Surfing（58 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | `ai_news`, `daily` |
 | 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | `ai_news`, `daily` |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | `ai_news`, `daily` |
 | 2026-11-13 | [AI 行业日报 · 2026-11-13](../web-surfing/reports/ai-news-daily-2026-11-13.md) | `ai_news`, `daily` |
