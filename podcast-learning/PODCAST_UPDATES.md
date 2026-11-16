@@ -6,13 +6,15 @@
 
 每次查询「小宇宙精选播客最近有什么更新」，都更新这一页，保留之前的单集和报告链接。
 
-**最近检查：2026-11-15（北京时间）** · **已收录时段：2026-09-02—2026-11-14**
+**最近检查：2026-11-15（北京时间）** · **已收录时段：2026-09-02—2026-11-16**
 
 报告状态更新于 **2026-11-16**：本批 11 期报告已完成独立复核，校准了嘉宾归因、案例性质、实验口径与转写疑点；阅读入口保留在对应单集。转写、排队或相关主题材料不计为完成本期学习。
 
+**本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
+
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **368 条单集发布记录**：**83 条已有专题报告**，**1 条仅有相关报告**，**284 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **369 条单集发布记录**：**84 条已有专题报告**，**1 条仅有相关报告**，**284 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -20,11 +22,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 125 条 | 63 条 |
+| [AI / 科技](#tech) | 126 条 | 64 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 83 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 84 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -107,12 +109,13 @@
 <a id="show-crossing"></a>
 
 <details>
-<summary><strong>十字路口Crossing · 12 条 · 10 条有报告</strong></summary>
+<summary><strong>十字路口Crossing · 13 条 · 11 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/68fyjknth9hj) · [更早单集索引](./wiki/show-indexes/crossing.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
+| 2026-11-16 | [年终复盘③｜赵晨阳：RSI、评测与 AI Infra](https://www.xiaoyuzhoufm.com/episode/6af936ea14d01a26f8a9fd94 "【年终复盘③】用 Kimi 加速 Kimi：RSI前夜，一个AI infra人的10个Aha Moments｜对话赵晨阳") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af936ea14d01a26f8a9fd94/media.xyzcdn.net/60502e253c92d4f62c2a9577/lhHxptqOANRsmGIh0htFeLq-znBg.m4a) | 1小时6分 | [阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) |
 | 2026-11-09 | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | [阅读报告](./reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) |
 | 2026-11-02 | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
 | 2026-10-26 | [李磊：AI 时代读 PhD 的 10 个关键问题](https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1 "AI 时代，PhD 路上的 10 个关键问题｜对谈李磊：港大 PhD、小米 MiMo 研究员") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpbsXeoXbCgTv0QckX8lCTPdwViV.m4a) | 52分钟 | [阅读报告](./reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) |
