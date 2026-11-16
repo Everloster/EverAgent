@@ -343,6 +343,51 @@ func TestKimiScopedReadDoesNotStartCLI(t *testing.T) {
 	}
 }
 
+func TestKimiUsageRecordObservesCurrentModel(t *testing.T) {
+	i, env := testInspector(t, "kimi-cli")
+	env["KIMI_MODEL"] = "configured-not-proof"
+	dir, _, _ := kimiFixture(t, i, "session-one", false)
+	stale := i.Now().Add(-10 * time.Minute)
+	wire := []byte(`{"type":"llm.request","kind":"loop","model":"old-native","turnStep":"turn-old","time":` + string(encoded(t, stale.UnixMilli())) + "}\n")
+	usage := append([]byte(`{"type":"usage.record",`), encoded(t, Object{"model": "kimi-code/native-kimi", "time": i.Now().UnixMilli(), "usageScope": "turn"})[1:]...)
+	wire = append(wire, usage...)
+	wire = append(wire, '\n')
+	writeFixture(t, filepath.Join(dir, "agents/main/wire.jsonl"), wire, i.Now())
+	got := i.Inspect()
+	if got["model"] != "native-kimi" || got["name"] != "kimi-cli-native-kimi" || got["model_source"] != "kimi-cli-session-runtime" || got["current_model_confirmed"] != true || got["commit_ready"] != true {
+		t.Fatalf("current usage record was not observed: %v", got)
+	}
+}
+
+func TestKimiUsageRecordRejectsInvalidEvidence(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		fields Object
+		age    time.Duration
+		want   string
+	}{
+		{name: "stale", fields: Object{"model": "kimi-code/native-kimi", "usageScope": "turn"}, age: -10 * time.Minute, want: "native-observation-stale"},
+		{name: "future", fields: Object{"model": "kimi-code/native-kimi", "usageScope": "turn"}, age: time.Minute, want: "native-observation-stale"},
+		{name: "wrong-scope", fields: Object{"model": "kimi-code/native-kimi", "usageScope": "session"}, want: "native-metadata-unavailable-or-invalid"},
+		{name: "unknown-model", fields: Object{"model": "unknown", "usageScope": "turn"}, want: "native-metadata-unavailable-or-invalid"},
+		{name: "empty-model-suffix", fields: Object{"model": "kimi-code/", "usageScope": "turn"}, want: "native-metadata-unavailable-or-invalid"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			i, _ := testInspector(t, "kimi-cli")
+			dir, _, wire := kimiFixture(t, i, "session-one", false)
+			fields := clone(tc.fields)
+			fields["time"] = i.Now().Add(tc.age).UnixMilli()
+			usage := append([]byte(`{"type":"usage.record",`), encoded(t, fields)[1:]...)
+			wire = append(wire, usage...)
+			wire = append(wire, '\n')
+			writeFixture(t, filepath.Join(dir, "agents/main/wire.jsonl"), wire, i.Now())
+			if got, why := i.kimiCLI(i.Processes[1], i.Now()); got != nil || why != tc.want {
+				t.Fatalf("invalid usage record accepted or fell back to old request: %v %q, want %q", got, why, tc.want)
+			}
+		})
+	}
+}
+
 func TestKimiNativeWorkspaceKeys(t *testing.T) {
 	for cwd, want := range map[string]string{
 		"/workspace/Project Two": "wd_project-two_8b6646286453",

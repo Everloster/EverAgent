@@ -355,10 +355,12 @@ func readKimiObservation(root string, row KimiSession, p Process, now time.Time)
 		return kimiObservation{}, "native-observation-in-progress"
 	}
 	var request Object
-	envelope := regexp.MustCompile(`^\s*\{\s*"type"\s*:\s*"llm\.request"`)
+	kind := ""
+	envelope := regexp.MustCompile(`^\s*\{\s*"type"\s*:\s*"(llm\.request|usage\.record)"`)
 	for n := len(lines) - 1; n >= 0; n-- {
 		raw := lines[n]
-		if !envelope.Match(raw[:min(len(raw), 128)]) {
+		match := envelope.FindSubmatch(raw[:min(len(raw), 128)])
+		if match == nil {
 			continue
 		}
 		if len(raw) > maxRecordBytes {
@@ -368,6 +370,7 @@ func readKimiObservation(root string, row KimiSession, p Process, now time.Time)
 		if e != nil {
 			return kimiObservation{}, "native-metadata-invalid"
 		}
+		kind = string(match[1])
 		break
 	}
 	if request == nil {
@@ -375,7 +378,19 @@ func readKimiObservation(root string, row KimiSession, p Process, now time.Time)
 	}
 	at := kimiTime(request["time"])
 	m, step := model(request["model"]), text(request["turnStep"])
-	if request["kind"] != "loop" || m == "" || !nativePattern.MatchString(step) || len(step) > 128 || request["modelAlias"] != nil && model(request["modelAlias"]) == "" {
+	valid := false
+	switch kind {
+	case "llm.request":
+		valid = request["kind"] == "loop" && m != "" && nativePattern.MatchString(step) && len(step) <= 128 && (request["modelAlias"] == nil || model(request["modelAlias"]) != "")
+	case "usage.record":
+		valid = request["usageScope"] == "turn" && m != "" && (request["modelAlias"] == nil || model(request["modelAlias"]) != "")
+		if valid {
+			parts := strings.Split(m, "/")
+			m = model(parts[len(parts)-1])
+			valid = m != ""
+		}
+	}
+	if !valid {
 		return kimiObservation{}, "native-metadata-unavailable-or-invalid"
 	}
 	if !afterStart(at, p) || !fresh(at, now) {
