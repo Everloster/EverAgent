@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**59 篇已学习**，**10 篇有相关报告**，**433 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**60 篇已学习**，**10 篇有相关报告**，**433 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 16 篇 |
+| [2026-11](#m202611) | 151 篇 | 17 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -709,7 +709,11 @@
 </details>
 
 <details>
-<summary><strong>Google Developers · 2 篇</strong></summary>
+<summary><strong>Google Developers · 3 篇 · 1 篇已学习</strong></summary>
+
+- **11-11** [A2UI 1.0：让 Agent 用原生交互界面回答](https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences "A2UI 1.0: Build delightful, fast, reliable, agentic experiences") · **已学习**
+
+  介绍稳定版生成式 UI 协议、双向函数调用、数据绑定和多平台渲染器；不同客户端适配进度不同，部分仍在使用 0.9 系列。 [阅读报告](../ai-learning/reports/knowledge_reports/A2UI_1_0_Agent界面的数据绑定与交互协议_深度解析_20261116.md)
 
 - **11-06** [Agent 注意力偏移：旧 TODO 怎样让任务跑偏](https://developers.googleblog.com/agent-distraction "Agent Distraction") · 未做
 
@@ -2028,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，59 篇原文对应 50 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，60 篇原文对应 51 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [A2UI 1.0：Agent 描述界面，应用掌握渲染、数据与执行边界](../ai-learning/reports/knowledge_reports/A2UI_1_0_Agent界面的数据绑定与交互协议_深度解析_20261116.md) · 对应本页 1 篇原文。
 
 - [Kitesurf：给 Agent 换一种浏览器引擎，省下了什么，又需要补什么？](../ai-learning/reports/knowledge_reports/Kitesurf_Agent浏览器的执行隔离与部署_深度解析_20261116.md) · 对应本页 1 篇原文。
 
@@ -2192,7 +2198,7 @@
 | [Anthropic](https://www.anthropic.com/engineering) | 28 | 工程与研究目录补到 11 月 13 日的安全评测指南，已回读正文；新闻目录中的非技术公告未纳入，旧经济情景文章日期缺口保留。 |
 | [Google Research](https://research.google/blog/) | 13 | RSS 与原始页面回源连接失败，搜索补到 /teamwork、Agile Deliberation 和可穿戴高血压检测；已取得正文但尚未核实日期，单列待补，不计入近期新增。 |
 | [Google DeepMind](https://deepmind.google/discover/blog/) | 27 | 已复查目录并解压官方 RSS，补入 Gemini 4 Hydrogen 与天气 AI 数据开放两篇。天气文章 RSS 日期与正文冲突，原始 HTML 确认发表于 11 月 13 日，按原文收录；搜索中的 DiLoCo 等旧文未作新增。 |
-| [Google Developers](https://developers.googleblog.com/) | 18 | 已复查搜索和目录，返回内容仍偏旧；家居与 A2A 等候选未取得近期发布日期，近期及分页历史仍可能遗漏。 |
+| [Google Developers](https://developers.googleblog.com/) | 19 | 本次学习补入 11 月 11 日的 A2UI 1.0 发布条目。已复查搜索和目录，返回内容仍偏旧；家居与 A2A 等候选未取得近期发布日期，近期及分页历史仍可能遗漏。 |
 | [Microsoft Research](https://www.microsoft.com/en-us/research/blog/) | 12 | 已核对官方 RSS 并复查目录，窗口内的 Lazarus 研究已收录；本轮未取得需新增的日期已核实条目，历史覆盖仍主要从 9 月下旬开始。 |
 | [Apple 机器学习研究](https://machinelearning.apple.com/) | 15 | 已核对官方订阅，窗口内返回的四篇均已收录；另有 4 篇只标月份，9 月历史可能不全。 |
 | [Meta AI / FAIR](https://ai.meta.com/blog/) | 0 | 本轮搜索未取得可核实的窗口内新文；此前目录与近期覆盖不足的缺口保留。 |
