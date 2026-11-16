@@ -20,6 +20,7 @@
 | 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
+| 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | podcast-learning |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
 | 2026-11-16 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Helion 怎样少做调优：从内核结构估算资源，再决定执行配置](../ai-learning/reports/knowledge_reports/Helion_%E7%BC%96%E8%AF%91%E6%9C%9F%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98%E6%88%90%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [十字路口对谈谷雨：当模型进步推翻旧方案，持续学习与创业该怎样重新定位](../podcast-learning/reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) | podcast-learning |
 | 2026-11-15 | [具身智能的四种一线判断：数据、模型与商业化，为什么还没有一把统一的尺子](../podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md) | podcast-learning |
-| 2026-11-15 | [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md) | ai-learning |
 
 ## 🤖 AI Learning（214 篇）
 
@@ -377,7 +377,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（135 篇）
+## 🎙️ Podcast Learning（136 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -389,6 +389,7 @@
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | `ai-learning`, `attention`, `information-anxiety`, `personal-knowledge`, `judgment` |
 | 2026-11-16 | [吴欣鸿谈美图：模型能力普及以后，应用还要做好哪些事？](../podcast-learning/reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) | `ai-application`, `meitu`, `product-development`, `model-routing`, `creator-tools`, `globalization` |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
+| 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | `ai-safety`, `effective-altruism`, `rationalism`, `dacc`, `governance`, `philanthropy` |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | `agent-workflow`, `acceptance`, `personal-assistant`, `attention`, `product-judgment` |
 | 2026-11-16 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | `ai-content`, `creative-workflow`, `distribution`, `platform-economy`, `unit-economics` |
