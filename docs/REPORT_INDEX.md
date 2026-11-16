@@ -20,6 +20,7 @@
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
 | 2026-11-16 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
+| 2026-11-16 | [Helion 怎样少做调优：从内核结构估算资源，再决定执行配置](../ai-learning/reports/knowledge_reports/Helion_%E7%BC%96%E8%AF%91%E6%9C%9F%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98%E6%88%90%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [Decision Models：不生成答案文本，直接返回带概率的类型化决策](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | podcast-learning |
 | 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | web-surfing |
@@ -31,9 +32,8 @@
 | 2026-11-15 | [Token Pooling 感知训练：压缩检索向量时，怎样保住真正有用的匹配](../ai-learning/reports/knowledge_reports/TokenPooling%E6%84%9F%E7%9F%A5%E8%AE%AD%E7%BB%83_%E5%A4%9A%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8E%92%E5%BA%8F%E4%BF%9D%E6%8C%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](../ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | web-surfing |
-| 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | podcast-learning |
 
-## 🤖 AI Learning（211 篇）
+## 🤖 AI Learning（212 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -42,6 +42,7 @@
 | 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `vllm`, `multimodal-serving`, `disaggregation`, `embedding-cache`, `inference` |
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `xy-problem`, `evaluation`, `user-intent`, `pragmatics`, `llm-judge` |
 | 2026-11-16 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `gpu`, `checkpoint-restore`, `cold-start`, `kubernetes`, `inference-serving` |
+| 2026-11-16 | [Helion 怎样少做调优：从内核结构估算资源，再决定执行配置](../ai-learning/reports/knowledge_reports/Helion_%E7%BC%96%E8%AF%91%E6%9C%9F%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98%E6%88%90%E6%9C%AC_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | `helion`, `triton`, `autotuning`, `gpu-kernel`, `compiler`, `resource-model` |
 | 2026-11-16 | [Decision Models：不生成答案文本，直接返回带概率的类型化决策](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `decision-model`, `classification`, `calibration`, `structured-output`, `hugging-face` |
 | 2026-11-16 | [AI 安全评测测到了什么：从拒绝率到构念效度、裁判校准与统计不确定性](../ai-learning/reports/knowledge_reports/AI%E5%AE%89%E5%85%A8%E8%AF%84%E6%B5%8B_%E6%9E%84%E5%BF%B5%E6%95%88%E5%BA%A6%E4%B8%8E%E8%A3%81%E5%88%A4%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `safety-evaluation`, `construct-validity`, `llm-judge`, `statistics` |
 | 2026-11-15 | [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md) | `llama.cpp`, `ggml`, `api`, `abi`, `local-inference`, `reproducibility` |
