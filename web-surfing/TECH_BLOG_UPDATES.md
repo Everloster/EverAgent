@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**58 篇已学习**，**10 篇有相关报告**，**434 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **502 篇**日期已核实的文章：**59 篇已学习**，**10 篇有相关报告**，**433 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 150 篇 | 15 篇 |
+| [2026-11](#m202611) | 150 篇 | 16 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -518,11 +518,11 @@
 </details>
 
 <details>
-<summary><strong>Cloudflare AI · 4 篇</strong></summary>
+<summary><strong>Cloudflare AI · 4 篇 · 1 篇已学习</strong></summary>
 
-- **11-13** [Kitesurf 开源：运行在 Workers 上的 Agent 浏览器](https://blog.cloudflare.com/kitesurf-open-source "Kitesurf is now open source") · 未做
+- **11-13** [Kitesurf 开源：运行在 Workers 上的 Agent 浏览器](https://blog.cloudflare.com/kitesurf-open-source "Kitesurf is now open source") · **已学习**
 
-  介绍基于 Rust 与 WebAssembly 的实验性浏览器引擎，支持页面脚本、截图和 CDP，可本地运行或部署到自有 Workers。
+  介绍基于 Rust 与 WebAssembly 的实验性浏览器引擎，支持页面脚本、截图和 CDP，可本地运行或部署到自有 Workers。 [阅读报告](../ai-learning/reports/knowledge_reports/Kitesurf_Agent浏览器的执行隔离与部署_深度解析_20261116.md)
 
 - **11-13** [面对 AI 自动化渗透测试：更新防御与资产管理](https://blog.cloudflare.com/adapting-to-ai-penetration-testing-orchestrators "Adapting to AI penetration testing orchestrators: The Modern Security Model") · 未做
 
@@ -2028,10 +2028,12 @@
 
 ## 已有学习报告
 
-本轮清单中，58 篇原文对应 49 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，59 篇原文对应 50 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Kitesurf：给 Agent 换一种浏览器引擎，省下了什么，又需要补什么？](../ai-learning/reports/knowledge_reports/Kitesurf_Agent浏览器的执行隔离与部署_深度解析_20261116.md) · 对应本页 1 篇原文。
 
 - [HOPE 专家剪枝：联合删除的代价、误差上界与真实部署边界](../ai-learning/reports/knowledge_reports/HOPE_专家协作关系与MoE剪枝_深度解析_20261116.md) · 对应本页 1 篇原文。
 
