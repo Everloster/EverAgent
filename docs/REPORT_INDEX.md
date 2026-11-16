@@ -15,6 +15,7 @@
 | 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | podcast-learning |
 | 2026-11-16 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | podcast-learning |
+| 2026-11-16 | [吴欣鸿谈美图：模型能力普及以后，应用还要做好哪些事？](../podcast-learning/reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) | podcast-learning |
 | 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-15 | [llama.cpp 1.0：本地推理生态需要的，不只是更快的内核](../ai-learning/reports/knowledge_reports/llama_cpp_1_0_API_ABI%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E5%85%BC%E5%AE%B9%E6%80%A7_%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A_20261115.md) | ai-learning |
 | 2026-11-15 | [Token Pooling 感知训练：压缩检索向量时，怎样保住真正有用的匹配](../ai-learning/reports/knowledge_reports/TokenPooling%E6%84%9F%E7%9F%A5%E8%AE%AD%E7%BB%83_%E5%A4%9A%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8E%92%E5%BA%8F%E4%BF%9D%E6%8C%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](../ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
-| 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | web-surfing |
 
 ## 🤖 AI Learning（212 篇）
 
@@ -375,7 +375,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（134 篇）
+## 🎙️ Podcast Learning（135 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -385,6 +385,7 @@
 | 2026-11-16 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | `enterprise-ai`, `rubric`, `evaluation`, `identity`, `data-dictionary`, `fde` |
 | 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | `enterprise-ai`, `roi`, `workflow`, `inference-cost`, `vertical-ai`, `ai-governance` |
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | `ai-learning`, `attention`, `information-anxiety`, `personal-knowledge`, `judgment` |
+| 2026-11-16 | [吴欣鸿谈美图：模型能力普及以后，应用还要做好哪些事？](../podcast-learning/reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) | `ai-application`, `meitu`, `product-development`, `model-routing`, `creator-tools`, `globalization` |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | `agent-workflow`, `acceptance`, `personal-assistant`, `attention`, `product-judgment` |
