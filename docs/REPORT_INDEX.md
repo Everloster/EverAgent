@@ -12,6 +12,7 @@
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 | 2026-11-16 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | podcast-learning |
+| 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | podcast-learning |
 | 2026-11-16 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | podcast-learning |
 | 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-15 | [LLMON：让模型看见指令与数据的边界，为什么仍不等于强制安全](../ai-learning/reports/knowledge_reports/LLMON_%E6%8C%87%E4%BB%A4%E6%95%B0%E6%8D%AE%E5%88%86%E7%A6%BB%E4%B8%8E%E6%98%BE%E5%BC%8F%E6%89%A7%E8%A1%8C%E7%BB%91%E5%AE%9A_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | web-surfing |
 | 2026-11-15 | [42章经对谈贺嘉琛：企业需要的不是更多 Agent，而是能够共同学习的工作系统](../podcast-learning/reports/2026-11-14_42zhangjing_jiachen-enterprise-agent.md) | podcast-learning |
-| 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | web-surfing |
 
 ## 🤖 AI Learning（211 篇）
 
@@ -374,7 +374,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（133 篇）
+## 🎙️ Podcast Learning（134 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -382,6 +382,7 @@
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | `decision-model`, `distillation`, `evaluation`, `edge-ai`, `latency` |
 | 2026-11-16 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | `agent-commerce`, `authorization`, `payments`, `kya`, `ap2`, `trust` |
 | 2026-11-16 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | `enterprise-ai`, `rubric`, `evaluation`, `identity`, `data-dictionary`, `fde` |
+| 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | `enterprise-ai`, `roi`, `workflow`, `inference-cost`, `vertical-ai`, `ai-governance` |
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | `ai-learning`, `attention`, `information-anxiety`, `personal-knowledge`, `judgment` |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | `enterprise-ai`, `evaluation`, `data-governance`, `agent-rl`, `fde`, `ai-assets` |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | `personal-ai`, `memory`, `proactive-agent`, `privacy`, `business-model` |

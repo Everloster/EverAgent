@@ -14,7 +14,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **369 条单集发布记录**：**84 条已有专题报告**，**1 条仅有相关报告**，**284 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **369 条单集发布记录**：**85 条已有专题报告**，**1 条仅有相关报告**，**283 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -22,11 +22,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 126 条 | 64 条 |
+| [AI / 科技](#tech) | 126 条 | 65 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 84 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 85 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -293,7 +293,7 @@
 <a id="show-wandian-latetalk"></a>
 
 <details>
-<summary><strong>晚点聊 LateTalk · 7 条 · 5 条有报告</strong></summary>
+<summary><strong>晚点聊 LateTalk · 7 条 · 6 条有报告</strong></summary>
 
 [公开订阅](https://podcast.latepost.com/rss) · [更早单集索引](./wiki/show-indexes/wandian-latetalk.md)
 
@@ -301,7 +301,7 @@
 | --- | --- | --- | --- |
 | 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | [阅读报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |
 | 2026-11-06 | [185｜李肇宇：Anthropic 的定价逻辑与潜在风险](https://podcast.latepost.com/185 "185: Anthropic招股书丨与Amont李肇宇聊定价逻辑和潜在风险") | 1小时0分 | 未做 |
-| 2026-11-06 | [186｜张璐：大企业怎样评估 AI 需求与回报](https://podcast.latepost.com/186 "186: Anthropic招股书丨“银行也有百亿预算”，与Fusion Fund张璐聊大企业在想什么") | 1小时13分 | 未做 |
+| 2026-11-06 | [186｜张璐：大企业怎样评估 AI 需求与回报](https://podcast.latepost.com/186 "186: Anthropic招股书丨“银行也有百亿预算”，与Fusion Fund张璐聊大企业在想什么") | 1小时13分 | [阅读报告](./reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) |
 | 2026-10-15 | [184｜具身季报：通用模型会吃掉 Robotics 吗？](https://podcast.latepost.com/184 "184: 与陈哲的「具身季报26Q3」：Astra冲击后，通用模型会吃掉Robotics吗？") | 1小时46分 | [阅读报告](./reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) |
 | 2026-10-02 | [183｜AI 季报：Muse、Astra 与 OpenAI 的增长](https://podcast.latepost.com/183 "183: 与Henry的「AI季报26Q3」：Muse引爆个人助理、Astra进入机器人、OpenAI收入猛增") | 2小时7分 | [阅读报告](./reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) |
 | 2026-09-24 | [182｜梁琛奇：从抖音、猫箱到 AI 娱乐创业](https://podcast.latepost.com/182 "182: 对话梁琛奇：抖音、猫箱、创业，「他们都搞生产力，我想用 AI 创造开心」") | 3小时22分 | [阅读报告](./reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) |
