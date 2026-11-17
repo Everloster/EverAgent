@@ -15,6 +15,7 @@
 | 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | podcast-learning |
+| 2026-11-17 | [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_%E8%BF%87%E6%9C%9F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B2%E6%89%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
@@ -31,9 +32,8 @@
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | podcast-learning |
-| 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
 
-## 🤖 AI Learning（220 篇）
+## 🤖 AI Learning（221 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -41,6 +41,7 @@
 | 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `sglang`, `spyre`, `pytorch`, `ai-assisted-development`, `kv-cache`, `benchmark` |
 | 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `toyblocks`, `robot-learning`, `vla`, `generalization`, `world-model`, `sim-to-real` |
 | 2026-11-17 | [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `sdma`, `rccl`, `rocshmem`, `gpu-communication`, `memory-ordering`, `inference` |
+| 2026-11-17 | [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_%E8%BF%87%E6%9C%9F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B2%E6%89%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-distraction`, `task-scope`, `context-engineering`, `technical-debt`, `observability`, `causal-inference` |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | `executorch`, `webgpu`, `browser-inference`, `aot-export`, `quantization`, `edge-ai` |
 | 2026-11-16 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `persistent-agent`, `sandbox`, `control-plane`, `identity`, `security` |
 | 2026-11-16 | [卡兹克的 10 类 Agent 提示法：方法拆解与可直接复制的 Prompt](../ai-learning/reports/knowledge_reports/%E6%8B%86%E4%B9%A6_%E5%8D%A1%E5%85%B9%E5%85%8B10%E4%B8%AAAgentPrompt_20261116.md) | `prompt`, `coding-agent`, `problem-framing`, `code-review`, `engineering-workflow` |

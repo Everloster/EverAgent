@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**64 篇已学习**，**10 篇有相关报告**，**429 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**65 篇已学习**，**10 篇有相关报告**，**428 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 151 篇 | 21 篇 |
+| [2026-11](#m202611) | 151 篇 | 22 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -709,15 +709,15 @@
 </details>
 
 <details>
-<summary><strong>Google Developers · 3 篇 · 1 篇已学习</strong></summary>
+<summary><strong>Google Developers · 3 篇 · 2 篇已学习</strong></summary>
 
 - **11-11** [A2UI 1.0：让 Agent 用原生交互界面回答](https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences "A2UI 1.0: Build delightful, fast, reliable, agentic experiences") · **已学习**
 
   介绍稳定版生成式 UI 协议、双向函数调用、数据绑定和多平台渲染器；不同客户端适配进度不同，部分仍在使用 0.9 系列。 [阅读报告](../ai-learning/reports/knowledge_reports/A2UI_1_0_Agent界面的数据绑定与交互协议_深度解析_20261116.md)
 
-- **11-06** [Agent 注意力偏移：旧 TODO 怎样让任务跑偏](https://developers.googleblog.com/agent-distraction "Agent Distraction") · 未做
+- **11-06** [Agent 注意力偏移：旧 TODO 怎样让任务跑偏](https://developers.googleblog.com/agent-distraction "Agent Distraction") · **已学习**
 
-  通过代码中的 TODO 与工单状态分析无关调查、过期问题和任务范围扩张，讨论清理上下文噪声的价值。
+  通过代码中的 TODO 与工单状态分析无关调查、过期问题和任务范围扩张，讨论清理上下文噪声的价值。 [阅读报告](../ai-learning/reports/knowledge_reports/AgentDistraction_过期任务与上下文干扰_深度解析_20261117.md)
 
 - **11-03** [按任务成本路由：选择 Gemini 模型与思考深度](https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels "Cost per task: Using cheap classifiers to route across Gemini models and thinking levels") · 未做
 
@@ -2032,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，64 篇原文对应 55 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，65 篇原文对应 56 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_过期任务与上下文干扰_深度解析_20261117.md) · 对应本页 1 篇原文。
 
 - [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI辅助适配的接口与验证_深度解析_20261117.md) · 对应本页 1 篇原文。
 
