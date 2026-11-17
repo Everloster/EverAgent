@@ -14,7 +14,7 @@
 
 **本次补充 5 期**，增量检查覆盖 2026-11-08—2026-11-15；历史单集、人工主题和学习记录继续保留。
 
-本页收录 **369 条单集发布记录**：**90 条已有专题报告**，**1 条仅有相关报告**，**278 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **369 条单集发布记录**：**91 条已有专题报告**，**1 条仅有相关报告**，**277 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 43 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -22,11 +22,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 126 条 | 70 条 |
+| [AI / 科技](#tech) | 126 条 | 71 条 |
 | [商业 / 投资 / 职场](#business) | 131 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 112 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 90 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 91 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -109,7 +109,7 @@
 <a id="show-crossing"></a>
 
 <details>
-<summary><strong>十字路口Crossing · 13 条 · 11 条有报告</strong></summary>
+<summary><strong>十字路口Crossing · 13 条 · 12 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/68fyjknth9hj) · [更早单集索引](./wiki/show-indexes/crossing.md)
 
@@ -126,7 +126,7 @@
 | 2026-09-21 | [徐梦迪：具身智能的 Scaling Law 与泛化](https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece "“我看到了 Scaling Law 的信号” &#124; 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/ltDn8TRgg55FlUENUlLokxDiz1Y5.m4a) | 1小时21分 | [阅读报告](./reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) |
 | 2026-09-17 | [王家伟：24 岁具身智能首席科学家的选择](https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488 "于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/litRgTDfOZReriLLT7MtUMkNI-Lr.m4a) | 1小时10分 | [阅读报告](./reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md) |
 | 2026-09-14 | [具身智能走到十字路口：四家团队的一线判断](https://www.xiaoyuzhoufm.com/episode/6aa67b319d32647781685e95 "当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/ls6W3MRJJRECuQG33yC3LBDmDZPf.m4a) | 43分钟 | [阅读报告](./reports/2026-09-14_crossing_embodied-ai-four-teams.md) |
-| 2026-09-07 | [陈安妮：创业起落与 AI 时代的新冒险](https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28 "她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/loMvN15fklK80bHKREiEd1iOtUOf.m4a) | 1小时17分 | 未做 |
+| 2026-09-07 | [陈安妮：创业起落与 AI 时代的新冒险](https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28 "她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/loMvN15fklK80bHKREiEd1iOtUOf.m4a) | 1小时17分 | [阅读报告](./reports/2026-09-07_crossing_chen-anni-content-ai.md) |
 | 2026-09-03 | [卷卷：从抖音到 AI 3D，押注制造业 OS](https://www.xiaoyuzhoufm.com/episode/6a97a9daa0210c197dcc1ba0 "对卷卷的3小时访谈：从抖音到AI 3D、创业的过山车、成为制造业OS的野心、基础模型不会吞噬一切！") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lh4SK1Hb1cwhPR-tTGQrbIQ-psOP.m4a) | 2小时30分 | 未做 |
 
 </details>
