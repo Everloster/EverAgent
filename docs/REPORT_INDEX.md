@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [Agent 游戏怎样才好玩：自由输入之外，还需要规则、记忆与反馈](../podcast-learning/reports/2026-10-08_linkstart_133-agent-games.md) | podcast-learning |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | podcast-learning |
 | 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | web-surfing |
-| 2026-11-16 | [AI 漫剧怎样成为一门生意：制作效率、发行分工与平台依赖要分开看](../podcast-learning/reports/2026-11-10_luanfanshu_278-ai-comics.md) | podcast-learning |
 
 ## 🤖 AI Learning（216 篇）
 
@@ -653,10 +653,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（58 篇）
+## 🏄 Web Surfing（59 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | `ai_news`, `daily` |
 | 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | `ai_news`, `daily` |
 | 2026-11-15 | [AI 行业日报 · 2026-11-15](../web-surfing/reports/ai-news-daily-2026-11-15.md) | `ai_news`, `daily` |
 | 2026-11-14 | [AI 行业日报 · 2026-11-14](../web-surfing/reports/ai-news-daily-2026-11-14.md) | `ai_news`, `daily` |
