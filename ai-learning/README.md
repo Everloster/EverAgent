@@ -18,6 +18,7 @@
 ## 几条阅读线索
 
 - **Agent 怎样把事情做完**：[请求全链路：连续对话与工具调用](./reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) → [续篇：逐字输出、任务进度与断线恢复](./reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)。前篇讲模型与程序怎样配合，续篇讲结果怎样送到眼前、连接中断后怎样判断任务状态。
+- **怎样用 Agent 设计可靠工具**：[Agent 友好 CLI：从真实任务到独立验收](./reports/knowledge_reports/Agent友好CLI_真实任务驱动设计与独立验收_深度解析_20261117.md)，以任务契约、独立使用者和真实状态验证串起设计、实现、失败恢复与回归。
 - **Agent 怎样从经验里学习**：[Anthropic 记忆组件深读](./reports/knowledge_reports/Anthropic_Agent记忆组件_显著性判断与Dreaming_深度解析_20261108.md)，从错误导航、企业 wiki 和合同条款案例，理解显著性判断、离线纠错、来源回查与维护成本。
 - **从机制入手**：[Transformer 精读](./reports/paper_analyses/01_transformer_2017.md) → [Self-Attention 深度解析](./reports/knowledge_reports/self_attention_深度解析.md)。
 - **从规模化入手**：[Scaling Laws 精读](./reports/paper_analyses/05_scaling_laws_2020.md) → [Scaling Laws 深度解析](./reports/knowledge_reports/Scaling_Laws_深度解析.md)，结合时间线中的硬件彩票视角。
