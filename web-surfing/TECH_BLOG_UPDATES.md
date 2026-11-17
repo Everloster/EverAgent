@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**61 篇已学习**，**10 篇有相关报告**，**432 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**62 篇已学习**，**10 篇有相关报告**，**431 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 151 篇 | 18 篇 |
+| [2026-11](#m202611) | 151 篇 | 19 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -196,11 +196,11 @@
 
 
 <details>
-<summary><strong>AMD ROCm · 18 篇</strong></summary>
+<summary><strong>AMD ROCm · 18 篇 · 1 篇已学习</strong></summary>
 
-- **11-13** [GPU 发起 SDMA：RCCL 与 rocSHMEM 的跨卡通信](https://rocm.blogs.amd.com/software-tools-optimization/gpu-initiated-sdma/README.html "GPU-Initiated DMA Copy Engines in RCCL and rocSHMEM") · 未做
+- **11-13** [GPU 发起 SDMA：RCCL 与 rocSHMEM 的跨卡通信](https://rocm.blogs.amd.com/software-tools-optimization/gpu-initiated-sdma/README.html "GPU-Initiated DMA Copy Engines in RCCL and rocSHMEM") · **已学习**
 
-  介绍由 GPU 内核触发节点内 DMA 拷贝，将数据传输与计算资源分开调度，以改善推理中的通信重叠。
+  介绍由 GPU 内核触发节点内 DMA 拷贝，将数据传输与计算资源分开调度，以改善推理中的通信重叠。 [阅读报告](../ai-learning/reports/knowledge_reports/GPU发起SDMA_RCCL与rocSHMEM通信_深度解析_20261117.md)
 
 - **11-12** [AMD Life Science 26.08：完整的医学影像栈](https://rocm.blogs.amd.com/artificial-intelligence/rocm-ls-2608/README.html "AMD Life Science 26.08: A Complete Medical Imaging Stack on AMD Instinct™ GPUs") · 未做
 
@@ -2032,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，61 篇原文对应 52 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，62 篇原文对应 53 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU发起SDMA_RCCL与rocSHMEM通信_深度解析_20261117.md) · 对应本页 1 篇原文。
 
 - [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent失败归因_测试生成与Harness修复_深度解析_20261117.md) · 对应本页 1 篇原文。
 
