@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
+| 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | podcast-learning |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [HOPE 专家剪枝：联合删除的代价、误差上界与真实部署边界](../ai-learning/reports/knowledge_reports/HOPE_%E4%B8%93%E5%AE%B6%E5%8D%8F%E4%BD%9C%E5%85%B3%E7%B3%BB%E4%B8%8EMoE%E5%89%AA%E6%9E%9D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [Decision Models：不生成答案文本，直接返回带概率的类型化决策](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Agent 游戏怎样才好玩：自由输入之外，还需要规则、记忆与反馈](../podcast-learning/reports/2026-10-08_linkstart_133-agent-games.md) | podcast-learning |
-| 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | podcast-learning |
 
 ## 🤖 AI Learning（217 篇）
 
@@ -380,10 +380,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（138 篇）
+## 🎙️ Podcast Learning（139 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | `robotics`, `gpt-6-astra`, `vla`, `robot-data`, `simulation`, `evaluation` |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | `rsi`, `sglang`, `evaluation`, `kv-cache`, `full-duplex`, `speech` |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | `decision-model`, `distillation`, `evaluation`, `edge-ai`, `latency` |
 | 2026-11-16 | [李桢谈企业 AI：项目做得出来，组织为什么接不住？](../podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) | `enterprise-ai`, `fde`, `workflow`, `organizational-change`, `data-governance`, `business-value` |
