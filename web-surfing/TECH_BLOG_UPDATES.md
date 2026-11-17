@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**60 篇已学习**，**10 篇有相关报告**，**433 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**61 篇已学习**，**10 篇有相关报告**，**432 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 151 篇 | 17 篇 |
+| [2026-11](#m202611) | 151 篇 | 18 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -274,7 +274,7 @@
 
 
 <details>
-<summary><strong>NVIDIA 技术博客 · 24 篇 · 1 篇已学习</strong></summary>
+<summary><strong>NVIDIA 技术博客 · 24 篇 · 2 篇已学习</strong></summary>
 
 - **11-13** [cuBLAS 新 FP64 算法：在整数 Tensor Core 上做高精度计算](https://developer.nvidia.com/blog/faster-scientific-simulations-with-new-fp64-algorithms-in-nvidia-cublas "Faster Scientific Simulations with New FP64 Algorithms in NVIDIA cuBLAS") · 未做
 
@@ -348,9 +348,9 @@
 
   介绍如何协调不同 Agent 收集证据、分析故障，并把分散的生产信息汇总成可追踪的调查过程。
 
-- **11-04** [NVIDIA NeMo：把 Agent 失败变成测试与 Harness 修复](https://developer.nvidia.com/blog/use-nvidia-nemo-to-turn-agent-failures-into-tests-and-harness-fixes "Use NVIDIA NeMo to Turn Agent Failures into Tests and Harness Fixes") · 未做
+- **11-04** [NVIDIA NeMo：把 Agent 失败变成测试与 Harness 修复](https://developer.nvidia.com/blog/use-nvidia-nemo-to-turn-agent-failures-into-tests-and-harness-fixes "Use NVIDIA NeMo to Turn Agent Failures into Tests and Harness Fixes") · **已学习**
 
-  用轨迹定位问题、生成针对性评测，再修改指令并比较开发集与留出任务；示例覆盖工具、记忆、技能和控制流程。
+  从合成企业轨迹构建消息授权评测，比较开发任务与留出任务；附公开验证器的离线检查，并区分权限边界、内容质量与实际执行。 [阅读报告](../ai-learning/reports/knowledge_reports/NeMo_Agent失败归因_测试生成与Harness修复_深度解析_20261117.md)
 
 - **11-02** [分布式训练的自动故障恢复](https://developer.nvidia.com/blog/keep-distributed-training-running-with-automated-workload-recovery "Keep Distributed Training Running with Automated Workload Recovery") · 未做
 
@@ -2032,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，60 篇原文对应 51 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，61 篇原文对应 52 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent失败归因_测试生成与Harness修复_深度解析_20261117.md) · 对应本页 1 篇原文。
 
 - [A2UI 1.0：Agent 描述界面，应用掌握渲染、数据与执行边界](../ai-learning/reports/knowledge_reports/A2UI_1_0_Agent界面的数据绑定与交互协议_深度解析_20261116.md) · 对应本页 1 篇原文。
 

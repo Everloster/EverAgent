@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-17 · [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](./ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
 - 2026-11-17 · [AI 行业日报 · 2026-11-17](./web-surfing/reports/ai-news-daily-2026-11-17.md)
 - 2026-11-16 · [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](./podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)
 - 2026-11-16 · [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](./podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md)
 - 2026-11-16 · [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](./ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md)
-- 2026-11-16 · [李桢谈企业 AI：项目做得出来，组织为什么接不住？](./podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 216 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 217 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

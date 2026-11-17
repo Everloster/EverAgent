@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
@@ -31,12 +32,12 @@
 | 2026-11-16 | [Decision Models：不生成答案文本，直接返回带概率的类型化决策](../ai-learning/reports/knowledge_reports/DecisionModels_%E9%9D%9E%E7%94%9F%E6%88%90%E5%BC%8F%E5%86%B3%E7%AD%96%E4%B8%8E%E6%A6%82%E7%8E%87%E6%8E%A5%E5%8F%A3_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Agent 游戏怎样才好玩：自由输入之外，还需要规则、记忆与反馈](../podcast-learning/reports/2026-10-08_linkstart_133-agent-games.md) | podcast-learning |
 | 2026-11-16 | [AI 都能做完，人却验收不完：产出增长之后，任务、判断与生活该怎样重新分工](../podcast-learning/reports/2026-10-14_ai-lianjinshu_ai-output-acceptance.md) | podcast-learning |
-| 2026-11-16 | [AI 行业日报 · 2026-11-16](../web-surfing/reports/ai-news-daily-2026-11-16.md) | web-surfing |
 
-## 🤖 AI Learning（216 篇）
+## 🤖 AI Learning（217 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-evaluation`, `nemo`, `harness`, `trace-analysis`, `authorization`, `verifier` |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | `executorch`, `webgpu`, `browser-inference`, `aot-export`, `quantization`, `edge-ai` |
 | 2026-11-16 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | `persistent-agent`, `sandbox`, `control-plane`, `identity`, `security` |
 | 2026-11-16 | [卡兹克的 10 类 Agent 提示法：方法拆解与可直接复制的 Prompt](../ai-learning/reports/knowledge_reports/%E6%8B%86%E4%B9%A6_%E5%8D%A1%E5%85%B9%E5%85%8B10%E4%B8%AAAgentPrompt_20261116.md) | `prompt`, `coding-agent`, `problem-framing`, `code-review`, `engineering-workflow` |
