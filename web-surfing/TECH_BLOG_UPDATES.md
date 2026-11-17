@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**63 篇已学习**，**10 篇有相关报告**，**430 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**64 篇已学习**，**10 篇有相关报告**，**429 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 151 篇 | 20 篇 |
+| [2026-11](#m202611) | 151 篇 | 21 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -458,15 +458,15 @@
 
 
 <details>
-<summary><strong>PyTorch · 7 篇 · 2 篇已学习</strong></summary>
+<summary><strong>PyTorch · 7 篇 · 3 篇已学习</strong></summary>
 
 - **11-12** [默认即快：Helion 内核的编译期启发式](https://pytorch.org/blog/fast-by-default-compile-time-heuristics-for-helion-kernels "Fast by Default: Compile-Time Heuristics for Helion Kernels") · **已学习**
 
   分析内核 IR 与数据流，按 matmul、reduction、pointwise 分类后直接选择快速配置，减少耗时的自动调优。 [阅读报告](../ai-learning/reports/knowledge_reports/Helion_编译期启发式与内核调优成本_深度解析_20261116.md)
 
-- **11-12** [一周内用 AI 把 SGLang 接入 IBM Spyre](https://pytorch.org/blog/integrating-sglang-into-spyre-in-under-a-week-with-ai "Integrating SGLang into Spyre in Under a Week with AI") · 未做
+- **11-12** [一周内用 AI 把 SGLang 接入 IBM Spyre](https://pytorch.org/blog/integrating-sglang-into-spyre-in-under-a-week-with-ai "Integrating SGLang into Spyre in Under a Week with AI") · **已学习**
 
-  两人团队借助 AI 编码 Agent 写出约 1500 行插件，把 SGLang 接到 IBM Spyre；过程细节以原文为准。
+  两人团队借助 AI 编码 Agent 写出约 1500 行插件，把 SGLang 接到 IBM Spyre；过程细节以原文为准。 [阅读报告](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI辅助适配的接口与验证_深度解析_20261117.md)
 
 - **11-12** [在欧洲公共基础设施上训练 1T 参数 MoE](https://pytorch.org/blog/training-a-1t-parameter-moe-on-eu-public-infrastructure-with-pytorch-and-torchtitan "Training a 1T-Parameter MoE on EU public infrastructure with PyTorch and TorchTitan") · 未做
 
@@ -2032,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，63 篇原文对应 54 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，64 篇原文对应 55 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI辅助适配的接口与验证_深度解析_20261117.md) · 对应本页 1 篇原文。
 
 - [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_机器人学习的可控变量与评测_深度解析_20261117.md) · 对应本页 1 篇原文。
 

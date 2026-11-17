@@ -10,6 +10,7 @@
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | podcast-learning |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | podcast-learning |
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
+| 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | podcast-learning |
@@ -31,13 +32,13 @@
 | 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | podcast-learning |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
 | 2026-11-16 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
-| 2026-11-16 | [Kitesurf：给 Agent 换一种浏览器引擎，省下了什么，又需要补什么？](../ai-learning/reports/knowledge_reports/Kitesurf_Agent%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%89%A7%E8%A1%8C%E9%9A%94%E7%A6%BB%E4%B8%8E%E9%83%A8%E7%BD%B2_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 
-## 🤖 AI Learning（219 篇）
+## 🤖 AI Learning（220 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-evaluation`, `nemo`, `harness`, `trace-analysis`, `authorization`, `verifier` |
+| 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `sglang`, `spyre`, `pytorch`, `ai-assisted-development`, `kv-cache`, `benchmark` |
 | 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `toyblocks`, `robot-learning`, `vla`, `generalization`, `world-model`, `sim-to-real` |
 | 2026-11-17 | [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `sdma`, `rccl`, `rocshmem`, `gpu-communication`, `memory-ordering`, `inference` |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | `executorch`, `webgpu`, `browser-inference`, `aot-export`, `quantization`, `edge-ai` |
