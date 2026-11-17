@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://www.ximalaya.com/sound/1015908823",
+  "source_ref": "sha256:282e057128cbdbf9b6f8a32670394dd15f410739e34752c16630f46ab16d591a",
+  "max_consecutive_limit": 3,
+  "audit": {
+    "ok": true,
+    "size": 141718,
+    "sha256": "282e057128cbdbf9b6f8a32670394dd15f410739e34752c16630f46ab16d591a",
+    "lines": 738,
+    "segments": 738,
+    "duration_seconds": 5902,
+    "max_consecutive_identical": 1,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  }
+}

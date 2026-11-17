@@ -17,6 +17,7 @@
 | 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | podcast-learning |
 | 2026-11-17 | [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_%E8%BF%87%E6%9C%9F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B2%E6%89%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
+| 2026-11-17 | [AI 原生组织的争论：管理工作减少后，谁负责、怎样分钱、业务是否真的变快](../podcast-learning/reports/2026-09-17_ai-lianjinshu_xcircle-xiaofei-ai-organization.md) | podcast-learning |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [ZooWork 胡宁谈企业 AI：真正值得留下的资产，是数据、判断与可持续改进的能力](../podcast-learning/reports/2026-11-03_guiji-lichang_34-zoowork-ai-assets.md) | podcast-learning |
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
-| 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | podcast-learning |
 
 ## 🤖 AI Learning（221 篇）
 
@@ -384,7 +384,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（142 篇）
+## 🎙️ Podcast Learning（143 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -392,6 +392,7 @@
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | `brain-computer-interface`, `meg`, `opm`, `temporal-interference`, `neural-decoding`, `clinical-evidence` |
 | 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | `ai-education`, `learning-transfer`, `community`, `creator-business`, `agent-workflow`, `long-tail` |
 | 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | `robotics`, `gpt-6-astra`, `vla`, `robot-data`, `simulation`, `evaluation` |
+| 2026-11-17 | [AI 原生组织的争论：管理工作减少后，谁负责、怎样分钱、业务是否真的变快](../podcast-learning/reports/2026-09-17_ai-lianjinshu_xcircle-xiaofei-ai-organization.md) | `ai-native-organization`, `accountability`, `agent-ownership`, `incentives`, `workflow`, `bottleneck` |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | `rsi`, `sglang`, `evaluation`, `kv-cache`, `full-duplex`, `speech` |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | `decision-model`, `distillation`, `evaluation`, `edge-ai`, `latency` |
 | 2026-11-16 | [李桢谈企业 AI：项目做得出来，组织为什么接不住？](../podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) | `enterprise-ai`, `fde`, `workflow`, `organizational-change`, `data-governance`, `business-value` |
