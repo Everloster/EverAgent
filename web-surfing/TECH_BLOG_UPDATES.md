@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-15（北京时间）** · **累计收录时段：2026-09-02—2026-11-13**
 
-检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**62 篇已学习**，**10 篇有相关报告**，**431 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **503 篇**日期已核实的文章：**63 篇已学习**，**10 篇有相关报告**，**430 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 151 篇 | 19 篇 |
+| [2026-11](#m202611) | 151 篇 | 20 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -376,7 +376,7 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 19 篇 · 6 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 19 篇 · 7 篇已学习</strong></summary>
 
 - **11-13** [SimReady：搭建机械臂抓取与放置仿真](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place "Build a Robot Pick-and-Place Simulation with SimReady Assets") · 未做
 
@@ -422,9 +422,9 @@
 
   补充不同口音的保留测试数据和分组结果，关注语音识别评测的代表性与数据泄漏问题。
 
-- **11-06** [ToyBlocks：用可控积木世界研究机器人学习](https://huggingface.co/blog/allenai/toyblocks "ToyBlocks: A controlled world for robot learning and evaluation") · 未做
+- **11-06** [ToyBlocks：用可控积木世界研究机器人学习](https://huggingface.co/blog/allenai/toyblocks "ToyBlocks: A controlled world for robot learning and evaluation") · **已学习**
 
-  Ai2 介绍自动生成任务和示范的仿真环境，让研究者改变数据与模型条件，再追踪机器人行为及失败原因。
+  Ai2 介绍自动生成任务和示范的仿真环境，让研究者改变数据与模型条件，再追踪机器人行为及失败原因。 [阅读报告](../ai-learning/reports/knowledge_reports/ToyBlocks_机器人学习的可控变量与评测_深度解析_20261117.md)
 
 - **11-05** [Cosmos 3：面向交互仿真的四组开放模型](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation") · 未做
 
@@ -2032,10 +2032,12 @@
 
 ## 已有学习报告
 
-本轮清单中，62 篇原文对应 53 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，63 篇原文对应 54 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_机器人学习的可控变量与评测_深度解析_20261117.md) · 对应本页 1 篇原文。
 
 - [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU发起SDMA_RCCL与rocSHMEM通信_深度解析_20261117.md) · 对应本页 1 篇原文。
 

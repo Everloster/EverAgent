@@ -20,9 +20,9 @@
 <!-- AUTO-RECENT:START -->
 - 2026-11-17 · [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](./podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md)
 - 2026-11-17 · [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](./ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
+- 2026-11-17 · [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](./ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
 - 2026-11-17 · [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](./ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
 - 2026-11-17 · [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](./podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md)
-- 2026-11-17 · [AI 行业日报 · 2026-11-17](./web-surfing/reports/ai-news-daily-2026-11-17.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 218 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 219 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
