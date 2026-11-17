@@ -20,9 +20,9 @@
 <!-- AUTO-RECENT:START -->
 - 2026-11-17 · [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](./podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md)
 - 2026-11-17 · [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](./podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md)
+- 2026-11-17 · [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](./podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md)
 - 2026-11-17 · [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](./ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
 - 2026-11-17 · [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](./ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
-- 2026-11-17 · [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](./ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 141 篇 | 60/61/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 142 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 59 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

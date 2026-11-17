@@ -9,6 +9,7 @@
 |------|------|------|
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | podcast-learning |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | podcast-learning |
+| 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | podcast-learning |
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [XYBench：AI 为什么知道更好的答案，却仍然围着错误的问题回答](../ai-learning/reports/knowledge_reports/XYBench_%E9%97%AE%E9%A2%98%E8%83%8C%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%9B%9E%E7%AD%94%E9%87%8D%E5%BF%83_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 | 2026-11-16 | [Vitalik 谈 AI 安全：捐赠怎样改变议程，安全又该由谁决定？](../podcast-learning/reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) | podcast-learning |
 | 2026-11-16 | [Personal AI 的托付边界：记得更多、主动更多，为什么不一定更值得信任](../podcast-learning/reports/2026-11-04_linkstart_137-personal-ai.md) | podcast-learning |
-| 2026-11-16 | [NVIDIA Snapshot：把初始化好的 GPU 进程变成可复用资产](../ai-learning/reports/knowledge_reports/NVIDIA_Snapshot_GPU%E5%86%B7%E5%90%AF%E5%8A%A8%E4%B8%8E%E7%8A%B6%E6%80%81%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 
 ## 🤖 AI Learning（220 篇）
 
@@ -383,12 +383,13 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（141 篇）
+## 🎙️ Podcast Learning（142 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | `interactive-narrative`, `generative-agents`, `livo`, `agent-memory`, `content-business`, `organizational-design` |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | `brain-computer-interface`, `meg`, `opm`, `temporal-interference`, `neural-decoding`, `clinical-evidence` |
+| 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | `ai-education`, `learning-transfer`, `community`, `creator-business`, `agent-workflow`, `long-tail` |
 | 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | `robotics`, `gpt-6-astra`, `vla`, `robot-data`, `simulation`, `evaluation` |
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | `rsi`, `sglang`, `evaluation`, `kv-cache`, `full-duplex`, `speech` |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | `decision-model`, `distillation`, `evaluation`, `edge-ai`, `latency` |
