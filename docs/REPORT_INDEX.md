@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | ai-learning |
 | 2026-11-18 | [AI 行业日报 · 2026-11-18](../web-surfing/reports/ai-news-daily-2026-11-18.md) | web-surfing |
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | podcast-learning |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | podcast-learning |
@@ -31,12 +32,12 @@
 | 2026-11-16 | [少楠谈 AI 与信息焦虑：答案可以外包，注意力、判断和自己的经历不能一起外包](../podcast-learning/reports/2026-11-06_zhixing-xiaojiuguan_257-shaonan-ai-information.md) | podcast-learning |
 | 2026-11-16 | [吴欣鸿谈美图：模型能力普及以后，应用还要做好哪些事？](../podcast-learning/reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) | podcast-learning |
 | 2026-11-16 | [卡兹克的 10 类 Agent 提示法：方法拆解与可直接复制的 Prompt](../ai-learning/reports/knowledge_reports/%E6%8B%86%E4%B9%A6_%E5%8D%A1%E5%85%B9%E5%85%8B10%E4%B8%AAAgentPrompt_20261116.md) | ai-learning |
-| 2026-11-16 | [vLLM EPD：拆开多模态编码、预填充与解码，真正难的是交接](../ai-learning/reports/knowledge_reports/vLLM_EPD_%E5%A4%9A%E6%A8%A1%E6%80%81%E7%BC%96%E7%A0%81%E6%8B%86%E5%88%86%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8E%A5_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 
-## 🤖 AI Learning（222 篇）
+## 🤖 AI Learning（223 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | `claude-code`, `code-mode`, `programmatic-tool-calling`, `tool-orchestration`, `permissions`, `context-engineering` |
 | 2026-11-17 | [如何用 Agent 设计 Agent 友好的 CLI：从真实用户任务到独立验收的工程闭环](../ai-learning/reports/knowledge_reports/Agent%E5%8F%8B%E5%A5%BDCLI_%E7%9C%9F%E5%AE%9E%E4%BB%BB%E5%8A%A1%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%8B%AC%E7%AB%8B%E9%AA%8C%E6%94%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-engineering`, `cli`, `tool-design`, `agent-evaluation`, `harness`, `authorization` |
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-evaluation`, `nemo`, `harness`, `trace-analysis`, `authorization`, `verifier` |
 | 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `sglang`, `spyre`, `pytorch`, `ai-assisted-development`, `kv-cache`, `benchmark` |
