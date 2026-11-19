@@ -15,7 +15,7 @@ npm --prefix apps/everagent-learning run build
 node apps/everagent-learning/start.mjs
 ```
 
-打开终端显示的地址，默认是 **http://127.0.0.1:4173/dashboard**。按 `Ctrl+C` 停止。不需要 `npm install` 或 Python；首次构建会按 `go.sum` 获取 Go 依赖，之后阅读不再运行编译器。
+打开终端显示的地址，默认是 **http://127.0.0.1:4173/dashboard**。按 `Ctrl+C` 停止。不需要 `npm install` 或 Python；首次构建会按应用内的 [go.mod](./go/go.mod) / [go.sum](./go/go.sum) 获取固定版本的 Go 依赖，之后阅读不再运行编译器。构建只使用本目录的独立 Go 模块 `everagent.local/learning`，不依赖 eacli、公共 core 或私有仓。
 
 端口已占用时：
 
@@ -29,7 +29,7 @@ node apps/everagent-learning/start.mjs --port 4174
 node apps/everagent-learning/start.mjs --repo "/path/to/EverAgent"
 ```
 
-构建产物位于应用的 `miniapp/bin/<系统>-<架构>/`，不进入 Git；已有适配器可用 `--indexer /path/to/ea-learning-index` 指定。只下载应用文件夹时，还需准备当前系统的适配器和含报告、`config`、`docs` 的公开仓。ZIP 解压目录不要求有 `.git`。
+构建产物位于应用的 `miniapp/bin/<系统>-<架构>/`，不进入 Git，binary 名字仍为 `ea-learning-index`；已有适配器可用 `--indexer /path/to/ea-learning-index` 指定。只下载应用文件夹时，可在本目录运行 `npm run build` 构建当前系统的适配器，或准备已有适配器；阅读仍需含报告、`config`、`docs` 的公开仓。ZIP 解压目录不要求有 `.git`。
 
 容器内可用 `--container --repo /public` 监听容器接口，只读挂载公开仓。此模式必须放在受控反向代理后：
 代理先校验访问地址和同源请求，再将上游 Host 设为 `127.0.0.1:4173`、移除已校验的 Origin。
@@ -56,8 +56,8 @@ Mini App 使用宿主启动的本地 Node 进程，页面通过本机 HTTP 读�
 
 ## 能读什么，怎样更新
 
-- 报告列表与领域划分复用公共 core 的 [Go 报告目录](../../packages/everagent-core/internal/publicquality/catalog.go)，与质量门/生成索引同源，不另建数据库或执行报告仓库的脚本。
-- 《AI演义》分节统一显示为「《AI演义》01｜Brook：…」：书名、两位章节号和分隔符一致，后面保留各篇具体标题。列表、阅读器与仓库生成索引使用同一显示规则。
+- 报告列表与领域划分由应用内的 [Go 报告目录](./go/internal/reportcatalog/catalog.go) 解析现有 Markdown/frontmatter；沿用原报告发现、标题、标签和历史日期 fallback 规则（元数据、文件名、正文生成日期、旧报告索引），不以文件 mtime 伪造日期。不另建数据库，不引入新报告 schema，也不执行报告仓库的脚本或质量门。
+- 《AI演义》分节统一显示为「《AI演义》01｜Brook：…」：书名、两位章节号和分隔符一致，后面保留各篇具体标题。列表、阅读器沿用原有显示规则。
 - 首页固定入口为[小宇宙精选播客](../../podcast-learning/PODCAST_UPDATES.md)与[顶尖技术博客](../../web-surfing/TECH_BLOG_UPDATES.md)两张速看表；报告列表显示标题、领域与日期，筛选后可查看匹配数量或一键清除。
 - 「小宇宙精选播客」同样按日期倒序展示最近 40 期，可搜标题、原题或节目名。每条保留节目、时长、音频备用入口和报告状态：「有报告 · 阅读」可直接打开；串台仅关联其他版本时显示「相关报告」，没有则显示「暂无报告」。周汇总与节目历史的重复条目合并，同场串台的不同发布版本分别保留；「完整清单」仍可按节目翻历史。
 - 「顶尖技术博客」默认进入标题速览：跨来源按发布日期倒序，先展示最近 40 篇，只突出标题、来源、日期和已有报告入口；可搜索中文标题、原题或来源，再加载更早文章。点标题打开原文，「完整清单」保留按月份与厂商折叠的导读和历史记录。列表从已有 Markdown 投影，不实时抓取；只标月份或日期待补的文章仍留在完整清单。
@@ -88,8 +88,8 @@ HTTP 接口仅提供报告目录收录的 Markdown、两张速看表，以及允
 npm test
 ```
 
-测试先构建 Go 适配器，再验证真实 HTTP、安装副本设置与重启、长报告完整性、本地图片、路径边界、来源检查和进程关闭；Go 用例覆盖目录、标准 Markdown 和两份速看表。测试只构造临时公开仓；软链用例需要系统允许创建软链。交叉编译不等于目标系统已运行验证。
+测试先构建 Go 适配器，再验证真实 HTTP、安装副本设置与重启、长报告完整性、本地图片、路径边界、来源检查和进程关闭；独立 Go 模块的用例保留旧学习 fixture，并覆盖报告发现、元数据/历史日期 fallback、JSON 接口、标准 Markdown、两份速看表及安全读取。可单独运行 `go -C go test -mod=readonly ./...`。测试只构造临时公开仓；软链用例需要系统允许创建软链。交叉编译不等于目标系统已运行验证。
 
-Go 候选已在 macOS 浏览器验证报告阅读、两份速看表、搜索、加载更多、完整清单、报告跳转与脚注；Linux/arm64 隔离容器验证了只读挂载、完整正文、请求边界及重启。**尚未在 MiniMax Code 中重新安装实测；Windows 仅交叉编译，容器测试也不等于其他设备已部署。** 自动化测试对 Mini App 的安装目录与启停按官方契约模拟，不代替宿主实测。
+迁移前的 Go 阅读实现曾在 macOS 浏览器验证报告阅读、两份速看表、搜索、加载更多、完整清单、报告跳转与脚注；Linux/arm64 隔离容器验证了只读挂载、完整正文、请求边界及重启。本次独立模块迁移在 macOS/arm64 通过 Go 回归和现有 Node HTTP 测试，并完成 Linux/arm64、Windows/amd64 交叉编译。**迁移后尚未重新进行浏览器手工验收、Linux 容器运行或 MiniMax Code 重装实测；Windows 未运行验证。** 自动化测试对 Mini App 的安装目录与启停按官方契约模拟，不代替宿主实测。
 
-页面与 Node 宿主在本目录维护；Go JSON 适配器为 [`ea-learning-index`](../../packages/everagent-core/cmd/ea-learning-index/main.go)，其[实现和回归](../../packages/everagent-core/internal/learning/)复用公共 core 的报告目录。软件代码采用 [MIT License](./LICENSE)；报告等知识内容沿用仓库[版权说明](../../DISCLAIMER.md)。
+页面、Node 宿主与 Go JSON 适配器都在本目录维护；[`ea-learning-index`](./go/cmd/ea-learning-index/main.go) 的[学习适配器实现](./go/internal/learning/catalog.go)、[旧 fixture 回归](./go/internal/learning/reader_test.go)及[最小报告目录](./go/internal/reportcatalog/catalog.go)属于独立模块，不依赖公共 core、eacli 或私有仓。软件代码继续采用 [MIT License](./LICENSE)；报告等知识内容沿用仓库[版权说明](../../DISCLAIMER.md)。

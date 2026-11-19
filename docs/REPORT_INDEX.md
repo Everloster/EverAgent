@@ -1,6 +1,6 @@
 # 📖 报告索引
 
-> 由 `go -C packages/everagent-core run ./cmd/ea-quality index --write` 自动生成，请勿手改。
+> 由 `eacli docs index --write` 自动生成，请勿手改。
 > 数据源：各报告 frontmatter（约定见 [REPORT_METADATA.md](./REPORT_METADATA.md)）。
 
 ## 最近更新（Top 25）

@@ -1,6 +1,6 @@
 # EverAgent 工作区搭建与两仓协作
 
-> **一句话**：`EverAgent`（公开）是知识主体，`EverAgent-infra`（私有）是基础设施与设备家底。两仓**并排放**、各自独立 clone/pull，靠约定协同——本文说清怎么摆、怎么更新、AI 怎么找。
+> **一句话**：`EverAgent`（公开）是知识主体，`EverAgent-infra`（私有）是基础设施与设备家底。两仓各自独立clone/pull；公开阅读无需工具，维护入口仅依赖已安装eacli，不要求并排checkout。
 
 换机（如 MBP 重装）或第一次拉下来，先读这一篇。
 
@@ -15,61 +15,43 @@
 
 **为什么拆两仓**：EverAgent 要开源，但设备档案含敏感基础设施信息，不能公开。2026-07-27 拆分，公开仓历史已彻底脱敏（文件 + commit message 双清）。
 
-**它们不是 submodule**：故意不挂 submodule（避免公开仓暴露"存在一个私有 infra 仓"及其地址）。两仓**各自独立**，靠下面的目录约定并排协作。
+**它们不是submodule**：两仓各自独立，公开薄脚本不读取、定位或构建私仓源码。私有操作必须另行确认目标和授权，不由公开任务的cwd推断。
 
 ---
 
 ## 二、首次搭建（换机 / 新机必做）
 
-在同一个父目录下把两仓**并排 clone**（关键：`EverAgent-infra` 紧挨 `EverAgent`）：
+公开阅读只需克隆公开仓；无需私仓、eacli或模型账号：
 
 ```bash
-cd ~/<your-workspace>          # 或你惯用的工作根目录
 git clone https://github.com/Everloster/EverAgent.git
-git clone https://github.com/Everloster/EverAgent-infra.git   # 私有，需 gh 已登录 Everloster
+cd EverAgent
 ```
 
-得到：
+需要Git保护或资料工具时，先通过独立、已获授权的安装流程准备eacli **>=10.1.0**，然后核对`eacli --version`的plain release输出。公开仓不提供core源码、安装器或自动build/install。薄入口按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH依次选择；选中程序缺失、不可执行或版本非法/过旧时失败，不回退普通Git、不寻找私仓。
 
-```
-~/<your-workspace>/
-├── EverAgent/          # 公开仓（当前所在）
-└── EverAgent-infra/    # 私有仓（并排）
-```
-
-**校验搭好了**：
+每个获授权的clone单独检查项目钩子（macOS/Linux），需要时显式安装：
 
 ```bash
-ls ~/<your-workspace>/EverAgent-infra/README.md && echo "✅ infra 就位"
+scripts/egit.sh hooks status
+scripts/egit.sh hooks install
 ```
 
-> 私有仓 clone 不下来？→ `gh auth status` 确认已登录 Everloster 且有 `repo` scope；或用 `gh repo clone Everloster/EverAgent-infra`。
-
-个人设备完成Git、Go及eacli准备后，默认再执行一次项目钩子安装（macOS/Linux）：
-
-```bash
-bash ~/<your-workspace>/EverAgent-infra/scripts/install-hooks.sh
-```
-
-它从同一公开core构建一次安装器，只更新这两个clone的`.git/hooks`，不设置`core.hooksPath`、不碰全局钩子或安装服务。自定义公开仓目录可传`--public-repo /absolute/EverAgent`。退出3表示需要查看安装/路由状态，不代表已全部生效；规则、回滚与旧版迁移见[项目钩子](PROJECT_HOOKS.md)。
+这固定转发`eacli git hooks --repo-root ROOT <args>`，ROOT绑定脚本所在公开checkout。对其他已获授权的仓，使用已安装eacli并显式传入该仓的canonical ROOT；不会自动寻找并排目录。安装器只更新目标clone的`.git/hooks`，不设置`core.hooksPath`、不碰全局钩子或安装服务。退出3表示需查看安装/路由状态，不代表已全部生效；规则、回滚与旧版迁移见[项目钩子](PROJECT_HOOKS.md)。
 
 ---
 
 ## 三、git 身份（两仓都要）
 
-两仓都用双身份：Author = 仓库主人 Everloster，Committer = 当前 Agent。
-两仓提交都走自己的 `scripts/ecommit.sh`；公共规则由公开仓 Go `packages/everagent-core/git.go` 拥有，
-私仓绑定自己的身份策略，不恢复质量门禁。首次使用和每次换模型均无需手动复制身份配置。
+两仓都用双身份：公开仓Author来自已暂存的身份policy，私仓Author来自eacli内置策略；Committer是当前真实模型或用户明确给出的有效声明，不借全局身份或其他会话。公开仓走`scripts/ecommit.sh`，私仓绑定自己的ROOT和身份策略，规则统一在已安装eacli中执行，不恢复质量门禁。
 
 ```bash
-go -C packages/everagent-core run ./cmd/everagent-identity inspect --json
+eacli session current --json
+scripts/egit.sh validate --json
 scripts/ecommit.sh -m "[maintenance] global: 更新工作区说明"
 ```
 
-安装态用 `eacli session current --json`，公共 core 已编译进 CLI，无需相邻源码或解释器。
-身份来源、模型可信度、trailer 和提交检查见 [PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §B/§C。
-linked worktree 从 Git common directory 找到并排公开 owner；单独 clone 私仓时，
-先恢复公开 owner，再进行提交。
+Git薄入口固定转发`eacli git ACTION --repo-root ROOT <args>`；`validate`映射为`git identity --repo-root ROOT validate`。从子目录调用Bash脚本也绑定同一canonical ROOT，不依赖相邻源码或Go/Python；linked worktree不用于猜测私仓或公开owner。身份来源、模型可信度、trailer、暂存tree绑定和后置验证见[PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §B/§C。未知身份只阻断提交，已授权源码和只读工作继续。
 
 ---
 
@@ -84,8 +66,11 @@ cd ~/<your-workspace>/EverAgent && git pull --ff-only
 # 私有仓
 cd ~/<your-workspace>/EverAgent-infra && git pull --ff-only
 
-# 两仓更新后，检查并应用同一版本的项目钩子；无变化则no-op。
-bash scripts/install-hooks.sh
+# 回到公开仓根目录检查钩子；需要时显式安装。
+cd ~/<your-workspace>/EverAgent
+scripts/egit.sh hooks status
+scripts/egit.sh hooks install
+# 其他已获授权的仓用eacli git hooks --repo-root <该仓canonical ROOT> status|install。
 ```
 
 > **历史重写恢复**：公开仓 2026-07-27 做过历史脱敏。旧 clone 出现分叉时，先 fetch 并检查
@@ -96,15 +81,12 @@ bash scripts/install-hooks.sh
 
 ## 五、AI 怎么在两仓间工作（路由约定）
 
-AI 读公开仓 `AGENTS.md` 即知按**意图**路由（不看当前目录）：
+AI先读公开仓[AGENTS.md](../AGENTS.md)，按用户**意图和授权目标**工作，不从当前目录推断跨仓权限：
 
-- **A–E 类**（学 X / demo / 播客 / repo / 上网）→ 全在公开仓 `EverAgent/` 内，正常干活。
-- **F 类**（"设备 X 有问题 / 看看这台机器 / VPS 怎样"）→ 去**并排的 `../EverAgent-infra/`**：
-  - VPS / 代理网络 → 私有仓根目录的 VPS 管理档案
-  - 终端设备 → `EverAgent-infra/infra/devices/{hostname}.md`
-  - F 类协议 → `EverAgent-infra/infra/AGENTS.md`
+- **A–E类**（学X / demo / 播客 / repo / 上网）→ 在公开仓内进入对应领域并读局部说明。
+- **F类**（设备 / VPS / 网络维护）→ 先确认用户授权的私有目标与实际位置，再读该仓局部说明；不自动寻找并排目录、搬入原始资料或扩大安装/发布权限。
 
-**AGENTS.md 里所有指向 `私有仓 infra/...` 与 VPS 档案的指针，实际路径都是 `../EverAgent-infra/` 下的对应文件**（前提：按 §二并排 clone）。
+私有目录组织和安装细节由私有环境自己的说明拥有。公开Git/资料薄入口只绑定本仓ROOT，不能兼任跨仓定位器。
 
 > 公开仓 `.gitignore` 已兜底忽略 `/infra/` 与 VPS 档案文件：即便本地把私有仓内容软链/复制进公开仓目录，也不会误提交到公开仓。
 

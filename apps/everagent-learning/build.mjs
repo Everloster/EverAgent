@@ -15,7 +15,7 @@ if (!['darwin', 'linux', 'windows'].includes(os) || !['amd64', 'arm64'].includes
 }
 const output = values.output ? resolve(values.output) : join(here, 'miniapp/bin', `${os}-${arch}`, `ea-learning-index${os === 'windows' ? '.exe' : ''}`);
 mkdirSync(dirname(output), { recursive: true });
-const child = spawn('go', ['-C', join(here, '../../packages/everagent-core'), 'build', '-mod=readonly', '-trimpath', '-buildvcs=false', '-o', output, './cmd/ea-learning-index'], {
+const child = spawn('go', ['-C', join(here, 'go'), 'build', '-mod=readonly', '-trimpath', '-buildvcs=false', '-o', output, './cmd/ea-learning-index'], {
   stdio: 'inherit', env: { ...process.env, GOWORK: 'off', CGO_ENABLED: '0', GOOS: os, GOARCH: arch },
 });
 child.on('error', () => { console.error('需要 Go 1.27+ 才能构建阅读适配器。'); process.exitCode = 1; });

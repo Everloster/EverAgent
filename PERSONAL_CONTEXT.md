@@ -158,11 +158,13 @@ Git 历史、已有备份、第三方服务日志或别人已复制的内容，�
 
 ### 隐私预检
 
-Go入口只检查所选公开仓快照中的变更，不联网、不访问私有仓或改写内容：
+预先安装eacli >=10.1.0后，使用公开薄入口；扫描实现在已安装eacli内存中执行，只检查所选公开仓快照中的变更，不联网、不访问私有仓或改写内容：
 
 ```bash
-go -C packages/everagent-core run ./cmd/ea-quality disclosure --scope worktree
+scripts/edocs.sh disclosure --scope worktree
 ```
+
+该脚本固定转发`eacli docs disclosure --repo-root CANONICAL_ROOT <args>`，ROOT来自脚本所在位置，不依赖调用cwd或相邻源码。按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH选择程序，并核对plain `--version`；缺失、不可执行或版本非法/过旧时失败，不自动build/install。公开仓不提供该工具的core源码入口。
 
 提交器使用index快照，工作区预览使用worktree。明显新增凭据与受限原始材料会阻断；IP、个人路径、邮箱等启发式线索只提示，不把示例地址一律判为泄密。结果不回显匹配内容；无法读取的路径明确报错，图片和二进制也不会被声称已经通过完整隐私审计。
 

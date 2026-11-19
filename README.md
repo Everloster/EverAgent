@@ -139,9 +139,9 @@ git clone https://github.com/Everloster/EverAgent.git
 cd EverAgent
 ```
 
-[AGENTS.md](./AGENTS.md) 是简短入口，Claude Code经`CLAUDE.md`导入。模型、联网与转写按任务需要配置；eacli提供维护者的跨设备与Token Plan能力，部分桥接脚本会调用它，但公开仓的阅读和Go提交器不依赖eacli、私仓checkout或其他设备在线。缺少某项能力时明确说明，不把维护者的私有环境当成公开仓启动条件。
+[AGENTS.md](./AGENTS.md)是简短入口，Claude Code经`CLAUDE.md`导入。模型、联网与转写按任务需要配置；公开阅读无需eacli或私仓。需要Git保护、资料、跨设备或Token Plan工具时，预先安装eacli **>=10.1.0**，用plain `eacli --version`核对。公开仓只保留[`egit.sh`](./scripts/egit.sh)、[`ecommit.sh`](./scripts/ecommit.sh)和[`edocs.sh`](./scripts/edocs.sh)薄入口，不维护这些工具的core源码；不依赖私仓checkout或其他设备在线。薄入口优先取显式`EACLI_BIN`，其次`$HOME/.local/bin/eacli`，再查PATH；缺失、不可执行或版本非法/过旧时明确失败，不回退普通Git、不寻找私仓、不自动build/install。缺少某项能力时如实说明，不把维护者的私有环境当成公开阅读条件。
 
-维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 Go `ea-quality index --write` 生成，命令见该协议；配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
+维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。Git固定接口是`eacli git ACTION --repo-root ROOT <args>`，资料固定接口是`eacli docs ACTION --repo-root ROOT <args>`；薄脚本把ROOT绑定到自身所在公开checkout，保留消息/trailer、参数与业务退出码。报告索引和README自动区块需要时显式用`scripts/edocs.sh index --write`更新，不自动重写既有正文；不要求GitHub CI或报告质量门。配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
 
 </details>
 

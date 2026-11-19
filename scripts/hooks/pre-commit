@@ -1,11 +1,10 @@
-#!/bin/sh
-# Optional repository hook: Committer identity plus new public-content disclosure.
-# Do not install it over a user's existing core.hooksPath.
-set -eu
+#!/usr/bin/env bash
+# Legacy repository-owned thin hook; installation/routing remains explicit.
+set -euo pipefail
 REPO_ROOT="$(git rev-parse --show-toplevel)"
-go -C "$REPO_ROOT/packages/everagent-core" run -mod=readonly -trimpath -buildvcs=false \
-  ./cmd/ea-git --repo-root "$REPO_ROOT" validate
-if [ "${EVERAGENT_PUBLIC_CONTENT_TREE:-}" != "$(git write-tree)" ]; then
-    go -C "$REPO_ROOT/packages/everagent-core" run -mod=readonly -trimpath -buildvcs=false \
-      ./cmd/ea-quality disclosure --repo-root "$REPO_ROOT" --scope index
+source "$REPO_ROOT/scripts/eacli-entry.sh"
+_ea_require_eacli
+"$EA_EACLI" git identity --repo-root "$EA_REPO_ROOT" validate --json >/dev/null
+if [[ ${EVERAGENT_PUBLIC_CONTENT_TREE:-} != "$(git write-tree)" ]]; then
+  "$EA_EACLI" docs disclosure --repo-root "$EA_REPO_ROOT" --scope index --json
 fi

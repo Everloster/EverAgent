@@ -1,32 +1,33 @@
 # 身份、会话与脚本契约
 
-面向个人桌面使用和基础设施工作 Agent。公共实现由
-[`everagent-core`](../packages/everagent-core/README.md) 拥有；本页解释契约，Git 授权与提交规则回到
+面向个人桌面使用和基础设施工作Agent。本页解释已安装eacli的身份、会话与薄脚本契约；实现和资料工具在私有工具项目维护，公开仓不提供core源码运行入口。Git授权与提交规则回到
 [PROTOCOL_COMMON](./PROTOCOL_COMMON.md#c-push-flow推送流程--全局统一)。
 
 ## 双仓与安装态
 
 | 层 | 职责 |
 |---|---|
-| 公共 core | 通用 harness/model 证据、session schema、script catalog、Git 原语 |
-| 公开仓入口 | 当前Committer核实与新增公开内容检查；不运行报告质量流水线 |
-| 私有 eacli | 私有设备事实与红线、原生 runtime adapter、基础设施策略 |
-| 安装包 | 锁定的公共 core 和私有派生资产，无相邻 checkout 依赖 |
-| 兼容脚本 | 转交 canonical owner，不维护第二套事实或算法 |
+| 已安装eacli | harness/model证据、session schema、Git身份/暂存tree保护、资料工具及私有adapter |
+| 公开薄入口 | 固定canonical ROOT并逐项转发参数，不拥有业务实现、不运行报告质量流水线 |
+| 私有工具项目 | 维护eacli实现、原生runtime adapter与设备/基础设施策略，不作为公开仓内entrypoint |
+| 安装包 | 锁定工具版本和派生资产，无相邻checkout依赖 |
+| 兼容脚本 | ecommit保留commit简写，不维护第二套事实或算法 |
 
 公共仓不接收私有设备、地址、账号、拓扑和任务数据。eacli 是统一使用入口，新协作使用原生 Orca，
 Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORATION](./AGENT_COLLABORATION.md)。
 
 ## current → diagnose → declare
 
-本页描述 Go core 0.5.3 及对应 eacli 源码契约；安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
+公开维护入口要求预先安装eacli >=10.1.0，`eacli --version`须返回plain release版本。薄入口只按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH选择；选中程序缺失、不可执行或版本非法/过旧就失败，不回退普通Git、不寻找相邻私仓、不自动build/install。安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
-- `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
+Git接口是`eacli git ACTION --repo-root CANONICAL_ROOT <args>`；`scripts/egit.sh validate`转为`git identity --repo-root ROOT validate`。资料接口是`eacli docs ACTION --repo-root ROOT <args>`，可用`scripts/edocs.sh ACTION <args>`；root绑定薄脚本位置，余参、消息/trailer与实际业务退出码原样保留。
+
+- `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/实现owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；不再提供公开独立core命令。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
-- 自动读取及可行修复仍无依据，才用`eacli session declare --harness <用户指定> --form cli --model <用户指定> --user-confirmed`，只传用户明确补充的字段。公共core对应`everagent-identity declare`；旧`declare-model`保留仅模型兼容语义。
+- 自动读取及可行修复仍无依据，才用`eacli session declare --harness <用户指定> --form cli --model <用户指定> --user-confirmed`，只传用户明确补充的字段。旧`declare-model`保留仅模型兼容语义，不改用公开Go源码命令。
 - 用户facts仅接受device/harness/form/model，默认4小时、允许300–43200秒，字段分别保留原声明时间和到期时间；普通字段更新不续期模型或复活更早声明。模型撤销边界仅抑制旧声明，不是新模型证据；有边界时模型声明时间必须严格更晚，同tick无法证明先后则不放行。
 - 已知harness绑定进程创建身份及session/terminal；Desktop/Web没有native session时只绑定当前执行shell，未知harness也必须有exact shell，并核对通用及用户harness适用的model hint。重启、嵌套、会话/提示变化、过期或损坏失效；新的自动事实优先，用户声明不覆盖相冲突的自动证据。
-- 声明始终标`user-declared`而非自动确认，不授予权限。device值仍须由私有adapter核对登记/红线；公共core不含私有设备表，声明不能把未知机器擅自认成个人设备。
+- 声明始终标`user-declared`而非自动确认，不授予权限。device值仍须由私有adapter核对登记/红线；通用身份实现不含私有设备表，声明不能把未知机器擅自认成个人设备。
 
 ## 明确回答的问题
 
@@ -90,8 +91,8 @@ Go 读取器按祖先进程的精确 cwd 定位官方 `wd_<slug>_<hash>` 目录�
 不扫描全局工作区/会话索引补猜别名目录。读取前后复验进程、cwd 和元数据快照；最新 wire 不完整时不借旧型号。
 `KIMI_CODE_HOME` 或 reader 的 root 可修复位置，不能直接配置观测答案。此改动的合成回归不代替真实 Kimi 工具调用验收。
 
-DSH 适配文件为 [`dsh_plugin.mjs`](../packages/everagent-core/src/everagent_core/identity/dsh_plugin.mjs)，
-使用 0.2.1-rc.2 的官方插件接口，需在所用 profile 加载。每次 shell 调用只写不含正文的临时模型元数据，
+DSH适配资产由已安装eacli配套分发，公开仓不提供插件源码路径。
+使用0.2.1-rc.2的官方插件接口，需在所用profile加载；具体安装位置以所安装工具版本的帮助为准。每次shell调用只写不含正文的临时模型元数据，
 调用完成即删除；core 读取上限 4 KiB、有效期 5 分钟。请求别名与返回模型分开记录，缺少返回型号保持未核实。
 macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自身事实决定，不冒充宿主。Windows DSH 未验证。
 
@@ -99,9 +100,8 @@ macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自�
 
 V1实现对应官方[`anomalyco/opencode@545f51d26cc39a907d2867492d498d9607ea5fa4`](https://github.com/anomalyco/opencode/tree/545f51d26cc39a907d2867492d498d9607ea5fa4)（1.18.32）。
 `packages/opencode/src/tool/shell.ts:416–426`的官方`"shell.env"`提供当前sessionID/callID；
-[`opencode_plugin.mjs`](../packages/everagent-core/src/everagent_core/identity/opencode_plugin.mjs)只转交这两个ID和运行进程PID，
-无会话绑定时清空继承值，不保存正文或生成模型证明。可由原生配置`plugin`加载该文件的`file://`URI，
-或以`.js`文件安装到既有OpenCode配置的`plugins/`目录；加载作用于该配置的后续原生运行，不重启已有任务。
+已安装eacli配套的OpenCode适配资产只转交这两个ID和运行进程PID，
+无会话绑定时清空继承值，不保存正文或生成模型证明；公开仓不提供该源码路径。具体安装位置以所安装工具版本的帮助为准；原生加载只作用于该配置的后续运行，不重启已有任务。
 
 Go读取器要求同一OpenCode祖先进程、精确session/cwd、`part`中唯一运行的Bash call，按FK关联该assistant；
 只投影模型/provider/variant/时间等标量，不按同目录最近会话猜身份。未知版本、工具已完成、跨会话、过期、
@@ -134,10 +134,7 @@ workspace/fork或存在location-switched时保守拒绝；两次精确快照不�
 
 ### 自动核实失败的修复路径
 
-`eacli session diagnose --json` 或在公开仓根运行
-`go -C packages/everagent-core run ./cmd/everagent-identity diagnose --json` 返回当前调用方的
-`automatic_probe`、原因码、公共 owner、复验入口和最后的用户兜底条件。安装 core 使用
-`everagent-identity diagnose --json`。成功的常规 inspect 保持原有精简输出，诊断按需展开。
+已安装的`eacli session diagnose --json`返回当前调用方的`automatic_probe`、原因码、实现owner、复验入口和最后的用户兜底条件。公开仓不提供独立Go或core诊断入口。成功的常规current保持原有精简输出，诊断按需展开。
 
 自动核实失败时，当前身份保留 `model_reason_code`，Session 映射为
 `actor.model.automatic_reason_code`；原因来自该次观测，成功时不输出此字段。
@@ -209,7 +206,7 @@ Kimi Desktop 也无会话环境变量。读取器从 `KIMI_SHARE_DIR` 或平台�
 这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
 
 cursor-cli（Cursor Agent）尚无自动模型读取器。用户声明绑定祖先链中的 `sand-exit-watch`
-与会话环境；通用 `node` 进程不构成身份。绑定顺序由公共 `declarations.go` 的 `factScope` 拥有：
+与会话环境；通用`node`进程不构成身份。绑定顺序由已安装eacli的声明scope实现拥有：
 
 1. 必须有 `sand-exit-watch` 锚点，否则整段 scope 为未绑定（`None`）。
 2. 若存在合法 `CURSOR_CONVERSATION_ID`，写入 `session_ref`。
@@ -230,15 +227,12 @@ App 外层的启动 shell 不构成执行依据。新批次按用户已明确指
 
 ## 脚本描述与门禁
 
-[`scripts/script-catalog.json`](../scripts/script-catalog.json) 登记本族的目的、唯一 owner、canonical/compatibility/internal、
-平台、依赖、输入、输出、副作用、授权 owner 和范围。它不取代能力目录或 Skill。
-[`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md) 是生成视图；
-`go -C packages/everagent-core run ./cmd/ea-quality scripts --check` 按需查看和校验。
+[`scripts/script-catalog.json`](../scripts/script-catalog.json)登记本仓薄入口、共享轻量helper、针对性tests及原有评测记录工具，描述平台、外部工具要求、输入/输出、副作用、授权与范围；不把私仓源码作为公开entrypoint或owner。
+[`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md)是对应清单视图。外部会话/资料能力通过`eacli --help`与`eacli docs --help`查询；需要时可用`scripts/edocs.sh scripts --check`主动检查清单，不作为提交门禁。
 
-新增或改名时同步实际调用方与目录；不保留无人使用的重复实现。目录schema、ID/alias、路径和索引可按需检查，不作为提交门禁。
+新增或改名时同步实际调用方与目录，不保留无人使用的重复实现。薄入口回归用`node --test scripts/test_eacli_entries.mjs`，只记录假eacli的argv/版本，不做真实commit/push或恢复CI质量门。
 
 ## 验证边界
 
-公共测试用 fixture 验证模型声明失效、调用方祖先、Desktop 区分、catalog、Git tree 与 trailer。
-安装态和真实原生任务由私仓验收；Windows fixture 通过不能写成 Windows 真机通过。
-原生接口不提供的模型或任务字段保持未知，已授权的源码和只读工作仍可继续。
+公开测试只验证薄入口的canonical ROOT、参数/trailer、工具选择、版本失败与退出码；全部使用假eacli，不运行真实Git写入。模型声明失效、调用方祖先、Desktop、Git tree与后置验证的业务回归，以及安装态和真实原生任务，由工具实现所在私有项目验收。Windows fixture通过不能写成Windows真机通过。
+原生接口不提供的模型或任务字段保持未知，已授权的源码和只读工作仍可继续；不要求GitHub CI。

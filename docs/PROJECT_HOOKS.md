@@ -1,10 +1,10 @@
 # 项目本地 Git 钩子
 
-统一实现由 `packages/everagent-core/internal/projecthooks` 拥有。模板随源码版本管理，每个 clone 的 `.git/hooks` 保存安装副本及版本/SHA清单，不维护两套身份规则。
+统一实现和模板由已安装eacli提供，公开仓只保留薄入口，不提供core源码或第二套身份规则。每个clone的`.git/hooks`保存安装副本及版本/SHA清单。
 
 ## 安装与更新
 
-前提：macOS或Linux、Git、Go，以及支持仓库Author/当前Agent Committer验证的已安装eacli。采集触发依赖已经配置的本机Context采集服务；安装器不安装软件、创建服务或修改采集范围。
+前提：macOS或Linux、Git，以及已安装eacli >=10.1.0（`eacli --version`输出plain release版本）；不需要Go或任何相邻checkout。采集触发依赖已经配置的本机Context采集服务；安装器不安装软件、创建服务或修改采集范围。
 
 在公开仓根目录：
 
@@ -13,7 +13,7 @@ scripts/egit.sh hooks status
 scripts/egit.sh hooks install
 ```
 
-双仓一起初始化/更新的入口见[工作区搭建](WORKSPACE_SETUP.md)。只有迁移此前六文件清单完整且SHA匹配的本机版时才使用：
+每个获授权的目标仓分别使用显式ROOT初始化/更新，见[工作区搭建](WORKSPACE_SETUP.md)；不寻找并排私仓。只有迁移此前六文件清单完整且SHA匹配的本机版时才使用：
 
 ```bash
 scripts/egit.sh hooks install --adopt-legacy
@@ -25,12 +25,12 @@ scripts/egit.sh hooks install --adopt-legacy
 
 | 钩子 | 行为 |
 |---|---|
-| `pre-commit`、`pre-merge-commit` | 调用已安装eacli的`git identity validate`，失败阻断；不代填Author/Committer，不恢复质量门禁 |
+| `pre-commit`、`pre-merge-commit` | 从钩子位置核对并进入目标仓，调用已安装eacli的`git identity validate`，失败阻断；不代填Author/Committer，不恢复质量门禁 |
 | `post-commit`、`post-merge` | 请求现有采集服务进行同步和durable ACK校验，始终返回0，不等待采集完成 |
 
 macOS使用launchd的非强制`kickstart`；Linux使用`systemctl --user start --no-block`。不使用强制重启、enable或daemon-reload；既有15分钟任务仍兜底。后台积压与投递失败由采集器状态区分，不能把Git钩子返回0解释为归档已经完成。
 
-入口从自身位置定位项目，eacli优先取当前用户的`~/.local/bin/eacli`，再查PATH。没有设备名、用户名或工作区绝对路径硬编码；GUI或未知Agent无法核实身份时仍拒绝提交。
+公开入口从自身位置物理canonical定位项目，固定转发`eacli git hooks --repo-root ROOT <args>`。eacli优先取显式`EACLI_BIN`，其次当前用户的`$HOME/.local/bin/eacli`，再查PATH；选中程序缺失、不可执行或版本非法/过旧时明确失败，不回退普通Git、不自动build/install。安装的钩子也只消费已安装eacli，不寻找私仓源码。没有设备名、用户名或工作区绝对路径硬编码；GUI或未知Agent无法核实身份时只阻断提交，不阻断已授权只读或源码工作。
 
 ## 安装不等于生效
 

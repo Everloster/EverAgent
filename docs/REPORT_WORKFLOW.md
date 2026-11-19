@@ -63,16 +63,16 @@ semantic_tags: ["topic"]
 
 普通笔记自行核对即可。重要研究或关键决策按用途确定复核范围；用户明确要求独立复核时才安排对应会话，不自动接管或创建其他Agent。
 
-旧`report_quality.py`、`audit_reports.py`以及Go的report/full等工具仅供主动选用。它们可能执行旧版严格合同，不代表所有新报告都必须采用。历史用法见[可选严格审查与历史记录](REPORT_QUALITY_GATE.md)。
+资料与可选审查工具统一由预先安装的eacli >=10.1.0提供，公开仓不提供对应源码运行入口。`scripts/edocs.sh report|full <args>`等仅供主动选用，可能执行旧版严格合同，不代表所有新报告都必须采用。历史用法见[可选严格审查与历史记录](REPORT_QUALITY_GATE.md)。
 如果修改了已有报告，旧review/分数不自动证明新正文；保留原件，明确本次改动和实际复核范围，不伪造继承通过。
 
-## 提交、索引与 CI
+## 提交、索引与按需测试
 
-`scripts/ecommit.sh`只自动核实当前Committer并检查本次新增公开内容中的明显泄密信号；不运行报告评分、独立Review、索引审计或Go/Python整套回归。
+`scripts/ecommit.sh`是已安装eacli的commit简写：Author来自已暂存的公开身份policy，Committer是当前真实模型或明确有效声明，新增公开内容扫描仍在eacli内存中执行并绑定实际暂存tree、提交后复验；不运行报告评分、独立Review、索引审计或Go/Python整套回归。具体约定见[提交与公开安全](PROTOCOL_COMMON.md)。
 明显凭据与未获授权的原始全文不能公开。疑似私人路径、IP等只给提示，仍由作者确认适合公开；这个轻量检查不是完整隐私审计，也不证明图片或二进制安全。
 
-索引需要更新时，主动运行`go -C packages/everagent-core run ./cmd/ea-quality index --write`。它不是提交前置，不复写报告原文。
-CI仅按改动选择对应代码测试；纯Markdown不启动Go/Python全套测试。测试失败如实报告与修复，不与源码提交资格混在一起。
+索引需要更新时，主动运行`scripts/edocs.sh index --write`（`eacli docs index --repo-root ROOT --write`）。它不是提交前置，不复写报告原文；不要为迁移入口自动重生成报告或索引正文。薄脚本固定canonical ROOT、逐项转发参数，并按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH检查plain版本；缺失、不可执行、非法或旧版本明确失败，不回退普通Git或寻找私仓，不自动build/install。
+本仓不再要求GitHub CI。代码测试按实际改动主动选用，纯Markdown无需Go/Python全套测试；测试失败如实报告与修复，不与源码提交资格混在一起。
 
 ## 保留什么
 

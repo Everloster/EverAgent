@@ -1,14 +1,14 @@
 # 脚本目录
 
 > Generated from script-catalog.json; do not edit by hand.
-> source-sha256: `fa83f9b35a332f968a90b647727ce727409d5bea39d37f6128bf1a6c6258fef7`
-> generator-sha256: `9213269c0c54296587a29c36f16de6135b241179cc634a50cad17ddf05268125`
+> source-sha256: `b57915e13dcb2e03017f2236ff2a5ec0e61a9d1e5220197413c12c95a8902493`
+> generator: `eacli docs index --write` (script-index-v2)
 
 | ID | 入口 | 描述 | 范围 |
 |---|---|---|---|
-| `session.core` | `packages/everagent-core/cmd/everagent-identity/main.go` | 自动核实当前调用方的harness和模型；diagnose协助修复，declare仅记录用户兜底。 | 当前调用方；不扫描其他会话正文 |
-| `git.core` | `packages/everagent-core/cmd/ea-git/main.go` | 固定仓库Author并核实Agent/模型Committer；合并复用同一身份流程，推送检查新增署名与撤销提交，不运行质量流水线。 | 当前公开checkout和暂存tree |
-| ↳ compatibility | `scripts/ecommit.sh` | 调用同一egit commit入口，保留双身份与新增内容检查。 | 同 canonical |
-| ↳ compatibility | `scripts/egit.sh` | 构建并调用仓库绑定的ea-git commit/merge/push，不跳过已有hooks。 | 同 canonical |
-| `quality.public` | `packages/everagent-core/cmd/ea-quality/main.go` | disclosure/quick只查新增公开内容；其余质量、Context和索引工具按需使用，不调用模型或改历史原件。 | 当前公开快照；不读私仓、不做真实模型回放 |
+| `git.entry` | `scripts/egit.sh` | 仓库绑定的Git薄入口；只选择并校验已安装eacli，逐项转发身份/commit/merge/push/hooks参数。 | 脚本位置canonical绑定的公开checkout；policy Author、当前真实模型/明确有效声明Committer与新增内容保护由eacli执行 |
+| ↳ compatibility | `scripts/ecommit.sh` | commit简写；保留-m/-F值、trailer与普通Git参数。 | 同 canonical |
+| `docs.entry` | `scripts/edocs.sh` | 资料工具薄入口；公开仓不拥有工具源码、评分或索引算法，不启动质量门。 | 脚本位置canonical绑定的公开checkout；外部工具要求不是私仓源码entrypoint |
+| `eacli.entry-helper` | `scripts/eacli-entry.sh` | 共享轻量helper，只定位canonical ROOT及选择/校验已安装eacli，不解析业务参数。 | 薄入口共用安装态检查；不成为业务实现 |
+| `eacli.entry-tests` | `scripts/test_eacli_entries.mjs` | 隔离契约测试，假eacli仅记录argv/版本；覆盖工具选择、版本失败、canonical ROOT、参数和退出码。 | 仅薄入口；不验证外部eacli业务、不接入CI或质量门 |
 | `evaluation.harness-experiment` | `scripts/harness_selection.py` | 消费可信评测器记录，按硬门和 Pareto 前沿选择最多三个 context 候选；不执行或发布。 | 可信评测记录与一次有界实验 |

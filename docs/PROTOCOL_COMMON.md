@@ -15,12 +15,16 @@
 
 ## §C Push Flow（推送流程 · 全局统一）
 
-正式Git入口是`scripts/egit.sh commit|merge|push`，`scripts/ecommit.sh`保留为commit简写。它们编译同一个本仓Go实现，不依赖eacli、私仓checkout或其他设备在线。
+正式Git入口是`scripts/egit.sh identity|validate|commit|merge|push|hooks`，`scripts/ecommit.sh`保留为commit简写。公开脚本只是已安装eacli的薄适配，不维护Git、身份或内容扫描实现，也不依赖私仓checkout或其他设备在线。
+
+须事先安装eacli **>=10.1.0**；入口优先使用显式`EACLI_BIN`，其次`$HOME/.local/bin/eacli`，最后PATH，并用`eacli --version`的plain release版本核对。选中的程序缺失、不可执行、版本非法或过旧时明确失败，不回退普通Git，不寻找相邻私仓，不自动build/install。
+
+固定转发接口是`eacli git <identity|commit|merge|push|hooks> --repo-root CANONICAL_ROOT <args>`；`egit.sh validate`映射为`eacli git identity --repo-root CANONICAL_ROOT validate <args>`。ROOT从脚本所在位置物理canonical绑定，不取调用cwd；可从子目录调用对应脚本路径。除第一个action外逐项保留参数，`-m`/`-F`值、trailer和普通Git参数不被脚本重写；实际eacli/Git失败退出码原样返回。
 
 只自动检查：
 
-1. **双身份**：Author必须符合仓库`config/git-policy.json`中的公开主人身份；Committer是当前核实或用户明确声明的Agent/模型。策略缺失或冲突时拒绝，不回退全局身份；显式--author不能绕过。提交后核实实际Author和Committer，不输出错误身份中的邮箱。
-2. **新增公开内容**：只检查本次变更中的明显凭据和受限原始材料；结果不输出匹配到的秘密原文。疑似IP、路径、邮箱等给出提示，不做全仓隐私审计。
+1. **双身份**：Author来自公开仓已暂存`config/git-policy.json`中的主人身份；Committer是当前真实核实的模型，或用户明确给出的当前会话有效声明。策略缺失或冲突时拒绝，不回退全局身份；显式--author不能绕过。提交后核实实际Author和Committer，不输出错误身份中的邮箱。
+2. **新增公开内容**：eacli在内存中检查本次新增内容的明显凭据和受限原始材料；结果不输出匹配到的秘密原文。疑似IP、路径、邮箱等给出提示，不做全仓隐私审计。
 
 不运行报告评分、独立评审、索引审计或Go/Python回归。草稿可以提交；坏链接或测试失败不改变Committer资格，但实际问题仍须如实说明。
 
@@ -29,8 +33,7 @@ git add <本次修改的文件>
 scripts/ecommit.sh -m "说明实际修改"
 ```
 
-身份有问题时按需使用`eacli session diagnose --json`，或公开独立入口：
-`go -C packages/everagent-core run ./cmd/everagent-identity diagnose --json`。
+身份有问题时按需使用已安装的`eacli session diagnose --json`；仓库身份校验用`scripts/egit.sh validate --json`。公开仓不提供独立core源码运行入口。
 未核实身份只阻断提交，不妨碍已授权只读或源码工作。声明只能承接用户明确事实，不猜模型或伪造自动观测。
 
 公开内容检查绑定实际暂存树，防止检查后换成另一份内容；Git正常的冲突、签名、权限和参数错误仍返回失败。若commit已产生但后置身份/内容不符，保留现场，不自动再提交或推送。
@@ -43,7 +46,7 @@ scripts/ecommit.sh -m "说明实际修改"
 跨仓任务必须事先说明目标仓、必要原因和源码/提交/推送/安装各自范围；起始cwd或创建隔离clone不代表获得跨仓发布授权。进入新clone后重新核对origin及个人署名配置，不能只设置Committer而遗漏Author。
 推送结果未知先读回目的ref，SHA匹配才称已交付；不因超时盲目重复写入。
 
-安装版eacli可以作为兼容入口，但其自身core版本须另行核实。公开仓`ea-quality quick`已改为轻量disclosure兼容入口，不再启动整套检查；正式提交优先使用本仓脚本。
+资料、隐私预览和可选索引工具统一由已安装eacli提供：`scripts/edocs.sh ACTION <args>`转发为`eacli docs ACTION --repo-root CANONICAL_ROOT <args>`，与Git入口共用版本选择规则。`disclosure`/`quick`只做轻量新增公开内容检查，不启动整套质量流水线。公开仓不维护这些工具的源码，不要求GitHub CI；需要的代码测试按任务范围主动运行，不作为提交资格或报告质量门。
 
 ## §D 报告质量门
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Prepare and score existing ACE behavioral experiment records.
 
-Static context checks live in the Go ea-quality context command. These authoring
+Static context checks live in the installed eacli docs context command. These authoring
 helpers do not execute agents or certify a new behavioral replay.
 """
 
@@ -329,7 +329,7 @@ def main() -> int:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
-    parser.error("static checks moved to: go -C packages/everagent-core run ./cmd/ea-quality context")
+    parser.error("static checks moved to: eacli docs context --repo-root /absolute/EverAgent")
 
 
 if __name__ == "__main__":

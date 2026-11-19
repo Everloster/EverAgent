@@ -1,111 +1,82 @@
 {
   "schema_version": 1,
   "repository": "EverAgent",
-  "scope": "identity-session-git-quality",
+  "scope": "installed-eacli-thin-entries",
   "scripts": [
     {
-      "id": "session.core",
-      "description": "自动核实当前调用方的harness和模型；diagnose协助修复，declare仅记录用户兜底。",
-      "entrypoint": "packages/everagent-core/cmd/everagent-identity/main.go",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "packages/everagent-core/identity.go"
-      },
-      "kind": "canonical",
-      "aliases": [],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
-      "requirements": [
-        "Go >=1.27 或预编译二进制"
-      ],
-      "input": "everagent-identity inspect|diagnose|declare [--json]",
-      "output": "当前调用方的身份、证据、诊断或有期限声明",
-      "side_effects": [
-        "仅declare写当前会话声明"
-      ],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "A/C"
-      },
-      "scope": "当前调用方；不扫描其他会话正文"
-    },
-    {
-      "id": "git.core",
-      "description": "固定仓库Author并核实Agent/模型Committer；合并复用同一身份流程，推送检查新增署名与撤销提交，不运行质量流水线。",
-      "entrypoint": "packages/everagent-core/cmd/ea-git/main.go",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "packages/everagent-core/git.go"
-      },
+      "id": "git.entry",
+      "description": "仓库绑定的Git薄入口；只选择并校验已安装eacli，逐项转发身份/commit/merge/push/hooks参数。",
+      "entrypoint": "scripts/egit.sh",
+      "owner": { "repository": "EverAgent", "path": "scripts/egit.sh" },
       "kind": "canonical",
       "aliases": [
-        {
-          "path": "scripts/ecommit.sh",
-          "description": "调用同一egit commit入口，保留双身份与新增内容检查。"
-        },
-        {
-          "path": "scripts/egit.sh",
-          "description": "构建并调用仓库绑定的ea-git commit/merge/push，不跳过已有hooks。"
-        }
+        { "path": "scripts/ecommit.sh", "description": "commit简写；保留-m/-F值、trailer与普通Git参数。" }
       ],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
+      "platforms": ["macos", "linux"],
       "requirements": [
-        "Git",
-        "Go >=1.27 或预编译二进制"
+        "Bash",
+        "Git（由外部eacli使用）",
+        "预先安装eacli >=10.1.0；plain --version",
+        "选择顺序：显式EACLI_BIN > HOME/.local/bin/eacli > PATH；缺失/非法/旧版本失败，不回退或自动build/install"
       ],
-      "input": "ea-git [--repo-root <checkout>] validate|commit|merge|push <对应参数>",
-      "output": "Git退出码；消息与显式trailer由Git处理",
+      "input": "egit.sh identity|validate|commit|merge|push|hooks <args> -> eacli git ACTION --repo-root CANONICAL_ROOT <args>；validate -> identity --repo-root ROOT validate",
+      "output": "eacli/Git输出及实际退出码原样传递",
       "side_effects": [
-        "commit/merge写Git提交或工作树",
-        "push写明确远端分支"
+        "外部eacli commit/merge可写Git提交或工作树，push可写获授权远端",
+        "外部eacli hooks install只安装目标本仓.git/hooks，不改global路由",
+        "薄脚本不实现身份、扫描、tree绑定或后置验证"
       ],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "C"
-      },
-      "scope": "当前公开checkout和暂存tree"
+      "authorization": { "repository": "EverAgent", "path": "docs/PROTOCOL_COMMON.md", "section": "C" },
+      "scope": "脚本位置canonical绑定的公开checkout；policy Author、当前真实模型/明确有效声明Committer与新增内容保护由eacli执行"
     },
     {
-      "id": "quality.public",
-      "description": "disclosure/quick只查新增公开内容；其余质量、Context和索引工具按需使用，不调用模型或改历史原件。",
-      "entrypoint": "packages/everagent-core/cmd/ea-quality/main.go",
-      "owner": {
-        "repository": "EverAgent",
-        "path": "packages/everagent-core/internal/publicquality/gate.go"
-      },
+      "id": "docs.entry",
+      "description": "资料工具薄入口；公开仓不拥有工具源码、评分或索引算法，不启动质量门。",
+      "entrypoint": "scripts/edocs.sh",
+      "owner": { "repository": "EverAgent", "path": "scripts/edocs.sh" },
       "kind": "canonical",
       "aliases": [],
-      "platforms": [
-        "macos",
-        "linux",
-        "windows"
-      ],
+      "platforms": ["macos", "linux"],
       "requirements": [
-        "Git",
-        "Go >=1.27",
-        "匹配go.mod/go.sum的依赖缓存"
+        "Bash",
+        "预先安装eacli >=10.1.0；plain --version",
+        "外部能力查eacli docs --help；选择与失败规则同Git薄入口，不要求私仓checkout"
       ],
-      "input": "ea-quality disclosure|quick|full|context|catalog|report|privacy|links|policy|sampling|scripts|index [--scope index|worktree|head]",
-      "output": "质量结果JSON；index --write更新三个生成视图",
-      "side_effects": [
-        "仅显式full可能运行快照中的Go回归；disclosure/quick不运行测试",
-        "仅index --write写生成视图"
-      ],
-      "authorization": {
-        "repository": "EverAgent",
-        "path": "docs/PROTOCOL_COMMON.md",
-        "section": "D"
-      },
-      "scope": "当前公开快照；不读私仓、不做真实模型回放"
+      "input": "edocs.sh ACTION <args> -> eacli docs ACTION --repo-root CANONICAL_ROOT <args>",
+      "output": "外部eacli资料结果与实际退出码原样传递",
+      "side_effects": ["只由显式请求的eacli docs action决定，例如index --write更新生成视图；不自动重生成报告或索引正文"],
+      "authorization": { "repository": "EverAgent", "path": "docs/REPORT_WORKFLOW.md", "section": "提交、索引与按需测试" },
+      "scope": "脚本位置canonical绑定的公开checkout；外部工具要求不是私仓源码entrypoint"
+    },
+    {
+      "id": "eacli.entry-helper",
+      "description": "共享轻量helper，只定位canonical ROOT及选择/校验已安装eacli，不解析业务参数。",
+      "entrypoint": "scripts/eacli-entry.sh",
+      "owner": { "repository": "EverAgent", "path": "scripts/eacli-entry.sh" },
+      "kind": "internal",
+      "aliases": [],
+      "platforms": ["macos", "linux"],
+      "requirements": ["Bash", "已安装eacli >=10.1.0（仅校验plain --version）"],
+      "input": "由egit.sh/edocs.sh source，不接受业务参数",
+      "output": "canonical ROOT、已选eacli路径；失败返回2",
+      "side_effects": [],
+      "authorization": { "repository": "EverAgent", "path": "docs/PROTOCOL_COMMON.md", "section": "C" },
+      "scope": "薄入口共用安装态检查；不成为业务实现"
+    },
+    {
+      "id": "eacli.entry-tests",
+      "description": "隔离契约测试，假eacli仅记录argv/版本；覆盖工具选择、版本失败、canonical ROOT、参数和退出码。",
+      "entrypoint": "scripts/test_eacli_entries.mjs",
+      "owner": { "repository": "EverAgent", "path": "scripts/test_eacli_entries.mjs" },
+      "kind": "internal",
+      "aliases": [],
+      "platforms": ["macos", "linux"],
+      "requirements": ["Bash", "Node.js >=20；内置node:test，无额外依赖"],
+      "input": "node --test scripts/test_eacli_entries.mjs",
+      "output": "薄入口契约测试结果",
+      "side_effects": ["创建并验证绝对目标后清理临时fixture；绝不真实commit/push、安装工具或改变Git暂存区"],
+      "authorization": { "repository": "EverAgent", "path": "docs/AGENT_SESSION.md", "section": "验证边界" },
+      "scope": "仅薄入口；不验证外部eacli业务、不接入CI或质量门"
     },
     {
       "id": "evaluation.harness-experiment",

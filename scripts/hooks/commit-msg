@@ -1,12 +1,5 @@
 #!/bin/sh
-
-MESSAGE_FILE="$1"
-FORBIDDEN_PATTERN='^[[:space:]]*Co-authored-by:[[:space:]]*TRAE CLI[[:space:]]*<[^>]+>[[:space:]]*$'
-
-if grep -Eiq "$FORBIDDEN_PATTERN" "$MESSAGE_FILE"; then
-    echo "[commit-msg] BLOCKED: 禁止添加 TRAE CLI Co-authored-by 尾注。" >&2
-    echo "[commit-msg] 本仓只保留 Author=Everloster 与当前 Agent Committer 两个身份。" >&2
-    exit 1
-fi
-
+# Legacy repository-owned compatibility hook. Git preserves actual message and
+# trailers; Author/Committer validation belongs to the installed eacli engine.
+# Do not install this over a user's existing hook or change global routing.
 exit 0

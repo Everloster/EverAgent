@@ -41,9 +41,9 @@ python3 scripts/report_generator.py summary daily '<repos_json>' output.md '<mis
 新增报告或目录元数据改变时，从仓库根目录更新索引：
 
 ```bash
-go -C packages/everagent-core run ./cmd/ea-quality index --write
+scripts/edocs.sh index --write
 ```
 
-索引按需要更新，不作为提交前置。提交器只核实Committer与新增公开内容；明确需要时才运行相应内容审查。
+索引按需要显式更新，不作为提交前置；不要为工具迁移自动重生成报告或索引正文。该薄入口要求预先安装eacli >=10.1.0，固定转发`eacli docs index --repo-root ROOT --write`，ROOT绑定公开脚本位置；缺失/非法/旧版本明确失败，不自动build/install或寻找私仓。提交器保留policy Author、当前真实模型/明确有效声明Committer与新增公开内容保护；明确需要时才运行相应内容审查。
 
 每次任务都做简短反思；只有跨 repo 可复用或高风险的新发现才以最小 delta 更新 skill/reference。

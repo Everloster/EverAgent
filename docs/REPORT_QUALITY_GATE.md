@@ -6,11 +6,15 @@
 
 仅在用户明确需要评分、正式证据账本、既有report-v2兼容或历史结果核查时，主动使用：
 
+先预先安装eacli >=10.1.0（plain `eacli --version`），再通过本仓薄入口显式调用：
+
 ```bash
-python3 scripts/report_quality.py --help
-python3 scripts/report_quality.py policy --json
-go -C packages/everagent-core run ./cmd/ea-quality report --report <报告路径>
+eacli docs --help
+scripts/edocs.sh policy --json
+scripts/edocs.sh report --report <报告路径>
 ```
+
+`edocs.sh ACTION <args>`固定转发`eacli docs ACTION --repo-root CANONICAL_ROOT <args>`，root绑定脚本位置，参数原样保留。工具优先取显式`EACLI_BIN`，其次`$HOME/.local/bin/eacli`，再查PATH；选中程序缺失、不可执行或版本非法/过旧时失败，不寻找私仓、不自动build/install。资料与审查实现只由安装工具提供，不再用公开Go/Python源码入口。
 
 这些工具继续读取原有policy与合同，因此可能报告旧标准不满足；这不是普通提交失败的理由，也不授权自动切换模型、创建Reviewer或修改报告状态。
 `check --finalize`等写入操作只在明确采用该旧合同并完成相应工作时使用，不通过补模板或伪造评分让报告“通过”。
