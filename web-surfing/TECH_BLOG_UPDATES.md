@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-23（北京时间）** · **累计收录时段：2026-09-02—2026-11-22**
 
-检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**68 篇已学习**，**10 篇有相关报告**，**496 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**69 篇已学习**，**10 篇有相关报告**，**495 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
-**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增已有 3 篇完成专题学习，阅读入口见原条目；其余新增待做，原有文章、人工导读和学习记录保留。
+**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增已有 4 篇完成专题学习，阅读入口见原条目；其余新增待做，原有文章、人工导读和学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 222 篇 | 25 篇 |
+| [2026-11](#m202611) | 222 篇 | 26 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -788,11 +788,11 @@
 </details>
 
 <details>
-<summary><strong>vLLM · 11 篇 · 2 篇已学习</strong></summary>
+<summary><strong>vLLM · 11 篇 · 3 篇已学习</strong></summary>
 
-- **11-20** [vLLM 支持 Inkling 2 Mini：循环层、KV 缓存与推测解码](https://vllm.ai/blog/2026-11-20-inkling2-mini "Inkling 2 Mini on vLLM: Day-0 Support for a Looped Model") · 未做
+- **11-20** [vLLM 支持 Inkling 2 Mini：循环层、KV 缓存与推测解码](https://vllm.ai/blog/2026-11-20-inkling2-mini "Inkling 2 Mini on vLLM: Day-0 Support for a Looped Model") · **已学习**
 
-  解释共享权重的多轮层计算怎样分别管理 KV 缓存、传递轮间消息，并复用融合内核；同时说明可变循环研究检查点和 RL 服务支持。
+  解释共享权重的多轮层计算怎样分别管理 KV 缓存、传递轮间消息，并复用融合内核；同时说明可变循环研究检查点和 RL 服务支持。 [阅读报告](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_循环计算与vLLM缓存管理_深度解析_20261123.md)
 
 - **11-18** [FlyDSL MonoKernels：让多轮 Agent 解码保持响应](https://vllm.ai/blog/2026-11-18-flydsl-monokernels "Keeping Agents Fast: High-Interactivity Decode with FlyDSL MonoKernels in vLLM") · 未做
 
@@ -2320,6 +2320,8 @@
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_循环计算与vLLM缓存管理_深度解析_20261123.md) · 对应本页 1 篇原文。
 
 - [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_环境内强化学习与LoRA合并_深度解析_20261123.md) · 对应本页 1 篇原文。
 

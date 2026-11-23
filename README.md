@@ -21,8 +21,8 @@
 - 2026-11-23 · [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)
 - 2026-11-23 · [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](./ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 - 2026-11-23 · [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](./ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
+- 2026-11-23 · [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](./ai-learning/reports/knowledge_reports/Inkling_2_Mini_%E5%BE%AA%E7%8E%AF%E8%AE%A1%E7%AE%97%E4%B8%8EvLLM%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 - 2026-11-23 · [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](./ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
-- 2026-11-19 · [AI 行业日报 · 2026-11-19](./web-surfing/reports/ai-news-daily-2026-11-19.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 226 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 227 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
