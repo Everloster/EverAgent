@@ -10,6 +10,7 @@
 | 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | podcast-learning |
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
+| 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_%E5%BE%AA%E7%8E%AF%E8%AE%A1%E7%AE%97%E4%B8%8EvLLM%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-19 | [AI 行业日报 · 2026-11-19](../web-surfing/reports/ai-news-daily-2026-11-19.md) | web-surfing |
@@ -31,14 +32,14 @@
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
 | 2026-11-16 | [李桢谈企业 AI：项目做得出来，组织为什么接不住？](../podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) | podcast-learning |
-| 2026-11-16 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 
-## 🤖 AI Learning（227 篇）
+## 🤖 AI Learning（228 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `personal-agent`, `agents-api`, `responses-api`, `async-tool-calling`, `deadline`, `steering` |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `codex`, `performance-engineering`, `agent-workflow`, `causal-inference`, `evaluation`, `production-verification` |
+| 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `medchembench`, `medicinal-chemistry`, `multimodal-reasoning`, `evaluation`, `molecular-structure`, `decision-making` |
 | 2026-11-23 | [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_%E5%BE%AA%E7%8E%AF%E8%AE%A1%E7%AE%97%E4%B8%8EvLLM%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `looped-transformer`, `inkling`, `vllm`, `kv-cache`, `inference`, `speculative-decoding` |
 | 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `harness-adapters`, `lora`, `grpo`, `openenv`, `agent-training`, `evaluation` |
 | 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | `claude-code`, `code-mode`, `programmatic-tool-calling`, `tool-orchestration`, `permissions`, `context-engineering` |
