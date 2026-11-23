@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | podcast-learning |
+| 2026-11-23 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | podcast-learning |
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 | 2026-11-16 | [用吃豆人检验决策模型：何时普通 LLM 已够用，何时值得蒸馏一个端侧专家](../podcast-learning/reports/2026-10-10_kedaibiao_331-decision-model-mobile.md) | podcast-learning |
 | 2026-11-16 | [浏览器怎样运行 PyTorch 模型：ExecuTorch WebGPU 的导出、内存与性能边界](../ai-learning/reports/knowledge_reports/ExecuTorch_WebGPU_%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A8%E7%90%86%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261116.md) | ai-learning |
-| 2026-11-16 | [李桢谈企业 AI：项目做得出来，组织为什么接不住？](../podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) | podcast-learning |
 
 ## 🤖 AI Learning（228 篇）
 
@@ -391,11 +391,12 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（144 篇）
+## 🎙️ Podcast Learning（145 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | `personal-agent`, `lingguang`, `agent-runtime`, `proactive-agent`, `authorization`, `consumer-ai` |
+| 2026-11-23 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | `personal-agent`, `qwen`, `agent-harness`, `memory`, `authorization`, `post-training` |
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | `interactive-narrative`, `generative-agents`, `livo`, `agent-memory`, `content-business`, `organizational-design` |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | `brain-computer-interface`, `meg`, `opm`, `temporal-interference`, `neural-decoding`, `clinical-evidence` |
 | 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | `ai-education`, `learning-transfer`, `community`, `creator-business`, `agent-workflow`, `long-tail` |

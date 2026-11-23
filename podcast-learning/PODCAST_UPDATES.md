@@ -12,11 +12,11 @@
 
 **本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
 
-**本轮学习（2026-11-23）：**[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
+**本轮学习（2026-11-23）：**[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 1 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
+**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 2 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
 
-本页收录 **420 条单集发布记录**：**95 条已有专题报告**，**1 条仅有相关报告**，**324 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **420 条单集发布记录**：**96 条已有专题报告**，**1 条仅有相关报告**，**323 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -24,11 +24,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 144 条 | 75 条 |
+| [AI / 科技](#tech) | 144 条 | 76 条 |
 | [商业 / 投资 / 职场](#business) | 149 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 127 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 95 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 96 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -36,7 +36,7 @@
 
 ## 最近一周
 
-2026-11-17—2026-11-23，共 44 条，其中 1 条已有专题报告。
+2026-11-17—2026-11-23，共 44 条，其中 2 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -68,7 +68,7 @@
 | 2026-11-19 | 声东击西 | [410｜赵玉顺、袁贞贞：离开城市，记录村镇与农民](https://etw.fm/2231 "#410 赵玉顺、袁贞贞：两个没能留在大城市的年轻人，开始记录时代的另一面丨十周年特别节目") | 1小时24分 | 未做 |
 | 2026-11-19 | 商业就是这样 | [Vol.282｜职业体育、博彩与反假球机制](https://www.ximalaya.com/sound/1033762928 "Vol.282 谁最讨厌假球？") | 55分钟 | 未做 |
 | 2026-11-19 | 听懂涨声 | [Anthropic IPO：商业模式、资本预期与算力投资](https://www.xiaoyuzhoufm.com/episode/6afe7ee1a4a79edf137b90ca "Anthropic万亿IPO：一场AI狂欢，还是泡沫破裂前的最后盛宴？") · [音频](https://media.xyzcdn.net/6543750424e7ad2107e8b0b5/lriTgtWz8wN2csaGp-eXjpbmi3tw.m4a) | 1小时13分 | 未做 |
-| 2026-11-19 | AI炼金术 | [蒋冠军：Personal Agent 的授权、记忆与后训练](https://www.ximalaya.com/sound/1034046447 "Personal Agent 怎么从尝鲜变成常用？｜对谈千问蒋冠军") | 1小时51分 | 未做 |
+| 2026-11-19 | AI炼金术 | [蒋冠军：Personal Agent 的授权、记忆与后训练](https://www.ximalaya.com/sound/1034046447 "Personal Agent 怎么从尝鲜变成常用？｜对谈千问蒋冠军") | 1小时51分 | [阅读报告](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) |
 | 2026-11-18 | 菠萝健康派 | [Vol.140｜陆舜：小细胞肺癌与新型免疫疗法](https://www.xiaoyuzhoufm.com/episode/6afc6391a4a79edf137ad13d "陆舜教授：这种很棘手的癌症，有了新武器！vol.140") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6693ae814ce7c8de0f47e220/6afc6391a4a79edf137ad13d/media.xyzcdn.net/6693ae814ce7c8de0f47e220/lkhKXOtW7YdyYL13_F7ADwbpfoMm.m4a) | 36分钟 | 未做 |
 | 2026-11-18 | 硅基立场 | [王书元：FDE 怎样从企业 AI「样板间」开始](https://www.xiaoyuzhoufm.com/episode/6afc1f94a4a79edf137aad74 "对话 Google Cloud FDE 负责人王书元：FDE落到企业上，第一步是造“样板间”") · [音频](https://dts-api.xiaoyuzhoufm.com/track/655b2870583732e09f301b22/6afc1f94a4a79edf137aad74/media.xyzcdn.net/655b2870583732e09f301b22/lrNllmJu8A0dZLsnRkX_saKq-TGs.m4a) | 1小时9分 | 未做 |
 | 2026-11-18 | 疯投圈 | [152｜韩国考察：文化与消费品牌](https://crazy.capital/152 "152 ✪ 韩国考察回顾：文化乘数赋能消费品牌") | 1小时12分 | 未做 |
@@ -211,14 +211,14 @@
 <a id="show-ai-lianjinshu"></a>
 
 <details>
-<summary><strong>AI炼金术 · 14 条 · 10 条有报告</strong></summary>
+<summary><strong>AI炼金术 · 14 条 · 11 条有报告</strong></summary>
 
 [公开订阅](https://www.ximalaya.com/album/74194808.xml) · [更早单集索引](./wiki/show-indexes/ai-lianjinshu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
 | 2026-11-20 | [AI 冲击哪些公司的生意：SaaS、开发工具与算力服务](https://www.ximalaya.com/sound/1034331062 "AI来了，这些公司快死了……吗？") | 1小时45分 | 未做 |
-| 2026-11-19 | [蒋冠军：Personal Agent 的授权、记忆与后训练](https://www.ximalaya.com/sound/1034046447 "Personal Agent 怎么从尝鲜变成常用？｜对谈千问蒋冠军") | 1小时51分 | 未做 |
+| 2026-11-19 | [蒋冠军：Personal Agent 的授权、记忆与后训练](https://www.ximalaya.com/sound/1034046447 "Personal Agent 怎么从尝鲜变成常用？｜对谈千问蒋冠军") | 1小时51分 | [阅读报告](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) |
 | 2026-11-18 | [Michael Guan：AI 面试助手与广告投手蒸馏](https://www.ximalaya.com/sound/1033824004 "从AI面试助手到蒸馏广告投手｜对谈Michael Guan") | 1小时28分 | 未做 |
 | 2026-11-10 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | [阅读报告](./reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) |
 | 2026-11-03 | [李桢：企业用 AI，不只是省人工](https://www.ximalaya.com/sound/1029884610 "要用 AI 抢地盘，别只想着省人工｜尚学未来 CEO 李桢") · [小宇宙备用](https://www.xiaoyuzhoufm.com/episode/6ae9234e97726cd4675bc75c) | 1小时35分 | [阅读报告](./reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) |
