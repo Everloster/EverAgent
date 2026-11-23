@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://sv101.fireside.fm/273",
+  "source_ref": "sha256:2baf937844015a82dce74433093182cd037ded6b7360af8f56284970f0150881",
+  "max_consecutive_limit": 3,
+  "audit": {
+    "ok": true,
+    "size": 190482,
+    "sha256": "2baf937844015a82dce74433093182cd037ded6b7360af8f56284970f0150881",
+    "lines": 2255,
+    "segments": 2255,
+    "duration_seconds": 9037,
+    "max_consecutive_identical": 1,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 1
+  }
+}

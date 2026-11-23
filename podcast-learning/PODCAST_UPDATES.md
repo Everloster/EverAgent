@@ -12,11 +12,11 @@
 
 **本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
 
-**本轮学习（2026-11-23）：**[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
+**本轮学习（2026-11-23）：**[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 3 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
+**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 4 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
 
-本页收录 **420 条单集发布记录**：**97 条已有专题报告**，**1 条仅有相关报告**，**322 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **420 条单集发布记录**：**98 条已有专题报告**，**1 条仅有相关报告**，**321 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -24,11 +24,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 144 条 | 77 条 |
+| [AI / 科技](#tech) | 144 条 | 78 条 |
 | [商业 / 投资 / 职场](#business) | 149 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 127 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 97 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 98 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -36,7 +36,7 @@
 
 ## 最近一周
 
-2026-11-17—2026-11-23，共 44 条，其中 3 条已有专题报告。
+2026-11-17—2026-11-23，共 44 条，其中 4 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -44,7 +44,7 @@
 | 日期 | 节目 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- | --- |
 | 2026-11-23 | 菠萝健康派 | [141｜六层楼、陈雪：痛经的成因、缓解与就医](https://www.xiaoyuzhoufm.com/episode/6b029ee86f7bbb70cd591f45 "六层楼：慌啥子嘛？痛经不用慌，但也别硬扛vol.141") · [音频](https://media.xyzcdn.net/6693ae814ce7c8de0f47e220/lpxV3m8UinQthNje5-SrTP0PZ2ZY.m4a) | 1小时 | 未做 |
-| 2026-11-23 | 硅谷101 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | 未做 |
+| 2026-11-23 | 硅谷101 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | [阅读报告](./reports/2026-11-23_sv101_259_quant-ai-risk.md) |
 | 2026-11-23 | 晚点聊 LateTalk | [190｜蔡伟：蚂蚁灵光从 Coding Agent 到 Personal Agent](https://podcast.latepost.com/190 "190: 对话蚂蚁灵光蔡伟：大厂首个「个人 Agent」，验证了什么") | 1小时52分 | [阅读报告](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) |
 | 2026-11-23 | 姜Dora在此 | [姜Dora：从翻译到互联网、短视频的转行经历](https://www.xiaoyuzhoufm.com/episode/6b0037d56f7bbb70cd5888d3 "一个绝望文科生的职场自救故事｜如何0经验转行去任何行业") · [音频](https://media.xyzcdn.net/60d93b97b3c5e390a8b61e40/lte_UwBQdRAjIKebaZoXZynuZFac.m4a) | 19分钟 | 未做 |
 | 2026-11-23 | 声动早咖啡 | [考公热与中公、华图、粉笔的经营压力](https://www.xiaoyuzhoufm.com/episode/6b02d1d96f7bbb70cd5934a6 "考公热度持续高企，三大培训龙头为何日子难过？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/ljwyE_XORsay5QDsNg4gWuqZTBeD.m4a) | 17分钟 | 未做 |
@@ -268,13 +268,13 @@
 <a id="show-guigu101"></a>
 
 <details>
-<summary><strong>硅谷101 · 10 条 · 7 条有报告</strong></summary>
+<summary><strong>硅谷101 · 10 条 · 8 条有报告</strong></summary>
 
 [公开订阅](https://feeds.fireside.fm/sv101/rss) · [更早单集索引](./wiki/show-indexes/guigu101.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-23 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | 未做 |
+| 2026-11-23 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | [阅读报告](./reports/2026-11-23_sv101_259_quant-ai-risk.md) |
 | 2026-11-10 | [E258｜HF0 驻地创业与 OpenRouter 早期故事](https://sv101.fireside.fm/272 "E258｜聊聊硅谷创业“修道院”HF0与OpenRouter早期故事") | 54分钟 | [阅读报告](./reports/2026-11-10_rss-guigu101_e258-hf0-openrouter.md) |
 | 2026-10-29 | [E257｜Vitalik：AI 安全与有效利他主义](https://sv101.fireside.fm/271 "E257｜对话Vitalik：AI安全背后的哲学思想，有效利他主义如何影响硅谷？") | 1小时53分 | [阅读报告](./reports/2026-10-29_guigu101_e257-vitalik-ai-safety.md) |
 | 2026-10-20 | [E256｜GPT-6 Astra 对 Agent、机器人和制药的影响](https://sv101.fireside.fm/270 "E256｜Agent、机器人与制药，谁先被GPT-6 Astra改写？") | 1小时20分 | [阅读报告](./reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) |
