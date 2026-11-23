@@ -15,11 +15,11 @@
 
 ## §C Push Flow（推送流程 · 全局统一）
 
-正式Git入口是`scripts/egit.sh identity|validate|commit|merge|push|hooks`，`scripts/ecommit.sh`保留为commit简写。公开脚本只是已安装eacli的薄适配，不维护Git、身份或内容扫描实现，也不依赖私仓checkout或其他设备在线。
+正式Git入口是`scripts/egit.sh identity|commit|merge|push|hooks`，`scripts/ecommit.sh`保留为commit简写。公开脚本只是已安装eacli的薄适配，不维护Git、身份或内容扫描实现，也不依赖私仓checkout或其他设备在线。
 
-须事先安装eacli **>=10.1.0**；入口优先使用显式`EACLI_BIN`，其次`$HOME/.local/bin/eacli`，最后PATH，并用`eacli --version`的plain release版本核对。选中的程序缺失、不可执行、版本非法或过旧时明确失败，不回退普通Git，不寻找相邻私仓，不自动build/install。
+须事先安装eacli **>=11.0.0**；入口优先使用显式`EACLI_BIN`，其次`$HOME/.local/bin/eacli`，最后PATH，并用`eacli --version`的plain release版本核对。选中的程序缺失、不可执行、版本非法或过旧时明确失败，不回退普通Git，不寻找相邻私仓，不自动build/install。
 
-固定转发接口是`eacli git <identity|commit|merge|push|hooks> --repo-root CANONICAL_ROOT <args>`；`egit.sh validate`映射为`eacli git identity --repo-root CANONICAL_ROOT validate <args>`。ROOT从脚本所在位置物理canonical绑定，不取调用cwd；可从子目录调用对应脚本路径。除第一个action外逐项保留参数，`-m`/`-F`值、trailer和普通Git参数不被脚本重写；实际eacli/Git失败退出码原样返回。
+固定转发接口是`eacli git <identity|commit|merge|push|hooks> --repo-root CANONICAL_ROOT <args>`。`validate`旧别名已移除，统一使用`identity`。ROOT从脚本所在位置物理canonical绑定，不取调用cwd；可从子目录调用对应脚本路径。除第一个action外逐项保留参数，`-m`/`-F`值、trailer和普通Git参数不被脚本重写；实际eacli/Git失败退出码原样返回。
 
 只自动检查：
 
@@ -33,7 +33,7 @@ git add <本次修改的文件>
 scripts/ecommit.sh -m "说明实际修改"
 ```
 
-身份有问题时按需使用已安装的`eacli session diagnose --json`；仓库身份校验用`scripts/egit.sh validate --json`。公开仓不提供独立core源码运行入口。
+身份有问题时按需使用已安装的`eacli session diagnose --json`；仓库身份校验用`scripts/egit.sh identity --json`。公开仓不提供独立core源码运行入口。
 未核实身份只阻断提交，不妨碍已授权只读或源码工作。声明只能承接用户明确事实，不猜模型或伪造自动观测。
 
 公开内容检查绑定实际暂存树，防止检查后换成另一份内容；Git正常的冲突、签名、权限和参数错误仍返回失败。若commit已产生但后置身份/内容不符，保留现场，不自动再提交或推送。

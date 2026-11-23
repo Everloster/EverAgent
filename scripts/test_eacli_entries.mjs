@@ -41,7 +41,7 @@ function fixture(t) {
   }
   const fake = (filename) => {
     fs.mkdirSync(path.dirname(filename), { recursive: true });
-    fs.writeFileSync(filename, `#!${process.execPath}\nconst fs = require('node:fs');\nconst argv = process.argv.slice(2);\nfs.appendFileSync(process.env.FAKE_LOG, JSON.stringify({executable: process.argv[1], argv}) + '\\n');\nif (argv.length === 1 && argv[0] === '--version') { process.stdout.write(process.env.FAKE_VERSION ?? '10.1.0\\n'); process.exit(Number(process.env.FAKE_VERSION_EXIT ?? 0)); }\nprocess.exit(Number(process.env.FAKE_EXIT ?? 0));\n`, { mode: 0o755 });
+    fs.writeFileSync(filename, `#!${process.execPath}\nconst fs = require('node:fs');\nconst argv = process.argv.slice(2);\nfs.appendFileSync(process.env.FAKE_LOG, JSON.stringify({executable: process.argv[1], argv}) + '\\n');\nif (argv.length === 1 && argv[0] === '--version') { process.stdout.write(process.env.FAKE_VERSION ?? '11.0.0\\n'); process.exit(Number(process.env.FAKE_VERSION_EXIT ?? 0)); }\nprocess.exit(Number(process.env.FAKE_EXIT ?? 0));\n`, { mode: 0o755 });
     return filename;
   };
   const explicit = fake(path.join(root, 'explicit tools', 'eacli'));
@@ -65,13 +65,12 @@ for (const action of ['identity', 'commit', 'merge', 'push', 'hooks']) {
   });
 }
 
-test('validate maps to identity validate; ecommit preserves -m/-F values and trailers', (t) => {
+test('removed validate fails; ecommit preserves -m/-F values and trailers', (t) => {
   const f = fixture(t);
-  assert.equal(f.run('egit.sh', ['validate', '--json']).status, 0);
+  assert.equal(f.run('egit.sh', ['validate', '--json']).status, 2);
   const args = ['-m', '--repo-root', '-m', '中文说明\n\nCo-authored-by: Example <example@example.org>', '-F', '--repo-root', '--trailer', 'Reviewed-by=Example', '--', 'file with spaces'];
   assert.equal(f.run('ecommit.sh', args).status, 0);
   assert.deepEqual(f.calls().map((c) => c.argv), [
-    ['--version'], ['git', 'identity', '--repo-root', f.repo, 'validate', '--json'],
     ['--version'], ['git', 'commit', '--repo-root', f.repo, ...args],
   ]);
 });
@@ -131,7 +130,7 @@ test('PATH works without HOME; no adjacent private checkout is required', (t) =>
   assert.equal(f.calls()[0].executable, pathCLI);
 });
 
-for (const version of ['10.1.0\n', '10.2.0', '10.10.0', '11.0.0', '1000000000000000000000.0.0']) {
+for (const version of ['11.0.0\n', '11.2.0', '11.10.0', '12.0.0', '1000000000000000000000.0.0']) {
   test(`valid release ${version.trim()} runs the selected CLI`, (t) => {
     const f = fixture(t);
     const result = f.run('egit.sh', ['commit', '-m', 'example'], { FAKE_VERSION: version });
@@ -140,7 +139,7 @@ for (const version of ['10.1.0\n', '10.2.0', '10.10.0', '11.0.0', '1000000000000
   });
 }
 
-for (const version of ['9.99.99', '10.0.999', '', 'v10.1.0', '10.1', '10.01.0', '10.1.0-rc.1', '10.1.0 extra', '10.1.0\n11.0.0']) {
+for (const version of ['9.99.99', '10.99.999', '10.1.0', '', 'v10.1.0', '10.1', '10.01.0', '10.1.0-rc.1', '10.1.0 extra', '10.1.0\n11.0.0']) {
   test(`old/invalid version ${JSON.stringify(version)} fails before business execution`, (t) => {
     const f = fixture(t);
     f.fake(path.join(f.home, '.local', 'bin', 'eacli'));

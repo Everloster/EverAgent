@@ -16,10 +16,10 @@
       "requirements": [
         "Bash",
         "Git（由外部eacli使用）",
-        "预先安装eacli >=10.1.0；plain --version",
+        "预先安装eacli >=11.0.0；plain --version",
         "选择顺序：显式EACLI_BIN > HOME/.local/bin/eacli > PATH；缺失/非法/旧版本失败，不回退或自动build/install"
       ],
-      "input": "egit.sh identity|validate|commit|merge|push|hooks <args> -> eacli git ACTION --repo-root CANONICAL_ROOT <args>；validate -> identity --repo-root ROOT validate",
+      "input": "egit.sh identity|commit|merge|push|hooks <args> -> eacli git ACTION --repo-root CANONICAL_ROOT <args>",
       "output": "eacli/Git输出及实际退出码原样传递",
       "side_effects": [
         "外部eacli commit/merge可写Git提交或工作树，push可写获授权远端",
@@ -39,7 +39,7 @@
       "platforms": ["macos", "linux"],
       "requirements": [
         "Bash",
-        "预先安装eacli >=10.1.0；plain --version",
+        "预先安装eacli >=11.0.0；plain --version",
         "外部能力查eacli docs --help；选择与失败规则同Git薄入口，不要求私仓checkout"
       ],
       "input": "edocs.sh ACTION <args> -> eacli docs ACTION --repo-root CANONICAL_ROOT <args>",
@@ -56,7 +56,7 @@
       "kind": "internal",
       "aliases": [],
       "platforms": ["macos", "linux"],
-      "requirements": ["Bash", "已安装eacli >=10.1.0（仅校验plain --version）"],
+      "requirements": ["Bash", "已安装eacli >=11.0.0（仅校验plain --version）"],
       "input": "由egit.sh/edocs.sh source，不接受业务参数",
       "output": "canonical ROOT、已选eacli路径；失败返回2",
       "side_effects": [],

@@ -1,7 +1,7 @@
 # 脚本目录
 
 > Generated from script-catalog.json; do not edit by hand.
-> source-sha256: `b57915e13dcb2e03017f2236ff2a5ec0e61a9d1e5220197413c12c95a8902493`
+> source-sha256: `5e623f1cf3a73549270f990975b5e2198eec826417ab22a4d0c04f55a43d6433`
 > generator: `eacli docs index --write` (script-index-v2)
 
 | ID | 入口 | 描述 | 范围 |
