@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-23（北京时间）** · **累计收录时段：2026-09-02—2026-11-22**
 
-检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**65 篇已学习**，**10 篇有相关报告**，**499 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**66 篇已学习**，**10 篇有相关报告**，**498 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
-**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。新增均未找到对应专题报告，原有文章、人工导读和学习状态保留。
+**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增中的「Personal Agent 的时间感与异步追问」已完成专题学习；其余新增待做，原有文章、人工导读和学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 222 篇 | 22 篇 |
+| [2026-11](#m202611) | 222 篇 | 23 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -1007,15 +1007,15 @@
 </details>
 
 <details>
-<summary><strong>OpenAI Developers · 6 篇 · 1 篇已学习</strong></summary>
+<summary><strong>OpenAI Developers · 6 篇 · 2 篇已学习</strong></summary>
 
 - **11-20** [Ultrafast：在 Codex 中边看结果边改界面](https://developers.openai.com/blog/how-i-stay-in-the-flow-with-ultrafast "How I stay in the flow with Ultrafast - OpenAI Developers") · 未做
 
   作者分享快速试改 UI、文档和 computer use 的工作方式，也讨论工具等待较长时，增加生成速度为何未必缩短整体耗时。
 
-- **11-20** [Personal Agent 的时间感与异步追问](https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents "Time awareness and async input for personal agents") · 未做
+- **11-20** [Personal Agent 的时间感与异步追问](https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents "Time awareness and async input for personal agents") · **已学习**
 
-  以会前调研为例，说明 Agents API 怎样提醒模型注意截止时间、用异步工具等待用户回复，并在 Responses API 循环中实现相似流程。
+  以会前调研为例，说明 Agents API 怎样提醒模型注意截止时间、用异步工具等待用户回复，并在 Responses API 循环中实现相似流程。 [阅读报告](../ai-learning/reports/knowledge_reports/Personal_Agent_时间感与异步追问_截止时间与交付控制_深度解析_20261123.md)
 
 - **11-19** [GPT-Live 多语言语音：地区口音与会话提示](https://developers.openai.com/blog/prompting-multilingual-voice-agents "Prompting GPT-Live for languages and regional accents") · 未做
 
@@ -2320,6 +2320,8 @@
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_时间感与异步追问_截止时间与交付控制_深度解析_20261123.md) · 对应本页 1 篇原文。
 
 - [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_过期任务与上下文干扰_深度解析_20261117.md) · 对应本页 1 篇原文。
 
