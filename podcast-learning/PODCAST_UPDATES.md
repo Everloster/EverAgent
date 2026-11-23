@@ -12,9 +12,11 @@
 
 **本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
 
-**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增均未找到对应专题报告；已有单集、人工主题与学习记录保留。
+**本轮学习（2026-11-23）：**[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-本页收录 **420 条单集发布记录**：**94 条已有专题报告**，**1 条仅有相关报告**，**325 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 1 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
+
+本页收录 **420 条单集发布记录**：**95 条已有专题报告**，**1 条仅有相关报告**，**324 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -22,11 +24,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 144 条 | 74 条 |
+| [AI / 科技](#tech) | 144 条 | 75 条 |
 | [商业 / 投资 / 职场](#business) | 149 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 127 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 94 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 95 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -34,7 +36,7 @@
 
 ## 最近一周
 
-2026-11-17—2026-11-23，共 44 条，其中 0 条已有专题报告。
+2026-11-17—2026-11-23，共 44 条，其中 1 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -43,7 +45,7 @@
 | --- | --- | --- | --- | --- |
 | 2026-11-23 | 菠萝健康派 | [141｜六层楼、陈雪：痛经的成因、缓解与就医](https://www.xiaoyuzhoufm.com/episode/6b029ee86f7bbb70cd591f45 "六层楼：慌啥子嘛？痛经不用慌，但也别硬扛vol.141") · [音频](https://media.xyzcdn.net/6693ae814ce7c8de0f47e220/lpxV3m8UinQthNje5-SrTP0PZ2ZY.m4a) | 1小时 | 未做 |
 | 2026-11-23 | 硅谷101 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | 未做 |
-| 2026-11-23 | 晚点聊 LateTalk | [190｜蔡伟：蚂蚁灵光从 Coding Agent 到 Personal Agent](https://podcast.latepost.com/190 "190: 对话蚂蚁灵光蔡伟：大厂首个「个人 Agent」，验证了什么") | 1小时52分 | 未做 |
+| 2026-11-23 | 晚点聊 LateTalk | [190｜蔡伟：蚂蚁灵光从 Coding Agent 到 Personal Agent](https://podcast.latepost.com/190 "190: 对话蚂蚁灵光蔡伟：大厂首个「个人 Agent」，验证了什么") | 1小时52分 | [阅读报告](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) |
 | 2026-11-23 | 姜Dora在此 | [姜Dora：从翻译到互联网、短视频的转行经历](https://www.xiaoyuzhoufm.com/episode/6b0037d56f7bbb70cd5888d3 "一个绝望文科生的职场自救故事｜如何0经验转行去任何行业") · [音频](https://media.xyzcdn.net/60d93b97b3c5e390a8b61e40/lte_UwBQdRAjIKebaZoXZynuZFac.m4a) | 19分钟 | 未做 |
 | 2026-11-23 | 声动早咖啡 | [考公热与中公、华图、粉笔的经营压力](https://www.xiaoyuzhoufm.com/episode/6b02d1d96f7bbb70cd5934a6 "考公热度持续高企，三大培训龙头为何日子难过？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/ljwyE_XORsay5QDsNg4gWuqZTBeD.m4a) | 17分钟 | 未做 |
 | 2026-11-23 | 商业就是这样 | [商业小样54｜可可豆短缺，巧克力供应如何应对](https://www.ximalaya.com/sound/1034723325 "商业小样54 ｜ 可可豆一直缺，怎么不缺巧克力？") | 13分钟 | 未做 |
@@ -302,13 +304,13 @@
 <a id="show-wandian-latetalk"></a>
 
 <details>
-<summary><strong>晚点聊 LateTalk · 10 条 · 6 条有报告</strong></summary>
+<summary><strong>晚点聊 LateTalk · 10 条 · 7 条有报告</strong></summary>
 
 [公开订阅](https://podcast.latepost.com/rss) · [更早单集索引](./wiki/show-indexes/wandian-latetalk.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-23 | [190｜蔡伟：蚂蚁灵光从 Coding Agent 到 Personal Agent](https://podcast.latepost.com/190 "190: 对话蚂蚁灵光蔡伟：大厂首个「个人 Agent」，验证了什么") | 1小时52分 | 未做 |
+| 2026-11-23 | [190｜蔡伟：蚂蚁灵光从 Coding Agent 到 Personal Agent](https://podcast.latepost.com/190 "190: 对话蚂蚁灵光蔡伟：大厂首个「个人 Agent」，验证了什么") | 1小时52分 | [阅读报告](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) |
 | 2026-11-19 | [189｜顾全全：模型 scaling 与 AI 制药](https://podcast.latepost.com/189 "189: Geodesic顾全全：预训练有点“无聊”了，但用scaling改变AI制药才刚开始") | 1小时36分 | 未做 |
 | 2026-11-15 | [188｜英伟达管理层变动后的算力格局](https://podcast.latepost.com/188 "188: 黄仁勋闪电离职之后：英伟达、AI 基建、中美竞争和算力江湖") | 1小时16分 | 未做 |
 | 2026-11-13 | [187｜刘松铭：Astra 来袭，00 后物理 AI 创始人的胜率](https://podcast.latepost.com/187 "对话LiberAI刘松铭：Astra来袭，00后物理AI创始人看到的胜率") | 2小时9分 | [阅读报告](./reports/2026-11-13_rss-wandian-latetalk_187-liberai-astra.md) |

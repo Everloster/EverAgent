@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | podcast-learning |
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-16 | [李桢谈企业 AI：项目做得出来，组织为什么接不住？](../podcast-learning/reports/2026-11-03_ai-lianjinshu_lizhen-enterprise-value.md) | podcast-learning |
 | 2026-11-16 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 | 2026-11-16 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | podcast-learning |
-| 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | podcast-learning |
 
 ## 🤖 AI Learning（226 篇）
 
@@ -389,10 +389,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（143 篇）
+## 🎙️ Podcast Learning（144 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | `personal-agent`, `lingguang`, `agent-runtime`, `proactive-agent`, `authorization`, `consumer-ai` |
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | `interactive-narrative`, `generative-agents`, `livo`, `agent-memory`, `content-business`, `organizational-design` |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | `brain-computer-interface`, `meg`, `opm`, `temporal-interference`, `neural-decoding`, `clinical-evidence` |
 | 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | `ai-education`, `learning-transfer`, `community`, `creator-business`, `agent-workflow`, `long-tail` |

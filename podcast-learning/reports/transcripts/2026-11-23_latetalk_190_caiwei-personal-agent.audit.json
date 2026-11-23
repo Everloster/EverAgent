@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://podcast.latepost.com/190",
+  "source_ref": "sha256:34e0a2ddaa5c15eb26990a3324d8f84e83c79970f2c1c1d32e9f68c207a35467",
+  "max_consecutive_limit": 3,
+  "audit": {
+    "ok": true,
+    "size": 157773,
+    "sha256": "34e0a2ddaa5c15eb26990a3324d8f84e83c79970f2c1c1d32e9f68c207a35467",
+    "lines": 1860,
+    "segments": 1860,
+    "duration_seconds": 6717,
+    "max_consecutive_identical": 1,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  }
+}

@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-23 · [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)
 - 2026-11-23 · [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](./ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 - 2026-11-23 · [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](./ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 - 2026-11-23 · [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](./ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 - 2026-11-19 · [AI 行业日报 · 2026-11-19](./web-surfing/reports/ai-news-daily-2026-11-19.md)
-- 2026-11-18 · [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](./ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 143 篇 | 60/61/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 144 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 61 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
