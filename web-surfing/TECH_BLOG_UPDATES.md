@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-23（北京时间）** · **累计收录时段：2026-09-02—2026-11-22**
 
-检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**66 篇已学习**，**10 篇有相关报告**，**498 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**67 篇已学习**，**10 篇有相关报告**，**497 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
-**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增中的「Personal Agent 的时间感与异步追问」已完成专题学习；其余新增待做，原有文章、人工导读和学习记录保留。
+**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增已有 2 篇完成专题学习，阅读入口见原条目；其余新增待做，原有文章、人工导读和学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 222 篇 | 23 篇 |
+| [2026-11](#m202611) | 222 篇 | 24 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -50,7 +50,7 @@
 
 
 <details>
-<summary><strong>OpenAI 研究与技术更新 · 49 篇 · 1 篇已学习</strong></summary>
+<summary><strong>OpenAI 研究与技术更新 · 49 篇 · 2 篇已学习</strong></summary>
 
 - **11-22** [困惑度与智能：一种跨模型比较指标的提议](https://openai.com/index/perplexity-and-intelligence "Perplexity and Intelligence") · 未做
 
@@ -68,9 +68,9 @@
 
   介绍 Hebbia 对 GPT-6 Astra 的发布前测试，分别检查所需来源、引用相关性和文稿要求；结果来自该公司的测试，不是独立金融收益评估。
 
-- **11-19** [Performance Factory：用 Codex 查找和修复性能回退](https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast "How OpenAI’s Performance Factory keeps ChatGPT fast") · 未做
+- **11-19** [Performance Factory：用 Codex 查找和修复性能回退](https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast "How OpenAI’s Performance Factory keeps ChatGPT fast") · **已学习**
 
-  拆解任务服务、派发循环、云端 Codex 与事件订阅如何配合，从告警调查走到修复；同时讨论对抗式复核、Agent 变更评测和反复失败后的自修复。
+  拆解任务服务、派发循环、云端 Codex 与事件订阅如何配合，从告警调查走到修复；同时讨论对抗式复核、Agent 变更评测和反复失败后的自修复。 [阅读报告](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_性能回退调查与生产恢复_深度解析_20261123.md)
 
 - **11-19** [PR scans 演示：在拉取请求中查看扫描结果](https://openai.com/business/learn/pr-scans-demo "See PR scans in action") · 未做
 
@@ -2320,6 +2320,8 @@
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_性能回退调查与生产恢复_深度解析_20261123.md) · 对应本页 1 篇原文。
 
 - [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_时间感与异步追问_截止时间与交付控制_深度解析_20261123.md) · 对应本页 1 篇原文。
 
