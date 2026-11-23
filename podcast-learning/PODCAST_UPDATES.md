@@ -12,11 +12,11 @@
 
 **本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
 
-**本轮学习（2026-11-23）：**[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
+**本轮学习（2026-11-23）：**[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 2 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
+**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 3 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
 
-本页收录 **420 条单集发布记录**：**96 条已有专题报告**，**1 条仅有相关报告**，**323 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **420 条单集发布记录**：**97 条已有专题报告**，**1 条仅有相关报告**，**322 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -24,11 +24,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 144 条 | 76 条 |
+| [AI / 科技](#tech) | 144 条 | 77 条 |
 | [商业 / 投资 / 职场](#business) | 149 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 127 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 96 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 97 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -36,7 +36,7 @@
 
 ## 最近一周
 
-2026-11-17—2026-11-23，共 44 条，其中 2 条已有专题报告。
+2026-11-17—2026-11-23，共 44 条，其中 3 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -49,7 +49,7 @@
 | 2026-11-23 | 姜Dora在此 | [姜Dora：从翻译到互联网、短视频的转行经历](https://www.xiaoyuzhoufm.com/episode/6b0037d56f7bbb70cd5888d3 "一个绝望文科生的职场自救故事｜如何0经验转行去任何行业") · [音频](https://media.xyzcdn.net/60d93b97b3c5e390a8b61e40/lte_UwBQdRAjIKebaZoXZynuZFac.m4a) | 19分钟 | 未做 |
 | 2026-11-23 | 声动早咖啡 | [考公热与中公、华图、粉笔的经营压力](https://www.xiaoyuzhoufm.com/episode/6b02d1d96f7bbb70cd5934a6 "考公热度持续高企，三大培训龙头为何日子难过？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/ljwyE_XORsay5QDsNg4gWuqZTBeD.m4a) | 17分钟 | 未做 |
 | 2026-11-23 | 商业就是这样 | [商业小样54｜可可豆短缺，巧克力供应如何应对](https://www.ximalaya.com/sound/1034723325 "商业小样54 ｜ 可可豆一直缺，怎么不缺巧克力？") | 13分钟 | 未做 |
-| 2026-11-23 | 卫诗婕｜漫谈Light the Star | [96｜卫哲：Agent 怎样改变购物入口与电商生意](https://www.xiaoyuzhoufm.com/episode/6b0153ef77e5b18a3330994c "96.这次不聊双 11，和卫哲聊聊 Agent 背后颠覆式的购物革命｜2026 双 11 特辑") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lhNEcjdubAS7kg26I0Bxsw-TaEwu.m4a) | 1小时26分 | 未做 |
+| 2026-11-23 | 卫诗婕｜漫谈Light the Star | [96｜卫哲：Agent 怎样改变购物入口与电商生意](https://www.xiaoyuzhoufm.com/episode/6b0153ef77e5b18a3330994c "96.这次不聊双 11，和卫哲聊聊 Agent 背后颠覆式的购物革命｜2026 双 11 特辑") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lhNEcjdubAS7kg26I0Bxsw-TaEwu.m4a) | 1小时26分 | [阅读报告](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md) |
 | 2026-11-22 | 屠龙大实话 | [短节目06｜代际成就与阶层流动的讨论](https://www.xiaoyuzhoufm.com/episode/6afbf071fe62f8f52c4c74bc "屠龙短节目06｜如何防止阶级下滑") · [音频](https://media.xyzcdn.net/663c1227c844ff347a305223/lne-RF2SkFZR8TaHLHJJtCnmo55v.m4a) | 9分钟 | 未做 |
 | 2026-11-20 | 说医解药 | [95｜小美事件调查通报：处理措施与试验监管](https://www.xiaoyuzhoufm.com/episode/6afdffdffe62f8f52c4d4e48 "小美事件调查结果公布：仇子龙被开除，哪些细节值得关注？Vol.95") · [音频](https://media.xyzcdn.net/675fed6284447b1bd047dc1b/lho-u0GBWXGRUKK0ZfyF44PRRxRK.m4a) | 32分钟 | 未做 |
 | 2026-11-20 | 知行小酒馆 | [E259｜陈鹏、永靖：市场波动、分散配置与投资心态](https://www.xiaoyuzhoufm.com/episode/6affef42a4a79edf137c2a66 "E259 投资茶话会：今年的市场，为什么让我们这么心累？") · [音频](https://media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lgV0ODLVSu82_FS0vh-DMYiEgt5v.m4a) | 1小时14分 | 未做 · [共创](#shared-episode) |
@@ -403,13 +403,13 @@
 <a id="show-weishijie"></a>
 
 <details>
-<summary><strong>卫诗婕｜漫谈Light the Star · 11 条 · 1 条有报告</strong></summary>
+<summary><strong>卫诗婕｜漫谈Light the Star · 11 条 · 2 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/4jjdlpq3khc9) · [更早单集索引](./wiki/show-indexes/weishijie.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-23 | [96｜卫哲：Agent 怎样改变购物入口与电商生意](https://www.xiaoyuzhoufm.com/episode/6b0153ef77e5b18a3330994c "96.这次不聊双 11，和卫哲聊聊 Agent 背后颠覆式的购物革命｜2026 双 11 特辑") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lhNEcjdubAS7kg26I0Bxsw-TaEwu.m4a) | 1小时26分 | 未做 |
+| 2026-11-23 | [96｜卫哲：Agent 怎样改变购物入口与电商生意](https://www.xiaoyuzhoufm.com/episode/6b0153ef77e5b18a3330994c "96.这次不聊双 11，和卫哲聊聊 Agent 背后颠覆式的购物革命｜2026 双 11 特辑") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lhNEcjdubAS7kg26I0Bxsw-TaEwu.m4a) | 1小时26分 | [阅读报告](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md) |
 | 2026-11-20 | [95｜Anthropic 上市与下一轮模型竞争的行业解读](https://www.xiaoyuzhoufm.com/episode/6afffc3efe62f8f52c4e1573 "95.Anthropic 上市，看懂超级智能第一股 ：大模型的「大结果」、乘法因子，与下一场模型竞赛") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lo0bIWvMS-CIpdAyaYcYXht3ZJsq.m4a) | 1小时34分 | 未做 |
 | 2026-11-17 | [94｜林达华：中国 AI 从追赶走向原创](https://www.xiaoyuzhoufm.com/episode/6afb4152a4a79edf137a54ad "94.中国 AI 从追赶到原创，真正的难题是什么？｜与商汤林达华的 3 小时访谈") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6627fda4b56459544087d86a/6afb4152a4a79edf137a54ad/media.xyzcdn.net/6627fda4b56459544087d86a/lswDmPTXOz2kbqbYqHniHpJVs8JT.m4a) | 2小时34分 | 未做 |
 | 2026-11-17 | [93｜英伟达事件与算力主权的行业解读](https://www.xiaoyuzhoufm.com/episode/6afb2bf4fe62f8f52c4c3678 "93.黄仁勋事件「深喉」解读：桃色事件？不，一场算力主权争夺风暴才刚开始") · [音频](https://dts-api.xiaoyuzhoufm.com/track/6627fda4b56459544087d86a/6afb2bf4fe62f8f52c4c3678/media.xyzcdn.net/6627fda4b56459544087d86a/lp5eZvJB73IsdHQn5OuHhHHkV4qy.m4a) | 1小时1分 | 未做 |
