@@ -8,11 +8,11 @@
 
 **最近检查：2026-11-23（北京时间）** · **累计收录时段：2026-09-02—2026-11-22**
 
-检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**67 篇已学习**，**10 篇有相关报告**，**497 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **574 篇**日期已核实的文章：**68 篇已学习**，**10 篇有相关报告**，**496 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
-**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增已有 2 篇完成专题学习，阅读入口见原条目；其余新增待做，原有文章、人工导读和学习记录保留。
+**本次补充 28 篇**：27 篇发表于 2026-11-17—2026-11-23 的检查窗口内，另补录 11 月 16 日的 Anthropic 协调漏洞披露说明。新增涉及 Personal Agent 的异步输入、Performance Factory、困惑度指标、MedChemBench、harness adapters、Inkling 2 Mini、语音代办与像素空间生成；另在日期待补区加入 Theorizer。本轮新增已有 3 篇完成专题学习，阅读入口见原条目；其余新增待做，原有文章、人工导读和学习记录保留。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 222 篇 | 24 篇 |
+| [2026-11](#m202611) | 222 篇 | 25 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -576,15 +576,15 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 27 篇 · 7 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 27 篇 · 8 篇已学习</strong></summary>
 
 - **11-20** [Inkling 2 Mini：循环 Transformer 与本地推理支持](https://huggingface.co/blog/inkling2mini "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup") · 未做
 
   Hugging Face 团队介绍循环层、多模态 MoE、量化权重和推测解码，并梳理 Transformers、llama.cpp、SGLang、MLX 等接入；主观试用与正式基准分别看待。
 
-- **11-20** [Harness adapters：让模型适应具体 Agent 环境](https://huggingface.co/blog/harness-adapters-at-scale "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost") · 未做
+- **11-20** [Harness adapters：让模型适应具体 Agent 环境](https://huggingface.co/blog/harness-adapters-at-scale "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost") · **已学习**
 
-  Hugging Face 团队结合任务生成、OpenEnv 验证和异步 GRPO，在目标 harness 内训练适配器；附训练设置、适配器合并与评测，也追问模型到底学会了什么。
+  Hugging Face 团队结合任务生成、OpenEnv 验证和异步 GRPO，在目标 harness 内训练适配器；附训练设置、适配器合并与评测，也追问模型到底学会了什么。 [阅读报告](../ai-learning/reports/knowledge_reports/Harness_Adapters_环境内强化学习与LoRA合并_深度解析_20261123.md)
 
 - **11-18** [微调耗时为何超出 FLOPs 估计](https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time "Why your fine-tuning job takes longer than the FLOPs say") · 未做
 
@@ -2320,6 +2320,8 @@
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_环境内强化学习与LoRA合并_深度解析_20261123.md) · 对应本页 1 篇原文。
 
 - [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_性能回退调查与生产恢复_深度解析_20261123.md) · 对应本页 1 篇原文。
 

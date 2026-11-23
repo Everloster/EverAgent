@@ -9,6 +9,7 @@
 |------|------|------|
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
+| 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-19 | [AI 行业日报 · 2026-11-19](../web-surfing/reports/ai-news-daily-2026-11-19.md) | web-surfing |
 | 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | ai-learning |
 | 2026-11-18 | [AI 行业日报 · 2026-11-18](../web-surfing/reports/ai-news-daily-2026-11-18.md) | web-surfing |
@@ -31,14 +32,14 @@
 | 2026-11-16 | [把钱包交给 Agent 之前：授权、身份、意图与责任为什么缺一不可](../podcast-learning/reports/2026-09-18_guigu101_agent-commerce-trust.md) | podcast-learning |
 | 2026-11-16 | [微软 CoreAI 访谈：模型会写查询、能交付表格，为什么企业 AI 仍然需要大量产品工作](../podcast-learning/reports/2026-10-15_kedaibiao_333-coreai-enterprise.md) | podcast-learning |
 | 2026-11-16 | [张璐谈企业 AI：有预算、有使用，怎样才算有回报？](../podcast-learning/reports/2026-11-06_latepost_186-zhanglu-enterprise-ai-roi.md) | podcast-learning |
-| 2026-11-16 | [常驻 Agent 怎样安全运行：把能力留给模型，把权限留在模型之外](../ai-learning/reports/knowledge_reports/%E5%B8%B8%E9%A9%BBAgent%E5%AE%89%E5%85%A8_%E6%8E%A7%E5%88%B6%E9%9D%A2%E9%9A%94%E7%A6%BB%E4%B8%8E%E6%9D%83%E9%99%90%E4%BA%A4%E9%9B%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261115.md) | ai-learning |
 
-## 🤖 AI Learning（225 篇）
+## 🤖 AI Learning（226 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `personal-agent`, `agents-api`, `responses-api`, `async-tool-calling`, `deadline`, `steering` |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `codex`, `performance-engineering`, `agent-workflow`, `causal-inference`, `evaluation`, `production-verification` |
+| 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `harness-adapters`, `lora`, `grpo`, `openenv`, `agent-training`, `evaluation` |
 | 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | `claude-code`, `code-mode`, `programmatic-tool-calling`, `tool-orchestration`, `permissions`, `context-engineering` |
 | 2026-11-17 | [如何用 Agent 设计 Agent 友好的 CLI：从真实用户任务到独立验收的工程闭环](../ai-learning/reports/knowledge_reports/Agent%E5%8F%8B%E5%A5%BDCLI_%E7%9C%9F%E5%AE%9E%E4%BB%BB%E5%8A%A1%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%8B%AC%E7%AB%8B%E9%AA%8C%E6%94%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-engineering`, `cli`, `tool-design`, `agent-evaluation`, `harness`, `authorization` |
 | 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | `agent-evaluation`, `nemo`, `harness`, `trace-analysis`, `authorization`, `verifier` |
