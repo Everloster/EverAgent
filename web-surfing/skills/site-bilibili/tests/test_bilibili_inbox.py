@@ -77,6 +77,44 @@ class BilibiliInboxTests(unittest.TestCase):
         self.assertTrue(rows[0]["official_update"])
         self.assertEqual(rows[0]["watch_state"], "unwatched")
 
+    def test_incomplete_history_is_unknown_not_unwatched(self):
+        videos = [
+            {
+                "bvid": "BV-unknown",
+                "title": "Unknown history",
+                "creator_mid": "1",
+                "creator_name": "Creator",
+                "published_at": 9_900,
+                "published_text": "recent",
+                "duration_text": "20:00",
+                "url": "https://www.bilibili.com/video/BV-unknown",
+            }
+        ]
+        common = dict(
+            history=[],
+            recommended_ups=[],
+            since_hours=1,
+            min_duration_minutes=10,
+            recommended_only=False,
+            limit=10,
+            now_ts=10_000,
+            history_complete=False,
+        )
+        rows = MODULE.build_inbox(videos, unwatched_only=False, **common)
+        self.assertEqual(rows[0]["watch_state"], "unknown")
+        self.assertEqual(MODULE.build_inbox(videos, unwatched_only=True, **common), [])
+
+    def test_history_compatibility_wrapper_does_not_mix_view_and_publish_clocks(self):
+        class Session:
+            def eval(self, expression, timeout):
+                self.expression = expression
+                return {"items": [{"bvid": "BV1"}], "complete": True, "pages_read": 1}
+
+        session = Session()
+        rows = MODULE.fetch_history(session, pages=2, cutoff_ts=123, delay_ms=0)
+        self.assertEqual(rows, [{"bvid": "BV1"}])
+        self.assertNotIn("oldest<", session.expression)
+
     def test_markdown_render(self):
         text = MODULE.render_markdown(
             {

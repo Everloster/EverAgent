@@ -45,7 +45,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-DEFAULT_WHISPER_CPP_MODELS = "/Users/jabe/workspace/whisper.cpp/models"
+DEFAULT_WHISPER_CPP_MODELS = str(Path.home() / "workspace" / "whisper.cpp" / "models")
 DEFAULT_VAD_FILE = "ggml-silero-v6.2.0.bin"
 
 # 模型名（tiny / base / small / medium / large-v3）→ ggml 文件名
@@ -159,7 +159,7 @@ def transcribe(
         ]
         if whisper_args:
             cmd += whisper_args   # 透传 whisper-cli 额外参数（如 --vad / -mc 0 防循环幻觉）
-        print(f"[transcribe] 调用 whisper-cli…")
+        print("[transcribe] 调用 whisper-cli…")
         subprocess.run(cmd, check=True)
 
         json_path = Path(tmp) / "out.json"
@@ -170,21 +170,30 @@ def transcribe(
 
     out.parent.mkdir(parents=True, exist_ok=True)
     n = 0
-    with out.open("w", encoding="utf-8") as f:
-        for seg in data.get("transcription", []):
-            ts_from = seg["timestamps"]["from"].split(",")[0]  # HH:MM:SS,mmm → HH:MM:SS
-            ts_to = seg["timestamps"]["to"].split(",")[0]
-            text = seg["text"].strip()
-            f.write(f"[{ts_from} -> {ts_to}] {text}\n")
-            n += 1
-            if n % 50 == 0:
-                print(f"[transcribe]   已写 {n} 段…")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", dir=out.parent, prefix=f".{out.name}.", delete=False
+        ) as handle:
+            temporary = Path(handle.name)
+            for seg in data.get("transcription", []):
+                ts_from = seg["timestamps"]["from"].split(",")[0]
+                ts_to = seg["timestamps"]["to"].split(",")[0]
+                text = seg["text"].strip()
+                handle.write(f"[{ts_from} -> {ts_to}] {text}\n")
+                n += 1
+                if n % 50 == 0:
+                    print(f"[transcribe]   已写 {n} 段…")
+        temporary.replace(out)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
     detected = data.get("result", {}).get("language", lang)
     print(f"[transcribe] 完成：{out}（{n} 段，检测语种={detected}）")
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Podcast 本地转写（yt-dlp + whisper.cpp）")
     p.add_argument("source", help="播客/视频链接，或本地音频文件路径")
     p.add_argument("--out", help="转写文本输出路径（.transcript.txt）")
@@ -209,46 +218,43 @@ def main() -> int:
         "--whisper-args",
         help='透传给 whisper-cli 的额外参数，如 "--vad -vm <silero模型> -mc 0"（长音频防循环幻觉）',
     )
-    args = p.parse_args()
+    args = p.parse_args(argv)
 
     lang = None if args.lang == "auto" else args.lang
-
-    # 1) 拿到音频路径
-    tmpdir: tempfile.TemporaryDirectory | None = None
-    if is_url(args.source):
-        if args.audio_out:
-            audio_base = Path(args.audio_out)
-        else:
-            tmpdir = tempfile.TemporaryDirectory(prefix="podcast-audio-")
-            audio_base = Path(tmpdir.name) / "episode"
-        audio = download_audio(args.source, audio_base)
-    else:
-        audio = Path(args.source)
-        if not audio.exists():
-            sys.exit(f"[transcribe] 本地文件不存在：{audio}")
-
-    if args.download_only:
-        if tmpdir is not None:
-            print(
-                "[transcribe] 警告：--download-only 且未指定 --audio-out，音频在临时目录，退出后会丢失。"
-            )
-        return 0
-
-    # 2) 转写
-    if not args.out:
+    if args.download_only and not args.audio_out:
+        sys.exit("[transcribe] --download-only 必须指定 --audio-out，避免退出后丢失音频。")
+    if not args.download_only and not args.out:
         sys.exit("[transcribe] 转写需指定 --out 输出路径。")
-    transcribe(
-        audio=audio,
-        out=Path(args.out),
-        model=args.model,
-        lang=lang,
-        model_dir=args.model_dir,
-        whisper_args=shlex.split(args.whisper_args) if args.whisper_args else None,
-    )
 
-    if tmpdir is not None:
-        tmpdir.cleanup()
-    return 0
+    tmpdir: tempfile.TemporaryDirectory | None = None
+    try:
+        if is_url(args.source):
+            if args.audio_out:
+                audio_base = Path(args.audio_out)
+            else:
+                tmpdir = tempfile.TemporaryDirectory(prefix="podcast-audio-")
+                audio_base = Path(tmpdir.name) / "episode"
+            audio = download_audio(args.source, audio_base)
+        else:
+            audio = Path(args.source)
+            if not audio.exists():
+                sys.exit(f"[transcribe] 本地文件不存在：{audio}")
+
+        if args.download_only:
+            return 0
+
+        transcribe(
+            audio=audio,
+            out=Path(args.out),
+            model=args.model,
+            lang=lang,
+            model_dir=args.model_dir,
+            whisper_args=shlex.split(args.whisper_args) if args.whisper_args else None,
+        )
+        return 0
+    finally:
+        if tmpdir is not None:
+            tmpdir.cleanup()
 
 
 if __name__ == "__main__":

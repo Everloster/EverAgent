@@ -1,5 +1,6 @@
 import importlib.util
 import datetime as dt
+import gzip
 import json
 import subprocess
 import sys
@@ -99,6 +100,103 @@ class RadarCommonTests(unittest.TestCase):
                     self.assertNotEqual(request, radar.request_id("source-a", "https://example.org/other"))
                 with mock.patch.object(radar, "now_utc", return_value=instant + dt.timedelta(hours=1)):
                     self.assertNotEqual(request, radar.request_id("source-a", "https://example.org/feed"))
+
+    def test_bounded_http_rejects_oversize_plain_and_gzip_responses(self):
+        class Response:
+            def __init__(self, payload):
+                self.payload = payload
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return None
+
+            def read(self, size):
+                return self.payload[:size]
+
+        for payload, limits in (
+            (b"1234", {"max_bytes": 3, "max_decompressed_bytes": 20}),
+            (gzip.compress(b"123456"), {"max_bytes": 100, "max_decompressed_bytes": 5}),
+        ):
+            with self.subTest(limits=limits), mock.patch.object(
+                radar_common.urllib.request, "urlopen", return_value=Response(payload)
+            ):
+                with self.assertRaises(radar_common.RadarError):
+                    radar_common.http_get(
+                        "https://example.org/feed",
+                        timeout=1,
+                        user_agent="test",
+                        accept="application/xml",
+                        **limits,
+                    )
+
+    def test_domain_feed_parsers_keep_their_metadata(self):
+        modules = []
+        for index, relative in enumerate(RADARS):
+            spec = importlib.util.spec_from_file_location(f"feed_radar_{index}", ROOT / relative)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            modules.append(module)
+        blog, podcast = modules
+        xml = """<?xml version="1.0"?><rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><item>
+<title>Agent systems</title><link>https://example.org/post?utm_source=x&amp;from=2</link>
+<guid>guide-1</guid><pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
+<description><![CDATA[<p>Mechanism and benchmark</p>]]></description>
+<enclosure url="https://cdn.example.org/a.mp3"/><itunes:duration>1:02:03</itunes:duration>
+</item></channel></rss>"""
+        source = {
+            "id": "source", "vendor": "Example", "homepage": "https://example.org/",
+            "feed_url": "https://example.org/feed", "allow_domains": [], "path_prefixes": [],
+        }
+        since = dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc)
+        blog_items = blog.parse_feed_text(xml, source, since)
+        podcast_items = podcast.parse_feed_text(xml, source)
+        self.assertEqual(blog_items[0]["published_at"], "2026-08-19T00:00:00+00:00")
+        self.assertEqual(blog_items[0]["summary"], "Mechanism and benchmark")
+        self.assertNotIn("from=2", blog_items[0]["url"])
+        self.assertIn("from=2", podcast_items[0]["url"])
+        self.assertEqual(podcast_items[0]["duration_seconds"], 3723)
+        self.assertEqual(podcast_items[0]["audio_url"], "https://cdn.example.org/a.mp3")
+
+        atom = """<feed xmlns="http://www.w3.org/2005/Atom"><entry>
+<title>Namespaced</title><link href="https://example.org/atom"/>
+<published>2026-08-20T00:00:00Z</published><summary>Summary</summary>
+</entry></feed>"""
+        self.assertEqual(blog.parse_feed_text(atom, source, since)[0]["url"], "https://example.org/atom")
+        self.assertEqual(podcast.parse_feed_text(atom, source)[0]["published_at"], "2026-08-20T00:00:00+00:00")
+        sitemap = """<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+<loc>https://example.org/post</loc><lastmod>2026-08-20</lastmod></url></urlset>"""
+        self.assertEqual(blog.parse_sitemap_text(sitemap)[0][0], "https://example.org/post")
+
+    def test_studied_index_uses_only_declared_sources_and_completed_reports(self):
+        spec = importlib.util.spec_from_file_location("studied_radar", ROOT / RADARS[1])
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as directory:
+            podcast_root = Path(directory) / "podcast-learning"
+            reports = podcast_root / "reports"
+            reports.mkdir(parents=True)
+            (reports / "done.md").write_text(
+                """---
+title: Done episode
+status: completed
+source_url: https://example.org/episode
+related: https://example.org/not-the-episode
+---
+""",
+                encoding="utf-8",
+            )
+            (reports / "draft.md").write_text(
+                "---\ntitle: Draft\nstatus: in_progress\nsource_url: https://example.org/draft\n---\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(module, "PODCAST_ROOT", podcast_root), mock.patch.object(
+                module, "REPORTS_DIR", reports
+            ):
+                urls, titles = module.load_studied_index()
+        self.assertEqual(set(urls), {"https://example.org/episode"})
+        self.assertEqual(titles["doneepisode"], "podcast-learning/reports/done.md")
 
 
 if __name__ == "__main__":

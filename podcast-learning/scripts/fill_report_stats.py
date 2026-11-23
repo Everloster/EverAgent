@@ -63,10 +63,19 @@ def check(report: pathlib.Path, dry: bool) -> list[str]:
     if not fm:
         return [f"{report.name}: 无 frontmatter，跳过"]
     block, rest = fm.group(1), text[fm.end():]
-    fixes, diffs = [], []
+    diffs = []
 
-    tr = stats(parse_paths(re.search(r"^transcript_path:\s*(.+)$", block, re.M).group(1) if re.search(r"^transcript_path:\s*(.+)$", block, re.M) else ""))
-    po = stats(parse_paths(re.search(r"^polished_transcript_path:\s*(.+)$", block, re.M).group(1) if re.search(r"^polished_transcript_path:\s*(.+)$", block, re.M) else ""))
+    raw_declaration = re.search(r"^transcript_path:\s*(.+)$", block, re.M)
+    polished_declaration = re.search(r"^polished_transcript_path:\s*(.+)$", block, re.M)
+    raw_paths = parse_paths(raw_declaration.group(1) if raw_declaration else "")
+    polished_paths = parse_paths(polished_declaration.group(1) if polished_declaration else "")
+    tr = stats(raw_paths)
+    po = stats(polished_paths)
+    notes = []
+    if not raw_paths:
+        notes.append("未读取 raw，未核验原始统计")
+    if not polished_paths:
+        notes.append("未读取 polished，未核验精编统计")
 
     pairs = [
         (r"hanzi_chars_raw", tr["hanzi"]), (r"total_chars_raw", tr["total"]),
@@ -90,15 +99,23 @@ def check(report: pathlib.Path, dry: bool) -> list[str]:
     m = re.search(r"^duration_seconds:\s*(\d+)", block, re.M)
     if m and tr["hanzi"] and int(m.group(1)) > 0:
         rate = round(tr["hanzi"] / (int(m.group(1)) / 60))
-        m2 = re.search(r'^speech_rate_cjk:\s*"?(\d+)', block, re.M)
-        if m2 and abs(int(m2.group(1)) - rate) > 2:
-            diffs.append(f"speech_rate_cjk: {m2.group(1)} → {rate}")
-            block = re.sub(r'^speech_rate_cjk:\s*".*?"', f'speech_rate_cjk: "{rate} 字/min"', block, flags=re.M)
+        current = re.search(r"^speech_rate_cjk:\s*(.*)$", block, re.M)
+        old_rate = re.search(r"\d+", current.group(1)) if current else None
+        if old_rate is None or abs(int(old_rate.group(0)) - rate) > 2:
+            diffs.append(f"speech_rate_cjk: {old_rate.group(0) if old_rate else None} → {rate}")
+            replacement = f'speech_rate_cjk: "{rate} 字/min"'
+            if current:
+                block = re.sub(
+                    r"^speech_rate_cjk:.*$", replacement, block, flags=re.M
+                )
+            else:
+                block += f"\n{replacement}"
 
     if diffs and not dry:
         report.write_text("---\n" + block + "\n---\n" + rest, encoding="utf-8")
     tag = "[dry] " if dry else ""
-    print(f"{tag}{report.name}: " + ("；".join(diffs) if diffs else "✓ 一致"))
+    detail = "；".join(diffs) if diffs else "；".join(notes) if notes else "✓ 一致"
+    print(f"{tag}{report.name}: {detail}")
     return diffs
 
 

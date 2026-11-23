@@ -1,66 +1,79 @@
-import os
-import torch
-import tiktoken
-from model import TransformerLanguageModel, device, d_model, context_length, num_blocks, num_heads, dropout
+from __future__ import annotations
 
-def load_model():
-    # 初始化模型
-    model = TransformerLanguageModel()
-    model = model.to(device)
-    
-    # 加载已保存的模型权重
-    if os.path.exists('model-ckpt.pt'):
-        model.load_state_dict(torch.load('model-ckpt.pt'))
-        print(f"模型已从 model-ckpt.pt 加载")
-    else:
-        print("错误：找不到模型文件 model-ckpt.pt")
-        exit(1)
-    
+import argparse
+from pathlib import Path
+
+import torch
+
+from transformer_core import DEFAULT_CONFIG, TransformerConfig, TransformerLanguageModel
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_model(
+    checkpoint: Path = PROJECT_ROOT / "model-ckpt.pt",
+    data_path: Path = PROJECT_ROOT / "data/sales_textbook.txt",
+    config: TransformerConfig = DEFAULT_CONFIG,
+) -> TransformerLanguageModel:
+    if not checkpoint.is_file():
+        raise FileNotFoundError(f"model checkpoint is missing: {checkpoint}")
+    from training import load_training_data
+
+    data = load_training_data(data_path, download=False)
+    model = TransformerLanguageModel(data.max_token_value, config).to(config.device)
+    model.load_state_dict(
+        torch.load(checkpoint, map_location=config.device, weights_only=True)
+    )
     model.eval()
     return model
 
-def generate_text(model, prompt, max_tokens=100):
-    # 初始化tokenizer
-    encoding = tiktoken.get_encoding("cl100k_base")
-    
-    # 编码输入文本
-    start_ids = encoding.encode(prompt)
-    x = torch.tensor(start_ids, dtype=torch.long, device=device)[None, ...]
-    
-    # 生成文本
-    y = model.generate(x, max_new_tokens=max_tokens)
-    
-    # 解码并返回生成的文本
-    return encoding.decode(y[0].tolist())
 
-def main():
-    # 加载模型
-    model = load_model()
-    
-    print("欢迎使用文本生成模型！")
+def generate_text(
+    model: TransformerLanguageModel, prompt: str, max_tokens: int = 100
+) -> str:
+    import tiktoken
+
+    if not prompt.strip():
+        raise ValueError("prompt must not be empty")
+    encoding = tiktoken.get_encoding("cl100k_base")
+    start_ids = encoding.encode(prompt)
+    device = next(model.parameters()).device
+    tokens = torch.tensor(start_ids, dtype=torch.long, device=device)[None, ...]
+    generated = model.generate(tokens, max_new_tokens=max_tokens)
+    return encoding.decode(generated[0].tolist())
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--checkpoint", type=Path, default=PROJECT_ROOT / "model-ckpt.pt")
+    parser.add_argument("--data", type=Path, default=PROJECT_ROOT / "data/sales_textbook.txt")
+    parser.add_argument("--prompt", help="generate once instead of opening interactive input")
+    parser.add_argument("--max-tokens", type=int, default=100)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    if args.max_tokens < 1:
+        raise ValueError("--max-tokens must be positive")
+    model = load_model(args.checkpoint, args.data)
+    if args.prompt is not None:
+        print(generate_text(model, args.prompt, max_tokens=args.max_tokens))
+        return 0
+
     print("输入 'quit' 或 'exit' 退出程序")
-    
     while True:
-        # 获取用户输入
         prompt = input("\n请输入提示词: ")
-        
-        # 检查是否退出
-        if prompt.lower() in ['quit', 'exit']:
+        if prompt.lower() in {"quit", "exit"}:
             break
-            
-        # 如果输入为空，跳过
         if not prompt.strip():
             continue
-            
         try:
-            # 生成文本
-            generated_text = generate_text(model, prompt)
-            print("\n生成的文本:")
-            print("---------------")
-            print(generated_text)
-            print("---------------")
-        except Exception as e:
-            print(f"生成过程中出现错误: {str(e)}")
+            print("\n" + generate_text(model, prompt))
+        except (OSError, RuntimeError, ValueError) as exc:
+            print(f"生成过程中出现错误: {exc}")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

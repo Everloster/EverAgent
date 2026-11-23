@@ -14,4 +14,4 @@
 - 标注证据等级、可重复性状态和 WEIRD 样本边界。
 - 经典实验同时呈现后续争议、失败复现或解释变化。
 
-需要既有覆盖时查询 eacli `knowledge.psychology`；PROFILE、MAP 和 open-questions 条件读取。公共方法、元数据与质量门由根级 Owner 维护。
+需要既有覆盖时查询 eacli `knowledge.psychology`；PROFILE、MAP 和 open-questions 条件读取。公共方法、元数据与按需复核由根级 Owner 维护。

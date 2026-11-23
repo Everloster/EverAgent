@@ -16,7 +16,7 @@
 不因修改AGENTS、Skill或Context就自动运行全量回放、独立Reviewer、字节预算门禁或Go/Python整套测试。
 只有用户明确要求效果实验，或确需验证一个具体行为变化时，才选择对应样本和验证范围；模型调用、费用和其他Agent的使用仍需相应授权。
 
-已有`eval_report_context.py`、`run_ace_context_ab.py`和Go context/full诊断保留为主动工具，不是提交前置。其中的旧预算或严格合同不自动约束普通新文档。
+已有`eval_report_context.py`、`run_ace_context_ab.py`和Go context/full诊断保留为主动工具，不是提交前置。ACE v3 将普通任务与显式 report-v2 严格复核分开；旧预算、旧评分或严格合同不自动约束普通新文档，新旧结果不直接比较。
 历史结果按当时输入、配置和版本解释，不重写评分、补造运行记录或把过期A/B当成当前改动的效果证明。文本变短不等于已证明任务成功率或Token收益。
 
 ## 历史依据

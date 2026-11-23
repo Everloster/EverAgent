@@ -27,7 +27,6 @@ function fixture(t) {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, value);
   };
-  put('config/report-quality-policy.json', '{}');
   put('docs/REPORT_INDEX.md', '# 报告目录');
   put('ai-learning/reports/2026-11-01_demo.md', '---\ntitle: 测试报告\nupdated_on: 2026-11-01\nsource_url: javascript:alert(1)\n---\n# 示例\n\n<script>alert(1)</script>\n\n[危险](java\tscript:alert)\n');
   put('podcast-learning/PODCAST_UPDATES.md', '# 播客\n\n<details>\n<summary>节目</summary>\n\n[报告](../ai-learning/reports/2026-11-01_demo.md#示例)\n\n[编码锚点](../ai-learning/reports/2026-11-01_demo.md#%E7%A4%BA%E4%BE%8B)\n\n</details>');
@@ -78,6 +77,22 @@ test('installed Mini App: explicit setup, restart, and a renamed fork without pr
     assert.ok(!JSON.stringify(result.body).includes('PRIVATE_'));
     await app.dispose();
     app = await boot(f);
+    assert.equal((await get(app, '/api/reports')).body.total, 1);
+    assert.equal(JSON.parse(readFileSync(f.configFile, 'utf8')).public_repo_root, realpathSync(f.repo));
+  } finally { await app.dispose(); }
+});
+
+test('corrupt saved configuration is explicit and recoverable without leaking local paths', async (t) => {
+  const f = fixture(t);
+  mkdirSync(dirname(f.configFile), { recursive: true });
+  writeFileSync(f.configFile, '{broken', 'utf8');
+  const app = await boot(f);
+  try {
+    const before = await get(app, '/api/reports');
+    assert.equal(before.status, 503);
+    assert.equal(before.body.error, 'invalid_config');
+    assert.ok(!JSON.stringify(before.body).includes(f.temp));
+    assert.equal((await setup(app, f.repo)).status, 200);
     assert.equal((await get(app, '/api/reports')).body.total, 1);
     assert.equal(JSON.parse(readFileSync(f.configFile, 'utf8')).public_repo_root, realpathSync(f.repo));
   } finally { await app.dispose(); }

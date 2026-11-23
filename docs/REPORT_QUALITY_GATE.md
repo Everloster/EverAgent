@@ -6,7 +6,7 @@
 
 仅在用户明确需要评分、正式证据账本、既有report-v2兼容或历史结果核查时，主动使用：
 
-先预先安装eacli >=10.1.0（plain `eacli --version`），再通过本仓薄入口显式调用：
+先预先安装eacli >=11.0.0（plain `eacli --version`），再通过本仓薄入口显式调用：
 
 ```bash
 eacli docs --help

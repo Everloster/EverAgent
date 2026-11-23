@@ -28,7 +28,7 @@ git clone https://github.com/Everloster/EverAgent.git
 cd EverAgent
 ```
 
-需要Git保护或资料工具时，先通过独立、已获授权的安装流程准备eacli **>=10.1.0**，然后核对`eacli --version`的plain release输出。公开仓不提供core源码、安装器或自动build/install。薄入口按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH依次选择；选中程序缺失、不可执行或版本非法/过旧时失败，不回退普通Git、不寻找私仓。
+需要Git保护或资料工具时，先通过独立、已获授权的安装流程准备eacli **>=11.0.0**，然后核对`eacli --version`的plain release输出。公开仓不提供core源码、安装器或自动build/install。薄入口按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH依次选择；选中程序缺失、不可执行或版本非法/过旧时失败，不回退普通Git、不寻找私仓。
 
 每个获授权的clone单独检查项目钩子（macOS/Linux），需要时显式安装：
 

@@ -25,13 +25,16 @@ SUITE_PATH = ROOT / "evals" / "ace-report-tasks.json"
 
 
 def _load_suite() -> dict:
-    return json.loads(SUITE_PATH.read_text(encoding="utf-8"))
+    suite = json.loads(SUITE_PATH.read_text(encoding="utf-8"))
+    if suite.get("schema_version") != 3:
+        raise ValueError("ACE suite schema_version must be 3")
+    return suite
 
 
 def run_template() -> dict[str, object]:
     suite = _load_suite()
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "model": "",
         "harness": "",
         "context_revision": "",
@@ -71,8 +74,8 @@ def score_run(path: Path) -> dict[str, object]:
     suite = _load_suite()
     expected = {case["id"]: case for case in suite["cases"]}
     observed_doc = json.loads(path.read_text(encoding="utf-8"))
-    if observed_doc.get("schema_version") != 2:
-        raise ValueError("behavioral run schema_version must be 2; regenerate with --template")
+    if observed_doc.get("schema_version") != 3:
+        raise ValueError("behavioral run schema_version must be 3; regenerate with --template")
     observed = {case["id"]: case for case in observed_doc.get("cases", [])}
     policy = load_policy()
     disabled_models = {
@@ -159,7 +162,7 @@ def score_run(path: Path) -> dict[str, object]:
         )
         score += 15 if checks["completion"] else 0
 
-        quality_required = exp.get("quality_tier") is not None and created is True
+        quality_required = exp.get("quality_contract") == "report-v2" and created is True
         if quality_required:
             expected_tier = exp.get("quality_tier")
             checks["quality_tier"] = (
@@ -233,7 +236,7 @@ def score_run(path: Path) -> dict[str, object]:
     total = sum(row["score"] for row in rows)
     maximum = sum(row["max_score"] for row in rows)
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "model": observed_doc.get("model", ""),
         "harness": observed_doc.get("harness", ""),
         "context_revision": observed_doc.get("context_revision", ""),
@@ -298,7 +301,7 @@ def aggregate_runs(paths: list[Path]) -> dict[str, object]:
                 "tool_failures": sum(int(case.get("tool_failures") or 0) for case in all_cases),
             }
         )
-    return {"schema_version": 2, "groups": summaries}
+    return {"schema_version": 3, "groups": summaries}
 
 
 def main() -> int:

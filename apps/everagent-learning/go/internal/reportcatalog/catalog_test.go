@@ -1,6 +1,60 @@
 package reportcatalog
 
-import "testing"
+import (
+	"encoding/json"
+	"os"
+	"testing"
+)
+
+func TestSharedCatalogContract(t *testing.T) {
+	data, err := os.ReadFile("testdata/shared_contract.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var contract struct {
+		PathCases []struct {
+			Path       string `json:"path"`
+			Collection string `json:"collection"`
+			Matches    bool   `json:"matches"`
+		} `json:"path_cases"`
+		TitleCases []struct {
+			Path, Title, Expected string
+		} `json:"title_cases"`
+		AliasCases []struct {
+			Raw      Metadata `json:"raw"`
+			Field    string   `json:"field"`
+			Expected string   `json:"expected"`
+		} `json:"alias_cases"`
+		DateCases []struct {
+			Path, Text, Fallback, Expected string
+		} `json:"date_cases"`
+	}
+	if err := json.Unmarshal(data, &contract); err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range contract.PathCases {
+		collection, ok := CollectionFor(tc.Path)
+		if ok != tc.Matches || ok && collection.ID != tc.Collection {
+			t.Errorf("path %q: collection=%q matches=%v", tc.Path, collection.ID, ok)
+		}
+	}
+	for _, tc := range contract.TitleCases {
+		if got := displayTitle(tc.Path, tc.Title); got != tc.Expected {
+			t.Errorf("title %q: got=%q want=%q", tc.Title, got, tc.Expected)
+		}
+	}
+	for _, tc := range contract.AliasCases {
+		if got := str(normalize(tc.Raw)[tc.Field]); got != tc.Expected {
+			t.Errorf("alias %v: got=%q want=%q", tc.Raw, got, tc.Expected)
+		}
+	}
+	for _, tc := range contract.DateCases {
+		report, err := info("ai-learning/reports/"+tc.Path, tc.Text, tc.Fallback)
+		if err != nil || report.UpdatedOn != tc.Expected {
+			t.Errorf("date %q: got=%q want=%q err=%v", tc.Path, report.UpdatedOn, tc.Expected, err)
+		}
+	}
+}
 
 func TestCatalogDiscoveryAndMetadata(t *testing.T) {
 	for _, p := range []string{"ai-practice/experiments/exp_demo.md", "ai-practice/experiments/demo/评估笔记.md", "podcast-learning/reports/series/report.md"} {

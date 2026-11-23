@@ -14,4 +14,4 @@
 - 动物或体外结果不得直接外推到人类，机制结论追溯到相应通路和实验条件。
 - 不给超出证据范围的健康或医疗建议。
 
-需要既有覆盖时查询 eacli `knowledge.biology`；PROFILE、MAP 和 open-questions 条件读取。公共方法、元数据与质量门由根级 Owner 维护。
+需要既有覆盖时查询 eacli `knowledge.biology`；PROFILE、MAP 和 open-questions 条件读取。公共方法、元数据与按需复核由根级 Owner 维护。

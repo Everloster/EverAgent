@@ -13,4 +13,4 @@
 - 笔记引用代码时给出文件路径与行号或 notebook cell。
 - 验证先覆盖受影响路径；只有失败、跨模块影响或未解决风险才扩大。
 
-需要既有覆盖时查询 eacli `knowledge.practice`；CONTEXT、MAP 与 PROFILE 条件读取。实验目录、元数据与质量门由选中的 skill 和根级工作流拥有。
+需要既有覆盖时查询 eacli `knowledge.practice`；CONTEXT、MAP 与 PROFILE 条件读取。实验目录、元数据与按需复核由选中的 skill 和根级工作流拥有。

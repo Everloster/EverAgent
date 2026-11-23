@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -8,6 +9,41 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import report_catalog
+
+
+class SharedCatalogContractTests(unittest.TestCase):
+    def test_python_and_go_share_path_title_alias_and_date_cases(self):
+        contract = json.loads(
+            (
+                ROOT
+                / "apps/everagent-learning/go/internal/reportcatalog/testdata/shared_contract.json"
+            ).read_text(encoding="utf-8")
+        )
+        for case in contract["path_cases"]:
+            with self.subTest(path=case["path"]):
+                collection = report_catalog.collection_for_path(ROOT / case["path"])
+                self.assertEqual(collection is not None, case["matches"])
+                if case["matches"]:
+                    self.assertEqual(collection.id, case["collection"])
+        for case in contract["title_cases"]:
+            with self.subTest(title=case["title"]):
+                self.assertEqual(
+                    report_catalog.display_title(Path(case["path"]), case["title"]),
+                    case["expected"],
+                )
+        for case in contract["alias_cases"]:
+            with self.subTest(raw=case["raw"]):
+                normalized = report_catalog.normalize_metadata(case["raw"])
+                self.assertEqual(normalized[case["field"]], case["expected"])
+        with tempfile.TemporaryDirectory() as directory:
+            for case in contract["date_cases"]:
+                with self.subTest(date=case["path"], expected=case["expected"]):
+                    path = Path(directory) / case["path"]
+                    path.write_text(case["text"], encoding="utf-8")
+                    info = report_catalog.report_info(
+                        path, fallback_updated_on=case["fallback"]
+                    )
+                    self.assertEqual(info["updated_on"], case["expected"])
 
 
 class MetadataAliasTests(unittest.TestCase):

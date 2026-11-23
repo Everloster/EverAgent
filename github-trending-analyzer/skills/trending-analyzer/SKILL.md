@@ -10,7 +10,7 @@ description: "Analyze GitHub Trending for a requested day, week, or month, resea
 ## 流程
 
 1. 明确 `daily / weekly / monthly` 与可选语言筛选；请求已明确时直接执行。
-2. 按根协议先选择并调用 eacli `web.read` 读取 GitHub Trending。若返回格式无法支持榜单解析，才运行现有 `scripts/trending_fetcher.py fetch <period> [language]`，并记录降级原因。
+2. 按根协议先选择并调用 eacli `web.read` 读取 GitHub Trending。若返回格式无法支持榜单解析，才运行现有 `scripts/trending_fetcher.py fetch <period> [language]`，并记录降级原因。HTML 也无法解析时明确报告失败；GitHub Search 的“近期新建仓库”不是 Trending，不得替代或用于生成榜单。
 3. 对每个 repo 运行 `python3 scripts/trending_fetcher.py check owner/repo`：七天内有效报告记为缓存复用，其余调用 [repo-research](../repo-research/SKILL.md)。
 4. 只有每个 repo 都有新报告、有效缓存或明确的缺失原因后，才生成汇总。
 5. 汇总必须区分“本轮新研究”“缓存复用”“报告缺失”；缺失报告使用纯文本，不生成不存在的本地链接。
@@ -44,6 +44,6 @@ python3 scripts/report_generator.py summary daily '<repos_json>' output.md '<mis
 scripts/edocs.sh index --write
 ```
 
-索引按需要显式更新，不作为提交前置；不要为工具迁移自动重生成报告或索引正文。该薄入口要求预先安装eacli >=10.1.0，固定转发`eacli docs index --repo-root ROOT --write`，ROOT绑定公开脚本位置；缺失/非法/旧版本明确失败，不自动build/install或寻找私仓。提交器保留policy Author、当前真实模型/明确有效声明Committer与新增公开内容保护；明确需要时才运行相应内容审查。
+索引按需要显式更新，不作为提交前置；不要为工具迁移自动重生成报告或索引正文。该薄入口要求预先安装eacli >=11.0.0，固定转发`eacli docs index --repo-root ROOT --write`，ROOT绑定公开脚本位置；缺失/非法/旧版本明确失败，不自动build/install或寻找私仓。提交器保留policy Author、当前真实模型/明确有效声明Committer与新增公开内容保护；明确需要时才运行相应内容审查。
 
 每次任务都做简短反思；只有跨 repo 可复用或高风险的新发现才以最小 delta 更新 skill/reference。

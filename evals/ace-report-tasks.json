@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "name": "EverAgent common ACE tasks",
   "description": "回放常见任务，测路由、skill precision/recall、按需 context、持续完成、授权边界与报告质量。",
   "cases": [
@@ -8,7 +8,7 @@
       "prompt": "深度分析这篇 AI 官方文章并出报告：https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
       "expected_route": "ai-learning",
       "artifact_policy": "required",
-      "quality_tier": "important",
+      "quality_tier": null,
       "reference_anchor": "astra_instruction_architecture",
       "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
@@ -27,16 +27,12 @@
       ],
       "required_checks": [
         "source_read",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "report_saved",
-        "quality_passed",
-        "index_current"
+        "limitations_recorded",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -46,7 +42,7 @@
       "prompt": "精读 Attention Is All You Need，核对实验数字并归档报告：https://arxiv.org/abs/1706.03762",
       "expected_route": "ai-learning",
       "artifact_policy": "required",
-      "quality_tier": "important",
+      "quality_tier": null,
       "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -64,16 +60,12 @@
       "required_checks": [
         "primary_source",
         "numeric_evidence",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "report_saved",
-        "quality_passed",
-        "index_current"
+        "limitations_recorded",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -83,7 +75,7 @@
       "prompt": "帮我系统学习一致性哈希，出一份能读懂的报告",
       "expected_route": "cs-learning",
       "artifact_policy": "required",
-      "quality_tier": "important",
+      "quality_tier": null,
       "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -99,16 +91,12 @@
       ],
       "required_checks": [
         "source_read",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "report_saved",
-        "quality_passed",
-        "index_current"
+        "limitations_recorded",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -118,7 +106,7 @@
       "prompt": "继续上次的 MoE 路由问题，补上负载均衡的追问",
       "expected_route": "ai-learning",
       "artifact_policy": "update_existing",
-      "quality_tier": "important",
+      "quality_tier": null,
       "max_initial_project_files": 5,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -134,16 +122,12 @@
       ],
       "required_checks": [
         "existing_report_lookup",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "existing_report_updated",
-        "quality_passed",
-        "index_current"
+        "limitations_recorded",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -219,7 +203,7 @@
       "prompt": "用最小可运行 demo 帮我理解 speculative decoding，并归档实验笔记与真实输出。",
       "expected_route": "ai-practice",
       "artifact_policy": "required",
-      "quality_tier": "standard",
+      "quality_tier": null,
       "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -240,16 +224,12 @@
       "required_checks": [
         "code_run",
         "observed_output",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "demo_runs",
         "observations_recorded",
-        "quality_passed"
+        "limitations_recorded"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -259,7 +239,7 @@
       "prompt": "把这个播客转写、润色并做学习报告：https://www.bilibili.com/video/BV1tXKi6NE4b/",
       "expected_route": "podcast-learning",
       "artifact_policy": "required",
-      "quality_tier": "important",
+      "quality_tier": null,
       "expected_report_depth": "standard",
       "expected_reader_contract": "standalone",
       "max_initial_project_files": 7,
@@ -288,22 +268,16 @@
         "silent_transcription",
         "shownotes_check",
         "source_coverage",
-        "independent_source_content_map",
         "standalone_readability",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
         "podcast_audit",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "transcript_saved",
         "polished_saved",
         "report_saved",
         "source_coverage_complete",
-        "source_content_map_complete",
-        "quality_passed"
+        "limitations_recorded"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -341,7 +315,7 @@
       "prompt": "深挖这个仓库并出报告：https://github.com/openai/evals",
       "expected_route": "github-trending-analyzer",
       "artifact_policy": "required",
-      "quality_tier": "important",
+      "quality_tier": null,
       "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -357,16 +331,12 @@
         "source_code",
         "competitors",
         "activity",
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "report_saved",
-        "quality_passed",
-        "index_current"
+        "limitations_recorded",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -376,7 +346,7 @@
       "prompt": "帮我查一下 https://openai.com/api/pricing/ 今天的公开价格，直接回答；只有有长期价值时归档。",
       "expected_route": "web-surfing",
       "artifact_policy": "conditional",
-      "quality_tier": "standard",
+      "quality_tier": null,
       "max_initial_project_files": 3,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [],
@@ -394,15 +364,49 @@
         "source_read"
       ],
       "artifact_required_checks": [
-        "evidence_manifest",
-        "independent_review",
-        "quality_gate",
-        "report_gate",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "fresh_price_delivered",
         "source_and_time_recorded"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
+    },
+    {
+      "id": "a_explicit_strict_review",
+      "prompt": "精读 Attention Is All You Need 并归档；这次明确要求使用 report-v2，生成证据账本并安排独立复核。",
+      "expected_route": "ai-learning",
+      "artifact_policy": "required",
+      "quality_contract": "report-v2",
+      "quality_tier": "important",
+      "max_initial_project_files": 8,
+      "must_not_pause_before_research": true,
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "primary_source",
+        "numeric_evidence",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "limitations_recorded"
+      ],
+      "completion_signals": [
+        "report_saved",
+        "quality_passed",
+        "sources_checked"
       ],
       "expected_completed": true,
       "expected_stop_reason": "completed"
@@ -426,7 +430,7 @@
         "implementation",
         "static_eval",
         "behavioral_eval_plan",
-        "reindex"
+        "limitations_recorded"
       ],
       "completion_signals": [
         "changes_implemented",

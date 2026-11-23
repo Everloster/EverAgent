@@ -2,7 +2,7 @@
 // Shared MiniMax Code runtime and local Web server. No host SDK is needed.
 import { spawn } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, realpathSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { homedir } from 'node:os';
@@ -22,7 +22,7 @@ function inspectCandidate(value) {
   try {
     const root = realpathSync(expandPath(value.trim()));
     // Check the public checkout's shape, not its remote. Forks and ZIPs work too.
-    for (const name of ['config/report-quality-policy.json', 'docs/REPORT_INDEX.md']) {
+    for (const name of ['docs/REPORT_INDEX.md']) {
       const file = join(root, name);
       if (!statSync(file).isFile() || realpathSync(file) !== file) return { ok: false, reason: 'no_catalog' };
     }
@@ -39,23 +39,50 @@ function configPath(context, options) {
 }
 
 function readConfig(file) {
-  try { return JSON.parse(readFileSync(file, 'utf8')).public_repo_root || ''; }
-  catch { return ''; }
+  try {
+    const parsed = JSON.parse(readFileSync(file, 'utf8'));
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed) ||
+        typeof (parsed.public_repo_root || '') !== 'string') {
+      return { path: '', error: 'invalid_config' };
+    }
+    return { path: parsed.public_repo_root || '', error: '' };
+  } catch (error) {
+    return { path: '', error: error.code === 'ENOENT' ? '' : 'invalid_config' };
+  }
+}
+
+function writeConfigAtomic(file, repoRoot) {
+  mkdirSync(dirname(file), { recursive: true });
+  const temporary = join(dirname(file), `.config.${process.pid}.${randomBytes(6).toString('hex')}.tmp`);
+  try {
+    writeFileSync(temporary, JSON.stringify({ public_repo_root: repoRoot }) + '\n', { mode: 0o600 });
+    renameSync(temporary, file);
+  } finally {
+    rmSync(temporary, { force: true });
+  }
 }
 
 function resolveRepoRoot(context, options, configFile) {
   const explicit = options.repoRoot || process.env.EVERAGENT_PUBLIC_ROOT;
-  if (explicit) return inspectCandidate(explicit).root || '';
+  if (explicit) {
+    const found = inspectCandidate(explicit);
+    return { root: found.root || '', error: found.ok ? '' : 'invalid_repo_root' };
+  }
   // Only inspect ancestors of this package, never the user's other projects.
   let cursor = realpathSync(context.pluginRoot);
   for (let i = 0; i < 6; i += 1) {
     const found = inspectCandidate(cursor);
-    if (found.ok) return found.root;
+    if (found.ok) return { root: found.root, error: '' };
     const parent = dirname(cursor);
     if (parent === cursor) break;
     cursor = parent;
   }
-  return inspectCandidate(readConfig(configFile)).root || '';
+  const saved = readConfig(configFile);
+  const found = inspectCandidate(saved.path);
+  return {
+    root: found.root || '',
+    error: saved.error || (saved.path && !found.ok ? 'invalid_repo_root' : ''),
+  };
 }
 
 function safeRelativePath(value, markdown = true) {
@@ -90,7 +117,9 @@ export async function start(context, options = {}) {
   const clientEntry = (await readFile(join(context.pluginRoot, 'miniapp/client/index.html'), 'utf8'))
     .replace('__SETUP_TOKEN__', setupToken);
   const configFile = configPath(context, options);
-  let repoRoot = resolveRepoRoot(context, options, configFile);
+  const resolved = resolveRepoRoot(context, options, configFile);
+  let repoRoot = resolved.root;
+  let repoError = resolved.error;
   let cached = null;
   let inflight = null;
   let disposed = false;
@@ -184,16 +213,16 @@ export async function start(context, options = {}) {
         catch { return error(400, 'invalid_body'); }
         const inspected = inspectCandidate(payload?.path);
         if (!inspected.ok) return send(400, { ok: false, error: 'invalid_repo_root', reason: inspected.reason });
-        mkdirSync(dirname(configFile), { recursive: true });
-        writeFileSync(configFile, JSON.stringify({ public_repo_root: inspected.root }) + '\n', { mode: 0o600 });
+        writeConfigAtomic(configFile, inspected.root);
         repoRoot = inspected.root;
+        repoError = '';
         cached = null;
         inflight = null;
         return send(200, { ok: true });
       }
       if (request.method !== 'GET') return error(405, 'method_not_allowed');
       if (!['/api/reports', '/api/report', '/api/asset'].includes(url.pathname)) return error(404, 'not_found');
-      if (!repoRoot) return error(503, 'repo_not_configured');
+      if (!repoRoot) return error(503, repoError || 'repo_not_configured');
       if (url.pathname === '/api/reports') {
         const payload = await loadIndex(url.searchParams.get('refresh') === '1');
         return send(payload.ok ? 200 : 502, payload);

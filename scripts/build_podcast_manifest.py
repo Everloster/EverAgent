@@ -29,6 +29,11 @@ import re
 from datetime import datetime, timezone
 from urllib.parse import urlsplit
 
+try:
+    from .report_catalog import normalize_metadata, parse_frontmatter, report_source_urls
+except ImportError:
+    from report_catalog import normalize_metadata, parse_frontmatter, report_source_urls
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 INDEX_DIR = ROOT / "podcast-learning" / "wiki" / "show-indexes"
 REPORT_DIR = ROOT / "podcast-learning" / "reports"
@@ -72,47 +77,37 @@ def compact(value: str, limit: int) -> str:
     return re.sub(r"\s+", " ", value).strip()[:limit]
 
 
-def parse_frontmatter(path: pathlib.Path) -> dict[str, str]:
-    try:
-        lines = path.read_text(encoding="utf-8", errors="replace")[:8192].splitlines()
-    except OSError:
-        return {}
-    if not lines or lines[0].strip() != "---":
-        return {}
-    result: dict[str, str] = {}
-    for line in lines[1:]:
-        if line.strip() == "---":
-            break
-        if ":" not in line:
-            continue
-        key, value = line.split(":", 1)
-        result[key.strip().lower()] = value.strip().strip("\"'")
-    return result
-
-
 def load_reports() -> dict[str, dict]:
     by_audio: dict[str, dict] = {}
-    for path in REPORT_DIR.rglob("*.md"):
+    for path in sorted(REPORT_DIR.rglob("*.md")):
         if not path.is_file() or "/transcripts/" in path.as_posix():
             continue
-        fm = parse_frontmatter(path)
-        audio = safe_https(fm.get("source_url", ""))
-        if not audio or "xiaoyuzhoufm.com/episode/" not in audio:
+        metadata = normalize_metadata(
+            parse_frontmatter(path.read_text(encoding="utf-8", errors="replace"))
+        )
+        status = str(metadata.get("status") or "completed")
+        if status not in {"completed", "archived"}:
             continue
-        key = normalize_url(audio)
         candidate = {
             "path": path.relative_to(ROOT).as_posix(),
-            "title": compact(fm.get("title") or path.stem, 240),
-            "updated_on": fm.get("updated_on", ""),
-            "source": fm.get("source", "小宇宙"),
-            "status": fm.get("status", "completed"),
-            "show": fm.get("show", ""),
-            "episode": fm.get("episode", ""),
-            "duration": fm.get("duration", ""),
+            "title": compact(str(metadata.get("title") or path.stem), 240),
+            "updated_on": str(metadata.get("updated_on") or ""),
+            "source": str(metadata.get("source") or "小宇宙"),
+            "status": status,
+            "show": str(metadata.get("show") or ""),
+            "episode": str(metadata.get("episode") or ""),
+            "duration": str(metadata.get("duration") or ""),
         }
-        old = by_audio.get(key)
-        if old is None or candidate["updated_on"] >= old["updated_on"]:
-            by_audio[key] = candidate
+        for value in report_source_urls(metadata):
+            audio = safe_https(value)
+            if not audio or "xiaoyuzhoufm.com/episode/" not in audio:
+                continue
+            key = normalize_url(audio)
+            old = by_audio.get(key)
+            if old is None or (candidate["updated_on"], candidate["path"]) >= (
+                old["updated_on"], old["path"]
+            ):
+                by_audio[key] = candidate
     return by_audio
 
 

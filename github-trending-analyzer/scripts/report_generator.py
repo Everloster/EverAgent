@@ -6,12 +6,14 @@ Generates individual project reports and summary reports.
 Cross-platform compatible - works on macOS, Linux, and Windows.
 """
 
+from __future__ import annotations
+
 import json
 import os
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
 
 
 def get_skill_dir() -> Path:
@@ -27,17 +29,32 @@ def get_default_reports_dir() -> Path:
     Get default reports directory.
     Priority:
     1. TRENDING_REPORTS_DIR environment variable
-    2. reports/ in current working directory
+    2. the analyzer project's reports/ directory
     """
     env_dir = os.environ.get("TRENDING_REPORTS_DIR")
     if env_dir:
         return Path(env_dir)
-    return Path.cwd() / "reports"
+    return Path(__file__).resolve().parents[1] / "reports"
 
 
 def ensure_dir(path: Path):
     """Ensure directory exists."""
     path.mkdir(parents=True, exist_ok=True)
+
+
+def write_text_atomic(path: Path, content: str) -> None:
+    ensure_dir(path.parent)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False
+        ) as handle:
+            temporary = Path(handle.name)
+            handle.write(content)
+        temporary.replace(path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def safe_format_number(value, default="N/A"):
@@ -62,9 +79,15 @@ def get_growth_label(period: str) -> str:
     return labels.get(period, "周期增长")
 
 
+def get_period_stars(repo_data: dict):
+    if "period_stars" in repo_data:
+        return repo_data.get("period_stars")
+    return repo_data.get("today_stars")
+
+
 def generate_project_report(
-    repo_data: Dict,
-    analysis_data: Dict,
+    repo_data: dict,
+    analysis_data: dict,
     output_path: Path,
     research_method: str = "Web搜索 + GitHub页面分析",
     period: str = "daily",
@@ -119,7 +142,7 @@ semantic_tags: ["github", "open_source", "repository_research"]
 | Stars | {safe_format_number(repo_data.get('stars'))} |
 | Forks | {safe_format_number(repo_data.get('forks'))} |
 | 语言 | {repo_data.get('language', 'Unknown')} |
-| {get_growth_label(period)} | {safe_format_number(repo_data.get('today_stars'))} ⭐ |
+| {get_growth_label(period)} | {safe_format_number(get_period_stars(repo_data))} ⭐ |
 | 开源协议 | {analysis_data.get('license', 'N/A')} |
 | 创建时间 | {analysis_data.get('created_at', 'N/A')} |
 | 最近更新 | {analysis_data.get('updated_at', 'N/A')} |
@@ -190,13 +213,12 @@ semantic_tags: ["github", "open_source", "repository_research"]
 *研究方法: {research_method}*
 """
     
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_text_atomic(output_path, content)
     
     return output_path
 
 
-def format_languages(languages: Dict[str, int]) -> str:
+def format_languages(languages: dict[str, int]) -> str:
     """Format language distribution."""
     if not languages:
         return "暂无语言数据"
@@ -209,7 +231,7 @@ def format_languages(languages: Dict[str, int]) -> str:
     return "\n".join(lines)
 
 
-def format_contributors(contributors: List[Dict]) -> str:
+def format_contributors(contributors: list[dict]) -> str:
     """Format contributors list."""
     if not contributors:
         return "暂无贡献者数据"
@@ -222,7 +244,7 @@ def format_contributors(contributors: List[Dict]) -> str:
     return "\n".join(lines)
 
 
-def format_releases(releases: List[Dict]) -> str:
+def format_releases(releases: list[dict]) -> str:
     """Format releases list."""
     if not releases:
         return "暂无发布版本"
@@ -236,7 +258,7 @@ def format_releases(releases: List[Dict]) -> str:
     return "\n".join(lines)
 
 
-def format_competitors(competitors: List[Dict], repo_data: Dict) -> str:
+def format_competitors(competitors: list[dict], repo_data: dict) -> str:
     """Format competitors comparison table."""
     if not competitors:
         return "暂无竞品对比数据"
@@ -255,32 +277,32 @@ def format_competitors(competitors: List[Dict], repo_data: Dict) -> str:
     return "\n".join(lines)
 
 
-def format_advantages(advantages: List[str]) -> str:
+def format_advantages(advantages: list[str]) -> str:
     """Format advantages list."""
     if not advantages:
         return "暂无优势信息"
     return "\n".join([f"- {a}" for a in advantages])
 
 
-def format_disadvantages(disadvantages: List[str]) -> str:
+def format_disadvantages(disadvantages: list[str]) -> str:
     """Format disadvantages list."""
     if not disadvantages:
         return "暂无劣势信息"
     return "\n".join([f"- {d}" for d in disadvantages])
 
 
-def generate_summary(repo_data: Dict, analysis_data: Dict) -> str:
-    """Generate a summary paragraph."""
+def generate_summary(repo_data: dict, analysis_data: dict, period: str = "daily") -> str:
+    """Generate a summary paragraph without inferring momentum from one rank."""
     parts = []
-    
+
     lang = repo_data.get("language", "Unknown")
     stars = repo_data.get("stars", 0)
-    today = repo_data.get("today_stars", 0)
-    
+    period_stars = get_period_stars(repo_data)
+
     parts.append(f"这是一个使用 **{lang}** 开发的项目，目前拥有 {stars:,} 个 Star。")
-    
-    if today > 0:
-        parts.append(f"今日获得 {today:,} 个新 Star，显示出强劲的增长势头。")
+
+    if isinstance(period_stars, (int, float)) and not isinstance(period_stars, bool) and period_stars > 0:
+        parts.append(f"{get_growth_label(period)}为 {period_stars:,} 个 Star。")
     
     desc = repo_data.get("description", "")
     if desc:
@@ -289,7 +311,7 @@ def generate_summary(repo_data: Dict, analysis_data: Dict) -> str:
     return " ".join(parts)
 
 
-def _format_report_status(repos: List[Dict], missing_repos: List[str]) -> str:
+def _format_report_status(repos: list[dict], missing_repos: list[str]) -> str:
     """
     Build the status block for the summary report footer.
 
@@ -314,9 +336,9 @@ def _format_report_status(repos: List[Dict], missing_repos: List[str]) -> str:
 
 def generate_summary_report(
     period: str,
-    repos: List[Dict],
+    repos: list[dict],
     output_path: Path,
-    missing_repos: Optional[List[str]] = None,
+    missing_repos: list[str] | None = None,
     research_method: str = "Web搜索 + GitHub页面分析",
 ) -> Path:
     """
@@ -324,9 +346,9 @@ def generate_summary_report(
 
     Args:
         period: 'daily', 'weekly', or 'monthly'
-        repos: List of repo data with analysis
+        repos: list of repo data with analysis
         output_path: Path to save the report
-        missing_repos: List of 'owner/repo' strings whose individual research
+        missing_repos: list of 'owner/repo' strings whose individual research
             reports could not be generated or were found incomplete. When
             non-empty the status section shows a ⚠️ warning instead of ✅.
             Pass an empty list (or omit) if all reports are complete.
@@ -338,6 +360,11 @@ def generate_summary_report(
     """
     if missing_repos is None:
         missing_repos = []
+    if any(
+        repo.get("ranking_semantics") not in {None, "github_trending"}
+        for repo in repos
+    ):
+        raise ValueError("non-Trending search results cannot be labeled as a GitHub Trending report")
     if isinstance(output_path, str):
         output_path = Path(output_path)
     
@@ -355,7 +382,13 @@ def generate_summary_report(
         language_stats[lang] = language_stats.get(lang, 0) + 1
     
     total_stars = sum(r.get("stars", 0) for r in repos)
-    total_today = sum(r.get("today_stars", 0) for r in repos)
+    period_values = [
+        value
+        for repo in repos
+        if isinstance((value := get_period_stars(repo)), (int, float))
+        and not isinstance(value, bool)
+    ]
+    total_period_stars = sum(period_values) if period_values else None
     
     report_date = datetime.now().strftime('%Y-%m-%d')
     report_title = f"GitHub Trending {period_names.get(period, period)}报告"
@@ -380,7 +413,7 @@ semantic_tags: ["github", "trending", "open_source"]
 |--------|------|
 | 分析项目数 | {len(repos)} |
 | 总 Stars | {total_stars:,} |
-| {get_growth_label(period)} Stars | {total_today:,} |
+| {get_growth_label(period)} Stars | {safe_format_number(total_period_stars)} |
 
 ### 语言分布
 
@@ -394,7 +427,7 @@ semantic_tags: ["github", "trending", "open_source"]
 
 ## 趋势分析
 
-{analyze_trends(repos, language_stats)}
+{analyze_trends(repos, language_stats, period)}
 
 ## 详细报告链接
 
@@ -409,13 +442,12 @@ semantic_tags: ["github", "trending", "open_source"]
 *分析方法: {research_method}*
 """
     
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_text_atomic(output_path, content)
     
     return output_path
 
 
-def format_language_stats(stats: Dict[str, int]) -> str:
+def format_language_stats(stats: dict[str, int]) -> str:
     """Format language statistics."""
     if not stats:
         return "暂无数据"
@@ -429,9 +461,9 @@ def format_language_stats(stats: Dict[str, int]) -> str:
 
 
 def format_repo_table(
-    repos: List[Dict],
+    repos: list[dict],
     period: str,
-    missing_repos: Optional[List[str]] = None,
+    missing_repos: list[str] | None = None,
 ) -> str:
     """Format repos as markdown table rows."""
     missing = set(missing_repos or [])
@@ -441,18 +473,23 @@ def format_repo_table(
         name = repo.get("repo", "")
         lang = repo.get("language", "Unknown")
         stars = repo.get("stars", 0)
-        today = repo.get("today_stars", 0)
+        period_stars = get_period_stars(repo)
+        growth = (
+            f"+{period_stars:,}"
+            if isinstance(period_stars, (int, float)) and not isinstance(period_stars, bool)
+            else "N/A"
+        )
         desc = repo.get("description", "")[:50] + "..." if len(repo.get("description", "")) > 50 else repo.get("description", "")
-        desc = desc.replace("|", "\\|")
+        desc = desc.replace("|", "\\|").replace("\n", " ")
 
         full_name = f"{owner}/{name}"
         project = full_name if full_name in missing else f"[{full_name}](./research_{owner}_{name}.md)"
-        lines.append(f"| {i} | {project} | {lang} | {stars:,} | +{today:,} | {desc} |")
+        lines.append(f"| {i} | {project} | {lang} | {stars:,} | {growth} | {desc} |")
     return "\n".join(lines)
 
 
-def analyze_trends(repos: List[Dict], language_stats: Dict[str, int]) -> str:
-    """Analyze and describe trends."""
+def analyze_trends(repos: list[dict], language_stats: dict[str, int], period: str = "daily") -> str:
+    """Describe the observed ranking without substituting a different dataset."""
     if not repos:
         return "暂无数据可供分析"
     
@@ -463,8 +500,14 @@ def analyze_trends(repos: List[Dict], language_stats: Dict[str, int]) -> str:
     
     top_repo = repos[0] if repos else {}
     if top_repo:
+        period_stars = get_period_stars(top_repo)
+        growth = (
+            f"+{period_stars:,}"
+            if isinstance(period_stars, (int, float)) and not isinstance(period_stars, bool)
+            else "N/A"
+        )
         parts.append(f"**榜首项目**: [{top_repo.get('owner', '')}/{top_repo.get('repo', '')}]({top_repo.get('url', '#')}) "
-                    f"今日获得 +{top_repo.get('today_stars', 0):,} Stars。")
+                    f"{get_growth_label(period)}为 {growth} Stars。")
     
     ai_related = sum(1 for r in repos if any(kw in r.get("description", "").lower() 
                    for kw in ["ai", "agent", "llm", "gpt", "claude", "model"]))
@@ -475,9 +518,9 @@ def analyze_trends(repos: List[Dict], language_stats: Dict[str, int]) -> str:
 
 
 def format_report_links(
-    repos: List[Dict],
+    repos: list[dict],
     period: str,
-    missing_repos: Optional[List[str]] = None,
+    missing_repos: list[str] | None = None,
 ) -> str:
     """Format links to individual reports."""
     missing = set(missing_repos or [])

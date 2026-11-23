@@ -4,7 +4,7 @@
 
 ## 安装与更新
 
-前提：macOS或Linux、Git，以及已安装eacli >=10.1.0（`eacli --version`输出plain release版本）；不需要Go或任何相邻checkout。采集触发依赖已经配置的本机Context采集服务；安装器不安装软件、创建服务或修改采集范围。
+前提：macOS或Linux、Git，以及已安装eacli >=11.0.0（`eacli --version`输出plain release版本）；不需要Go或任何相邻checkout。采集触发依赖已经配置的本机Context采集服务；安装器不安装软件、创建服务或修改采集范围。
 
 在公开仓根目录：
 

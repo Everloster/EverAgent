@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "EverAgent",
-  "scope": "installed-eacli-thin-entries",
+  "scope": "project-owned-tooling",
   "scripts": [
     {
       "id": "git.entry",
@@ -105,6 +105,242 @@
         "section": "A"
       },
       "scope": "可信评测记录与一次有界实验"
+    },
+    {
+      "id": "report.catalog",
+      "description": "报告集合、路径匹配、frontmatter、来源 URL、别名和日期投影的共享内部实现。",
+      "entrypoint": "scripts/report_catalog.py",
+      "owner": { "repository": "EverAgent", "path": "scripts/report_catalog.py" },
+      "kind": "internal",
+      "aliases": [],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10"],
+      "input": "由报告、manifest 和 Radar 模块导入，不是独立 CLI",
+      "output": "只读 Python 数据结构与报告迭代器",
+      "side_effects": [],
+      "authorization": { "repository": "EverAgent", "path": "docs/REPORT_WORKFLOW.md", "section": "元数据" },
+      "scope": "共享读取语义；不改写报告或生成索引"
+    },
+    {
+      "id": "report.legacy-strict-review",
+      "description": "显式选用的历史严格报告审计、证据账本与独立复核合同；不是普通写作或提交门禁。",
+      "entrypoint": "scripts/audit_reports.py",
+      "owner": { "repository": "EverAgent", "path": "scripts/audit_reports.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "scripts/report_quality.py", "description": "report-v2 初始化、复核、finalize 与历史策略校验。" },
+        { "path": "scripts/lint_evidence.py", "description": "显式证据文本 lint。" },
+        { "path": "podcast-learning/scripts/audit_reports.py", "description": "播客审计兼容入口；--fix 已退役。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10", "Git 变更选择需要仓库元数据"],
+      "input": "--help；只处理显式选择或受影响的报告",
+      "output": "审计 JSON/文本；质量命令只在明确参数下写其 sidecar",
+      "side_effects": ["init/finalize/new-revision/refresh-editorial 等显式命令可修改报告或质量附件"],
+      "authorization": { "repository": "EverAgent", "path": "docs/REPORT_QUALITY_GATE.md", "section": "历史严格合同" },
+      "scope": "历史 report-v1/v2 和用户显式严格复核；不自动用于普通新报告"
+    },
+    {
+      "id": "evaluation.behavior",
+      "description": "ACE v3 普通任务与显式严格复核任务的行为模板、评分和开工探针。",
+      "entrypoint": "scripts/eval_report_context.py",
+      "owner": { "repository": "EverAgent", "path": "scripts/eval_report_context.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "scripts/run_ace_context_ab.py", "description": "显式授权后运行 Pi 开工 A/B；不执行原始任务或写报告。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10；真实 A/B 另需 Pi 和用户显式模型调用授权"],
+      "input": "--template / --score / --aggregate；A/B 查 --help",
+      "output": "ACE v3 JSON；不与旧 v2 历史分数直接比较",
+      "side_effects": ["A/B 仅在显式 --output 等参数下写评测结果并调用所选模型"],
+      "authorization": { "repository": "EverAgent", "path": "docs/CONTEXT_ENGINEERING.md", "section": "验证按需" },
+      "scope": "按需行为评测；不是提交前置或默认模型调用"
+    },
+    {
+      "id": "podcast.local-pipeline",
+      "description": "本地音频下载、whisper.cpp 转写、转写审计与私有 artifact 拉回。",
+      "entrypoint": "podcast-learning/scripts/transcribe.py",
+      "owner": { "repository": "EverAgent", "path": "podcast-learning/scripts/transcribe.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "podcast-learning/scripts/audit_transcript.py", "description": "只读时间戳/重复/来源与公开收据检查。" },
+        { "path": "podcast-learning/scripts/podcast_artifact_pull.py", "description": "通过 eacli 将回执绑定的全文拉到仓外私有目录。" }
+      ],
+      "platforms": ["macos", "linux"],
+      "requirements": ["Python >=3.10；本地转写另需 yt-dlp、ffmpeg、whisper-cli 和显式模型路径"],
+      "input": "各脚本 --help；download-only 必须提供持久化 --audio-out",
+      "output": "本地转写、审计收据或私有下载结果",
+      "side_effects": ["显式运行可下载音频、读取模型、写转写或仓外私有文件；失败不覆盖完整旧转写"],
+      "authorization": { "repository": "EverAgent", "path": "podcast-learning/AGENTS.md", "section": "静默执行边界" },
+      "scope": "本地/隔离排障；默认远端 worker 由 eacli 拥有"
+    },
+    {
+      "id": "podcast.index-maintenance",
+      "description": "精选节目索引刷新、报告状态回填、实测统计与旧 Android manifest 投影。",
+      "entrypoint": "podcast-learning/scripts/fetch_show_indexes.py",
+      "owner": { "repository": "EverAgent", "path": "podcast-learning/scripts/fetch_show_indexes.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "podcast-learning/scripts/sync_index_status.py", "description": "仅回填匹配报告状态；支持 --dry-run。" },
+        { "path": "podcast-learning/scripts/fill_report_stats.py", "description": "按真实来源核对统计；缺来源不再冒充一致。" },
+        { "path": "scripts/build_podcast_manifest.py", "description": "按需重建 docs/PODCAST_MANIFEST.json；--check 只读。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10；索引刷新需要公开网络"],
+      "input": "各脚本 --help；默认输出目标和 dry-run 语义见各自说明",
+      "output": "节目 Markdown、报告统计或兼容 JSON manifest",
+      "side_effects": ["非 dry-run 可写各自生成目标；不批量重写报告正文或历史审计"],
+      "authorization": { "repository": "EverAgent", "path": "podcast-learning/skills/report-writing/SKILL.md", "section": "完成条件" },
+      "scope": "仅用户请求或实际维护的播客索引/统计；不是默认提交链"
+    },
+    {
+      "id": "radar.tech-blog",
+      "description": "顶尖 AI 技术博客更新查询与渠道注册表维护。",
+      "entrypoint": "web-surfing/skills/ai-tech-blog-radar/scripts/radar.py",
+      "owner": { "repository": "EverAgent", "path": "web-surfing/skills/ai-tech-blog-radar/scripts/radar.py" },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10", "公开读取通过 eacli；受限情况下使用有界 HTTP fallback"],
+      "input": "updates / channels；详见 --help",
+      "output": "更新 JSON/Markdown、失败与降级明细",
+      "side_effects": ["公开网络读取；channels 写命令只在用户明确请求时修改注册表"],
+      "authorization": { "repository": "EverAgent", "path": "web-surfing/skills/ai-tech-blog-radar/SKILL.md", "section": "两种模式" },
+      "scope": "官方技术博客；不自动写报告或覆盖历史清单"
+    },
+    {
+      "id": "radar.tech-podcast",
+      "description": "SOTA AI 技术播客更新查询与渠道注册表维护。",
+      "entrypoint": "podcast-learning/skills/ai-tech-podcast-radar/scripts/radar.py",
+      "owner": { "repository": "EverAgent", "path": "podcast-learning/skills/ai-tech-podcast-radar/scripts/radar.py" },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10", "公开读取通过 eacli；受限情况下使用有界 HTTP fallback"],
+      "input": "updates / channels；详见 --help",
+      "output": "单集更新、已学习状态、失败与降级明细",
+      "side_effects": ["公开网络读取；channels 写命令只在用户明确请求时修改注册表"],
+      "authorization": { "repository": "EverAgent", "path": "podcast-learning/skills/ai-tech-podcast-radar/SKILL.md", "section": "获取边界" },
+      "scope": "技术播客雷达；不自动下载、转写或写报告"
+    },
+    {
+      "id": "radar.shared-internal",
+      "description": "Radar 共享的 JSON、有界 HTTP、XML、eacli、日期和 URL 策略内部实现。",
+      "entrypoint": "scripts/radar_common.py",
+      "owner": { "repository": "EverAgent", "path": "scripts/radar_common.py" },
+      "kind": "internal",
+      "aliases": [],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10"],
+      "input": "由两个 Radar 入口导入，不是独立 CLI",
+      "output": "共享纯函数与传输边界",
+      "side_effects": ["只有调用方显式发起时进行公开网络或 eacli 子进程调用"],
+      "authorization": { "repository": "EverAgent", "path": "web-surfing/AGENTS.md", "section": "访问边界" },
+      "scope": "共享机制；领域 URL、分类与评分仍由各 Radar 拥有"
+    },
+    {
+      "id": "github.research-tools",
+      "description": "真实 GitHub Trending、gh API 元数据和轻量报告草稿工具。",
+      "entrypoint": "github-trending-analyzer/scripts/trending_fetcher.py",
+      "owner": { "repository": "EverAgent", "path": "github-trending-analyzer/scripts/trending_fetcher.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "github-trending-analyzer/scripts/github_api.py", "description": "公开仓库 API；读取失败不返回伪正文。" },
+        { "path": "github-trending-analyzer/scripts/report_generator.py", "description": "原子生成草稿；拒绝把非 Trending 搜索写成榜单。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.9", "beautifulsoup4；API 补充使用已安装 gh"],
+      "input": "fetch/check/info 或对应脚本 --help",
+      "output": "真实榜单/元数据 JSON 或 reports 下的草稿",
+      "side_effects": ["公开网络读取；报告生成只原子写显式输出路径"],
+      "authorization": { "repository": "EverAgent", "path": "github-trending-analyzer/AGENTS.md", "section": "领域约束" },
+      "scope": "默认报告目录锚定 github-trending-analyzer/reports；环境变量可显式覆盖"
+    },
+    {
+      "id": "web.bilibili-inbox",
+      "description": "通过 OpenCLI 登录态只读生成 B 站关注、动态与观看候选清单。",
+      "entrypoint": "web-surfing/skills/site-bilibili/scripts/bilibili_inbox.py",
+      "owner": { "repository": "EverAgent", "path": "web-surfing/skills/site-bilibili/scripts/bilibili_inbox.py" },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.10", "已安装 OpenCLI 和本机登录 Chrome"],
+      "input": "followings / recommended-ups / inbox；--help",
+      "output": "JSON/Markdown/CSV；历史未覆盖标 unknown",
+      "side_effects": ["启动后台浏览器只读调用；--out 写本地/私有文件，默认不覆盖"],
+      "authorization": { "repository": "EverAgent", "path": "web-surfing/skills/site-bilibili/SKILL.md", "section": "边界" },
+      "scope": "不读取或输出 Cookie；完整偏好数据不进入公开仓"
+    },
+    {
+      "id": "external.skills-sync",
+      "description": "暂存并同步两个 vendor 科学技能；只有显式 --install 才写用户级技能目录。",
+      "entrypoint": "scripts/sync-external-skills.sh",
+      "owner": { "repository": "EverAgent", "path": "scripts/sync-external-skills.sh" },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": ["macos", "linux"],
+      "requirements": ["Bash", "Git", "公开上游或显式 EVERAGENT_SKILLS_UPSTREAM fixture"],
+      "input": "sync-external-skills.sh [--install]",
+      "output": "完整上游 commit、同步结果与 diff 摘要",
+      "side_effects": ["显式运行可覆盖两个 vendor 目录；--install 可覆盖对应用户技能目录"],
+      "authorization": { "repository": "EverAgent", "path": "docs/external-skills/scientific-agent-skills/UPSTREAM.md", "section": "怎么同步上游更新" },
+      "scope": "上游缺目录时失败且不修改本地；不自动提交或安装"
+    },
+    {
+      "id": "practice.transformer",
+      "description": "Dense/MoE 教学模型、共享组件、显式训练与 checkpoint 推理。",
+      "entrypoint": "ai-practice/src/model.py",
+      "owner": { "repository": "EverAgent", "path": "ai-practice/src/model.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "ai-practice/src/transformer_core.py", "description": "共享模型组件；无下载或训练副作用。" },
+        { "path": "ai-practice/src/training.py", "description": "显式数据、批次、训练与原子 checkpoint。" },
+        { "path": "ai-practice/src/moe_model.py", "description": "MoE 路由与 CLI。" },
+        { "path": "ai-practice/src/inference.py", "description": "已有 checkpoint 的交互或单次推理。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.9", "PyTorch >=2.0、tiktoken；缺数据下载另需 requests 和 --download"],
+      "input": "model/moe_model/inference --help",
+      "output": "真实训练输出、checkpoint 或生成文本",
+      "side_effects": ["仅显式 CLI 可训练、下载或写 checkpoint；import 无这些副作用"],
+      "authorization": { "repository": "EverAgent", "path": "ai-practice/AGENTS.md", "section": "领域约束" },
+      "scope": "缩尺教学；不把本地运行数值自动写入历史实验"
+    },
+    {
+      "id": "practice.simulations",
+      "description": "GRPO、Long Context 和 SkillOS 的确定性缩尺模拟。",
+      "entrypoint": "ai-practice/src/grpo_simulation.py",
+      "owner": { "repository": "EverAgent", "path": "ai-practice/src/grpo_simulation.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "ai-practice/src/long_context_simulation.py", "description": "Long Context 缩尺与成本模型。" },
+        { "path": "ai-practice/src/skillos_curator_simulation.py", "description": "技能策展任务流模拟。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["Python >=3.9；GRPO 需 NumPy/Pillow"],
+      "input": "各脚本 --help；用临时 --out-dir 做新实验",
+      "output": "真实模拟数值、JSON 与图表",
+      "side_effects": ["GRPO 显式运行会写指定输出目录"],
+      "authorization": { "repository": "EverAgent", "path": "ai-practice/AGENTS.md", "section": "领域约束" },
+      "scope": "教学模拟，不冒充真实 LLM 训练或 1M 实机验证"
+    },
+    {
+      "id": "practice.data-hardware",
+      "description": "显式数据集读取与本机硬件检查；默认不执行远程数据集代码。",
+      "entrypoint": "ai-practice/src/load_local_dataset.py",
+      "owner": { "repository": "EverAgent", "path": "ai-practice/src/load_local_dataset.py" },
+      "kind": "canonical",
+      "aliases": [
+        { "path": "ai-practice/src/check_hardware.py", "description": "只读输出硬件与框架能力，不自动提交设备信息。" }
+      ],
+      "platforms": ["macos", "linux", "windows"],
+      "requirements": ["按任务安装 datasets 或 PyTorch 等 SETUP 依赖"],
+      "input": "--dataset-name 或 --local-path；check_hardware.py",
+      "output": "数据集样本或本机硬件信息",
+      "side_effects": ["数据名可触发公开下载；远程代码仅显式 --trust-remote-code"],
+      "authorization": { "repository": "EverAgent", "path": "ai-practice/SETUP.md", "section": "环境配置" },
+      "scope": "不遍历全局缓存；硬件输出由用户决定是否公开"
     }
   ]
 }

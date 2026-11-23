@@ -5,11 +5,13 @@ Uses the `gh` CLI (gh api) for all requests — authentication is handled by
 the user's existing `gh auth login`, so no token management is needed.
 """
 
+from __future__ import annotations
+
 import json
 import shutil
 import subprocess
 import sys
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 class GitHubAPIError(Exception):
@@ -19,7 +21,7 @@ class GitHubAPIError(Exception):
 class GitHubAPI:
     """GitHub API client backed by the `gh` CLI."""
 
-    def __init__(self, token: Optional[str] = None):
+    def __init__(self, token: str | None = None):
         """
         Initialize GitHub API client.
 
@@ -33,7 +35,7 @@ class GitHubAPI:
             )
 
     def _get(
-        self, endpoint: str, params: Optional[Dict] = None, accept: Optional[str] = None
+        self, endpoint: str, params: dict | None = None, accept: str | None = None
     ) -> Any:
         """Make a GET request via `gh api`."""
         cmd = ["gh", "api", endpoint.lstrip("/")]
@@ -47,7 +49,7 @@ class GitHubAPI:
 
         try:
             proc = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=60
+                cmd, capture_output=True, text=True, timeout=60, check=False
             )
         except (subprocess.SubprocessError, OSError) as e:
             raise GitHubAPIError(f"GitHub API request failed: GET {endpoint}: {e}") from e
@@ -67,22 +69,19 @@ class GitHubAPI:
                 f"GitHub API returned non-JSON response for {endpoint}: {e}"
             ) from e
 
-    def get_repo_info(self, owner: str, repo: str) -> Dict:
+    def get_repo_info(self, owner: str, repo: str) -> dict:
         """Get basic repository information."""
         return self._get(f"/repos/{owner}/{repo}")
 
     def get_readme(self, owner: str, repo: str) -> str:
-        """Get repository README content as markdown."""
-        try:
-            return self._get(
-                f"/repos/{owner}/{repo}/readme", accept="application/vnd.github.raw"
-            )
-        except Exception as e:
-            return f"[README not found: {e}]"
+        """Get repository README content, or raise GitHubAPIError."""
+        return self._get(
+            f"/repos/{owner}/{repo}/readme", accept="application/vnd.github.raw"
+        )
 
     def get_tree(
         self, owner: str, repo: str, branch: str = "main", recursive: bool = True
-    ) -> Dict:
+    ) -> dict:
         """Get repository directory tree."""
         params = {"recursive": "1"} if recursive else {}
         try:
@@ -94,28 +93,25 @@ class GitHubAPI:
             raise
 
     def get_file_content(self, owner: str, repo: str, path: str) -> str:
-        """Get content of a specific file."""
-        try:
-            return self._get(
-                f"/repos/{owner}/{repo}/contents/{path}",
-                accept="application/vnd.github.raw",
-            )
-        except Exception as e:
-            return f"[File not found: {e}]"
+        """Get file content, or raise GitHubAPIError instead of fake content."""
+        return self._get(
+            f"/repos/{owner}/{repo}/contents/{path}",
+            accept="application/vnd.github.raw",
+        )
 
-    def get_languages(self, owner: str, repo: str) -> Dict[str, int]:
+    def get_languages(self, owner: str, repo: str) -> dict[str, int]:
         """Get repository languages and their bytes."""
         return self._get(f"/repos/{owner}/{repo}/languages")
 
-    def get_contributors(self, owner: str, repo: str, limit: int = 30) -> List[Dict]:
+    def get_contributors(self, owner: str, repo: str, limit: int = 30) -> list[dict]:
         """Get repository contributors."""
         return self._get(
             f"/repos/{owner}/{repo}/contributors", params={"per_page": min(limit, 100)}
         )
 
     def get_recent_commits(
-        self, owner: str, repo: str, limit: int = 50, since: Optional[str] = None
-    ) -> List[Dict]:
+        self, owner: str, repo: str, limit: int = 50, since: str | None = None
+    ) -> list[dict]:
         """
         Get recent commits.
 
@@ -136,8 +132,8 @@ class GitHubAPI:
         repo: str,
         state: str = "all",
         limit: int = 30,
-        labels: Optional[str] = None,
-    ) -> List[Dict]:
+        labels: str | None = None,
+    ) -> list[dict]:
         """
         Get repository issues.
 
@@ -152,39 +148,39 @@ class GitHubAPI:
 
     def get_pull_requests(
         self, owner: str, repo: str, state: str = "all", limit: int = 30
-    ) -> List[Dict]:
+    ) -> list[dict]:
         """Get repository pull requests."""
         return self._get(
             f"/repos/{owner}/{repo}/pulls",
             params={"state": state, "per_page": min(limit, 100)},
         )
 
-    def get_releases(self, owner: str, repo: str, limit: int = 10) -> List[Dict]:
+    def get_releases(self, owner: str, repo: str, limit: int = 10) -> list[dict]:
         """Get repository releases."""
         return self._get(
             f"/repos/{owner}/{repo}/releases", params={"per_page": min(limit, 100)}
         )
 
-    def get_tags(self, owner: str, repo: str, limit: int = 20) -> List[Dict]:
+    def get_tags(self, owner: str, repo: str, limit: int = 20) -> list[dict]:
         """Get repository tags."""
         return self._get(
             f"/repos/{owner}/{repo}/tags", params={"per_page": min(limit, 100)}
         )
 
-    def search_issues(self, owner: str, repo: str, query: str, limit: int = 30) -> Dict:
+    def search_issues(self, owner: str, repo: str, query: str, limit: int = 30) -> dict:
         """Search issues and PRs in repository."""
         q = f"repo:{owner}/{repo} {query}"
         return self._get("/search/issues", params={"q": q, "per_page": min(limit, 100)})
 
-    def get_commit_activity(self, owner: str, repo: str) -> List[Dict]:
+    def get_commit_activity(self, owner: str, repo: str) -> list[dict]:
         """Get weekly commit activity for the last year."""
         return self._get(f"/repos/{owner}/{repo}/stats/commit_activity")
 
-    def get_code_frequency(self, owner: str, repo: str) -> List[List[int]]:
+    def get_code_frequency(self, owner: str, repo: str) -> list[list[int]]:
         """Get weekly additions/deletions."""
         return self._get(f"/repos/{owner}/{repo}/stats/code_frequency")
 
-    def format_tree(self, tree_data: Dict, max_depth: int = 3) -> str:
+    def format_tree(self, tree_data: dict, max_depth: int = 3) -> str:
         """
         Format tree data as text directory structure.
 
@@ -209,7 +205,7 @@ class GitHubAPI:
 
         return "\n".join(lines[:100])  # Limit output
 
-    def summarize_repo(self, owner: str, repo: str) -> Dict:
+    def summarize_repo(self, owner: str, repo: str) -> dict:
         """
         Get comprehensive repository summary.
 
@@ -239,7 +235,7 @@ class GitHubAPI:
         # Add languages
         try:
             summary["languages"] = self.get_languages(owner, repo)
-        except (GitHubAPIError, Exception) as e:
+        except GitHubAPIError as e:
             print(f"Warning: failed to fetch languages for {owner}/{repo}: {e}", file=sys.stderr)
             summary["languages"] = {}
 
@@ -247,7 +243,7 @@ class GitHubAPI:
         try:
             # Approximate with first 100 contributors to avoid extra API calls.
             summary["contributor_count"] = len(self.get_contributors(owner, repo, limit=100))
-        except (GitHubAPIError, Exception) as e:
+        except GitHubAPIError as e:
             print(f"Warning: failed to fetch contributors for {owner}/{repo}: {e}", file=sys.stderr)
             summary["contributor_count"] = "N/A"
 
@@ -260,7 +256,7 @@ class GitHubAPI:
                     "name": releases[0].get("name"),
                     "date": releases[0].get("published_at"),
                 }
-        except (GitHubAPIError, Exception) as e:
+        except GitHubAPIError as e:
             print(f"Warning: failed to fetch releases for {owner}/{repo}: {e}", file=sys.stderr)
             summary["latest_release"] = None
 
@@ -313,7 +309,7 @@ def main():
             print(result)
         else:
             print(json.dumps(result, indent=2, default=str))
-    except Exception as e:
+    except (GitHubAPIError, OSError, ValueError) as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 

@@ -234,17 +234,19 @@ def fetch_video_feed(
     return session.eval(expression, timeout=max(120, pages * 4))
 
 
-def fetch_history(
+def fetch_history_result(
     session: BrowserSession,
     pages: int,
-    cutoff_ts: int,
     delay_ms: int,
-) -> list[dict[str, Any]]:
+) -> dict[str, Any]:
     expression = f"""(async()=>{{
       const items=[];
       let cursor={{max:'0',view_at:'0',business:''}};
       let previous='';
+      let complete=false;
+      let pages_read=0;
       for(let page=0;page<{pages};page++){{
+        pages_read=page+1;
         const q=new URLSearchParams({{ps:'30',type:'archive'}});
         if(page>0){{
           q.set('max',String(cursor.max||0));
@@ -266,14 +268,24 @@ def fetch_history(
         }}
         cursor=j.data?.cursor||{{}};
         const marker=`${{cursor.max||0}}:${{cursor.view_at||0}}:${{cursor.business||''}}`;
-        const oldest=rows.at(-1)?.view_at||0;
-        if(rows.length<30||marker===previous||({cutoff_ts}>0&&oldest<{cutoff_ts})) break;
+        if(rows.length<30||marker===previous){{complete=true;break;}}
         previous=marker;
         if({delay_ms}>0) await new Promise(r=>setTimeout(r,{delay_ms}));
       }}
-      return items;
+      return {{items,complete,pages_read}};
     }})()"""
     return session.eval(expression, timeout=max(120, pages * 4))
+
+
+def fetch_history(
+    session: BrowserSession,
+    pages: int,
+    cutoff_ts: int,
+    delay_ms: int,
+) -> list[dict[str, Any]]:
+    """Compatibility wrapper; view_at and published_at are different clocks."""
+    del cutoff_ts
+    return fetch_history_result(session, pages, delay_ms)["items"]
 
 
 def parse_duration(value: str) -> int:
@@ -308,9 +320,10 @@ def build_inbox(
     unwatched_only: bool,
     recommended_only: bool,
     limit: int,
+    history_complete: bool = True,
     now_ts: int | None = None,
 ) -> list[dict[str, Any]]:
-    now_ts = now_ts or int(time.time())
+    now_ts = int(time.time()) if now_ts is None else now_ts
     cutoff = now_ts - max(since_hours, 0) * 3600 if since_hours else 0
     history_by_bvid: dict[str, dict[str, Any]] = {}
     for item in history:
@@ -336,7 +349,10 @@ def build_inbox(
         is_recommended = creator_mid in recommended
         if recommended_only and not is_recommended:
             continue
-        watch_state, progress, history_duration = classify_watch(history_by_bvid.get(bvid))
+        history_record = history_by_bvid.get(bvid)
+        watch_state, progress, history_duration = classify_watch(history_record)
+        if history_record is None and not history_complete:
+            watch_state = "unknown"
         if unwatched_only and watch_state != "unwatched":
             continue
         rows.append(
@@ -508,15 +524,13 @@ def main(argv: list[str] | None = None) -> int:
                     session, max(args.feed_pages, 1), max(args.delay_ms, 0)
                 )
                 videos = feed.get("items", [])
-                earliest = min(
-                    (int(item.get("published_at") or 0) for item in videos), default=0
-                )
-                history = fetch_history(
+                history_result = fetch_history_result(
                     session,
                     max(args.history_pages, 1),
-                    earliest,
                     max(args.delay_ms, 0),
                 )
+                history = history_result.get("items", [])
+                history_complete = history_result.get("complete") is True
                 recommended = fetch_recommended_ups(session)
                 items = build_inbox(
                     videos,
@@ -527,6 +541,7 @@ def main(argv: list[str] | None = None) -> int:
                     unwatched_only=args.unwatched_only,
                     recommended_only=args.recommended_only,
                     limit=max(args.limit, 1),
+                    history_complete=history_complete,
                 )
                 data = payload(
                     "inbox",
@@ -536,6 +551,8 @@ def main(argv: list[str] | None = None) -> int:
                     history_records=len(history),
                     official_updated_ups=sum(1 for item in recommended if item.get("has_update")),
                     feed_complete=bool(feed.get("complete")),
+                    history_complete=history_complete,
+                    history_pages_read=history_result.get("pages_read", 0),
                 )
         write_output(serialize(data, args.format), args.out, args.force)
         return 0

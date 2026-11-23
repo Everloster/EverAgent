@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "path_cases": [
+    {"path": "ai-learning/reports/paper.md", "collection": "ai-learning", "matches": true},
+    {"path": "ai-practice/experiments/exp_demo.md", "collection": "ai-practice", "matches": true},
+    {"path": "ai-practice/experiments/nested/exp_demo.md", "matches": false},
+    {"path": "ai-practice/experiments/nested/评估笔记_demo.md", "collection": "ai-practice", "matches": true},
+    {"path": "ai-practice/experiments/nested/README.md", "matches": false},
+    {"path": "podcast-learning/reports/series/report.md", "collection": "podcast-learning", "matches": true},
+    {"path": "podcast-learning/reports/transcripts/full.md", "matches": false},
+    {"path": "podcast-learning/reports/series/transcripts/full.md", "matches": false},
+    {"path": "github-trending-analyzer/reports/research_acme_rocket.md", "collection": "github-trending-analyzer", "matches": true},
+    {"path": "web-surfing/reports/report.txt", "matches": false}
+  ],
+  "title_cases": [
+    {"path": "AI演义_01_Brook.md", "title": "Brook：引言", "expected": "《AI演义》01｜Brook：引言"},
+    {"path": "AI演义_01_Brook.md", "title": "AI演义 · 1 · Brook", "expected": "《AI演义》01｜Brook"},
+    {"path": "AI演义_01_Brook.md", "title": "《AI演义》01｜Brook", "expected": "《AI演义》01｜Brook"},
+    {"path": "AI演义_01_Brook.md", "title": "《AI演义》02｜Brook", "expected": "《AI演义》02｜Brook"}
+  ],
+  "alias_cases": [
+    {"raw": {"status": "done"}, "field": "status", "expected": "completed"},
+    {"raw": {"status": "complete"}, "field": "status", "expected": "completed"},
+    {"raw": {"report_type": "concept_deep_dive"}, "field": "report_type", "expected": "concept_report"},
+    {"raw": {"report_type": "ai_news_daily"}, "field": "report_type", "expected": "daily_summary"}
+  ],
+  "date_cases": [
+    {"path": "2026-09-01_report.md", "text": "---\nupdated_on: 2026-11-01\ncreated: 2026-10-01\n---\n报告生成时间：2026-08-01", "fallback": "2026-07-01", "expected": "2026-11-01"},
+    {"path": "2026-09-01_report.md", "text": "---\ncreated: 2026-10-01\n---\n报告生成时间：2026-08-01", "fallback": "2026-07-01", "expected": "2026-10-01"},
+    {"path": "2026-09-01_report.md", "text": "---\nupdated_on: unknown\n---\n报告生成时间：2026-08-01", "fallback": "2026-07-01", "expected": "2026-09-01"},
+    {"path": "report.md", "text": "# 历史报告\n报告生成时间：2026-08-01", "fallback": "2026-07-01", "expected": "2026-08-01"},
+    {"path": "report.md", "text": "# 历史报告", "fallback": "2026-07-01", "expected": "2026-07-01"}
+  ]
+}

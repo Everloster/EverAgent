@@ -74,6 +74,15 @@ def normalize_metadata(metadata: dict[str, object]) -> dict[str, object]:
     return result
 
 
+def report_source_urls(metadata: dict[str, object]) -> list[str]:
+    urls: list[str] = []
+    for field in ("source_url", "source_urls"):
+        value = metadata.get(field)
+        values = value if isinstance(value, list) else [value]
+        urls.extend(str(item).strip() for item in values if str(item or "").strip())
+    return list(dict.fromkeys(urls))
+
+
 def metadata_alias_issues(metadata: dict[str, object]) -> list[str]:
     """Describe noncanonical spellings for callers enforcing a new contract."""
     issues = []
@@ -84,9 +93,25 @@ def metadata_alias_issues(metadata: dict[str, object]) -> list[str]:
     return issues
 
 
-def _is_excluded(path: Path, collection: ReportCollection) -> bool:
-    relative = path.relative_to(ROOT / collection.root)
-    return any(part in collection.excluded_parts for part in relative.parts)
+def _matches_pattern(relative: Path, pattern: str) -> bool:
+    parts = relative.parts
+    if "/" not in pattern and len(parts) != 1:
+        return False
+    if pattern.startswith("**/") and relative.match(pattern[3:]):
+        return True
+    return relative.match(pattern)
+
+
+def _in_collection(path: Path, collection: ReportCollection, *, root: Path) -> bool:
+    try:
+        relative = path.resolve().relative_to((root / collection.root).resolve())
+    except ValueError:
+        return False
+    if any(part in collection.excluded_parts for part in relative.parts):
+        return False
+    return path.suffix.lower() == ".md" and any(
+        _matches_pattern(relative, pattern) for pattern in collection.patterns
+    )
 
 
 def iter_reports(domain: str | None = None) -> Iterable[tuple[ReportCollection, Path]]:
@@ -99,7 +124,7 @@ def iter_reports(domain: str | None = None) -> Iterable[tuple[ReportCollection, 
         seen: set[Path] = set()
         for pattern in collection.patterns:
             for path in sorted(base.glob(pattern)):
-                if path in seen or not path.is_file() or _is_excluded(path, collection):
+                if path in seen or not path.is_file() or not _in_collection(path, collection, root=ROOT):
                     continue
                 seen.add(path)
                 yield collection, path
@@ -107,16 +132,8 @@ def iter_reports(domain: str | None = None) -> Iterable[tuple[ReportCollection, 
 
 def collection_for_path(path: Path, *, root: Path | None = None) -> ReportCollection | None:
     root = ROOT if root is None else root
-    resolved = path.resolve()
     for collection in COLLECTIONS:
-        base = (root / collection.root).resolve()
-        try:
-            relative = resolved.relative_to(base)
-        except ValueError:
-            continue
-        if any(part in collection.excluded_parts for part in relative.parts):
-            return None
-        if path.suffix.lower() == ".md":
+        if _in_collection(path, collection, root=root):
             return collection
     return None
 
@@ -136,12 +153,7 @@ def new_report_paths(*diff_args: str, root: Path | None = None) -> set[Path]:
         raise RuntimeError("cannot identify new reports from Git")
 
     def report(path: Path) -> ReportCollection | None:
-        collection = collection_for_path(path, root=root)
-        if collection and collection.id == "ai-practice" and not (
-            path.name.startswith("exp_") or "评估笔记" in path.name
-        ):
-            return None
-        return collection
+        return collection_for_path(path, root=root)
 
     records = iter(proc.stdout.rstrip("\0").split("\0") if proc.stdout else ())
     added = set()

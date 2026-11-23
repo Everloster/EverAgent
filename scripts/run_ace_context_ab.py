@@ -747,7 +747,7 @@ def render_markdown(document: dict[str, Any]) -> str:
             "- Pi 的用户级系统提示与全局 Skills 在两组中保持一致；结果只比较 checkout Context 的差异。",
             "- 已恢复的 read 失败保留为观测指标；进程失败、行为分、禁止 Skill/文件与安全边界继续阻断接受。",
             "- 原始 JSONL 含机器级上下文，只保存在临时目录，没有进入公开仓；归档结果仅含仓库相对路径和聚合指标。",
-            "- 任务完成质量、证据可靠性和提前停止仍由 report-v2 真实回放及完整行为回放补充。",
+            "- 任务完成质量、证据可靠性和提前停止由完整行为回放补充；report-v2 只用于显式严格复核任务。",
             "",
         ]
     )
@@ -781,6 +781,8 @@ def main() -> int:
     if shutil.which("pi") is None:
         parser.error("pi is not installed")
     suite = json.loads(args.suite.read_text(encoding="utf-8"))
+    if suite.get("schema_version") != 3:
+        parser.error("ACE suite schema_version must be 3")
     all_cases = suite.get("cases") or []
     if not all_cases:
         parser.error("ACE suite has no cases")

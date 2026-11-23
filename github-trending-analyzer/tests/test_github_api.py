@@ -2,6 +2,8 @@ from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 from unittest import mock
 
+import pytest
+
 
 def load_module():
     module_path = (
@@ -64,3 +66,15 @@ def test_get_raw_accept_returns_text():
             "/repos/foo/bar/readme", accept="application/vnd.github.raw"
         )
     assert result == "# Title\nbody"
+
+
+def test_readme_and_file_failures_are_not_returned_as_content():
+    module = load_module()
+    with mock.patch.object(module.shutil, "which", return_value="/usr/bin/gh"):
+        api = module.GitHubAPI()
+    failure = _FakeProc(stdout="", returncode=1, stderr="not found")
+    with mock.patch.object(module.subprocess, "run", return_value=failure):
+        with pytest.raises(module.GitHubAPIError, match="not found"):
+            api.get_readme("foo", "bar")
+        with pytest.raises(module.GitHubAPIError, match="not found"):
+            api.get_file_content("foo", "bar", "src/main.py")

@@ -6,15 +6,10 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import datetime as dt
-import email.utils
-import gzip
-import hashlib
 import html
-import io
 import json
 import pathlib
 import re
-import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -24,7 +19,27 @@ from typing import Any
 
 PODCAST_ROOT = pathlib.Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PODCAST_ROOT.parent / "scripts"))
-from radar_common import RadarError, load_json, parse_set_value, set_dotted, write_json_atomic
+from radar_common import (
+    RadarError,
+    clean_text as shared_clean_text,
+    http_get as shared_http_get,
+    load_json,
+    normalize_url as shared_normalize_url,
+    output,
+    parse_inner_result,
+    parse_standard_date,
+    request_id as shared_request_id,
+    run_eacli as shared_run_eacli,
+    set_dotted,
+    title_fingerprint,
+    trim_text,
+    write_json_atomic,
+    xml_attribute,
+    xml_elements,
+    xml_name,
+    xml_text,
+)
+from report_catalog import normalize_metadata, parse_frontmatter, report_source_urls
 
 DEFAULT_REGISTRY = PODCAST_ROOT / "sources" / "ai-tech-podcasts.json"
 REPORTS_DIR = PODCAST_ROOT / "reports"
@@ -176,18 +191,11 @@ def load_registry(path: pathlib.Path) -> dict[str, Any]:
 
 
 def clean_text(value: str | None) -> str:
-    if not value:
-        return ""
-    value = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", value, flags=re.S)
-    value = re.sub(r"<br\s*/?>", "\n", value, flags=re.I)
-    value = re.sub(r"<[^>]+>", " ", value)
-    value = html.unescape(html.unescape(value))
-    return re.sub(r"\s+", " ", value).strip()
+    return shared_clean_text(value, preserve_breaks=True)
 
 
 def trim(value: str, size: int = 420) -> str:
-    value = clean_text(value)
-    return value if len(value) <= size else value[: size - 1].rstrip() + "…"
+    return trim_text(clean_text(value), size)
 
 
 def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.datetime | None:
@@ -195,21 +203,9 @@ def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.da
         return None
     reference = reference or now_utc()
     text = clean_text(value)
-    try:
-        parsed = email.utils.parsedate_to_datetime(text)
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=dt.timezone.utc)
-        return parsed.astimezone(dt.timezone.utc)
-    except (TypeError, ValueError, OverflowError):
-        pass
-    for candidate in re.findall(r"\d{4}-\d{1,2}-\d{1,2}(?:[T ][0-9:.+-Z]+)?", text):
-        try:
-            parsed = dt.datetime.fromisoformat(candidate.replace("Z", "+00:00"))
-            if parsed.tzinfo is None:
-                parsed = parsed.replace(tzinfo=dt.timezone.utc)
-            return parsed.astimezone(dt.timezone.utc)
-        except ValueError:
-            continue
+    standard = parse_standard_date(text)
+    if standard is not None:
+        return standard
     relative = re.search(r"\b(\d+)\s*([hmwd])\s+ago\b", text, re.I)
     if relative:
         amount = int(relative.group(1))
@@ -245,23 +241,7 @@ def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.da
 
 
 def normalize_url(url: str) -> str:
-    if not url:
-        return ""
-    parsed = urllib.parse.urlsplit(url.strip())
-    query = []
-    for key, value in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True):
-        lower = key.lower()
-        if lower.startswith("utm_") or lower in {"source", "ref", "uo", "mt"}:
-            continue
-        query.append((key, value))
-    path = parsed.path.rstrip("/") or "/"
-    return urllib.parse.urlunsplit(
-        (parsed.scheme.lower(), parsed.netloc.lower(), path, urllib.parse.urlencode(sorted(query)), "")
-    )
-
-
-def title_fingerprint(title: str) -> str:
-    return re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", title.lower())
+    return shared_normalize_url(url, {"source", "ref", "uo", "mt"})
 
 
 def parse_duration_seconds(value: str | None) -> int | None:
@@ -302,41 +282,76 @@ def xml_field(block: str, names: list[str]) -> str:
 
 
 def parse_feed_text(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
-    blocks = re.findall(r"<item\b[^>]*>(.*?)</item>", text, re.S | re.I)
-    atom = False
-    if not blocks:
-        blocks = re.findall(r"<entry\b[^>]*>(.*?)</entry>", text, re.S | re.I)
-        atom = True
-    episodes: list[dict[str, Any]] = []
-    for block in blocks[:250]:
-        title = xml_field(block, ["title"])
-        if atom:
-            link_match = re.search(r"<link\b[^>]*href=[\"']([^\"']+)", block, re.I)
-            link = html.unescape(link_match.group(1)) if link_match else ""
-            published_raw = xml_field(block, ["published", "updated"])
-            summary = xml_field(block, ["summary", "content"])
-            guid = xml_field(block, ["id"])
-        else:
-            link = xml_field(block, ["link"])
-            guid = xml_field(block, ["guid"])
+    records: list[tuple[str, str, str, str, str, str, str, str]] = []
+    elements = xml_elements(text, {"item", "entry"})
+    if elements is not None:
+        for element in elements[:250]:
+            atom = xml_name(element) == "entry"
+            title = clean_text(xml_text(element, {"title"}))
+            link = (
+                xml_attribute(element, {"link"}, "href") or clean_text(xml_text(element, {"link"}))
+                if atom
+                else clean_text(xml_text(element, {"link"}))
+            )
+            guid = clean_text(xml_text(element, {"id" if atom else "guid"}))
             if not link and guid.startswith("http"):
                 link = guid
-            published_raw = xml_field(block, ["pubDate", "dc:date", "date"])
-            summary = xml_field(block, ["description", "content:encoded"])
-        enclosure = re.search(r"<enclosure\b[^>]*url=[\"']([^\"']+)", block, re.I)
-        audio_url = html.unescape(enclosure.group(1)) if enclosure else ""
-        duration = parse_duration_seconds(xml_field(block, ["itunes:duration", "duration"]))
-        author = xml_field(block, ["itunes:author", "dc:creator", "author"])
+            records.append((
+                title,
+                link,
+                guid,
+                clean_text(xml_text(element, {"published", "updated"} if atom else {"pubdate", "date"})),
+                xml_text(element, {"summary", "content"} if atom else {"description", "encoded"}),
+                xml_attribute(element, {"enclosure"}, "url"),
+                xml_text(element, {"duration"}),
+                clean_text(xml_text(element, {"creator", "author"})),
+            ))
+    else:
+        blocks = re.findall(r"<item\b[^>]*>(.*?)</item>", text, re.S | re.I)
+        atom = False
+        if not blocks:
+            blocks = re.findall(r"<entry\b[^>]*>(.*?)</entry>", text, re.S | re.I)
+            atom = True
+        for block in blocks[:250]:
+            title = xml_field(block, ["title"])
+            if atom:
+                link_match = re.search(r"<link\b[^>]*href=[\"']([^\"']+)", block, re.I)
+                link = html.unescape(link_match.group(1)) if link_match else ""
+                published_raw = xml_field(block, ["published", "updated"])
+                summary = xml_field(block, ["summary", "content"])
+                guid = xml_field(block, ["id"])
+            else:
+                link = xml_field(block, ["link"])
+                guid = xml_field(block, ["guid"])
+                if not link and guid.startswith("http"):
+                    link = guid
+                published_raw = xml_field(block, ["pubDate", "dc:date", "date"])
+                summary = xml_field(block, ["description", "content:encoded"])
+            enclosure = re.search(r"<enclosure\b[^>]*url=[\"']([^\"']+)", block, re.I)
+            records.append((
+                title,
+                link,
+                guid,
+                published_raw,
+                summary,
+                html.unescape(enclosure.group(1)) if enclosure else "",
+                xml_field(block, ["itunes:duration", "duration"]),
+                xml_field(block, ["itunes:author", "dc:creator", "author"]),
+            ))
+
+    episodes: list[dict[str, Any]] = []
+    for title, link, guid, published_raw, summary, audio_url, duration_raw, author in records:
         if not title:
             continue
+        published = parse_date(published_raw)
         episodes.append(
             {
                 "title": title,
                 "url": normalize_url(link or source["homepage"]),
                 "audio_url": audio_url,
                 "guid": guid,
-                "published_at": parse_date(published_raw).isoformat() if parse_date(published_raw) else None,
-                "duration_seconds": duration,
+                "published_at": published.isoformat() if published else None,
+                "duration_seconds": parse_duration_seconds(duration_raw),
                 "author": author,
                 "summary": trim(summary),
                 "discovered_via": "rss",
@@ -464,31 +479,8 @@ def parse_flattened_feed(text: str, source: dict[str, Any]) -> list[dict[str, An
     return []
 
 
-def parse_inner_result(stdout: str) -> Any:
-    payload = json.loads(stdout)
-    if not payload.get("ok"):
-        error = payload.get("error") or payload.get("result", {}).get("error") or "eacli 调用失败"
-        raise RadarError(str(error))
-    value = payload.get("result", {}).get("result")
-    if isinstance(value, str):
-        try:
-            return json.loads(value)
-        except json.JSONDecodeError:
-            return value
-    return value
-
-
 def run_eacli(args: list[str], timeout: int = 75) -> str:
-    try:
-        completed = subprocess.run(args, capture_output=True, text=True, timeout=timeout)
-    except FileNotFoundError as exc:
-        raise RadarError("找不到 eacli") from exc
-    except subprocess.TimeoutExpired as exc:
-        raise RadarError(f"eacli 超时（{timeout}s）") from exc
-    if completed.returncode != 0:
-        message = completed.stderr.strip() or completed.stdout.strip() or f"exit {completed.returncode}"
-        raise RadarError(message[:600])
-    return completed.stdout
+    return shared_run_eacli(args, timeout=timeout)
 
 
 def prepare_token_plan() -> dict[str, Any]:
@@ -510,10 +502,7 @@ def prepare_token_plan() -> dict[str, Any]:
 
 
 def request_id(source_id: str, url: str) -> str:
-    hour = now_utc().strftime("%Y%m%d%H")
-    identity = json.dumps([source_id, hour, url], ensure_ascii=False)
-    digest = hashlib.sha256(identity.encode()).hexdigest()[:32]
-    return f"req_{digest}"
+    return shared_request_id(source_id, url, now=now_utc())
 
 
 def eacli_web_read(url: str, source_id: str, timeout: int = 35) -> Any:
@@ -610,30 +599,15 @@ def extract_read_content(value: Any) -> tuple[str, bool]:
 
 
 def http_get(url: str, timeout: int = 10) -> str:
-    last_error: Exception | None = None
-    for attempt in range(2):
-        request = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": UA,
-                "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*;q=0.5",
-                "Accept-Encoding": "identity",
-                "Connection": "close",
-            },
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                payload = response.read(4_000_000)
-                if payload.startswith(b"\x1f\x8b"):
-                    with gzip.GzipFile(fileobj=io.BytesIO(payload)) as compressed:
-                        payload = compressed.read(6_000_000)
-                return payload.decode("utf-8", errors="replace")
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
-            last_error = exc
-            if attempt:
-                break
-    assert last_error is not None
-    raise last_error
+    return shared_http_get(
+        url,
+        timeout=timeout,
+        user_agent=UA,
+        accept="application/rss+xml,application/atom+xml,application/xml,text/xml,*/*;q=0.5",
+        max_bytes=4_000_000,
+        max_decompressed_bytes=6_000_000,
+        retry_on=lambda _exc: True,
+    )
 
 
 def parse_apple_date_token(value: str) -> dt.datetime | None:
@@ -813,30 +787,21 @@ def topic_lanes(text: str) -> list[str]:
     return sorted(lane for lane, terms in TOPIC_LANES.items() if matched_terms(text, terms))
 
 
-def unquote_frontmatter_value(value: str) -> str:
-    value = value.strip()
-    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
-        value = value[1:-1]
-    return value.strip()
-
-
 def load_studied_index() -> tuple[dict[str, str], dict[str, str]]:
     urls: dict[str, str] = {}
     titles: dict[str, str] = {}
-    url_re = re.compile(r"https?://[^\s\"'<>)（）」』\u4e00-\u9fff]+")
     for path in sorted(REPORTS_DIR.glob("*.md")):
         text = path.read_text(encoding="utf-8", errors="replace")
-        frontmatter = re.match(r"^---\n(.*?)\n---", text, re.S)
-        block = frontmatter.group(1) if frontmatter else ""
+        metadata = normalize_metadata(parse_frontmatter(text))
+        if str(metadata.get("status") or "completed") not in {"completed", "archived"}:
+            continue
         relative = str(path.relative_to(PODCAST_ROOT.parent))
-        for url in url_re.findall(block):
+        for url in report_source_urls(metadata):
             urls[normalize_url(url)] = relative
         for key in ("episode", "title"):
-            match = re.search(rf"(?m)^{key}:\s*(.+?)\s*$", block)
-            if match:
-                fingerprint = title_fingerprint(unquote_frontmatter_value(match.group(1)))
-                if fingerprint:
-                    titles[fingerprint] = relative
+            fingerprint = title_fingerprint(str(metadata.get(key) or ""))
+            if fingerprint:
+                titles[fingerprint] = relative
     return urls, titles
 
 
@@ -1293,13 +1258,6 @@ def save_registry(path: pathlib.Path, registry: dict[str, Any]) -> None:
     if errors:
         raise RadarError("修改后注册表无效：" + "；".join(errors))
     write_json_atomic(path, registry)
-
-
-def output(value: Any, fmt: str) -> None:
-    if fmt == "json":
-        print(json.dumps(value, ensure_ascii=False, indent=2))
-    else:
-        print(value, end="" if str(value).endswith("\n") else "\n")
 
 
 def cmd_updates(args: argparse.Namespace) -> int:

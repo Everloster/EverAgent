@@ -14,16 +14,10 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import datetime as dt
-import email.utils
-import gzip
-import hashlib
 import html
-import io
 import json
-import os
 import pathlib
 import re
-import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -33,7 +27,26 @@ from typing import Any
 
 WEB_ROOT = pathlib.Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(WEB_ROOT.parent / "scripts"))
-from radar_common import RadarError, load_json, parse_set_value, set_dotted, write_json_atomic
+from radar_common import (
+    RadarError,
+    clean_text as shared_clean_text,
+    http_get as shared_http_get,
+    load_json,
+    normalize_url as shared_normalize_url,
+    output,
+    parse_inner_result,
+    parse_standard_date,
+    request_id as shared_request_id,
+    run_eacli as shared_run_eacli,
+    set_dotted,
+    title_fingerprint,
+    trim_text,
+    write_json_atomic,
+    xml_attribute,
+    xml_elements,
+    xml_name,
+    xml_text,
+)
 
 DEFAULT_REGISTRY = WEB_ROOT / "sources" / "ai-tech-blogs.json"
 UA = "Mozilla/5.0 (compatible; EverAgentAITechRadar/1.0)"
@@ -217,17 +230,11 @@ def validate_registry(registry: Any) -> list[str]:
 
 
 def clean_text(value: str | None) -> str:
-    if not value:
-        return ""
-    value = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", value, flags=re.S)
-    value = re.sub(r"<[^>]+>", " ", value)
-    value = html.unescape(html.unescape(value))
-    return re.sub(r"\s+", " ", value).strip()
+    return shared_clean_text(value)
 
 
 def trim(value: str, size: int = 260) -> str:
-    value = clean_text(value)
-    return value if len(value) <= size else value[: size - 1].rstrip() + "…"
+    return trim_text(clean_text(value), size)
 
 
 def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.datetime | None:
@@ -235,21 +242,9 @@ def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.da
         return None
     reference = reference or now_utc()
     text = clean_text(value)
-    try:
-        parsed = email.utils.parsedate_to_datetime(text)
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=dt.timezone.utc)
-        return parsed.astimezone(dt.timezone.utc)
-    except (TypeError, ValueError, OverflowError):
-        pass
-    for candidate in re.findall(r"\d{4}-\d{1,2}-\d{1,2}(?:[T ][0-9:.+-Z]+)?", text):
-        try:
-            parsed = dt.datetime.fromisoformat(candidate.replace("Z", "+00:00"))
-            if parsed.tzinfo is None:
-                parsed = parsed.replace(tzinfo=dt.timezone.utc)
-            return parsed.astimezone(dt.timezone.utc)
-        except ValueError:
-            continue
+    standard = parse_standard_date(text)
+    if standard is not None:
+        return standard
     month_pattern = (
         r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
         r"Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)"
@@ -279,17 +274,7 @@ def parse_date(value: str | None, reference: dt.datetime | None = None) -> dt.da
 
 
 def normalize_url(url: str) -> str:
-    parsed = urllib.parse.urlsplit(url.strip())
-    query = []
-    for key, value in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True):
-        lower = key.lower()
-        if lower.startswith("utm_") or lower in {"ref", "source", "from", "trk"}:
-            continue
-        query.append((key, value))
-    path = parsed.path.rstrip("/") or "/"
-    return urllib.parse.urlunsplit(
-        (parsed.scheme.lower(), parsed.netloc.lower(), path, urllib.parse.urlencode(sorted(query)), "")
-    )
+    return shared_normalize_url(url, {"ref", "source", "from", "trk"})
 
 
 def source_accepts_url(source: dict[str, Any], url: str) -> bool:
@@ -322,31 +307,8 @@ def publisher_from_url(source: dict[str, Any], url: str) -> str:
     return parts[index] if index < len(parts) else source["vendor"]
 
 
-def parse_inner_result(stdout: str) -> Any:
-    payload = json.loads(stdout)
-    if not payload.get("ok"):
-        error = payload.get("error") or payload.get("result", {}).get("error") or "eacli 调用失败"
-        raise RadarError(str(error))
-    raw = payload.get("result", {}).get("result")
-    if isinstance(raw, str):
-        try:
-            return json.loads(raw)
-        except json.JSONDecodeError:
-            return raw
-    return raw
-
-
 def run_eacli(args: list[str], timeout: int = 45) -> str:
-    try:
-        completed = subprocess.run(args, capture_output=True, text=True, timeout=timeout)
-    except FileNotFoundError as exc:
-        raise RadarError("找不到 eacli") from exc
-    except subprocess.TimeoutExpired as exc:
-        raise RadarError(f"eacli 超时（{timeout}s）") from exc
-    if completed.returncode != 0:
-        message = completed.stderr.strip() or completed.stdout.strip() or f"exit {completed.returncode}"
-        raise RadarError(message[:500])
-    return completed.stdout
+    return shared_run_eacli(args, timeout=timeout, error_limit=500)
 
 
 def prepare_token_plan(capabilities: set[str]) -> dict[str, Any]:
@@ -368,10 +330,7 @@ def prepare_token_plan(capabilities: set[str]) -> dict[str, Any]:
 
 
 def request_id(source_id: str, payload: str) -> str:
-    hour = now_utc().strftime("%Y%m%d%H")
-    identity = json.dumps([source_id, hour, payload], ensure_ascii=False)
-    digest = hashlib.sha256(identity.encode()).hexdigest()[:32]
-    return f"req_{digest}"
+    return shared_request_id(source_id, payload, now=now_utc())
 
 
 def eacli_invoke(capability: str, arguments: dict[str, Any], source_id: str, timeout: int = 60) -> Any:
@@ -400,39 +359,22 @@ def extract_web_read_content(result: Any) -> str:
 
 
 def http_get(url: str, timeout: int = 20) -> str:
-    last_error: Exception | None = None
-    for attempt in range(2):
-        request = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": UA,
-                "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,text/html;q=0.8,*/*;q=0.5",
-                "Accept-Encoding": "identity",
-                "Connection": "close",
-            },
+    def retryable(exc: Exception) -> bool:
+        message = str(exc).lower()
+        return any(
+            marker in message
+            for marker in ("reset", "temporarily", "remote end", "errno 54", "errno 22")
         )
-        try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                payload = response.read(1_500_000)
-                if payload.startswith(b"\x1f\x8b"):
-                    with gzip.GzipFile(fileobj=io.BytesIO(payload)) as compressed:
-                        payload = compressed.read(5_000_001)
-                    if len(payload) > 5_000_000:
-                        raise RadarError("gzip 解压后超过 5 MB 上限")
-                return payload.decode("utf-8", errors="replace")
-        except urllib.error.HTTPError:
-            raise
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
-            last_error = exc
-            message = str(exc).lower()
-            retryable = any(
-                marker in message
-                for marker in ("reset", "temporarily", "remote end", "errno 54", "errno 22")
-            )
-            if attempt or not retryable:
-                raise
-    assert last_error is not None
-    raise last_error
+
+    return shared_http_get(
+        url,
+        timeout=timeout,
+        user_agent=UA,
+        accept="application/rss+xml,application/atom+xml,application/xml,text/xml,text/html;q=0.8,*/*;q=0.5",
+        max_bytes=1_500_000,
+        max_decompressed_bytes=5_000_000,
+        retry_on=retryable,
+    )
 
 
 def xml_field(block: str, names: list[str]) -> str:
@@ -444,23 +386,42 @@ def xml_field(block: str, names: list[str]) -> str:
 
 
 def parse_feed_text(text: str, source: dict[str, Any], since: dt.datetime) -> list[dict[str, Any]]:
-    blocks = re.findall(r"<item\b[^>]*>(.*?)</item>", text, re.S | re.I)
-    atom = False
-    if not blocks:
-        blocks = re.findall(r"<entry\b[^>]*>(.*?)</entry>", text, re.S | re.I)
-        atom = True
+    records: list[tuple[str, str, str, str]] = []
+    elements = xml_elements(text, {"item", "entry"})
+    if elements is not None:
+        for element in elements:
+            atom = xml_name(element) == "entry"
+            title = clean_text(xml_text(element, {"title"}))
+            if atom:
+                link = xml_attribute(element, {"link"}, "href") or clean_text(xml_text(element, {"link"}))
+                published_raw = clean_text(xml_text(element, {"published", "updated"}))
+                summary = xml_text(element, {"summary", "content"})
+            else:
+                link = clean_text(xml_text(element, {"link"}) or xml_text(element, {"guid"}))
+                published_raw = clean_text(xml_text(element, {"pubdate", "date"}))
+                summary = xml_text(element, {"description", "encoded"})
+            records.append((title, link, published_raw, summary))
+    else:
+        blocks = re.findall(r"<item\b[^>]*>(.*?)</item>", text, re.S | re.I)
+        atom = False
+        if not blocks:
+            blocks = re.findall(r"<entry\b[^>]*>(.*?)</entry>", text, re.S | re.I)
+            atom = True
+        for block in blocks:
+            title = xml_field(block, ["title"])
+            if atom:
+                link_match = re.search(r"<link\b[^>]*href=[\"']([^\"']+)", block, re.I)
+                link = html.unescape(link_match.group(1)) if link_match else ""
+                published_raw = xml_field(block, ["published", "updated"])
+                summary = xml_field(block, ["summary", "content"])
+            else:
+                link = xml_field(block, ["link", "guid"])
+                published_raw = xml_field(block, ["pubDate", "dc:date", "date"])
+                summary = xml_field(block, ["description", "content:encoded"])
+            records.append((title, link, published_raw, summary))
+
     entries: list[dict[str, Any]] = []
-    for block in blocks:
-        title = xml_field(block, ["title"])
-        if atom:
-            link_match = re.search(r"<link\b[^>]*href=[\"']([^\"']+)", block, re.I)
-            link = html.unescape(link_match.group(1)) if link_match else ""
-            published_raw = xml_field(block, ["published", "updated"])
-            summary = xml_field(block, ["summary", "content"])
-        else:
-            link = xml_field(block, ["link", "guid"])
-            published_raw = xml_field(block, ["pubDate", "dc:date", "date"])
-            summary = xml_field(block, ["description", "content:encoded"])
+    for title, link, published_raw, summary in records:
         published = parse_date(published_raw)
         if published and published < since:
             continue
@@ -579,6 +540,13 @@ def fetch_search(
 
 
 def parse_sitemap_text(text: str) -> list[tuple[str, dt.datetime | None]]:
+    elements = xml_elements(text, {"url"})
+    if elements is not None:
+        return [
+            (loc, parse_date(xml_text(element, {"lastmod"})))
+            for element in elements
+            if (loc := clean_text(xml_text(element, {"loc"})))
+        ]
     rows: list[tuple[str, dt.datetime | None]] = []
     for block in re.findall(r"<url\b[^>]*>(.*?)</url>", text, re.S | re.I):
         loc = xml_field(block, ["loc"])
@@ -925,7 +893,7 @@ def collect_updates(
     items = list(deduped.values())
     title_deduped: dict[str, dict[str, Any]] = {}
     for item in items:
-        title_key = re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", item["title"].lower())
+        title_key = title_fingerprint(item["title"])
         previous = title_deduped.get(title_key)
         if previous is None:
             title_deduped[title_key] = item
@@ -1092,13 +1060,6 @@ def save_registry(path: pathlib.Path, registry: dict[str, Any]) -> None:
     if errors:
         raise RadarError("修改后注册表无效：" + "；".join(errors))
     write_json_atomic(path, registry)
-
-
-def output(value: Any, fmt: str) -> None:
-    if fmt == "json":
-        print(json.dumps(value, ensure_ascii=False, indent=2))
-    else:
-        print(value, end="" if str(value).endswith("\n") else "\n")
 
 
 def cmd_updates(args: argparse.Namespace) -> int:

@@ -26,34 +26,15 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPORTS = ROOT / "reports"
 INDEX_DIR = ROOT / "wiki" / "show-indexes"
+sys.path.insert(0, str(ROOT.parent / "scripts"))
+from report_catalog import normalize_metadata, parse_frontmatter, report_source_urls
 
-URL_RE = re.compile(r"https?://[^\s\"'<>)（）」』\u4e00-\u9fff]+")
 # 索引行：| 集 | 日期 | 时长 | [标题](链接)… | 状态 |
 ROW_RE = re.compile(r"^\|\s*(?:\d+|—)\s*\|\s*\d{4}-\d{2}-\d{2}\s*\|")
 
 
 def norm(url: str) -> str:
     return url.split("?")[0].rstrip("/")
-
-
-def source_urls(block: str) -> list[str]:
-    """只读取 frontmatter 的 source_url/source_urls，避免其它说明链接误标单集。"""
-    urls: list[str] = []
-    in_list = False
-    for line in block.splitlines():
-        if re.match(r"^source_urls:\s*", line):
-            in_list = True
-            urls.extend(URL_RE.findall(line))
-            continue
-        if in_list:
-            if re.match(r"^\s+-\s+", line):
-                urls.extend(URL_RE.findall(line))
-                continue
-            if line and not line[0].isspace():
-                in_list = False
-        if re.match(r"^source_url:\s*", line):
-            urls.extend(URL_RE.findall(line))
-    return urls
 
 
 def load_reports() -> dict[str, tuple[str, str]]:
@@ -64,12 +45,10 @@ def load_reports() -> dict[str, tuple[str, str]]:
         m = re.match(r"(\d{4}-\d{2}-\d{2})_(.+)", stem)
         date, slug = (m.group(1), m.group(2)) if m else ("?", stem)
         text = pathlib.Path(path).read_text(encoding="utf-8", errors="replace")
-        fm = re.match(r"^---\n(.*?)\n---", text, re.S)
-        block = fm.group(1) if fm else ""
-        status_match = re.search(r'^status:\s*["\']?([a-z_]+)', block, re.M | re.I)
-        if not status_match or status_match.group(1).lower() not in {"completed", "archived"}:
+        metadata = normalize_metadata(parse_frontmatter(text))
+        if str(metadata.get("status") or "") not in {"completed", "archived"}:
             continue
-        for url in source_urls(block):
+        for url in report_source_urls(metadata):
             by_url[norm(url)] = (date, slug)
     return by_url
 
@@ -123,9 +102,8 @@ def sync(dry_run: bool) -> int:
     miss = []
     for path in sorted(glob.glob(str(REPORTS / "*.md"))):
         text = pathlib.Path(path).read_text(encoding="utf-8", errors="replace")
-        fm = re.match(r"^---\n(.*?)\n---", text, re.S)
-        block = fm.group(1) if fm else ""
-        urls = [norm(u) for u in source_urls(block)]
+        metadata = parse_frontmatter(text)
+        urls = [norm(url) for url in report_source_urls(metadata)]
         if urls and not any(u in idx_urls for u in urls):
             miss.append(pathlib.Path(path).name)
     if miss:

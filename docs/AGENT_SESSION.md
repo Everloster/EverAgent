@@ -18,9 +18,9 @@ Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORA
 
 ## current → diagnose → declare
 
-公开维护入口要求预先安装eacli >=10.1.0，`eacli --version`须返回plain release版本。薄入口只按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH选择；选中程序缺失、不可执行或版本非法/过旧就失败，不回退普通Git、不寻找相邻私仓、不自动build/install。安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
+公开维护入口要求预先安装eacli >=11.0.0，`eacli --version`须返回plain release版本。薄入口只按显式`EACLI_BIN`、`$HOME/.local/bin/eacli`、PATH选择；选中程序缺失、不可执行或版本非法/过旧就失败，不回退普通Git、不寻找相邻私仓、不自动build/install。安装态升级与真实平台覆盖分别验收，源码/fixture通过不代表已发布。
 
-Git接口是`eacli git ACTION --repo-root CANONICAL_ROOT <args>`；`scripts/egit.sh validate`转为`git identity --repo-root ROOT validate`。资料接口是`eacli docs ACTION --repo-root ROOT <args>`，可用`scripts/edocs.sh ACTION <args>`；root绑定薄脚本位置，余参、消息/trailer与实际业务退出码原样保留。
+Git接口是`eacli git ACTION --repo-root CANONICAL_ROOT <args>`，薄入口仅接受`identity|commit|merge|push|hooks`。资料接口是`eacli docs ACTION --repo-root ROOT <args>`，可用`scripts/edocs.sh ACTION <args>`；root绑定薄脚本位置，余参、消息/trailer与实际业务退出码原样保留。
 
 - `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/实现owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；不再提供公开独立core命令。
 - `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
@@ -227,7 +227,7 @@ App 外层的启动 shell 不构成执行依据。新批次按用户已明确指
 
 ## 脚本描述与门禁
 
-[`scripts/script-catalog.json`](../scripts/script-catalog.json)登记本仓薄入口、共享轻量helper、针对性tests及原有评测记录工具，描述平台、外部工具要求、输入/输出、副作用、授权与范围；不把私仓源码作为公开entrypoint或owner。
+[`scripts/script-catalog.json`](../scripts/script-catalog.json)登记本仓薄入口、共享内部实现、报告/雷达/领域工具及评测入口，描述平台、外部工具要求、输入/输出、副作用、授权与范围；不把私仓源码作为公开entrypoint或owner。
 [`SCRIPT_INDEX.md`](../scripts/SCRIPT_INDEX.md)是对应清单视图。外部会话/资料能力通过`eacli --help`与`eacli docs --help`查询；需要时可用`scripts/edocs.sh scripts --check`主动检查清单，不作为提交门禁。
 
 新增或改名时同步实际调用方与目录，不保留无人使用的重复实现。薄入口回归用`node --test scripts/test_eacli_entries.mjs`，只记录假eacli的argv/版本，不做真实commit/push或恢复CI质量门。

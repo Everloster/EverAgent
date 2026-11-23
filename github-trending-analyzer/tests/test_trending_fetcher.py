@@ -1,5 +1,9 @@
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+from types import SimpleNamespace
+from unittest import mock
+
+import pytest
 
 
 def load_module():
@@ -81,8 +85,8 @@ def test_generate_summary_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本周增长" in content
     assert "今日增长" not in content
-    assert 'quality_schema: "report-v2"' in content
-    assert 'quality_tier: "standard"' in content
+    assert "quality_schema:" not in content
+    assert "quality_tier:" not in content
     assert 'status: "in_progress"' in content
     assert 'report_type: "weekly_summary"' in content
 
@@ -139,7 +143,68 @@ def test_generate_project_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本月增长" in content
     assert "今日增长" not in content
-    assert 'quality_schema: "report-v2"' in content
-    assert 'quality_tier: "important"' in content
+    assert "quality_schema:" not in content
+    assert "quality_tier:" not in content
     assert 'status: "in_progress"' in content
     assert 'report_type: "repo_deep_research"' in content
+
+
+def test_get_trending_never_substitutes_recent_search():
+    module = load_module()
+    with mock.patch.object(module, "fetch_trending_page", return_value="<html></html>"), mock.patch.object(
+        module, "fetch_trending_via_api"
+    ) as fallback:
+        with pytest.raises(module.TrendingFetchError):
+            module.get_trending("daily")
+    fallback.assert_not_called()
+
+
+def test_recent_search_is_explicitly_not_trending():
+    module = load_module()
+    process = SimpleNamespace(
+        returncode=0,
+        stdout='{"items":[{"name":"rocket","owner":{"login":"acme"},"html_url":"https://github.com/acme/rocket"}]}',
+        stderr="",
+    )
+    with mock.patch.object(module.shutil, "which", return_value="/usr/bin/gh"), mock.patch.object(
+        module.subprocess, "run", return_value=process
+    ):
+        rows = module.fetch_trending_via_api("weekly")
+    assert rows[0]["source"] == "github_recent_search"
+    assert rows[0]["ranking_semantics"] == "recently_created_repositories_by_stars"
+    assert rows[0]["today_stars"] is None
+    assert rows[0]["period_stars"] is None
+
+
+def test_summary_rejects_other_rankings_and_missing_growth_is_not_zero(tmp_path):
+    module = load_report_generator()
+    repo = {
+        "owner": "acme",
+        "repo": "rocket",
+        "language": "Python",
+        "stars": 1234,
+        "period_stars": None,
+        "description": "Fast launch toolkit",
+        "url": "https://github.com/acme/rocket",
+        "ranking_semantics": "github_trending",
+    }
+    module.generate_summary_report("monthly", [repo], tmp_path / "summary.md")
+    content = (tmp_path / "summary.md").read_text(encoding="utf-8")
+    assert "N/A" in content
+    assert "今日" not in content
+
+    repo["ranking_semantics"] = "recently_created_repositories_by_stars"
+    with pytest.raises(ValueError, match="non-Trending"):
+        module.generate_summary_report("monthly", [repo], tmp_path / "invalid.md")
+    assert not (tmp_path / "invalid.md").exists()
+
+
+def test_atomic_report_write_preserves_existing_file_on_replace_failure(tmp_path):
+    module = load_report_generator()
+    output = tmp_path / "report.md"
+    output.write_text("complete old report", encoding="utf-8")
+    with mock.patch.object(Path, "replace", side_effect=OSError("simulated failure")):
+        with pytest.raises(OSError, match="simulated failure"):
+            module.write_text_atomic(output, "partial new report")
+    assert output.read_text(encoding="utf-8") == "complete old report"
+    assert list(tmp_path.iterdir()) == [output]

@@ -22,7 +22,7 @@ scripts/sync-external-skills.sh          # 拉上游 → 覆盖两技能 → git
 scripts/sync-external-skills.sh --install # 额外：把仓内副本投射到 ~/.agents/skills/（本机 Skill 工具原生调用）
 ```
 
-同步脚本只覆盖 `docs/external-skills/scientific-agent-skills/{hypothesis-generation,scientific-writing}` 两个目录；上游若改了技能目录名/新增依赖，脚本会失败提示人工处理。
+同步脚本只覆盖 `docs/external-skills/scientific-agent-skills/{hypothesis-generation,scientific-writing}` 两个目录；先完整暂存再替换，本地缺目录也会补齐，上游缺目录则非零失败且不改本地。输出完整上游 commit 供更新记录；`--install` 仍只在显式指定时执行。
 
 ## 消费方式（两种并存）
 

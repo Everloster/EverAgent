@@ -18,6 +18,8 @@ jupyter notebook notebooks/01_transformer_from_scratch.ipynb
 
 不想从 Notebook 开始，可以阅读[GRPO toy 实验](./experiments/exp_008_grpo_simulation.md)与[对应脚本](./src/grpo_simulation.py)。它用 NumPy 在 CPU 上模拟训练，并非真实 LLM 微调。重新运行时用 `--out-dir` 指定新的输出目录，避免覆盖已有历史结果。
 
+Dense/MoE 的模型定义在 import 时不下载、不训练。显式运行 `python3 src/model.py` 或 `python3 src/moe_model.py` 才进入训练；缺少训练数据时需主动加 `--download`，已有 checkpoint 可由 `python3 src/inference.py --prompt "..."` 使用。`--data`、`--checkpoint` 和 `--max-iters` 可用于有界复现，避免误覆盖历史产物。
+
 ## 现有主线（LLM 工程实践路径）
 
 | 主题 | 入口 | 实现与边界 |

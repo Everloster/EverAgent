@@ -6,6 +6,8 @@ Fetches trending repositories from GitHub and outputs structured data.
 Cross-platform compatible - works on macOS, Linux, and Windows.
 """
 
+from __future__ import annotations
+
 import json
 import os
 import platform
@@ -16,14 +18,17 @@ import sys
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional
-from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 try:
     from bs4 import BeautifulSoup
 except ImportError:
     BeautifulSoup = None
+
+
+class TrendingFetchError(RuntimeError):
+    """Raised when actual GitHub Trending data cannot be obtained."""
 
 
 def get_skill_dir() -> Path:
@@ -39,12 +44,12 @@ def get_default_reports_dir() -> Path:
     Get default reports directory.
     Priority:
     1. TRENDING_REPORTS_DIR environment variable
-    2. reports/ in current working directory
+    2. the analyzer project's reports/ directory
     """
     env_dir = os.environ.get("TRENDING_REPORTS_DIR")
     if env_dir:
         return Path(env_dir)
-    return Path.cwd() / "reports"
+    return Path(__file__).resolve().parents[1] / "reports"
 
 
 def get_user_agent() -> str:
@@ -89,12 +94,11 @@ def fetch_trending_page(since: str = "daily", language: str = "") -> str:
     try:
         with urlopen(req, timeout=30) as response:
             return response.read().decode("utf-8")
-    except (HTTPError, URLError) as e:
-        print(f"Error fetching trending page: {e}", file=sys.stderr)
-        return ""
+    except (HTTPError, URLError, TimeoutError, OSError) as exc:
+        raise TrendingFetchError(f"Cannot fetch GitHub Trending: {exc}") from exc
 
 
-def _parse_int(raw: Optional[str]) -> int:
+def _parse_int(raw: str | None) -> int:
     """Parse an integer from noisy text like '1,234 stars today'."""
     if not raw:
         return 0
@@ -121,7 +125,7 @@ def _extract_today_stars(text: str) -> int:
     return 0
 
 
-def _parse_trending_with_bs4(html: str) -> List[Dict]:
+def _parse_trending_with_bs4(html: str) -> list[dict]:
     """Parse trending repositories with BeautifulSoup."""
     if BeautifulSoup is None:
         return []
@@ -159,7 +163,7 @@ def _parse_trending_with_bs4(html: str) -> List[Dict]:
     return repos
 
 
-def _parse_trending_with_regex(html: str) -> List[Dict]:
+def _parse_trending_with_regex(html: str) -> list[dict]:
     """Regex fallback parser for environments without BeautifulSoup."""
     repos = []
     repo_pattern = r'<article[^>]*class="[^"]*Box-row[^"]*"[^>]*>(.*?)</article>'
@@ -201,7 +205,7 @@ def _parse_trending_with_regex(html: str) -> List[Dict]:
     return repos
 
 
-def parse_trending_repos(html: str) -> List[Dict]:
+def parse_trending_repos(html: str) -> list[dict]:
     """
     Parse trending repositories from HTML.
 
@@ -214,10 +218,11 @@ def parse_trending_repos(html: str) -> List[Dict]:
     return _parse_trending_with_regex(html)
 
 
-def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dict]:
-    """
-    Fetch trending repositories via GitHub Search API (fallback).
+def fetch_trending_via_api(since: str = "daily", language: str = "") -> list[dict]:
+    """Search recently created repositories; this is not GitHub Trending data.
 
+    The legacy function name remains for callers, but its output explicitly
+    identifies the different ranking semantics and has no period-growth value.
     Uses the `gh` CLI (gh api) so authentication is handled by `gh auth login`.
 
     Args:
@@ -225,7 +230,7 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
         language: Programming language filter (optional)
 
     Returns:
-        List of repository dictionaries, or empty list on failure
+        list of repository dictionaries, or empty list on failure
     """
     days_map = {"daily": 1, "weekly": 7, "monthly": 30}
     days = days_map.get(since, 1)
@@ -248,7 +253,7 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
         "-f", "per_page=25",
     ]
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60, check=False)
         if proc.returncode != 0:
             print(f"Error fetching from GitHub Search API: {proc.stderr.strip()}", file=sys.stderr)
             return []
@@ -272,15 +277,17 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
             "language": item.get("language") or "Unknown",
             "stars": item.get("stargazers_count", 0),
             "forks": item.get("forks_count", 0),
-            "today_stars": 0,
+            "today_stars": None,
+            "period_stars": None,
             "period": since,
             "fetched_at": fetched_at,
-            "source": "github_api",
+            "source": "github_recent_search",
+            "ranking_semantics": "recently_created_repositories_by_stars",
         })
     return repos
 
 
-def get_trending(since: str = "daily", language: str = "") -> List[Dict]:
+def get_trending(since: str = "daily", language: str = "") -> list[dict]:
     """
     Get trending repositories.
     
@@ -289,23 +296,23 @@ def get_trending(since: str = "daily", language: str = "") -> List[Dict]:
         language: Optional language filter
     
     Returns:
-        List of repository dictionaries
+        list of repository dictionaries
     """
     html = fetch_trending_page(since, language)
     repos = parse_trending_repos(html) if html else []
 
     if not repos:
-        print(
-            "HTML scraping returned no results, falling back to GitHub Search API...",
-            file=sys.stderr,
+        raise TrendingFetchError(
+            "GitHub Trending returned no parseable repositories; "
+            "a recent-repository search is not an equivalent fallback"
         )
-        return fetch_trending_via_api(since, language)
 
     fetched_at = datetime.now().isoformat()
     for repo in repos:
         repo["period"] = since
         repo["fetched_at"] = fetched_at
         repo["source"] = "html_scrape"
+        repo["ranking_semantics"] = "github_trending"
 
     return repos
 
@@ -319,7 +326,7 @@ def normalize_repo_name(name: str) -> str:
     return name.lower().replace("-", "_")
 
 
-def check_report_exists(base_dir: Path, owner: str, repo: str) -> Optional[Dict]:
+def check_report_exists(base_dir: Path, owner: str, repo: str) -> dict | None:
     """
     Check if a report exists and when it was last updated.
 
@@ -390,7 +397,11 @@ def main():
         since = sys.argv[2] if len(sys.argv) > 2 else "daily"
         language = sys.argv[3] if len(sys.argv) > 3 else ""
         
-        repos = get_trending(since, language)
+        try:
+            repos = get_trending(since, language)
+        except TrendingFetchError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            sys.exit(1)
         print(json.dumps(repos, indent=2, ensure_ascii=False))
     
     elif command == "check":

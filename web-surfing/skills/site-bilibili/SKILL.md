@@ -60,7 +60,7 @@ python3 "$SCRIPT" inbox --recommended-only --unwatched-only --format md
 ```
 
 脚本默认抓 5 页关注视频、最多 10 页观看历史；可用 `--feed-pages`、`--history-pages`、
-`--limit` 调整。输出文件默认拒绝覆盖，明确传 `--force` 才替换。
+`--limit` 调整。历史未完整覆盖时，缺少记录的视频标为 `unknown`，不冒充“未观看”；默认 `--unwatched-only` 会排除它们，需要检查时用 `--no-unwatched-only` 并保留完整性说明。输出文件默认拒绝覆盖，明确传 `--force` 才替换。
 
 ## 核心接口
 

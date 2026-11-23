@@ -42,6 +42,8 @@ pip install torch torchvision torchaudio tiktoken requests
 
 **版本要求**：PyTorch ≥ 2.0，Python ≥ 3.9
 
+模型脚本默认只读现有数据；缺少数据时由调用者显式传 `--download`。数据集工具默认不执行数据集提供的远程代码，只有审阅代码后才使用 `--trust-remote-code`。
+
 ### 阶段 2 & 3 — Transformers 库 + HuggingFace 生态
 
 ```bash

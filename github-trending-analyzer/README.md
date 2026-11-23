@@ -18,11 +18,11 @@
 - 先通过 eacli `repo.public.*` 获取仓库结构、文件与文档；未覆盖的精确元数据按领域协议最小补充。
 - 技术判断回到代码；README 与实现不一致时指出差异。结论区分代码、API、文档、外部资料与推测。
 - Stars、版本、issue 和 release 等数字注明查询时点；历史榜单不代表当前排名。
-- 报告统一保存在 `reports/`，不在首页手工维护篇数或第二份全量库存。
+- 报告统一保存在本项目的 `reports/`，与调用时 cwd 无关；可用 `TRENDING_REPORTS_DIR` 显式覆盖。不在首页手工维护篇数或第二份全量库存。
 
 ## 本地辅助工具
 
-已有[辅助脚本](./scripts/)处理榜单、元数据和报告草稿，[测试](./tests/)验证脚本行为；使用边界与取数顺序由 [AGENTS.md](./AGENTS.md) 和对应 skill 维护。
+已有[辅助脚本](./scripts/)处理榜单、元数据和报告草稿，[测试](./tests/)验证脚本行为；使用边界与取数顺序由 [AGENTS.md](./AGENTS.md) 和对应 skill 维护。Trending 获取失败会明确报错，不用近期新建仓库搜索冒充榜单。
 
 在本领域目录安装仓库声明的开发依赖后，可运行脚本自检：
 
@@ -31,4 +31,4 @@ ruff check scripts tests
 pytest -q
 ```
 
-这些检查不等于报告内容通过复核。长期报告的证据与完成标准见[报告工作流](../docs/REPORT_WORKFLOW.md)和[质量门](../docs/REPORT_QUALITY_GATE.md)。
+这些检查不等于报告内容通过复核。长期报告的证据与完成标准见[报告工作流](../docs/REPORT_WORKFLOW.md)；只有显式选用严格审查时才读取[历史质量门合同](../docs/REPORT_QUALITY_GATE.md)。

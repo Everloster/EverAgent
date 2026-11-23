@@ -36,7 +36,7 @@ def complete_behavioral_case(case: dict, expected: dict) -> None:
     checks = list(expected.get("required_checks") or [])
     if created:
         checks.extend(expected.get("artifact_required_checks") or [])
-    quality_required = expected.get("quality_tier") is not None and created
+    quality_required = expected.get("quality_contract") == "report-v2" and created
     case.update(
         {
             "route": expected["expected_route"],
@@ -701,6 +701,7 @@ semantic_tags: ["quality"]
                 "a_existing_followup",
                 "a_brief_question",
                 "a_open_ended_learning_direction",
+                "a_explicit_strict_review",
             ],
         )
 
@@ -755,6 +756,30 @@ semantic_tags: ["quality"]
             path.write_text(json.dumps(template, ensure_ascii=False), encoding="utf-8")
             result = eval_report_context.score_run(path)
         self.assertEqual(result["score"], result["max_score"])
+
+    def test_quality_gate_is_limited_to_explicit_strict_contract(self):
+        template = eval_report_context.run_template()
+        suite = json.loads(
+            (ROOT / "evals" / "ace-report-tasks.json").read_text(encoding="utf-8")
+        )
+        expected = {case["id"]: case for case in suite["cases"]}
+        for case in template["cases"]:
+            complete_behavioral_case(case, expected[case["id"]])
+        strict = next(
+            case for case in template["cases"] if case["id"] == "a_explicit_strict_review"
+        )
+        strict["quality_decision"] = "revise"
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "run.json"
+            path.write_text(json.dumps(template, ensure_ascii=False), encoding="utf-8")
+            result = eval_report_context.score_run(path)
+
+        rows = {case["id"]: case for case in result["cases"]}
+        self.assertEqual(rows["a_article_deep_analysis"]["score"], 100)
+        self.assertTrue(rows["a_article_deep_analysis"]["checks"]["quality_gate"])
+        self.assertEqual(rows["a_explicit_strict_review"]["score"], 0)
+        self.assertFalse(rows["a_explicit_strict_review"]["checks"]["quality_gate"])
 
     def test_behavioral_score_requires_explicit_safety_result(self):
         template = eval_report_context.run_template()

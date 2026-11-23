@@ -35,8 +35,10 @@
 
 | 文件 | 说明 |
 |------|------|
-| `src/model.py` | Transformer LM 完整实现（教学版，d_model=64） |
-| `src/moe_model.py` | MoE Transformer 实现（4 experts, top_k=2，与 model.py 对比） |
+| `src/transformer_core.py` | Dense/MoE 共享的注意力、位置编码、前馈与 Dense LM（默认 d_model=64） |
+| `src/training.py` | 显式数据加载、批次、评估、训练循环与原子 checkpoint 写入 |
+| `src/model.py` | Dense Transformer 兼容导出与 CLI；import 不下载或训练 |
+| `src/moe_model.py` | MoE Transformer（4 experts, top_k=2），复用共享组件 |
 | `src/long_context_simulation.py` | 1M long context 三阶段缩尺模拟（预训练窗口、needle 后训练、full-context vs RAG、KV cache 成本） |
 | `src/skillos_curator_simulation.py` | SkillOS 技能策展缩尺模拟（grouped task streams、SkillRepo、insert/update/delete、raw memory 对照） |
 | `src/grpo_simulation.py` | GRPO 缩尺模拟（2-token toy policy，组内采样 + 规则化奖励 + PPO-clip + KL 惩罚；与 T060 推理模型三大流派报告联动） |

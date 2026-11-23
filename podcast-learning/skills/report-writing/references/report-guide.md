@@ -43,7 +43,7 @@
 
 1. 转写或声明数字改变时核验统计；仓内原文可用 `fill_report_stats.py <报告>`，私有原文按上文方法检查。不改统计时不重跑。
 2. 本期已在 [精选播客速看表](../../../PODCAST_UPDATES.md) 中时，核对完成状态并补回报告链接；需要批量回填才用 `sync_index_status.py`。
-3. 需要更新阅读索引时，预先安装eacli >=10.1.0后在仓根运行`scripts/edocs.sh index --write`（固定转发`eacli docs index --repo-root ROOT --write`，ROOT绑定脚本位置）。它不是提交前置，不自动重写报告；公开仓不提供Go源码入口，缺失/非法/旧工具版本明确失败，不自动build/install。提交器保留policy Author、当前真实模型/明确有效声明Committer与新增公开内容检查，不运行报告质量流水线。
+3. 需要更新阅读索引时，预先安装eacli >=11.0.0后在仓根运行`scripts/edocs.sh index --write`（固定转发`eacli docs index --repo-root ROOT --write`，ROOT绑定脚本位置）。它不是提交前置，不自动重写报告；公开仓不提供Go源码入口，缺失/非法/旧工具版本明确失败，不自动build/install。提交器保留policy Author、当前真实模型/明确有效声明Committer与新增公开内容检查，不运行报告质量流水线。
 4. 普通过程记录不写入长期上下文；可复用的新知识才更新对应 owner，不另建收尾档案。
 5. 若本批出现跨节目复用价值或高风险问题，以一条局部 delta 更新本 skill；否则不改
 

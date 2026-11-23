@@ -76,7 +76,7 @@ Mini App 使用宿主启动的本地 Node 进程，页面通过本机 HTTP 读�
 
 HTTP 接口仅提供报告目录收录的 Markdown、两张速看表，以及允许目录下的图片。隐藏路径、越界路径、软链与硬链被拒绝，播客逐字稿不在阅读接口范围内。接口不返回本机绝对路径。服务只监听本机回环地址，并检查请求来源；这不是一个用于公网部署或多用户共享的服务器。
 
-工作台不会修改报告。通过页面设置仓库路径时，只保存这一项本机配置：MiniMax 模式用宿主 `dataDir`；独立模式用 `$XDG_CONFIG_HOME/everagent-learning/config.json`，未设置时用用户目录下 `.config/everagent-learning/config.json`。用启动参数指定路径不会写配置。
+工作台不会修改报告。通过页面设置仓库路径时，只保存这一项本机配置：MiniMax 模式用宿主 `dataDir`；独立模式用 `$XDG_CONFIG_HOME/everagent-learning/config.json`，未设置时用用户目录下 `.config/everagent-learning/config.json`。用启动参数指定路径不会写配置。配置采用原子替换；损坏时返回明确错误并允许重新选择，不会静默当作未配置。仓库识别不依赖旧质量策略文件。
 
 **只选择可公开的报告目录。** 应用不执行所选仓库的代码，但不会自动识别报告正文里的秘密。往公开报告目录放入资料之前，仍需确认资料可以公开。
 

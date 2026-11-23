@@ -150,7 +150,6 @@ def shuffled_tasks(tasks: list[Task], seed: int) -> list[Task]:
 
 def execute(task: Task, skills: list[Skill], rng: random.Random) -> tuple[bool, int]:
     coverage = sum(skill.matches(task) for skill in skills)
-    max_coverage = max(1, len(task.tags) + 2 * len(task.pitfalls))
     skill_bonus = min(0.42, 0.08 * coverage)
     overload_penalty = max(0, len(skills) - 2) * 0.05
     base_success = 0.42 + 0.02 * (6 - task.difficulty)
