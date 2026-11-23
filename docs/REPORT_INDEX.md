@@ -16,6 +16,7 @@
 | 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_%E5%BE%AA%E7%8E%AF%E8%AE%A1%E7%AE%97%E4%B8%8EvLLM%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
+| 2026-11-23 | [AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](../podcast-learning/reports/2026-11-23_ai-lianjinshu_company-value-chain.md) | podcast-learning |
 | 2026-11-19 | [AI 行业日报 · 2026-11-19](../web-surfing/reports/ai-news-daily-2026-11-19.md) | web-surfing |
 | 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | ai-learning |
 | 2026-11-18 | [AI 行业日报 · 2026-11-18](../web-surfing/reports/ai-news-daily-2026-11-18.md) | web-surfing |
@@ -31,7 +32,6 @@
 | 2026-11-17 | [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_%E8%BF%87%E6%9C%9F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B2%E6%89%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
 | 2026-11-17 | [AI 原生组织的争论：管理工作减少后，谁负责、怎样分钱、业务是否真的变快](../podcast-learning/reports/2026-09-17_ai-lianjinshu_xcircle-xiaofei-ai-organization.md) | podcast-learning |
-| 2026-11-16 | [赵晨阳谈 RSI 与交互式 AI：让模型优化模型，真正要建好的是评测、状态与责任](../podcast-learning/reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) | podcast-learning |
 
 ## 🤖 AI Learning（228 篇）
 
@@ -391,7 +391,7 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（147 篇）
+## 🎙️ Podcast Learning（148 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -399,6 +399,7 @@
 | 2026-11-23 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | `personal-agent`, `qwen`, `agent-harness`, `memory`, `authorization`, `post-training` |
 | 2026-11-23 | [卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](../podcast-learning/reports/2026-11-23_mantan_96_weizhe-agent-commerce.md) | `agent-commerce`, `ecommerce`, `consumer-ai`, `platform-economics`, `community`, `edge-ai` |
 | 2026-11-23 | [华尔街量化与 AI：预测、执行、有效样本和风险纪律](../podcast-learning/reports/2026-11-23_sv101_259_quant-ai-risk.md) | `quantitative-trading`, `ai-research`, `effective-sample-size`, `backtesting`, `risk-control`, `market-impact` |
+| 2026-11-23 | [AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](../podcast-learning/reports/2026-11-23_ai-lianjinshu_company-value-chain.md) | `ai-business`, `saas`, `agent-economics`, `coding-agent`, `neocloud`, `value-capture` |
 | 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | `interactive-narrative`, `generative-agents`, `livo`, `agent-memory`, `content-business`, `organizational-design` |
 | 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | `brain-computer-interface`, `meg`, `opm`, `temporal-interference`, `neural-decoding`, `clinical-evidence` |
 | 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | `ai-education`, `learning-transfer`, `community`, `creator-business`, `agent-workflow`, `long-tail` |

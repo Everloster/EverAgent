@@ -12,11 +12,11 @@
 
 **本期学习（2026-11-16）：**赵晨阳对谈已完成深度学习与独立复核，[阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md)。
 
-**本轮学习（2026-11-23）：**[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
+**本轮学习（2026-11-23）：**[AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md)已完成；[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 4 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
+**本次补充 23 期**，发表于 11 月 17—23 日；增量检查覆盖 2026-11-17—2026-11-23。新增包括千问蒋冠军聊 Personal Agent、蔡伟聊蚂蚁灵光、华尔街量化团队谈 AI，以及投资、消费、职场与健康节目。《知行小酒馆》与《投资ABC》共用的单集按同一 URL 合并计数。本轮新增已有 5 期完成专题学习，其余待做；已有单集、人工主题与学习记录保留。
 
-本页收录 **420 条单集发布记录**：**98 条已有专题报告**，**1 条仅有相关报告**，**321 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **420 条单集发布记录**：**99 条已有专题报告**，**1 条仅有相关报告**，**320 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -24,11 +24,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 144 条 | 78 条 |
+| [AI / 科技](#tech) | 144 条 | 79 条 |
 | [商业 / 投资 / 职场](#business) | 149 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 127 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 98 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 99 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -36,7 +36,7 @@
 
 ## 最近一周
 
-2026-11-17—2026-11-23，共 44 条，其中 4 条已有专题报告。
+2026-11-17—2026-11-23，共 44 条，其中 5 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -60,7 +60,7 @@
 | 2026-11-20 | 卫诗婕｜漫谈Light the Star | [95｜Anthropic 上市与下一轮模型竞争的行业解读](https://www.xiaoyuzhoufm.com/episode/6afffc3efe62f8f52c4e1573 "95.Anthropic 上市，看懂超级智能第一股 ：大模型的「大结果」、乘法因子，与下一场模型竞赛") · [音频](https://media.xyzcdn.net/6627fda4b56459544087d86a/lo0bIWvMS-CIpdAyaYcYXht3ZJsq.m4a) | 1小时34分 | 未做 |
 | 2026-11-20 | 全嘻嘻 | [视频｜全职外公在北京做网约车司机的一天](https://www.xiaoyuzhoufm.com/episode/6afa858aa4a79edf1379f353 "【视频】我爸辞职来给我当全职外公，结果在北京当网约车司机了") · [音频](https://media.xyzcdn.net/60bd90dc2e2eec1ef1ca26bc/lr1whuqvj_7kmkBNhw4fTlPPEsEX.m4a) | 17分钟 | 未做 |
 | 2026-11-20 | 二的三次方 | [167｜自洽：怎样面对别人的评价与自己的怀疑](https://www.xiaoyuzhoufm.com/episode/6afec7ada4a79edf137bbf03 "vol:167 “感谢你的评价，但这跟我有什么关系呢？”——聊聊自洽") · [音频](https://media.xyzcdn.net/64bf965274d8c90965c62fff/lmrB3jCHS2gKF8wXR7ZEek2mcuJi.m4a) | 1小时30分 | 未做 |
-| 2026-11-20 | AI炼金术 | [AI 冲击哪些公司的生意：SaaS、开发工具与算力服务](https://www.ximalaya.com/sound/1034331062 "AI来了，这些公司快死了……吗？") | 1小时45分 | 未做 |
+| 2026-11-20 | AI炼金术 | [AI 冲击哪些公司的生意：SaaS、开发工具与算力服务](https://www.ximalaya.com/sound/1034331062 "AI来了，这些公司快死了……吗？") | 1小时45分 | [阅读报告](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md) |
 | 2026-11-19 | 课代表立正 | [233｜Anthropic 的 IPO、收入结构与算力成本解读](https://share.transistor.fm/s/b4de5bb5 "立正说 233｜Anthropic是下一张AI船票，还是历史最大资本泡沫？") | 32分钟 | 未做 |
 | 2026-11-19 | 晚点聊 LateTalk | [189｜顾全全：模型 scaling 与 AI 制药](https://podcast.latepost.com/189 "189: Geodesic顾全全：预训练有点“无聊”了，但用scaling改变AI制药才刚开始") | 1小时36分 | 未做 |
 | 2026-11-19 | 屠龙大实话 | [短节目05｜科普绘本的选购误区](https://www.xiaoyuzhoufm.com/episode/6afbdc68a4a79edf137a82b3 "屠龙短节目05｜科普类绘本选购大坑") · [音频](https://dts-api.xiaoyuzhoufm.com/track/663c1227c844ff347a305223/6afbdc68a4a79edf137a82b3/media.xyzcdn.net/663c1227c844ff347a305223/loq_8DT-GhBnaO8gw8m1fXbxIJnt.m4a) | 15分钟 | 未做 |
@@ -211,13 +211,13 @@
 <a id="show-ai-lianjinshu"></a>
 
 <details>
-<summary><strong>AI炼金术 · 14 条 · 11 条有报告</strong></summary>
+<summary><strong>AI炼金术 · 14 条 · 12 条有报告</strong></summary>
 
 [公开订阅](https://www.ximalaya.com/album/74194808.xml) · [更早单集索引](./wiki/show-indexes/ai-lianjinshu.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-20 | [AI 冲击哪些公司的生意：SaaS、开发工具与算力服务](https://www.ximalaya.com/sound/1034331062 "AI来了，这些公司快死了……吗？") | 1小时45分 | 未做 |
+| 2026-11-20 | [AI 冲击哪些公司的生意：SaaS、开发工具与算力服务](https://www.ximalaya.com/sound/1034331062 "AI来了，这些公司快死了……吗？") | 1小时45分 | [阅读报告](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md) |
 | 2026-11-19 | [蒋冠军：Personal Agent 的授权、记忆与后训练](https://www.ximalaya.com/sound/1034046447 "Personal Agent 怎么从尝鲜变成常用？｜对谈千问蒋冠军") | 1小时51分 | [阅读报告](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) |
 | 2026-11-18 | [Michael Guan：AI 面试助手与广告投手蒸馏](https://www.ximalaya.com/sound/1033824004 "从AI面试助手到蒸馏广告投手｜对谈Michael Guan") | 1小时28分 | 未做 |
 | 2026-11-10 | [鸭哥：用 AI 替自己看小姐姐跳舞](https://www.ximalaya.com/sound/1031626765 "啊？？？用 AI 替自己看小姐姐跳舞？？？｜对谈超线性学院鸭哥") | 1小时16分 | [阅读报告](./reports/2026-11-10_xiaoyuzhou-ai-lianjinshu_yage-superalinear.md) |
