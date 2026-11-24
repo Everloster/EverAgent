@@ -1,6 +1,34 @@
 {
   "items": [
     {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068?utm_source=rss",
+      "date": "2026-11-07",
+      "duration": "1h02m",
+      "episode_no": null,
+      "guid": "6aec6bc06381f0f964c45068",
+      "id": "bef26d6ec02f594e9dbec978ac5557f256af9ca6df88c5cee3bed824e7f97ad0",
+      "index_status": "✅ 已处理（2026-11-07 xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md",
+        "title": "42章经：锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS——对话 Mind Lab 首席科学家骁腾",
+        "updated_on": "2026-11-13",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_xiaoteng-rl-rlaas.md"
+      },
+      "show": "42章经",
+      "show_slug": "42zhangjing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS \\| 对谈 Mind Lab 首席科学家骁腾》。来源：https://www.xiaoyuzhoufm.com/episode/6aec6bc06381f0f964c45068?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-11-07_xiaoyuzhou-42zhangjing_episode-x.md"
+      },
+      "title": "锐评国模与 Neo Lab，畅谈 RL 人生与 RLaaS \\| 对谈 Mind Lab 首席科学家骁腾"
+    },
+    {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1?utm_source=rss",
       "date": "2026-10-25",
       "duration": "51m46s",
@@ -622,27 +650,55 @@
       "duration": "42m42s",
       "episode_no": null,
       "guid": "6aa67b319d32647781685e95",
-      "id": "054648ed803a698f1bcb4cb4ef7180d7f3eeb141784238fb26304e073a0295fe",
+      "id": "757f6ed23fcd4d1bcfc3eefe4e4bacc33db3b811fb19fc9dc94cbf585bfb50ca",
       "index_status": "—",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md",
+        "title": "具身智能的四种一线判断：数据、模型与商业化，为什么还没有一把统一的尺子",
+        "updated_on": "2026-11-15",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-14_crossing_embodied-ai-four-teams.md"
       },
       "show": "十字路口Crossing",
       "show_slug": "crossing",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断》。来源：https://www.xiaoyuzhoufm.com/episode/6aa67b319d32647781685e95?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
+        "ready": false,
         "suggested_report_path": "podcast-learning/reports/2026-09-13_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss",
+      "date": "2026-09-06",
+      "duration": "1h16m",
+      "episode_no": null,
+      "guid": "6a9abd3df03e74ee6b052a28",
+      "id": "e8292bf7e7a3ee3280f079fad906ca5dde47048a023802ebb5a628f5f41b9bf9",
+      "index_status": "—",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md",
+        "title": "陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转",
+        "updated_on": "2026-11-17",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md"
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮》。来源：https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-crossing_episode-x.md"
+      },
+      "title": "她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮"
     },
     {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss",
@@ -671,34 +727,6 @@
         "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V94.理智分析中国火箭回收与美国「孙学」"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss",
-      "date": "2026-09-06",
-      "duration": "1h16m",
-      "episode_no": null,
-      "guid": "6a9abd3df03e74ee6b052a28",
-      "id": "389da4fa4ba8a8b00712fc5a3d59340b86b1a7c2402654195d0983a371774f89",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮》。来源：https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-crossing_episode-x.md"
-      },
-      "title": "她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮"
     },
     {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss",
@@ -5571,34 +5599,6 @@
         "suggested_report_path": "podcast-learning/reports/2025-11-17_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "抖音2016-2017， 最重要的四个人，他们的处境和选择 \\| 字节跳动 第1集"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/691952ddcbba038b42bd9077?utm_source=rss",
-      "date": "2025-11-16",
-      "duration": "1h25m",
-      "episode_no": null,
-      "guid": "691952ddcbba038b42bd9077",
-      "id": "a8b62e7103ca28b4d8ee3d342ab4f656167cc53cd0a5172218cbedbbd1a846a3",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《他看到了什么？\\| 对谈张帆：前智谱COO，元理智能创始人/CEO ——为何笃信 AI 的机会在 ToB？》。来源：https://www.xiaoyuzhoufm.com/episode/691952ddcbba038b42bd9077?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-16_xiaoyuzhou-crossing_episode-x.md"
-      },
-      "title": "他看到了什么？\\| 对谈张帆：前智谱COO，元理智能创始人/CEO ——为何笃信 AI 的机会在 ToB？"
     }
   ],
   "platform": "xiaoyuzhou",

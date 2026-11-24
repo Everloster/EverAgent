@@ -28,7 +28,7 @@ transcript_path: reports/transcripts/2026-09-12_bilibili-cls-tongxue_fangchan-yi
 polished_transcript_path: reports/transcripts/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.polished.txt
 pipeline: opencli bilibili download (480p) → ffmpeg mp3 → whisper.cpp large-v3 + VAD (无幻觉循环) → B站官方字幕交叉校正 + 政策锚点联网核实 → 8章重组
 source_shownotes_chapters: false   # B站简介为空；章节自建；三个政策锚点经 web 核实标 [Web]
-notable_correction: "《扩大消费"十五五"规划》(whisper/字幕均作'15规划')、沪八条(whisper'户巴条'/字幕'护八条')——两个关键政策名靠联网核实定名；以旧换新/廉租房/城投为系统性误识别"
+notable_correction: "《扩大消费\"十五五\"规划》(whisper/字幕均作'15规划')、沪八条(whisper'户巴条'/字幕'护八条')——两个关键政策名靠联网核实定名；以旧换新/廉租房/城投为系统性误识别"
 related_reports:
   - "./2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md"
   - "./2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md"

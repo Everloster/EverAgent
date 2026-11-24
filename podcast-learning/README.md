@@ -1,64 +1,15 @@
-# 播客学习 — Razer 静默转写驱动
+# 播客学习
 
-> 发一个播客/视频链接 → Razer 静默转写出原文 → 润色 → 总结/讨论 → 产出报告。
-> 转写全程在个人设备本地运行（whisper.cpp / CUDA），不上传云端、不打开浏览器、不播放媒体。
+按节目浏览已整理的播客、视频和学习报告。报告保留节目出处、关键观点和章节位置。
 
-> **AI 使用本项目？** → 先读 [AGENTS.md](./AGENTS.md) 与根 [METHODOLOGY.md](../METHODOLOGY.md)。
+## 阅读与订阅
 
----
+- [小宇宙精选播客](./PODCAST_UPDATES.md)按节目列出近期各期的主题、时长和学习报告。
+- [主题 Wiki](./wiki/index.md)串联报告、概念和人物，[节目索引](./wiki/show-indexes/)适合按节目回看。
+- [精选节目与订阅源](./wiki/curated-podcasts.md)记录节目介绍和订阅入口。技术播客渠道由[技术播客雷达](./skills/ai-tech-podcast-radar/SKILL.md)维护。
 
-## 看节目更新
+## 学习一期节目
 
-[小宇宙精选播客历史速看表](./PODCAST_UPDATES.md)：按节目看近期各期的主题、时长和已有学习报告。每次查询都更新同一页，历史条目继续保留。
+按 [Agent 指南](./AGENTS.md)查重，再使用 [eacli 静默转写](./skills/transcription/references/pipeline-guide.md#一转写产出-transcripttxt)。本地文件和隔离排障见[环境配置](./SETUP.md)。用节目说明或可回查的原始片段校对人名、术语与数字，再按[报告指南](./skills/report-writing/SKILL.md)整理。
 
-也可以看[顶尖技术博客](../web-surfing/TECH_BLOG_UPDATES.md)，或查看[精选节目与订阅源](./wiki/curated-podcasts.md)。
-
-## 工作流
-
-```
-我：发链接（小宇宙/B站/YouTube/本地音频）
-  ↓
-AI：1. 静默转写   eacli podcast（Razer）→ reports/transcripts/*.transcript.txt
-    2. 润色       忠实去口水/断句/纠错 → *.polished.txt
-    3. 总结       提取观点/概念/人物/金句 → reports/*.md
-    4. 沉淀       更新 wiki + open-questions
-  ↓
-我：读转写/报告 → 继续讨论 → 循环
-```
-
----
-
-## 目录结构
-
-```
-podcast-learning/
-├── AGENTS.md              # 执行协议
-├── SETUP.md               # Razer 主路径与本地 fallback 依赖
-├── scripts/
-│   └── transcribe.py      # 本地文件/隔离排障 fallback
-├── sources/               # SOTA 技术播客渠道注册表
-├── reports/
-│   ├── transcripts/       # 转写原文(.transcript.txt) + 润色稿(.polished.txt)
-│   └── *.md               # 单期总结 / 跨期专题 / 概念追踪
-├── wiki/                  # concepts / entities / syntheses / open-questions.md
-└── skills/
-    ├── ai-tech-podcast-radar/ # 技术播客更新、渠道评估与 OPML 导出
-    ├── transcription/     # 转写 + 润色规范
-    └── episode_analysis/  # 总结/报告模板
-```
-
----
-
-## 快速开始
-
-```bash
-# 发现：查询最近 7 天的 SOTA AI 技术播客
-python3 podcast-learning/skills/ai-tech-podcast-radar/scripts/radar.py \
-  updates --days 7 --format md
-
-# URL：先检查 Razer worker，再 plan/run/result
-eacli podcast status
-eacli podcast plan --source "https://www.xiaoyuzhoufm.com/episode/xxxx"
-```
-
-执行协议见 [AGENTS.md](./AGENTS.md)。
+新全文转写和润色稿默认保存在私有位置。公开仓保存[学习报告](./reports/)、必要的来源信息及脱敏审计收据。历史全文的保留条件见[版权与公开边界](./COPYRIGHT.md)。

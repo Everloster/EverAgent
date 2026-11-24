@@ -28,7 +28,7 @@ transcript_path: reports/transcripts/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_f
 polished_transcript_path: reports/transcripts/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.polished.txt
 pipeline: eacli podcast（Razer whisper large-v3/CUDA/VAD）→ eacli web.read（智谱）shownotes → 7 大节重组润色
 source_shownotes_chapters: true
-notable_correction: "阮总/任总/阮生→冉总（shownotes）｜适应率→市盈率｜腾校→藤校｜非兵力组织→非营利组织｜Wordnos→Ordinals 铭文｜BLC20→BRC20｜RAMs→Runes｜PKB→BTC｜拨风拨谷→波峰波谷｜MYI→MLA｜阴然→应然｜禁忌及诱惑→禁止即诱惑｜温伦巴斯特→沃伦·巴菲特｜2011→2021、多处"20年"实为 2022；八字真言原话转写不清保留[?]"
+notable_correction: "阮总/任总/阮生→冉总（shownotes）｜适应率→市盈率｜腾校→藤校｜非兵力组织→非营利组织｜Wordnos→Ordinals 铭文｜BLC20→BRC20｜RAMs→Runes｜PKB→BTC｜拨风拨谷→波峰波谷｜MYI→MLA｜阴然→应然｜禁忌及诱惑→禁止即诱惑｜温伦巴斯特→沃伦·巴菲特｜2011→2021、多处\"20年\"实为 2022；八字真言原话转写不清保留[?]"
 ---
 
 # 听懂涨声：17 岁矿主与建筑师父亲
