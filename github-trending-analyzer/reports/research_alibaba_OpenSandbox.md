@@ -333,7 +333,7 @@ xychart-beta
 
 #### 运行时增强
 
-- **持久化卷**：可挂载的沙箱持久化卷（参见 [Proposal 0003](oseps/0003-volume-and-volumebinding-support.md)）
+- **持久化卷**：可挂载的沙箱持久化卷（参见 [Proposal 0003](https://github.com/opensandbox-group/OpenSandbox/blob/main/oseps/0003-volume-and-volumebinding-support.md)）
 - **本地轻量级沙箱**：直接在 PC 上运行的 AI 工具轻量级沙箱
 - **安全容器**：在容器内运行 AI Agent 的安全沙箱
 

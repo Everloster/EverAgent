@@ -587,26 +587,26 @@
 | 2026-06-25 | [stablyai/orca 深度研究报告](../github-trending-analyzer/reports/research_stablyai_orca.md) | — |
 | 2026-06-25 | [interviewstreet/hiring-agent 深度研究报告](../github-trending-analyzer/reports/research_interviewstreet_hiring-agent.md) | — |
 | 2026-06-25 | [andreknieriem/headunit-revived 深度研究报告](../github-trending-analyzer/reports/research_andreknieriem_headunit-revived.md) | — |
-| 2026-06-21 | [tursodatabase/turso 深度研究报告](../github-trending-analyzer/reports/research_tursodatabase_turso.md) | — |
-| 2026-06-21 | [swc-project/swc 深度研究报告](../github-trending-analyzer/reports/research_swc-project_swc.md) | — |
-| 2026-06-21 | [n0-computer/iroh 深度研究报告](../github-trending-analyzer/reports/research_n0-computer_iroh.md) | — |
-| 2026-06-21 | [meshery/meshery 深度研究报告](../github-trending-analyzer/reports/research_meshery_meshery.md) | — |
-| 2026-06-21 | [makeplane/plane 深度研究报告](../github-trending-analyzer/reports/research_makeplane_plane.md) | — |
-| 2026-06-21 | [google-research/timesfm 深度研究报告](../github-trending-analyzer/reports/research_google-research_timesfm.md) | — |
-| 2026-06-21 | [freeCodeCamp/freeCodeCamp 深度研究报告](../github-trending-analyzer/reports/research_freeCodeCamp_freeCodeCamp.md) | — |
-| 2026-06-21 | [chopratejas/headroom 深度研究报告](../github-trending-analyzer/reports/research_chopratejas_headroom.md) | — |
-| 2026-06-21 | [chatwoot/chatwoot 深度研究报告](../github-trending-analyzer/reports/research_chatwoot_chatwoot.md) | — |
-| 2026-06-21 | [calesthio/OpenMontage 深度研究报告](../github-trending-analyzer/reports/research_calesthio_OpenMontage.md) | — |
-| 2026-06-21 | [asgeirtj/system_prompts_leaks 深度研究报告](../github-trending-analyzer/reports/research_asgeirtj_system_prompts_leaks.md) | — |
-| 2026-06-21 | [addyosmani/agent-skills 深度研究报告](../github-trending-analyzer/reports/research_addyosmani_agent-skills.md) | — |
-| 2026-06-21 | [Panniantong/Agent-Reach 深度研究报告](../github-trending-analyzer/reports/research_Panniantong_Agent-Reach.md) | — |
-| 2026-06-21 | [NVIDIA/SkillSpector 深度研究报告](../github-trending-analyzer/reports/research_NVIDIA_SkillSpector.md) | — |
-| 2026-06-21 | [LMCache/LMCache 深度研究报告](../github-trending-analyzer/reports/research_LMCache_LMCache.md) | — |
-| 2026-06-21 | [Kong/insomnia 深度研究报告](../github-trending-analyzer/reports/research_Kong_insomnia.md) | — |
+| 2026-06-21 | [tursodatabase/turso｜GitHub 元数据快照](../github-trending-analyzer/reports/research_tursodatabase_turso.md) | — |
+| 2026-06-21 | [swc-project/swc｜GitHub 元数据快照](../github-trending-analyzer/reports/research_swc-project_swc.md) | — |
+| 2026-06-21 | [n0-computer/iroh｜GitHub 元数据快照](../github-trending-analyzer/reports/research_n0-computer_iroh.md) | — |
+| 2026-06-21 | [meshery/meshery｜GitHub 元数据快照](../github-trending-analyzer/reports/research_meshery_meshery.md) | — |
+| 2026-06-21 | [makeplane/plane｜GitHub 元数据快照](../github-trending-analyzer/reports/research_makeplane_plane.md) | — |
+| 2026-06-21 | [google-research/timesfm｜GitHub 元数据快照](../github-trending-analyzer/reports/research_google-research_timesfm.md) | — |
+| 2026-06-21 | [freeCodeCamp/freeCodeCamp｜GitHub 元数据快照](../github-trending-analyzer/reports/research_freeCodeCamp_freeCodeCamp.md) | — |
+| 2026-06-21 | [chopratejas/headroom｜GitHub 元数据快照](../github-trending-analyzer/reports/research_chopratejas_headroom.md) | — |
+| 2026-06-21 | [chatwoot/chatwoot｜GitHub 元数据快照](../github-trending-analyzer/reports/research_chatwoot_chatwoot.md) | — |
+| 2026-06-21 | [calesthio/OpenMontage｜GitHub 元数据快照](../github-trending-analyzer/reports/research_calesthio_OpenMontage.md) | — |
+| 2026-06-21 | [asgeirtj/system_prompts_leaks｜GitHub 元数据快照](../github-trending-analyzer/reports/research_asgeirtj_system_prompts_leaks.md) | — |
+| 2026-06-21 | [addyosmani/agent-skills｜GitHub 元数据快照](../github-trending-analyzer/reports/research_addyosmani_agent-skills.md) | — |
+| 2026-06-21 | [Panniantong/Agent-Reach｜GitHub 元数据快照](../github-trending-analyzer/reports/research_Panniantong_Agent-Reach.md) | — |
+| 2026-06-21 | [NVIDIA/SkillSpector｜GitHub 元数据快照](../github-trending-analyzer/reports/research_NVIDIA_SkillSpector.md) | — |
+| 2026-06-21 | [LMCache/LMCache｜GitHub 元数据快照](../github-trending-analyzer/reports/research_LMCache_LMCache.md) | — |
+| 2026-06-21 | [Kong/insomnia｜GitHub 元数据快照](../github-trending-analyzer/reports/research_Kong_insomnia.md) | — |
 | 2026-06-21 | [GitHub Trending 月榜报告 — 2026 年 6 月（截至 6-21，半月数据）](../github-trending-analyzer/reports/all-monthly-summary-2026-06-21.md) | `github`, `trending`, `open_source` |
 | 2026-06-21 | [GitHub Trending 月榜报告 — 2026 年 5 月](../github-trending-analyzer/reports/all-monthly-summary-2026-05-31.md) | — |
 | 2026-06-21 | [GitHub Trending 周榜报告](../github-trending-analyzer/reports/all-weekly-summary-2026-06-21.md) | — |
-| 2026-06-21 | [DeusData/codebase-memory-mcp 深度研究报告](../github-trending-analyzer/reports/research_DeusData_codebase-memory-mcp.md) | — |
+| 2026-06-21 | [DeusData/codebase-memory-mcp｜GitHub 元数据快照](../github-trending-analyzer/reports/research_DeusData_codebase-memory-mcp.md) | — |
 | 2026-04-15 | [EverMind-AI/EverOS 深度研究报告](../github-trending-analyzer/reports/research_EverMind-AI_EverOS.md) | — |
 | 2026-04-10 | [coleam00/Archon](../github-trending-analyzer/reports/research_coleam00_Archon.md) | — |
 | 2026-04-05 | [telegramdesktop/tdesktop 深度研究报告](../github-trending-analyzer/reports/research_telegramdesktop_tdesktop.md) | — |
