@@ -1,3 +1,7 @@
+---
+updated_on: "2026-11-10"
+---
+
 # Agents｜Agents SDK 与 ChatKit
 
 [返回中文导读总目录](../../OpenAI_API_Docs_中文导读_20261110.md)

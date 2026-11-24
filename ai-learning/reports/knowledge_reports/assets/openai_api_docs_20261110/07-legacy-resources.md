@@ -1,3 +1,7 @@
+---
+updated_on: "2026-11-10"
+---
+
 # Legacy & resources｜历史接口、迁移与资源
 
 [返回中文导读总目录](../../OpenAI_API_Docs_中文导读_20261110.md)

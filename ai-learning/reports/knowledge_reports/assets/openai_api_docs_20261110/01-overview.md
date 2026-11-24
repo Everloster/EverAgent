@@ -1,3 +1,7 @@
+---
+updated_on: "2026-11-10"
+---
+
 # Overview｜入门与核心概念
 
 [返回中文导读总目录](../../OpenAI_API_Docs_中文导读_20261110.md) · [官方 API Docs](https://developers.openai.com/api/docs)

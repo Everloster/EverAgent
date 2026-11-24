@@ -55,7 +55,7 @@ sources:
 - [程乐松：道教观念史与宗教经典诠释学 思想综述](../../reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md)
 - [程乐松的当代哲学：AI 时代的自我与反卷](../../reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md)
 - [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../../reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md)
-- [程乐松×脱不花《长谈》64期：活得哲学一点（跨域，podcast-learning）](../../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md)
+- [程乐松×脱不花《长谈》64期：活得哲学一点（跨域，podcast-learning）](../../../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md)
 
 ## 待深入（追问队列）
 - **精读《从哲学史出发的中国哲学》**（长谈64口头版与《重返经验》同构的原文比对；2026-09-11 新增）

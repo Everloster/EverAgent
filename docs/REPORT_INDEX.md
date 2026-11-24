@@ -99,8 +99,17 @@
 | 2026-11-10 | [《AI演义》03｜ResNet：深网络为什么难训练](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_03_ResNet_%E6%B7%B1%E5%B1%82%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
 | 2026-11-10 | [《AI演义》02｜AlexNet：从像素学到图像特征](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_02_AlexNet_%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E7%AA%81%E7%A0%B4_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
 | 2026-11-10 | [《AI演义》01｜Brook：让普通计算用上 GPU](../ai-learning/reports/knowledge_reports/AI%E6%BC%94%E4%B9%89_01_Brook_GPU%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
+| 2026-11-10 | [Tools｜工具](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/04-tools.md) | — |
+| 2026-11-10 | [Production｜生产部署、性能、安全与访问](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/06-production.md) | — |
+| 2026-11-10 | [Overview｜入门与核心概念](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/01-overview.md) | — |
+| 2026-11-10 | [OpenAI API Docs｜逐页覆盖清单](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/coverage.md) | — |
 | 2026-11-10 | [OpenAI API Docs 中文导读](../ai-learning/reports/knowledge_reports/OpenAI_API_Docs_%E4%B8%AD%E6%96%87%E5%AF%BC%E8%AF%BB_20261110.md) | `openai`, `api_docs`, `chinese_guide`, `responses_api`, `agents`, `tools` |
+| 2026-11-10 | [Models｜模型、文本、提示与多模态](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/02-models.md) | — |
+| 2026-11-10 | [Legacy & resources｜历史接口、迁移与资源](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/07-legacy-resources.md) | — |
 | 2026-11-10 | [CodeRabbit：多 Agent 审查怎样形成可信的代码改进](../ai-learning/reports/knowledge_reports/CodeRabbit_%E5%A4%9AAgent%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5_%E8%AF%84%E6%B5%8B%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261110.md) | `code_review`, `coderabbit`, `multi_agent`, `evaluation`, `runtime_verification`, `security` |
+| 2026-11-10 | [Audio & voice｜音频与语音](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/05-audio-voice.md) | — |
+| 2026-11-10 | [Agents｜Agents SDK 与 ChatKit](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/03b-agents-sdk-chatkit.md) | — |
+| 2026-11-10 | [Agents｜Agents API](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/03a-agents-api.md) | — |
 | 2026-11-10 | [AI演义·总览｜从计算与表示，到生成和行动](../ai-learning/reports/AI%E6%BC%94%E4%B9%89_%E7%AC%94%E8%AE%B0%E5%88%86%E6%9E%90%E4%B8%8E%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88%E6%8A%A5%E5%91%8A.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
 | 2026-11-08 | [Agent 应该记住什么，又怎样知道自己记错了？——Anthropic 记忆组件深读](../ai-learning/reports/knowledge_reports/Anthropic_Agent%E8%AE%B0%E5%BF%86%E7%BB%84%E4%BB%B6_%E6%98%BE%E8%91%97%E6%80%A7%E5%88%A4%E6%96%AD%E4%B8%8EDreaming_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261108.md) | `agent_memory`, `dreaming`, `memory_consolidation`, `context_engineering`, `knowledge_wiki`, `memory_evaluation` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent%E8%AF%B7%E6%B1%82%E5%85%A8%E9%93%BE%E8%B7%AF_%E5%AE%8C%E6%95%B4%E7%89%88_%E7%A7%91%E6%99%AE%E8%AE%B2%E8%A7%A3_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
@@ -256,15 +265,6 @@
 | 2026-03-23 | [GPT-3 (2020) 论文精读](../ai-learning/reports/paper_analyses/03_gpt3_2020.md) | — |
 | 2026-03-23 | [BERT (2018) 论文精读](../ai-learning/reports/paper_analyses/02_bert_2018.md) | — |
 | 2026-03-23 | [AI 关键人物图谱](../ai-learning/reports/knowledge_reports/AI%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E5%9B%BE%E8%B0%B1.md) | — |
-|  | [Tools｜工具](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/04-tools.md) | — |
-|  | [Production｜生产部署、性能、安全与访问](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/06-production.md) | — |
-|  | [Overview｜入门与核心概念](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/01-overview.md) | — |
-|  | [OpenAI API Docs｜逐页覆盖清单](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/coverage.md) | — |
-|  | [Models｜模型、文本、提示与多模态](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/02-models.md) | — |
-|  | [Legacy & resources｜历史接口、迁移与资源](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/07-legacy-resources.md) | — |
-|  | [Audio & voice｜音频与语音](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/05-audio-voice.md) | — |
-|  | [Agents｜Agents SDK 与 ChatKit](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/03b-agents-sdk-chatkit.md) | — |
-|  | [Agents｜Agents API](../ai-learning/reports/knowledge_reports/assets/openai_api_docs_20261110/03a-agents-api.md) | — |
 
 ## 💻 CS Learning（33 篇）
 

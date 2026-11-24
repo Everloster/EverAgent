@@ -17,7 +17,7 @@ updated_on: "2026-04-22"
   - [阶段一：无记忆（Stateless）](#阶段一无记忆stateless)
   - [阶段二：会话内记忆（In-Session Memory）](#阶段二会话内记忆in-session-memory)
   - [阶段三：持久化记忆（Persistent Memory）](#阶段三持久化记忆persistent-memory)
-  - [阶段四：智能记忆（Intelligent Memory）—— claude-mem](#阶段四智能记忆intelligent-memory--claude-mem)
+  - [阶段四：智能记忆（Intelligent Memory）—— claude-mem](#阶段四智能记忆intelligent-memory-claude-mem)
 - [Layer 4 工程实现：claude-mem 架构深度剖析](#layer-4-工程实现claude-mem-架构深度剖析)
   - [系统组件](#系统组件)
   - [记忆流水线：捕获 → 压缩 → 索引 → 注入](#记忆流水线捕获--压缩--索引--注入)
