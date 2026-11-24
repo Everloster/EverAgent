@@ -47,12 +47,8 @@ Mini App 使用宿主启动的本地 Node 进程，页面通过本机 HTTP 读�
 
 | | 本地浏览器 | MiniMax Code |
 | --- | --- | --- |
-| 适合的场景 | 独立阅读，或使用其他 Agent 工具 | 一边与 Agent 对话，一边查看学习产出 |
-| 启停 | 手动运行命令、关闭进程 | 宿主管理应用进程和窗口 |
+| 启停 | 命令行启动和停止 | 宿主管理进程和窗口 |
 | 前置条件 | Node.js、已构建适配器、公开仓 | MiniMax Code、含适配器的插件包、公开仓 |
-| 页面与报告 | 同一份实现、同一批本地资料 | 同左 |
-
-**推荐两种入口共存。** 浏览器方便任何读者使用，MiniMax Code 适合已经在里面工作的用户。没有必要为此重写页面或增加一层桌面程序。
 
 ## 能读什么，怎样更新
 
@@ -92,4 +88,4 @@ npm test
 
 迁移前的 Go 阅读实现曾在 macOS 浏览器验证报告阅读、两份速看表、搜索、加载更多、完整清单、报告跳转与脚注；Linux/arm64 隔离容器验证了只读挂载、完整正文、请求边界及重启。本次独立模块迁移在 macOS/arm64 通过 Go 回归和现有 Node HTTP 测试，并完成 Linux/arm64、Windows/amd64 交叉编译。**迁移后尚未重新进行浏览器手工验收、Linux 容器运行或 MiniMax Code 重装实测；Windows 未运行验证。** 自动化测试对 Mini App 的安装目录与启停按官方契约模拟，不代替宿主实测。
 
-页面、Node 宿主与 Go JSON 适配器都在本目录维护；[`ea-learning-index`](./go/cmd/ea-learning-index/main.go) 的[学习适配器实现](./go/internal/learning/catalog.go)、[旧 fixture 回归](./go/internal/learning/reader_test.go)及[最小报告目录](./go/internal/reportcatalog/catalog.go)属于独立模块，不依赖公共 core、eacli 或私有仓。软件代码继续采用 [MIT License](./LICENSE)；报告等知识内容沿用仓库[版权说明](../../DISCLAIMER.md)。
+维护入口为[页面](./miniapp/client/index.html)、[Node 服务](./miniapp/node/server.mjs)和 [Go 阅读适配器](./go/cmd/ea-learning-index/main.go)。软件代码采用 [MIT License](./LICENSE)，报告等知识内容沿用仓库[版权说明](../../DISCLAIMER.md)。
