@@ -25,7 +25,7 @@ scripts/egit.sh hooks install --adopt-legacy
 
 | 钩子 | 行为 |
 |---|---|
-| `pre-commit`、`pre-merge-commit` | 从钩子位置核对并进入目标仓，调用已安装eacli的`git identity validate`，失败阻断；不代填Author/Committer，不恢复质量门禁 |
+| `pre-commit`、`pre-merge-commit` | 在目标仓运行已安装的 `eacli git identity`；身份核对失败时阻断提交 |
 | `post-commit`、`post-merge` | 请求现有采集服务进行同步和durable ACK校验，始终返回0，不等待采集完成 |
 
 macOS使用launchd的非强制`kickstart`；Linux使用`systemctl --user start --no-block`。不使用强制重启、enable或daemon-reload；既有15分钟任务仍兜底。后台积压与投递失败由采集器状态区分，不能把Git钩子返回0解释为归档已经完成。

@@ -47,11 +47,11 @@ scripts/egit.sh hooks install
 
 ```bash
 eacli session current --json
-scripts/egit.sh validate --json
-scripts/ecommit.sh -m "[maintenance] global: 更新工作区说明"
+scripts/egit.sh identity --json
+scripts/ecommit.sh -m "更新工作区说明"
 ```
 
-Git薄入口固定转发`eacli git ACTION --repo-root ROOT <args>`；`validate`映射为`git identity --repo-root ROOT validate`。从子目录调用Bash脚本也绑定同一canonical ROOT，不依赖相邻源码或Go/Python；linked worktree不用于猜测私仓或公开owner。身份来源、模型可信度、trailer、暂存tree绑定和后置验证见[PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §B/§C。未知身份只阻断提交，已授权源码和只读工作继续。
+从子目录调用也会定位到同一仓库根目录。身份来源、提交消息、暂存内容和提交后的验证见 [提交与公开安全](./PROTOCOL_COMMON.md) §B–C。身份未核实时仍可读取和编辑获授权的文件。
 
 ---
 

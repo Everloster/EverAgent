@@ -9,3 +9,5 @@
 | [everagent-intro.webp](./everagent-intro.webp) | 约 54 秒的无声循环介绍动画；沿用上一版，源文件和生成方式见 [intro/](./intro/) |
 
 两张配图表达研究范围与实践方向；能力是否实现、验证到什么程度，以对应文档和实验记录为准。动画继续通过 `<picture>` 尊重“减少动态效果”偏好，回退到既有的 [everagent-horizontal.jpg](./everagent-horizontal.jpg)。
+
+[初版发布海报](../archive/everagent-launch-poster.png)保存在历史归档中。

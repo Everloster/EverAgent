@@ -4,7 +4,7 @@ set -euo pipefail
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 source "$REPO_ROOT/scripts/eacli-entry.sh"
 _ea_require_eacli
-"$EA_EACLI" git identity --repo-root "$EA_REPO_ROOT" validate --json >/dev/null
+"$EA_EACLI" git identity --repo-root "$EA_REPO_ROOT" --json >/dev/null
 if [[ ${EVERAGENT_PUBLIC_CONTENT_TREE:-} != "$(git write-tree)" ]]; then
   "$EA_EACLI" docs disclosure --repo-root "$EA_REPO_ROOT" --scope index --json
 fi
