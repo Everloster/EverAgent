@@ -7,6 +7,18 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-25 | [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](../podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md) | podcast-learning |
+| 2026-11-25 | [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](../podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) | podcast-learning |
+| 2026-11-25 | [把 Agent 的 KV 缓存放到 NVMe：命中率、保留时间和写入寿命怎样一起算](../ai-learning/reports/knowledge_reports/NVMe_KV%E7%BC%93%E5%AD%98_%E5%91%BD%E4%B8%AD%E4%BF%9D%E7%95%99%E6%97%B6%E9%97%B4%E4%B8%8E%E5%86%99%E5%85%A5%E5%AF%BF%E5%91%BD_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
+| 2026-11-25 | [企业用上 AI 之后：为什么个人提速，还没有变成整个公司的收益](../ai-learning/reports/knowledge_reports/Working_with_AI_%E4%BC%81%E4%B8%9A%E9%87%87%E7%94%A8%E4%B8%8E%E7%BB%84%E7%BB%87%E7%93%B6%E9%A2%88_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
+| 2026-11-25 | [vLLM-GR：把一次推荐变成一组有效候选，推理引擎要改什么](../ai-learning/reports/knowledge_reports/vLLM_GR_%E8%AF%AD%E4%B9%89ID%E7%94%9F%E6%88%90%E4%B8%8EBeam%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
+| 2026-11-25 | [Codex 参与生产故障调查：从告警、证据到修复与恢复验证](../ai-learning/reports/knowledge_reports/Codex_%E7%94%9F%E4%BA%A7%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E8%B0%83%E6%9F%A5_%E8%AF%81%E6%8D%AE%E6%9D%83%E9%99%90%E4%B8%8E%E6%81%A2%E5%A4%8D%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
+| 2026-11-25 | [Apple 谈 AI 音乐与播客：生成更容易以后，透明、发现与收入怎样衔接](../podcast-learning/reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md) | podcast-learning |
+| 2026-11-25 | [Agent 评测怎样才可信：任务、评分器与运行记录要一起校准](../ai-learning/reports/knowledge_reports/Agent%E8%AF%84%E6%B5%8B_%E4%BB%BB%E5%8A%A1%E8%AF%84%E5%88%86%E5%99%A8%E4%B8%8E%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95%E7%9A%84%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
+| 2026-11-25 | [AI 行业日报 · 2026-11-25](../web-surfing/reports/ai-news-daily-2026-11-25.md) | web-surfing |
+| 2026-11-25 | [AI 算力融资：订单很大，为什么仍可能还不上这一期债](../podcast-learning/reports/2026-11-25_sv101_260-ai-compute-credit.md) | podcast-learning |
+| 2026-11-25 | [AI 泡沫怎样分析：把流动性、政治与循环融资的推断拆开](../podcast-learning/reports/2026-11-25_gaonengliang_244-ai-liquidity.md) | podcast-learning |
+| 2026-11-24 | [AI 行业日报 · 2026-11-24](../web-surfing/reports/ai-news-daily-2026-11-24.md) | web-surfing |
 | 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | podcast-learning |
 | 2026-11-23 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | podcast-learning |
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
@@ -16,27 +28,20 @@
 | 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Inkling 2 Mini：同一组权重怎样执行三轮，vLLM 又怎样管理缓存](../ai-learning/reports/knowledge_reports/Inkling_2_Mini_%E5%BE%AA%E7%8E%AF%E8%AE%A1%E7%AE%97%E4%B8%8EvLLM%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
 | 2026-11-23 | [Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型](../ai-learning/reports/knowledge_reports/Harness_Adapters_%E7%8E%AF%E5%A2%83%E5%86%85%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8ELoRA%E5%90%88%E5%B9%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | ai-learning |
+| 2026-11-23 | [AI 行业日报 · 2026-11-23](../web-surfing/reports/ai-news-daily-2026-11-23.md) | web-surfing |
 | 2026-11-23 | [AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](../podcast-learning/reports/2026-11-23_ai-lianjinshu_company-value-chain.md) | podcast-learning |
-| 2026-11-19 | [AI 行业日报 · 2026-11-19](../web-surfing/reports/ai-news-daily-2026-11-19.md) | web-surfing |
-| 2026-11-18 | [Claude Code Mode：把工具调用写成程序，怎样省下往返，又保留判断与权限](../ai-learning/reports/knowledge_reports/Claude_Code_Mode_%E7%A8%8B%E5%BA%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E4%B8%8E%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261118.md) | ai-learning |
-| 2026-11-18 | [AI 行业日报 · 2026-11-18](../web-surfing/reports/ai-news-daily-2026-11-18.md) | web-surfing |
-| 2026-11-17 | [陈安妮谈 Livo：让用户进入故事之后，内容、Agent 与公司怎样一起运转](../podcast-learning/reports/2026-09-07_crossing_chen-anni-content-ai.md) | podcast-learning |
-| 2026-11-17 | [脑机接口：测到信号、解码意图和改善疾病之间，还缺哪些证据](../podcast-learning/reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) | podcast-learning |
-| 2026-11-17 | [把一门 AI 课做十年：课代表立正谈学习、免费社区与不急着扩张的生意](../podcast-learning/reports/2026-11-03_kedaibiao_338-ai-education-community-business.md) | podcast-learning |
-| 2026-11-17 | [如何用 Agent 设计 Agent 友好的 CLI：从真实用户任务到独立验收的工程闭环](../ai-learning/reports/knowledge_reports/Agent%E5%8F%8B%E5%A5%BDCLI_%E7%9C%9F%E5%AE%9E%E4%BB%BB%E5%8A%A1%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%8B%AC%E7%AB%8B%E9%AA%8C%E6%94%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [从 Agent 失败到回归测试：NeMo 的优化流程，为什么还要检查验证器](../ai-learning/reports/knowledge_reports/NeMo_Agent%E5%A4%B1%E8%B4%A5%E5%BD%92%E5%9B%A0_%E6%B5%8B%E8%AF%95%E7%94%9F%E6%88%90%E4%B8%8EHarness%E4%BF%AE%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [一周把 SGLang 接到 Spyre：AI 做了哪些适配，公开代码和基准又证明了什么](../ai-learning/reports/knowledge_reports/SGLang_Spyre_AI%E8%BE%85%E5%8A%A9%E9%80%82%E9%85%8D%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [ToyBlocks：机器人为什么失败，怎样用可控积木世界把问题分开测](../ai-learning/reports/knowledge_reports/ToyBlocks_%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%8F%AF%E6%8E%A7%E5%8F%98%E9%87%8F%E4%B8%8E%E8%AF%84%E6%B5%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [GPU 发起 SDMA：把搬数据交给复制引擎，为什么还要核对阈值、完成语义和版本](../ai-learning/reports/knowledge_reports/GPU%E5%8F%91%E8%B5%B7SDMA_RCCL%E4%B8%8ErocSHMEM%E9%80%9A%E4%BF%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [GPT-6 之后，机器人公司该自研什么？LinkStart 134 的分工判断与证据校准](../podcast-learning/reports/2026-10-14_linkstart_134-robotics-after-foundation-models.md) | podcast-learning |
-| 2026-11-17 | [AgentDistraction：读到 TODO 之后，为什么不该直接把它变成新任务](../ai-learning/reports/knowledge_reports/AgentDistraction_%E8%BF%87%E6%9C%9F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B9%B2%E6%89%B0_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261117.md) | ai-learning |
-| 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | web-surfing |
-| 2026-11-17 | [AI 原生组织的争论：管理工作减少后，谁负责、怎样分钱、业务是否真的变快](../podcast-learning/reports/2026-09-17_ai-lianjinshu_xcircle-xiaofei-ai-organization.md) | podcast-learning |
+| 2026-11-22 | [AI 行业日报 · 2026-11-22](../web-surfing/reports/ai-news-daily-2026-11-22.md) | web-surfing |
+| 2026-11-21 | [AI 行业日报 · 2026-11-21](../web-surfing/reports/ai-news-daily-2026-11-21.md) | web-surfing |
 
-## 🤖 AI Learning（228 篇）
+## 🤖 AI Learning（233 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-25 | [把 Agent 的 KV 缓存放到 NVMe：命中率、保留时间和写入寿命怎样一起算](../ai-learning/reports/knowledge_reports/NVMe_KV%E7%BC%93%E5%AD%98_%E5%91%BD%E4%B8%AD%E4%BF%9D%E7%95%99%E6%97%B6%E9%97%B4%E4%B8%8E%E5%86%99%E5%85%A5%E5%AF%BF%E5%91%BD_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | `kv-cache`, `nvme`, `mori`, `umbp`, `vllm`, `agent-serving` |
+| 2026-11-25 | [企业用上 AI 之后：为什么个人提速，还没有变成整个公司的收益](../ai-learning/reports/knowledge_reports/Working_with_AI_%E4%BC%81%E4%B8%9A%E9%87%87%E7%94%A8%E4%B8%8E%E7%BB%84%E7%BB%87%E7%93%B6%E9%A2%88_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | `ai-adoption`, `organization`, `productivity`, `employment`, `qualitative-research` |
+| 2026-11-25 | [vLLM-GR：把一次推荐变成一组有效候选，推理引擎要改什么](../ai-learning/reports/knowledge_reports/vLLM_GR_%E8%AF%AD%E4%B9%89ID%E7%94%9F%E6%88%90%E4%B8%8EBeam%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | `vllm-gr`, `recommendation`, `beam-search`, `semantic-id`, `kv-cache`, `inference` |
+| 2026-11-25 | [Codex 参与生产故障调查：从告警、证据到修复与恢复验证](../ai-learning/reports/knowledge_reports/Codex_%E7%94%9F%E4%BA%A7%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E8%B0%83%E6%9F%A5_%E8%AF%81%E6%8D%AE%E6%9D%83%E9%99%90%E4%B8%8E%E6%81%A2%E5%A4%8D%E9%AA%8C%E8%AF%81_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | `codex`, `production-monitoring`, `incident-response`, `observability`, `root-cause-analysis`, `kubernetes` |
+| 2026-11-25 | [Agent 评测怎样才可信：任务、评分器与运行记录要一起校准](../ai-learning/reports/knowledge_reports/Agent%E8%AF%84%E6%B5%8B_%E4%BB%BB%E5%8A%A1%E8%AF%84%E5%88%86%E5%99%A8%E4%B8%8E%E8%BF%90%E8%A1%8C%E8%AE%B0%E5%BD%95%E7%9A%84%E6%A0%A1%E5%87%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | `agent-evaluation`, `verifier`, `harness`, `raman`, `reproducibility` |
 | 2026-11-23 | [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](../ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `personal-agent`, `agents-api`, `responses-api`, `async-tool-calling`, `deadline`, `steering` |
 | 2026-11-23 | [Performance Factory：让 Agent 查性能回退，怎样从一个解释走到生产恢复](../ai-learning/reports/knowledge_reports/OpenAI_Performance_Factory_%E6%80%A7%E8%83%BD%E5%9B%9E%E9%80%80%E8%B0%83%E6%9F%A5%E4%B8%8E%E7%94%9F%E4%BA%A7%E6%81%A2%E5%A4%8D_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `codex`, `performance-engineering`, `agent-workflow`, `causal-inference`, `evaluation`, `production-verification` |
 | 2026-11-23 | [MedChemBench：模型能读懂分子以后，离选对下一批实验还有多远](../ai-learning/reports/knowledge_reports/MedChemBench_%E5%88%86%E5%AD%90%E9%87%8D%E5%BB%BA%E4%B8%8E%E5%80%99%E9%80%89%E5%86%B3%E7%AD%96%E7%9A%84%E8%AF%84%E6%B5%8B%E8%BE%B9%E7%95%8C_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md) | `medchembench`, `medicinal-chemistry`, `multimodal-reasoning`, `evaluation`, `molecular-structure`, `decision-making` |
@@ -391,10 +396,15 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（148 篇）
+## 🎙️ Podcast Learning（153 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-25 | [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](../podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md) | `rsi`, `continual-learning`, `pretraining`, `personal-agent`, `rl`, `numerical-stability` |
+| 2026-11-25 | [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](../podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) | `edge-ai`, `edge0`, `latent-moe`, `inference`, `memory-bandwidth`, `ai-hardware` |
+| 2026-11-25 | [Apple 谈 AI 音乐与播客：生成更容易以后，透明、发现与收入怎样衔接](../podcast-learning/reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md) | `ai-music`, `podcast`, `creator-economy`, `transparency`, `distribution`, `apple` |
+| 2026-11-25 | [AI 算力融资：订单很大，为什么仍可能还不上这一期债](../podcast-learning/reports/2026-11-25_sv101_260-ai-compute-credit.md) | `ai-infrastructure`, `credit`, `coreweave`, `cash-flow`, `data-center`, `off-balance-sheet` |
+| 2026-11-25 | [AI 泡沫怎样分析：把流动性、政治与循环融资的推断拆开](../podcast-learning/reports/2026-11-25_gaonengliang_244-ai-liquidity.md) | `ai-investment`, `liquidity`, `credit`, `circular-financing`, `causal-inference`, `macro` |
 | 2026-11-23 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | `personal-agent`, `lingguang`, `agent-runtime`, `proactive-agent`, `authorization`, `consumer-ai` |
 | 2026-11-23 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | `personal-agent`, `qwen`, `agent-harness`, `memory`, `authorization`, `post-training` |
 | 2026-11-23 | [卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](../podcast-learning/reports/2026-11-23_mantan_96_weizhe-agent-commerce.md) | `agent-commerce`, `ecommerce`, `consumer-ai`, `platform-economics`, `community`, `edge-ai` |
@@ -675,10 +685,16 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（61 篇）
+## 🏄 Web Surfing（67 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-25 | [AI 行业日报 · 2026-11-25](../web-surfing/reports/ai-news-daily-2026-11-25.md) | `ai_news`, `daily` |
+| 2026-11-24 | [AI 行业日报 · 2026-11-24](../web-surfing/reports/ai-news-daily-2026-11-24.md) | `ai_news`, `daily` |
+| 2026-11-23 | [AI 行业日报 · 2026-11-23](../web-surfing/reports/ai-news-daily-2026-11-23.md) | `ai_news`, `daily` |
+| 2026-11-22 | [AI 行业日报 · 2026-11-22](../web-surfing/reports/ai-news-daily-2026-11-22.md) | `ai_news`, `daily` |
+| 2026-11-21 | [AI 行业日报 · 2026-11-21](../web-surfing/reports/ai-news-daily-2026-11-21.md) | `ai_news`, `daily` |
+| 2026-11-20 | [AI 行业日报 · 2026-11-20](../web-surfing/reports/ai-news-daily-2026-11-20.md) | `ai_news`, `daily` |
 | 2026-11-19 | [AI 行业日报 · 2026-11-19](../web-surfing/reports/ai-news-daily-2026-11-19.md) | `ai_news`, `daily` |
 | 2026-11-18 | [AI 行业日报 · 2026-11-18](../web-surfing/reports/ai-news-daily-2026-11-18.md) | `ai_news`, `daily` |
 | 2026-11-17 | [AI 行业日报 · 2026-11-17](../web-surfing/reports/ai-news-daily-2026-11-17.md) | `ai_news`, `daily` |
