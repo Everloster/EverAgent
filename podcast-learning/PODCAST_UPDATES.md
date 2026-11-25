@@ -14,11 +14,11 @@
 
 **本轮学习（2026-11-23）：**[AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md)已完成；[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本轮学习（2026-11-25）：**[AI 算力融资：订单、现金流与偿付日](./reports/2026-11-25_sv101_260-ai-compute-credit.md)；[曾晓东谈原生端侧模型：145B 的运行条件](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)；[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
+**本轮学习（2026-11-25）：**[AI 泡沫分析：拆开流动性与融资的推断](./reports/2026-11-25_gaonengliang_244-ai-liquidity.md)；[AI 算力融资：订单、现金流与偿付日](./reports/2026-11-25_sv101_260-ai-compute-credit.md)；[曾晓东谈原生端侧模型：145B 的运行条件](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)；[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
 
 **本次补充 13 期**，发表于 11 月 23—25 日，检查窗口为 2026-11-21—2026-11-25。新增包括曾晓东谈原生端侧模型、沈驿康谈 RSI 与持续学习、算力融资与信用风险、Apple 音乐与播客业务，以及投资策略、公司控制权和生活文化节目。学习状态按已有报告核对，新增单集的学习进度随本轮报告更新。
 
-本页收录 **433 条单集发布记录**：**102 条已有专题报告**，**1 条仅有相关报告**，**330 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **433 条单集发布记录**：**103 条已有专题报告**，**1 条仅有相关报告**，**329 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -26,11 +26,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 150 条 | 82 条 |
+| [AI / 科技](#tech) | 150 条 | 83 条 |
 | [商业 / 投资 / 职场](#business) | 152 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 131 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 102 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 103 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -38,7 +38,7 @@
 
 ## 最近一周
 
-2026-11-19—2026-11-25，共 39 条，其中 8 条已有专题报告。
+2026-11-19—2026-11-25，共 39 条，其中 9 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -55,7 +55,7 @@
 | 2026-11-24 | 屠龙之术 | [庄明浩谈英伟达管理层变化与算力市场](https://www.xiaoyuzhoufm.com/episode/6b0484a444e24a385c0247b2 "&quot;I&#x27;m Back&quot;---英伟达黄仁勋“王者归来”") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/luRez9Mt5MZaTTCfi7Ck0pZME_CF.m4a) | 22分钟 | 未做 |
 | 2026-11-24 | 声动早咖啡 | [绝味管理层变动与比亚迪外观侵权纠纷](https://www.xiaoyuzhoufm.com/episode/6b03fbff01b0ab432edc883c "绝味创始人辞任总裁，比亚迪在欧洲卷入外观侵权纠纷") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lj0BDSH0dg40UgEiXdFUyy3SvNLX.m4a) | 11分钟 | 未做 |
 | 2026-11-24 | 半拿铁·周刊 | [No.56｜虚假招聘、候鸟生态、GTA 与显卡价格](https://www.xiaoyuzhoufm.com/episode/6b05073f01b0ab432edd3c40 "No.56 招聘岗位编得快、候鸟生态被破坏、GTA 十三年归来、显卡涨价很无奈、BLG 冠军奖杯摘") · [音频](https://media.xyzcdn.net/682c566cc7c5f17595635a2c/lgDh5WJ4mdJ5vzKmnPkUEaoGDmOy.m4a) | 2小时17分 | 未做 |
-| 2026-11-23 | 高能量 | [244｜AI 投资、市场波动与流动性周期](https://www.xiaoyuzhoufm.com/episode/6b04203d4ecad672d41056aa "Vol.244 宏观漫谈114｜这一轮AI泡沫已经在破裂了吗（11.20录制）") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/llIorZ28mkS-Gm0--ambph1iBFyp.m4a) | 1小时34分 | 未做 |
+| 2026-11-23 | 高能量 | [244｜AI 投资、市场波动与流动性周期](https://www.xiaoyuzhoufm.com/episode/6b04203d4ecad672d41056aa "Vol.244 宏观漫谈114｜这一轮AI泡沫已经在破裂了吗（11.20录制）") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/llIorZ28mkS-Gm0--ambph1iBFyp.m4a) | 1小时34分 | [阅读报告](./reports/2026-11-25_gaonengliang_244-ai-liquidity.md) |
 | 2026-11-23 | 面基 | [董艺婷：投资策略的逆风期、风险与心态](https://www.xiaoyuzhoufm.com/episode/6b03b01a6f7bbb70cd597a79 "盘点各策略逆风期，以及投资的钱、技、心") · [音频](https://media.xyzcdn.net/6388760f22567e8ea6ad070f/lhPmD7wdTqNY8AwYmnqA-RIowP09.m4a) | 1小时51分 | 未做 |
 | 2026-11-23 | 菠萝健康派 | [141｜六层楼、陈雪：痛经的成因、缓解与就医](https://www.xiaoyuzhoufm.com/episode/6b029ee86f7bbb70cd591f45 "六层楼：慌啥子嘛？痛经不用慌，但也别硬扛vol.141") · [音频](https://media.xyzcdn.net/6693ae814ce7c8de0f47e220/lpxV3m8UinQthNje5-SrTP0PZ2ZY.m4a) | 1小时 | 未做 |
 | 2026-11-23 | 硅谷101 | [E259｜华尔街量化团队：模型、算力与风险纪律](https://sv101.fireside.fm/273 "E259｜机械神教与反人性策略：华尔街量化巨头的AI之路") | 2小时31分 | [阅读报告](./reports/2026-11-23_sv101_259_quant-ai-risk.md) |
@@ -343,13 +343,13 @@
 <a id="show-gaonengliang"></a>
 
 <details>
-<summary><strong>高能量 · 12 条 · 4 条有报告</strong></summary>
+<summary><strong>高能量 · 12 条 · 5 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/jhfuba3dahq8) · [更早单集索引](./wiki/show-indexes/gaonengliang.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-23 | [244｜AI 投资、市场波动与流动性周期](https://www.xiaoyuzhoufm.com/episode/6b04203d4ecad672d41056aa "Vol.244 宏观漫谈114｜这一轮AI泡沫已经在破裂了吗（11.20录制）") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/llIorZ28mkS-Gm0--ambph1iBFyp.m4a) | 1小时34分 | 未做 |
+| 2026-11-23 | [244｜AI 投资、市场波动与流动性周期](https://www.xiaoyuzhoufm.com/episode/6b04203d4ecad672d41056aa "Vol.244 宏观漫谈114｜这一轮AI泡沫已经在破裂了吗（11.20录制）") · [音频](https://media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/llIorZ28mkS-Gm0--ambph1iBFyp.m4a) | 1小时34分 | [阅读报告](./reports/2026-11-25_gaonengliang_244-ai-liquidity.md) |
 | 2026-11-15 | [Vol.243｜张帆：AI 时代的个人价值与企业判断](https://www.xiaoyuzhoufm.com/episode/6af97f85a4a79edf137991a6 "Vol.243 什么才是AI时代有价值的个体和公司：与张帆聊他的技术与创业思考") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6af97f85a4a79edf137991a6/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lnKGtMG_tEE2X5V4vHoP7NsnGdaU.m4a) | 2小时23分 | 未做 |
 | 2026-11-06 | [Vol.242｜吴欣鸿：美图如何面对 AI、全球化与巨头](https://www.xiaoyuzhoufm.com/episode/6aeca6136381f0f964c46d4b "Vol.242 一个古典互联网创业者的突围：与吴欣鸿聊美图如何面对AI、全球化与巨头") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6aeca6136381f0f964c46d4b/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lpvRNasHCqr7MWi7leZB0RjjY_lY.m4a) | 2小时38分 | [阅读报告](./reports/2026-11-06_gaonengliang_242-wuxinhong-meitu-ai.md) |
 | 2026-11-05 | [Vol.241｜脑机接口：从读取信号到临床治疗](https://www.xiaoyuzhoufm.com/episode/6aec3c316381f0f964c4368f "Vol.241 产业观察45｜从读懂大脑到治疗疾病，脑机接口还有多远的路要走？") · [音频](https://dts-api.xiaoyuzhoufm.com/track/62c6ae08c4eaa82b112b9c84/6aec3c316381f0f964c4368f/media.xyzcdn.net/62c6ae08c4eaa82b112b9c84/lhIvHALqHJ1jvX3KR1ZznB7V_07y.m4a) | 1小时28分 | [阅读报告](./reports/2026-11-05_gaonengliang_241-brain-computer-interfaces.md) |
