@@ -14,11 +14,11 @@
 
 **本轮学习（2026-11-23）：**[AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md)已完成；[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本轮学习（2026-11-25）：**[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
+**本轮学习（2026-11-25）：**[曾晓东谈原生端侧模型：145B 的运行条件](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)；[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
 
 **本次补充 13 期**，发表于 11 月 23—25 日，检查窗口为 2026-11-21—2026-11-25。新增包括曾晓东谈原生端侧模型、沈驿康谈 RSI 与持续学习、算力融资与信用风险、Apple 音乐与播客业务，以及投资策略、公司控制权和生活文化节目。学习状态按已有报告核对，新增单集的学习进度随本轮报告更新。
 
-本页收录 **433 条单集发布记录**：**100 条已有专题报告**，**1 条仅有相关报告**，**332 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **433 条单集发布记录**：**101 条已有专题报告**，**1 条仅有相关报告**，**331 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -26,11 +26,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 150 条 | 80 条 |
+| [AI / 科技](#tech) | 150 条 | 81 条 |
 | [商业 / 投资 / 职场](#business) | 152 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 131 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 100 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 101 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -38,7 +38,7 @@
 
 ## 最近一周
 
-2026-11-19—2026-11-25，共 39 条，其中 6 条已有专题报告。
+2026-11-19—2026-11-25，共 39 条，其中 7 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -48,7 +48,7 @@
 | 2026-11-25 | 硅谷101 | [E260｜英伟达、CoreWeave 与算力融资的信用风险](https://sv101.fireside.fm/274 "E260｜黄仁勋归来之际，深聊英伟达、CoreWeave和算力信用市场") | 1小时26分 | 未做 |
 | 2026-11-25 | 张小珺Jùn｜商业访谈录 | [158｜沈驿康：xAI、RSI、持续学习与硅谷创业](https://www.xiaoyuzhoufm.com/episode/6b05746801b0ab432eddab62 "158.【2026年复盘】和沈驿康聊，黄仁勋、xAI内幕、RSI、持续学习、去中心化、预训练白盒、硅谷创业地图") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lo59f0zXlNXrDkwHxIAtSKKZ8KF0.m4a) | 3小时23分 | 未做 |
 | 2026-11-25 | 声动早咖啡 | [美国书店扩张：阅读习惯、门店与社区需求](https://www.xiaoyuzhoufm.com/episode/6b05759d01b0ab432eddac44 "看书的美国人越来越少，为什么美国书店还在变多？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lsfWFWvFeZsgDNdABQAE4NUcu8QP.m4a) | 17分钟 | 未做 |
-| 2026-11-25 | 十字路口Crossing | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | 未做 |
+| 2026-11-25 | 十字路口Crossing | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | [阅读报告](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) |
 | 2026-11-24 | 起朱楼宴宾客 | [190｜人生攻略与算法时代的信息选择](https://www.xiaoyuzhoufm.com/episode/6afef1cfa4a79edf137bd588 "190.人生攻略为什么让人既受益又疲惫｜85后提问95后之算法纪特辑") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lmz2Gh-j1yRsTm6yWFUbqkEAdqKa.m4a) | 1小时12分 | 未做 |
 | 2026-11-24 | 赛博对话 | [62｜Apple 音乐与播客：创作者收入、版权和 AI](https://www.xiaoyuzhoufm.com/episode/6b04e78544e24a385c02679e "vol.62｜播客到底怎么赚钱？这次把问题问到了苹果副总裁面前") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lq1YJKyZGPJiPMNlrHO4f7qnu_G4.m4a) | 27分钟 | [阅读报告](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md) |
 | 2026-11-24 | 忽左忽右 | [519｜沙青青：伊朗门事件中的军售、情报与权力斗争](https://www.xiaoyuzhoufm.com/episode/6b054f1401b0ab432edd8643 "519 谍海轶闻｜四十年前的「伊朗门」事件如何引动美国、伊朗、尼加拉瓜的连锁内斗") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lh6N_qn_3C7mLqpcbfzCh4U33tRU.m4a) | 1小时33分 | 未做 |
@@ -112,13 +112,13 @@
 <a id="show-crossing"></a>
 
 <details>
-<summary><strong>十字路口Crossing · 14 条 · 12 条有报告</strong></summary>
+<summary><strong>十字路口Crossing · 14 条 · 13 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/68fyjknth9hj) · [更早单集索引](./wiki/show-indexes/crossing.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-25 | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | 未做 |
+| 2026-11-25 | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | [阅读报告](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) |
 | 2026-11-16 | [年终复盘③｜赵晨阳：RSI、评测与 AI Infra](https://www.xiaoyuzhoufm.com/episode/6af936ea14d01a26f8a9fd94 "【年终复盘③】用 Kimi 加速 Kimi：RSI前夜，一个AI infra人的10个Aha Moments｜对话赵晨阳") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af936ea14d01a26f8a9fd94/media.xyzcdn.net/60502e253c92d4f62c2a9577/lhHxptqOANRsmGIh0htFeLq-znBg.m4a) | 1小时6分 | [阅读报告](./reports/2026-11-16_crossing_zhao-chenyang-rsi-eval-interactive-ai.md) |
 | 2026-11-09 | [年终复盘②｜谷雨：NeoLab、持续学习与个人 Agent](https://www.xiaoyuzhoufm.com/episode/6af00645b4a4e20202f67440 "【年终复盘②】RSI可能是NeoLab的机会、PA真的有用、创业要造灭火器还是砖头？｜对话谷雨") · [音频](https://dts-api.xiaoyuzhoufm.com/track/60502e253c92d4f62c2a9577/6af00645b4a4e20202f67440/media.xyzcdn.net/60502e253c92d4f62c2a9577/lgbtk9XXwn5ZA0Du2HfHATFpHCjC.m4a) | 41分钟 | [阅读报告](./reports/2026-11-09_crossing_guyu-personal-agent-rsi.md) |
 | 2026-11-02 | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
