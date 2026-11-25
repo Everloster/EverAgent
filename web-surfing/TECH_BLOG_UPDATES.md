@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-25（北京时间）** · **累计收录时段：2026-09-02—2026-11-25**
 
-检查了 **28 个官方渠道**，目前收录 **599 篇**日期已核实的文章：**71 篇已学习**，**10 篇有相关报告**，**518 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **599 篇**日期已核实的文章：**72 篇已学习**，**10 篇有相关报告**，**517 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 247 篇 | 28 篇 |
+| [2026-11](#m202611) | 247 篇 | 29 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -632,13 +632,13 @@
 
 
 <details>
-<summary><strong>Hugging Face 与机构作者 · 30 篇 · 8 篇已学习</strong></summary>
+<summary><strong>Hugging Face 与机构作者 · 30 篇 · 9 篇已学习</strong></summary>
 
 - **11-24** [Microduck 避障：Isaac Lab 与 Newton 的 Sim2Real 流程](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton") · 未做
 
   NVIDIA 作者在固定行走策略外训练独立的避障控制器，用 ToF 感知调节速度命令，串起仿真、评估、ONNX 导出和实机测试。
 
-- **11-23** [怎样建立、发布和维护 Agent 评测](https://huggingface.co/blog/agentic-evals "How to build and maintain an agentic evaluation") · 未做
+- **11-23** [怎样建立、发布和维护 Agent 评测](https://huggingface.co/blog/agentic-evals "How to build and maintain an agentic evaluation") · **已学习** · [阅读报告](../ai-learning/reports/knowledge_reports/Agent评测_任务评分器与运行记录的校准_深度解析_20261125.md)
 
   Hugging Face 作者从任务复用、评分验证和公开审查讲到污染与饱和，附物理实验室任务示例及评测开源的检查事项。
 
@@ -2416,10 +2416,12 @@
 
 ## 已有学习报告
 
-本轮清单中，71 篇原文已有完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，72 篇原文已有完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [Agent 评测怎样才可信：任务、评分器与运行记录要一起校准](../ai-learning/reports/knowledge_reports/Agent评测_任务评分器与运行记录的校准_深度解析_20261125.md) · 对应本页 1 篇原文。
 
 - [Codex 参与生产故障调查：从告警、证据到修复与恢复验证](../ai-learning/reports/knowledge_reports/Codex_生产监控与故障调查_证据权限与恢复验证_深度解析_20261125.md) · 对应本页 1 篇原文。
 
