@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-25（北京时间）** · **累计收录时段：2026-09-02—2026-11-25**
 
-检查了 **28 个官方渠道**，目前收录 **599 篇**日期已核实的文章：**72 篇已学习**，**10 篇有相关报告**，**517 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **599 篇**日期已核实的文章：**73 篇已学习**，**10 篇有相关报告**，**516 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 **报告复核：2026-11-16。** 本批 9 篇技术博客报告已完成独立复核，修订了统计口径、版本条件与来源表述；阅读入口见原条目。
 
@@ -20,7 +20,7 @@
 
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
-| [2026-11](#m202611) | 247 篇 | 29 篇 |
+| [2026-11](#m202611) | 247 篇 | 30 篇 |
 | [2026-10](#m202610) | 215 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
@@ -860,9 +860,9 @@
 </details>
 
 <details>
-<summary><strong>vLLM · 14 篇 · 3 篇已学习</strong></summary>
+<summary><strong>vLLM · 14 篇 · 4 篇已学习</strong></summary>
 
-- **11-24** [vLLM-GR：生成式推荐模型的在线推理](https://vllm.ai/blog/2026-11-24-vllm-gr-announcement "Announcing vLLM-GR: Efficient Inference for Generative Recommendation") · 未做
+- **11-24** [vLLM-GR：生成式推荐模型的在线推理](https://vllm.ai/blog/2026-11-24-vllm-gr-announcement "Announcing vLLM-GR: Efficient Inference for Generative Recommendation") · **已学习** · [阅读报告](../ai-learning/reports/knowledge_reports/vLLM_GR_语义ID生成与Beam搜索服务_深度解析_20261125.md)
 
   将候选语义 ID 的生成、加速器端 beam search、目录约束与共享 KV 缓存接入推荐服务，附 OneRec 等模型的使用路径。
 
@@ -2416,10 +2416,12 @@
 
 ## 已有学习报告
 
-本轮清单中，72 篇原文已有完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，73 篇原文已有完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
+
+- [vLLM-GR：把一次推荐变成一组有效候选，推理引擎要改什么](../ai-learning/reports/knowledge_reports/vLLM_GR_语义ID生成与Beam搜索服务_深度解析_20261125.md) · 对应本页 1 篇原文。
 
 - [Agent 评测怎样才可信：任务、评分器与运行记录要一起校准](../ai-learning/reports/knowledge_reports/Agent评测_任务评分器与运行记录的校准_深度解析_20261125.md) · 对应本页 1 篇原文。
 
