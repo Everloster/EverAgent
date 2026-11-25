@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "kind": "podcast-transcript-audit",
+  "source_url": "https://sv101.fireside.fm/274",
+  "source_ref": "sha256:6150bd71af07a99d96cbf5883ddb6f5dbdd9cb5816d46f6cdf560593f4d8a7f9",
+  "max_consecutive_limit": 3,
+  "transcription": {
+    "engine": "mlx-qwen3-asr 0.4.4",
+    "route": "eacli remote silent execution",
+    "ui_opened": false,
+    "source_audio_bytes": 125310321,
+    "source_audio_sha256": "13c4c4c18d352a3b173c74c213608584cb18434a56a5d2c1603da4c13ec618be",
+    "media_duration_seconds": 5184.045917
+  },
+  "audit": {
+    "ok": true,
+    "size": 110057,
+    "sha256": "6150bd71af07a99d96cbf5883ddb6f5dbdd9cb5816d46f6cdf560593f4d8a7f9",
+    "lines": 1290,
+    "segments": 1290,
+    "duration_seconds": 5176,
+    "max_consecutive_identical": 1,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 3,
+    "warnings": [],
+    "errors": []
+  }
+}
