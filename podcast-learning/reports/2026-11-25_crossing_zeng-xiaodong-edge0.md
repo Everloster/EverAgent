@@ -51,14 +51,13 @@ semantic_tags: ["edge-ai", "edge0", "latent-moe", "inference", "memory-bandwidth
 
 用符号表示一个简化路径：
 
-\[
-h\in\mathbb R^{2560}
-\longrightarrow z=D_g h\in\mathbb R^{1792}
-\longrightarrow \sum_{e\in S}w_e E_e(z)
-\longrightarrow U_g(\cdot)\in\mathbb R^{2560}.
-\]
+```text
+h（2560 维）→ z = D_g h（1792 维）
+             → 被选专家的加权输出 Σ w_e E_e(z)
+             → U_g 升维，回到 2560 维
+```
 
-\(h\) 是当前 token 的隐状态；\(D_g\) 是某个路由组的降维投影；\(S\) 是被选择的专家集合；\(w_e\) 是专家组合权重；\(E_e\) 是专家网络；\(U_g\) 是升维投影。实际实现包含分组投影与共享路径，此式只解释数据怎样变窄再恢复。
+`h` 是当前 token 的隐状态；`D_g` 是某个路由组的降维投影；`S` 是被选择的专家集合；`w_e` 是专家组合权重；`E_e` 是专家网络；`U_g` 是升维投影。实际实现包含分组投影与共享路径，此式只解释数据怎样变窄再恢复。
 
 专家尺寸缩小后，引擎可以缓存更多专家记录，也能减少一次未命中时需要搬运的数据。145B 模型的固定专家记录约为 1.63 MB；文档中的专家池参数相对基座减少约 30%。这不是整个模型的参数、FLOPs、峰值内存或端到端时间都必然减少 30%。[架构与专家记录](https://github.com/Edge0-AI/Edge0/blob/2e5d284983e3f286a0ef8c94947e6c9db2c86eb3/docs/models/edge0-145b.md)
 
