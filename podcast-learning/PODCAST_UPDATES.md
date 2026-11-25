@@ -14,11 +14,11 @@
 
 **本轮学习（2026-11-23）：**[AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md)已完成；[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本轮学习（2026-11-25）：**[AI 泡沫分析：拆开流动性与融资的推断](./reports/2026-11-25_gaonengliang_244-ai-liquidity.md)；[AI 算力融资：订单、现金流与偿付日](./reports/2026-11-25_sv101_260-ai-compute-credit.md)；[曾晓东谈原生端侧模型：145B 的运行条件](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)；[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
+**本轮学习（2026-11-25）：**[沈驿康谈 RSI、持续学习与预训练](./reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md)；[AI 泡沫分析：拆开流动性与融资的推断](./reports/2026-11-25_gaonengliang_244-ai-liquidity.md)；[AI 算力融资：订单、现金流与偿付日](./reports/2026-11-25_sv101_260-ai-compute-credit.md)；[曾晓东谈原生端侧模型：145B 的运行条件](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)；[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
 
 **本次补充 13 期**，发表于 11 月 23—25 日，检查窗口为 2026-11-21—2026-11-25。新增包括曾晓东谈原生端侧模型、沈驿康谈 RSI 与持续学习、算力融资与信用风险、Apple 音乐与播客业务，以及投资策略、公司控制权和生活文化节目。学习状态按已有报告核对，新增单集的学习进度随本轮报告更新。
 
-本页收录 **433 条单集发布记录**：**103 条已有专题报告**，**1 条仅有相关报告**，**329 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+本页收录 **433 条单集发布记录**：**104 条已有专题报告**，**1 条仅有相关报告**，**328 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -26,11 +26,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 150 条 | 83 条 |
+| [AI / 科技](#tech) | 150 条 | 84 条 |
 | [商业 / 投资 / 职场](#business) | 152 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 131 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 103 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 104 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -38,7 +38,7 @@
 
 ## 最近一周
 
-2026-11-19—2026-11-25，共 39 条，其中 9 条已有专题报告。
+2026-11-19—2026-11-25，共 39 条，其中 10 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -46,7 +46,7 @@
 | 日期 | 节目 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- | --- |
 | 2026-11-25 | 硅谷101 | [E260｜英伟达、CoreWeave 与算力融资的信用风险](https://sv101.fireside.fm/274 "E260｜黄仁勋归来之际，深聊英伟达、CoreWeave和算力信用市场") | 1小时26分 | [阅读报告](./reports/2026-11-25_sv101_260-ai-compute-credit.md) |
-| 2026-11-25 | 张小珺Jùn｜商业访谈录 | [158｜沈驿康：xAI、RSI、持续学习与硅谷创业](https://www.xiaoyuzhoufm.com/episode/6b05746801b0ab432eddab62 "158.【2026年复盘】和沈驿康聊，黄仁勋、xAI内幕、RSI、持续学习、去中心化、预训练白盒、硅谷创业地图") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lo59f0zXlNXrDkwHxIAtSKKZ8KF0.m4a) | 3小时23分 | 未做 |
+| 2026-11-25 | 张小珺Jùn｜商业访谈录 | [158｜沈驿康：xAI、RSI、持续学习与硅谷创业](https://www.xiaoyuzhoufm.com/episode/6b05746801b0ab432eddab62 "158.【2026年复盘】和沈驿康聊，黄仁勋、xAI内幕、RSI、持续学习、去中心化、预训练白盒、硅谷创业地图") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lo59f0zXlNXrDkwHxIAtSKKZ8KF0.m4a) | 3小时23分 | [阅读报告](./reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md) |
 | 2026-11-25 | 声动早咖啡 | [美国书店扩张：阅读习惯、门店与社区需求](https://www.xiaoyuzhoufm.com/episode/6b05759d01b0ab432eddac44 "看书的美国人越来越少，为什么美国书店还在变多？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lsfWFWvFeZsgDNdABQAE4NUcu8QP.m4a) | 17分钟 | 未做 |
 | 2026-11-25 | 十字路口Crossing | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | [阅读报告](./reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) |
 | 2026-11-24 | 起朱楼宴宾客 | [190｜人生攻略与算法时代的信息选择](https://www.xiaoyuzhoufm.com/episode/6afef1cfa4a79edf137bd588 "190.人生攻略为什么让人既受益又疲惫｜85后提问95后之算法纪特辑") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lmz2Gh-j1yRsTm6yWFUbqkEAdqKa.m4a) | 1小时12分 | 未做 |
@@ -94,13 +94,13 @@
 <a id="show-zhangxiaojun"></a>
 
 <details>
-<summary><strong>张小珺Jùn｜商业访谈录 · 6 条 · 3 条有报告</strong></summary>
+<summary><strong>张小珺Jùn｜商业访谈录 · 6 条 · 4 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/dk4yh3pkpjp3) · [更早单集索引](./wiki/show-indexes/zhangxiaojun.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-25 | [158｜沈驿康：xAI、RSI、持续学习与硅谷创业](https://www.xiaoyuzhoufm.com/episode/6b05746801b0ab432eddab62 "158.【2026年复盘】和沈驿康聊，黄仁勋、xAI内幕、RSI、持续学习、去中心化、预训练白盒、硅谷创业地图") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lo59f0zXlNXrDkwHxIAtSKKZ8KF0.m4a) | 3小时23分 | 未做 |
+| 2026-11-25 | [158｜沈驿康：xAI、RSI、持续学习与硅谷创业](https://www.xiaoyuzhoufm.com/episode/6b05746801b0ab432eddab62 "158.【2026年复盘】和沈驿康聊，黄仁勋、xAI内幕、RSI、持续学习、去中心化、预训练白盒、硅谷创业地图") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lo59f0zXlNXrDkwHxIAtSKKZ8KF0.m4a) | 3小时23分 | [阅读报告](./reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md) |
 | 2026-11-18 | [157｜蔡伟：Personal Agent 的需求、入口与产品竞争](https://www.xiaoyuzhoufm.com/episode/6afd12c6a4a79edf137afd61 "157. 复盘Personal Agent集体诞生背后：和蔡伟聊AI产品史、需求真伪、入口与未来想象") · [音频](https://dts-api.xiaoyuzhoufm.com/track/626b46ea9cbbf0451cf5a962/6afd12c6a4a79edf137afd61/media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ltU-y2wl0s2fvaEJBluGHouM2hO0.m4a) | 2小时44分 | 未做 |
 | 2026-11-13 | [156｜梁其伟：影之刃零制作人的 6 小时访谈](https://www.xiaoyuzhoufm.com/episode/6af5debf14d01a26f8a900ac "156. 《侠》｜对影之刃零制作人梁其伟6小时访谈") · [音频](https://dts-api.xiaoyuzhoufm.com/track/626b46ea9cbbf0451cf5a962/6af5debf14d01a26f8a900ac/media.xyzcdn.net/626b46ea9cbbf0451cf5a962/lvnhry4gLCC3Ut_6NMJN7QRmdDaN.m4a) | 6小时27分 | 未做 |
 | 2026-10-21 | [155｜科沃斯钱程：机器人与企二代接班](https://www.xiaoyuzhoufm.com/episode/6ad4dacd641ef406308d86e5 "155. 和科沃斯钱程聊，父与子、企二代接班的样本与肌理、机器人，和我内心的追寻") · [音频](https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ltpY6K_PLBv7SfR1D4RZchFHwzII.m4a) | 2小时 | [阅读报告](./reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) |
