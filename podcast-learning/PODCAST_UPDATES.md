@@ -14,9 +14,11 @@
 
 **本轮学习（2026-11-23）：**[AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](./reports/2026-11-23_ai-lianjinshu_company-value-chain.md)已完成；[华尔街量化与 AI：预测、执行、有效样本和风险纪律](./reports/2026-11-23_sv101_259_quant-ai-risk.md)已完成；[卫哲谈 AI 电商：收入来源、购物社区与新入口的利益关系](./reports/2026-11-23_mantan_96_weizhe-agent-commerce.md)已完成；[蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)已完成；[蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)已完成全文学习与来源校准。
 
-**本次补充 13 期**，发表于 11 月 23—25 日，检查窗口为 2026-11-21—2026-11-25。新增包括曾晓东谈原生端侧模型、沈驿康谈 RSI 与持续学习、算力融资与信用风险、Apple 音乐与播客业务，以及投资策略、公司控制权和生活文化节目。学习状态按已有报告核对，新增单集均待做。
+**本轮学习（2026-11-25）：**[Apple 谈 AI 音乐与播客：透明、发现与收入](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md)。
 
-本页收录 **433 条单集发布记录**：**99 条已有专题报告**，**1 条仅有相关报告**，**333 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+**本次补充 13 期**，发表于 11 月 23—25 日，检查窗口为 2026-11-21—2026-11-25。新增包括曾晓东谈原生端侧模型、沈驿康谈 RSI 与持续学习、算力融资与信用风险、Apple 音乐与播客业务，以及投资策略、公司控制权和生活文化节目。学习状态按已有报告核对，新增单集的学习进度随本轮报告更新。
+
+本页收录 **433 条单集发布记录**：**100 条已有专题报告**，**1 条仅有相关报告**，**332 条暂无报告**。覆盖精选清单的 **57 档节目**，其中 44 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -24,11 +26,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 150 条 | 79 条 |
+| [AI / 科技](#tech) | 150 条 | 80 条 |
 | [商业 / 投资 / 职场](#business) | 152 条 | 14 条 |
 | [泛文化 / 生活 / 健康](#life) | 131 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 99 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 100 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -36,7 +38,7 @@
 
 ## 最近一周
 
-2026-11-19—2026-11-25，共 39 条，其中 5 条已有专题报告。
+2026-11-19—2026-11-25，共 39 条，其中 6 条已有专题报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
@@ -48,7 +50,7 @@
 | 2026-11-25 | 声动早咖啡 | [美国书店扩张：阅读习惯、门店与社区需求](https://www.xiaoyuzhoufm.com/episode/6b05759d01b0ab432eddac44 "看书的美国人越来越少，为什么美国书店还在变多？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lsfWFWvFeZsgDNdABQAE4NUcu8QP.m4a) | 17分钟 | 未做 |
 | 2026-11-25 | 十字路口Crossing | [曾晓东：原生端侧模型、推理引擎与商业化](https://www.xiaoyuzhoufm.com/episode/6b05b60544e24a385c034004 "端侧AI正在迎来历史性拐点？｜对话曾晓东：无界方舟创始人/CEO") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpv1F97EgFvfFn9oQ4R7uFBLcThr.m4a) | 1小时8分 | 未做 |
 | 2026-11-24 | 起朱楼宴宾客 | [190｜人生攻略与算法时代的信息选择](https://www.xiaoyuzhoufm.com/episode/6afef1cfa4a79edf137bd588 "190.人生攻略为什么让人既受益又疲惫｜85后提问95后之算法纪特辑") · [音频](https://media.xyzcdn.net/61dd99a47b29652ff572257b/lmz2Gh-j1yRsTm6yWFUbqkEAdqKa.m4a) | 1小时12分 | 未做 |
-| 2026-11-24 | 赛博对话 | [62｜Apple 音乐与播客：创作者收入、版权和 AI](https://www.xiaoyuzhoufm.com/episode/6b04e78544e24a385c02679e "vol.62｜播客到底怎么赚钱？这次把问题问到了苹果副总裁面前") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lq1YJKyZGPJiPMNlrHO4f7qnu_G4.m4a) | 27分钟 | 未做 |
+| 2026-11-24 | 赛博对话 | [62｜Apple 音乐与播客：创作者收入、版权和 AI](https://www.xiaoyuzhoufm.com/episode/6b04e78544e24a385c02679e "vol.62｜播客到底怎么赚钱？这次把问题问到了苹果副总裁面前") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lq1YJKyZGPJiPMNlrHO4f7qnu_G4.m4a) | 27分钟 | [阅读报告](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md) |
 | 2026-11-24 | 忽左忽右 | [519｜沙青青：伊朗门事件中的军售、情报与权力斗争](https://www.xiaoyuzhoufm.com/episode/6b054f1401b0ab432edd8643 "519 谍海轶闻｜四十年前的「伊朗门」事件如何引动美国、伊朗、尼加拉瓜的连锁内斗") · [音频](https://media.xyzcdn.net/5e4ee557418a84a0466737b7/lh6N_qn_3C7mLqpcbfzCh4U33tRU.m4a) | 1小时33分 | 未做 |
 | 2026-11-24 | 屠龙之术 | [庄明浩谈英伟达管理层变化与算力市场](https://www.xiaoyuzhoufm.com/episode/6b0484a444e24a385c0247b2 "&quot;I&#x27;m Back&quot;---英伟达黄仁勋“王者归来”") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/luRez9Mt5MZaTTCfi7Ck0pZME_CF.m4a) | 22分钟 | 未做 |
 | 2026-11-24 | 声动早咖啡 | [绝味管理层变动与比亚迪外观侵权纠纷](https://www.xiaoyuzhoufm.com/episode/6b03fbff01b0ab432edc883c "绝味创始人辞任总裁，比亚迪在欧洲卷入外观侵权纠纷") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lj0BDSH0dg40UgEiXdFUyy3SvNLX.m4a) | 11分钟 | 未做 |
@@ -167,13 +169,13 @@
 <a id="show-saibo-duihua"></a>
 
 <details>
-<summary><strong>赛博对话 · 8 条 · 1 条有报告</strong></summary>
+<summary><strong>赛博对话 · 8 条 · 2 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/v99nfxe349ny) · [更早单集索引](./wiki/show-indexes/saibo-duihua.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-24 | [62｜Apple 音乐与播客：创作者收入、版权和 AI](https://www.xiaoyuzhoufm.com/episode/6b04e78544e24a385c02679e "vol.62｜播客到底怎么赚钱？这次把问题问到了苹果副总裁面前") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lq1YJKyZGPJiPMNlrHO4f7qnu_G4.m4a) | 27分钟 | 未做 |
+| 2026-11-24 | [62｜Apple 音乐与播客：创作者收入、版权和 AI](https://www.xiaoyuzhoufm.com/episode/6b04e78544e24a385c02679e "vol.62｜播客到底怎么赚钱？这次把问题问到了苹果副总裁面前") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lq1YJKyZGPJiPMNlrHO4f7qnu_G4.m4a) | 27分钟 | [阅读报告](./reports/2026-11-25_saibo-duihua_62-apple-ai-creators.md) |
 | 2026-11-13 | [Vol.61｜刘飞×阑夕×潘乱：与双十一互相烧心的 18 年](https://www.xiaoyuzhoufm.com/episode/6af66eb614d01a26f8a91b30 "vol.61｜从熬夜到无感：我们和双十一互相烧心的18年｜刘飞X阑夕X潘乱") · [音频](https://dts-api.xiaoyuzhoufm.com/track/67d7955023ab6b5506e80ea4/6af66eb614d01a26f8a91b30/media.xyzcdn.net/67d7955023ab6b5506e80ea4/lvhRAkF0tL7bHyXW3AqzVg1_zIKR.m4a) | 1小时17分 | 未做 |
 | 2026-10-30 | [Vol.60｜马斯克、飞行汽车与技术兑现](https://www.xiaoyuzhoufm.com/episode/6ae3f61897726cd46759f169 "vol.60｜马斯克吹过的牛基本都实现了？做飞行汽车的真正目的是啥？｜电动EmmaX说车的阿飞X一苒") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/ltbUF_BqWL8gP_PpSTMFcDdBmOiM.m4a) | 1小时30分 | [阅读报告](./reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) |
 | 2026-10-15 | [Vol.59｜Roadster 会飞吗？聊马斯克的创新](https://www.xiaoyuzhoufm.com/episode/6ad02524195d838e2af204cc "vol.59｜特斯拉Roadster会飞？马斯克创新能力何来？｜电动EmmaX马斯克原理作者Eric Jorgenson") · [音频](https://media.xyzcdn.net/67d7955023ab6b5506e80ea4/lmH4BWfJJaxG_AQV730iy7u_4DOX.m4a) | 45分钟 | 未做 |
