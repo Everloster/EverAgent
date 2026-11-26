@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080"><rect width="1600" height="1080" fill="#f5f7fb"/>
+<text x="65" y="93" fill="#172a40" font-size="48" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">四层接口，四种状态归属</text>
+<text x="65" y="137" fill="#43546a" font-size="27" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">同一聊天页面并不保证原生会话、模型上下文或缓存相同</text>
+<rect x="70" y="180" width="1040" height="150" rx="18" fill="#e7f0ff" stroke="#bac8d8" stroke-width="2"/>
+<text x="92" y="228" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">产品客户端</text>
+<text x="92" y="271" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">聊天、终端、模型选择、审批与 diff</text>
+<text x="92" y="311" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">保存界面状态；向服务端提交操作</text>
+<path d="M 1180 265 L 1180 425" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1180,425 1172.605585920109,409.6923992600045 1187.394414079891,409.6923992600045" fill="#3269a8"/>
+<text x="1198.0" y="351.0" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">客户端 RPC</text>
+<rect x="70" y="365" width="1040" height="150" rx="18" fill="#edf6ed" stroke="#bac8d8" stroke-width="2"/>
+<text x="92" y="413" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Orca / T3 控制层</text>
+<text x="92" y="456" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">任务 / thread、事件、投递回执、历史交接</text>
+<text x="92" y="496" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">管理工作区与 Agent 进程；不持有模型权重</text>
+<path d="M 1180 450 L 1180 610" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1180,610 1172.605585920109,594.6923992600045 1187.394414079891,594.6923992600045" fill="#3269a8"/>
+<text x="1198.0" y="536.0" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">原生控制协议</text>
+<rect x="70" y="550" width="1040" height="150" rx="18" fill="#fff4dc" stroke="#bac8d8" stroke-width="2"/>
+<text x="92" y="598" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Agent harness</text>
+<text x="92" y="641" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Codex app-server / Claude SDK / ACP agent</text>
+<text x="92" y="681" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">原生会话、工具循环、权限及运行中任务</text>
+<path d="M 1180 635 L 1180 795" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1180,795 1172.605585920109,779.6923992600045 1187.394414079891,779.6923992600045" fill="#3269a8"/>
+<text x="1198.0" y="721.0" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">模型 API</text>
+<rect x="70" y="735" width="1040" height="150" rx="18" fill="#f1eafa" stroke="#bac8d8" stroke-width="2"/>
+<text x="92" y="783" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">模型服务</text>
+<text x="92" y="826" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">模型 API、推理项、prompt cache 与服务端执行</text>
+<text x="92" y="866" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">能否复用取决于具体模型、请求和接口条件</text>
+<text x="65" y="1014" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">依据固定源码与官方接口自绘；箭头表示控制调用，不表示状态可以自由迁移。</text>
+</svg>

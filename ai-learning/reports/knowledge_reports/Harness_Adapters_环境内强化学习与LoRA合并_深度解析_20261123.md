@@ -6,37 +6,43 @@ status: "completed"
 report_depth: "deep"
 source_url: "https://huggingface.co/blog/harness-adapters-at-scale"
 source_published_on: "2026-11-20"
-updated_on: "2026-11-23"
+updated_on: "2026-11-26"
 semantic_tags: ["harness-adapters", "lora", "grpo", "openenv", "agent-training", "evaluation", "model-merging"]
 ---
 
 # Harness adapters：在真实 Agent 环境里训练，怎样得到更会用工具的模型
 
-同一个开放模型，放进不同 Agent 程序，表现会变。程序给它的提示、工具、结果格式、上下文压缩和停止规则，都影响它下一步看到什么、决定做什么。Hugging Face 的这篇研究尝试让模型在部署时真正使用的 harness 里训练，而不是只在一个近似的训练循环里学会答题。
+## 概述
 
-**Harness adapter 是训练出的 LoRA 权重增量。** 它改变模型在具体环境中的行为，不是给 Agent 多装一个工具，也不是给系统提示换个模板。作者为 Qwen3.8-27B 分别训练 pi、Hermes Agent 和 OpenCode 的适配器，再尝试把三份增量合成一份。[原文](https://huggingface.co/blog/harness-adapters-at-scale)
+Hugging Face 为 Qwen3.8-27B 在 pi、Hermes Agent 和 OpenCode 中训练 LoRA，使模型适应实际工具、反馈、压缩和停止规则，再将三份权重增量合并。软件工程评测中，部分配置同时提高通过率并减少调用。
 
-结果支持一个较具体的结论：在所测软件工程任务与预算下，环境内 RL 可以同时改善通过率和执行效率。它还没有证明对所有 harness、业务任务或安全行为都有效。理解这项工作，需要一起看任务验证、组内学习信号、训练环境、模型合并和评测口径。
+训练前先检查任务与奖励是否可信，训练时让实际执行环境进入轨迹。权重增量能正确相加，不保证合并行为更好；软件工程收益也没有普遍保留到商务自动化任务。 [原文](https://huggingface.co/blog/harness-adapters-at-scale)
+
+**提炼句：** 模型学会的，不只是任务，还包括怎样与环境配合。
+
+## 取景框 f(x)
+
+**x｜问题：** 同一个模型换到不同 Agent 程序后表现不同，能否让它学会适应真正部署时的工具、反馈和停止规则？
+
+**f｜取景框：** 把 Agent 能力看成模型与执行环境共同形成的行为。提示、工具合同、错误反馈和停止规则都塑造轨迹，奖励决定哪些轨迹被强化。
+
+**f(x)｜判断变化：** 换模型与换 harness 是不同干预，比较时要分别固定。训练前挑战 verifier，部署前检查本环境的成功率与完整成本；合并权重或减少调用，不能单独代表任务价值提高。
 
 ## 模型学到的，是与整个执行环境配合
 
 原文中的 harness 按实际发布的程序运行：pi 1.5.2、OpenCode 2.2.7、Hermes Agent v0.22.6。模型服务由 vLLM 提供，harness 与模型之间的代理记录实际生成的 token，训练器从这些轨迹学习。Harbor 与 OpenEnv 负责承载任务和验证环境。[原文：Training inside agent harnesses](https://huggingface.co/blog/harness-adapters-at-scale#training-inside-agent-harnesses)
 
-这样做要减少一种训练与部署差异。若训练框架自己重写 Agent 循环，模型训练时看到的工具签名、错误消息、压缩过程或停止条件，可能与上线后不同。在真实 harness 中采样，至少让这些环境动作进入训练轨迹。
+模型下一步的选择取决于当前提示和反馈。若训练框架重写了 Agent 循环，工具签名、错误消息、上下文压缩或停止条件就可能与部署时不同；模型学会的应对方式也可能不再合适。让实际 harness 运行任务，可以把这些真实环境动作带入采样轨迹，再根据任务结果更新模型。
 
 完整循环可以概括为：
 
-```mermaid
-flowchart LR
-    A[任务与初始仓库] --> B[实际 harness]
-    B --> C[模型生成文本或工具调用]
-    C --> D[工具执行与环境反馈]
-    D --> B
-    B --> E[任务结束与 verifier 评分]
-    C --> F[代理记录生成轨迹]
-    E --> G[GRPO 更新 LoRA]
-    F --> G
-    G --> C
+```text
+任务与初始仓库 → 实际 harness → 模型选择 → 工具执行与反馈
+                      ↑                       ↓
+                      └──── 继续任务 ─────────┘
+                      ↓ 任务结束
+                 verifier 给奖励
+模型生成轨迹 + 任务奖励 → GRPO 更新 LoRA → 后续模型采样
 ```
 
 图中模型生成的内容与工具反馈是不同对象。策略更新要针对模型实际采取的选择，不能把环境返回的测试结果也当成模型生成的目标文本。本文据原文解释这一分工，没有取得该实验代理与 AsyncGRPOTrainer 的完整固定版本实现来独立核验所有 token mask 和更新细节。
@@ -66,23 +72,23 @@ RL 需要能重复尝试的任务，也需要能区分对错的 verifier。模�
 
 GRPO 对一个任务采样多次，再比较这些尝试的奖励。用一个简化的组内标准化公式说明：
 
-\[
-\hat A_i = \frac{r_i-\bar r}{s_r+\varepsilon}
-\]
+```text
+Âᵢ = (rᵢ - r̄) / (sᵣ + ε)
+```
 
-其中，\(r_i\) 是第 \(i\) 次尝试的奖励；\(\bar r\) 是这组尝试的平均奖励；\(s_r\) 是奖励标准差；\(\varepsilon\) 用于处理零方差。正优势对应比同组平均更好的尝试，策略更新倾向于增加其选择的概率；负优势对应较差尝试，方向相反。具体 loss、长度归一化与裁剪还取决于训练器配置。[TRL：Computing the advantage](https://huggingface.co/docs/trl/grpo_trainer#computing-the-advantage)
+其中，`rᵢ` 是第 `i` 次尝试的奖励；`r̄` 是这组尝试的平均奖励；`sᵣ` 是奖励标准差；`ε` 用于处理零方差。正优势对应比同组平均更好的尝试，策略更新倾向于增加其选择的概率；负优势对应较差尝试，方向相反。具体 loss、长度归一化与裁剪还取决于训练器配置。[TRL：Computing the advantage](https://huggingface.co/docs/trl/grpo_trainer#computing-the-advantage)
 
 若奖励只有通过或失败，四次全过或全失败时，所有奖励都等于均值，没有正确性的组内相对信号。`[0, 0, 1, 1]` 则提供了明确比较。因此作者先让底座尝试任务，保留“有时能解、有时不能解”的部分。
 
 原文在 442 个已评分任务上统计：151 个每次都解出，120 个每次都失败，171 个介于两者之间。每题通常试 4 次；按仓库分层抽出的部分任务试 8 次。这是有限次探测，不是对“永远能解”或“绝对不可解”的证明。[原文：Difficulty check with the base model](https://huggingface.co/blog/harness-adapters-at-scale#difficulty-check-with-the-base-model)
 
-一个自拟概率计算能说明采样次数的影响。假设每次尝试独立、成功概率为 \(p\)，一组 \(G\) 次尝试出现成功和失败混合的概率是：
+一个自拟概率计算能说明采样次数的影响。假设每次尝试独立、成功概率为 `p`，一组 `G` 次尝试出现成功和失败混合的概率是：
 
-\[
-1-p^G-(1-p)^G
-\]
+```text
+1 - p^G - (1 - p)^G
+```
 
-\(p=0.5\) 时，4 次探测得到混合结果的概率为 87.5%；\(p=0.05\) 时只有约 18.55%。增加到 8 次，后者升到约 33.66%。所以“全失败而被过滤”有时只是没有采到少见的成功轨迹。此算例不模拟实际任务的相关性，也不估计原实验成功率。
+`p = 0.5` 时，4 次探测得到混合结果的概率为 87.5%；`p = 0.05` 时只有约 18.55%。增加到 8 次，后者升到约 33.66%。所以“全失败而被过滤”有时只是没有采到少见的成功轨迹。此算例不模拟实际任务的相关性，也不估计原实验成功率。
 
 还有一个容易遗漏的条件：最终训练奖励并非只有二元正确率。文章加入了系数为 0.1 的工具效率奖励，却没有在正文给出完整计算函数。因此，“全过或全败时没有正确性相对信号”不能写成“这组完全没有任何梯度”；效率项、其他 loss 项或不同归一化仍可能产生更新。
 
@@ -98,9 +104,9 @@ TRL 当前文档还指出，按组内标准差缩放可能产生问题难度偏�
 - 正文又提到 278 个直接进入后续数据的任务，以及对 522 个剩余任务做修复和复杂化。
 - 最终训练混合另行写为 750 个 harness-adapters 环境加 300 个 Termgrade 环境，共 1,050 个任务。
 
-因此，本报告把 171 作为 442 任务探测批次的局部统计，不把它当作最终训练集总量，也不自行修改 qualified 表的分项来凑总数。本次未能从数据集查看接口取得可绑定这份发布稿的完整 split；原文中间批次之间的映射仍需作者的任务清单或生成日志才能校准。[固定发布稿](https://github.com/huggingface/blog/blob/1f46819d70cad02df7ea96ec032fb0014dcf1c3e/harness-adapters-at-scale.md)
+因此，171 只属于 442 任务探测批次，不能当作最终训练集总量。qualified 分项与总数的矛盾仍保留；不同中间批次的对应关系，需要绑定发布稿的任务清单或生成日志才能校准。[固定发布稿](https://github.com/huggingface/blog/blob/1f46819d70cad02df7ea96ec032fb0014dcf1c3e/harness-adapters-at-scale.md)
 
-作者还设计了四组短训练：未验证、已验证、已验证但不具备混合结果、以及 qualified。每组 32 个任务，最多 50 步，使用相同 OpenCode 配置及 8×H200 作业。这适合检验过滤方法的影响；其动态结果页本次返回 401，因此这里不为四组编造增益排序或数值。最终适配器评测的正文、表格和公开图表数据则已经读取。
+作者还设计了四组短训练：未验证、已验证、已验证但不具备混合结果、以及 qualified。每组 32 个任务，最多 50 步，使用相同 OpenCode 配置及 8×H200 作业。这组设计可用于比较过滤方法，但四组短训练的完整定量结果没有纳入本文，不能据此排序其收益。下文适配器评测使用的是另一组公开结果。
 
 ## 异步训练解决的是 rollout 长短不一
 
@@ -116,19 +122,19 @@ TRL 当前文档还指出，按组内标准差缩放可能产生问题难度偏�
 
 对一层权重，LoRA 可以写成：
 
-\[
-W=W_0+\Delta W,\qquad \Delta W=sBA
-\]
+```text
+W = W₀ + ΔW，ΔW = sBA
+```
 
-\(W_0\) 是冻结底座；若原权重形状为 \(d_{out}\times d_{in}\)，\(B\) 为 \(d_{out}\times r\)，\(A\) 为 \(r\times d_{in}\)；\(r\) 是低秩维度，\(s\) 含该适配器的缩放因子。训练优化的是较小的增量表示。
+`W₀` 是冻结底座；若原权重形状为 `d_out × d_in`，`B` 为 `d_out × r`，`A` 为 `r × d_in`；`r` 是低秩维度，`s` 含该适配器的缩放因子。训练优化的是较小的增量表示。
 
 作者为三个 harness 训练了 rank 32 的适配器，再用 PEFT 的 `combination_type="cat"` 沿 rank 维度拼接，得到 rank 96 的增量。目标是：
 
-\[
-\Delta W_{merged}=w(\Delta W_{pi}+\Delta W_{hermes}+\Delta W_{opencode})
-\]
+```text
+ΔW_merged = w(ΔW_pi + ΔW_hermes + ΔW_opencode)
+```
 
-拼接能保持这个加和，是因为横向拼接 \(B\)、纵向拼接 \(A\)，矩阵乘积成为各对应块乘积之和。每个原适配器的缩放也必须正确带入。若简单把三个 \(A\) 相加、三个 \(B\) 相加再相乘，会产生不属于原更新的交叉项。
+拼接能保持这个加和，是因为横向拼接 `B`、纵向拼接 `A`，矩阵乘积成为各对应块乘积之和。每个原适配器的缩放也必须正确带入。若简单把三个 `A` 相加、三个 `B` 相加再相乘，会产生不属于原更新的交叉项。
 
 [mechanism_check.py](./examples/harness-adapters/mechanism_check.py) 用自拟小矩阵实际检验了这件事。两份更新按 0.5 缩放后的加和，与正确拼接都得到 `[[4.5, -0.5], [2.0, 2.5]]`；错误地相加因子后得到 `[[7.5, 5.0], [4.5, 3.0]]`。这是代数验证，没有加载 LoRA 或训练模型。[原文：Super-adapter](https://huggingface.co/blog/harness-adapters-at-scale#super-adapter-merging-all-adapters-into-one)
 
@@ -153,7 +159,7 @@ W=W_0+\Delta W,\qquad \Delta W=sBA
 | Hermes / Terminal-Bench | 85 | 44.7% | 58.8% | 55.3% | 58.8% | 63.5% |
 | OpenCode / Terminal-Bench | 82 | 47.6% | 52.4% | 52.4% | 54.9% | 58.5% |
 
-数字与 n 由[公开图表数据](https://harness-hub-harness-adapters-figures.static.hf.space/super-data.js)核对。thinking 开启时使用文章所述默认 effort `xhigh`，专用适配器训练时没有开启 thinking。任务未进入共同评分集合的原因，本次没有逐条复核；这限制了对名义全量任务绝对通过率的外推。
+数字与 n 由[公开图表数据](https://harness-hub-harness-adapters-figures.static.hf.space/super-data.js)核对。thinking 开启时使用文章所述默认 effort `xhigh`，专用适配器训练时没有开启 thinking。表中的共同评分集合小于名义全量；缺少未评分任务的逐项原因时，不能将它直接外推为全量绝对通过率。
 
 另一个公开 specialist 图的数据，pi / SWE-bench Pro 使用 `39.2% → 64.7%`。它与上表的 `40.0% → 64.0%` 并非可以随意互换的四舍五入：共同任务集合不同。[specialist 图表及口径注释](https://harness-hub-harness-adapters-figures.static.hf.space/results.js)
 
@@ -185,10 +191,4 @@ pi 适配器在 OpenCode 和 Hermes 的软件工程基准上保留了一部分�
 
 任务集合比训练按钮更早成为瓶颈。先检查参考解、错误控制样例和重复性，再测底座的成功分布；同时留出不用于挑学习率、检查点或合并系数的评估任务。训练和评测要记录 harness 版本、提示、工具、压缩、预算、模型模板和规则配置，才知道下次变化改进了什么。
 
-对本项目的迁移判断是：与其先追求一份泛用“会学习的 Agent”权重，不如先让具体学习任务的完成证据可检验。例如，引用确实支持结论，摘要与原文不冲突，报告能被读取，远端提交能被读回。这些可以帮助构建 verifier，但还需要防止“只讨好检查项”的奖励漏洞。本文没有为本仓训练模型，也没有在闭源 API 上实施 LoRA。
-
-## 来源、校准与实际实验
-
-主材料为 2026 年 11 月 20 日的 [Harness adapters at scale](https://huggingface.co/blog/harness-adapters-at-scale)，完整 Markdown 固定在 [huggingface/blog 的 `1f46819`](https://github.com/huggingface/blog/blob/1f46819d70cad02df7ea96ec032fb0014dcf1c3e/harness-adapters-at-scale.md)。本次读取完整正文，核对公开结果图的 JavaScript 数据与 [TRL GRPO 官方文档](https://huggingface.co/docs/trl/grpo_trainer)。原文 qualified 总数矛盾、部分中间数据集映射、受限短训练图，以及未取得的 AsyncGRPO 实现版本，已在相应结论旁说明。
-
-本仓实际运行了[小矩阵与组内奖励算例](./examples/harness-adapters/mechanism_check.py)，验证拼接更新等于加和、错误的因子相加产生交叉项，以及二元奖励边界与有限采样的基本性质。没有训练 27B 模型，没有复跑基准，也没有把作者的 GPU、通过率或效率数据写成本仓实验结果。
+**资料范围：** 依据 [固定发布稿](https://github.com/huggingface/blog/blob/1f46819d70cad02df7ea96ec032fb0014dcf1c3e/harness-adapters-at-scale.md)、公开图表数据和 [TRL 文档](https://huggingface.co/docs/trl/grpo_trainer)。成绩为发布方测量，小矩阵与奖励算例解释局部机制。

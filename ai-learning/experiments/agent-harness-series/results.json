@@ -1,0 +1,373 @@
+{
+  "schema": 1,
+  "observedAt": "2026-11-26T08:10:43.533Z",
+  "runtime": {
+    "bun": "1.3.11",
+    "nodeCompatibility": "v24.3.0"
+  },
+  "scope": "source-kernel and queue probes; recording replay through a teaching observer; no live provider or full orchestrator replay",
+  "sources": {
+    "orca": "60eb66f230d445107a32e55eae695d7090087acf",
+    "t3code": "2b0f633db3ba23e692750be2f578ecb089d6a852"
+  },
+  "sourceFileSha256": {
+    "t3code/packages/shared/src/Array.ts": "0363179ee901a401b1164e61aac4b2253a57e0f929fe86816f0aa4e457d4ce3e",
+    "t3code/packages/shared/src/model.ts": "6eb0c2918a16bfd22686deddc76512f1ec826df2f8b5c1ab3a81751b3887075f",
+    "t3code/apps/server/src/orchestration-v2/ProviderSessionTransitionPolicy.ts": "776d609b859a901a87de7161e7d170027a91a577645be8619c4a7a3cb5b259ec",
+    "t3code/packages/provider-core/src/server/selectionTransition.ts": "814e141d0fe5d60b4feff3e9c9d04cc0d660dac7382602f7bdb546dcffce78ae",
+    "t3code/packages/contracts/src/orchestrationV2.ts": "77395a02ed96f08e6b2aaa15a3acd8735575523efdd506a18c74b9e3f6f7a56a",
+    "t3code/packages/provider-core/src/server/handoffBudget.ts": "6c7c83e55f066ad233a8a079402c0e0d3abba3424cd6947053829210e6cf1b3a",
+    "t3code/apps/server/src/orchestration-v2/Orchestrator.ts": "fe05cfe163e7fa3669192ea6c18ec4fbd163e5a1dbd037a7fc534d6053c3abd9",
+    "orca/src/main/runtime/orchestration/coordinator/coordinator-dag-convergence.ts": "d3c0c01af105f6ce841086f0e0e16c9610113f4bce72df261847dfa718c95501",
+    "orca/src/main/runtime/orchestration/workers/reports/worker-report-admission.ts": "5a75c2c4eafb377a5d0f1e317ece270c58487dae2fb8f2ed20a4440c02c12f0c",
+    "orca/src/main/claude/sdk-transport/claude-agent-sdk-user-message-queue.ts": "7b5c624482354574e87bc23c7a70852821d649b33e1b8c1f3abbe7d93bf388ab",
+    "t3code/apps/server/src/orchestration-v2/testkit/fixtures/subagent_continue/codex_transcript.ndjson": "99470db13ff64d610fca9b440054eaa23a61201efad10f3000f46a04e961b96a",
+    "t3code/apps/server/src/orchestration-v2/testkit/fixtures/claude_compact_after_peer_turn/claude_transcript.ndjson": "5b50b037a6a3b4e3cc435696b13bfd81011edd7971399b40de8b92722547e559"
+  },
+  "passed": 32,
+  "cases": [
+    {
+      "name": "unchanged selection reuses session",
+      "status": "passed",
+      "observed": {
+        "type": "reuse"
+      }
+    },
+    {
+      "name": "same instance model change applies next turn",
+      "status": "passed",
+      "observed": {
+        "type": "switch_model_in_session"
+      }
+    },
+    {
+      "name": "adapter can require restart for model change",
+      "status": "passed",
+      "observed": {
+        "type": "restart_and_resume"
+      }
+    },
+    {
+      "name": "cross harness creates session with handoff",
+      "status": "passed",
+      "observed": {
+        "type": "create_with_handoff"
+      }
+    },
+    {
+      "name": "different instance with compatible continuation resumes",
+      "status": "passed",
+      "observed": {
+        "type": "restart_and_resume"
+      }
+    },
+    {
+      "name": "same driver different continuation requires handoff",
+      "status": "passed",
+      "observed": {
+        "type": "create_with_handoff"
+      }
+    },
+    {
+      "name": "permission change restarts and resumes",
+      "status": "passed",
+      "observed": {
+        "type": "restart_and_resume"
+      }
+    },
+    {
+      "name": "unclassified model change is rejected",
+      "status": "passed",
+      "observed": {
+        "type": "reject",
+        "reason": "The provider adapter did not classify the selection change."
+      }
+    },
+    {
+      "name": "unavailable provider is rejected",
+      "status": "passed",
+      "observed": {
+        "type": "reject",
+        "reason": "The target provider instance is unavailable."
+      }
+    },
+    {
+      "name": "ACP model change requires advertised capability",
+      "status": "passed",
+      "observed": {
+        "type": "reject",
+        "reason": "The active ACP session does not expose a model-switch capability."
+      }
+    },
+    {
+      "name": "history conversion excludes reasoning and keeps command evidence",
+      "status": "passed",
+      "observed": [
+        "original",
+        "answer-1",
+        "command",
+        "latest-user",
+        "latest-answer"
+      ]
+    },
+    {
+      "name": "short history remains intact and chronological",
+      "status": "passed",
+      "observed": {
+        "selected": 5,
+        "omitted": 0
+      }
+    },
+    {
+      "name": "large middle item is omitted intact rather than clipped",
+      "status": "passed",
+      "observed": {
+        "selectedIds": [
+          "original",
+          "answer-1",
+          "command",
+          "latest-user",
+          "latest-answer"
+        ],
+        "omittedIds": [
+          "large-middle"
+        ]
+      }
+    },
+    {
+      "name": "oversized original constraint can be omitted",
+      "status": "passed",
+      "observed": {
+        "omittedIds": [
+          "original"
+        ]
+      }
+    },
+    {
+      "name": "history injection preserves attributed roles without native tool blocks",
+      "status": "passed",
+      "observed": [
+        {
+          "role": "user",
+          "contentType": "input_text"
+        },
+        {
+          "role": "user",
+          "contentType": "input_text"
+        },
+        {
+          "role": "assistant",
+          "contentType": "output_text"
+        },
+        {
+          "role": "assistant",
+          "contentType": "output_text"
+        },
+        {
+          "role": "user",
+          "contentType": "input_text"
+        },
+        {
+          "role": "assistant",
+          "contentType": "output_text"
+        }
+      ]
+    },
+    {
+      "name": "new model window retains occupancy but updates capacity",
+      "status": "passed",
+      "observed": {
+        "usage": {
+          "usedTokens": 90000,
+          "maxTokens": 32000
+        },
+        "remaining": 0
+      }
+    },
+    {
+      "name": "native identity change discards old context occupancy",
+      "status": "passed"
+    },
+    {
+      "name": "returning provider anchors delta at last delivered run",
+      "status": "passed",
+      "observed": {
+        "lastDeliveredOrdinal": 1,
+        "missingPeerRun": "b2"
+      }
+    },
+    {
+      "name": "failed run can still count as delivered when prompt was consumed",
+      "status": "passed",
+      "observed": {
+        "lastDeliveredOrdinal": 3
+      }
+    },
+    {
+      "name": "Orca DAG empty",
+      "status": "passed",
+      "observed": {
+        "result": "empty",
+        "logs": []
+      }
+    },
+    {
+      "name": "Orca DAG completed+failed",
+      "status": "passed",
+      "observed": {
+        "result": "all-done",
+        "logs": []
+      }
+    },
+    {
+      "name": "Orca DAG blocked",
+      "status": "passed",
+      "observed": {
+        "result": "active",
+        "logs": [
+          "Stuck: 1 tasks blocked with no active tasks. Resolve decision gates to continue."
+        ]
+      }
+    },
+    {
+      "name": "Orca DAG dispatched+blocked",
+      "status": "passed",
+      "observed": {
+        "result": "active",
+        "logs": []
+      }
+    },
+    {
+      "name": "worker report ready current=true",
+      "status": "passed",
+      "observed": null
+    },
+    {
+      "name": "worker report start_unknown current=true",
+      "status": "passed",
+      "observed": null
+    },
+    {
+      "name": "worker report stopping current=true",
+      "status": "passed",
+      "observed": {
+        "code": "dispatch_inactive",
+        "reason": "Dispatch dispatch-current is stopping; its worker cannot report until worker-stop settles."
+      }
+    },
+    {
+      "name": "worker report ready current=false",
+      "status": "passed",
+      "observed": {
+        "code": "worker_identity_changed",
+        "reason": "worker is not the exact process that owns Dispatch dispatch-current."
+      }
+    },
+    {
+      "name": "Claude queue yield is earlier than write acknowledgement",
+      "status": "passed",
+      "observed": {
+        "pendingAfterYield": true,
+        "acknowledgedAfterResume": true
+      }
+    },
+    {
+      "name": "Claude abandoned yielded frame has ambiguous outcome",
+      "status": "passed",
+      "observed": {
+        "provablyUnwritten": false
+      }
+    },
+    {
+      "name": "Claude queued but unyielded frame is provably unwritten on failure",
+      "status": "passed",
+      "observed": {
+        "provablyUnwritten": true
+      }
+    },
+    {
+      "name": "recording replay keeps child completion separate from parent",
+      "status": "passed",
+      "observed": {
+        "childCompletedWhileRootActive": true,
+        "allRecordedTurnsSettled": true
+      }
+    },
+    {
+      "name": "recording replay groups Claude command lifecycle by command UUID",
+      "status": "passed",
+      "observed": {
+        "commandCount": 2,
+        "states": [
+          [
+            "queued",
+            "started",
+            "completed"
+          ],
+          [
+            "queued",
+            "started",
+            "completed"
+          ]
+        ]
+      }
+    }
+  ],
+  "recordings": [
+    {
+      "file": "subagent_continue/codex_transcript.ndjson",
+      "provider": "codex",
+      "protocol": "codex.app-server",
+      "version": "0.156.1",
+      "rows": 147,
+      "provenance": "record-codex-app-server-replay-fixture",
+      "counts": {
+        "transcript_start:metadata": 1,
+        "expect_outbound:initialize": 1,
+        "emit_inbound:metadata": 8,
+        "expect_outbound:initialized": 1,
+        "expect_outbound:config/read": 3,
+        "expect_outbound:thread/start": 1,
+        "emit_inbound:configWarning": 1,
+        "emit_inbound:remoteControl/status/changed": 1,
+        "expect_outbound:thread/name/set": 1,
+        "emit_inbound:thread/name/updated": 1,
+        "expect_outbound:turn/start": 2,
+        "emit_inbound:thread/started": 1,
+        "emit_inbound:mcpServer/startupStatus/updated": 6,
+        "emit_inbound:thread/settings/updated": 1,
+        "emit_inbound:thread/status/changed": 9,
+        "emit_inbound:turn/started": 4,
+        "emit_inbound:account/updated": 1,
+        "emit_inbound:item/started": 20,
+        "emit_inbound:item/completed": 20,
+        "emit_inbound:item/reasoning/summaryPartAdded": 3,
+        "emit_inbound:item/reasoning/summaryTextDelta": 3,
+        "emit_inbound:item/agentMessage/delta": 44,
+        "emit_inbound:thread/tokenUsage/updated": 9,
+        "emit_inbound:turn/completed": 4,
+        "runtime_exit:metadata": 1
+      }
+    },
+    {
+      "file": "claude_compact_after_peer_turn/claude_transcript.ndjson",
+      "provider": "claudeAgent",
+      "protocol": "claude-agent-sdk.query",
+      "version": "0.3.276",
+      "rows": 38,
+      "provenance": "hand-ported: live claude 2.1.285 /compact capture + peer-origin turn from provider log 2026-09-30T07:46:53Z",
+      "counts": {
+        "transcript_start:metadata": 1,
+        "expect_outbound:query.open": 1,
+        "expect_outbound:prompt.offer": 2,
+        "emit_inbound:command_lifecycle": 6,
+        "emit_inbound:system": 8,
+        "emit_inbound:stream_event": 12,
+        "emit_inbound:assistant": 2,
+        "emit_inbound:result": 3,
+        "emit_inbound:user": 2,
+        "runtime_exit:metadata": 1
+      }
+    }
+  ]
+}

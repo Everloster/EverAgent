@@ -6,17 +6,27 @@ status: "completed"
 report_depth: "deep"
 source_url: "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
 source_published_on: "2026-11-20"
-updated_on: "2026-11-23"
+updated_on: "2026-11-26"
 semantic_tags: ["personal-agent", "agents-api", "responses-api", "async-tool-calling", "deadline", "steering"]
 ---
 
 # 有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制
 
-一个助手接到“十五分钟后开会，提前三分钟给我简报”的任务，很快发现用户没有说会议是技术评估还是商务谈判。它应该追问，但查公司资料不必等这个答案。真正困难的是：问题什么时候发出去，回复怎样回到正在推进的工作里，用户一直不回答时怎么办，模型还在生成时又怎样按时交付。
+## 概述
 
-OpenAI 的这篇博客用会前调研说明了一套做法。它包含三个分别起作用的部件：**异步函数允许模型继续处理独立工作；时间提醒帮助模型判断剩余预算；应用计时器负责到点交付和收尾。** 只给模型一句截止时间，不能替代后两个部件中的执行控制。[原文](https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents)
+OpenAI 用会前简报说明，助手可以边追问边调研，但到追问期限要结束等待，到交付期限要送出可用产物。模型获得时间信息，应用负责后台函数、回复绑定、计时与收尾。
 
-本文依据完整博客及其关联官方文档，重构 Agents API 与自行编写的 Responses 循环；另用仓内离线程序检查时间、回复和结果绑定规则。没有调用付费模型，也没有把离线检查当成 API 实测。
+Agents API 与自行维护的 Responses 循环承担不同工作。回复到了应用，不代表当前响应已看见；异步工具、steering、事件唤醒和后台生成必须按依赖与生效时机区分。 [原文](https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents)
+
+**提炼句：** 能继续做的先做，必须等的仍等；截止时间由执行程序守住。
+
+## 取景框 f(x)
+
+**x｜问题：** 助手边调研边追问时，怎样接回用户回复，又保证简报到点交付，不把沉默或请求已接受误当作完成？
+
+**f｜取景框：** 从依赖关系和固定预算看助手：独立工作与待回结果可以并行，依赖结果的判断仍要等待。模型规划与应用控制分别处理怎样分配时间、何时停止等待。
+
+**f(x)｜判断变化：** 追问截止与交付截止要分开，原调用 ID 与最新续接状态也要分开。沉默只能触发已定义的降级，不能生成授权；已完成文字还要对应可用简报。
 
 ## 先把“十五分钟”拆成三个时刻
 
@@ -51,7 +61,7 @@ OpenAI 的这篇博客用会前调研说明了一套做法。它包含三个分�
 | Mid-turn steering | 用户把新要求交给正在运行的响应 | Responses WebSocket 的单独协议；输入接受后还要等服务处理续接 |
 | Agents API time awareness | 托管 harness 给模型周期性时间提醒 | 博客以 `experimental.time_awareness: true` 启用；应用仍须负责交付期限 |
 
-截至本次读取，异步工具文档的兼容性表述是“GPT-6 Astra 及后续模型”，没有给出逐型号的完整矩阵；博客使用 `gpt-6.2-astra`。不能据此把所有老模型或第三方模型都列为支持。Steering 文档另行规定 GPT-6 家族通过 Responses WebSocket 支持，GPT-5.6 及更早型号不支持。两个功能的支持范围要分别查。[异步工具兼容性](https://developers.openai.com/api/docs/guides/async-tool-calling#compatibility)、[Steering](https://developers.openai.com/api/docs/guides/steering)
+2026-11-23 的异步工具文档将兼容性表述为“GPT-6 Astra 及后续模型”，没有给出逐型号的完整矩阵；博客使用 `gpt-6.2-astra`。不能据此把所有老模型或第三方模型都列为支持。Steering 文档另行规定 GPT-6 家族通过 Responses WebSocket 支持，GPT-5.6 及更早型号不支持。两个功能的支持范围要分别查。[异步工具兼容性](https://developers.openai.com/api/docs/guides/async-tool-calling#compatibility)、[Steering](https://developers.openai.com/api/docs/guides/steering)
 
 ## Agents API：一次追问怎样走完
 
@@ -90,7 +100,7 @@ session 事件接口的 HTTP 202 只确认接受，不能作为工具结果已�
 
 如果用户要在响应尚未结束时修改要求，应另外使用 Steering 支持的传输与事件。`response.steer.accepted` 表示排队；服务会完成当前 output item 和已运行的托管工具工作，然后建立带新要求的自动续接。Steering 不撤回已经送出的输出，也不撤销已经启动的工具动作。[Steering：Send a steering message](https://developers.openai.com/api/docs/guides/steering#send-a-steering-message)
 
-结果依赖关系也应明确。如果模型接下来要比较两份尚未返回的报价，可以调用应用定义的同步 wait 函数；先返回各原调用的实际结果，再返回 wait 调用自身的完成状态。模型可以继续推进，不等于它可以编造一个依赖结果的结论。[等待结果的顺序](https://developers.openai.com/api/docs/guides/async-tool-calling#deliver-results-before-wait-status)
+下一步是否能做，要按依赖判断。整理已取得的公司公告可以继续，比较两份尚未返回的报价则仍需等待。应用定义的同步 wait 函数结束时，应先交回各原调用的实际结果，再交回 wait 自身的完成状态，让模型先获得判断依据。允许继续工作，没有改变结果尚未取得这一事实。[等待结果的顺序](https://developers.openai.com/api/docs/guides/async-tool-calling#deliver-results-before-wait-status)
 
 ## 怎样交付一份真正完成的简报
 
@@ -102,9 +112,9 @@ session 事件接口的 HTTP 202 只确认接受，不能作为工具结果已�
 
 取消也有层次。关闭客户端 stream 是停止本地读取；向 session 发 `agent.session.input.cancel` 才是在请求取消活动 turn；应用自己启动的函数还需要它自己的取消或结果查询机制。官方事件接口说明取消会保留已保存结果、已发布文件和已有终端执行结果。不能把取消当成事务回滚。[Session 输入事件接口](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/events/methods/create)
 
-“最后一份已完成消息”还不自动等于“内容已核实”。消息筛选检查生成状态，事实检查仍取决于实际来源与验证工作。一个适合用于报告工作台的应用，最好同时保存候选文稿、支持结论的来源与验证状态，而不是只保存最近一次文字。
+“最后一份已完成消息”确认的是生成状态。交付简报时，还要确认它覆盖任务要求、依据对应实际资料；否则，筛选出完整消息也可能交出内容不合格的简报。
 
-## 本仓的离线验证测了什么
+## 用算例检查期限与结果绑定
 
 [controller.py](./examples/personal-agent-time/controller.py) 是自拟的虚拟时间程序。它不复刻 OpenAI 服务，只验证应用能直接控制的规则：
 
@@ -122,14 +132,4 @@ session 事件接口的 HTTP 202 只确认接受，不能作为工具结果已�
 
 执行 `python3 ai-learning/reports/knowledge_reports/examples/personal-agent-time/controller.py`，10 个场景全部通过。程序把构造结果批次与确认提交分开，但没有模拟网络提交结果不明、持久数据库或服务端幂等处理；这些仍是实际接入时需要验证的部分。没有测量模型在时间提醒下的能力变化，也没有测量用户等待减少多少。
 
-## 用到学习工作台，先确定什么必须等
-
-这套机制可以用于有交付时间的研究任务。助手可以先问报告面向谁，同时查官方资料；到追问期限仍无答案，就采用明确写出的读者假设。它也可以先给出一份已核实的简报，再继续做完整研究。
-
-但不同等待不能一概超时跳过。可选阅读偏好可以降级；关键材料缺失时，应保留草稿或说明范围；需要授权的外部动作则继续等待明确授权。最终状态必须对应实际产物：有报告文件、来源和必要检查，才更新学习记录；用户回复已接受、API 请求已返回或模型说“完成了”都不够。
-
-值得继续验证的，是时间提醒究竟怎样改变模型的取舍。可以对同一批有明确期限的任务比较“只有起始 deadline”和“每轮都有新时间提醒”，记录是否按时交付、引用正确率、未完成调查数量及浪费的工具调用。这里需要真实模型与重复样本；离线计时器检查只能证明程序的控制规则成立。
-
-## 来源与复核范围
-
-主材料为 2026 年 11 月 20 日的 [Time awareness and async input for personal agents](https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents)。本次取得完整原文和其中的各语言示例，精读正文及 Python 的两套循环；关联的 [异步工具](https://developers.openai.com/api/docs/guides/async-tool-calling)、[函数](https://developers.openai.com/api/docs/guides/agents-api/tools/functions)、[配置](https://developers.openai.com/api/docs/guides/agents-api/configuration)、[事件与保存状态](https://developers.openai.com/api/docs/guides/agents-api/sessions/events) 和 [Steering](https://developers.openai.com/api/docs/guides/steering) 官方文档在 2026 年 11 月 23 日读取。报告是中文分析与必要摘译，未进行 SDK、托管环境或模型端的联机复现。
+**资料范围：** 接口说明依据官方博客及关联文档，以 2026-11-23 的资料为准。离线算例检查应用控制规则，不测量模型能力或线上 API 效果。

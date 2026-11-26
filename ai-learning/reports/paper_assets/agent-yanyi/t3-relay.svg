@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080"><rect width="1600" height="1080" fill="#f5f7fb"/>
+<text x="65" y="93" fill="#172a40" font-size="48" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">T3：Claude → Codex → Claude</text>
+<text x="65" y="137" fill="#43546a" font-size="27" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">应用 thread 连续；原生 provider 会话各自恢复或新建</text>
+<rect x="60" y="190" width="420" height="175" rx="18" fill="#fff4dc" stroke="#bac8d8" stroke-width="2"/>
+<text x="82" y="238" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Run 1 · Claude</text>
+<text x="82" y="281" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">原生 A 保存自己的上下文</text>
+<text x="82" y="321" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">任务：设计搜索功能</text>
+<rect x="590" y="190" width="420" height="175" rx="18" fill="#e7f0ff" stroke="#bac8d8" stroke-width="2"/>
+<text x="612" y="238" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Run 2 · Codex</text>
+<text x="612" y="281" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">目标 B 接收预算内历史</text>
+<text x="612" y="321" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">任务：实现并测试</text>
+<rect x="1120" y="190" width="420" height="175" rx="18" fill="#fff4dc" stroke="#bac8d8" stroke-width="2"/>
+<text x="1142" y="238" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">Run 3 · Claude</text>
+<text x="1142" y="281" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">A 可恢复时补入缺失历史</text>
+<text x="1142" y="321" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">任务：审查改动</text>
+<path d="M 480 280 L 590 280" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="590,280 574.6923992600045,287.3944140798909 574.6923992600045,272.6055859201091" fill="#3269a8"/>
+<path d="M 1010 280 L 1120 280" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1120,280 1104.6923992600045,287.3944140798909 1104.6923992600045,272.6055859201091" fill="#3269a8"/>
+<rect x="70" y="485" width="710" height="210" rx="18" fill="#edf6ed" stroke="#bac8d8" stroke-width="2"/>
+<text x="92" y="533" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">T3 持久化 thread</text>
+<text x="92" y="576" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">跨 provider 的可见消息、活动与交接记录</text>
+<text x="92" y="616" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">首次目标：预算内的历史选择</text>
+<text x="92" y="656" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">返回目标：从最后已投递 run 补齐增量</text>
+<rect x="870" y="485" width="660" height="210" rx="18" fill="#ffffff" stroke="#bac8d8" stroke-width="2"/>
+<text x="892" y="533" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">原生 A / B</text>
+<text x="892" y="576" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">会话存在、身份兼容时尝试原生恢复</text>
+<text x="892" y="616" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">无法恢复时，以新会话和历史接力</text>
+<text x="892" y="656" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">历史条目不重放原生工具 / 推理状态</text>
+<path d="M 270 365 L 270 485" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="270,485 262.6055859201091,469.6923992600045 277.3944140798909,469.6923992600045" fill="#3269a8"/>
+<path d="M 800 365 L 800 440" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="800,440 792.6055859201091,424.6923992600045 807.3944140798909,424.6923992600045" fill="#3269a8"/>
+<path d="M 1320 365 L 1320 485" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1320,485 1312.605585920109,469.6923992600045 1327.394414079891,469.6923992600045" fill="#3269a8"/>
+<text x="85" y="857" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">历史被选中 ≠ 已投递；已投递 ≠ 新模型一定遵守所有约束。</text>
+<text x="85" y="909" fill="#172a40" font-size="29" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">交接记录保留覆盖范围、遗漏项和实际投递状态，供恢复与检索。</text>
+<text x="65" y="1014" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">A → B → A 是教学示意；恢复、增量、预算和失败路径须分别满足条件。</text>
+</svg>

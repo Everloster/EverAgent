@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080"><rect width="1600" height="1080" fill="#f5f7fb"/>
+<text x="65" y="93" fill="#172a40" font-size="48" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">缓存判断：沿实际请求检查</text>
+<text x="65" y="137" fill="#43546a" font-size="27" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">保留 session ID、进程或聊天记录，都不能单独证明缓存命中</text>
+<rect x="75" y="200" width="620" height="195" rx="18" fill="#e7f0ff" stroke="#bac8d8" stroke-width="2"/>
+<text x="97" y="248" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">先看输入</text>
+<text x="97" y="291" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">系统与工具定义、历史内容、排序</text>
+<text x="97" y="331" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">模型与推理配置是否改变前缀</text>
+<text x="97" y="371" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">交接文本、压缩与时间戳是否插入</text>
+<rect x="900" y="200" width="620" height="195" rx="18" fill="#fff4dc" stroke="#bac8d8" stroke-width="2"/>
+<text x="922" y="248" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">再看服务端条件</text>
+<text x="922" y="291" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">符合模型支持的缓存边界</text>
+<text x="922" y="331" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">找到兼容缓存条目及可用执行节点</text>
+<text x="922" y="371" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">满足有效期、路由和账户等条件</text>
+<path d="M 695 295 L 900 295" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="900,295 884.6923992600045,302.3944140798909 884.6923992600045,287.6055859201091" fill="#3269a8"/>
+<rect x="75" y="550" width="620" height="220" rx="18" fill="#edf6ed" stroke="#bac8d8" stroke-width="2"/>
+<text x="97" y="598" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">本地可观察</text>
+<text x="97" y="641" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">thread / 原生 session 身份</text>
+<text x="97" y="681" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">发给 harness 的内容和协议事件</text>
+<text x="97" y="721" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">provider 暴露的 usage 统计</text>
+<rect x="900" y="550" width="620" height="220" rx="18" fill="#f1eafa" stroke="#bac8d8" stroke-width="2"/>
+<text x="922" y="598" fill="#172a40" font-size="32" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">模型侧需测量</text>
+<text x="922" y="641" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">缓存读、缓存写、普通输入的数量</text>
+<text x="922" y="681" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">统一口径下的实际输入费用</text>
+<text x="922" y="721" fill="#43546a" font-size="26" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">请求延迟与完整任务表现</text>
+<path d="M 1210 395 L 1210 550" fill="none" stroke="#3269a8" stroke-width="4"/><polygon points="1210,550 1202.605585920109,534.6923992600045 1217.394414079891,534.6923992600045" fill="#3269a8"/>
+<text x="90" y="885" fill="#172a40" font-size="30" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">离线探针可以解释请求为什么变化；真实命中、费用与延迟需要实际调用。</text>
+<text x="65" y="1014" fill="#43546a" font-size="24" font-family="Noto Sans CJK SC,Heiti SC,Microsoft YaHei,sans-serif">本卷没有真实模型调用；图不表示某个切换操作一定命中或一定失效。</text>
+</svg>

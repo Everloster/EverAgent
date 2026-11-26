@@ -18,14 +18,16 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-26 · [AI 行业日报 · 2026-11-26](./web-surfing/reports/ai-news-daily-2026-11-26.md)
-- 2026-11-25 · [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](./podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md)
-- 2026-11-25 · [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](./podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)
-- 2026-11-25 · [把 Agent 的 KV 缓存放到 NVMe：命中率、保留时间和写入寿命怎样一起算](./ai-learning/reports/knowledge_reports/NVMe_KV%E7%BC%93%E5%AD%98_%E5%91%BD%E4%B8%AD%E4%BF%9D%E7%95%99%E6%97%B6%E9%97%B4%E4%B8%8E%E5%86%99%E5%85%A5%E5%AF%BF%E5%91%BD_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md)
-- 2026-11-25 · [企业用上 AI 之后：为什么个人提速，还没有变成整个公司的收益](./ai-learning/reports/knowledge_reports/Working_with_AI_%E4%BC%81%E4%B8%9A%E9%87%87%E7%94%A8%E4%B8%8E%E7%BB%84%E7%BB%87%E7%93%B6%E9%A2%88_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md)
+- 2026-11-26 · [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)
+- 2026-11-26 · [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)
+- 2026-11-26 · [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](./podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md)
+- 2026-11-26 · [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](./ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
+- 2026-11-26 · [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](./podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
+
+系列阅读：[《Agent 演义》：高频开发者的 Orca 与 T3 Code 产品指南](./ai-learning/reports/Agent演义_00_Orca与T3Code_任务接力_20261126.md)，共 20 篇主篇与 3 篇技术附录，分别展开两套产品的功能与使用，再比较单项功能、并行工作和长期工作台；协议、上下文、推理、缓存与恢复集中到附录。
 
 想选下一篇文章或一期节目，可以先翻历史速看表：
 
@@ -58,7 +60,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 233 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 256 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

@@ -7,12 +7,14 @@ description: "Create or revise an EverAgent research report when requested; skip
 
 Use only the material needed for the requested output.
 
+Open reports with two distinct sections as defined in REPORT_WORKFLOW below: an overview for summary, distilled findings and correctly attributed quotations, followed by the x / f / f(x) interpretive frame. The frame explains a way of seeing the problem and how it changes judgment; it is not a second summary or a list of execution steps. Keep the body specific to the research and move unrelated project analogies and operational records out of it. Apply the new opening to existing reports when revision is requested.
+
 | Need | Read |
 |---|---|
 | Writing, metadata, drafts and completion | [REPORT_WORKFLOW.md](../../../docs/REPORT_WORKFLOW.md) |
 | Research and evidence judgment | Relevant sections of [METHODOLOGY.md](../../../METHODOLOGY.md) |
 | Domain-specific material | Target project's AGENTS.md and one relevant reference |
-| Explicit legacy scoring/evidence request or historical review | [REPORT_QUALITY_GATE.md](../../../docs/REPORT_QUALITY_GATE.md) |
+| Explicit legacy scoring/evidence contract | [REPORT_QUALITY_GATE.md](../../../docs/REPORT_QUALITY_GATE.md) |
 
 Use eacli context only when prior project knowledge is relevant. Do not preload all policies, scan all reports, query Agent inventories or create planning artifacts by default.
 Deliver the requested content and state its scope and limitations. Drafts can be committed when clearly marked. Independent review, score thresholds and evidence/review JSON are opt-in, not automatic completion gates; do not assign work to other Agents without the user's request.

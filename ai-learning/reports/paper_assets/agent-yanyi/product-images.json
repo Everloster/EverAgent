@@ -1,0 +1,77 @@
+[
+  {
+    "file": "product-orca-chat-or-terminal.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/chat-or-terminal.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-parallel-worktrees.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/parallel-worktrees.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-orchestration.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/orchestration.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-design-mode.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/design-mode.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-annotate-ai-diffs.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/annotate-ai-diffs.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-git-integration.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/git-integration.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-remote.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/remote.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-mobile-companion.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/mobile-companion.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-orca-bots.png",
+    "source": "https://github.com/stablyai/orca/blob/60eb66f230d445107a32e55eae695d7090087acf/docs/assets/readme-features/bots.poster.jpg",
+    "kind": "official product illustration; not this session screenshot",
+    "license": "orca-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "product-t3-desktop.png",
+    "source": "https://github.com/pingdotgg/t3code/blob/2b0f633db3ba23e692750be2f578ecb089d6a852/apps/marketing/src/assets/app-desktop.webp",
+    "kind": "official marketing screenshot; not this session screenshot",
+    "license": "t3code-LICENSE.txt",
+    "transformation": "converted to PNG; official content retained"
+  },
+  {
+    "file": "demo-card-gallery.png",
+    "kind": "author screenshot of self-authored example in Orca browser; not product UI or model output",
+    "source": "../../../experiments/agent-harness-series/web-project/README.md"
+  }
+]
