@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-26 | [AI 行业日报 · 2026-11-26](../web-surfing/reports/ai-news-daily-2026-11-26.md) | web-surfing |
 | 2026-11-25 | [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](../podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md) | podcast-learning |
 | 2026-11-25 | [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](../podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md) | podcast-learning |
 | 2026-11-25 | [把 Agent 的 KV 缓存放到 NVMe：命中率、保留时间和写入寿命怎样一起算](../ai-learning/reports/knowledge_reports/NVMe_KV%E7%BC%93%E5%AD%98_%E5%91%BD%E4%B8%AD%E4%BF%9D%E7%95%99%E6%97%B6%E9%97%B4%E4%B8%8E%E5%86%99%E5%85%A5%E5%AF%BF%E5%91%BD_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-11-23 | [AI 行业日报 · 2026-11-23](../web-surfing/reports/ai-news-daily-2026-11-23.md) | web-surfing |
 | 2026-11-23 | [AI 冲击下的公司：使用量、收入、利润与估值为什么会分开](../podcast-learning/reports/2026-11-23_ai-lianjinshu_company-value-chain.md) | podcast-learning |
 | 2026-11-22 | [AI 行业日报 · 2026-11-22](../web-surfing/reports/ai-news-daily-2026-11-22.md) | web-surfing |
-| 2026-11-21 | [AI 行业日报 · 2026-11-21](../web-surfing/reports/ai-news-daily-2026-11-21.md) | web-surfing |
 
 ## 🤖 AI Learning（233 篇）
 
@@ -685,10 +685,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（67 篇）
+## 🏄 Web Surfing（68 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-26 | [AI 行业日报 · 2026-11-26](../web-surfing/reports/ai-news-daily-2026-11-26.md) | `ai_news`, `daily` |
 | 2026-11-25 | [AI 行业日报 · 2026-11-25](../web-surfing/reports/ai-news-daily-2026-11-25.md) | `ai_news`, `daily` |
 | 2026-11-24 | [AI 行业日报 · 2026-11-24](../web-surfing/reports/ai-news-daily-2026-11-24.md) | `ai_news`, `daily` |
 | 2026-11-23 | [AI 行业日报 · 2026-11-23](../web-surfing/reports/ai-news-daily-2026-11-23.md) | `ai_news`, `daily` |

@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-26 · [AI 行业日报 · 2026-11-26](./web-surfing/reports/ai-news-daily-2026-11-26.md)
 - 2026-11-25 · [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](./podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md)
 - 2026-11-25 · [曾晓东谈原生端侧模型：145B 怎样运行，成本与部署又怎样核对](./podcast-learning/reports/2026-11-25_crossing_zeng-xiaodong-edge0.md)
 - 2026-11-25 · [把 Agent 的 KV 缓存放到 NVMe：命中率、保留时间和写入寿命怎样一起算](./ai-learning/reports/knowledge_reports/NVMe_KV%E7%BC%93%E5%AD%98_%E5%91%BD%E4%B8%AD%E4%BF%9D%E7%95%99%E6%97%B6%E9%97%B4%E4%B8%8E%E5%86%99%E5%85%A5%E5%AF%BF%E5%91%BD_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md)
 - 2026-11-25 · [企业用上 AI 之后：为什么个人提速，还没有变成整个公司的收益](./ai-learning/reports/knowledge_reports/Working_with_AI_%E4%BC%81%E4%B8%9A%E9%87%87%E7%94%A8%E4%B8%8E%E7%BB%84%E7%BB%87%E7%93%B6%E9%A2%88_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md)
-- 2026-11-25 · [vLLM-GR：把一次推荐变成一组有效候选，推理引擎要改什么](./ai-learning/reports/knowledge_reports/vLLM_GR_%E8%AF%AD%E4%B9%89ID%E7%94%9F%E6%88%90%E4%B8%8EBeam%E6%90%9C%E7%B4%A2%E6%9C%8D%E5%8A%A1_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261125.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -66,7 +66,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 153 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 67 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 68 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 </details>
