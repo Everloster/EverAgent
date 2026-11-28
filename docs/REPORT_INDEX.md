@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-28 | [AI 行业日报 · 2026-11-28](../web-surfing/reports/ai-news-daily-2026-11-28.md) | web-surfing |
 | 2026-11-27 | [AI 行业日报 · 2026-11-27](../web-surfing/reports/ai-news-daily-2026-11-27.md) | web-surfing |
 | 2026-11-26 | [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](../podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md) | podcast-learning |
 | 2026-11-26 | [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](../podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-11-26 | [《Agent 演义》12｜T3：什么时候换模型，什么时候换 Agent](../ai-learning/reports/knowledge_reports/Agent%E6%BC%94%E4%B9%89_12_T3_%E6%8D%A2%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%8D%A2Agent_20261126.md) | ai-learning |
 | 2026-11-26 | [《Agent 演义》11｜T3：把线程用成日常工作单元](../ai-learning/reports/knowledge_reports/Agent%E6%BC%94%E4%B9%89_11_T3_%E7%BA%BF%E7%A8%8B%E4%B8%8E%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C_20261126.md) | ai-learning |
 | 2026-11-26 | [《Agent 演义》10｜T3：项目、worktree 与项目动作](../ai-learning/reports/knowledge_reports/Agent%E6%BC%94%E4%B9%89_10_T3_%E9%A1%B9%E7%9B%AE%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%8A%A8%E4%BD%9C_20261126.md) | ai-learning |
-| 2026-11-26 | [《Agent 演义》09｜T3：产品全貌与接入方式](../ai-learning/reports/knowledge_reports/Agent%E6%BC%94%E4%B9%89_09_T3_%E4%BA%A7%E5%93%81%E5%85%A8%E8%B2%8C%E4%B8%8E%E6%8E%A5%E5%85%A5_20261126.md) | ai-learning |
 
 ## 🤖 AI Learning（256 篇）
 
@@ -708,10 +708,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（69 篇）
+## 🏄 Web Surfing（70 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-28 | [AI 行业日报 · 2026-11-28](../web-surfing/reports/ai-news-daily-2026-11-28.md) | `ai_news`, `daily` |
 | 2026-11-27 | [AI 行业日报 · 2026-11-27](../web-surfing/reports/ai-news-daily-2026-11-27.md) | `ai_news`, `daily` |
 | 2026-11-26 | [AI 行业日报 · 2026-11-26](../web-surfing/reports/ai-news-daily-2026-11-26.md) | `ai_news`, `daily` |
 | 2026-11-25 | [AI 行业日报 · 2026-11-25](../web-surfing/reports/ai-news-daily-2026-11-25.md) | `ai_news`, `daily` |

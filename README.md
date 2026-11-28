@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-28 · [AI 行业日报 · 2026-11-28](./web-surfing/reports/ai-news-daily-2026-11-28.md)
 - 2026-11-27 · [AI 行业日报 · 2026-11-27](./web-surfing/reports/ai-news-daily-2026-11-27.md)
 - 2026-11-26 · [蔡伟谈灵光 2.0：托管事项、服务供给与个人 Agent 的责任边界](./podcast-learning/reports/2026-11-23_latetalk_190_caiwei-personal-agent.md)
 - 2026-11-26 · [蒋冠军谈 Personal Agent：怎样让一次办成，变成下次还敢用](./podcast-learning/reports/2026-11-23_ai-lianjinshu_jiang-guanjun-personal-agent.md)
 - 2026-11-26 · [沈驿康谈 RSI 与持续学习：研究闭环、训练误差和个人 Agent 的不同问题](./podcast-learning/reports/2026-11-25_zhangxiaojun_158-rsi-pretraining.md)
-- 2026-11-26 · [有截止时间的 Personal Agent：异步追问、时钟提醒与交付控制](./ai-learning/reports/knowledge_reports/Personal_Agent_%E6%97%B6%E9%97%B4%E6%84%9F%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%BF%BD%E9%97%AE_%E6%88%AA%E6%AD%A2%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BA%A4%E4%BB%98%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261123.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -68,7 +68,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 153 篇 | 60/61/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 126 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 69 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 70 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 </details>
